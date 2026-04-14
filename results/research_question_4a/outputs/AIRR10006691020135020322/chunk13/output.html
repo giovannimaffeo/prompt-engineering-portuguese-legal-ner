@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The input starts with "Depoimento : `` que trabalha junto com o reclamante na empresa STAR TIC ;". Here, "STAR TIC" is likely an organization, so I'll mark that as organizacao. "reclamante" is a generic term, not a specific name, so it's not a pessoa. "empresa" is a generic term, so no mark.
+
+Next, "que há dois meses trabalha das 9h às 16h30 ;" – "dois meses" is a time reference, so that's tempo. The hours "9h às 16h30" are also time, so mark those as tempo.
+
+Then, "que no inicio deste ano trabalhou das 15h30 às 23h ;" – "inicio deste ano" is a time reference, so tempo. The hours "15h30 às 23h" are also tempo.
+
+Moving on, "que Vladimir compareceu no local de trabalho da depoente e do reclamante ;" – "Vladimir" is a person's name, so pessoa. "local de trabalho" is a generic term, not a specific place, so no mark. "depoente" is a generic term, not a specific name.
+
+"que o Vladimir chamou o reclamante para fora do local ;" – "Vladimir" is already marked as pessoa. "reclamante" is generic again.
+
+"que o Vladimir disse que iria entrar no local e `` encher sua cara de porrada '' ;" – "Vladimir" is already marked. The rest is generic.
+
+"que o Vladimir conversou com a chefe do reclamante questionando o seu profissionalismo ;" – "Vladimir" is pessoa. "chefe" is a generic term.
+
+"que todo o fato narrado foi presenciado pela depoente ;" – "depoente" is generic.
+
+"que no local estavam 4 funcionários , a chefe da depoente e alguns clientes da praça de alimentação '' ( grifos nossos , ID . 1196998 ) ." – "praça de alimentação" is a specific place, so local. "ID . 1196998" is an identifier, which might be jurisprudencia or something else. Wait, the ID here is part of a reference, but according to the guidelines, only specific legal references like process numbers or jurisprudential references should be marked. The ID here is part of a citation, so maybe it's jurisprudencia. But the example shows that IDs like "ID . 1196998" might be considered as part of a reference. However, the guidelines mention that identifiers like "ID . 1196998" should be marked as jurisprudencia if they are part of a legal reference. So I'll mark that as jurisprudencia.
+
+Next, "O Boletim de Ocorrência ( ID n . 616412 ) é peça de investigação que não tem o condão de comprovar que o Sr. Wladimir tenha agido em nome ou a mando da reclamada ."
+
+"Boletim de Ocorrência" is a legal document, but according to the definitions, it's not a legislation, so maybe not. Wait, the guidelines say that "legislação" includes laws, codes, etc. "Boletim de Ocorrência" is a police report, not a legal norm, so it's not legislation. The ID "n . 616412" is another identifier, which might be jurisprudencia. The "Sr. Wladimir" is a person's name, so pessoa. "reclamada" is a generic term.
+
+Putting it all together, I need to mark:
+
+- STAR TIC as organizacao
+- dois meses, 9h às 16h30, inicio deste ano, 15h30 às 23h as tempo
+- praça de alimentação as local
+- ID . 1196998 and ID n . 616412 as jurisprudencia
+- Vladimir and Sr. Wladimir as pessoa
+
+Wait, "Sr. Wladimir" – "Sr." is a title, not a name, so only "Wladimir" is pessoa. But the input has "Sr. Wladimir" – the "Sr." is a title, so only "Wladimir" should be marked as pessoa. However, the example shows that "Sr." is not marked. So in the input, "Sr. Wladimir" would have "Wladimir" as pessoa, and "Sr." is not marked.
+
+So, the final HTML should have the appropriate spans for each entity. Let me check again for any missed entities. The "praça de alimentação" is a specific place, so local. The IDs are part of references, so jurisprudencia. The time references are all marked as tempo. The names are marked as pessoa. The organization is STAR TIC. The rest are generic terms or not applicable.
+</think>
+
+Depoimento : `` que trabalha junto com o reclamante na empresa <span class="organizacao">STAR TIC</span> ; que há <span class="tempo">dois meses</span> trabalha das <span class="tempo">9h às 16h30</span> ; que no <span class="tempo">inicio deste ano</span> trabalhou das <span class="tempo">15h30 às 23h</span> ; que <span class="pessoa">Vladimir</span> compareceu no <span class="local">local de trabalho</span> da depoente e do reclamante ; que o <span class="pessoa">Vladimir</span> chamou o reclamante para fora do local ; que o <span class="pessoa">Vladimir</span> disse que iria entrar no local e `` encher sua cara de porrada '' ; que o <span class="pessoa">Vladimir</span> conversou com a chefe do reclamante questionando o seu profissionalismo ; que todo o fato narrado foi presenciado pela depoente ; que no <span class="local">local</span> estavam 4 funcionários , a chefe da depoente e alguns clientes da <span class="local">praça de alimentação</span> '' ( grifos nossos , <span class="jurisprudencia">ID . 1196998</span> ) . O <span class="jurisprudencia">Boletim de Ocorrência ( ID n . 616412 )</span> é peça de investigação que não tem o condão de comprovar que o <span class="pessoa">Wladimir</span> tenha agido em nome ou a mando da reclamada .

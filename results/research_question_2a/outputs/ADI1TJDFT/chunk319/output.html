@@ -1,0 +1,59 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "( Acórdão n.930659 , 20150020207206ADI , Relator : MARIO MACHADO CONSELHO ESPECIAL , Data de Julgamento : 02/02/2016 , Publicado no DJE : 05/04/2016 . Pág. : Sem Página Cadastrada . ) Fls ."
+
+Let me break it down. The first part is "( Acórdão n.930659 , 20150020207206ADI , Relator : MARIO MACHADO CONSELHO ESPECIAL , Data de Julgamento : 02/02/2016 , Publicado no DJE : 05/04/2016 . Pág. : Sem Página Cadastrada . ) Fls ."
+
+Looking for entities:
+
+1. "Acórdão n.930659" – Acórdão is a legal term, but it's not one of the specified entities. The number 930659 might be a case number, but the user hasn't specified that as an entity. So maybe not.
+
+2. "20150020207206ADI" – This looks like a case number or a legal reference. But again, the user hasn't mentioned case numbers as entities. So perhaps not.
+
+3. "Relator : MARIO MACHADO" – "Relator" is a role, not an entity. The name "MARIO MACHADO" is a person. So that's a 'pessoa'.
+
+4. "CONSELHO ESPECIAL" – This is an organization. So 'organizacao'.
+
+5. "Data de Julgamento : 02/02/2016" – The date is a 'tempo'.
+
+6. "Publicado no DJE : 05/04/2016" – The date here is another 'tempo'.
+
+7. "Pág. : Sem Página Cadastrada" – "Pág." is short for página, which is a local term, but not sure. Maybe not an entity here.
+
+8. "Fls ." – "Fls" is an abbreviation for "Fls." which is "Fls." in Portuguese, meaning "Folhas" (pages), but again, not an entity.
+
+So the entities to mark are:
+
+- MARIO MACHADO (pessoa)
+- CONSELHO ESPECIAL (organizacao)
+- 02/02/2016 (tempo)
+- 05/04/2016 (tempo)
+
+Wait, the user's example output in the previous message had "MARIO MACHADO" as pessoa, "CONSELHO ESPECIAL" as organizacao, and the dates as tempo. Let me check if that's correct.
+
+Yes, the user's example output for similar input would have those. So I need to apply the same here.
+
+So, in the text, "MARIO MACHADO" is a pessoa, "CONSELHO ESPECIAL" is an organizacao, and the dates "02/02/2016" and "05/04/2016" are tempo.
+
+Other parts like "Acórdão", "n.930659", "20150020207206ADI", "DJE" – are these entities? The user hasn't specified them, so they should remain as is.
+
+So the final HTML should have those spans. Let me structure the text accordingly.
+
+Original text: "( Acórdão n.930659 , 20150020207206ADI , Relator : MARIO MACHADO CONSELHO ESPECIAL , Data de Julgamento : 02/02/2016 , Publicado no DJE : 05/04/2016 . Pág. : Sem Página Cadastrada . ) Fls ."
+
+Breaking down:
+
+- "Relator : MARIO MACHADO" → "MARIO MACHADO" is pessoa.
+- "CONSELHO ESPECIAL" → organizacao.
+- "Data de Julgamento : 02/02/2016" → tempo.
+- "Publicado no DJE : 05/04/2016" → tempo.
+
+So the HTML would be:
+
+( Acórdão n.930659 , 20150020207206ADI , Relator : <span class="pessoa">MARIO MACHADO</span> <span class="organizacao">CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">02/02/2016</span> , Publicado no DJE : <span class="tempo">05/04/2016</span> . Pág. : Sem Página Cadastrada . ) Fls .
+
+I need to make sure that the rest of the text remains unchanged. Also, check if "CONSELHO ESPECIAL" is an organization. Yes, it's a council or special council, which is an organization. "MARIO MACHADO" is a person. The dates are tempo. The rest are not entities, so left as is.
+</think>
+
+( Acórdão n.930659 , 20150020207206ADI , Relator : <span class="pessoa">MARIO MACHADO</span> <span class="organizacao">CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">02/02/2016</span> , Publicado no DJE : <span class="tempo">05/04/2016</span> . Pág. : Sem Página Cadastrada . ) Fls .

@@ -1,0 +1,49 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each span needs a class indicating the type.
+
+First, I need to parse the input text carefully. The input is: "( Acórdão n.1049279 , 20160020153586ADI , Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL , Data de Julgamento : 19/09/2017 , Publicado no DJE : 28/09/2017 . Pág. : 27-29 )".
+
+Let me break it down. The text has several parts separated by commas and periods. Let's look for each entity type:
+
+1. **Acórdão n.1049279**: "Acórdão" is a legal term, but it's not one of the specified entities. The number "n.1049279" might be a case number, but the user hasn't specified that as an entity. So maybe it's not marked.
+
+2. **20160020153586ADI**: This looks like a case number or a legal reference. Again, not one of the specified entities. So no tag here.
+
+3. **Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL**: "Relator" is a role, not an entity. The names "MARIOZAM BELMIRO" and "CONSELHO ESPECIAL" – "CONSELHO ESPECIAL" is an organization (like a special council), so that should be "organizacao". The name "MARIOZAM BELMIRO" is a person, so "pessoa".
+
+4. **Data de Julgamento : 19/09/2017**: "Data de Julgamento" is a date, so "tempo" for the date "19/09/2017".
+
+5. **Publicado no DJE : 28/09/2017**: "DJE" is a legal publication (Diário da Justiça Eletrônico), which might be a local or an organization. But since it's a publication, maybe it's a local? Wait, the user's entities include "local" and "organizacao". "DJE" is a publication, so perhaps it's a local? Or maybe it's part of the legislation? Not sure. The user hasn't specified, so maybe it's not marked. Alternatively, "DJE" could be an organization. But the example might not have it. Let me check the example output.
+
+Looking at the example output provided by the user, the output is:
+
+"( <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">19/09/2017</span> , <span class="tempo">28/09/2017</span> . )"
+
+Wait, the user's example output shows that "CONSELHO ESPECIAL" is marked as "organizacao", and the dates are "tempo". The "Relator" and "MARIOZAM BELMIRO" are not marked. So maybe the user's example doesn't include those. So perhaps the user's example is the correct approach.
+
+So, in the input text, the entities are:
+
+- "CONSELHO ESPECIAL" as "organizacao"
+- "19/09/2017" and "28/09/2017" as "tempo"
+
+Other parts like "Acórdão", "n.1049279", "20160020153586ADI", "Relator", "MARIOZAM BELMIRO", "Publicado no DJE", "Pág." are not marked as any of the specified entities.
+
+So the HTML should have:
+
+- "CONSELHO ESPECIAL" in <span class="organizacao">
+- Both dates in <span class="tempo">
+
+The rest remains as is. So the final output would be:
+
+"( Acórdão n.1049279 , 20160020153586ADI , Relator : MARIOZAM BELMIRO <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">19/09/2017</span> , <span class="tempo">28/09/2017</span> . Pág. : 27-29 )"
+
+Wait, but in the user's example, the output is:
+
+"( <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">19/09/2017</span> , <span class="tempo">28/09/2017</span> . )"
+
+So the user's example seems to have the "CONSELHO ESPECIAL" as "organizacao", and the dates as "tempo". The rest is left as is. So I need to follow that pattern.
+
+Therefore, the correct HTML would mark "CONSELHO ESPECIAL" as "organizacao" and the two dates as "tempo". The rest of the text remains unchanged.
+</think>
+
+( Acórdão n.1049279 , 20160020153586ADI , Relator : MARIOZAM BELMIRO <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">19/09/2017</span> , <span class="tempo">28/09/2017</span> . Pág. : 27-29 )

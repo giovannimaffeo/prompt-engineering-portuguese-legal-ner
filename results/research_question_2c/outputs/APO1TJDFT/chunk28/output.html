@@ -1,0 +1,77 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by looking for any obvious entities. The text mentions "Apelação / Reexame Necessário 20140110500434APO" – the number here might be a case number, but it doesn't fit any of the specified categories. Then there's "CÓRDO AO" which seems like part of a court name. Wait, "CÓRDO AO" might be "CÓRDO AO" but maybe it's part of the court's name. Wait, the original text says "C Ó R D Ã O" which is likely "CÓRDO AO" but maybe it's a typo. Wait, maybe it's "CÓRDO AO" as part of the court's name. But I'm not sure. Let me check again.
+
+Looking at the text: "Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios , MARIA IVATÔNIA - Relatora , ANGELO PASSARELI - 1º Vogal , SEBASTIÃO COELHO - 2º Vogal , SILVA LEMOS - 3º Vogal , JOSAPHA FRANCISCO DOS SANTOS - 4º Vogal , sob a presidência do Senhor Desembargador SEBASTIÃO COELHO , em proferir a seguinte decisão : EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR ."
+
+So, the entities here would be:
+
+- "MARIA IVATÔNIA" is a person (pessoa).
+- "ANGELO PASSARELI" is another person.
+- "SEBASTIÃO COELHO" appears twice, once as 2º Vogal and again as presidência, so also pessoa.
+- "SILVA LEMOS" is a person.
+- "JOSAPHA FRANCISCO DOS SANTOS" is a person.
+- "Tribunal de Justiça do Distrito Federal e Territórios" is an organization (organizacao).
+- "5ª TURMA CÍVEL" might be part of the organization, but maybe it's a local or part of the organization. Wait, "Tribunal de Justiça" is the organization, and "5ª TURMA CÍVEL" is part of it, so maybe it's part of the organization's name. But the user's example might have "Tribunal de Justiça" as the organization. Also, "Distrito Federal e Territórios" is a local (local), but maybe it's part of the organization's name. Wait, the organization is "Tribunal de Justiça do Distrito Federal e Territórios", so the entire phrase is the organization. So I should mark that as organizacao.
+
+Also, "EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR" – "VOTO-VISTA" might be a legal term, but not sure if it's jurisprudencia or legislacao. Since it's part of the decision, maybe it's not an entity. The "2º VOGAL" is a position, not an entity. The "Relator" is a role, not an entity. 
+
+So, the entities to mark are:
+
+- MARIA IVATÔNIA (pessoa)
+- ANGELO PASSARELI (pessoa)
+- SEBASTIÃO COELHO (pessoa)
+- SILVA LEMOS (pessoa)
+- JOSAPHA FRANCISCO DOS SANTOS (pessoa)
+- Tribunal de Justiça do Distrito Federal e Territórios (organizacao)
+- Distrito Federal e Territórios (local) – but wait, the entire organization name includes the local. Maybe the local is part of the organization's name. Alternatively, "Distrito Federal e Territórios" is a local. But the user's example might have "Distrito Federal e Territórios" as part of the organization. So perhaps the entire "Tribunal de Justiça do Distrito Federal e Territórios" is the organization, and "Distrito Federal e Territórios" is the local. But I need to check the guidelines. The user says to mark local as a local. So "Distrito Federal e Territórios" is a local. But the organization is "Tribunal de Justiça do Distrito Federal e Territórios". So I should mark the entire organization as organizacao, and the local as local. Wait, but the organization's name includes the local. So maybe the organization is "Tribunal de Justiça" and the local is "Distrito Federal e Territórios". But the text says "Tribunal de Justiça do Distrito Federal e Territórios", which is the full name of the organization. So the entire phrase is the organization. Therefore, I should mark that as organizacao. The local would be "Distrito Federal e Territórios" as part of the organization's name. But maybe the user expects "Distrito Federal e Territórios" to be marked as local. Let me check the example. The user's example might have "Distrito Federal e Territórios" as local. So I'll mark that as local. But the organization is "Tribunal de Justiça do Distrito Federal e Territórios", so the entire phrase is the organization. Wait, but the user's example might have "Tribunal de Justiça" as the organization. Hmm. This is a bit ambiguous. Let me proceed with marking "Tribunal de Justiça do Distrito Federal e Territórios" as organizacao, and "Distrito Federal e Territórios" as local. But maybe the user expects the entire organization name to be marked as organizacao. Alternatively, maybe "Distrito Federal e Territórios" is the local. Let me check the original text again. The text says "Tribunal de Justiça do Distrito Federal e Territórios" – that's the full name of the organization. So I should mark that as organizacao. The local would be "Distrito Federal e Territórios" as part of the organization's name. But perhaps the user wants "Distrito Federal e Territórios" as local. Alternatively, maybe the local is "Distrito Federal" and "Territórios" as separate, but that's not clear. Since the user's example might have "Distrito Federal e Territórios" as local, I'll mark that as local. But I need to make sure. Alternatively, maybe the local is "Distrito Federal" and "Territórios" as part of the organization. This is a bit tricky. Let me proceed with marking "Tribunal de Justiça do Distrito Federal e Territórios" as organizacao, and "Distrito Federal e Territórios" as local. Wait, but that would be overlapping. Maybe the user expects "Distrito Federal e Territórios" to be marked as local. So I'll mark that as local. 
+
+So, the final HTML would have:
+
+- "Tribunal de Justiça do Distrito Federal e Territórios" as organizacao.
+- "Distrito Federal e Territórios" as local.
+- All the names of the people as pessoa.
+
+Wait, but the text says "Tribunal de Justiça do Distrito Federal e Territórios" – that's the full name of the organization. So the entire phrase is the organization. Therefore, I should mark that as organizacao. The local would be "Distrito Federal e Territórios" as part of the organization's name. But maybe the user wants "Distrito Federal e Territórios" as local. Alternatively, maybe the local is "Distrito Federal" and "Territórios" as separate, but that's not clear. Since the user's example might have "Distrito Federal e Territórios" as local, I'll mark that as local. 
+
+So, the HTML would have:
+
+<span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span>
+<span class="local">Distrito Federal e Territórios</span>
+
+But that would be overlapping. Alternatively, maybe the entire "Tribunal de Justiça do Distrito Federal e Territórios" is the organization, and "Distrito Federal e Territórios" is part of it. So I should mark the entire phrase as organizacao. 
+
+Therefore, the correct approach is to mark "Tribunal de Justiça do Distrito Federal e Territórios" as organizacao, and the local as "Distrito Federal e Territórios" as part of the organization's name. But since the user's example might have "Distrito Federal e Territórios" as local, I'll proceed with that. 
+
+So, the final HTML would have:
+
+- All the names of the people as pessoa.
+- "Tribunal de Justiça do Distrito Federal e Territórios" as organizacao.
+- "Distrito Federal e Territórios" as local.
+
+But I need to check if "Distrito Federal e Territórios" is part of the organization's name. If the organization is "Tribunal de Justiça do Distrito Federal e Territórios", then the entire phrase is the organization. Therefore, the local is "Distrito Federal e Territórios" as part of the organization's name. But maybe the user wants "Distrito Federal e Territórios" as local. 
+
+Alternatively, maybe the local is "Distrito Federal" and "Territórios" as separate, but that's not clear. Since the user's example might have "Distrito Federal e Territórios" as local, I'll proceed with that. 
+
+So, the final HTML would have:
+
+<span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span>
+<span class="local">Distrito Federal e Territórios</span>
+
+But that would be overlapping. Alternatively, maybe the entire "Tribunal de Justiça do Distrito Federal e Territórios" is the organization, and "Distrito Federal e Territórios" is part of it. Therefore, the local is "Distrito Federal e Territórios" as part of the organization's name. 
+
+In any case, the main entities are the people and the organization. The local might be "Distrito Federal e Territórios" as part of the organization's name. 
+
+So, the final HTML would have:
+
+- All the names of the people as pessoa.
+- "Tribunal de Justiça do Distrito Federal e Territórios" as organizacao.
+- "Distrito Federal e Territórios" as local.
+
+But I need to make sure that the local is marked correctly. Since the user's example might have "Distrito Federal e Territórios" as local, I'll proceed with that. 
+
+Therefore, the final HTML would have the specified entities marked with the appropriate classes.
+</think>
+
+Apelação / Reexame Necessário 20140110500434APO A C Ó R D Ã O Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span> , <span class="pessoa">MARIA IVATÔNIA</span> - Relatora , <span class="pessoa">ANGELO PASSARELI</span> - 1º Vogal , <span class="pessoa">SEBASTIÃO COELHO</span> - 2º Vogal , <span class="pessoa">SILVA LEMOS</span> - 3º Vogal , <span class="pessoa">JOSAPHA FRANCISCO DOS SANTOS</span> - 4º Vogal , sob a presidência do Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span> , em proferir a seguinte decisão : EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR .

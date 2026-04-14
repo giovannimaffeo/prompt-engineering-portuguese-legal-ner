@@ -1,0 +1,31 @@
+<think>
+Okay, let's see. I need to generate an HTML version of the given legal text, marking specific entities. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should be in a <span> with the appropriate class.
+
+First, I'll go through the text line by line. Let's start with the first part: "Art . 2º O parecer de que trata o art . 1º pode ser rejeitado pela Administração Pública , fundamentadamente , por comprovada inobservância de norma legal em vigor ou supremacia do interesse público ."
+
+Here, "Administração Pública" is an organization, right? Because it's a formal entity. So I'll mark that as <span class="organizacao">Administração Pública</span>.
+
+Next line: "Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art . 4º Esta Lei entra em vigor na data de sua publicação ."
+
+"Poder Executivo" is an organization? Wait, the definition says organizations include public organs, courts, etc. "Poder Executivo" is a branch of government, so it's an organization. So <span class="organizacao">Poder Executivo</span>.
+
+Then "60 dias" is a time reference. According to the guidelines, time includes days, so that's <span class="tempo">60 dias</span>. "data de sua publicação" is a date, so "data" is part of the time. Wait, but the example says "3 de abril de 2017" is time. Here, "data" is a generic term, but the actual date isn't specified. So maybe "data" isn't marked. Wait, but the instruction says to mark explicit dates. Since "data de sua publicação" is a reference to a date, but the actual date isn't given, maybe it's not marked. Hmm. The example says "data completa em formatos explícitos" should be marked. Since here it's just "data", not a specific date, maybe not. So maybe "data" isn't marked. Wait, but the user's example output in the previous task might have different cases. Let me check the user's example again. Oh, the user's example has "data" not marked. So I'll leave "data" as is.
+
+Moving on. "Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI O Senhor Desembargador MARIO MACHADO - Vogal Presentes os pressupostos processuais e as condições da ação , admito o processamento da presente Ação Direta de Inconstitucionalidade ."
+
+"Ação Direta de Inconstitucionalidade" is a legal action, but the guidelines say jurisprudência is for decisions, precedents, etc. But here, it's a type of legal action, not a specific decision. So maybe not marked. However, the number "20170020161362ADI" might be a jurisprudência identifier. The example says "20140110500434APO" is marked as jurisprudência. So "20170020161362ADI" is a number, so maybe it's a jurisprudência. So mark that as <span class="jurisprudencia">20170020161362ADI</span>.
+
+"O Senhor Desembargador MARIO MACHADO - Vogal" – "Desembargador" is a title, not a person. "MARIO MACHADO" is a person's name, so <span class="pessoa">MARIO MACHADO</span>.
+
+Next part: "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 43 Art . 5º Revogam-se as disposições em contrário ."
+
+"Código de Verificação" is a code, not a specific entity. The number "2018ACONT2JYXTK52JCSL251NVQ" is a code, maybe a jurisprudência or legislação? But the guidelines say to mark only specific references. Since it's a code, not a specific law or decision, maybe not. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE" is an organization? Or the entire phrase is an organization. "DESEMBARGADOR" is a title, so not a person. "SILVANIO BARBOSA DOS SANTOS" is a person's name. So mark "SILVANIO BARBOSA DOS SANTOS" as <span class="pessoa">. "GABINETE" is an organization, so <span class="organizacao">GABINETE</span>.
+
+Putting it all together, I'll structure each part with the appropriate spans. Make sure not to mark anything that's not a specific entity. For example, "Poder Executivo" is an organization, "Administração Pública" is an organization, "MARIO MACHADO" is a person, "20170020161362ADI" is jurisprudência, "SILVANIO BARBOSA DOS SANTOS" is pessoa, "GABINETE" is organizacao.
+
+Check for any other entities. "Art . 1º" – "Art" is part of the article, not an entity. "Lei" is mentioned in "regulamentará esta Lei" – "Lei" is a legislation, but the full name isn't given. Wait, the guidelines say to mark legislation as full references. Since here it's just "Lei", not a specific law, maybe not. So leave as is. Similarly, "Artigo" is part of the article, not an entity.
+
+So the final HTML should have all those spans correctly placed.
+</think>
+
+Art . 2º O parecer de que trata o art . 1º pode ser rejeitado pela <span class="organizacao">Administração Pública</span> , fundamentadamente , por comprovada inobservância de norma legal em vigor ou supremacia do interesse público . Art . 3º O <span class="organizacao">Poder Executivo</span> regulamentará esta Lei no prazo de <span class="tempo">60 dias</span> . Art . 4º Esta Lei entra em vigor na data de sua publicação . Fls . _____ <span class="jurisprudencia">20170020161362ADI</span> O Senhor <span class="pessoa">Desembargador MARIO MACHADO</span> - Vogal Presentes os pressupostos processuais e as condições da ação , admito o processamento da presente Ação Direta de Inconstitucionalidade . <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 43 Art . 5º Revogam-se as disposições em contrário .

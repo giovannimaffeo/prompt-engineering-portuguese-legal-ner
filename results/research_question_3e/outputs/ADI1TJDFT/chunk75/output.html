@@ -1,0 +1,36 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each entity needs a class attribute.
+
+First, I need to read the input text carefully. The input is a legal document mentioning various entities. Let me go through each part step by step.
+
+Starting with "Ação Direta de Inconstitucionalidade 20170020161362ADI". Here, "Ação Direta de Inconstitucionalidade" is a legal term, but the example shows that only specific entities are marked. The number "20170020161362ADI" seems like a case number. According to the guidelines, jurisprudência includes identifiers like numbers. So I should mark this as jurisprudencia.
+
+Next, "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". The "Código de Verificação" is a generic term, so it's not an entity. The code "2018ACONT2JYXTK52JCSL251NVQ" might be a unique identifier, which could be jurisprudencia. But the example didn't mark similar codes, so I need to check the guidelines again. The guidelines say that identifiers like "20140110500434APO" are jurisprudencia. Since this is a code, maybe it's a case number. But the example didn't have such a case, so I'll mark it as jurisprudencia.
+
+Then "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". "GABINETE" is part of the organization, but the full name "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is an organization. Wait, the definition says that organizations include "órgãos públicos, tribunais, unidades do sistema de justiça..." So "GABINETE DO DESEMBARGADOR" is part of the organization. But the full name includes the person's name. Wait, "DESEMBARGADOR" is a title, not a name. The person's name is "SILVANIO BARBOSA DOS SANTOS", which is a pessoa. So the organization is "GABINETE DO DESEMBARGADOR", and the pessoa is "SILVANIO BARBOSA DOS SANTOS". Wait, but the full phrase is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". That seems like the organization's name includes the person's name. But according to the guidelines, only names of people should be marked as pessoa. The "DESEMBARGADOR" is a title, not a name. So the organization is "GABINETE DO DESEMBARGADOR", and the pessoa is "SILVANIO BARBOSA DOS SANTOS". But the phrase is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". Wait, maybe the full name is the organization, like "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is the organization. But the example shows that "MINISTÉRIO PÚBLICO FEDERAL" is an organization. So perhaps the "GABINETE DO DESEMBARGADOR" is the organization, and the person's name is part of it. However, the guidelines say that only names of people should be marked. So "SILVANIO BARBOSA DOS SANTOS" is a pessoa. The rest is part of the organization. So I should mark "SILVANIO BARBOSA DOS SANTOS" as pessoa and "GABINETE DO DESEMBARGADOR" as organizacao. Wait, but in the example, "MINISTÉRIO PÚBLICO FEDERAL" is an organization. So "GABINETE DO DESEMBARGADOR" is part of the organization, and the person's name is separate. So the full phrase would be "GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>". But the original text has "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". So maybe the entire phrase is the organization, but that's not clear. Alternatively, maybe "GABINETE DO DESEMBARGADOR" is the organization, and the person is part of it. This is a bit confusing. Maybe I should check if "SILVANIO BARBOSA DOS SANTOS" is a person. Since it's a full name, yes. So mark that as pessoa. The rest is part of the organization. So the organization is "GABINETE DO DESEMBARGADOR", and the pessoa is "SILVANIO BARBOSA DOS SANTOS".
+
+Next, "30 Alega , em síntese , que a lei impugnada , de iniciativa parlamentar , autoriza a delegação ao Conselho Regional de Engenharia e Agronomia do Distrito Federal - CREA/DF e ao Conselho de Arquitetura e Urbanismo do Distrito Federal - CAU/DF das atribuições relativas à obtenção do alvará de construção e da carta de habite-se ."
+
+Here, "Conselho Regional de Engenharia e Agronomia do Distrito Federal - CREA/DF" and "Conselho de Arquitetura e Urbanismo do Distrito Federal - CAU/DF" are organizations. The "Distrito Federal" is a local. The "CREA/DF" and "CAU/DF" are acronyms for the organizations, so they should be marked as organizacao. The "Distrito Federal" is a local. So mark "Distrito Federal" as local. The "CREA/DF" and "CAU/DF" are part of the organization's name, so they should be included. So the full names would be "Conselho Regional de Engenharia e Agronomia do Distrito Federal - CREA/DF" as organizacao, and similarly for the other.
+
+Then, "matéria relativa à administração e ao funcionamento de órgãos da Administração Pública do Distrito Federal , matéria que é da competência privativa do Chefe do Poder Executivo ."
+
+"Distrito Federal" again is a local. "Chefe do Poder Executivo" is a title, not a pessoa. So "Distrito Federal" is local.
+
+So putting it all together, the HTML should have:
+
+- Ação Direta de Inconstitucionalidade 20170020161362ADI as jurisprudencia
+- Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ as jurisprudencia
+- GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS: GABINETE DO DESEMBARGADOR as organizacao, SILVANIO BARBOSA DOS SANTOS as pessoa
+- CREA/DF and CAU/DF as organizacao
+- Distrito Federal as local
+- "Chefe do Poder Executivo" not marked as anything
+
+Wait, but the example in the guidelines shows that "MINISTÉRIO PÚBLICO FEDERAL" is an organization. So "GABINETE DO DESEMBARGADOR" is an organization, and the person's name is separate. So the full phrase would be "GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>".
+
+Also, the numbers like 20170020161362ADI and 2018ACONT2JYXTK52JCSL251NVQ are identifiers, so they should be jurisprudencia.
+
+So the final HTML would include all these entities with the correct classes.
+</think>
+
+Ação Direta de Inconstitucionalidade <span class="jurisprudencia">20170020161362ADI</span> Código de Verificação :<span class="jurisprudencia">2018ACONT2JYXTK52JCSL251NVQ</span> GABINETE DO DESEMBARGADOR <span class="organizacao">SILVANIO BARBOSA DOS SANTOS</span> 30 Alega , em síntese , que a lei impugnada , de iniciativa parlamentar , autoriza a delegação ao <span class="organizacao">Conselho Regional de Engenharia e Agronomia do Distrito Federal - CREA/DF</span> e ao <span class="organizacao">Conselho de Arquitetura e Urbanismo do Distrito Federal - CAU/DF</span> das atribuições relativas à obtenção do alvará de construção e da carta de habite-se . Conclui que é inequívoca a inconstitucionalidade formal da aludida lei , vez que trata de matéria relativa à administração e ao funcionamento de órgãos da Administração Pública do <span class="local">Distrito Federal</span> , matéria que é da competência privativa do Chefe do Poder Executivo .

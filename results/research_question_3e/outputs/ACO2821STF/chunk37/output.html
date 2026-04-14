@@ -1,0 +1,65 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute.
+
+First, I need to go through the input text and identify each entity based on the definitions provided. Let me start by reading the input carefully.
+
+The input text is: "246 da Constituição , com redação alterada pela EC 32/2001 , que assim dispõe : Art . 246 . É vedada a adoção de medida provisória na regulamentação de artigo da Constituição cuja redação tenha sido alterada por meio de emenda promulgada entre 1º de janeiro de 1995 até a promulgação desta5 Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . Supremo Tribunal Federal ACO 2821 A GR / MT Na mesma direção , vide AC 3.201-MC/PR , Rel . Min . Marco Aurélio ; AC 3.562/MG e ACO 2.421/MG , Rel . Min . Cármen Lúcia ; e AC 3.608-MC/RR , Rel . Min . Dias Toffoli , bem como ACO 1.062/DF , de minha relatoria ."
+
+Let me break this down sentence by sentence.
+
+Starting with "246 da Constituição , com redação alterada pela EC 32/2001 , que assim dispõe : Art . 246 . É vedada a adoção de medida provisória na regulamentação de artigo da Constituição cuja redação tenha sido alterada por meio de emenda promulgada entre 1º de janeiro de 1995 até a promulgação desta5"
+
+Here, "Constituição" is a legal document, so that's legislacao. "EC 32/2001" refers to an Emenda Constitucional, which is legislation. "Art. 246" is part of the legislation. The date "1º de janeiro de 1995" is tempo. "Promulgação desta5" – "esta" might be part of a reference, but the number "5" is unclear. Maybe "esta5" is a typo or part of a reference, but without more context, I'll leave it as is.
+
+Next part: "Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 ."
+
+"MP n° 2.200-2/2001" is a Medida Provisória, which is legislation. "24/08/2001" is tempo. "ICP-Brasil" is mentioned, but according to the guidelines, terms like "ICP" or "ICP-Brasil" are not considered legislation. So they should not be marked. The URL is an endereço eletrônico, which is not a local as per the guidelines. The number "14536378" is a document number, which might be jurisprudencia if it's an identifier. However, the example given in the guidelines includes numbers like "14536378" as part of a document reference, so maybe it's a jurisprudencia. But the text here says "sob o número 14536378" which is a document number, so maybe it's a jurisprudencia.
+
+Then: "Supremo Tribunal Federal" is an organization. "ACO 2821 A GR / MT" – ACO might be an acronym for "Acórdão" or something similar. The numbers like 2821, 3.201-MC/PR, etc., are likely jurisprudencia as they are identifiers for decisions. "Rel. Min. Marco Aurélio" – "Min." is a title, not a pessoa. "Marco Aurélio" is a pessoa. Similarly for "Cármen Lúcia" and "Dias Toffoli". "ACO 1.062/DF" – again, ACO as a jurisprudencia identifier.
+
+Now, applying the tags:
+
+- "Constituição" → legislacao
+- "EC 32/2001" → legislacao
+- "Art. 246" → legislacao
+- "1º de janeiro de 1995" → tempo
+- "MP n° 2.200-2/2001" → legislacao
+- "24/08/2001" → tempo
+- "Supremo Tribunal Federal" → organizacao
+- "ACO 2821 A GR / MT" → jurisprudencia (assuming ACO is an acronym for Acórdão)
+- "AC 3.201-MC/PR" → jurisprudencia
+- "Marco Aurélio" → pessoa
+- "Cármen Lúcia" → pessoa
+- "Dias Toffoli" → pessoa
+- "ACO 1.062/DF" → jurisprudencia
+
+Wait, the user's example had "REsp n . 1694984/MS" as jurisprudencia. So identifiers like "ACO", "AC", "ACO 2821", etc., should be marked as jurisprudencia. Also, "Rel. Min." refers to a relator, so the names like Marco Aurélio are pessoas.
+
+So putting it all together:
+
+The text should have:
+
+- "Constituição" as legislacao
+- "EC 32/2001" as legislacao
+- "Art. 246" as legislacao
+- "1º de janeiro de 1995" as tempo
+- "MP n° 2.200-2/2001" as legislacao
+- "24/08/2001" as tempo
+- "Supremo Tribunal Federal" as organizacao
+- "ACO 2821 A GR / MT" as jurisprudencia
+- "AC 3.201-MC/PR" as jurisprudencia
+- "Marco Aurélio" as pessoa
+- "Cármen Lúcia" as pessoa
+- "Dias Toffoli" as pessoa
+- "ACO 1.062/DF" as jurisprudencia
+
+Wait, the original text has "ACO 2821 A GR / MT" – "ACO" is likely an acronym for "Acórdão" or similar. So that's jurisprudencia. Similarly, "AC 3.201-MC/PR" is a jurisprudencia identifier. The numbers like "2821", "3.201-MC/PR", etc., are identifiers, so they should be marked as jurisprudencia. The names of the ministers are pessoas.
+
+Also, "Rel. Min." is a title, so not marked. The names "Marco Aurélio", "Cármen Lúcia", "Dias Toffoli" are pessoas.
+
+The URL is not a local, so not marked. The number "14536378" is a document number, so it's jurisprudencia.
+
+So the final output should have all those tags. Let me structure the HTML accordingly, making sure all the entities are correctly marked.
+</think>
+
+<span class="legislacao">246 da Constituição</span> , com redação alterada pela <span class="legislacao">EC 32/2001</span> , que assim dispõe : <span class="legislacao">Art . 246</span> . É vedada a adoção de medida provisória na regulamentação de artigo da Constituição cuja redação tenha sido alterada por meio de emenda promulgada entre <span class="tempo">1º de janeiro de 1995</span> até a promulgação desta<span class="legislacao">5</span> Documento assinado digitalmente conforme <span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico <span class="local">http : //www.stf.jus.br/portal/autenticacao/</span> sob o número <span class="jurisprudencia">14536378</span> . <span class="organizacao">Supremo Tribunal Federal</span> <span class="jurisprudencia">ACO 2821 A GR / MT</span> Na mesma direção , vide <span class="jurisprudencia">AC 3.201-MC/PR</span> , Rel . Min . <span class="pessoa">Marco Aurélio</span> ; <span class="jurisprudencia">AC 3.562/MG</span> e <span class="jurisprudencia">ACO 2.421/MG</span> , Rel . Min . <span class="pessoa">Cármen Lúcia</span> ; e <span class="jurisprudencia">AC 3.608-MC/RR</span> , Rel . Min . <span class="pessoa">Dias Toffoli</span> , bem como <span class="jurisprudencia">ACO 1.062/DF</span> , de minha relatoria .

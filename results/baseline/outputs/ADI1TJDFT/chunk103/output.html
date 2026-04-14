@@ -1,0 +1,29 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input has several parts: Acórdão number, ADI number, Relator's name, dates, page numbers, and mentions of a law, a vote, and some other codes.
+
+Starting with "Acórdão n.1078980" – "Acórdão" is a legal term, but the task is to mark entities. The number here might be an organization or a case number. Wait, the example output shows "Acórdão n.1078980" as is, so maybe it's not an entity. But the ADI number "20170020135916ADI" – ADI is Ação Direta de Inconstitucionalidade, which is a type of legal action. The user's example output marks "ADI 20170020135916ADI" as <span class="jurisprudencia">? Wait, no. Wait, looking at the example output provided by the user, let me check again.
+
+Wait, the user provided a sample input and output. Let me check the sample output. The user's example input includes "ADI 20170020135916ADI" and in the output, it's marked as <span class="jurisprudencia">. Wait, but ADI is a type of legal action, which might fall under jurisprudencia? Or maybe it's part of the legislation? Hmm, maybe I need to check the guidelines again.
+
+The guidelines say to mark entities like 'jurisprudencia' which includes legal actions or decisions. So ADI (Ação Direta de Inconstitucionalidade) is a type of legal action, so it's part of jurisprudencia. So in the sample input, "ADI 20170020135916ADI" would be marked as jurisprudencia.
+
+Then there's "Relator : JOSÉ DIVINO CONSELHO ESPECIAL" – "Relator" is a person, so "JOSÉ DIVINO CONSELHO ESPECIAL" should be a <span class="pessoa">.
+
+"Data de Julgamento : 20/02/2018" – the date is a tempo entity, so "20/02/2018" becomes <span class="tempo">.
+
+"Publicado no DJE : 05/03/2018" – another date, so "05/03/2018" is <span class="tempo">.
+
+"Lei 5.815/2017" – "Lei" is legislation, so "Lei 5.815/2017" is <span class="legislacao">.
+
+"Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI" – "Ação Direta de Inconstitucionalidade" is a type of legal action, so the entire phrase might be jurisprudencia. The number "20170020161362ADI" is part of the ADI, so it's also jurisprudencia.
+
+"Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – this seems like a code, not an entity, so left as is.
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls ." – "GABINETE DO DESEMBARGADOR" is an organization, so "GABINETE DO DESEMBARGADOR" is <span class="organizacao">. "SILVANIO BARBOSA DOS SANTOS" is a person, so <span class="pessoa">.
+
+Putting it all together, I need to go through each part of the text, identify the entities, and wrap them with the appropriate <span> tags. Make sure not to miss any parts and that the classes are correctly assigned. Also, check for any dates, laws, people, organizations, etc., and mark them accordingly. The rest of the text remains unchanged.
+</think>
+
+<span class="jurisprudencia">Acórdão n.1078980</span>, <span class="jurisprudencia">20170020135916ADI</span>, <span class="pessoa">Relator : JOSÉ DIVINO CONSELHO ESPECIAL</span>, <span class="tempo">Data de Julgamento : 20/02/2018</span>, <span class="tempo">Publicado no DJE : 05/03/2018</span>. Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da <span class="legislacao">Lei 5.815/2017</span> . É o voto . Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> <span class="jurisprudencia">Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span> <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 41 Fls .

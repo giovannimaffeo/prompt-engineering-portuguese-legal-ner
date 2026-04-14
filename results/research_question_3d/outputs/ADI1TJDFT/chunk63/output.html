@@ -1,0 +1,87 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+Starting with the first sentence: "Se essa lei objetada dissesse : `` o governador poderá celebrar convênios '' , não haveria inconstitucionalidade porque estaria repetindo . No entanto , ela diz : `` com tal entidade e com tal entidade '' , aí isso já é competência privativa do governador ."
+
+Looking for "pessoa": The text mentions "governador" but that's a title, not a name. So no pessoa here. "Entidade" is a generic term, not a specific name. "Desembargador" is a title, not a name. So no pessoa entities.
+
+Next, "organizacao": The text mentions "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". That's a specific organization. So I need to mark "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as organizacao. Also, "Tribunal de Contas" is mentioned in the guidelines, but not here. Wait, in the input text, there's "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" which is an organization. Also, "Ação Direta de Inconstitucionalidade 20170020161362ADI" – that's a legal action, so maybe jurisprudência or legislação? Wait, the jurisprudência is about court decisions, like "REsp 1694984/MS" or "Súmula 331 do TST". The "ADI" here is an acronym for Ação Direta de Inconstitucionalidade, which is a legal procedure, not a specific case. So maybe not jurisprudência. But the user's example output includes "ADI 20170020161362" as jurisprudência. Wait, in the example, the user's output has "Ação Direta de Inconstitucionalidade 20170020161362ADI" marked as jurisprudência. Wait, let me check the guidelines again. Jurisprudência includes "identificadores completos de decisões ou processos, compostos por números e eventuais sufixos alfabéticos". So the "ADI 20170020161362" is a specific case, so it should be marked as jurisprudência. Also, the code "2018ACONT2JYXTK52JCSL251NVQ" at the end. According to the guidelines, identifiers like that should be jurisprudência. So I need to mark those.
+
+Next, "tempo": The text has "25 Fls." which is a number, but not a date. "2018" is a year, so that's tempo. Also, "2017" in "Ação Direta de Inconstitucionalidade 20170020161362ADI" – but the entire code is a jurisprudência identifier, not a date. Wait, the "2017" is part of the case number, not a date. So tempo would be "2018" in "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the "2018" is a year, so that's tempo. Also, "25 Fls." is a number, but not a date. So only "2018" is tempo.
+
+"Local": The text mentions "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" which is an organization, not a local. "Fls." is an abbreviation for folhas, not a local. So no local entities here.
+
+"Legislação": The text refers to "Constituição Federal" in the guidelines, but here it's about "lei objetada" and "inconstitucionalidade", but no specific legislation names are mentioned. So no legislação.
+
+"Jurisprudência": The case numbers like "ADI 20170020161362ADI" and "2018ACONT2JYXTK52JCSL251NVQ" are identifiers for legal cases, so they should be marked as jurisprudência. Also, "Ação Direta de Inconstitucionalidade 20170020161362ADI" – the entire code is a jurisprudência identifier. The "25 Fls." is not a date, so not tempo. The "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is an organization. The "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" is a code, so jurisprudência.
+
+Wait, the user's example output includes "ADI 20170020161362ADI" as jurisprudência. So in the input text, the part "Ação Direta de Inconstitucionalidade 20170020161362ADI" would be marked as jurisprudência. Similarly, "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" is a code, so jurisprudência.
+
+So putting it all together:
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is organizacao.
+- "ADI 20170020161362ADI" is jurisprudência.
+- "2018" in "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" is tempo.
+- "2018ACONT2JYXTK52JCSL251NVQ" is jurisprudência.
+- "25 Fls." is not a date, so no.
+- "Desembargador ROMÃO C. OLIVEIRA - Vogal" – "Desembargador" is a title, not a name. So no pessoa. "ROMÃO C. OLIVEIRA" is a name, so pessoa. Wait, the text says "Senhor Desembargador ROMÃO C. OLIVEIRA - Vogal". So "ROMÃO C. OLIVEIRA" is a person's name. So that should be marked as pessoa.
+
+Wait, the original text has "Senhor Desembargador ROMÃO C. OLIVEIRA - Vogal" – "ROMÃO C. OLIVEIRA" is a name, so pessoa. Also, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is an organization.
+
+So the entities are:
+
+- pessoa: ROMÃO C. OLIVEIRA
+- organizacao: GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS
+- jurisprudência: Ação Direta de Inconstitucionalidade 20170020161362ADI, 2018ACONT2JYXTK52JCSL251NVQ
+- tempo: 2018
+
+Wait, the "2018" is part of the code "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". The "2018" is a year, so tempo. The rest of the code is the identifier for jurisprudência. So the code "2018ACONT2JYXTK52JCSL251NVQ" is a jurisprudência identifier. So the entire code is jurisprudência, and "2018" is tempo.
+
+So in the HTML, I need to mark:
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as organizacao.
+- "ROMÃO C. OLIVEIRA" as pessoa.
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" as jurisprudência.
+- "2018" as tempo.
+- "2018ACONT2JYXTK52JCSL251NVQ" as jurisprudência.
+
+Wait, but the code "2018ACONT2JYXTK52JCSL251NVQ" is part of the "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the entire code is a jurisprudência identifier. So the entire code should be marked as jurisprudência. The "2018" is part of that code, but since it's within the identifier, it's part of the jurisprudência. However, the guidelines say that identifiers like that should be marked as jurisprudência, even if they contain numbers. So the entire code is jurisprudência, and "2018" is part of it. So in the HTML, the entire code "2018ACONT2JYXTK52JCSL251NVQ" is marked as jurisprudência. The "2018" is part of that, so it's included in the jurisprudência tag. But the user's example output includes "2018" as tempo. Wait, maybe I need to check the guidelines again.
+
+The guidelines say: "Horários isolados (como "17:26:32") não devem ser anotados como tempo; apenas datas explícitas devem ser anotadas." So "2018" is a year, which is a tempo. But in the code "2018ACONT2JYXTK52JCSL251NVQ", the "2018" is part of the identifier. But according to the guidelines, "identificadores completos de decisões ou processos, compostos por números e eventuais sufixos alfabéticos (por exemplo, "20140110500434APO"), devem ser anotados como jurisprudência, mesmo quando aparecem sem a palavra "acórdão"."
+
+So the entire code "2018ACONT2JYXTK52JCSL251NVQ" is a jurisprudência identifier. Therefore, the "2018" is part of that identifier and should be marked as jurisprudência, not tempo. But the user's example output includes "2018" as tempo. Wait, maybe the user's example is different. Let me check the user's example again.
+
+Wait, the user provided an example input and output. The input text includes "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" and in the output, it's marked as jurisprudência. So the entire code is jurisprudência. The "2018" is part of that code, so it's included in the jurisprudência tag. Therefore, the "2018" is not marked as tempo. So in the input text, "2018" is part of the jurisprudência identifier. So I should not mark "2018" as tempo. Therefore, the only tempo is "2018" if it's standalone. But in the code, it's part of the identifier. So perhaps the code is the entire identifier, and "2018" is part of it. So the entire code is jurisprudência, and "2018" is not marked as tempo. Therefore, only the "ADI 20170020161362ADI" and the code "2018ACONT2JYXTK52JCSL251NVQ" are jurisprudência. The "2018" is part of the code, not a standalone tempo.
+
+So the entities are:
+
+- pessoa: ROMÃO C. OLIVEIRA
+- organizacao: GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS
+- jurisprudência: Ação Direta de Inconstitucionalidade 20170020161362ADI, 2018ACONT2JYXTK52JCSL251NVQ
+- tempo: none, since "2018" is part of a jurisprudência identifier.
+
+Wait, but the user's example output includes "2018" as tempo. Let me check again. The user's input text has "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". The "2018" is part of the code. According to the guidelines, "tempo" is for dates. The code is an identifier for a legal case, so it's jurisprudência. Therefore, "2018" is part of that identifier and not a standalone tempo. Therefore, no tempo entity here.
+
+So the only entities are:
+
+- pessoa: ROMÃO C. OLIVEIRA
+- organizacao: GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS
+- jurisprudência: Ação Direta de Inconstitucionalidade 20170020161362ADI, 2018ACONT2JYXTK52JCSL251NVQ
+
+Wait, but the "Ação Direta de Inconstitucionalidade 20170020161362ADI" is a specific case, so it's jurisprudência. The code "2018ACONT2JYXTK52JCSL251NVQ" is a code for a case, also jurisprudência.
+
+So the HTML would have:
+
+<span class="pessoa">ROMÃO C. OLIVEIRA</span>
+<span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span>
+<span class="jurisprudência">Ação Direta de Inconstitucionalidade 20170020161362ADI</span>
+<span class="jurisprudência">2018ACONT2JYXTK52JCSL251NVQ</span>
+
+But wait, the code "2018ACONT2JYXTK52JCSL251NVQ" is part of the text "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". So the entire code is marked as jurisprudência. The "2018" is part of that code, so it's included in the jurisprudência tag. Therefore, the entire code is marked as jurisprudência.
+
+So the final HTML would have those entities marked accordingly.
+</think>
+
+<span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 25 Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> <span class="pessoa">ROMÃO C. OLIVEIRA</span> - Vogal <span class="jurisprudencia">2018ACONT2JYXTK52JCSL251NVQ</span>

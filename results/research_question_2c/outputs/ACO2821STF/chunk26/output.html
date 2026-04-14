@@ -1,0 +1,50 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text: "Supremo Tribunal Federal ACO 2821 A GR / MT unanimidade , negar provimento ao agravo regimental , nos termos do voto do Relator ."
+
+Let me break it down word by word.
+
+"Supremo Tribunal Federal" – that's the name of a Brazilian court, so it's an organization. So I'll mark that as <span class="organizacao">.
+
+"ACO 2821" – ACO might stand for "Agravo de Controle" which is a legal term, but the number 2821 is likely a case number. Since it's a case number, maybe it's part of the legislation or jurisprudence? Wait, the user's guide doesn't mention case numbers specifically. The entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. Case numbers might not fit any of these. So maybe leave them as is unless they refer to a specific entity. Since ACO is a legal term, perhaps it's part of the jurisprudencia? Not sure. Maybe it's better to leave it unless there's a clear match.
+
+"A GR / MT" – "GR" could be "Grau Recursal" and "MT" is the state abbreviation for Mato Grosso. So "MT" is a local. So I'll mark "MT" as <span class="local">.
+
+"unanimidade" – that's a legal term indicating all judges agreed, but it's not an entity type. So leave it.
+
+"negar provimento ao agravo regimental" – "agravo regimental" is a legal term, but again, not an entity type. So leave as is.
+
+"nos termos do voto do Relator" – "Relator" refers to the judge who wrote the opinion, so that's a pessoa. So "Relator" should be <span class="pessoa">.
+
+Wait, but "Relator" is a title, not a name. The user's guide says to mark people. If "Relator" is a title, maybe it's not a pessoa. But the instruction says to mark any entity that fits. Since "Relator" is a role, maybe it's not a pessoa. Hmm. The example might have "Relator" as a pessoa. Let me check the example output.
+
+Looking at the sample input and output, the user provided the input and the output. Wait, the user hasn't provided the sample output yet. Wait, the user's instruction says "Texto de Saída:" but there's no example. So I need to proceed based on the guidelines.
+
+In the input text, "Relator" is a title, but maybe in the context, it refers to a specific person. However, since it's just the title, perhaps it's not marked as pessoa. Alternatively, maybe the user expects "Relator" to be marked as pessoa. But I'm not sure. Let me think again.
+
+The user's guide says to mark "pessoa" when it's a person. If "Relator" is a role, not a name, then it's not a pessoa. So maybe leave it. But maybe in the context of the legal text, "Relator" refers to a specific person, so it's a pessoa. But without more context, it's safer to assume that "Relator" is a title, not a person's name. So perhaps not mark it.
+
+Wait, the original input has "Relator" as part of the text. Let me check again. The input is: "Supremo Tribunal Federal ACO 2821 A GR / MT unanimidade , negar provimento ao agravo regimental , nos termos do voto do Relator ."
+
+So "Relator" is part of the text. The user's example output might have "Relator" as a pessoa. But since the user hasn't provided an example, I need to make a judgment.
+
+Alternatively, maybe "Relator" is part of the jurisprudencia? No, jurisprudencia refers to court decisions. So perhaps "Relator" is not an entity. Therefore, I'll leave it as is.
+
+Now, "ACO 2821" – ACO could be an acronym for a legal term, but since it's not one of the entity types, maybe it's left as is. The number 2821 is a case number, which might not be an entity type. So no tags.
+
+"GR" – maybe "Grau Recursal" is a legal term, but again, not an entity type. "MT" is a state, so local.
+
+So the entities are:
+
+- "Supremo Tribunal Federal" → organizacao
+- "MT" → local
+
+The rest are not entities. So the HTML would be:
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / <span class="local">MT</span> unanimidade , negar provimento ao agravo regimental , nos termos do voto do Relator .
+
+Wait, but "GR" is part of "A GR / MT". The "/ MT" is the state, so "MT" is local. "GR" might be a legal term, but not an entity. So the final output would have "Supremo Tribunal Federal" as organizacao and "MT" as local. The rest remains as is.
+</think>
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / <span class="local">MT</span> unanimidade , negar provimento ao agravo regimental , nos termos do voto do Relator .

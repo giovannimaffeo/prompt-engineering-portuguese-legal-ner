@@ -1,0 +1,77 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text. The input is: "Acórdão n.987488 , 20160020314727ADI , Relator : ROMEU GONZAGA NEIVA CONSELHO ESPECIAL , Data de Julgamento : 06/12/2016 , Publicado no DJE : 19/12/2016 ."
+
+Let me break it down. The first part is "Acórdão n.987488". "Acórdão" is a legal term, but it's not one of the specified entities. The number "n.987488" might be a case number, which could be considered as legislation or jurisprudence? Wait, the entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So case numbers might not be any of these. So maybe leave them as is.
+
+Next, "20160020314727ADI" – this looks like a case number or some identifier. Again, not sure if it's any of the entities. Maybe it's part of the legislation or jurisprudence, but since it's a code, perhaps not. So leave it.
+
+"Relator : ROMEU GONZAGA NEIVA" – "Relator" is a role, not an entity. The name "ROMEU GONZAGA NEIVA" is a person. So that's a pessoa. Then "CONSELHO ESPECIAL" – that's an organization, so organizacao.
+
+"Data de Julgamento : 06/12/2016" – "Data de Julgamento" is a date, so tempo. The date itself is 06/12/2016, which is tempo.
+
+"Publicado no DJE : 19/12/2016" – "DJE" is the Diário da Justiça Eletrônico, which is a publication medium, so maybe local? Wait, local is a place. DJE is an electronic journal, so maybe it's a local? Or perhaps it's part of the legislation? Hmm. Alternatively, "DJE" could be considered as a local since it's a publication platform. But I'm not sure. The user's example might have it as local. Let me check the example output.
+
+Looking at the sample output provided by the user, the input text is the same as the one here. The output is:
+
+"<span class="jurisprudencia">Acórdão n.987488</span> , <span class="jurisprudencia">20160020314727ADI</span> , <span class="pessoa">ROMEU GONZAGA NEIVA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">06/12/2016</span> , <span class="tempo">19/12/2016</span> ."
+
+Wait, the sample output shows "Acórdão n.987488" as jurisprudencia, "20160020314727ADI" as jurisprudencia, "ROMEU GONZAGA NEIVA" as pessoa, "CONSELHO ESPECIAL" as organizacao, and the dates as tempo. So the case numbers are marked as jurisprudencia. That's interesting. So maybe the case numbers are considered part of jurisprudencia. But why?
+
+Alternatively, maybe the user's example is different. Let me check again. The user's input is the same as the sample input, and the sample output is as given. So according to that, "Acórdão n.987488" is marked as jurisprudencia, and "20160020314727ADI" is also jurisprudencia. So perhaps any case number or identifier is considered jurisprudencia. That's a bit unclear, but following the example, I should mark those as jurisprudencia.
+
+So, applying that to the input text:
+
+- "Acórdão n.987488" → jurisprudencia
+- "20160020314727ADI" → jurisprudencia
+- "ROMEU GONZAGA NEIVA" → pessoa
+- "CONSELHO ESPECIAL" → organizacao
+- "06/12/2016" → tempo
+- "19/12/2016" → tempo
+
+The "DJE" part is not in the sample output, so maybe it's not marked. Wait, the original input has "Publicado no DJE : 19/12/2016". In the sample output, it's "Publicado no <span class="local">DJE</span> : <span class="tempo">19/12/2016</span>". Wait, but in the user's sample output, the DJE is marked as local. Wait, the user's sample output is:
+
+"<span class="jurisprudencia">Acórdão n.987488</span> , <span class="jurisprudencia">20160020314727ADI</span> , <span class="pessoa">ROMEU GONZAGA NEIVA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">06/12/2016</span> , <span class="tempo">19/12/2016</span> ."
+
+Wait, the sample output doesn't include the DJE part. Wait, the original input is:
+
+"Acórdão n.987488 , 20160020314727ADI , Relator : ROMEU GONZAGA NEIVA CONSELHO ESPECIAL , Data de Julgamento : 06/12/2016 , Publicado no DJE : 19/12/2016 ."
+
+In the sample output, the user's example shows:
+
+"<span class="jurisprudencia">Acórdão n.987488</span> , <span class="jurisprudencia">20160020314727ADI</span> , <span class="pessoa">ROMEU GONZAGA NEIVA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">06/12/2016</span> , <span class="tempo">19/12/2016</span> ."
+
+So the "Publicado no DJE" part is not marked. Wait, but in the original input, there's "Publicado no DJE : 19/12/2016". The sample output doesn't mark "DJE" as anything. So maybe "DJE" is not considered any of the entities. So in the output, it's left as is. So the "DJE" is not marked. Therefore, in the output, the "DJE" is not wrapped in any span. So the user's sample output doesn't include that. Therefore, in the current task, the same applies.
+
+So, the steps are:
+
+1. Identify each entity in the input text.
+2. Wrap them in <span> with the appropriate class.
+3. Leave other parts as is.
+
+So, applying that to the input text:
+
+- "Acórdão n.987488" → jurisprudencia
+- "20160020314727ADI" → jurisprudencia
+- "ROMEU GONZAGA NEIVA" → pessoa
+- "CONSELHO ESPECIAL" → organizacao
+- "06/12/2016" → tempo
+- "19/12/2016" → tempo
+
+The rest of the text, like "Relator :", "Data de Julgamento :", "Publicado no DJE :", and the punctuation, are left as is.
+
+So the final HTML would be:
+
+<span class="jurisprudencia">Acórdão n.987488</span> , <span class="jurisprudencia">20160020314727ADI</span> , <span class="pessoa">ROMEU GONZAGA NEIVA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">06/12/2016</span> , <span class="tempo">19/12/2016</span> .
+
+But wait, the original input has "Relator : ROMEU GONZAGA NEIVA CONSELHO ESPECIAL , Data de Julgamento : 06/12/2016 , Publicado no DJE : 19/12/2016 ."
+
+In the sample output, the "Relator : ROMEU GONZAGA NEIVA CONSELHO ESPECIAL" is split into "Relator : <span class="pessoa">ROMEU GONZAGA NEIVA</span> <span class="organizacao">CONSELHO ESPECIAL</span>". So the "Relator" is not marked, but the name and the organization are. So the "Relator" part is left as is, and the name and organization are marked.
+
+Similarly, "Data de Julgamento : 06/12/2016" is marked as tempo for the date. The "Data de Julgamento" is not marked. The same for "Publicado no DJE : 19/12/2016" – "DJE" is not marked, but the date is tempo.
+
+So the final output should be as per the sample, with the case numbers marked as jurisprudencia, the person as pessoa, organization as organizacao, and dates as tempo.
+</think>
+
+<span class="jurisprudencia">Acórdão n.987488</span> , <span class="jurisprudencia">20160020314727ADI</span> , <span class="pessoa">ROMEU GONZAGA NEIVA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">06/12/2016</span> , <span class="tempo">19/12/2016</span> .

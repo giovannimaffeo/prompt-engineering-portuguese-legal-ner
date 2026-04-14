@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 43 Art . 5º Revogam-se as disposições em contrário ."
+
+Let me break it down. The first part is "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". The code here might be a reference number, so maybe it's a tempo or some other entity? But the code starts with "Código de Verificação" which is a type of legislation or maybe a legal document. Wait, "Código de Verificação" could be part of a legal code, so maybe that's legislacao. But the code is followed by a number, which might be a reference. However, the user's example output doesn't mark the code, so maybe it's not an entity here.
+
+Next, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". "GABINETE" is a place, so that's local. "DESEMBARGADOR" is a title, so maybe it's a pessoa? Wait, "DESEMBARGADOR" is a judicial title, so the person holding that title would be a pessoa. But the full name is "SILVANIO BARBOSA DOS SANTOS", which is a person's name. So "SILVANIO BARBOSA DOS SANTOS" is a pessoa. The "GABINETE DO DESEMBARGADOR" might be an organization, but "GABINETE" here refers to the office, so maybe it's a local or part of an organization. But the user's example output might have marked "GABINETE" as local. Wait, the example output in the user's message shows "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as "GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>". So the person's name is marked as pessoa.
+
+Then "43 Art . 5º Revogam-se as disposições em contrário ." Here, "Art" is short for "Artigo", which is part of legislation. So "Art" might be part of legislacao. The "43" could be a reference to an article, so maybe that's part of legislacao. "5º" is a section, so also part of legislacao. The phrase "Revogam-se as disposições em contrário" is a legal clause, so that's part of legislacao.
+
+Putting it all together:
+
+- "Código de Verificação" might not be an entity, so left as is.
+- "GABINETE" is local.
+- "DESEMBARGADOR" is part of the title, but the person's name is marked as pessoa.
+- "43 Art . 5º" are parts of legislacao.
+- "Revogam-se as disposições em contrário" is part of legislacao.
+
+So the HTML would have:
+
+<span class="local">GABINETE</span> DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 43 <span class="legislacao">Art . 5º Revogam-se as disposições em contrário</span>.
+
+Wait, but the original text has "43 Art . 5º" and then the rest. So maybe "43 Art . 5º" is part of the legislacao, and the rest is also part of it. So combining them into one span.
+
+Also, the code "2018ACONT2JYXTK52JCSL251NVQ" is a code, but the user's example output doesn't mark it. So leave it as is.
+
+So the final HTML would be:
+
+Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="local">GABINETE</span> DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 43 <span class="legislacao">Art . 5º Revogam-se as disposições em contrário</span>.
+</think>
+
+Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="local">GABINETE</span> DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 43 <span class="legislacao">Art . 5º Revogam-se as disposições em contrário</span>.

@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The first part is "confirmo a tutela de urgência anteriormente deferida e julgo procedente a presente ação para determinar à ré que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CAUC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS nº 204/2008 e de suas posteriores alterações ".
+
+Looking for pessoas: The text mentions "ré" which is a legal term for defendant, but it's a generic term, not a specific person. So no pessoa here.
+
+Organizações: "Estado de Mato Grosso" is a state, so that's a local. Wait, no, "Estado de Mato Grosso" is a local entity. Wait, the definition says local is explicit places like cities, states, etc. So "Estado de Mato Grosso" is a local. But wait, the user's example for local includes "Distrito Federal", "Rio de Janeiro", etc. So "Estado de Mato Grosso" is a local. But the user's example for organizacao includes "MINISTÉRIO PÚBLICO FEDERAL", so maybe "Estado" here is a local. Wait, but "Estado" is a generic term. Wait, the text says "Certificado de Regularidade Previdenciária do Estado de Mato Grosso". The "Estado de Mato Grosso" is the state, so that's a local. So I should mark "Estado de Mato Grosso" as local? Wait, the definition for local is explicit places. So "Estado de Mato Grosso" is a local. But maybe the user considers "Estado" as an organization? Wait, the example for organizacao includes "Tribunal de Contas", which is an organization. But "Estado" is a political entity, which might be considered a local. Hmm, this is a bit ambiguous. Let me check the definitions again. Local is defined as explicit places like cities, states, etc. So "Estado de Mato Grosso" is a local. So I should mark that as local.
+
+Next, "Cadastro de Regime Próprio de Previdência Social CADPREV" – CADPREV is an acronym for a specific organization, so that's an organizacao. Similarly, CADIN, CAUC, SIAFI, SICONV are acronyms for other organizations. So those should be marked as organizacao.
+
+Then, "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" are legislative acts, so they are legislacao. The "Decreto" and "Portaria" are types of legal documents, so they fall under legislacao.
+
+Now, looking for jurisprudencia: The text mentions "inconstitucionalidade do Decreto" but that's about a law, not a judicial decision. There's no mention of a specific case or judicial decision, so no jurisprudencia here.
+
+Next part: "Os argumentos lançados no regimental não são capazes de afastar os fundamentos da decisão combatida , que , por tal razão , deve ser mantida . Ante o exposto , nego provimento ao agravo regimental . É como voto ."
+
+Here, "regimento" refers to the internal rules of a court, but "regimento" itself isn't an entity. "Agravo regimental" is a legal term, but it's a type of procedural action, not an entity. So no entities here.
+
+Putting it all together:
+
+- "Estado de Mato Grosso" → local
+- "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" → organizacao
+- "Decreto 3.788/2001", "Portaria MPS nº 204/2008" → legislacao
+
+Wait, the user's example for legislacao includes "Lei nº 8.666/93", so "Decreto 3.788/2001" is a decreto, which is a type of legislation. Similarly, "Portaria MPS nº 204/2008" is a portaria, which is also a legislative act. So those should be marked as legislacao.
+
+Also, "CADPREV" is an acronym for a specific organization, so it's organizacao. The same applies to the others.
+
+So the final HTML should have those spans with the appropriate classes.
+</think>
+
+<span class="local">Estado de Mato Grosso</span>, retirando-o do conceito de irregular do <span class="organizacao">Cadastro de Regime Próprio de Previdência Social CADPREV</span> ou retirando-o de qualquer outro <span class="organizacao">cadastro de inadimplentes</span> pelo mesmo motivo (<span class="organizacao">CADIN</span>, <span class="organizacao">CAUC</span>, <span class="organizacao">SIAFI</span>, <span class="organizacao">SICONV</span>), declarando-se ainda, incidenter tantum, a <span class="legislacao">inconstitucionalidade do Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS nº 204/2008</span> e de suas posteriores alterações.

@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The first sentence mentions "Acórdão do Recurso em Sentido Estrito". Acórdão is a legal term, but the example in the guidelines says that specific decisions like "Acórdão n. 999404" should be marked as jurisprudência. However, here it's part of a longer phrase. Wait, the guidelines mention that only references to concrete decisions (like "Acórdão n. 999404") should be marked. In this case, the text just says "Acórdão do Recurso em Sentido Estrito"—maybe that's a specific case. But the example given in the guidelines for jurisprudência includes "REsp 1694984/MS" and "Súmula 331 do TST". Here, "Acórdão" is part of a title, but not a specific identifier. So maybe it's not a jurisprudência entity here. Let me check the guidelines again. The example includes "Acórdão n. 999404", so if the text had a number, it would be marked. But in the input, it's just "Acórdão do Recurso em Sentido Estrito"—no number. So maybe it's not a jurisprudência entity. So I shouldn't mark that part.
+
+Next, "Defensoria Pública da União" is an organization. The definition says organizations include public organs, courts, etc. Since "Defensoria Pública da União" is a public organization, that should be marked as organizacao.
+
+Then "decreto de indulto" is a decree, which is a legislative act. Wait, the legislation includes decrets, so "decreto" would be part of a legislation entity. But the example given for legislação is "Lei nº 8.666/93", so if the text mentions a specific decree with a number, it should be marked. However, in this case, it's just "decreto de indulto"—no number. So maybe it's not a legislação entity. Wait, the definition says "expressões que identifiquem normas jurídicas, como leis, códigos, constituições, decretos..." So "decreto" is part of the legislation. But the example includes "decreto" with a number. Here, "decreto de indulto" is a general term, not a specific decree. So I shouldn't mark it as legislação.
+
+Next, "Embargos de Declaração" is a legal term, but it's a type of procedural action, not a specific entity. The guidelines say that terms like "súmula" or "acórdão" when used generically aren't marked. So "Embargos de Declaração" is a procedure, not an entity. So no tag.
+
+"fls . 79/83" refers to pages, but the guidelines mention that time is for dates, not page numbers. So this is not a tempo entity. The period in "fls" is a page reference, not a temporal reference. So no tag.
+
+The sentence "Os Embargos de Declaração somente são cabíveis quando o Acórdão se apresenta viciado por ambiguidade , obscuridade , contradição ou omissão ." Here, "Acórdão" is part of the sentence but again, not a specific identifier. So no jurisprudência here.
+
+Looking for other entities: "Defensoria Pública da União" is an organization. "Recurso em Sentido Estrito" is a legal term, but not an entity. "Relator" is a person's role, but the guidelines say that titles like "juiz" or "Ministro" are not marked. Since "Relator" is a role, not a name, it's not a pessoa. 
+
+Wait, the input text has "Defensoria Pública da União" which is an organization. "Acórdão" is part of a legal process, but not a specific entity. "Recurso em Sentido Estrito" is a legal term but not an entity. 
+
+So the only entity I can find is "Defensoria Pública da União" as an organization. 
+
+Wait, what about "Recurso em Sentido Estrito"? The example in the guidelines includes "Turma Cível" as an organization. But here, "Recurso em Sentido Estrito" is a type of legal process, not an organization. So no tag.
+
+Another possible entity: "Defensoria Pública da União" is an organization. So that's marked as organizacao. 
+
+Any other entities? Let me check again. 
+
+"fls . 79/83" is a page reference, not a time. "Acórdão" is a legal term, but not a specific entity. 
+
+So the only entity is "Defensoria Pública da União" as an organization. 
+
+Wait, the user's example output has "Defensoria Pública da União" marked as organizacao. Let me check the input again. 
+
+Yes, in the input text, "Defensoria Pública da União" is mentioned. So that's an organization. 
+
+So the HTML would have that part wrapped in <span class="organizacao">. 
+
+Other parts: "Acórdão do Recurso em Sentido Estrito" is not a specific entity. 
+
+So the final HTML should have "Defensoria Pública da União" as organizacao. 
+
+I need to make sure there are no other entities. 
+
+Another check: "Recurso em Sentido Estrito" is a legal term but not an entity. "Embargos de Declaração" is a procedure, not an entity. 
+
+So the only entity is "Defensoria Pública da União". 
+
+Therefore, the HTML should have that part marked with the organizacao class.
+</think>
+
+<span class="organizacao">Defensoria Pública da União</span>

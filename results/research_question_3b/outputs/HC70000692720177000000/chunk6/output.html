@@ -1,0 +1,29 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by identifying each entity according to the definitions provided.
+
+Looking at the first sentence: "Indignada com tal procedimento , esta Impetrante telefonou para a secretaria do cartório da 2ª Auditoria da 11ª CJM e fui informada que de fato , esta patrona não havia sido intimada , e que , existiria um `` acordo '' sobre realização de intimação por endereço eletrônico ."
+
+"Impetrante" is a legal term, often used in Brazilian law to refer to the petitioner. So that's a pessoa. Then "2ª Auditoria da 11ª CJM" – CJM is the Conselho de Justiça Militar, so that's an organizacao. "Cartório" is a public office, so that's also an organizacao. "Patrona" refers to the lawyer, so that's a pessoa.
+
+Next part: "Ínclitos Julgadores" – "Julgadores" are judges, so that's a pessoa. "CPPM" is the Código Penal Militar, which is legislation, so that's legislacao. The mention of "artigo 288 do CPPM" – the article number is part of the legislation, so that's legislacao.
+
+Then, "Defesa sustentou que" – "Defesa" here refers to the defense team, which is an organizacao. "Paciente" is a person, so that's pessoa. "Código Penal Militar" again is legislacao.
+
+Now, checking for other entities. "2ª Auditoria" and "11ª CJM" are parts of the organization names, so they should be included in the organizacao tags. "Endereço eletrônico" is a location? No, that's an electronic address, which isn't a specific place. So no local there. "Acordo" is a legal term, but it's in quotes, so maybe it's a jurisprudencia? Wait, the definition says jurisprudencia refers to decisions, precedents, etc. "Acordo" here might be a legal agreement, but unless it's a specific case or decision, it might not be jurisprudencia. The user's example output didn't mark "acordo" as jurisprudencia, so maybe it's not. Similarly, "CPPM" is legislation, so that's marked.
+
+I need to make sure I'm not missing any other entities. Let me go through each part again.
+
+"Esta Impetrante" – Impetrante is a person. "Secretaria do cartório" – cartório is an organization. "2ª Auditoria da 11ª CJM" – both are parts of the organization. "Patrona" is a person. "Ínclitos Julgadores" – Julgadores are judges, so pessoa. "CPPM" is legislacao. "Artigo 288 do CPPM" – the article is part of the legislation. "Defesa" is an organization. "Paciente" is a person. "Código Penal Militar" is legislacao again.
+
+Wait, the user's example output might have "CPPM" as legislacao. So I need to mark all instances of legislation. Also, "artigo 288" is part of the legislation, so it should be included in the legislacao tag. Similarly, "Código Penal Militar" is the name of the legislation, so that's legislacao.
+
+Now, constructing the HTML. Each entity should be wrapped in <span> with the appropriate class. Let me check for any other possible entities. "Endereço eletrônico" is not a specific location, so no. "Acordo" is in quotes, but unless it's a specific case, it's not jurisprudencia. So I think that's all.
+
+Putting it all together, I'll replace each entity with the corresponding <span> tags. Let me make sure I didn't miss any. For example, "CJM" is part of the organization name, so "11ª CJM" is an organizacao. "2ª Auditoria" is part of the same organization. "Secretaria do cartório" – "cartório" is an organizacao. "Impetrante" is pessoa. "Julgadores" is pessoa. "CPPM" is legislacao. "Artigo 288" is part of the legislacao. "Defesa" is organizacao. "Paciente" is pessoa. "Código Penal Militar" is legislacao.
+
+I think that's all. Now, I'll format the HTML accordingly, making sure the tags are correctly placed and the classes are accurate.
+</think>
+
+<span class="pessoa">Impetrante</span> telefonou para a secretaria do <span class="organizacao">cartório</span> da <span class="organizacao">2ª Auditoria da 11ª CJM</span> e fui informada que de fato , esta <span class="pessoa">patrona</span> não havia sido intimada , e que , existiria um `` <span class="jurisprudencia">acordo</span> '' sobre realização de intimação por endereço eletrônico . Enfim , <span class="pessoa">Ínclitos Julgadores</span> , esta <span class="pessoa">Impetrante</span> não participou de qualquer <span class="jurisprudencia">acordo</span> neste sentido , e o fornecimento de telefone celular ou de e-mail não substitui a intimação formal prevista no <span class="legislacao">artigo 288 do CPPM</span> , in verbis ( ... ) '' . A <span class="organizacao">Defesa</span> sustentou que `` ( ... ) como no caso em tela , a falta de intimação de defensor legalmente constituído e escolhido pelo <span class="pessoa">Paciente</span> , gera nulidade absoluta de todos os atos posteriores à nulidade apontada . `` .

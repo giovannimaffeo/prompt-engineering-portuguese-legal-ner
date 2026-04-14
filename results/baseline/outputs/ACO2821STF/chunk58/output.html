@@ -1,0 +1,71 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first part is "RICARDO LEWANDOWSKI ACO 2821 A GR / MT Previdenciária CRP , tendo por motivo a existência de regime próprio de previdência dos Deputados Estaduais do Ceará e , pelo mesmo motivo , de negar a emissão do Certificado de Regularidade Previdenciária e de aplicar as sanções previstas no art . 7o da Lei no 9.717 , de 1998 ( STF . ACO 702 . Rel . : Min . JOAQUIM BARBOSA . DJ , 3 fev . 2004 . )"
+
+Looking for pessoas: "RICARDO LEWANDOWSKI" and "JOAQUIM BARBOSA" are names, so they should be marked as pessoa. "Min." is an abbreviation for Ministro, so "Min." might be part of the title, but the full name is "JOAQUIM BARBOSA", so that's a pessoa.
+
+Organizacao: "ACO 2821" – ACO might stand for "Ação Cível Objetiva" or something similar, but since it's part of a legal reference, maybe it's an organization. Wait, the text mentions "ACO 2821 A GR / MT Previdenciária CRP". Maybe "ACO" is an acronym for an organization. But I'm not sure. Alternatively, "CRP" could be an organization. However, the user's example might have "ACO" as an organization. Let me check the example output provided. Wait, the user hasn't provided an example output yet. Let me proceed.
+
+Tempo: "3 fev . 2004" is a date, so that's tempo. Also, "de 1998" is a year, so that's tempo.
+
+Local: "Ceará" is a state in Brazil, so that's local.
+
+Legislacao: "Lei no 9.717 , de 1998" refers to a law, so that's legislacao. Also, "Lei Federal 9.717/98" is another instance. The text mentions "Lei Federal 9.717/98" and "Lei no 9.717 , de 1998" – both are laws, so they should be marked as legislacao.
+
+Jurisprudencia: The text mentions "STF" which is the Supreme Federal Court, and "ACO 702" which might be a court case. Also, "DJ , 3 fev . 2004" refers to the Diário da Justiça, which is a legal publication. So "STF" is an organization, but maybe "ACO 702" is a jurisprudência reference. Wait, the user's example might have "STF" as an organization. Let me check the example output again. Wait, the user hasn't provided an example, so I need to rely on the guidelines.
+
+Wait, the user's instruction says to mark "jurisprudencia" for jurisprudence. The text has "( STF . ACO 702 . Rel . : Min . JOAQUIM BARBOSA . DJ , 3 fev . 2004 . )" – this seems like a reference to a court decision. "STF" is the Supreme Federal Court, which is an organization. "ACO 702" might be a case number. "DJ" is the Diário da Justiça, which is a publication. So "ACO 702" could be a jurisprudência reference. Also, "Rel. : Min. JOAQUIM BARBOSA" refers to the relator, which is a person. So "ACO 702" might be a jurisprudência case. But I'm not entirely sure. Alternatively, "ACO 702" could be an organization. Hmm.
+
+Next part: "A Lei Federal 9.717/98 , assim como aquelas posteriores que a modificaram , decorre do exercício da competência referida . Dispõe sobre as normas gerais para a organização e o funcionamento dos regimes próprios de previdência social dos servidores públicos da União , dos Estados , do Distrito Federal e dos Municípios e dos militares dos Estados e do Distrito Federal , com o propósito de fazer com que os entes da Federação se adaptem ao modelo referido ."
+
+Here, "Lei Federal 9.717/98" is legislacao. "Distrito Federal" is a local. "União" is a local? Wait, "União" refers to the federal government, which is a legal entity, but maybe it's considered a local? Or perhaps it's part of the legislation. Wait, "União" is the federal government, so maybe it's a local? Or maybe it's part of the legislation. Alternatively, "União" is a legal term referring to the federal government, so perhaps it's not a local. Maybe "União" is not marked here. Similarly, "Estados" refers to states, which are local. "Distrito Federal" is a local. "Municípios" are local. "militares dos Estados e do Distrito Federal" – "Estados" and "Distrito Federal" are local.
+
+So, putting it all together:
+
+- "RICARDO LEWANDOWSKI" → pessoa
+- "JOAQUIM BARBOSA" → pessoa
+- "ACO 2821" → maybe organization? Or part of a case number? Not sure. The user's example might have "ACO" as an organization. Let me check the original text again. The text says "ACO 2821 A GR / MT Previdenciária CRP". Maybe "ACO" is an acronym for an organization. Alternatively, "ACO" could be part of a case number. Since the user's example might have "ACO" as an organization, I'll mark it as organizacao.
+- "CRP" → maybe an organization? Or part of a case. Not sure. Maybe "CRP" is an organization. But the user's example might not have it. Alternatively, "CRP" could be a case number. Since the user hasn't provided examples, I'll proceed with the information I have.
+- "Deputados Estaduais do Ceará" → "Ceará" is local.
+- "Certificado de Regularidade Previdenciária" → not an entity.
+- "art . 7o da Lei no 9.717 , de 1998" → "Lei no 9.717 , de 1998" is legislacao.
+- "STF" → organization (Supreme Federal Court).
+- "ACO 702" → maybe jurisprudência (case number).
+- "DJ , 3 fev . 2004" → "3 fev . 2004" is tempo.
+- "Lei Federal 9.717/98" → legislacao.
+- "Distrito Federal" → local.
+- "União" → maybe not an entity, but if it's considered a local, it's a local. But "União" is the federal government, so perhaps it's not a local. Maybe it's part of the legislation. Alternatively, it's a legal term and not an entity. So maybe not marked.
+- "Estados" → local (states).
+- "Municípios" → local (municipalities).
+
+Now, applying the tags:
+
+- "RICARDO LEWANDOWSKI" → <span class="pessoa">RICARDO LEWANDOWSKI</span>
+- "JOAQUIM BARBOSA" → <span class="pessoa">JOAQUIM BARBOSA</span>
+- "ACO 2821" → <span class="organizacao">ACO 2821</span>
+- "CRP" → maybe not an entity, but if it's an organization, then <span class="organizacao">CRP</span>
+- "Ceará" → <span class="local">Ceará</span>
+- "Lei no 9.717 , de 1998" → <span class="legislacao">Lei no 9.717 , de 1998</span>
+- "STF" → <span class="organizacao">STF</span>
+- "ACO 702" → <span class="jurisprudencia">ACO 702</span>
+- "3 fev . 2004" → <span class="tempo">3 fev . 2004</span>
+- "Lei Federal 9.717/98" → <span class="legislacao">Lei Federal 9.717/98</span>
+- "Distrito Federal" → <span class="local">Distrito Federal</span>
+- "Estados" → <span class="local">Estados</span>
+- "Municípios" → <span class="local">Municípios</span>
+
+Wait, but "ACO 2821" and "ACO 702" are both ACO. Maybe "ACO" is an organization, and the numbers are case numbers. So "ACO 2821" is organizacao, and "ACO 702" is jurisprudencia. But I'm not sure. Alternatively, "ACO" could be part of the organization name. The user's example might have "ACO" as an organization. Let me proceed with that.
+
+Also, "DJ" is the Diário da Justiça, which is a publication, so maybe it's an organization. But the user's example might not have it. Since the user hasn't provided examples, I'll proceed with the information I have.
+
+Putting it all together, the HTML should have all these tags. Now, I need to make sure that the text is correctly formatted with the spans. Also, check for any other entities I might have missed.
+
+Another thing: "Deputados Estaduais" refers to state deputies, but "Ceará" is the local. So "Ceará" is marked as local.
+
+I think that's all. Now, I'll write the HTML with the appropriate tags.
+</think>
+
+RICARDO LEWANDOWSKI <span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 <span class="organizacao">ACO 2821</span> A GR / MT Previdenciária CRP <span class="organizacao">CRP</span> , tendo por motivo a existência de regime próprio de previdência dos Deputados Estaduais do <span class="local">Ceará</span> e , pelo mesmo motivo , de negar a emissão do Certificado de Regularidade Previdenciária e de aplicar as sanções previstas no art . 7o da <span class="legislacao">Lei no 9.717 , de 1998</span> ( <span class="organizacao">STF</span> . <span class="jurisprudencia">ACO 702</span> . Rel . : Min . <span class="pessoa">JOAQUIM BARBOSA</span> . <span class="tempo">DJ , 3 fev . 2004</span> . ) <span class="legislacao">A Lei Federal 9.717/98</span> , assim como aquelas posteriores que a modificaram , decorre do exercício da competência referida . Dispõe sobre as normas gerais para a organização e o funcionamento dos regimes próprios de previdência social dos servidores públicos da <span class="local">União</span> , dos <span class="local">Estados</span> , do <span class="local">Distrito Federal</span> e dos <span class="local">Municípios</span> e dos militares dos <span class="local">Estados</span> e do <span class="local">Distrito Federal</span> , com o propósito de fazer com que os entes da Federação se adaptem ao modelo referido .

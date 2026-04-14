@@ -1,0 +1,32 @@
+<think>
+Okay, I need to process this legal text and highlight the entities using HTML tags. Let me start by reading through the input text carefully.
+
+First, looking for 'pessoa' entities. The text mentions "JOSÉ DIVINO CONSELHO ESPECIAL" and "SILVANIO BARBOSA DOS SANTOS". These are full names, so they should be marked as 'pessoa'.
+
+Next, 'organizacao'. The term "GABINETE DO DESEMBARGADOR" seems like an organization, but wait, the guidelines say to mark expressions that identify formal entities. However, "GABINETE DO DESEMBARGADOR" is more of a title or position rather than an organization name. Wait, the example given for 'organizacao' includes "Tribunal de Contas", so maybe "GABINETE DO DESEMBARGADOR" is part of an organization. But the text also has "41 Fls." which might be a page number. Wait, the user's example output includes "GABINETE DO DESEMBARGADOR" as an organization. Let me check the guidelines again. The definition says organizations include "orgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas". "GABINETE DO DESEMBARGADOR" is part of the judicial system, so it should be an organization. So I'll mark that as 'organizacao'.
+
+Then 'tempo'. The dates "20/02/2018" and "05/03/2018" are in DD/MM/YYYY format, so they should be 'tempo'. Also, "20170020135916ADI" and "2018ACONT2JYXTK52JCSL251NVQ" are codes, but the user's example output didn't mark them as time. Wait, the guidelines mention that only explicit date references should be marked. The codes like "20170020135916ADI" are part of the case numbers, not dates. So those are not time. The dates "20/02/2018" and "05/03/2018" are time entities.
+
+'local' is not present here. The text doesn't mention any specific places, so no 'local' tags.
+
+'legislacao' is mentioned as "Lei 5.815/2017", which is a law, so that's 'legislacao'.
+
+'jurisprudencia' includes "Acórdão n.1078980" and "20170020161362ADI". The example says that mentions of specific decisions like "Acórdão n. 999404" should be marked as jurisprudencia. Also, identifiers like "20170020161362ADI" are part of the case number, which is a jurisprudencia reference. So these should be marked as 'jurisprudencia'.
+
+Now, let me go through the text again and apply the tags:
+
+- "Acórdão n.1078980" → jurisprudencia
+- "20170020135916ADI" → jurisprudencia
+- "Relator : JOSÉ DIVINO CONSELHO ESPECIAL" → pessoa
+- "Data de Julgamento : 20/02/2018" → tempo
+- "Publicado no DJE : 05/03/2018" → tempo
+- "Lei 5.815/2017" → legislação
+- "GABINETE DO DESEMBARGADOR" → organizacao
+- "41 Fls." → probably not an entity, as it's a page number
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" → jurisprudencia (the number part)
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" → maybe not an entity, as it's a code without specific reference
+
+Wait, the example output from the user's previous example included "GABINETE DO DESEMBARGADOR" as 'organizacao', so I should include that. Also, the "20170020161362ADI" is part of the case number, so it's jurisprudencia. The "2018ACONT..." is a code, but the user's example didn't mark it, so maybe it's not an entity. So I'll proceed with the entities identified.
+</think>
+
+<span class="jurisprudencia">Acórdão n.1078980</span> , <span class="jurisprudencia">20170020135916ADI</span> , Relator : <span class="pessoa">JOSÉ DIVINO CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">20/02/2018</span> , Publicado no DJE : <span class="tempo">05/03/2018</span> . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da <span class="legislacao">Lei 5.815/2017</span> . É o voto . Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 41 Fls .

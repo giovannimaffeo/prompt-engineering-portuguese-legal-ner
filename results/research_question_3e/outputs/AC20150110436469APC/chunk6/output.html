@@ -1,0 +1,32 @@
+<think>
+Okay, let's tackle this. The user wants me to generate an HTML version of the given legal text, marking specific entities. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. I need to use <span> tags with the appropriate class for each entity.
+
+First, I'll read through the input text carefully. Let me start by identifying each entity type one by one.
+
+The text starts with "105/107". Wait, that's a number. But according to the guidelines, only explicit dates or time references are marked as tempo. Since this is a fraction or a reference number, maybe it's not a time. I'll check the examples. The example had "art.61 , §1º , da Lei nº 9.430/96" marked as legislação. So numbers in legal references are part of the legislation. But here, 105/107 might be a reference to a law or a case. However, without more context, I might not mark it. Let me note that and move on.
+
+Next, "d. Magistrado de primeiro grau". The "d." here is a title, like "doutor" or "desembargador", but the guidelines say not to mark titles as pessoa. So "d." is a title, not a name. The "Magistrado de primeiro grau" is an organization? Wait, the guidelines say that expressions like "Turma Cível" are organizations. But "Magistrado" refers to a judge, which is a person. Wait, but the text says "d. Magistrado de primeiro grau" – "d." is an abbreviation for "doutor", so the full name would be "Doutor Magistrado de primeiro grau". But the text doesn't have the full name. The user's example had "Procurador CARLOS HENRIQUE ALVES" marked as pessoa. So if there's a name, it should be marked. However, here "d. Magistrado" is a title, not a name. So I don't mark that.
+
+Next, "artigo 487 , inciso II , do Código de Processo Civil". The "artigo 487" and "Código de Processo Civil" are part of legislation. So "artigo 487" is part of the legislation, and "Código de Processo Civil" is also legislation. So I should mark both. The example had "art.61 , §1º , da Lei nº 9.430/96" as legislação. So here, "artigo 487" and "Código de Processo Civil" should be in <span class="legislacao">.
+
+Then, "ALISSON SILVA BATISTA DE MORAES" is a full name, so that's a pessoa. So I'll mark that.
+
+"Localização do apelado no prazo estipulado em lei" – "localização" is a verb, not a local entity. "apelo" is a legal term but not an entity. "pretensão monitória" is a legal term, but not an entity. "prescrição" is a legal concept, not an entity. "Ação Monitória" is a legal term, but again, not an entity unless it's a specific case. The example had "REsp n . 1694984/MS" as jurisprudência. But here, there's no specific reference. So no jurisprudência here.
+
+"autora" is a generic term for the plaintiff, so not a pessoa. "réu" is a generic term for defendant, so not a pessoa. "apelação" is a legal term but not an entity. "fatos" is a general term. "análise dos autos" – "autos" is a legal term, but not an entity. "inconformismo" is a term, not an entity. "prosperar" is a verb, not an entity.
+
+Wait, the text mentions "Código de Processo Civil" which is a legislation. So that should be marked. Also, "artigo 487" is part of that legislation. So I need to mark both. Let me check the example again. In the example, "art.61 , §1º , da Lei nº 9.430/96" was marked as legislação. So here, "artigo 487 , inciso II , do Código de Processo Civil" would be part of the legislation. So I'll mark the entire phrase as legislação.
+
+Also, "ALISSON SILVA BATISTA DE MORAES" is a full name, so that's pessoa.
+
+So putting it all together:
+
+- "artigo 487 , inciso II , do Código de Processo Civil" → legislação
+- "ALISSON SILVA BATISTA DE MORAES" → pessoa
+
+Other parts like "105/107" – if that's a reference to a case or law, but without more context, maybe it's not. The example had "REsp n . 1694984/MS" as jurisprudência. But here, there's no specific reference. So I'll leave it as is.
+
+So the final HTML would have those two entities marked.
+</think>
+
+O <span class="legislacao">artigo 487 , inciso II , do Código de Processo Civil</span> julgou extinta a Ação Monitória proposta em desfavor de <span class="pessoa">ALISSON SILVA BATISTA DE MORAES</span>.

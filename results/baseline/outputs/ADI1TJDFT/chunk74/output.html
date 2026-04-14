@@ -1,0 +1,57 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify which parts correspond to each entity type. Let's start by breaking down the text sentence by sentence.
+
+The first part mentions "vício material" which is a legal term, but not an entity. Then there's "norma impugnada" – "norma" here might refer to a legal norm, but I need to check if it's part of legislation. The text refers to "art. 15, incisos XIV, XV e XXV da Lei Orgânica" – "Lei Orgânica" is a law, so that's legislacao. The "Distrito Federal" is a local entity, so that's local. 
+
+Next, "Lei Distrital nº 5.815/2017" – this is a law, so legislacao. The phrase "com efeitos ex tunc e eficácia erga omnes" are legal terms but not entities. The mention of "Relator" might be a person, but the text says "acordo com o em. Relator" – "em. Relator" could be an abbreviation for "ementa Relator", but I'm not sure. Maybe "Relator" is a person's title, so pessoa? Wait, the text says "acordo com o em. Relator e JULGO PROCEDENTE" – maybe "Relator" is a person's name here. But the original text might have "em. Relator" as an abbreviation for "ementa Relator", which is a legal term, not a person. So maybe not a pessoa. 
+
+Looking for other entities: "Lei Distrital nº 5.815/2017" is a law, so legislacao. "Distrito Federal" is local. "Lei Orgânica" is a law, so legislacao. "art. 15" refers to a legislative article, so part of legislacao. 
+
+Wait, the user's example output in the previous message had "Lei Distrital nº 5.815/2017" marked as legislacao. So I should follow that. Also, "Distrito Federal" is local. 
+
+So, the entities to mark are:
+
+- "Lei Orgânica" → legislacao
+- "Distrito Federal" → local
+- "Lei Distrital nº 5.815/2017" → legislacao
+- "art. 15" → part of legislacao (since it's referring to a law's article)
+- "incisos XIV, XV e XXV" → part of legislacao (as they are parts of the law's articles)
+
+Wait, but the user's example might have marked "art. 15" as part of legislacao. So I need to check each occurrence. 
+
+Also, "ex tunc" and "erga omnes" are legal terms but not entities. 
+
+So, putting it all together, the HTML should have spans for the law names and the local entity. Let me go through the text again:
+
+Original text: "O poder de polícia compete privativamente ao Distrito Federal , nos termos do art . 15 , incisos XIV , XV e XXV da Lei Orgânica , não podendo ser delegado a particulares . Sendo assim , padece também a norma de vício material . Com essas breves considerações , acompanho o em . Relator e JULGO PROCEDENTE o pedido , para declarar a inconstitucionalidade da Lei Distrital nº 5.815/2017 , com efeitos ex tunc e eficácia erga omnes . É como voto Fls ."
+
+Breaking down:
+
+- "Distrito Federal" → local
+- "art. 15" → part of legislacao (since it's part of the Lei Orgânica)
+- "Lei Orgânica" → legislacao
+- "Lei Distrital nº 5.815/2017" → legislacao
+- "incisos XIV, XV e XXV" → part of legislacao (as they are part of the law's articles)
+
+So, the HTML should have:
+
+<span class="local">Distrito Federal</span>
+<span class="legislacao">art. 15</span>
+<span class="legislacao">Lei Orgânica</span>
+<span class="legislacao">Lei Distrital nº 5.815/2017</span>
+<span class="legislacao">incisos XIV, XV e XXV</span>
+
+Wait, but "incisos XIV, XV e XXV" are part of the Lei Orgânica, so they should be part of the legislacao. However, the user's example might have marked the entire law reference. Let me check the example given in the previous message. The user's example output had "Lei Distrital nº 5.815/2017" marked as legislacao. So I should follow that. 
+
+Also, "art. 15" is part of the law, so it's part of legislacao. Similarly, "incisos XIV, XV e XXV" are part of the law's articles, so they are part of legislacao. 
+
+So, the final HTML would have those spans. The rest of the text remains as is. 
+
+Now, I need to make sure that the HTML is correctly formatted with the spans. Also, check for any other entities. For example, "Relator" might be a person, but in the context, it's part of the legal process, so maybe it's a title, not a person. The text says "acordo com o em. Relator e JULGO PROCEDENTE" – "em. Relator" could be an abbreviation for "ementa Relator", which is a legal term, not a person. So no need to mark as pessoa. 
+
+Therefore, the final HTML should have the spans for local, legislacao, and the law references. Let me write that out.
+</think>
+
+Quanto ao vício material , embora prejudicada a sua análise , cabe apenas o registro de que a norma impugnada , ainda que por via transversa , delega poder de polícia a conselhos de classe , cuja atribuição é fiscalizar o exercício da profissão . O poder de polícia compete privativamente ao <span class="local">Distrito Federal</span> , nos termos do <span class="legislacao">art . 15</span> , <span class="legislacao">incisos XIV</span> , <span class="legislacao">XV</span> e <span class="legislacao">XXV</span> da <span class="legislacao">Lei Orgânica</span> , não podendo ser delegado a particulares . Sendo assim , padece também a norma de vício material . Com essas breves considerações , acompanho o em . <span class="jurisprudencia">Relator</span> e JULGO PROCEDENTE o pedido , para declarar a inconstitucionalidade da <span class="legislacao">Lei Distrital nº 5.815/2017</span> , com efeitos ex tunc e eficácia erga omnes . É como voto Fls .

@@ -1,0 +1,54 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 22 Lei nº 5.815/2017 , por violação ao disposto noartigo 53 , `` caput '' e § 1º , e artigo 100 , incisos IV , VI , X e XXIII todos da Lei Orgânica do Distrito Federal ."
+
+Let me break it down. The first part is "Ação Direta de Inconstitucionalidade 20170020161362ADI". The "ADI" here is likely an acronym for Ação Direta de Inconstitucionalidade, which is a legal term. But the user's example output shows that "ADI" is marked as jurisprudencia. Wait, maybe not. Wait, looking at the example output provided by the user, the output is:
+
+"Ação Direta de Inconstitucionalidade <span class="jurisprudencia">20170020161362ADI</span> Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 22 <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto noartigo 53 , `` caput '' e § 1º , e artigo 100 , incisos IV , VI , X e XXIII todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> ."
+
+So, the "ADI" is marked as jurisprudencia. Wait, but ADI is a type of legal action, not a jurisprudence. Maybe the user's example is different. Let me check the example again. The user's example output shows that "ADI" is marked as jurisprudencia. But perhaps in their context, ADI is considered a jurisprudência. Alternatively, maybe the user made a mistake. But since the example is provided, I should follow it.
+
+So, the first part "20170020161362ADI" is marked as jurisprudencia. Then "2018" is marked as tempo. "SILVANIO BARBOSA DOS SANTOS" is a pessoa. "Lei nº 5.815/2017" and "Lei Orgânica do Distrito Federal" are legislacao. The rest of the text doesn't have any entities, so they remain as is.
+
+Wait, the original text has "GABINETE DO DESEMBARGADOR" which is an organization? Or is "DESEMBARGADOR" a title for a person? The example output marks "SILVANIO BARBOSA DOS SANTOS" as pessoa, so the "GABINETE DO DESEMBARGADOR" might be part of the organization. But in the example output, it's not marked. Wait, looking at the example output, the user's output has "GABINETE DO DESEMBARGADOR" as is, not marked. So maybe "GABINETE DO DESEMBARGADOR" is considered an organization, but in the example, it's not marked. Wait, the example output shows that "GABINETE DO DESEMBARGADOR" is not marked. Wait, the example output provided by the user is:
+
+"Ação Direta de Inconstitucionalidade <span class="jurisprudencia">20170020161362ADI</span> Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 22 <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto noartigo 53 , `` caput '' e § 1º , e artigo 100 , incisos IV , VI , X e XXIII todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> ."
+
+So, "GABINETE DO DESEMBARGADOR" is not marked. But "SILVANIO BARBOSA DOS SANTOS" is marked as pessoa. So perhaps "GABINETE DO DESEMBARGADOR" is considered an organization, but in the example, it's not marked. Wait, maybe the user's example is different. Let me check again.
+
+In the input text, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is part of the text. The example output marks "SILVANIO BARBOSA DOS SANTOS" as pessoa, but "GABINETE DO DESEMBARGADOR" is not marked. So perhaps "GABINETE DO DESEMBARGADOR" is considered an organization, but in the example, it's not marked. Maybe the user's example is correct, and I should follow that.
+
+So, the steps are:
+
+1. Identify each entity in the input text.
+2. Wrap them with <span> tags and the appropriate class.
+3. Leave the rest as is.
+
+Now, let's process the input text again.
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 22 Lei nº 5.815/2017 , por violação ao disposto noartigo 53 , `` caput '' e § 1º , e artigo 100 , incisos IV , VI , X e XXIII todos da Lei Orgânica do Distrito Federal ."
+
+Breaking it down:
+
+- "Ação Direta de Inconstitucionalidade" is a legal term, but not an entity. So no tag.
+- "20170020161362ADI" is marked as jurisprudencia in the example. So I'll mark that.
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – "2018" is tempo.
+- "GABINETE DO DESEMBARGADOR" – not marked in the example, so leave as is.
+- "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+- "22" – not an entity.
+- "Lei nº 5.815/2017" is legislacao.
+- "Lei Orgânica do Distrito Federal" is legislacao.
+
+So the HTML would be:
+
+"Ação Direta de Inconstitucionalidade <span class="jurisprudencia">20170020161362ADI</span> Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 22 <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto noartigo 53 , `` caput '' e § 1º , e artigo 100 , incisos IV , VI , X e XXIII todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> ."
+
+I need to make sure that the tags are correctly placed. Also, check if "Lei Orgânica do Distrito Federal" is a legislacao. Yes, because it's a law. The example output shows that. So that's correct.
+
+Another thing: "noartigo" in the input text is probably a typo for "no artigo". But the user's example output has "noartigo" as is. So I should leave it as is unless it's a typo. But since the user's example output includes "noartigo", I'll follow that.
+
+So the final HTML should be as per the example, with the correct tags.
+</think>
+
+Ação Direta de Inconstitucionalidade <span class="jurisprudencia">20170020161362ADI</span> Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 22 <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto noartigo 53 , `` caput '' e § 1º , e artigo 100 , incisos IV , VI , X e XXIII todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> .

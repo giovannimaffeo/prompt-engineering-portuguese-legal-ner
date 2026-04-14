@@ -1,0 +1,32 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify which parts fit each category. Let me start by breaking down the input sentence by sentence.
+
+The first part is: "Ao realizar o pagamento , o ordenador de despesa substituto anexou aos documentos comprobatórios da parcela do dia 27/12/1999 o despacho com a autorização de Carlos Aureliano , no seguinte sentido ( peça 2 , p. 13 ) , demonstrando-se uma vez mais a participação dele no nexo causal do dano : 1. autorizei a construtora a adquirir equipamentos , materiais e insumos de etapas posteriores do cronograma , desde que , em relação aos equipamentos e materiais as empresas fornecedoras entregassem o respectivo Termo de Fiel Depositário e em relação aos insumos fossem os mesmos estocados na obra ; 11.6 ."
+
+Looking for entities:
+
+1. "27/12/1999" is a date, so that's tempo. I should mark it as <span class="tempo">27/12/1999</span>.
+
+2. "Carlos Aureliano" is a person's name. So that's <span class="pessoa">Carlos Aureliano</span>.
+
+3. The phrase "peça 2 , p. 13" – "peça" here might refer to a document or page, but since it's not a specific legal entity like a law or jurisprudence, maybe it's not marked. Wait, the example shows that "REsp n . 1694984/MS" is marked as jurisprudencia. But here, "peça 2 , p. 13" seems like a reference to a document page, but not a specific entity. The user's guidelines say to mark only specific entities. Since "peça" is a generic term, maybe it's not marked. However, "p. 13" is a page number, which isn't a time, place, or legal entity. So perhaps these parts are left as is.
+
+4. "Termo de Fiel Depositário" – this is a legal term, but is it a legislation? The example mentions "Lei nº 9.430/96" as legislation. "Termo de Fiel Depositário" might be a legal document, but I'm not sure if it's a specific law. The user's definition says legislation includes laws, codes, decrees, etc. If "Termo de Fiel Depositário" is a specific legal document, maybe it's legislation. But I'm not certain. Alternatively, it could be a term used in a legal context but not a specific entity. Since the example doesn't mention such terms, maybe it's not marked. Wait, the user's example includes "art.61 , §1º , da Lei nº 9.430/96" as legislation. So if "Termo de Fiel Depositário" is a specific term from a law, it might be marked. But without more context, it's safer to assume it's not a specific entity. So maybe leave it as is.
+
+5. "1. autorizei a construtora..." – "construtora" is a company, so "construtora" might be an organization. But the example shows "MINISTÉRIO PÚBLICO FEDERAL" as an organization. However, "construtora" is a generic term for a construction company. The user's guidelines say to mark only specific names. Since "construtora" is a generic term, not a specific name, it's not marked. Similarly, "Termo de Fiel Depositário" is a term, not a specific entity.
+
+6. "11.6" – this is a number, but not a specific entity. The example includes "REsp n . 1694984/MS" as jurisprudencia. "11.6" might be a reference to a point or section, but without more context, it's not marked.
+
+So, the entities to mark are:
+
+- "27/12/1999" as tempo
+- "Carlos Aureliano" as pessoa
+
+Other parts like "peça 2 , p. 13" and "Termo de Fiel Depositário" are not specific entities, so they remain as is.
+
+Now, I'll structure the HTML with the appropriate spans. Let me check again to ensure I didn't miss any other entities. The rest of the text doesn't have any other specific names or dates. The "1. autorizei..." part has "construtora" which is a generic term, so not marked. The "Termo de Fiel Depositário" is a term, not a specific entity. The "11.6" is a number, not an entity. So the final output should have only the two marked entities.
+</think>
+
+Ao realizar o pagamento , o ordenador de despesa substituto anexou aos documentos comprobatórios da parcela do dia <span class="tempo">27/12/1999</span> o despacho com a autorização de <span class="pessoa">Carlos Aureliano</span> , no seguinte sentido ( peça 2 , p. 13 ) , demonstrando-se uma vez mais a participação dele no nexo causal do dano : 1. autorizei a construtora a adquirir equipamentos , materiais e insumos de etapas posteriores do cronograma , desde que , em relação aos equipamentos e materiais as empresas fornecedoras entregassem o respectivo Termo de Fiel Depositário e em relação aos insumos fossem os mesmos estocados na obra ; 11.6 .

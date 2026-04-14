@@ -1,0 +1,65 @@
+ERROR ANALYSIS: AIRR581406820065030079 (chunk9)
+================================================================================
+
+Start: "Na mesma linha vem se orientando"
+End: "nos termos do parágrafo único , do art ."
+File: data/test/AIRR581406820065030079.bio, lines 1202-1366
+
+GOLD ENTITIES (12):
+text: "Supremo Tribunal Federal", entity: "ORGANIZACAO"
+text: "Ag.158.982-PR", entity: "JURISPRUDENCIA"
+text: "Sydney Sanches", entity: "PESSOA"
+text: "182.811-SP", entity: "JURISPRUDENCIA"
+text: "Celso de Mello", entity: "PESSOA"
+text: "Ag 174.473-MG", entity: "JURISPRUDENCIA"
+text: "Celso de Mello", entity: "PESSOA"
+text: "Ag.188.762-PR", entity: "JURISPRUDENCIA"
+text: "Sydney Sanches", entity: "PESSOA"
+text: "artigo 114 , § 3º , da Constituição Federal", entity: "LEGISLACAO"
+text: "Ministério Público do Trabalho", entity: "ORGANIZACAO"
+text: "parágrafo único , do art .", entity: "LEGISLACAO"
+
+PREDICTED ENTITIES (11):
+text: "Supremo Tribunal Federal", entity: "ORGANIZACAO"
+text: "Ag.158.982-PR", entity: "JURISPRUDENCIA"
+text: "Sydney Sanches", entity: "PESSOA"
+text: "Ag . 182.811-SP", entity: "JURISPRUDENCIA"
+text: "Celso de Mello", entity: "PESSOA"
+text: "Ag 174.473-MG", entity: "JURISPRUDENCIA"
+text: "Celso de Mello", entity: "PESSOA"
+text: "Ag.188.762-PR", entity: "JURISPRUDENCIA"
+text: "Sydney Sanches", entity: "PESSOA"
+text: "artigo 114 , § 3º , da Constituição Federal", entity: "LEGISLACAO"
+text: "Ministério Público do Trabalho", entity: "ORGANIZACAO"
+
+================================================================================
+ERROR DISTRIBUTION:
+================================================================================
+
+BOUNDARY ERRORS (1):
+--------------------------------------------------------------------------------
+1. Gold: "182.811-SP" (JURISPRUDENCIA)
+   Pred: "Ag . 182.811-SP" (JURISPRUDENCIA)
+   → Predicted entity is longer, includes prefix "Ag ."
+
+MISSING ENTITY (1):
+--------------------------------------------------------------------------------
+1. Gold: "parágrafo único , do art ." (LEGISLACAO)
+   Pred: (not predicted)
+   → Entity was truncated at chunk boundary - incomplete entity at the end of chunk
+
+================================================================================
+SUMMARY:
+================================================================================
+Total errors: 2
+- Boundary errors: 1 (50%)
+- Missing entities: 1 (50%)
+- Incorrect extraction (False positives): 0
+- Incorrect entity type: 0
+
+Notes:
+- Most entities match exactly between gold and predicted (10 out of 12)
+- One boundary error: "Ag ." prefix included in predicted entity
+- One missing entity: "parágrafo único , do art ." was cut off at chunk boundary
+  (entity continues beyond chunk end, causing it to be incomplete and not predicted)
+- This chunk demonstrates the challenge of entity extraction at chunk boundaries

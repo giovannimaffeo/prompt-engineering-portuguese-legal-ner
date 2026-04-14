@@ -1,0 +1,27 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "O poder de polícia compete privativamente ao Distrito Federal , nos termos do art ."
+
+Looking for entities:
+
+- "Distrito Federal" is an organization, right? Because it's a federal district, which is a governmental entity. So that should be <span class="organizacao">Distrito Federal</span>.
+
+- "art" probably stands for "artigo" (article) in Portuguese legal context. But "art" alone might not be an entity. Wait, the input has "do art ." which is "do artigo" (of the article). But the user's example output shows "art" as part of the text. Wait, looking at the sample input and output, maybe "art" is part of the legislation? Wait, the user's example input is "O poder de polícia compete privativamente ao Distrito Federal , nos termos do art .", and the output is "O poder de polícia compete privativamente ao <span class="organizacao">Distrito Federal</span> , nos termos do <span class="legislacao">art</span> .". Wait, but "art" here is part of "artigo", so maybe "art" is considered as legislation? Or maybe the user considers "art" as part of the legislation reference. 
+
+Wait, the user's example output shows "art" as legislacao. So in the input text, "art" is part of the legislation. So I need to mark "art" as legislacao. But in the input, it's "do art .", which is "do artigo" (of the article). So "art" here refers to an article in a legal text. Therefore, "art" should be marked as legislacao. 
+
+So the output would be:
+
+O poder de polícia compete privativamente ao <span class="organizacao">Distrito Federal</span> , nos termos do <span class="legislacao">art</span> .
+
+Wait, but the original text has "art ." with a period. So maybe the user wants "art" to be marked as legislacao. So the correct HTML would have "art" in a span with class legislacao. 
+
+I need to make sure that all entities are correctly identified. Let me check again. 
+
+"Distrito Federal" is an organization. "art" refers to an article in legislation, so it's part of the legislation. Therefore, the HTML should have those two spans. The rest of the text doesn't have any other entities. 
+
+So the final output is as the user's example. Therefore, the answer should be the text with those two spans.
+</think>
+
+O poder de polícia compete privativamente ao <span class="organizacao">Distrito Federal</span> , nos termos do <span class="legislacao">art</span> .

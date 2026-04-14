@@ -1,0 +1,68 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to look at the input text: "( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+Let me break it down. The text seems to be about legal roles or positions. Let's parse each part.
+
+Starting with "( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO .". The "ADVOGADO" is a legal term, but is it a person or an organization? Well, "Advogado" is a lawyer, so that's a person. But here it's part of a title, maybe "Advogado-Geral da União" which is a position. Wait, "UNIÃO" in Portuguese refers to the Union, which is a federal entity, so that's an organization. "AGDO" might be an acronym for "Advogado-Geral da União" or another term. But the user's example output shows "AGDO" as part of the organization. Wait, looking at the sample output provided by the user, they have "AGDO" as an organization. Wait, the user's example input is "( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC .", and the output is:
+
+<span class="organizacao">UNIÃO</span> <span class="organizacao">AGDO</span> <span class="organizacao">ESTADO DE MATO GROSSO</span> <span class="organizacao">PROC</span>
+
+Wait, but in the input, "ADVOGADO -GERAL DA UNIÃO AGDO" – maybe "UNIÃO" is the organization, and "AGDO" is another organization. Also, "ESTADO DE MATO GROSSO" is a state, so that's an organization. "PROC" might be an acronym for "Procuradoria" or something similar, so another organization.
+
+So, the task is to identify each entity. Let's go step by step.
+
+First part: "( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO ."
+
+- "ADVOGADO" – this is a person's role, but in the context, it's part of a title. However, the user's example output doesn't mark "ADVOGADO" as a pessoa. Wait, looking at the sample output provided by the user, they have "UNIÃO", "AGDO", "ESTADO DE MATO GROSSO", and "PROC" as organizations. So maybe in this case, the user is treating "ADVOGADO" as part of the organization's name? Or perhaps "ADVOGADO" is not an entity here. Wait, the input text is a bit unclear. Let me check the sample output again.
+
+The user's sample input is: "( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+The sample output is:
+
+<span class="organizacao">UNIÃO</span> <span class="organizacao">AGDO</span> <span class="organizacao">ESTADO DE MATO GROSSO</span> <span class="organizacao">PROC</span>
+
+So, the user is marking "UNIÃO", "AGDO", "ESTADO DE MATO GROSSO", and "PROC" as organizations. But "ADVOGADO" is not marked. Wait, maybe "ADVOGADO" is part of the title, but not an entity. Alternatively, maybe "ADVOGADO" is a person, but the user's example doesn't include it. Let me check the original input again.
+
+Original input: "( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+Breaking it down:
+
+- "( A / S ) : " – this seems like a placeholder, maybe for "Advogado" or "Substituto", but not an entity.
+- "ADVOGADO -GERAL DA UNIÃO AGDO" – here, "ADVOGADO" is a title, "GERAL DA UNIÃO" is part of the title, "AGDO" is an acronym. The user's sample output marks "UNIÃO", "AGDO", "ESTADO DE MATO GROSSO", and "PROC" as organizations. So "UNIÃO" is an organization, "AGDO" is another, "ESTADO DE MATO GROSSO" is a state (organization), and "PROC" is an acronym for Procuradoria, which is an organization.
+
+So, in the input text, the entities are:
+
+- "UNIÃO" – organization
+- "AGDO" – organization
+- "ESTADO DE MATO GROSSO" – organization (state)
+- "PROC" – organization (Procuradoria)
+
+But "ADVOGADO" is not marked. Maybe because it's a title, not an entity. So the task is to mark those parts as organizations. Therefore, the HTML output should have those words wrapped in <span class="organizacao">.
+
+So the final HTML would be:
+
+<span class="organizacao">UNIÃO</span> <span class="organizacao">AGDO</span> <span class="organizacao">ESTADO DE MATO GROSSO</span> <span class="organizacao">PROC</span>
+
+But I need to make sure that the rest of the text is left as is. The original text has "( A / S ) : " and other parts not marked. So the full HTML would be the original text with those parts marked. Let me reconstruct the entire input text with the entities marked.
+
+Original input: "( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+Breaking it down:
+
+- "( A / S ) : " – no entity
+- "ADVOGADO" – not marked
+- " -GERAL DA UNIÃO AGDO ." – here, "UNIÃO" and "AGDO" are organizations
+- "( A / S ) : " – no entity
+- "ESTADO DE MATO GROSSO" – organization
+- "PROC ." – "PROC" is an organization
+
+So the HTML would be:
+
+( A / S ) : ADVOGADO -GERAL <span class="organizacao">UNIÃO</span> <span class="organizacao">AGDO</span> . ( A / S ) : <span class="organizacao">ESTADO DE MATO GROSSO</span> <span class="organizacao">PROC</span> .
+
+Wait, but the original text has "ADVOGADO -GERAL DA UNIÃO AGDO .", so "ADVOGADO" is part of the title, but not an entity. The user's sample output doesn't include "ADVOGADO" as an entity. So the correct approach is to mark only the parts that are organizations. Therefore, the final HTML should have the specified words marked as organizations.
+</think>
+
+( A / S ) : ADVOGADO -GERAL <span class="organizacao">UNIÃO</span> <span class="organizacao">AGDO</span> . ( A / S ) : <span class="organizacao">ESTADO DE MATO GROSSO</span> <span class="organizacao">PROC</span> .

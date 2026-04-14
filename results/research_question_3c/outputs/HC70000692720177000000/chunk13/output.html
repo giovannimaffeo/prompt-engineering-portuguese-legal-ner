@@ -1,0 +1,47 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first part is "466 do CPPM". CPPM is likely an acronym for "Código Penal Militar" or similar. Since it's a legal code, that's a "legislacao" entity. The number 466 is probably an article or section, so it's part of the legislation. So I'll mark "466" as part of the legislacao, and "CPPM" as legislacao as well.
+
+Next, the quote: "Conceder-se-á habeas corpus sempre que alguém sofrer ou se achar ameaçado de sofrer violência ou coação em sua liberdade de locomoção , por ilegalidade ou abuso de poder". Here, "habeas corpus" is a legal term, but it's a concept, not an entity. The phrase "liberdade de locomoção" refers to a legal right, but it's not an entity. So no tags here.
+
+Then, "O bem jurídico tutelado , portanto , é a liberdade de locomoção , o direito de ir , de vir ou de ficar ." Again, these are legal concepts, not entities. No tags needed.
+
+Next, "Na lição de José Frederico Marques ( Elementos de Direito Processual Penal . Forense . São Paulo . 1965. v . 4 . p. 383 ) :". Here, "José Frederico Marques" is a person, so that's a "pessoa". The book title "Elementos de Direito Processual Penal" is a work, but it's not an organization or legislation. The publisher "Forense" is an organization. The city "São Paulo" is a local. The year "1965" is a tempo. The volume "v. 4" and page "p. 383" are temporal references, so "1965" is tempo. The book title might be part of a legislation or jurisprudencia? Wait, no. The book is a publication, not a legal entity. So "Forense" is an organizacao, "São Paulo" is local, "1965" is tempo.
+
+Then the quote continues: "(... ) incluindo a Constituição , o direito de ir e vir , entre um dos direitos concernentes à liberdade , que deve ser tutelado e assegurado , violá-lo ou pô-lo em perigo , por ilegalidade ou abuso de poder , será atentar contra a própria Constituição .". "Constituição" here refers to the Constitution, which is a legislation. So "Constituição" should be marked as legislacao. The phrase "Constituição" is part of the legislation, so that's a legislacao entity.
+
+Putting it all together:
+
+- "466" is part of the legislacao (CPPM is the code, so the article 466 is part of it).
+- "CPPM" is legislacao.
+- "José Frederico Marques" is pessoa.
+- "Forense" is organizacao.
+- "São Paulo" is local.
+- "1965" is tempo.
+- "Constituição" is legislacao.
+
+Wait, the user's example output might have "CPPM" as legislacao. Let me check the input again. The input starts with "466 do CPPM". CPPM is likely a legal code, so "CPPM" is legislacao. The number 466 is part of the legislation, so it's also legislacao. So both "466" and "CPPM" should be marked as legislacao.
+
+In the quote, "Constituição" is a legislation, so that's legislacao.
+
+So the HTML should have:
+
+<span class="legislacao">466</span> do <span class="legislacao">CPPM</span>, ...
+
+Then "José Frederico Marques" is pessoa.
+
+"Forense" is organizacao.
+
+"São Paulo" is local.
+
+"1965" is tempo.
+
+"Constituição" is legislacao.
+
+I need to make sure all these are correctly tagged. Also, check if any other entities are present. The rest of the text seems to be legal concepts, not entities. So the final HTML should have all these tags.
+</think>
+
+<span class="legislacao">466</span> do <span class="legislacao">CPPM</span>, &quot; Conceder-se-á habeas corpus sempre que alguém sofrer ou se achar ameaçado de sofrer violência ou coação em sua liberdade de locomoção , por ilegalidade ou abuso de poder &quot; . O bem jurídico tutelado , portanto , é a liberdade de locomoção , o direito de ir , de vir ou de ficar . Na lição de <span class="pessoa">José Frederico Marques</span> ( <span class="legislacao">Elementos de Direito Processual Penal</span> . <span class="organizacao">Forense</span> . <span class="local">São Paulo</span> . <span class="tempo">1965</span>. v . 4 . p. 383 ) : &quot; ( ... ) incluindo a <span class="legislacao">Constituição</span> , o direito de ir e vir , entre um dos direitos concernentes à liberdade , que deve ser tutelado e assegurado , violá-lo ou pô-lo em perigo , por ilegalidade ou abuso de poder , será atentar contra a própria <span class="legislacao">Constituição</span> .

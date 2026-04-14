@@ -1,0 +1,39 @@
+<think>
+Okay, I need to generate an HTML version of the given text, marking specific legal entities. Let me start by reading through the task carefully.
+
+The entities to identify are: pessoa, organização, tempo, local, legislação, and jurisprudência. Each should be wrapped in a <span> with the appropriate class. The example shows that names like "MINISTÉRIO PÚBLICO FEDERAL" are marked as organização, and "CARLOS HENRIQUE ALVES" as pessoa. 
+
+Looking at the input text: 
+
+"Nesse contexto , configura comportamento contraditório e violador da boa-fé objetiva a alegação de não ter sido notificada por e-mail das sessões dos dias 7 , 8 e 9 de novembro , tendo em vista que sempre anuiu em ser notificada via correio eletrônico e telefone . Logo há evidente venire contra factum proprium , rechaçado por nosso ordenamento jurídico . `` . As circunstâncias acima descritas pelo Juízo de primeiro grau afastam definitivamente a alegação de que `` ( ... ) esta Impetrante não participou de qualquer acordo neste sentido ( ... ) '' , pois a causídica , como visto , já havia sido notificada pela via do correio eletrônico em outras oportunidades ."
+
+First, I'll scan for each entity type.
+
+Pessoa: Are there any names of individuals? The text mentions "Impetrante" which is a legal term for a petitioner, but it's a generic term, not a specific name. "Causídica" refers to a lawyer, but again, it's a generic term. No specific names found here, so no pessoa entities.
+
+Organização: The text has "Juízo de primeiro grau" which is a court, so that's an organization. Also, "ordenamento jurídico" is a general term, not a specific organization. "Juízo de primeiro grau" should be marked as organização.
+
+Tempo: The dates mentioned are "dias 7 , 8 e 9 de novembro". These are specific dates, so they should be marked as tempo. The format is "7 de novembro", which is a partial date, so it's valid. Also, "outros dias" might be in the text, but I need to check. Wait, the input text says "das sessões dos dias 7 , 8 e 9 de novembro" – so those dates are explicit. So "7 de novembro", "8 de novembro", "9 de novembro" should be marked as tempo.
+
+Local: The text doesn't mention specific places like cities or countries. "Correio eletrônico" is a method of communication, not a local. So no local entities.
+
+Legislação: The text refers to "ordenamento jurídico", which is a general term for legal framework, not a specific law. There's no mention of specific laws, articles, or decrees. So no legislação entities.
+
+Jurisprudência: The text mentions "venire contra factum proprium", which is a legal principle, not a specific case or precedent. There's no mention of court decisions, súmulas, or acórdãos. So no jurisprudência entities.
+
+Now, I need to mark the entities:
+
+- "Juízo de primeiro grau" is an organization.
+- "7 de novembro", "8 de novembro", "9 de novembro" are dates, so tempo.
+
+Wait, the input text has "dias 7 , 8 e 9 de novembro". Each of those days is a date. So each should be marked as tempo. But in the example, the dates were like "3 de abril de 2017", which is a full date. Here, "7 de novembro" is a partial date (day and month), but according to the guidelines, partial dates are acceptable. So they should be marked as tempo.
+
+So the output would have:
+
+- "Juízo de primeiro grau" as organização.
+- "7 de novembro", "8 de novembro", "9 de novembro" as tempo.
+
+Other parts of the text don't have entities. So the final HTML should have those spans.
+</think>
+
+Nesse contexto , configura comportamento contraditório e violador da boa-fé objetiva a alegação de não ter sido notificada por e-mail das sessões dos <span class="tempo">dias 7</span> , <span class="tempo">8</span> e <span class="tempo">9 de novembro</span> , tendo em vista que sempre anuiu em ser notificada via correio eletrônico e telefone . Logo há evidente venire contra factum proprium , rechaçado por nosso ordenamento jurídico . `` . As circunstâncias acima descritas pelo <span class="organizacao">Juízo de primeiro grau</span> afastam definitivamente a alegação de que `` ( ... ) esta Impetrante não participou de qualquer acordo neste sentido ( ... ) '' , pois a causídica , como visto , já havia sido notificada pela via do correio eletrônico em outras oportunidades .

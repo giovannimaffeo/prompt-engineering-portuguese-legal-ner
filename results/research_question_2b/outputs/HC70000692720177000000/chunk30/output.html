@@ -1,0 +1,32 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is: "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 '' ( ... )". Here, the URL seems to be part of an organization's website. The domain "jus.br" is part of the Brazilian Ministry of Justice, so that's an organization. The "Codigo Verificador" might be a code, but it doesn't fit any of the entity types. The URL itself is part of the organization's site, so I'll mark "eproc2g.stm.jus.br" as an organization.
+
+Next sentence: "As intimações e notificações , para a prática de atos ou seu conhecimento no curso do processo , poderão ser cumpridas pelo oficial de justiça às partes , testemunhas e peritos , preferencialmente , por meio de carta , telegrama , comunicação telefônica ou eletrônica , conforme regulamentação vigente , bem como pessoalmente , se estiverem presentes em Juízo , o que será certificado nos autos , salvo determinação do Juiz do feito para que se proceda de outra forma ."
+
+Looking for entities here. "oficial de justiça" is a person, but the term "oficial de justiça" is a title, so maybe it's an organization? Wait, in Brazil, "oficial de justiça" is a public official, so perhaps it's a person. But the term might refer to an office, so maybe it's an organization. Hmm, need to check. Alternatively, maybe "Juízo" is a local, but "Juízo" is a court, which is a local. Wait, "Juízo" is a court, so that's a local. Also, "regulamentação vigente" refers to current legislation, so that's legislacao. "Juiz do feito" is the judge of the case, which is a person. So "Juiz" would be a pessoa. 
+
+Let me go through each part again. 
+
+- "oficial de justiça" – this is a title for a public official, so maybe it's an organization? Or is it a person? Since it's a role, perhaps it's an organization. But the term "oficial de justiça" is a position, so maybe it's an organization. Wait, but the user's example might have different interpretations. Alternatively, maybe it's a person. But the user's example might not have that. Let me check the original text again. The user's example output might have "Juízo" as a local. So "Juízo" is a local. 
+
+Also, "regulamentação vigente" refers to current regulations, which is legislacao. 
+
+So, in the text, "Juízo" is a local. "Juiz" is a pessoa. 
+
+Putting it all together, the HTML should have:
+
+- "eproc2g.stm.jus.br" as organizacao
+- "Juízo" as local
+- "regulamentação vigente" as legislacao
+- "Juiz" as pessoa
+
+Other parts like "Codigo Verificador" and the URL parts are not entities. The rest of the text doesn't have any other entities. 
+
+So the final HTML would have those spans marked accordingly.
+</think>
+
+Para confirmar a validade deste documento , acesse : <span class="organizacao">https : //eproc2g.stm.jus.br/eproc_2g_prod/</span> e digite o Codigo Verificador 21030663f7 '' ( ... ) As intimações e notificações , para a prática de atos ou seu conhecimento no curso do processo , poderão ser cumpridas pelo oficial de justiça às partes , testemunhas e peritos , preferencialmente , por meio de carta , telegrama , comunicação telefônica ou eletrônica , conforme <span class="legislacao">regulamentação vigente</span> , bem como pessoalmente , se estiverem presentes em <span class="local">Juízo</span> , o que será certificado nos autos , salvo determinação do <span class="pessoa">Juiz</span> do feito para que se proceda de outra forma .

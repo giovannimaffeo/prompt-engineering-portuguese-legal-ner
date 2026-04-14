@@ -1,0 +1,81 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities.
+
+The text starts with "MARIA ELIZABETH GUIMARÃES TEIXEIRA". That's a person's name, so I'll mark that as a 'pessoa'.
+
+Next, "Extrato da Ata do Julgamento" – this seems like a legal document reference. Maybe 'legislacao'? Wait, 'legislacao' refers to laws or legislation. But 'Extrato da Ata do Julgamento' is more about a court record, which might fall under 'jurisprudencia' (jurisprudence) or maybe not. Hmm, maybe it's part of the legal process but not a specific entity. Wait, the user's guide says to mark if it's one of the specified types. Since 'Extrato da Ata do Julgamento' is a legal document, perhaps it's part of 'jurisprudencia'? Or maybe it's not an entity. Wait, the user's example might have 'jurisprudencia' for court decisions. Let me check the example output provided by the user. Wait, the user hasn't provided an example output yet. Let me think again.
+
+The text mentions "Agravo Interno" which is a legal term, but it's a type of legal action, not an entity. Then "Relator Ministro JOSÉ BARROSO FILHO" – that's a person, so 'pessoa'. 
+
+"Documento assinado eletronicamente por José Barroso Filho" – again, the name is a 'pessoa'. 
+
+"Matricula 1117" – that's a registration number, not an entity. 
+
+"Em 02/03/2018 17:26:32" – that's a date and time, so 'tempo'.
+
+"For confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4" – the URL is part of an organization's website, so maybe 'organizacao'? Wait, the URL is part of the organization's system. But the user's guide says to mark 'organizacao' for organizations. The URL might be part of the organization's platform, so maybe the domain is 'organizacao'. But the URL itself isn't an entity. Wait, the user's example might have 'organizacao' for the organization's name. Let me check the text again. The URL is part of the e-proc system, which is an organization. But the text doesn't mention the organization's name explicitly. So maybe the URL isn't marked. Alternatively, the 'eproc2g.stm.jus.br' part could be an organization. But the user's guide says to mark 'organizacao' for organizations. Since the text doesn't explicitly name an organization, maybe that part isn't marked. 
+
+"Brasília , 26 de outubro de 2017" – Brasília is a city, so 'local'.
+
+Now, let's go through each part step by step.
+
+1. "MARIA ELIZABETH GUIMARÃES TEIXEIRA" – pessoa.
+2. "Extrato da Ata do Julgamento" – maybe not an entity. Wait, 'Extrato da Ata do Julgamento' is a legal document, but the user's guide doesn't mention documents as entities. So perhaps not marked.
+3. "por unanimidade de votos" – not an entity.
+4. "rejeitar o Agravo Interno" – Agravo Interno is a legal term, but not an entity.
+5. "nos termos do voto do Relator Ministro JOSÉ BARROSO FILHO" – 'Relator Ministro' is a title, but the name is 'JOSÉ BARROSO FILHO', which is a 'pessoa'.
+6. "Documento assinado eletronicamente por José Barroso Filho" – 'José Barroso Filho' is a 'pessoa'.
+7. "Matricula 1117" – not an entity.
+8. "Em 02/03/2018 17:26:32" – 'tempo'.
+9. "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4" – the URL is part of an organization's system, but the text doesn't name the organization. So maybe not marked.
+10. "Brasília , 26 de outubro de 2017" – 'Brasília' is 'local', and '26 de outubro de 2017' is 'tempo'.
+
+Wait, the date "26 de outubro de 2017" is part of the same phrase as Brasília. So 'Brasília' is 'local', and the date is 'tempo'.
+
+So the entities are:
+
+- MARIA ELIZABETH GUIMARÃES TEIXEIRA → pessoa
+- JOSÉ BARROSO FILHO → pessoa (twice)
+- 02/03/2018 17:26:32 → tempo
+- Brasília → local
+- 26 de outubro de 2017 → tempo
+
+Wait, the date "26 de outubro de 2017" is part of the same sentence as Brasília. So the entire phrase "Brasília , 26 de outubro de 2017" would have 'Brasília' as 'local' and the date as 'tempo'.
+
+So in the text, the entities are:
+
+- pessoa: MARIA ELIZABETH GUIMARÃES TEIXEIRA, JOSÉ BARROSO FILHO (twice)
+- tempo: 02/03/2018 17:26:32, 26 de outubro de 2017
+- local: Brasília
+
+Wait, but the date "26 de outubro de 2017" is part of the same sentence as Brasília. So the entire phrase "Brasília , 26 de outubro de 2017" would have 'Brasília' as 'local' and the date as 'tempo'.
+
+So the HTML should have:
+
+<span class="pessoa">MARIA ELIZABETH GUIMARÃES TEIXEIRA</span>, na conformidade do Extrato da Ata do Julgamento , por unanimidade de votos , em rejeitar o Agravo Interno , nos termos do voto do Relator Ministro <span class="pessoa">JOSÉ BARROSO FILHO</span> . Documento assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , Matricula 1117 . Em <span class="tempo">02/03/2018 17:26:32</span> . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 Brasília , <span class="local">Brasília</span> , <span class="tempo">26 de outubro de 2017</span> .
+
+Wait, but the date "26 de outubro de 2017" is part of the same sentence as Brasília. So the entire phrase "Brasília , 26 de outubro de 2017" would have 'Brasília' as 'local' and the date as 'tempo'.
+
+So the final HTML would have:
+
+- MARIA ELIZABETH GUIMARÃES TEIXEIRA → pessoa
+- JOSÉ BARROSO FILHO → pessoa
+- José Barroso Filho → pessoa (since it's the same person, but the name is written in lowercase here)
+- 02/03/2018 17:26:32 → tempo
+- Brasília → local
+- 26 de outubro de 2017 → tempo
+
+Wait, but the text has "Brasília , 26 de outubro de 2017" – so the date is after the city. So the date is also a 'tempo' entity.
+
+So the final HTML would have:
+
+<span class="pessoa">MARIA ELIZABETH GUIMARÃES TEIXEIRA</span>, na conformidade do Extrato da Ata do Julgamento , por unanimidade de votos , em rejeitar o Agravo Interno , nos termos do voto do Relator Ministro <span class="pessoa">JOSÉ BARROSO FILHO</span> . Documento assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , Matricula 1117 . Em <span class="tempo">02/03/2018 17:26:32</span> . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 Brasília , <span class="local">Brasília</span> , <span class="tempo">26 de outubro de 2017</span> .
+
+I need to make sure that all instances of the entities are marked. Also, check if any other parts are entities. For example, "Agravo Interno" is a legal term, but it's not one of the specified entities. Similarly, "Extrato da Ata do Julgamento" is a legal document, but not an entity. The URL is part of an organization's system, but the text doesn't name the organization, so it's not marked. The 'Matricula 1117' is a number, not an entity. 
+
+So the final HTML should have the marked entities as above.
+</think>
+
+<span class="pessoa">MARIA ELIZABETH GUIMARÃES TEIXEIRA</span>, na conformidade do Extrato da Ata do Julgamento , por unanimidade de votos , em rejeitar o Agravo Interno , nos termos do voto do Relator Ministro <span class="pessoa">JOSÉ BARROSO FILHO</span> . Documento assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , Matricula 1117 . Em <span class="tempo">02/03/2018 17:26:32</span> . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 Brasília , <span class="local">Brasília</span> , <span class="tempo">26 de outubro de 2017</span> .

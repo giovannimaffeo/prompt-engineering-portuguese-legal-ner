@@ -1,0 +1,21 @@
+<think>
+Okay, I need to generate an HTML version of the input text, marking specific legal entities. Let's start by reading the input text carefully.
+
+First, the input mentions "Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 .". Here, "José Barroso Filho" is a person's name, so I should mark that as a <span class="pessoa">. The "Matricula 1117" is a number, but it's not an entity type we're looking for, so leave it as is.
+
+Next, "Em 02/03/2018 17:26:32 ." – the date "02/03/2018" is a time entity, so I'll mark that as <span class="tempo">. The time "17:26:32" is a horário, but according to the guidelines, only dates are marked as tempo, so I'll leave that out.
+
+Then, "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4". The URL is not a local, so no marking. "Codigo Verificador 3044c7190e4" is a code, not an entity type, so leave it.
+
+Moving on: "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000 RELATOR : MINISTRO JOSÉ BARROSO FILHO". The "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" is a legal document number, which is jurisprudencia. "MINISTRO JOSÉ BARROSO FILHO" – "MINISTRO" is a title, not a person, but "José Barroso Filho" is a person, so mark that as <span class="pessoa">.
+
+"AGRAVANTE : NELSON BARROSO FERREIRA DEFENSORIA PÚBLICA DA UNIÃO AGRAVADO : MINISTÉRIO PÚBLICO MILITAR". "NELSON BARROSO FERREIRA" is a person. "DEFENSORIA PÚBLICA DA UNIÃO" is an organization. "MINISTÉRIO PÚBLICO MILITAR" is also an organization.
+
+"Ementa : AGRAVO INTERNO . ART . 290 CPM . CONTAGEM PERÍODO PROVA DE SURSIS PARA FINS DE INDULTO . INCONSTITUCIONALIDADE DO DECRETO PRESIDENCIAL DE INDULTO . EMBARGOS DE DECLARAÇÃO OPOSTOS CONTRA ACÓRDÃO DE RECURSO EM SENTIDO ESTRITO . INADMISSÃO . AGRAVADA A DECISÃO PELA DEFENSORIA PÚBLICA DA UNIÃO . AGRAVO REJEITADO . UNÂNIME . O Acórdão embargado , em sede de Recurso em Sentido Estrito , analisou os argumentos apresentados pela Defensoria Pública da União ."
+
+Here, "ACÓRDÃO" is a legal document, so mark "Acórdão embargado" as jurisprudencia. "RECURSO EM SENTIDO ESTRITO" is a legal term, but not an entity. "DEFENSORIA PÚBLICA DA UNIÃO" is an organization. "MINISTÉRIO PÚBLICO MILITAR" is already marked as organization. "ART . 290 CPM" – "CPM" is a legislation (Código Penal Militar), so mark "ART . 290 CPM" as legislação. "DECRETO PRESIDENCIAL DE INDULTO" is a legislation, so mark that as legislação.
+
+Putting it all together, I'll go through each part, identify the entities, and apply the appropriate spans. Make sure not to miss any entities and follow the guidelines strictly, especially regarding not marking generic terms or titles.
+</think>
+
+O <span class="pessoa">José Barroso Filho</span>, Matricula 1117 . Em <span class="tempo">02/03/2018</span> 17:26:32 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 <span class="jurisprudencia">AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000</span> RELATOR : <span class="pessoa">MINISTRO JOSÉ BARROSO FILHO</span> AGRAVANTE : <span class="pessoa">NELSON BARROSO FERREIRA</span> <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span> AGRAVADO : <span class="organizacao">MINISTÉRIO PÚBLICO MILITAR</span> EMENTA : <span class="jurisprudencia">AGRAVO INTERNO</span> . <span class="legislacao">ART . 290 CPM</span> . CONTAGEM PERÍODO PROVA DE SURSIS PARA FINS DE INDULTO . INCONSTITUCIONALIDADE DO <span class="legislacao">DECRETO PRESIDENCIAL DE INDULTO</span> . <span class="jurisprudencia">EMBARGOS DE DECLARAÇÃO OPOSTOS CONTRA ACÓRDÃO DE RECURSO EM SENTIDO ESTRITO</span> . INADMISSÃO . AGRAVADA A DECISÃO PELA <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span> . <span class="jurisprudencia">AGRAVO REJEITADO</span> . UNÂNIME . O <span class="jurisprudencia">Acórdão embargado</span> , em sede de <span class="jurisprudencia">Recurso em Sentido Estrito</span> , analisou os argumentos apresentados pela <span class="organizacao">Defensoria Pública da União</span> .

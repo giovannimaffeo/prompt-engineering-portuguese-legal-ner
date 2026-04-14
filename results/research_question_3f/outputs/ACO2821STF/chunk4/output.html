@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The input text is: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536376 . Inteiro Teor do Acórdão - Página 2 de 17 Relatório 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+Starting with the first part: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536376 ."
+
+Here, "endereço eletrônico" is mentioned, but the example says that URLs shouldn't be marked as local. So the URL itself isn't a local. The number "14536376" might be a jurisprudencia reference, but the example shows that numbers like "14536376" are marked as jurisprudencia if they are identifiers. Wait, in the examples, "RECURSO ESPECIAL Nº 1.583.083 - RS" is marked as jurisprudencia. So numbers like "14536376" might be part of a jurisprudencia reference. But the example also includes "14536376" as a number. Wait, in the example input 3, "LEI Nº 11.788" is marked as legislacao, but the number is part of the legislation. However, in the input text here, "sob o número 14536376" – the number is part of a reference. But the example input 2 has "RECURSO ESPECIAL Nº 1.583.083 - RS" marked as jurisprudencia. So maybe "14536376" is a jurisprudencia reference. But the example input 5 has "art . 428 da Consolidação das Leis do Trabalho – CLT" marked as legislacao. So numbers in legislation are part of the legislacao. But in this case, the number is part of a reference to an acordão, which is jurisprudencia. So "14536376" should be marked as jurisprudencia.
+
+Next, "Inteiro Teor do Acórdão - Página 2 de 17 Relatório 16/03/2018". The date "16/03/2018" is a tempo entity. The word "Acórdão" is a generic term, so it's not marked. "Página 2 de 17" is just a page number, not an entity. "Relatório" is a generic term.
+
+"PLENÁRIO" – this is a part of the court, so it's an organization. Wait, the example input 4 has "ESTADO DO ACRE" marked as local, and "Rua Tribunal de Justiça" as local. The example input 2 has "Superior Tribunal de Justiça" as organizacao. So "PLENÁRIO" is part of the court, so it's an organization. But the example input 2 has "Superior Tribunal de Justiça" as organizacao. So "PLENÁRIO" is part of the organization. Wait, but "PLENÁRIO" is a chamber, so it's an organization. So "PLENÁRIO" should be marked as organizacao.
+
+"A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO" – "MATO GROSSO" is a local. "AÇÃO CÍVEL ORIGINÁRIA" is a generic term. "2.821" is a number, which might be a jurisprudencia reference. Wait, the example input 2 has "RECURSO ESPECIAL Nº 1.583.083 - RS" as jurisprudencia. So "2.821" could be a number part of a jurisprudencia reference. But the example input 5 has "art . 428 da Consolidação das Leis do Trabalho – CLT" as legislacao. So "2.821" might be a case number, so it's jurisprudencia.
+
+"RELATOR : MIN . RICARDO LEWANDOWSKI" – "MIN . RICARDO LEWANDOWSKI" is a person. The "MIN ." is an abbreviation for "Ministro", which is a title, not a person. So "RICARDO LEWANDOWSKI" is a pessoa.
+
+"AGTE . ( S ) : UNIÃO" – "UNIÃO" is an organization. "AGTE" is an abbreviation for "Agente", which is a generic term. "AGDO . ( A / S ) : ESTADO DE MATO GROSSO" – "ESTADO DE MATO GROSSO" is a local. "PROC ." is an abbreviation for "Processo", which is a generic term.
+
+Putting it all together:
+
+- "http : //www.stf.jus.br/portal/autenticacao/" is an URL, which the guidelines say not to mark as local. So no tag here.
+- "14536376" is a number, possibly a jurisprudencia reference. So mark as jurisprudencia.
+- "16/03/2018" is a tempo.
+- "PLENÁRIO" is an organizacao.
+- "MATO GROSSO" is a local.
+- "2.821" is a jurisprudencia reference.
+- "RICARDO LEWANDOWSKI" is a pessoa.
+- "UNIÃO" is an organizacao.
+- "ESTADO DE MATO GROSSO" is a local.
+
+Now, let's structure the HTML with these tags.
+</think>
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número <span class="jurisprudencia">14536376</span> . Inteiro Teor do Acórdão - Página 2 de 17 Relatório <span class="tempo">16/03/2018</span> <span class="organizacao">PLENÁRIO</span> A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA <span class="jurisprudencia">2.821</span> <span class="local">MATO GROSSO</span> RELATOR : <span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : <span class="local">ESTADO DE MATO GROSSO</span> PROC .

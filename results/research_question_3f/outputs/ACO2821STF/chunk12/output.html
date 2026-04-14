@@ -1,0 +1,81 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "Por oportuno , transcrevo o inteiro teor da decisão guerreada : “ Trata-se de ação cível originária , com pedido de tutela de urgência , ajuizada pelo Estado de Mato Grosso contra a União , em razão da negativa do Ministério da Previdência Social de expedir o Certificado de Regularidade Previdenciária CRP , previsto no Decreto Federal 3.878/2001 , sob o argumento de que o Estado teria descumprido a Lei Federal 9.717/1998 ao não enviar o Demonstrativo da Política de Investimentos DPIN e o Demonstrativo das Aplicações e Investimentos dos Recursos DAIR , relativos ao exercício de 2016 , bem como em razão da não aprovação do Projeto de Lei Complementar 1/2016 , resultante da Mensagem 93/2015 , que dispõe sobre o Plano de Custeio do Regime Próprio de Previdência Social do Estado de Mato Grosso RPPS/MT ."
+
+Let me break it down:
+
+1. "Estado de Mato Grosso" – This is a state, so "local" or "organizacao"? Wait, "Estado" is a state, which is a local entity. But "Estado de Mato Grosso" is the name of the state, so it's a local. Wait, but the definition says "local" is for explicit places like cities, states, etc. So "Estado de Mato Grosso" is a local entity. But wait, the example input 4 had "ESTADO DO ACRE" marked as local. So yes, "Estado de Mato Grosso" should be local.
+
+2. "União" – This refers to the Union, which is a legal entity, but according to the guidelines, "organizacao" includes federal entities. The example input 1 had "MINISTÉRIO PÚBLICO FEDERAL" as organizacao. So "União" is an organization. Wait, but "União" is a term used for the federal government, so it's an organization. So "União" should be organizacao.
+
+3. "Ministério da Previdência Social" – This is a federal ministry, so it's an organization. So "Ministério da Previdência Social" is organizacao.
+
+4. "Certificado de Regularidade Previdenciária CRP" – The CRP is an acronym, but the example input 3 had "LEI Nº 11.788" as legislacao. Here, "CRP" is a certificate, but the example input 3 had "Decreto Federal 3.878/2001" as legislacao. Wait, the "Decreto Federal 3.878/2001" is a decree, which is legislation. So "Decreto Federal 3.878/2001" should be legislacao. Similarly, "Lei Federal 9.717/1998" is a law, so that's legislacao. 
+
+5. "Decreto Federal 3.878/2001" – This is a decree, so legislacao.
+
+6. "Lei Federal 9.717/1998" – Law, so legislacao.
+
+7. "Demonstrativo da Política de Investimentos DPIN" – "DPIN" is an acronym, but the example input 3 had "Decreto Federal 3.878/2001" as legislacao. Wait, the example input 5 had "Decreto-Lei no 5.452" as legislacao. So "DPIN" is part of a document, but since it's not a law or decree, maybe it's not marked. Wait, the guidelines say that only references to norms (laws, decrees, etc.) are marked as legislacao. So "DPIN" is a document, but not a law, so it's not marked. Similarly, "DAIR" is another acronym, but not a law. So these are not marked.
+
+8. "Exercício de 2016" – "2016" is a year, so tempo.
+
+9. "Projeto de Lei Complementar 1/2016" – This is a law project, so legislacao. The example input 5 had "Projeto de Lei Complementar 1/2016" as legislacao.
+
+10. "Mensagem 93/2015" – "Mensagem" is a message, but in the context of legislation, it's part of a law project. Wait, the example input 5 had "Mensagem 93/2015" as part of the legislacao. Wait, the example input 5 had "Mensagem 93/2015" as part of the legislacao? Let me check. In example input 5, the output was "Decreto-Lei no 5.452" as legislacao, and "Mensagem 93/2015" was part of the text. Wait, the example input 5's output didn't mark "Mensagem 93/2015" as legislacao. Wait, the example input 5's text was: "altera a redação do art . 428 da Consolidação das Leis do Trabalho – CLT, aprovada pelo Decreto-Lei no 5.452, de 1o de maio de 1943". The output marked "Decreto-Lei no 5.452" as legislacao. So "Mensagem 93/2015" is not a law, so it's not marked. Wait, but "Mensagem" is a type of legislative document. Wait, the example input 3 had "Decreto Federal 3.878/2001" as legislacao. So "Mensagem 93/2015" is a message, which is a type of legislative document. But according to the guidelines, only laws, decrees, etc., are marked. So "Mensagem 93/2015" is not a law, so it's not marked. Wait, but the example input 5 had "Mensagem 93/2015" as part of the text. Wait, the example input 5's text was: "altera a redação do art . 428 da Consolidação das Leis do Trabalho – CLT, aprovada pelo Decreto-Lei no 5.452, de 1o de maio de 1943". The output marked "Decreto-Lei no 5.452" as legislacao. So "Mensagem 93/2015" is not marked. Therefore, "Mensagem 93/2015" is not a legislacao. So in the current text, "Mensagem 93/2015" is not marked.
+
+11. "Plano de Custeio do Regime Próprio de Previdência Social do Estado de Mato Grosso RPPS/MT" – "RPPS/MT" is an acronym for the state's pension plan. Since it's not a law or decree, it's not marked. 
+
+Now, let's check for other entities:
+
+- "Estado de Mato Grosso" – local.
+- "União" – organizacao.
+- "Ministério da Previdência Social" – organizacao.
+- "Decreto Federal 3.878/2001" – legislacao.
+- "Lei Federal 9.717/1998" – legislacao.
+- "Exercício de 2016" – tempo (2016 is a year).
+- "Projeto de Lei Complementar 1/2016" – legislacao.
+- "Mensagem 93/2015" – not marked.
+- "RPPS/MT" – not marked.
+
+Wait, "Projeto de Lei Complementar 1/2016" is a law project, so it's legislacao. The example input 5 had "Projeto de Lei Complementar 1/2016" as part of the text, but in the example output, it wasn't marked. Wait, example input 5's text was: "altera a redação do art . 428 da Consolidação das Leis do Trabalho – CLT, aprovada pelo Decreto-Lei no 5.452, de 1o de maio de 1943". The output marked "Decreto-Lei no 5.452" as legislacao. So "Projeto de Lei Complementar 1/2016" is a law project, which is a type of legislation. So it should be marked as legislacao. 
+
+So, in the current text, "Projeto de Lei Complementar 1/2016" is legislacao.
+
+Now, let's structure the HTML with the appropriate tags.
+
+The text starts with "Por oportuno , transcrevo o inteiro teor da decisão guerreada : “ Trata-se de ação cível originária , com pedido de tutela de urgência , ajuizada pelo Estado de Mato Grosso contra a União , em razão da negativa do Ministério da Previdência Social de expedir o Certificado de Regularidade Previdenciária CRP , previsto no Decreto Federal 3.878/2001 , sob o argumento de que o Estado teria descumprido a Lei Federal 9.717/1998 ao não enviar o Demonstrativo da Política de Investimentos DPIN e o Demonstrativo das Aplicações e Investimentos dos Recursos DAIR , relativos ao exercício de 2016 , bem como em razão da não aprovação do Projeto de Lei Complementar 1/2016 , resultante da Mensagem 93/2015 , que dispõe sobre o Plano de Custeio do Regime Próprio de Previdência Social do Estado de Mato Grosso RPPS/MT ."
+
+So, the marked entities are:
+
+- "Estado de Mato Grosso" → local
+- "União" → organizacao
+- "Ministério da Previdência Social" → organizacao
+- "Decreto Federal 3.878/2001" → legislacao
+- "Lei Federal 9.717/1998" → legislacao
+- "Exercício de 2016" → tempo (2016)
+- "Projeto de Lei Complementar 1/2016" → legislacao
+
+Wait, "Exercício de 2016" – the "2016" is the year, so it's tempo. The rest of the phrase is not an entity. So "2016" is tempo.
+
+So, the HTML should have:
+
+- "Estado de Mato Grosso" → <span class="local">Estado de Mato Grosso</span>
+- "União" → <span class="organizacao">União</span>
+- "Ministério da Previdência Social" → <span class="organizacao">Ministério da Previdência Social</span>
+- "Decreto Federal 3.878/2001" → <span class="legislacao">Decreto Federal 3.878/2001</span>
+- "Lei Federal 9.717/1998" → <span class="legislacao">Lei Federal 9.717/1998</span>
+- "2016" → <span class="tempo">2016</span>
+- "Projeto de Lei Complementar 1/2016" → <span class="legislacao">Projeto de Lei Complementar 1/2016</span>
+
+Now, putting it all together in the text.
+
+Let me check if there are any other entities. For example, "Certificado de Regularidade Previdenciária CRP" – CRP is an acronym, but it's not a law or decree, so not marked. Similarly, "DPIN" and "DAIR" are acronyms but not laws. "RPPS/MT" is an acronym for the state's pension plan, not a law. "Mensagem 93/2015" is a message, which is a type of legislative document, but according to the examples, it's not marked. So it's not marked.
+
+So the final HTML should have the marked entities as above.
+</think>
+
+Por oportuno , transcrevo o inteiro teor da decisão guerreada : “ Trata-se de ação cível originária , com pedido de tutela de urgência , ajuizada pelo <span class="local">Estado de Mato Grosso</span> contra a <span class="organizacao">União</span> , em razão da negativa do <span class="organizacao">Ministério da Previdência Social</span> de expedir o Certificado de Regularidade Previdenciária CRP , previsto no <span class="legislacao">Decreto Federal 3.878/2001</span> , sob o argumento de que o Estado teria descumprido a <span class="legislacao">Lei Federal 9.717/1998</span> ao não enviar o Demonstrativo da Política de Investimentos DPIN e o Demonstrativo das Aplicações e Investimentos dos Recursos DAIR , relativos ao exercício de <span class="tempo">2016</span> , bem como em razão da não aprovação do <span class="legislacao">Projeto de Lei Complementar 1/2016</span> , resultante da <span class="legislacao">Mensagem 93/2015</span> , que dispõe sobre o Plano de Custeio do Regime Próprio de Previdência Social do Estado de Mato Grosso RPPS/MT .

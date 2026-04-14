@@ -1,0 +1,52 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is "2 Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil .". Here, "MP n° 2.200-2/2001" is a legislative act, so that's legislacao. The date "24/08/2001" is tempo. "ICP-Brasil" is an organization, so organizacao. The "STF" in the URL might be an organization, but the URL is part of the text, so maybe the "STF" is an organization. Wait, the URL is "http : //www.stf.jus.br/portal/autenticacao/". The "STF" here is the Superior Tribunal Federal, which is an organization. So I should mark "STF" as organizacao. Also, "jus.br" is part of the URL, but maybe not an entity here. The "Mato Grosso" in "MATO GROSSO" is a local, so local. 
+
+Next, "Inteiro Teor do Acórdão - Página 4 de 17 Voto - MIN . RICARDO LEWANDOWSKI 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821". "RICARDO LEWANDOWSKI" is a person, so pessoa. The date "16/03/2018" is tempo. "PLENÁRIO" might be part of an organization, but maybe it's a local or part of the organization. Wait, "PLENÁRIO" refers to the Plenary session of the court, so maybe it's part of the organization. But the user's example might have "PLENÁRIO" as part of the organization. Alternatively, maybe it's a local. Hmm, need to check. The user's example might have "PLENÁRIO" as part of the organization. Wait, the original text has "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821". The "A G .REG ." might be part of the case number. The "2.821" is a case number, not an entity. 
+
+Then, "MATO GROSSO" is a local. "Voto - MIN . RICARDO LEWANDOWSKI" has "MIN" as part of the title, but "RICARDO LEWANDOWSKI" is the person. 
+
+In the last part: "O Senhor Ministro Ricardo Lewandowski ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma ." Here, "Ministro Ricardo Lewandowski" is a person, so pessoa. The "Relator" is part of his title, but maybe not an entity. 
+
+Now, let's go through each part step by step.
+
+First sentence: "2 Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil ."
+
+- "MP n° 2.200-2/2001" is a legislative act, so legislacao.
+- "24/08/2001" is tempo.
+- "Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil" is an organization, so organizacao. Wait, "ICP-Brasil" is the organization. The full name is "Infraestrutura de Chaves Públicas Brasileira", which is the organization. So "Infraestrutura de Chaves Públicas Brasileira" is organizacao, and "ICP-Brasil" is the acronym, so also organizacao.
+
+Next part: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536377 ."
+
+- "http : //www.stf.jus.br/portal/autenticacao/" has "STF" as an organization. So "STF" should be marked as organizacao. The rest of the URL is part of the address, not an entity.
+
+Then: "Inteiro Teor do Acórdão - Página 4 de 17 Voto - MIN . RICARDO LEWANDOWSKI 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO V O T O O Senhor Ministro Ricardo Lewandowski ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma ."
+
+- "RICARDO LEWANDOWSKI" is pessoa.
+- "16/03/2018" is tempo.
+- "MATO GROSSO" is local.
+- "PLENÁRIO" might be part of the organization, but in the context, it's the Plenary session, which is part of the court's structure. However, the user's example might not mark it as an organization. Alternatively, maybe it's part of the local. Wait, "PLENÁRIO" is part of the court's structure, so perhaps it's part of the organization. But the user's example might not have it. Let me check the original text again. The original text has "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821". The "A G .REG ." might be part of the case number. The "2.821" is a case number, not an entity. 
+
+So, in the text, "PLENÁRIO" is part of the court's session, but maybe it's not an entity. The user's example might not mark it. So I'll leave it as is unless it's part of an organization. 
+
+Putting it all together, the entities are:
+
+- MP n° 2.200-2/2001 → legislacao
+- 24/08/2001 → tempo
+- Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil → organizacao
+- STF → organizacao
+- RICARDO LEWANDOWSKI → pessoa
+- 16/03/2018 → tempo
+- MATO GROSSO → local
+
+Wait, the original text has "MATO GROSSO" as a local. Also, "PLENÁRIO" might be part of the organization, but I'm not sure. Let me check the original text again. The text says "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821". The "A G .REG ." is part of the case number. The "2.821" is the case number. So "PLENÁRIO" is part of the court's session, but not an entity. So I'll not mark it. 
+
+So the final HTML should have the marked entities as per the above. Now, I need to make sure that each entity is correctly wrapped in <span> tags with the appropriate class. Also, the URL's "STF" is part of the URL, so I need to check if "STF" is in the URL. The URL is "http : //www.stf.jus.br/portal/autenticacao/". The "stf" in the URL is part of the domain, so "STF" is the organization. So in the URL, "stf" is part of the domain, but the user's example might have "STF" as an organization. So I'll mark "STF" as organizacao.
+
+Now, let's write the HTML with the marked entities.
+</think>
+
+<span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a <span class="organizacao">Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil</span> . O documento pode ser acessado no endereço eletrônico <span class="organizacao">http : //www.<span class="organizacao">stf</span>.jus.br/portal/autenticacao/</span> sob o número 14536377 . Inteiro Teor do Acórdão - Página 4 de 17 Voto - <span class="pessoa">MIN . RICARDO LEWANDOWSKI</span> <span class="tempo">16/03/2018</span> <span class="local">PLENÁRIO</span> A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> V O T O O Senhor <span class="pessoa">Ministro Ricardo Lewandowski</span> ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma .

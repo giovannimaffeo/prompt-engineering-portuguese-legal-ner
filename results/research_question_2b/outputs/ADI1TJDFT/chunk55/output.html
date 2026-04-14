@@ -1,0 +1,62 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is: "Ajurisprudência do Supremo Tribunal Federal é firme no sentido de que a regra que subordina a celebração de acordos ou convênios firmados por órgãos do Poder Executivo à autorização prévia ou ratificação da Assembléia Legislativa , fere o princípio da independência e harmonia dos poderes ( art . 2º , da C.F . ) . Precedentes . 2 . Ação Direta julgada procedente para a declaração de inconstitucionalidade do inciso XXI do art . 54 da Constituição do Estado do Paraná . ( ADI 342 , Relator ( a ) : Min ."
+
+Looking for entities:
+
+1. "Ajurisprudência" – Wait, that's probably "A jurisprudência" with a typo. So "jurisprudência" is a legal term, which is the entity type 'jurisprudencia'. So I should wrap that in <span class="jurisprudencia">.
+
+Next, "Supremo Tribunal Federal" – that's an organization, so "organizacao".
+
+"Regra que subordina..." – not sure yet. Then "órgãos do Poder Executivo" – "Poder Executivo" is a government branch, maybe part of an organization? Wait, "órgãos do Poder Executivo" refers to executive organs, which are part of the government. But the entity here is "organizacao" or maybe "local"? Wait, the user's guide says "organizacao" for organizations. So "órgãos do Poder Executivo" might be part of an organization, but maybe the actual organization is "Supremo Tribunal Federal" which we already marked. Wait, the text mentions "órgãos do Poder Executivo" as part of the rule. So maybe "Poder Executivo" is part of the organization? Or is it a government branch? Hmm, maybe "Poder Executivo" is part of the organization, but the user's guide might consider "Poder Executivo" as a part of the organization. Wait, the user's example might have "Supremo Tribunal Federal" as an organization. So "órgãos do Poder Executivo" refers to organs of the Executive Power, which are part of the government. But the user's guide says "organizacao" for organizations. So maybe "Poder Executivo" is part of the organization? Or perhaps "Assembléia Legislativa" is an organization. Let me check.
+
+"Assembléia Legislativa" is an organization, so that should be marked as "organizacao".
+
+"art . 2º , da C.F . " – "C.F." stands for Constituição Federal, which is legislation, so "legislacao".
+
+Then "Precedentes . 2 . Ação Direta" – "Ação Direta" is a legal term, but not sure if it's an entity. Wait, the user's entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. "Ação Direta" might be part of a jurisprudência or a legal term, but maybe not an entity. Wait, the example mentions "ADI 342" which is an "Ação Direta de Inconstitucionalidade", so "ADI" is an acronym for that. So "ADI 342" would be a jurisprudência reference? Or maybe it's part of the jurisprudência. Wait, the user's guide says "jurisprudencia" for jurisprudence. So "ADI 342" is a case, which is part of jurisprudência. So I should mark "ADI 342" as "jurisprudencia".
+
+Also, "Relator ( a ) : Min ." – "Min." is short for "Ministro" (Minister), which is a person. So "Min." should be "pessoa".
+
+Let me go through each part again:
+
+Original text:
+
+"Ajurisprudência do Supremo Tribunal Federal é firme no sentido de que a regra que subordina a celebração de acordos ou convênios firmados por órgãos do Poder Executivo à autorização prévia ou ratificação da Assembléia Legislativa , fere o princípio da independência e harmonia dos poderes ( art . 2º , da C.F . ) . Precedentes . 2 . Ação Direta julgada procedente para a declaração de inconstitucionalidade do inciso XXI do art . 54 da Constituição do Estado do Paraná . ( ADI 342 , Relator ( a ) : Min ."
+
+Breaking down:
+
+- "Ajurisprudência" → "jurisprudência" (entity: jurisprudencia)
+- "Supremo Tribunal Federal" → organizacao
+- "Assembléia Legislativa" → organizacao
+- "art . 2º , da C.F . " → "C.F." is Constituição Federal → legislacao
+- "ADI 342" → jurisprudencia
+- "Relator ( a ) : Min ." → "Min." is pessoa
+
+Other parts like "Poder Executivo" might be part of the organization, but since it's part of the description, maybe not an entity. Similarly, "Constituição do Estado do Paraná" refers to legislation, so "legislacao".
+
+Wait, "Constituição do Estado do Paraná" is a state constitution, so that's legislation. So "Constituição do Estado do Paraná" should be marked as "legislacao".
+
+So putting it all together:
+
+- "jurisprudência" → <span class="jurisprudencia">jurisprudência</span>
+- "Supremo Tribunal Federal" → <span class="organizacao">Supremo Tribunal Federal</span>
+- "Assembléia Legislativa" → <span class="organizacao">Assembléia Legislativa</span>
+- "C.F." → <span class="legislacao">C.F.</span>
+- "ADI 342" → <span class="jurisprudencia">ADI 342</span>
+- "Min." → <span class="pessoa">Min.</span>
+- "Constituição do Estado do Paraná" → <span class="legislacao">Constituição do Estado do Paraná</span>
+
+Wait, but "C.F." is an abbreviation for Constituição Federal, so it's part of the legislation. Similarly, "Constituição do Estado do Paraná" is a state constitution, so also legislation.
+
+So the final HTML should have these spans marked accordingly. Let me check again for any missed entities.
+
+Also, "art . 2º , da C.F . " → "C.F." is the legislation, so that's covered.
+
+I think that's all. Now, I'll format the text with the appropriate spans.
+</think>
+
+<span class="jurisprudencia">Ajurisprudência</span> do <span class="organizacao">Supremo Tribunal Federal</span> é firme no sentido de que a regra que subordina a celebração de acordos ou convênios firmados por órgãos do Poder Executivo à autorização prévia ou ratificação da <span class="organizacao">Assembléia Legislativa</span> , fere o princípio da independência e harmonia dos poderes ( <span class="legislacao">art</span> . 2º , da <span class="legislacao">C.F</span> . ) . Precedentes . 2 . <span class="jurisprudencia">Ação Direta</span> julgada procedente para a declaração de inconstitucionalidade do inciso XXI do <span class="legislacao">art</span> . 54 da <span class="legislacao">Constituição do Estado do Paraná</span> . ( <span class="jurisprudencia">ADI 342</span> , <span class="pessoa">Relator (a)</span> : <span class="pessoa">Min</span> . )

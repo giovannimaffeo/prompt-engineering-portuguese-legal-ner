@@ -1,0 +1,42 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is about the constitutionality of granting construction permits and habitation certificates, mentioning the administrative police power and referring to Article 15 of the Organic Law of the Federal District.
+
+Looking for entities:
+
+- "Aduziu" – This seems like a person's name. So, "Aduziu" should be marked as pessoa.
+- "Alvarás de Construção e de Carta de Habite-se" – These are legal terms, not entities. No need to mark.
+- "poder de polícia administrativa" – This is a concept, not an entity.
+- "inconstitucionalidade material" – Legal term, not an entity.
+- "delegação deste" – Refers to the delegation, not an entity.
+- "artigo 15 da Lei Orgânica do Distrito Federal" – Here, "Lei Orgânica do Distrito Federal" is a law, so that's legislacao. The "artigo 15" is part of the legislation, so it should be included in the legislacao span.
+
+Now, check for other possible entities. "Distrito Federal" is a local entity, so that should be local. Wait, the Lei Orgânica do Distrito Federal is the law, so "Lei Orgânica do Distrito Federal" is legislacao. The "Distrito Federal" itself is a local entity. So, in the text, "Lei Orgânica do Distrito Federal" should be marked as legislacao, and "Distrito Federal" as local.
+
+Wait, but the text says "Lei Orgânica do Distrito Federal" as a whole. So the entire phrase is the legislation. So the span should cover "Lei Orgânica do Distrito Federal" as legislacao. Also, "Distrito Federal" is a local entity, so within that phrase, "Distrito Federal" should be marked as local.
+
+So, breaking down the sentence:
+
+"Aduziu que a concessão de Alvarás de Construção e de Carta de Habite-se constitui expressão típica do exercício do poder de polícia administrativa , incorrendo em inconstitucionalidade material a delegação deste , nos termos do artigo 15 da Lei Orgânica do Distrito Federal ."
+
+- "Aduziu" → pessoa
+- "Lei Orgânica do Distrito Federal" → legislacao
+- "Distrito Federal" → local
+
+So, the HTML should have:
+
+<span class="pessoa">Aduziu</span> que a concessão de Alvarás de Construção e de Carta de Habite-se constitui expressão típica do exercício do poder de polícia administrativa , incorrendo em inconstitucionalidade material a delegação deste , nos termos do artigo 15 da <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> .
+
+Wait, but the "Distrito Federal" is part of the legislation's name. So the entire "Lei Orgânica do Distrito Federal" is the legislation, so the span should include "Lei Orgânica do Distrito Federal" as legislacao, and within that, "Distrito Federal" is local. So the structure would be:
+
+<span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span>
+
+That way, both the legislation and the local entity are marked correctly.
+
+So the final HTML would have "Aduziu" as pessoa, and "Lei Orgânica do Distrito Federal" as legislacao with "Distrito Federal" as local inside it.
+
+I need to make sure that the tags are properly nested and that the text remains unchanged otherwise. No other entities are present in the text. So the output should be as described.
+</think>
+
+Aduziu que a concessão de Alvarás de Construção e de Carta de Habite-se constitui expressão típica do exercício do poder de polícia administrativa , incorrendo em inconstitucionalidade material a delegação deste , nos termos do artigo 15 da <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> .

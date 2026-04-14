@@ -1,0 +1,55 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class indicating their type. If none are found, just leave the text as is.
+
+First, I need to read through the input text carefully. The text is in Portuguese and discusses legal procedures, specifically about the timing of requesting the nullity of a document in a legal process. 
+
+Looking for entities:
+
+- "CPP" stands for Código de Processo Penal (Penal Procedure Code), which is legislation. So "CPP" should be marked as legislacao.
+- "CPC" is Código de Processo Civil (Civil Procedure Code), also legislation. So "CPC" is legislacao.
+- "art. 406" and "art. 278" refer to articles in these codes. The articles themselves are part of the legislation, so "art. 406" and "art. 278" should be legislacao.
+- "novel CPC" refers to the new CPC, so "novel CPC" might be part of the legislation, but "novel" is an adjective here. However, "CPC" is already marked. Maybe "novel" isn't an entity, so just "CPC" is legislacao.
+- "Direito Brasileiro" is the Brazilian legal system, which is a general term, not a specific entity. So maybe not marked.
+- "pronúncia" is a legal term but not an entity type here. The text mentions "já transitada em julgado a pronúncia" which refers to a legal decision, but "pronúncia" itself isn't one of the entity types. So no tag needed.
+
+Now, check for other entities:
+
+- "pessoa": Are there any names of people? The text doesn't mention any individuals, so no pessoa tags.
+- "organizacao": Any organizations? The text doesn't mention any, so no.
+- "tempo": Any dates or time references? The text mentions "já transitada em julgado" which refers to a legal status, not a specific time. So no tempo tags.
+- "local": Any locations? The text doesn't mention any, so no.
+
+So the only entities are the legislation references: CPP, CPC, art. 406, art. 278, and novel CPC. Wait, "novel CPC" is part of the text. The original text says "art. 278 do novel CPC". So "novel CPC" is part of the legislation reference. But "novel" is an adjective, so maybe only "CPC" is marked. However, the user's example in the output might have "novel CPC" as part of the legislacao. Let me check the example again.
+
+Wait, the user provided a sample output. Let me look at that. The sample output has "art. 278 do novel CPC" with "CPC" marked as legislacao. So "novel" is not an entity, only "CPC" is. Similarly, "CPP" and "CPC" are marked. The articles "art. 406" and "art. 278" are also marked as legislacao. 
+
+So in the input text, the instances are:
+
+- "§3º , do art . 406 , do CPP" → "CPP" is legislacao, "art. 406" is legislacao.
+- "art . 278 , do CPC" → "CPC" is legislacao, "art. 278" is legislacao.
+- "art . 278 do novel CPC" → "CPC" is legislacao, "novel" is not an entity.
+
+Therefore, I need to wrap each occurrence of "CPP", "CPC", "art. 406", "art. 278" with <span class="legislacao">.
+
+Let me go through the text step by step:
+
+Original text: "Compulsando os autos , verifica-se que não há notícia de que o pleito de nulidade da prova documental anexada , por cópia , em fl . 48-63 , tenha sido requerida na oportunidade prevista no §3º , do art . 406 , do CPP . Aliás , a regra geral de processo contida no art . 278 , do CPC , no Direito Brasileiro , é de que a parte deve arguir qualquer nulidade na primeira oportunidade em que lhe couber falar nos autos , ou não mais poderá questionar o vício . Esse requerimento tanto é aplicável no Direito Processual Penal quanto no Processo Civil , como se vê insculpido no art . 278 do novel CPC , in verbis : Art . 278 . A nulidade dos atos deve ser alegada na primeira oportunidade em que couber à parte falar nos autos , sob pena de preclusão . Portanto , já transitada em julgado a pronúncia , não há como se examinar agora , essa pretensão ."
+
+Breaking down:
+
+1. "§3º , do art . 406 , do CPP" → "CPP" is legislacao, "art. 406" is legislacao.
+2. "art . 278 , do CPC" → "CPC" is legislacao, "art. 278" is legislacao.
+3. "art . 278 do novel CPC" → "CPC" is legislacao, "art. 278" is legislacao.
+
+So all instances of "CPP", "CPC", "art. 406", "art. 278" should be marked. The "novel" is part of the text but not an entity. 
+
+Now, I need to replace each occurrence with the <span> tags. Also, note that in the original text, there are spaces and punctuation, so I need to make sure the tags are correctly placed around the entities.
+
+For example, "art . 406" becomes <span class="legislacao">art . 406</span>, but wait, the original text has "art . 406" with a space after "art". So the entire "art . 406" is the entity. Similarly for "art . 278".
+
+So the final HTML should have those spans. Let me check if there are any other entities. The text mentions "Direito Brasileiro" but that's a general term, not a specific entity. "pronúncia" is a legal term but not one of the specified types. 
+
+Therefore, the output should have the spans for the legislation entities.
+</think>
+
+Compulsando os autos , verifica-se que não há notícia de que o pleito de nulidade da prova documental anexada , por cópia , em fl . 48-63 , tenha sido requerida na oportunidade prevista no §3º , do <span class="legislacao">art . 406</span> , do <span class="legislacao">CPP</span> . Aliás , a regra geral de processo contida no <span class="legislacao">art . 278</span> , do <span class="legislacao">CPC</span> , no Direito Brasileiro , é de que a parte deve arguir qualquer nulidade na primeira oportunidade em que lhe couber falar nos autos , ou não mais poderá questionar o vício . Esse requerimento tanto é aplicável no Direito Processual Penal quanto no Processo Civil , como se vê insculpido no <span class="legislacao">art . 278</span> do novel <span class="legislacao">CPC</span> , in verbis : <span class="legislacao">Art . 278</span> . A nulidade dos atos deve ser alegada na primeira oportunidade em que couber à parte falar nos autos , sob pena de preclusão . Portanto , já transitada em julgado a pronúncia , não há como se examinar agora , essa pretensão .

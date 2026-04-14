@@ -1,0 +1,97 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each needs a class attribute.
+
+First, I need to go through the text and identify each entity according to the definitions provided. Let me start by reading the input text carefully.
+
+The first part is "4º Esta Lei entra em vigor na data de sua publicação." Here, "Lei" is part of the legislation. Since it's a law, I should mark "Lei" as legislação. Wait, but the exact name of the law isn't given. The text mentions "Lei Orgânica do Distrito Federal" later, which is a specific law. But in the first part, it's just "Lei" without a number or specific name. However, the instruction says to mark references to norms. Since "Lei" here is part of the text but not a specific law, maybe it's not marked. Wait, the example in the guidelines includes "Lei nº 8.666/93" as legislation. So if there's a specific law mentioned, like "Lei Orgânica do Distrito Federal," that's a legislation. But in the first sentence, it's just "Lei" without a number. Maybe that's not marked. Hmm, need to check.
+
+Next, "Art. 5º Revogam-se as disposições em contrário." "Art." is part of the article reference, but the example in the guidelines includes "art. 71 da Lei 8.666/93" as legislation. But here, "Art. 5º" is just an article number, not a specific law. So maybe not marked as legislação. Wait, but the user's example in the output shows "Art. 5º" as part of the text, not marked. So I'll leave that as is.
+
+Moving on: "Sustentou a Requerente , em síntese , que a referida norma ostenta inconstitucionalidade formal e material , por violação aos artigos 15 , incisos XIV e XV , 19 , “ caput ” , 53 , 71 , § 1º , inciso IV , e 100 , incisos VI e X da Lei Orgânica do Distrito Federal ."
+
+Here, "Lei Orgânica do Distrito Federal" is a specific law, so that's a legislation. I need to mark that as <span class="legislacao">. Also, "Requerente" is a person, but the guidelines say to mark only names, not generic terms like "Requerente." Wait, the user's definition says: "Pessoa é definido como: expressões que correspondem exclusivamente a nomes próprios usados para identificar indivíduos específicos..." So "Requerente" is a generic term, not a name, so it shouldn't be marked. So "Requerente" stays as is.
+
+Next, "Quanto ao vício formal , aduziu que o diploma legal atacado é de iniciativa de Deputado Distrital , todavia , trata-se de matéria afeta à administração e ao funcionamento de órgãos da Administração Pública do Distrito Federal , tema de competência privativa do Chefe do Poder Executivo Governador do Distrito Federal ."
+
+Here, "Deputado Distrital" is a title, not a name, so not marked. "Administração Pública do Distrito Federal" – "Distrito Federal" is a local entity. So "Distrito Federal" should be marked as local. "Chefe do Poder Executivo Governador do Distrito Federal" – "Governador" is a title, not a name, so not marked. "Distrito Federal" again, so mark that as local.
+
+Putting this all together, the entities to mark are:
+
+1. "Lei Orgânica do Distrito Federal" – legislation and local (but only legislation is needed here).
+2. "Distrito Federal" – local.
+3. "Deputado Distrital" – not a name, so no.
+4. "Chefe do Poder Executivo Governador" – not a name.
+5. "Art. 5º" – not marked.
+6. "Requerente" – not a name.
+
+Wait, the "Lei Orgânica do Distrito Federal" is a specific law, so it's legislation. So the entire phrase "Lei Orgânica do Distrito Federal" should be marked as legislação. Also, "Distrito Federal" is a local entity. So in the text, wherever "Distrito Federal" appears, it should be marked as local. Also, "Lei Orgânica do Distrito Federal" is a legislation. So in the text, the sentence mentions "da Lei Orgânica do Distrito Federal" – the entire "Lei Orgânica do Distrito Federal" is the legislation. So I need to wrap that in <span class="legislacao">.
+
+So the steps are:
+
+- Find all instances of the entities.
+- Apply the correct class.
+- Ensure that only the full names are marked, not parts of them.
+
+Let me go through the text again:
+
+Original text:
+
+4º Esta Lei entra em vigor na data de sua publicação . Art . 5º Revogam-se as disposições em contrário . Sustentou a Requerente , em síntese , que a referida norma ostenta inconstitucionalidade formal e material , por violação aos artigos 15 , incisos XIV e XV , 19 , “ caput ” , 53 , 71 , § 1º , inciso IV , e 100 , incisos VI e X da Lei Orgânica do Distrito Federal . Quanto ao vício formal , aduziu que o diploma legal atacado é de iniciativa de Deputado Distrital , todavia , trata-se de matéria afeta à administração e ao funcionamento de órgãos da Administração Pública do Distrito Federal , tema de competência privativa do Chefe do Poder Executivo Governador do Distrito Federal .
+
+So:
+
+- "Lei Orgânica do Distrito Federal" is the legislation. So mark that as <span class="legislacao">.
+
+- "Distrito Federal" appears twice. Once in "Lei Orgânica do Distrito Federal" (already marked as legislação), and again in "Administração Pública do Distrito Federal" and "Governador do Distrito Federal". So in those cases, "Distrito Federal" should be marked as local.
+
+So the HTML would be:
+
+4º Esta Lei entra em vigor na data de sua publicação . Art . 5º Revogam-se as disposições em contrário . Sustentou a Requerente , em síntese , que a referida norma ostenta inconstitucionalidade formal e material , por violação aos artigos 15 , incisos XIV e XV , 19 , “ caput ” , 53 , 71 , § 1º , inciso IV , e 100 , incisos VI e X da <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> . Quanto ao vício formal , aduziu que o diploma legal atacado é de iniciativa de Deputado Distrital , todavia , trata-se de matéria afeta à administração e ao funcionamento de órgãos da Administração Pública do <span class="local">Distrito Federal</span> , tema de competência privativa do Chefe do Poder Executivo Governador do <span class="local">Distrito Federal</span> .
+
+Wait, in the first occurrence, "Lei Orgânica do Distrito Federal" – the entire phrase is legislation. So "Lei Orgânica do Distrito Federal" should be marked as legislação. But "Distrito Federal" is a local entity. So in the legislation, "Distrito Federal" is part of the law's name, so it's part of the legislation. Wait, the guidelines say that legislation includes "expressões que identifiquem normas jurídicas...". So "Lei Orgânica do Distrito Federal" is a specific law, so the entire phrase should be marked as legislação. However, "Distrito Federal" is a local entity. But the entire phrase is a law, so the local part is part of the legislation. Therefore, the entire "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is part of that legislation. So the correct approach is to mark the entire "Lei Orgânica do Distrito Federal" as legislação. However, the user's guidelines say that "Apenas referências a normas devem ser marcadas." So the entire law name is marked as legislação, and the local part is part of it. Therefore, the HTML should have "Lei Orgânica do Distrito Federal" as a single <span class="legislacao">. But the user's example in the guidelines shows that "Lei nº 8.666/93" is marked as legislação, so the entire name is marked. Therefore, in this case, "Lei Orgânica do Distrito Federal" is the legislation, so the entire phrase is marked. However, the "Distrito Federal" is a local entity. But since it's part of the legislation's name, do I need to mark it as local as well? The guidelines say that local entities are places, so "Distrito Federal" is a local entity. However, the legislation includes the local entity. But the user's instruction says to mark each entity. So the entire "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is a local. Wait, but the "Distrito Federal" is part of the legislation's name. So in the text, it's part of the legislation. Should I mark "Distrito Federal" as local within the legislation? Or is the entire phrase considered as legislation, and the local part is part of it? The guidelines say that each entity should be marked. So if "Distrito Federal" is a local entity, it should be marked. But since it's part of the legislation, perhaps the entire phrase is legislation, and the local part is part of it. However, the user's example in the guidelines includes "Lei nº 8.666/93" as legislation, which is a law. So in this case, "Lei Orgânica do Distrito Federal" is a law, so it's legislation. The "Distrito Federal" is part of the law's name, but it's also a local entity. Therefore, the correct approach is to mark "Lei Orgânica do Distrito Federal" as legislation, and "Distrito Federal" as local. However, since "Distrito Federal" is part of the legislation's name, it's unclear whether it should be marked as local. But according to the guidelines, "local" is a place. So even though it's part of the legislation, it's still a local entity. Therefore, in the text, whenever "Distrito Federal" appears, it should be marked as local. So in the legislation name, "Distrito Federal" is part of the legislation, but it's also a local. Therefore, the entire "Lei Orgânica do Distrito Federal" is marked as legislation, and "Distrito Federal" within it is also marked as local. Wait, but that would mean overlapping spans. However, the user's example in the guidelines shows that "Lei nº 8.666/93" is marked as legislação. So if "Distrito Federal" is part of the legislation's name, it's part of the legislation. But the local entity is a separate entity. Therefore, the correct approach is to mark "Lei Orgânica do Distrito Federal" as legislation, and "Distrito Federal" as local. But how to do that without overlapping? For example, in the text, "Lei Orgânica do Distrito Federal" – the entire phrase is legislation, and "Distrito Federal" is a local. So perhaps the entire phrase is marked as legislation, and the "Distrito Federal" part is also marked as local. But that would require two spans. However, the user's guidelines say that each entity should be marked. So the correct approach is to mark both. Therefore, the HTML would be:
+
+<span class="legislacao"><span class="local">Distrito Federal</span></span>
+
+But that's not correct. Wait, the entire "Lei Orgânica do Distrito Federal" is the legislation. So the "Distrito Federal" is part of the legislation's name. But it's also a local entity. So in the text, "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is a local. Therefore, the correct way is to mark the entire "Lei Orgânica do Distrito Federal" as legislation, and the "Distrito Federal" as local. But that would require overlapping spans. However, HTML allows nested spans. So, the text would be:
+
+"Lei Orgânica do <span class="local">Distrito Federal</span>"
+
+But then "Lei Orgânica do Distrito Federal" is part of the legislation. So perhaps the entire phrase is legislation, and the local part is part of it. However, the user's example in the guidelines shows that "Lei nº 8.666/93" is marked as legislation. So in this case, the entire "Lei Orgânica do Distrito Federal" is a legislation, and "Distrito Federal" is part of it. Therefore, the entire phrase should be marked as legislation, and the "Distrito Federal" is part of that legislation. So the HTML should be:
+
+<span class="legislacao">Lei Orgânica do Distrito Federal</span>
+
+But then "Distrito Federal" is part of the legislation. However, the guidelines say that local entities should be marked. So even though it's part of the legislation, the "Distrito Federal" is a local entity. Therefore, the correct approach is to mark "Lei Orgânica do Distrito Federal" as legislation, and "Distrito Federal" as local. But how to do that without overlapping? It's a bit confusing. Maybe the user expects that "Lei Orgânica do Distrito Federal" is the legislation, and "Distrito Federal" is a local. So the HTML would have:
+
+"Lei Orgânica do <span class="local">Distrito Federal</span>"
+
+But since "Lei Orgânica do Distrito Federal" is a legislation, the entire phrase is legislation. However, the guidelines say that each entity should be marked. So if "Distrito Federal" is a local entity, it should be marked. Therefore, even though it's part of the legislation, it's still a local entity. Therefore, the correct HTML would have both spans. For example:
+
+<span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span>
+
+But that would make "Distrito Federal" part of the legislation. However, the user's guidelines say that legislação includes the name of the law, so the entire phrase is legislation. Therefore, the entire phrase is marked as legislation, and the local part is part of it. But the user's guidelines also say that local entities should be marked. Therefore, the correct approach is to mark both.
+
+But this might be conflicting. To resolve this, perhaps the user expects that "Lei Orgânica do Distrito Federal" is the legislation, and "Distrito Federal" is part of that legislation. Therefore, the entire phrase is marked as legislation, and the local entity is not marked separately. However, the user's guidelines state that local entities should be marked. Therefore, the correct approach is to mark "Distrito Federal" as local, even though it's part of the legislation. So in the text, "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is a local. Therefore, the HTML would be:
+
+<span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span>
+
+But this way, the entire legislation is marked, and the local part is also marked. However, this might be redundant. But according to the guidelines, each entity should be marked, even if it's part of another entity. Therefore, this is the correct approach.
+
+So, in the text:
+
+- "Lei Orgânica do Distrito Federal" is marked as legislação, and "Distrito Federal" is marked as local.
+
+Then, in other parts, "Distrito Federal" is mentioned again, so each occurrence should be marked as local.
+
+So the final HTML would have:
+
+- <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span>
+- <span class="local">Distrito Federal</span> (in the next occurrences)
+
+So putting it all together, the HTML would be:
+
+4º Esta Lei entra em vigor na data de sua publicação . Art . 5º Revogam-se as disposições em contrário . Sustentou a Requerente , em síntese , que a referida norma ostenta inconstitucionalidade formal e material , por violação aos artigos 15 , incisos XIV e XV , 19 , “ caput ” , 53 , 71 , § 1º , inciso IV , e 100 , incisos VI e X da <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> . Quanto ao vício formal , aduziu que o diploma legal atacado é de iniciativa de Deputado Distrital , todavia , trata-se de matéria afeta à administração e ao funcionamento de órgãos da Administração Pública do <span class="local">Distrito Federal</span> , tema de competência privativa do Chefe do Poder Executivo Governador do <span class="local">Distrito Federal</span> .
+
+This way, the legislation is marked, and the local entities are also marked where they appear. The other parts of the text don't have any entities to mark, so they remain as is.
+</think>
+
+4º Esta Lei entra em vigor na data de sua publicação . Art . 5º Revogam-se as disposições em contrário . Sustentou a Requerente , em síntese , que a referida norma ostenta inconstitucionalidade formal e material , por violação aos artigos 15 , incisos XIV e XV , 19 , “ caput ” , 53 , 71 , § 1º , inciso IV , e 100 , incisos VI e X da <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> . Quanto ao vício formal , aduziu que o diploma legal atacado é de iniciativa de Deputado Distrital , todavia , trata-se de matéria afeta à administração e ao funcionamento de órgãos da Administração Pública do <span class="local">Distrito Federal</span> , tema de competência privativa do Chefe do Poder Executivo Governador do <span class="local">Distrito Federal</span> .

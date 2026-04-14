@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the text again to spot all the entities.
+
+Starting with the first part: "Composição : Ministros Cármen Lúcia ( Presidente ) , Celso de Mello , Marco Aurélio , Gilmar Mendes , Ricardo Lewandowski , Dias Toffoli , Luiz Fux , Rosa Weber , Roberto Barroso , Edson Fachin e Alexandre de Moraes ."
+
+Here, the names like Cármen Lúcia, Celso de Mello, etc., are all people. So each of these should be marked as 'pessoa'. The term "Ministros" is plural for ministers, so those are people. Also, "Presidente" in parentheses might refer to a position, but since it's part of the name, maybe it's part of the person's title. Wait, the instruction says to mark the entities, so maybe "Presidente" is part of the person's title, but the main entity is the name. So I'll mark each name as 'pessoa'.
+
+Next, "p/ Doralúcia das Neves Santos Assessora-Chefe do Plenário" – Doralúcia is a person, so 'pessoa'. "Assessora-Chefe do Plenário" is a position, but the user didn't mention marking positions, only the entities listed. So maybe only the name is marked.
+
+Then, "Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil ."
+
+Here, "MP n° 2.200-2/2001" is a legislative measure, so 'legislacao'. The date "24/08/2001" is 'tempo'. "ICP-Brasil" is part of the legislation, so maybe 'legislacao' again. Wait, the MP is a decree, so it's legislation. The ICP-Brasil is the name of the infrastructure, which might be part of the legislation. So I'll mark MP n° 2.200-2/2001 as 'legislacao', the date as 'tempo', and ICP-Brasil as 'legislacao'.
+
+Next, "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp sob o número 14532100 Supremo Tribunal Federal PLENÁRIO EXTRATO DE ATA AG.REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 PROCED . : MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A/S ) : ADVOGADO-GERAL DA UNIÃO AGDO . ( A/S ) : ESTADO DE MATO GROSSO PROC ."
+
+"Supremo Tribunal Federal" is an organization, so 'organizacao'. "Mato Grosso" is a location, so 'local'. "RICARDO LEWANDOWSKI" is a person, so 'pessoa'. "UNIÃO" is a legal entity, so 'organizacao'. "ADVOGADO-GERAL DA UNIÃO" is a position, but the user didn't mention positions, so maybe not. "ESTADO DE MATO GROSSO" is an organization, so 'organizacao'. "PROCED . : MATO GROSSO" – "Mato Grosso" again is a location. Wait, but in the text, "PROCED . : MATO GROSSO" – "Mato Grosso" is a state, so 'local'.
+
+Wait, need to check each part again. Let me go step by step.
+
+Original text:
+
+"Composição : Ministros Cármen Lúcia ( Presidente ) , Celso de Mello , Marco Aurélio , Gilmar Mendes , Ricardo Lewandowski , Dias Toffoli , Luiz Fux , Rosa Weber , Roberto Barroso , Edson Fachin e Alexandre de Moraes . p/ Doralúcia das Neves Santos Assessora-Chefe do Plenário Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp sob o número 14532100 Supremo Tribunal Federal PLENÁRIO EXTRATO DE ATA AG.REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 PROCED . : MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A/S ) : ADVOGADO-GERAL DA UNIÃO AGDO . ( A/S ) : ESTADO DE MATO GROSSO PROC ."
+
+Breaking down:
+
+- "Ministros Cármen Lúcia ( Presidente )" – Cármen Lúcia is a person. "Presidente" is part of her title, but the main entity is the name. So mark Cármen Lúcia as 'pessoa'. Similarly for the others: Celso de Mello, Marco Aurélio, etc. All are people.
+
+- "Doralúcia das Neves Santos" is a person, so 'pessoa'.
+
+- "Assessora-Chefe do Plenário" – this is a position, not an entity type. So no tag.
+
+- "MP n° 2.200-2/2001" – MP is a decree, so 'legislacao'.
+
+- "24/08/2001" – date, so 'tempo'.
+
+- "Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil" – ICP-Brasil is the name of the infrastructure, which is part of the legislation, so 'legislacao'.
+
+- "http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp" – URL, but no entity type specified. So leave as is.
+
+- "Supremo Tribunal Federal" – organization, so 'organizacao'.
+
+- "Mato GROSSO" – location, so 'local'.
+
+- "RICARDO LEWANDOWSKI" – person, 'pessoa'.
+
+- "UNIÃO" – organization, 'organizacao'.
+
+- "ADVOGADO-GERAL DA UNIÃO" – position, not an entity type.
+
+- "ESTADO DE MATO GROSSO" – organization, 'organizacao'.
+
+- "PROCED . : MATO GROSSO" – "Mato GROSSO" again is a location, so 'local'.
+
+Wait, but in the original text, "PROCED . : MATO GROSSO" – "Mato GROSSO" is a state, so 'local'.
+
+So compiling all these, I need to wrap each entity with the appropriate span tags. Let me make sure I didn't miss any.
+
+Also, check for any other entities. For example, "PLENÁRIO" – that's part of the Supreme Court, so maybe part of the organization name. But "Supremo Tribunal Federal PLENÁRIO" – the PLENÁRIO is part of the organization's name. So "Supremo Tribunal Federal" is the organization, and "PLENÁRIO" is part of it. But since the user didn't specify to split parts, maybe just mark "Supremo Tribunal Federal" as 'organizacao'.
+
+Similarly, "AG.REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821" – these are legal terms, but not entities. "PROCED . : MATO GROSSO" – "Mato GROSSO" is a location.
+
+So the final HTML should have all these entities marked with the correct classes. Let me structure the HTML accordingly.
+</think>
+
+Composição : Ministros <span class="pessoa">Cármen Lúcia</span> ( Presidente ) , <span class="pessoa">Celso de Mello</span> , <span class="pessoa">Marco Aurélio</span> , <span class="pessoa">Gilmar Mendes</span> , <span class="pessoa">Ricardo Lewandowski</span> , <span class="pessoa">Dias Toffoli</span> , <span class="pessoa">Luiz Fux</span> , <span class="pessoa">Rosa Weber</span> , <span class="pessoa">Roberto Barroso</span> , <span class="pessoa">Edson Fachin</span> e <span class="pessoa">Alexandre de Moraes</span> . p/ <span class="pessoa">Doralúcia das Neves Santos</span> Assessora-Chefe do Plenário Documento assinado digitalmente conforme <span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a Infra-estrutura de Chaves Públicas Brasileira - <span class="legislacao">ICP-Brasil</span> . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp sob o número 14532100 <span class="organizacao">Supremo Tribunal Federal</span> PLENÁRIO EXTRATO DE ATA AG.REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 PROCED . : <span class="local">Mato GROSSO</span> RELATOR : MIN . <span class="pessoa">Ricardo Lewandowski</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A/S ) : <span class="organizacao">ADVOGADO-GERAL DA UNIÃO</span> AGDO . ( A/S ) : <span class="organizacao">ESTADO DE MATO GROSSO</span> PROC .

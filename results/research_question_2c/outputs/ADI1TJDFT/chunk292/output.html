@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "A Senhora Desembargadora CARMELITA BRASIL - Vogal Acompanho o eminente Relator , pedindo vênia à divergência ."
+
+Looking for each entity type:
+
+1. **pessoa**: The text mentions "Senhora Desembargadora CARMELITA BRASIL" and "Relator". "CARMELITA BRASIL" is a person's name, so that's a pessoa. "Relator" is a title, but maybe it refers to a person, so maybe "Relator" should be a pessoa? Wait, the user's example output shows "CARMELITA BRASIL" as pessoa. The "Relator" might be part of the title, but the user's example output doesn't mark it. Wait, looking at the sample output provided by the user, the output is:
+
+"A Senhora Desembargadora <span class="pessoa">CARMELITA BRASIL</span> - Vogal Acompanho o eminente <span class="pessoa">Relator</span> , pedindo vênia à divergência ."
+
+So in the example, "Relator" is marked as pessoa. So I need to check if "Relator" is a person's title. In legal contexts, "Relator" is often a title for a judge or a person in a legal proceeding, so it's safe to mark it as pessoa.
+
+2. **organizacao**: There's no mention of an organization here.
+
+3. **tempo**: No dates or time references.
+
+4. **local**: No locations mentioned.
+
+5. **legislacao** and **jurisprudencia**: No legal statutes or judicial precedents mentioned.
+
+So the only entities are "CARMELITA BRASIL" and "Relator" as pessoa. The rest of the text remains unchanged. The output should have those two parts wrapped in <span class="pessoa">.
+
+Now, I need to make sure the HTML is correctly formatted. The user's example output uses the exact structure, so I'll follow that. The original text has "Senhora Desembargadora" which is part of the title, so that's not an entity. The hyphen and "Vogal" are part of the title as well. The rest is the text.
+
+So the final HTML should be:
+
+"A Senhora Desembargadora <span class="pessoa">CARMELITA BRASIL</span> - Vogal Acompanho o eminente <span class="pessoa">Relator</span> , pedindo vênia à divergência ."
+
+I need to ensure that the tags are properly closed and the classes are correctly spelled. Also, check for any other possible entities, but in this case, there are none. The user's example output matches this, so I think that's correct.
+</think>
+
+A Senhora Desembargadora <span class="pessoa">CARMELITA BRASIL</span> - Vogal Acompanho o eminente <span class="pessoa">Relator</span> , pedindo vênia à divergência .

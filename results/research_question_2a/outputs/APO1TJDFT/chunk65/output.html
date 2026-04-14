@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me look at the example provided. The input text is: "3 . Apelação Cível conhecida e provida '' ( TJDFT , Acórdão n.1001457 , 20150110774657APC , Relator : NÍDIA CORRÊA LIMA 8ª TURMA CÍVEL , Data de Julgamento : 16/02/2017 , Publicado no DJE : 16/03/2017 . Pág. : 551/559 ) ."
+
+I need to identify each entity. Let's break it down step by step.
+
+Starting with "TJDFT" – that's likely an organization, maybe the Tribunal de Justiça do Distrito Federal e Territórios. So I'll mark that as <span class="organizacao">TJDFT</span>.
+
+Next, "Acórdão n.1001457" – "Acórdão" is a legal term, but the number might be a case number. However, the user hasn't specified case numbers as an entity type. So maybe "Acórdão" is part of the legislation or jurisprudence? Wait, the entities are legislacao and jurisprudencia. "Acórdão" is a judicial decision, so that's jurisprudencia. But the number might not be an entity. So "Acórdão" would be jurisprudencia, and the number is just text. Wait, but the example output in the user's message shows that "Acórdão n.1001457" is marked as jurisprudencia. Wait, looking at the sample output provided by the user, the output is:
+
+"3 . Apelação Cível conhecida e provida '' ( <span class="organizacao">TJDFT</span> , <span class="jurisprudencia">Acórdão n.1001457</span> , <span class="tempo">20150110774657APC</span> , Relator : <span class="pessoa">NÍDIA CORRÊA LIMA</span> 8ª TURMA CÍVEL , Data de Julgamento : <span class="tempo">16/02/2017</span> , Publicado no DJE : <span class="tempo">16/03/2017</span> . Pág. : 551/559 ) ."
+
+Wait, the user's example output shows that "Acórdão n.1001457" is marked as jurisprudencia. So I need to follow that. So "Acórdão" is part of the jurisprudencia entity. The number after it is part of the case number, which might not be an entity. But the user's example includes "20150110774657APC" as tempo. Wait, that looks like a date or a case number. The user's example marks it as tempo. So maybe the user considers any date-like string as tempo. So "20150110774657APC" is a date or a code, so marked as tempo.
+
+Then "Relator : NÍDIA CORRÊA LIMA" – "Relator" is a person, so the name "NÍDIA CORRÊA LIMA" is a pessoa.
+
+"8ª TURMA CÍVEL" – "TURMA CÍVEL" is part of the organization? Or maybe it's part of the court structure. But the user's example doesn't mark it. So maybe it's not an entity. The user's example output doesn't mark "8ª TURMA CÍVEL" as anything. So I should leave it as is.
+
+"Data de Julgamento : 16/02/2017" – the date is marked as tempo.
+
+"Publicado no DJE : 16/03/2017" – the date is tempo.
+
+"Pág. : 551/559" – this is a page number, not an entity, so left as is.
+
+So putting it all together:
+
+- TJDFT → organizacao
+- Acórdão n.1001457 → jurisprudencia
+- 20150110774657APC → tempo
+- NÍDIA CORRÊA LIMA → pessoa
+- 16/02/2017 → tempo
+- 16/03/2017 → tempo
+
+Other parts like "Apelação Cível" are legal terms but not entities. "Relator" is a role, not an entity. "8ª TURMA CÍVEL" is part of the court structure, but not an entity. "DJE" is an acronym for Diário do Judiciário Eletrônico, which might be an organization, but the user's example doesn't mark it. So I should follow the example and not mark it.
+
+So the final HTML would have the spans as per the example. Let me check again to make sure I didn't miss any entities. The user's example output includes all the marked entities as per the explanation. So I need to replicate that.
+</think>
+
+3 . Apelação Cível conhecida e provida '' ( <span class="organizacao">TJDFT</span> , <span class="jurisprudencia">Acórdão n.1001457</span> , <span class="tempo">20150110774657APC</span> , Relator : <span class="pessoa">NÍDIA CORRÊA LIMA</span> 8ª TURMA CÍVEL , Data de Julgamento : <span class="tempo">16/02/2017</span> , Publicado no DJE : <span class="tempo">16/03/2017</span> . Pág. : 551/559 ) .

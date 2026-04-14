@@ -1,0 +1,54 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The first part is "Ministra Dora Maria da Costa". "Ministra" is a title, so according to the guidelines, titles like "Ministra" aren't marked as pessoa. But the name "Dora Maria da Costa" is a person's name, so that should be marked as pessoa. Wait, but the example shows that "Ministro Ives Gandra Martins Filho" is marked as pessoa. So even though "Ministro" is a title, the name is still marked. So "Dora Maria da Costa" is a pessoa.
+
+Next, "DEJT de 11/05/2012". "DEJT" might be an acronym for a specific organization, like "Diário Eletrônico da Justiça do Trabalho" or something similar. But the example didn't mark "DEJT" as an organization. Wait, the example had "DEJT de 11/05/2012" and in the output, it's not marked. Wait, looking back at the example, the input was "DEJT de 11/05/2012" and the output didn't mark it. Wait, the example input had "DEJT de 11/05/2012" and the output didn't mark it. Wait, maybe "DEJT" is an abbreviation for a specific organization, but according to the guidelines, only full names are marked. Wait, the example in the user's message shows that "DEJT" wasn't marked. Wait, in the example input, the output didn't mark "DEJT" as an organization. So maybe "DEJT" is not considered an organization here. Wait, the user's example input had "DEJT de 11/05/2012" and the output didn't mark it. So perhaps "DEJT" is not an organization in this context. Maybe it's a date format. Wait, "DEJT" could be a date, but the date is "11/05/2012". Wait, the date is "11/05/2012", which is a tempo entity. So "11/05/2012" should be marked as tempo. The "DEJT" part might be an abbreviation for a publication, but according to the guidelines, unless it's a full name of an organization, it's not marked. So "DEJT" might not be marked. Wait, the example in the user's message had "DEJT de 11/05/2012" and the output didn't mark "DEJT". So I should not mark "DEJT" as an organization here. So the date "11/05/2012" is marked as tempo.
+
+Next, "Ag-E-ED-AgR-AIRR-92640-31.2005.03.0004". This looks like a legal process number. According to the jurisprudencia definition, identifiers like this should be marked as jurisprudencia. So that entire string should be marked as jurisprudencia.
+
+Then, "Ministro Ives Gandra Martins Filho" – similar to the previous case. "Ministro" is a title, but the name "Ives Gandra Martins Filho" is a pessoa. So that's marked as pessoa.
+
+Next, "DEJT de 11/05/2012" again. Same as before, the date is marked as tempo.
+
+"Ante o exposto" – no entity here.
+
+"com amparo no art . 557 , caput , do CPC e na Súmula 435 do TST" – "CPC" is a legislation (Código de Processo Civil), so "CPC" is marked as legislacao. "Súmula 435 do TST" is a jurisprudencia reference, so that's marked as jurisprudencia.
+
+"por ser manifestamente inadmissível o recurso de revista , NEGO SEGUIMENTO ao agravo de instrumento" – no entities here.
+
+"O reclamado alega ter indicado ofensa a diversos dispositivos da Constituição Federal" – "Constituição Federal" is a legislacao, so marked as legislacao.
+
+"e dissenso jurisprudencial que ensejariam o processamento do recurso de revista" – "jurisprudencial" is a generic term, so not marked.
+
+"sob o argumento de que o reclamante não faz jus aos reajustes salariais fixados pela CRUESP" – "CRUESP" is a legislation? Wait, the user's guidelines say that "CRUESP" is not a legislation. The example mentions that "ICP" or "ICP-Brasil" are not considered legislation. So "CRUESP" is a legislation? Wait, the user's example says that "CRUESP" is not marked as legislation. Wait, the user's guidelines say that "termos como 'ICP' ou 'ICP-Brasil', que se referem ao sistema de certificação e assinatura digital do país, não devem ser anotados como legislação." So "CRUESP" is not a legislation. Wait, but "CRUESP" is a term that might refer to a specific legislation. Wait, maybe "CRUESP" is an acronym for a specific law. But according to the guidelines, unless it's a full name, it's not marked. Wait, the user's example didn't mark "CRUESP" as legislation. So perhaps "CRUESP" is not marked here. Wait, the user's example input had "CRUESP" and the output didn't mark it. So I should not mark "CRUESP" as legislacao.
+
+"Razão não lhe assiste , contudo . A matéria já se encontra pacifica na Corte , na forma dos precedentes transcritos na decisão agravada , razão pela qual considera-se intactos os arts ."
+
+"Corte" is a organization? Wait, "Corte" could refer to a court, like "Corte Superior" or "Corte Eleitoral". But in the example, "Corte" was not marked. Wait, the user's example had "Corte" in the input and the output didn't mark it. Wait, the example input had "Corte" and the output didn't mark it. So maybe "Corte" is not marked here. Wait, but "Corte" could be an organization. Wait, the user's guidelines say that "expressões que identifiquem turmas cíveis, como '4ª Turma Cível', '8ª Turma Cível' ou variações equivalentes, devem sempre ser anotadas como organização." So "Corte" might be an organization. But in the example, "Corte" wasn't marked. Wait, maybe "Corte" is not a specific organization here. For example, "Corte" could be a generic term. So in this case, "Corte" is not marked as organizacao.
+
+So putting it all together:
+
+- "Ministra Dora Maria da Costa" → pessoa (only the name, not the title)
+- "DEJT de 11/05/2012" → "11/05/2012" is tempo
+- "Ag-E-ED-AgR-AIRR-92640-31.2005.03.0004" → jurisprudencia
+- "Ministro Ives Gandra Martins Filho" → pessoa
+- "DEJT de 11/05/2012" → same as before
+- "art . 557" → "art" is part of the legislation reference, so "art. 557" is part of the legislacao (CPC)
+- "Súmula 435 do TST" → jurisprudencia
+- "Constituição Federal" → legislacao
+- "CRUESP" → not marked
+- "Corte" → not marked
+
+Wait, the "art . 557 , caput , do CPC" – "CPC" is the Código de Processo Civil, so that's legislacao. So "art. 557" is part of the legislacao reference. So the entire "art. 557 , caput , do CPC" should be marked as legislacao.
+
+Similarly, "Súmula 435 do TST" is jurisprudencia.
+
+"Constituição Federal" is legislacao.
+
+So the final HTML should have these tags.
+</think>
+
+Ministra Dora Maria da Costa , <span class="tempo">DEJT de 11/05/2012</span> ; <span class="jurisprudencia">Ag-E-ED-AgR-AIRR-92640-31.2005.03.0004</span> , <span class="pessoa">Ministro Ives Gandra Martins Filho</span> , <span class="tempo">DEJT de 11/05/2012</span> . Ante o exposto , com amparo no <span class="legislacao">art . 557 , caput , do CPC</span> e na <span class="jurisprudencia">Súmula 435 do TST</span> , por ser manifestamente inadmissível o recurso de revista , NEGO SEGUIMENTO ao agravo de instrumento . O reclamado alega ter indicado ofensa a diversos dispositivos da <span class="legislacao">Constituição Federal</span> e dissenso jurisprudencial que ensejariam o processamento do recurso de revista , sob o argumento de que o reclamante não faz jus aos reajustes salariais fixados pela CRUESP . Razão não lhe assiste , contudo . A matéria já se encontra pacifica na Corte , na forma dos precedentes transcritos na decisão agravada , razão pela qual considera-se intactos os arts .

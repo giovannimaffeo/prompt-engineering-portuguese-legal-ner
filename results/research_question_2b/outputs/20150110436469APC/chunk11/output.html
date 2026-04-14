@@ -1,0 +1,82 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class indicating their type.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be careful with the terms. Let me parse the sentence step by step.
+
+The text starts with "Cabe ressaltar que , segundo o artigo 202 , inciso I , do Código Civil , a interrupção da prescrição , que somente poderá ocorrer uma vez , dar-se-á `` por despacho do juiz , mesmo incompetente , que ordenar a citação , se o interessado a promover no prazo e na forma da lei processual ."
+
+Looking for entities:
+
+1. "Código Civil" – This is a legal code, so it's legislation. So I should mark "Código Civil" with class="legislacao".
+2. "artigo 202" – This refers to an article in the legislation, so "artigo 202" should be part of the legislacao class. Wait, but the exact term is "artigo 202" which is part of the Código Civil. So maybe the entire "artigo 202, inciso I" is part of the legislacao. But the user's example in the output might have "artigo 202" as legislacao. Let me check the example given in the output.
+
+Wait, the user provided an example where "Código Civil" is marked as legislacao. So in the input text, "Código Civil" is the legislation. Also, "artigo 202" is part of the legislation, so maybe "artigo 202" should be marked as legislacao. But the user's example might have "artigo 202" as part of the legislacao. Let me check the output example.
+
+Wait, the user's example output is not provided here. Wait, the user's instruction says to return only the text with the HTML tags. So I need to process the input text.
+
+In the input text, "Código Civil" is a legislation. So I'll mark that. Also, "artigo 202" is part of the legislation, so maybe "artigo 202" should be marked as legislacao. But sometimes, the article number is part of the legislation. So "artigo 202" would be part of the legislacao. Similarly, "inciso I" is part of the article, so maybe that's part of the legislacao as well. But the user's example might have "artigo 202" as legislacao. Let me check the original text again.
+
+The text says "segundo o artigo 202 , inciso I , do Código Civil". So "artigo 202" and "inciso I" are parts of the legislation. So I should mark "artigo 202" and "inciso I" as legislacao. Wait, but "inciso I" is part of the article. So maybe the entire "artigo 202, inciso I" is part of the legislacao. But the user's example might have "artigo 202" as legislacao. Let me think.
+
+In the original text, "Código Civil" is the legislation. The "artigo 202" is part of that legislation. So "artigo 202" should be marked as legislacao. Similarly, "inciso I" is part of the article, so maybe that's also part of the legislacao. But the user's example might have "artigo 202" as legislacao. Let me check the output example again. Wait, the user hasn't provided an example output, but the task says to return only the text with the HTML tags.
+
+So, in the input text, "Código Civil" is the legislation. So I'll mark that. Also, "artigo 202" is part of the legislation, so "artigo 202" should be marked as legislacao. The "inciso I" is part of the article, so maybe that's also part of the legislacao. But sometimes, the inciso is part of the article. So perhaps "artigo 202, inciso I" is part of the legislacao. However, the user's example might have "artigo 202" as legislacao. Let me proceed.
+
+Also, "juiz" is a person, so "juiz" should be marked as pessoa. "interessado" is a person, so that's pessoa. "lei processual" refers to a law, so that's legislacao. "citação" is a legal term but not an entity. "prazo" is a time reference, so "prazo" should be tempo. Wait, "prazo" is a time period, so it's tempo. "forma da lei processual" – "lei processual" is legislation, so "lei processual" is legislacao.
+
+So putting it all together:
+
+- "Código Civil" → legislacao
+- "artigo 202" → legislacao
+- "inciso I" → legislacao (since it's part of the article)
+- "juiz" → pessoa
+- "interessado" → pessoa
+- "lei processual" → legislacao
+- "prazo" → tempo
+
+Wait, but "prazo" is a time period, so it's tempo. So "prazo" should be marked as tempo.
+
+So the HTML would have:
+
+<span class="legislacao">Código Civil</span>
+<span class="legislacao">artigo 202</span>
+<span class="legislacao">inciso I</span>
+<span class="pessoa">juiz</span>
+<span class="pessoa">interessado</span>
+<span class="legislacao">lei processual</span>
+<span class="tempo">prazo</span>
+
+But I need to check the exact text. Let me go through the original text again:
+
+Original text: "segundo o artigo 202 , inciso I , do Código Civil , a interrupção da prescrição , que somente poderá ocorrer uma vez , dar-se-á `` por despacho do juiz , mesmo incompetente , que ordenar a citação , se o interessado a promover no prazo e na forma da lei processual ."
+
+Breaking it down:
+
+- "segundo o artigo 202" → "artigo 202" is legislacao
+- "inciso I" → part of the article, so legislacao
+- "Código Civil" → legislacao
+- "juiz" → pessoa
+- "interessado" → pessoa
+- "prazo" → tempo
+- "lei processual" → legislacao
+
+So the HTML would have:
+
+<span class="legislacao">artigo 202</span>
+<span class="legislacao">inciso I</span>
+<span class="legislacao">Código Civil</span>
+<span class="pessoa">juiz</span>
+<span class="pessoa">interessado</span>
+<span class="tempo">prazo</span>
+<span class="legislacao">lei processual</span>
+
+But I need to make sure that the tags are correctly placed. Also, the original text has commas and spaces, so I need to include those. For example, "artigo 202" is part of the text, so the span should enclose "artigo 202" exactly. Similarly for "inciso I", "Código Civil", etc.
+
+So the final HTML would be:
+
+Cabe ressaltar que , segundo <span class="legislacao">artigo 202</span> , <span class="legislacao">inciso I</span> , do <span class="legislacao">Código Civil</span> , a interrupção da prescrição , que somente poderá ocorrer uma vez , dar-se-á `` por despacho do <span class="pessoa">juiz</span> , mesmo incompetente , que ordenar a citação , se o <span class="pessoa">interessado</span> a promover no <span class="tempo">prazo</span> e na forma da <span class="legislacao">lei processual</span> . 
+
+I think that's all. Let me check again for any missed entities. "Citação" is a legal term but not an entity. "Forma da lei processual" – "forma" is not an entity, but "lei processual" is legislation. So that's covered. "Prazo" is time. "Juiz" and "interessado" are people. "Código Civil" and "lei processual" are legislation. "Inciso I" is part of the article, so legislacao. "Artigo 202" is legislacao. That's all.
+</think>
+
+Cabe ressaltar que , segundo o <span class="legislacao">artigo 202</span> , <span class="legislacao">inciso I</span> , do <span class="legislacao">Código Civil</span> , a interrupção da prescrição , que somente poderá ocorrer uma vez , dar-se-á `` por despacho do <span class="pessoa">juiz</span> , mesmo incompetente , que ordenar a citação , se o <span class="pessoa">interessado</span> a promover no <span class="tempo">prazo</span> e na forma da <span class="legislacao">lei processual</span> .

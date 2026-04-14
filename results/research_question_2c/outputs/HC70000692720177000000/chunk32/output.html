@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read the example input again: "R1 FRANCISCO NILTON DE SOUZA JÚNIOR , promovido ao posto de Coronel em 25 de dezembro de 2005 , também réu no processo em epígrafe , o feito foi desaforado , em 16 de novembro de 2011 , para a 2ª Auditoria da 11ª CJM ( Brasília/DF ) ."
+
+Starting with "R1 FRANCISCO NILTON DE SOUZA JÚNIOR". The "R1" might be a reference number, not an entity. The name "FRANCISCO NILTON DE SOUZA JÚNIOR" is clearly a person, so that's a 'pessoa'.
+
+Next, "promovido ao posto de Coronel em 25 de dezembro de 2005". The date "25 de dezembro de 2005" is a tempo entity. "Coronel" is a military rank, not an entity here.
+
+Then, "também réu no processo em epígrafe". "réu" is the defendant, so that's another pessoa, but the name isn't given here. Wait, the original text mentions "também réu no processo em epígrafe" – maybe "réu" refers to the same person as before? But since the name isn't specified, maybe it's not an entity here. Wait, the user's example output includes "FRANCISCO NILTON DE SOUZA JÚNIOR" as a pessoa, but the "réu" part might not have a name. So maybe only the name is marked as pessoa.
+
+Next, "o feito foi desaforado , em 16 de novembro de 2011". The date "16 de novembro de 2011" is another tempo entity.
+
+Then, "para a 2ª Auditoria da 11ª CJM ( Brasília/DF )". "CJM" is likely an abbreviation for "Corregedoria Geral Militar" or similar, which would be an organizacao. "Brasília/DF" is a local, so that's a local entity. The "2ª Auditoria da 11ª CJM" might be part of the organizacao, but the exact term "CJM" is the organization. Wait, the user's example output marks "CJM" as organizacao. Let me check the example output again.
+
+Looking at the example output provided by the user, the output is:
+
+R1 <span class="pessoa">FRANCISCO NILTON DE SOUZA JÚNIOR</span> , promovido ao posto de Coronel em <span class="tempo">25 de dezembro de 2005</span> , também réu no processo em epígrafe , o feito foi desaforado , em <span class="tempo">16 de novembro de 2011</span> , para a 2ª Auditoria da <span class="organizacao">11ª CJM</span> ( <span class="local">Brasília/DF</span> ) .
+
+So, "11ª CJM" is marked as organizacao, and "Brasília/DF" as local. The "2ª Auditoria" is part of the organizacao? Or is "CJM" the organization? The example shows "11ª CJM" as organizacao. So I need to mark "CJM" as organizacao. Also, "Brasília/DF" is a local.
+
+So, in the input text, "CJM" is the organization. The "2ª Auditoria da 11ª CJM" – the "CJM" is the organization. So the span should be around "11ª CJM" as organizacao. Also, "Brasília/DF" is the local.
+
+So, putting it all together:
+
+- "FRANCISCO NILTON DE SOUZA JÚNIOR" is pessoa.
+- "25 de dezembro de 2005" is tempo.
+- "16 de novembro de 2011" is tempo.
+- "11ª CJM" is organizacao.
+- "Brasília/DF" is local.
+
+The "R1" is probably a reference, not an entity. The "réu" is mentioned but no name, so no entity. The "processo em epígrafe" is not an entity. The "2ª Auditoria" is part of the organization's name? Or is it part of the organization's name? The example shows "11ª CJM" as organizacao, so the "CJM" is the organization. The "2ª Auditoria" is part of the description, not an entity. So the span is around "11ª CJM".
+
+So the final HTML should have those spans with the correct classes.
+</think>
+
+R1 <span class="pessoa">FRANCISCO NILTON DE SOUZA JÚNIOR</span> , promovido ao posto de Coronel em <span class="tempo">25 de dezembro de 2005</span> , também réu no processo em epígrafe , o feito foi desaforado , em <span class="tempo">16 de novembro de 2011</span> , para a 2ª Auditoria da <span class="organizacao">11ª CJM</span> ( <span class="local">Brasília/DF</span> ) .

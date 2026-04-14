@@ -1,0 +1,56 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "( TST-E-ED-RR - 141500-64.2007.5.15.0067 , Relatora Ministra Dora Maria da Costa , Subseção I Especializada em Dissídios Individuais , DEJT : 2/8/2013 )". 
+
+Looking at this part, "TST-E-ED-RR" might be an acronym for a legal entity. The TST is the Tribunal Superior do Trabalho (Superior Labor Court), so that's an organization. The number "141500-64.2007.5.15.0067" looks like a case number, which is a jurisprudencia reference. The "DEJT : 2/8/2013" is a date, so that's tempo.
+
+Next, "Relatora Ministra Dora Maria da Costa" – "Ministra" is a title, not a name, so the person is "Dora Maria da Costa". Then "Subseção I Especializada em Dissídios Individuais" is part of the organization, so that's an organization. 
+
+Moving on, "Constituição Federal" is a legislation. "artigo 37 , caput" refers to a specific article in the Constitution, so that's legislacao. "Lei" in "INTEGRAÇÃO DAS GRATIFICAÇÕES INSTITUÍDAS POR LEI" is legislation. 
+
+I need to make sure I'm not missing any other entities. Let me check again. The date "2/8/2013" is tempo. The case number "141500-64.2007.5.15.0067" is jurisprudencia. The "Subseção I Especializada em Dissídios Individuais" is part of the organization, so the entire phrase is an organization. 
+
+Wait, the user's example shows that expressions like "4ª Turma Cível" are marked as organizacao. So in this case, "Subseção I Especializada em Dissídios Individuais" is part of the organization, so the entire phrase should be marked as organizacao. 
+
+Also, "DEJT" is an acronym for Diário Eletrônico do Tribunal Regional, which is an organization, but the example doesn't mention that. Wait, the user's example didn't include that, but according to the guidelines, if it's an organization, it should be marked. However, in the input, "DEJT" is part of the date, so maybe it's not an entity. Wait, the input has "DEJT : 2/8/2013" – the "DEJT" is part of the date, but the date is "2/8/2013", so "DEJT" is not a date. Wait, maybe "DEJT" is an abbreviation for a publication, like the Diário Eletrônico do Tribunal, which is an organization. But the user's example didn't mark such abbreviations. Hmm, the guidelines say that only specific entities should be marked. Since "DEJT" is an abbreviation for a publication, which is an organization, but the example didn't include it. Wait, the example input had "REsp n . 1694984/MS" which was marked as jurisprudencia. So maybe "DEJT" is not an entity here. Let me check the guidelines again. The user's example didn't mark "DEJT" as an organization. So perhaps "DEJT" is not an entity here. 
+
+So, focusing on the entities in the input text:
+
+- "TST-E-ED-RR" is a case number, which is jurisprudencia.
+- "141500-64.2007.5.15.0067" is a case number, so jurisprudencia.
+- "Dora Maria da Costa" is a pessoa.
+- "Constituição Federal" is legislacao.
+- "artigo 37 , caput" is part of the legislacao.
+- "Lei" in "INTEGRAÇÃO DAS GRATIFICAÇÕES INSTITUÍDAS POR LEI" is legislacao.
+- "2/8/2013" is tempo.
+- "Subseção I Especializada em Dissídios Individuais" is an organizacao.
+- "Ministra" is a title, not a pessoa.
+- "Relatora" is a title, not a pessoa.
+- "DEJT" is part of the date, but the date is "2/8/2013", so "DEJT" is not an entity here.
+
+Wait, the input has "DEJT : 2/8/2013" – the "DEJT" is part of the date, but the date is "2/8/2013". So "DEJT" is not a date, but part of the date's context. However, according to the guidelines, only explicit dates should be marked as tempo. So "2/8/2013" is tempo, and "DEJT" is not an entity here.
+
+Putting it all together, the HTML should have:
+
+- <span class="jurisprudencia">TST-E-ED-RR</span>
+- <span class="jurisprudencia">141500-64.2007.5.15.0067</span>
+- <span class="pessoa">Dora Maria da Costa</span>
+- <span class="organizacao">Subseção I Especializada em Dissídios Individuais</span>
+- <span class="legislacao">Constituição Federal</span>
+- <span class="legislacao">artigo 37 , caput</span>
+- <span class="legislacao">Lei</span>
+- <span class="tempo">2/8/2013</span>
+
+Wait, but "artigo 37 , caput" is part of the Constitution, so it's legislacao. "Lei" is part of the phrase "INTEGRAÇÃO DAS GRATIFICAÇÕES INSTITUÍDAS POR LEI", so "Lei" is legislacao. 
+
+Also, "Subseção I Especializada em Dissídios Individuais" is an organization. 
+
+So the final HTML should have all these tags. Let me make sure I didn't miss any other entities. The rest of the text doesn't have any other entities. 
+
+So the output should be the original text with these spans.
+</think>
+
+<span class="jurisprudencia">TST-E-ED-RR</span>- <span class="jurisprudencia">141500-64.2007.5.15.0067</span> , Relatora <span class="pessoa">Dora Maria da Costa</span> , <span class="organizacao">Subseção I Especializada em Dissídios Individuais</span> , <span class="tempo">DEJT : 2/8/2013</span> ) Desse modo , a decisão do <span class="organizacao">Tribunal Regional</span> , no sentido de manter as gratificações `` executiva '' e `` geral '' na base de cálculo da parcela denominada `` sexta parte '' , não observa o que dispõe a <span class="legislacao">Constituição Federal</span> em seu <span class="legislacao">artigo 37 , caput</span> , acerca do princípio da legalidade . Nesse contexto , CONHEÇO do recurso de revista por ofensa ao <span class="legislacao">artigo 37 , caput</span> , da <span class="legislacao">Constituição Federal</span> . MÉRITO 2.1 PARCELA DENOMINADA `` SEXTA PARTE '' . BASE DE CÁLCULO . INTEGRAÇÃO DAS GRATIFICAÇÕES INSTITUÍDAS POR <span class="legislacao">Lei</span> .

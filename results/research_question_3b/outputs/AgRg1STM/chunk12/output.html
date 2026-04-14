@@ -1,0 +1,66 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The first sentence mentions "recurso tempestivo" and "prazo legal". "Prazo legal" refers to a legal time frame, so that's a tempo entity. Then there's "Agravo" which is a legal term, but I need to check if it's an organization or a jurisprudência. Wait, Agravo is a type of legal appeal, so maybe it's part of a jurisprudência reference? Or is it a term that doesn't fit any of the categories? Hmm, maybe not. Let me think again.
+
+Next, "Documento assinado eletronicamente por José Barroso Filho" – "José Barroso Filho" is a person, so that's a pessoa. The "Matricula 1117" might be part of an organization, but the matricula is more of a number, so maybe not. The date "02/03/2018 17:26:32" is definitely a tempo entity.
+
+Then there's a link to "https://eproc2g.stm.jus.br/eproc_2g_prod/" which is a URL. The URL might be part of an organization, but the domain is "stm.jus.br", which is the Superior Tribunal Militar (RISTM). Wait, the text later mentions "RISTM" which is an acronym for the Superior Tribunal Militar. So "RISTM" is an organization. Also, "Regimento Interno do Superior Tribunal Militar" refers to a regulation, so that's legislacao.
+
+The phrase "art. 118, § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM )" – "art. 118" is a reference to a legal article, so that's legislacao. The "Regimento Interno" is part of the legislation, so that's also legislacao. The "RISTM" is an organization.
+
+Looking for other entities: "Plenário" is a part of a court, so maybe local? Wait, "Plenário" refers to a chamber or a part of a court, but it's not a specific location. Maybe it's part of an organization? Or is it a local? Hmm, the guidelines say local is a specific place. Since "Plenário" is a part of the court structure, maybe it's not a local. So perhaps not marked.
+
+Also, "Decisão recorrida" refers to a decision, which might be part of jurisprudência, but the text doesn't mention a specific case or precedent. So maybe not. The "Código Verificador 3044c7190e4" is a code, not an entity.
+
+Putting it all together:
+
+- "José Barroso Filho" is pessoa.
+- "02/03/2018 17:26:32" is tempo.
+- "RISTM" is organizacao.
+- "Regimento Interno do Superior Tribunal Militar" is legislacao.
+- "art. 118, § 2°" is legislacao.
+- "Superior Tribunal Militar" is organizacao (since RISTM is an acronym for it).
+- "Plenário" might be part of an organization, but since it's not a specific entity, maybe not. Wait, the text says "julgamento de mérito do Plenário" – "Plenário" is part of the court structure, so maybe it's a local? Or is it part of the organization? The guidelines say local is a specific place. Since "Plenário" is a chamber, not a place, maybe not. So perhaps not marked.
+
+Wait, the user's example output includes "RISTM" as organizacao and "Regimento Interno do Superior Tribunal Militar" as legislacao. Also, "art. 118" is part of the legislacao. The date is tempo. The person is José Barroso Filho. The URL is not an entity. The "Plenário" might not be marked. Let me check again.
+
+So the final HTML should have:
+
+- <span class="pessoa">José Barroso Filho</span>
+- <span class="tempo">02/03/2018 17:26:32</span>
+- <span class="organizacao">RISTM</span>
+- <sppan class="legislacao">Regimento Interno do Superior Tribunal Militar</span>
+- <span class="legislacao">art. 118, § 2°</span>
+- <span class="organizacao">Superior Tribunal Militar</span>
+
+Wait, but "Superior Tribunal Militar" is the full name of RISTM. Since RISTM is already marked as organizacao, maybe the full name is also an organization. But the user's example might have both. Let me check the input text again.
+
+In the input, the text says "Regimento Interno do Superior Tribunal Militar ( RISTM )". So "Superior Tribunal Militar" is the full name of the organization, and RISTM is the acronym. Both should be marked as organizacao. But the user's example output might have only RISTM. Wait, the user's example output includes "RISTM" as organizacao and "Regimento Interno do Superior Tribunal Militar" as legislacao. So the full name is part of the legislacao, and RISTM is the organization. So "Superior Tribunal Militar" is part of the legislacao as part of the regulation's name. Therefore, the full name is part of the legislacao, and RISTM is the organization.
+
+So the correct entities are:
+
+- pessoa: José Barroso Filho
+- tempo: 02/03/2018 17:26:32
+- organizacao: RISTM, Superior Tribunal Militar
+- legislacao: Regimento Interno do Superior Tribunal Militar, art. 118, § 2°
+- jurisprudencia: none
+- local: none
+
+Wait, but "Superior Tribunal Militar" is an organization, so it should be marked as organizacao. The "Regimento Interno" is part of the legislation, so that's legislacao. The "art. 118" is part of the legislation. So the full name "Superior Tribunal Militar" is an organization, and "Regimento Interno do Superior Tribunal Militar" is a legislacao. Also, "RISTM" is an organization. So in the text, "RISTM" is marked as organizacao, and "Superior Tribunal Militar" is also an organization. So both should be marked.
+
+So the final HTML would have:
+
+- <span class="pessoa">José Barroso Filho</span>
+- <span class="tempo">02/03/2018 17:26:32</span>
+- <span class="organizacao">RISTM</span>
+- <span class="organizacao">Superior Tribunal Militar</span>
+- <span class="legislacao">Regimento Interno do Superior Tribunal Militar</span>
+- <span class="legislacao">art. 118, § 2°</span>
+
+I think that's all. Let me make sure there are no other entities. The URL is not an entity. The "Plenário" is part of the court, but not a specific location, so not marked. The "Decisão recorrida" is a decision, but not a specific jurisprudência reference. So the final HTML should include those tags.
+</think>
+
+MÉRITO O presente recurso é tempestivo , por ter sido interposto no prazo legal e preenche os demais requisitos para sua admissibilidade , merecendo ser conhecido . Quanto ao mérito , o presente <span class="organizacao">Agravo</span> deve ser rejeitado . Documento assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , Matricula 1117 . Em <span class="tempo">02/03/2018 17:26:32</span> . Para confirmar a validade deste documento , acesse : <a href="https : //eproc2g.stm.jus.br/eproc_2g_prod/">https : //eproc2g.stm.jus.br/eproc_2g_prod/</a> e digite o Codigo Verificador 3044c7190e4 No tocante ao pedido de reconsideração , inexistem motivos ou fatos novos hábeis a provocar a modificação da <span class="legislacao">Decisão recorrida</span> . razão pela qual , ao ser mantido , submete-se o <span class="organizacao">Agravo Interno</span> ao julgamento de mérito do <span class="organizacao">Plenário</span> , ex vi do <span class="legislacao">art . 118 , § 2°</span> , do <span class="legislacao">Regimento Interno do Superior Tribunal Militar</span> ( <span class="organizacao">RISTM</span> ) .

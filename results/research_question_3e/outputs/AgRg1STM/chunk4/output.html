@@ -1,0 +1,81 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to go through the input text carefully and identify each entity according to the definitions provided. Let me start by reading the text again.
+
+The text starts with "Ministro JOSÉ BARROSO FILHO Relator AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000 RELATOR : MINISTRO JOSÉ BARROSO FILHO AGRAVANTE : NELSON BARROSO FERREIRA DEFENSORIA PÚBLICA DA UNIÃO AGRAVADO : MINISTÉRIO PÚBLICO MILITAR RELATÓRIO Trata-se de Agravo Interno interposto pela Defensoria Pública da União ( DPU ) , em nome de Nelson Barroso Ferreira , civil , contra a Decisão deste Ministro-Relator , de 9 de novembro de 2017 , que negou seguimento a Embargos de Declaração , por serem manifestamente incabíveis . Para melhor descortino da quaestio pelos Eminentes Ministros desta Corte , faz-se necessária uma breve retrospectiva dos fatos . O Recorrente foi condenado à pena de 6 ( seis ) meses de detenção , como incurso no art . 302 do CPM , com o benefício do sursis pelo prazo de 2 ( dois ) anos ."
+
+Let me break this down sentence by sentence.
+
+1. "Ministro JOSÉ BARROSO FILHO Relator AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000 RELATOR : MINISTRO JOSÉ BARROSO FILHO AGRAVANTE : NELSON BARROSO FERREIRA DEFENSORIA PÚBLICA DA UNIÃO AGRAVADO : MINISTÉRIO PÚBLICO MILITAR RELATÓRIO"
+
+Here, "Ministro JOSÉ BARROSO FILHO" – "Ministro" is a title, not a name, so not a pessoa. "JOSÉ BARROSO FILHO" is a full name, so pessoa. "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" – the number is a legal case number, which might be jurisprudencia. "RELATOR : MINISTRO JOSÉ BARROSO FILHO" – same as before, the name is pessoa. "AGRAVANTE : NELSON BARROSO FERREIRA" – that's a full name, pessoa. "DEFENSORIA PÚBLICA DA UNIÃO" – that's an organization. "AGRAVADO : MINISTÉRIO PÚBLICO MILITAR" – another organization.
+
+2. "Trata-se de Agravo Interno interposto pela Defensoria Pública da União ( DPU ) , em nome de Nelson Barroso Ferreira , civil , contra a Decisão deste Ministro-Relator , de 9 de novembro de 2017 , que negou seguimento a Embargos de Declaração , por serem manifestamente incabíveis ."
+
+"Defensoria Pública da União ( DPU )" – DPU is an acronym for the organization, so organizacao. "Nelson Barroso Ferreira" is a full name, pessoa. "9 de novembro de 2017" is a date, tempo. "Embargos de Declaração" – this is a legal term, but not a specific case or reference, so not jurisprudencia. "Decisão" is a generic term, not a specific case, so not marked.
+
+3. "Para melhor descortino da quaestio pelos Eminentes Ministros desta Corte , faz-se necessária uma breve retrospectiva dos fatos ."
+
+No entities here.
+
+4. "O Recorrente foi condenado à pena de 6 ( seis ) meses de detenção , como incurso no art . 302 do CPM , com o benefício do sursis pelo prazo de 2 ( dois ) anos ."
+
+"CPM" is the Código Penal Militar, which is a legislation, so legislacao. The numbers "6 ( seis ) meses" and "2 ( dois ) anos" are time references, so tempo. Wait, the user's guidelines say that only explicit dates should be marked as tempo. The numbers here are quantities, not dates. So maybe they should not be marked as tempo. Wait, the definition for tempo includes "intervalos de tempo" but the example given is "período de maio a novembro de 2014". The text here is "6 meses" and "2 anos", which are durations, not specific dates. So according to the guidelines, these should not be marked as tempo. So only the date "9 de novembro de 2017" is tempo.
+
+Now, compiling all the entities:
+
+- JOSÉ BARROSO FILHO (pessoa)
+- NELSON BARROSO FERREIRA (pessoa)
+- DEFENSORIA PÚBLICA DA UNIÃO (organizacao)
+- MINISTÉRIO PÚBLICO MILITAR (organizacao)
+- DPU (organizacao, since it's an acronym for the organization)
+- 9 de novembro de 2017 (tempo)
+- art. 302 do CPM (legislacao, since CPM is a legal code)
+
+Wait, the example in the guidelines mentions "art. 61 , §1º , da Lei nº 9.430/96" as legislacao. So "art. 302 do CPM" would be legislacao. Also, "CPM" is the Código Penal Militar, so that's a legislation.
+
+So the HTML should have:
+
+- <span class="pessoa">JOSÉ BARROSO FILHO</span>
+- <span class="pessoa">NELSON BARROSO FERREIRA</span>
+- <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span>
+- <span class="organizacao">MINISTÉRIO PÚBLICO MILITAR</span>
+- <span class="organizacao">DPU</span> (since DPU is an acronym for the organization)
+- <span class="tempo">9 de novembro de 2017</span>
+- <span class="legislacao">art. 302 do CPM</span>
+
+Wait, but the example in the guidelines includes "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So "art. 302 do CPM" is similar. Also, "CPM" is a code, so it's part of the legislacao.
+
+Also, the case number "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" – according to the jurisprudencia definition, identifiers like this should be marked as jurisprudencia. The example in the guidelines shows "REsp n . 1694984/MS" as jurisprudencia. So the case number here is "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" – the number is the case number, so it should be jurisprudencia.
+
+Wait, the example in the guidelines includes "REsp n . 1694984/MS" as jurisprudencia. So the case number here would be part of jurisprudencia. So "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" should be marked as jurisprudencia.
+
+Also, "RELATOR : MINISTRO JOSÉ BARROSO FILHO" – the name is already marked as pessoa.
+
+So putting it all together:
+
+- "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" → jurisprudencia
+- "JOSÉ BARROSO FILHO" → pessoa
+- "NELSON BARROSO FERREIRA" → pessoa
+- "DEFENSORIA PÚBLICA DA UNIÃO ( DPU )" → organizacao (DPU is an acronym)
+- "MINISTÉRIO PÚBLICO MILITAR" → organizacao
+- "9 de novembro de 2017" → tempo
+- "art. 302 do CPM" → legislacao
+
+So the HTML would have these spans. Also, the case number "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" is a jurisprudencia entity.
+
+Wait, the example in the guidelines includes "REsp n . 1694984/MS" as jurisprudencia. So numbers like this are marked as jurisprudencia. The case number here is "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" – the "Nº" is part of the number, so the entire case number is jurisprudencia.
+
+So now, the text with HTML tags would be:
+
+Ministro <span class="pessoa">JOSÉ BARROSO FILHO</span> Relator <span class="jurisprudencia">AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000</span> RELATOR : <span class="pessoa">MINISTRO JOSÉ BARROSO FILHO</span> AGRAVANTE : <span class="pessoa">NELSON BARROSO FERREIRA</span> <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span> ( <span class="organizacao">DPU</span> ) , em nome de <span class="pessoa">Nelson Barroso Ferreira</span> , civil , contra a Decisão deste <span class="pessoa">Ministro-Relator</span> , de <span class="tempo">9 de novembro de 2017</span> , que negou seguimento a <span class="jurisprudencia">Embargos de Declaração</span> , por serem manifestamente incabíveis . Para melhor descortino da quaestio pelos Eminentes Ministros desta Corte , faz-se necessária uma breve retrospectiva dos fatos . O Recorrente foi condenado à pena de 6 ( seis ) meses de detenção , como incurso no <span class="legislacao">art. 302 do CPM</span> , com o benefício do sursis pelo prazo de 2 ( dois ) anos .
+
+Wait, but "Embargos de Declaração" – is that a jurisprudencia? The guidelines say that only specific references to cases or precedents should be marked. Since "Embargos de Declaração" is a legal term but not a specific case or reference, it's not marked. So that part remains as is.
+
+Also, "Ministro-Relator" – "Ministro" is a title, not a name, so not marked. "Ministro-Relator" is a title, so not a pessoa.
+
+So the final HTML should have the entities as identified.
+</think>
+
+Ministro <span class="pessoa">JOSÉ BARROSO FILHO</span> Relator <span class="jurisprudencia">AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000</span> RELATOR : <span class="pessoa">MINISTRO JOSÉ BARROSO FILHO</span> AGRAVANTE : <span class="pessoa">NELSON BARROSO FERREIRA</span> <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span> ( <span class="organizacao">DPU</span> ) , em nome de <span class="pessoa">Nelson Barroso Ferreira</span> , civil , contra a Decisão deste <span class="pessoa">Ministro-Relator</span> , de <span class="tempo">9 de novembro de 2017</span> , que negou seguimento a <span class="jurisprudencia">Embargos de Declaração</span> , por serem manifestamente incabíveis . Para melhor descortino da quaestio pelos Eminentes Ministros desta Corte , faz-se necessária uma breve retrospectiva dos fatos . O Recorrente foi condenado à pena de 6 ( seis ) meses de detenção , como incurso no <span class="legislacao">art. 302 do CPM</span> , com o benefício do sursis pelo prazo de 2 ( dois ) anos .

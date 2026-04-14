@@ -1,0 +1,44 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is: "Enfim , Ínclitos Julgadores , esta Impetrante não participou de qualquer acordo neste sentido , e o fornecimento de telefone celular ou de e-mail não substitui a intimação formal prevista no artigo 288 do CPPM , in verbis ( ... ) '' ."
+
+Now, I'll look for each entity type. Let's break it down:
+
+1. **Pessoa**: The text mentions "Impetrante". In legal contexts, "Impetrante" refers to the person who initiates a legal action, so this is a pessoa. Also, "Julgadores" might be a person, but it's plural and could refer to a group, but maybe it's part of a title. Wait, "Ínclitos Julgadores" is likely an honorific address to the judges, so "Julgadores" here might be an organization or a title. But the user's example output shows "Julgadores" as part of the text without any tag. Wait, looking at the sample output provided by the user, in their example, "Ínclitos Julgadores" is not tagged. Wait, the user's example input was different, but in the current case, maybe "Impetrante" is the only pessoa. Let me check again.
+
+2. **Organizacao**: The text doesn't mention any organizations explicitly. "CPPM" might be an acronym for a legal code, but it's not clear if it's an organization. Wait, "CPPM" could be "Código Penal Militar" or similar, which is legislation, so that's legislacao.
+
+3. **Tempo**: There's no mention of dates or time in the text.
+
+4. **Local**: No location mentioned.
+
+5. **Legislacao**: The text refers to "artigo 288 do CPPM". "CPPM" is likely a legal code, so "CPPM" should be marked as legislacao. Also, "artigo 288" is part of the legislation reference.
+
+6. **Jurisprudencia**: The text mentions "in verbis", which is a legal term referring to a quote from a judicial decision, so that's jurisprudencia.
+
+So, the entities to tag are:
+
+- "Impetrante" as pessoa.
+- "CPPM" as legislacao.
+- "artigo 288" as part of legislacao (since it's referencing a specific article in the legislation).
+- "in verbis" as jurisprudencia.
+
+Wait, "in verbis" is a term used to cite a specific part of a legal text, so it's part of jurisprudencia. Also, "artigo 288" is part of the legislation reference, so "artigo 288" should be under legislacao. But the user's example might have different handling. Let me check the sample output again. The user provided an example where "CPPM" was marked as legislacao. So in this case, "CPPM" is legislacao, and "artigo 288" is part of the legislation reference, so it should be under legislacao as well. Also, "in verbis" is jurisprudencia.
+
+So the final HTML would have:
+
+- <span class="pessoa">Impetrante</span>
+- <span class="legislacao">artigo 288 do CPPM</span>
+- <span class="jurisprudencia">in verbis</span>
+
+Wait, but "CPPM" is the legislation, and "artigo 288" is part of that legislation. So the entire "artigo 288 do CPPM" should be under legislacao. Also, "in verbis" is jurisprudencia.
+
+So the corrected text would be:
+
+"Enfim , Ínclitos Julgadores , esta <span class="pessoa">Impetrante</span> não participou de qualquer acordo neste sentido , e o fornecimento de telefone celular ou de e-mail não substitui a intimação formal prevista no <span class="legislacao">artigo 288 do CPPM</span> , <span class="jurisprudencia">in verbis</span> ( ... ) '' ."
+
+I need to make sure that "CPPM" is marked as legislacao, and "artigo 288" is part of that. Also, "in verbis" is jurisprudencia. The rest of the text doesn't have any entities, so it remains as is.
+</think>
+
+Enfim , Ínclitos Julgadores , esta <span class="pessoa">Impetrante</span> não participou de qualquer acordo neste sentido , e o fornecimento de telefone celular ou de e-mail não substitui a intimação formal prevista no <span class="legislacao">artigo 288 do CPPM</span> , <span class="jurisprudencia">in verbis</span> ( ... ) '' .

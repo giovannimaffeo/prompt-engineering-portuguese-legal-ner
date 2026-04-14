@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The input text starts with "Cumpre ressaltar que conforme consta na FAC do paciente acostada às fls.319/324 o paciente já foi investigado e processado por crime contra o patrimônio e teve sua prisão preventiva decretada nos autos que originaram o presente HC em virtude de violação de uma das medidas cautelares diversas da prisão impostas pelo Magistrado a quo quando da concessão da liberdade provisória , nos termos do disposto no art . 312 , p.u do CPP , qual seja , a obrigação de informar qualquer alteração de seu endereço residencial . 4 . O MM . Sr. Juiz de Direito , DR. ISAIAS CALDEIRA VELOSO , ao prestar as informações de fls ."
+
+Looking for pessoas: The text mentions "DR. ISAIAS CALDEIRA VELOSO". Since it's a full name with a title, but the instruction says to mark only names, not titles. Wait, the definition says "nomes próprios usados para identificar indivíduos específicos", so "DR." is a title, but the full name is "ISAIAS CALDEIRA VELOSO". So I should mark that as pessoa. Also, "Sr." is a title, but the name is "Juiz de Direito" which is a title, but the person's name is "ISAIAS CALDEIRA VELOSO". Wait, the text says "O MM . Sr. Juiz de Direito , DR. ISAIAS CALDEIRA VELOSO , ao prestar as informações de fls .". So "DR. ISAIAS CALDEIRA VELOSO" is the full name with the title. The instruction says to mark only names, not titles. So "DR." is a title, but the name is "ISAIAS CALDEIRA VELOSO". So I should mark that as pessoa.
+
+Next, organizacao: The text mentions "FAC" which might be an acronym for "Ficha de Avaliação de Condição" or something similar. But according to the guidelines, only specific organizations should be marked. The example shows "MINISTÉRIO PÚBLICO FEDERAL" as an organization. However, "FAC" isn't a known organization. Maybe "FAC" is an abbreviation for a legal document, but the user's examples don't mention that. Since the user's examples don't include "FAC" as an organization, I might not mark it. Wait, the input text says "FAC do paciente acostada às fls.319/324". FAC could be a document, but unless it's a known organization, it's not marked. So maybe "FAC" isn't an organization here. So no mark for that.
+
+Legislacao: The text mentions "art . 312 , p.u do CPP". "CPP" is the Código de Processo Penal, which is a legal code. So "art. 312 do CPP" should be marked as legislacao. Also, "p.u" might be "parágrafo único", but the full reference is "art. 312, p.u do CPP", so the entire reference is part of the legislation. So I should mark "art. 312 , p.u do CPP" as legislacao.
+
+Jurisprudencia: The text doesn't mention any specific jurisprudência references like REsp or Súmula. So no marks here.
+
+Tempo: The text has "fls.319/324" which is a reference to pages, not a date. So no tempo here.
+
+Local: The text mentions "endereço residencial" which is a generic term, not a specific location. So no local mark.
+
+So the entities to mark are:
+
+- pessoa: "DR. ISAIAS CALDEIRA VELOSO" (but wait, the title "DR." is part of the name? The instruction says to mark only names, not titles. So "DR." is a title, but the full name is "ISAIAS CALDEIRA VELOSO". So the correct mark is "ISAIAS CALDEIRA VELOSO" as pessoa. However, in the example, "DR. CARLOS HENRIQUE ALVES" was marked as pessoa. So even with the title, the full name is marked. So in this case, "DR. ISAIAS CALDEIRA VELOSO" should be marked as pessoa.
+
+Wait, the example shows "DR. CARLOS HENRIQUE ALVES" as pessoa. So even with the title, the full name is marked. So in this case, "DR. ISAIAS CALDEIRA VELOSO" is the full name, so it's marked as pessoa.
+
+Legislacao: "art. 312 , p.u do CPP" is marked as legislacao.
+
+So the output should have:
+
+- <span class="pessoa">DR. ISAIAS CALDEIRA VELOSO</span>
+- <span class="legislacao">art. 312 , p.u do CPP</span>
+
+Other parts like "FAC" are not marked as organization, "fls.319/324" is not a date, so no marks. "endereço residencial" is generic, so no local. "Sr." is a title, not a name. "Juiz de Direito" is a title, not a name. So the only entities are the pessoa and legislacao.
+
+Wait, the text also mentions "Magistrado a quo" which refers to the judge in the previous case, but "Magistrado" is a generic term, not a specific name. So no mark.
+
+So the final HTML should have those two spans.
+</think>
+
+Cumpre ressaltar que conforme consta na <span class="legislacao">FAC</span> do paciente acostada às fls.319/324 o paciente já foi investigado e processado por crime contra o patrimônio e teve sua prisão preventiva decretada nos autos que originaram o presente HC em virtude de violação de uma das medidas cautelares diversas da prisão impostas pelo <span class="pessoa">Magistrado a quo</span> quando da concessão da liberdade provisória , nos termos do disposto no <span class="legislacao">art . 312 , p.u do CPP</span> , qual seja , a obrigação de informar qualquer alteração de seu endereço residencial . 4 . O MM . Sr. Juiz de Direito , <span class="pessoa">DR. ISAIAS CALDEIRA VELOSO</span> , ao prestar as informações de fls .

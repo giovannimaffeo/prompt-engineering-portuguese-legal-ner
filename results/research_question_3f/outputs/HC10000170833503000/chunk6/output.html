@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The input starts with "Prestadas as informações pela autoridade indigitada coatora , os autos foram remetidos à douta Procuradoria-Geral de Justiça que , no parecer de fl . 128-131v.º , opinou pela denegação da ordem . É , no essencial , o relatório . Decido . Alega o imperante , primeiramente , com o mandamus , que o paciente encontra-se preso desde o dia 19.08.16 , sendo que a sessão de julgamento do Tribunal do Júri foi designada para o dia 25.01.18 , quando restará configurado o excesso de prazo para a formação da culpa . Penso razão não assistir ao impetrante . Conforme se verifica do documento acostado aos autos , a sentença de pronúncia transitou em julgado para a defesa em 12.06.17 , tendo sido designada sessão de julgamento perante o Tribunal do Júri para o dia 25.01.18 ."
+
+Looking for entities:
+
+1. "Procuradoria-Geral de Justiça" – this is an organization. The name is specific, so it should be marked as organizacao.
+
+2. "fl . 128-131v.º" – this seems like a reference to a document or page, but the guidelines mention that only specific entities like jurisprudência, legislação, etc., should be marked. Since "fl" is an abbreviation for "fls" (fólios), which is a legal term, but the example given in the guidelines doesn't mention this. However, the example in the input shows that "fl . 128-131v.º" is part of a reference, but in the examples provided, they didn't mark such references. Wait, looking at the examples, in Exemplo Saída2, they marked "RECURSO ESPECIAL Nº 1.583.083 - RS" as jurisprudencia. So maybe "fl . 128-131v.º" is a reference to a document, but since it's not a specific entity like a law or a judicial decision, perhaps it's not marked. The guidelines say to mark only specific entities. So maybe "fl . 128-131v.º" is not an entity here.
+
+3. "Tribunal do Júri" – this is an organization. The example in Exemplo Saída4 has "Tribunal de Justiça" marked as organizacao. So "Tribunal do Júri" should be organizacao.
+
+4. Dates: "19.08.16", "25.01.18", "12.06.17" – these are dates, so they should be marked as tempo. The guidelines say to mark dates in formats like DD/MM/YYYY or similar. The example in Exemplo Saída3 has "25 DE SETEMBRO DE 2008" marked as tempo. So the dates here, even in the format DD.MM.YY, should be marked as tempo.
+
+5. "sentença de pronúncia transitou em julgado" – this refers to a legal document, but the term "sentença" is a generic term for a sentence, not a specific entity. The example in Exemplo Saída5 has "sentença de pronúncia" not marked, but "Decreto-Lei no 5.452" is marked as legislação. So "sentença de pronúncia" is not an entity here.
+
+6. "imperante" – this is a legal term for the petitioner, but it's a generic term, not a specific person. So it's not marked as pessoa.
+
+7. "paciente" – this is a generic term for the accused, not a specific person. Not marked.
+
+8. "impetrante" – similar to "imperante", a generic term for the petitioner. Not marked.
+
+So, the entities to mark are:
+
+- "Procuradoria-Geral de Justiça" → organizacao
+- "Tribunal do Júri" → organizacao
+- "19.08.16", "25.01.18", "12.06.17" → tempo
+
+Wait, the dates are in the format DD.MM.YY, which the guidelines say should be marked as tempo. So all three dates should be marked.
+
+Now, let me check if there are any other entities. The text mentions "douta Procuradoria-Geral de Justiça" – "douta" is an adjective, so not marked. "fl . 128-131v.º" – not sure, but the examples don't mark such references. The example in Exemplo Saída2 has "RECURSO ESPECIAL Nº 1.583.083 - RS" marked as jurisprudencia. So maybe "fl . 128-131v.º" is a reference to a document, but since it's not a specific entity like a law or a judicial decision, it's not marked. The guidelines say to mark only specific entities, so "fl" is not an entity here.
+
+So the final HTML should have the three dates marked as tempo, and the two organizations marked as organizacao.
+
+Now, let me structure the HTML accordingly, replacing the dates and the organizations with the <span> tags.
+</think>
+
+Prestadas as informações pela autoridade indigitada coatora , os autos foram remetidos à douta Procuradoria-Geral de Justiça que , no parecer de fl . 128-131v.º , opinou pela denegação da ordem . É , no essencial , o relatório . Decido . Alega o imperante , primeiramente , com o mandamus , que o paciente encontra-se preso desde o dia <span class="tempo">19.08.16</span> , sendo que a sessão de julgamento do <span class="organizacao">Tribunal do Júri</span> foi designada para o dia <span class="tempo">25.01.18</span> , quando restará configurado o excesso de prazo para a formação da culpa . Penso razão não assistir ao impetrante . Conforme se verifica do documento acostado aos autos , a sentença de pronúncia transitou em julgado para a defesa em <span class="tempo">12.06.17</span> , tendo sido designada sessão de julgamento perante o <span class="organizacao">Tribunal do Júri</span> para o dia <span class="tempo">25.01.18</span> .

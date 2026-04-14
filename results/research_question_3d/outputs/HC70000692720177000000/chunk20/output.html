@@ -1,0 +1,58 @@
+<think>
+Okay, let's tackle this. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute.
+
+First, I need to go through the text and identify each entity type. Let's start with the first sentence: "A interpretação da lei não pode ignorar os avanços tecnológicos e a realidade fática , ainda mais quando há permissão legal para utilização de meio absolutamente semelhante , como a carta ."
+
+Looking for pessoas: The text mentions "Cleonilson Nicácio Silva" later, which is a full name, so that's a pessoa. The rest of the sentence doesn't have names, so no other pessoas.
+
+Organizacao: The text mentions "CPPM" which stands for Código de Processo Penal Militar, but I need to check if it's an organization. Wait, the example in the guidelines says "CPPM" is a legislation, not an organization. Wait, the user's example for legislação includes "CPPM" as a law. Wait, the user's example says "art. 3º , `` e '' , do CPPM . `` ." So CPPM here is an abbreviation for a legal code. So in the text, "CPPM" is part of the legislation. So I should mark "CPPM" as legislação.
+
+Wait, but the user's example for legislação includes "Lei nº 8.666/93", so "CPPM" might be a code. So in the text, "CPPM" should be marked as legislação.
+
+Next, "Provimento nº 3/2016" is a regulation, which is a type of legislation. So "Provimento nº 3/2016" should be marked as legislação.
+
+Then, "Oficiais de Justiça" is an organization, as it refers to a group or role within the justice system. Wait, the definition says "organizacao" includes "unidades do sistema de justiça", so "Oficiais de Justiça" would be an organization. Wait, but "Oficiais de Justiça" is a role, not an organization. Hmm, maybe not. The example includes "Tribunal de Contas" as an organization. So perhaps "Oficiais de Justiça" is part of an organization, but the name itself might not be an organization. Wait, the text says "regula as atividades dos Oficiais de Justiça no âmbito desta Justiça Especializada", so "Oficiais de Justiça" is a role, not an organization. So maybe not an organization. So no mark here.
+
+Tempo: The text has "22/02/2018 18:56:14". The guidelines say that dates in formats like DD/MM/YYYY should be marked as tempo. However, the guidelines also mention that isolated times like "17:26:32" shouldn't be marked. Here, the date is "22/02/2018" which is a date, and the time "18:56:14" is a time. But the user's guidelines say that only dates (explicit) should be marked. Wait, the guidelines say: "Horários isolados (como "17:26:32") não devem ser anotados como tempo; apenas datas explícitas devem ser anotados." So the date "22/02/2018" is a date, so it's tempo. The time "18:56:14" is a time, but since it's isolated, it shouldn't be marked. Wait, but in the text, it's written as "22/02/2018 18:56:14". So the date and time are together. However, the guidelines say that only dates should be marked. So the date part "22/02/2018" is tempo, and the time part is not. So I need to mark "22/02/2018" as tempo.
+
+Local: The text doesn't mention any specific locations, so no local.
+
+Legislacao: "CPPM" is a code, so "CPPM" is legislação. Also, "Provimento nº 3/2016" is a regulation, which is legislation. So those should be marked as legislação.
+
+Jurisprudencia: The text mentions "brocardo latino", which is a legal maxim, but not a jurisprudência. The text also mentions "Provimento nº 3/2016" which is a regulation, not a jurisprudência. There's no mention of specific cases or decisions, so no jurisprudência.
+
+Pessoa: "Cleonilson Nicácio Silva" is a full name, so that's pessoa. The "Matricula 8553" is a registration number, not a person.
+
+Now, let's go through the text again step by step.
+
+Original text:
+
+"A interpretação da lei não pode ignorar os avanços tecnológicos e a realidade fática , ainda mais quando há permissão legal para utilização de meio absolutamente semelhante , como a carta . Há de se lembrar o brocardo latino `` onde há as mesmas razões , deve haver o mesmo direito '' , frisando que a analogia é permitida no campo processual penal , conforme inclusive dispõe o art . 3º , `` e '' , do CPPM . `` . No mesmo sentido é o Provimento nº 3/2016 , que regula as atividades dos Oficiais de Justiça no âmbito desta Justiça Especializada , ao dispor em seu art . 7º que : Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 . Em 22/02/2018 18:56:14 ."
+
+First, looking for pessoas: "Cleonilson Nicácio Silva" is a name. So that's pessoa. The "Matricula 8553" is not a person.
+
+Organizacao: "Oficiais de Justiça" is a role, not an organization. The text mentions "Justiça Especializada" which is a type of court, but that's not an organization name. So no organizacao.
+
+Tempo: "22/02/2018" is a date, so tempo. The time "18:56:14" is not marked.
+
+Legislacao: "CPPM" is a code, so legislação. "Provimento nº 3/2016" is a regulation, so legislação.
+
+Jurisprudencia: None mentioned.
+
+Local: None.
+
+So the HTML should have:
+
+- "Cleonilson Nicácio Silva" as pessoa.
+- "CPPM" as legislação.
+- "Provimento nº 3/2016" as legislação.
+- "22/02/2018" as tempo.
+
+Now, check for any other entities. The "art. 3º" and "art. 7º" are references to articles, but the guidelines say to mark only the legislation. The "CPPM" is a code, so it's part of legislation. The "Provimento nº 3/2016" is a regulation, so also legislation.
+
+So the final HTML would have those parts wrapped in the respective spans.
+
+Now, let's structure the HTML accordingly.
+</think>
+
+A interpretação da lei não pode ignorar os avanços tecnológicos e a realidade fática , ainda mais quando há permissão legal para utilização de meio absolutamente semelhante , como a carta . Há de se lembrar o brocardo latino `` onde há as mesmas razões , deve haver o mesmo direito '' , frisando que a analogia é permitida no campo processual penal , conforme inclusive dispõe o <span class="legislacao">art . 3º </span> , `` e '' , do <span class="legislacao">CPPM</span> . `` . No mesmo sentido é o <span class="legislacao">Provimento nº 3/2016</span> , que regula as atividades dos Oficiais de Justiça no âmbito desta Justiça Especializada , ao dispor em seu <span class="legislacao">art . 7º</span> que : <span class="pessoa">Cleonilson Nicácio Silva</span> , Matricula 8553 . Em <span class="tempo">22/02/2018</span> 18:56:14 .

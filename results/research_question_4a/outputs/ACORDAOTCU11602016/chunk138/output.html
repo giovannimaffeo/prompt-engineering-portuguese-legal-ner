@@ -1,0 +1,76 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The first sentence starts with "Nesse contexto , considerando as excepcionais circunstâncias acima descritas , esta representante do Ministério Público sugere o conhecimento do Recurso de Reconsideração , para , no mérito , dar-lhe provimento , a fim de julgar regulares com ressalva as contas do Senhor Carlos Aureliano Motta de Souza e afastar o débito que lhe foi atribuído mediante o item 9.2 do Acórdão n.º 1.466/2013 – Plenário , mantendo-o apenas para o Grupo OK Construções e Empreendimentos Ltda. , na linha do entendimento inaugurado mediante o Acórdão n.º 946/2013 – Plenário , tornando-se insubsistente , outrossim , a multa que lhe foi aplicada ” . É o relatório . Voto Trata-se de recurso de reconsideração interposto pelo Sr. Carlos Aureliano Motta de Souza , ex-diretor-geral do Superior Tribunal Militar - STM , contra o Acórdão nº 1.466/2013 , mantido pelo Acórdão nº 633/2014 , ambos do Plenário . 2 ."
+
+Looking for entities:
+
+1. "Ministério Público" – this is an organization. The full name is "Ministério Público", so I'll mark that as organizacao.
+
+2. "Senhor Carlos Aureliano Motta de Souza" – this is a person's full name, so pessoa.
+
+3. "Grupo OK Construções e Empreendimentos Ltda." – this is an organization's name, so organizacao.
+
+4. "Acórdão n.º 1.466/2013 – Plenário" – this is a jurisprudencia reference. The Acórdão is a judicial decision, so jurisprudencia.
+
+5. "Acórdão n.º 946/2013 – Plenário" – same as above, another jurisprudencia.
+
+6. "Acórdão nº 1.466/2013" – another jurisprudencia.
+
+7. "Acórdão nº 633/2014" – another jurisprudencia.
+
+8. "Superior Tribunal Militar - STM" – this is an organization, specifically a court. So organizacao.
+
+9. "Sr. Carlos Aureliano Motta de Souza" – the "Sr." is a title, not a name, so the person is "Carlos Aureliano Motta de Souza", which is already marked as pessoa.
+
+Also, check for any other entities. The date "2013" and "2014" are years, so they should be marked as tempo. Wait, the guidelines say that years isolated should be marked as tempo. So "2013" and "2014" are tempo.
+
+Wait, in the text, "Acórdão n.º 1.466/2013" – the "2013" is part of the Acórdão reference, which is a jurisprudencia. But the date "2013" is part of the Acórdão's number, so it's part of the jurisprudencia entity. However, the guidelines mention that only the entire reference should be marked as jurisprudencia, not just the date. So the entire "Acórdão n.º 1.466/2013 – Plenário" is a jurisprudencia, including the date. Similarly for the others.
+
+Also, "Plenário" is part of the Acórdão's reference, so it's included in the jurisprudencia tag.
+
+Now, check for any other entities. The text mentions "item 9.2" – but "item" is a generic term, so it's not an entity. "Grupo OK Construções e Empreendimentos Ltda." is an organization. "STM" is an abbreviation for Superior Tribunal Militar, which is an organization. So "STM" should be marked as organizacao.
+
+Wait, the user's example shows that "MINISTÉRIO PÚBLICO FEDERAL" is marked as organizacao. So "Superior Tribunal Militar - STM" is an organization, and "STM" is part of that name. So "STM" should be included in the organizacao tag as part of the full name.
+
+Wait, but in the input text, it's written as "Superior Tribunal Militar - STM". The full name is "Superior Tribunal Militar", and "STM" is the abbreviation. So the entire "Superior Tribunal Militar - STM" is the organization's name. So I should mark that as organizacao.
+
+Also, "Plenário" is part of the Acórdão's reference, so it's included in the jurisprudencia tag.
+
+Now, let's go through the text again and mark each entity:
+
+- "Ministério Público" → organizacao
+- "Carlos Aureliano Motta de Souza" → pessoa
+- "Grupo OK Construções e Empreendimentos Ltda." → organizacao
+- "Acórdão n.º 1.466/2013 – Plenário" → jurisprudencia
+- "Acórdão n.º 946/2013 – Plenário" → jurisprudencia
+- "Acórdão nº 1.466/2013" → jurisprudencia
+- "Acórdão nº 633/2014" → jurisprudencia
+- "Superior Tribunal Militar - STM" → organizacao
+- "STM" → part of the organization name, so included in the organizacao tag
+- "2013" and "2014" → tempo
+
+Wait, but the date "2013" is part of the Acórdão's number, so it's part of the jurisprudencia entity. However, the guidelines say that only the entire reference should be marked as jurisprudencia. So the entire "Acórdão n.º 1.466/2013 – Plenário" is marked as jurisprudencia, including the date. Similarly for the others. So the date is part of the jurisprudencia entity, not as a separate tempo entity.
+
+Therefore, the years "2013" and "2014" are part of the jurisprudencia references and should not be marked as tempo. The guidelines mention that only explicit temporal references should be marked as tempo, like "3 de abril de 2017" or "DD/MM/YYYY". Since the years here are part of the Acórdão references, they are part of the jurisprudencia and not marked as tempo.
+
+So, the final HTML should have the following entities marked:
+
+- "Ministério Público" → organizacao
+- "Carlos Aureliano Motta de Souza" → pessoa
+- "Grupo OK Construções e Empreendimentos Ltda." → organizacao
+- "Acórdão n.º 1.466/2013 – Plenário" → jurisprudencia
+- "Acórdão n.º 946/2013 – Plenário" → jurisprudencia
+- "Acórdão nº 1.466/2013" → jurisprudencia
+- "Acórdão nº 633/2014" → jurisprudencia
+- "Superior Tribunal Militar - STM" → organizacao
+- "STM" → part of the organizacao tag
+
+Wait, but in the input text, the "STM" is part of the organization name. So the entire "Superior Tribunal Militar - STM" is the organization's name. So I should mark that as organizacao. The "STM" is included in that tag.
+
+Now, putting it all together in HTML format, replacing the entities with the appropriate <span> tags.
+</think>
+
+Nesse contexto , considerando as excepcionais circunstâncias acima descritas , esta representante do <span class="organizacao">Ministério Público</span> sugere o conhecimento do <span class="jurisprudencia">Recurso de Reconsideração</span> , para , no mérito , dar-lhe provimento , a fim de julgar regulares com ressalva as contas do <span class="pessoa">Senhor Carlos Aureliano Motta de Souza</span> e afastar o débito que lhe foi atribuído mediante o item 9.2 do <span class="jurisprudencia">Acórdão n.º 1.466/2013 – Plenário</span> , mantendo-o apenas para o <span class="organizacao">Grupo OK Construções e Empreendimentos Ltda.</span> , na linha do entendimento inaugurado mediante o <span class="jurisprudencia">Acórdão n.º 946/2013 – Plenário</span> , tornando-se insubsistente , outrossim , a multa que lhe foi aplicada ” . É o relatório . Voto Trata-se de <span class="jurisprudencia">recurso de reconsideração</span> interposto pelo <span class="pessoa">Sr. Carlos Aureliano Motta de Souza</span> , ex-diretor-geral do <span class="organizacao">Superior Tribunal Militar - STM</span> , contra o <span class="jurisprudencia">Acórdão nº 1.466/2013</span> , mantido pelo <span class="jurisprudencia">Acórdão nº 633/2014</span> , ambos do <span class="jurisprudencia">Plenário</span> . 2 .

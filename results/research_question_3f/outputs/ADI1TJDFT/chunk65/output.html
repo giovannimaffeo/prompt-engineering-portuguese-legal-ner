@@ -1,0 +1,74 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The first part is "Desembargador Silvânio Barbosa dos Santos". Wait, "Desembargador" is a title, not a name. The guidelines say not to mark titles or positions as pessoa. So only the name "Silvânio Barbosa dos Santos" should be marked as pessoa. But wait, the example shows that "CARLOS HENRIQUE ALVES" is marked as pessoa. So maybe the full name, even with the title, should be marked? Wait, no. The definition says only names of individuals, not titles. So "Desembargador" is a title, so the name is "Silvânio Barbosa dos Santos" and that should be marked as pessoa. But the example in the guidelines shows that "Procurador CARLOS HENRIQUE ALVES" is marked as pessoa. So the name is the key here. So in this case, "Silvânio Barbosa dos Santos" is the name, so that's pessoa.
+
+Next, "Procuradoria Geral de Justiça do Distrito Federal e Territórios" – this is an organization. The example mentions "MINISTÉRIO PÚBLICO FEDERAL" as organizacao. So "Procuradoria Geral de Justiça do Distrito Federal e Territórios" is an organization. So that should be marked as organizacao.
+
+Then "Lei nº 5.815" – this is legislation. The example shows "Lei nº 9.430/96" as legislacao. So "Lei nº 5.815" is legislacao. Also, the date "03 de abril de 2017" is tempo. The example shows "25 DE SETEMBRO DE 2008" as tempo. So that date should be marked as tempo.
+
+"Lei Orgânica do Distrito Federal" – this is a law, so legislacao. The example shows "Lei Orgânica do Distrito Federal" as part of a legislacao reference. Also, "Distrito Federal" is a local. The example shows "Distrito Federal" as local. So "Distrito Federal" should be marked as local.
+
+"GOVERNADOR DO DISTRITO FEDERAL" – "GOVERNADOR" is a title, so not pessoa. But "Distrito Federal" is a local. So "Distrito Federal" is local. The "GOVERNADOR" is a title, so not marked.
+
+"Câmara Legislativa do Distrito Federal" – this is an organization. The example mentions "Câmara Legislativa" as organizacao. So that should be marked as organizacao.
+
+"Art." – this is part of a legislative article, but the example shows "Art." as part of a legislacao reference. Wait, in the example input5, "Art." is part of the legislacao. So "Art." here is part of the legislation, but the example shows "Art." as part of the legislacao. Wait, in example5, the input is "Art ." and the output is "Art .". Wait, maybe "Art." is part of the legislation. But the example shows that "art . 428 da Consolidação das Leis do Trabalho" is marked as legislacao. So "Art." here is part of the legislation. But in the input, the text is "Art .", so maybe it's part of the legislacao. However, the user's example shows that "Art." is included in the legislacao. So in this case, "Art ." is part of the legislacao. Wait, but the example input5 has "Art ." and the output is "Art .". So maybe "Art." is part of the legislacao. But the user's example shows that "art . 428 da Consolidação das Leis do Trabalho" is marked as legislacao. So "Art." is part of the legislacao. However, in the input text, the user's example has "Art ." and the output is "Art .". So perhaps "Art." is part of the legislacao. But the user's example shows that "Art." is included in the legislacao. So in this case, "Art ." is part of the legislacao. Wait, but the user's example input5 is "altera a redação do art . 428 da Consolidação das Leis do Trabalho – CLT, aprovada pelo Decreto-Lei no 5.452, de 1o de maio de 1943" and the output is "altera a redação do <span class="legislacao">art . 428 da Consolidação das Leis do Trabalho</span> – <span class="legislacao">CLT</span>, aprovada pelo <span class="legislacao">Decreto-Lei no 5.452</span>, de <span class="tempo">1o de maio de 1943</span>". So "art . 428" is part of the legislacao. Therefore, in the input text, "Art ." is part of the legislacao. But in the input text, the user's example has "Art ." and the output includes it as part of the legislacao. So in the current input, "Art ." is part of the legislacao. However, the user's input text ends with "Art .", so that should be marked as legislacao. Wait, but the user's input text is "Art ." and the output is "Art .". So maybe "Art ." is part of the legislacao. But the user's example shows that "Art ." is included in the legislacao. Therefore, in the current input, "Art ." is part of the legislacao. However, the user's example shows that "Art ." is included in the legislacao. So I need to check if "Art ." is part of the legislacao. 
+
+Putting it all together:
+
+- "Desembargador Silvânio Barbosa dos Santos" → "Silvânio Barbosa dos Santos" is pessoa.
+- "Procuradoria Geral de Justiça do Distrito Federal e Territórios" → organizacao.
+- "Lei nº 5.815" → legislacao.
+- "03 de abril de 2017" → tempo.
+- "Lei Orgânica do Distrito Federal" → legislacao.
+- "Distrito Federal" → local.
+- "GOVERNADOR DO DISTRITO FEDERAL" → "Distrito Federal" is local.
+- "Câmara Legislativa do Distrito Federal" → organizacao.
+- "Art ." → legislacao.
+
+Wait, but the user's input text ends with "Art .", which is part of the legislacao. So that should be marked as legislacao. 
+
+Now, let me structure the HTML with these tags. Also, check for any other entities. For example, "Crea-DF" and "CAU-DF" are organizations? Wait, in the input text, there's "convênio do Distrito Federal com o CREA-DF e o CAU-DF". The example shows "Crea-DF" as part of a legislacao? No, in the example, "Crea-DF" is part of the legislation. Wait, in the example input4, "ESTADO DO ACRE Rua Tribunal de Justiça, Via Verde, Rio BrancoAC" is marked as local. So "Crea-DF" and "CAU-DF" are organizations. But the user's example doesn't mention them. Wait, the user's example input5 has "Decreto-Lei no 5.452" as legislacao. So "Crea-DF" and "CAU-DF" are organizations. But the user's example doesn't have them. So in the current input, "Crea-DF" and "CAU-DF" are organizations. But the user's example input4 has "Rua Tribunal de Justiça" as local. So "Rua Tribunal de Justiça" is local. So in the current input, "Crea-DF" and "CAU-DF" are organizations. But the user's example input5 has "Decreto-Lei no 5.452" as legislacao. So "Crea-DF" and "CAU-DF" are organizations. 
+
+Wait, but the user's input text is: "Lei nº 5.815 , de 03 de abril de 2017 , oriunda de projeto de lei de iniciativa parlamentar , por suposta violação aos artigos 15 , incisos XIV e XV , 19 , caput , 53 , 71 , §1º , inciso IV e 100 , incisos VI e X , todos da Lei Orgânica do Distrito Federal . Confira-se o inteiro teor do diploma legal : LEI Nº 5.815 , DE 3 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) Dispõe sobre convênio do Distrito Federal com o CREA-DF e o CAU-DF e dá outras providências . O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal decreta e eu sanciono a seguinte Lei : Art ."
+
+So "Crea-DF" and "CAU-DF" are organizations. But the user's example input2 has "Superior Tribunal de Justiça" as organizacao. So "Crea-DF" and "CAU-DF" are organizations. Therefore, they should be marked as organizacao. 
+
+Wait, but the user's example input2 is "Superior Tribunal de Justiça RECURSO ESPECIAL Nº 1.583.083 - RS" and the output is "<span class="organizacao">Superior Tribunal de Justiça</span> <span class="jurisprudencia">RECURSO ESPECIAL Nº 1.583.083 - RS</span>". So "Superior Tribunal de Justiça" is organizacao. Similarly, "Crea-DF" and "CAU-DF" are organizations. So they should be marked as organizacao. 
+
+So in the input text, "Crea-DF" and "CAU-DF" are organizations. 
+
+Also, "Deputado Rafael Prudente" – "Deputado" is a title, so the name "Rafael Prudente" is pessoa. 
+
+So putting all together:
+
+- "Desembargador Silvânio Barbosa dos Santos" → "Silvânio Barbosa dos Santos" is pessoa.
+- "Procuradoria Geral de Justiça do Distrito Federal e Territórios" → organizacao.
+- "Lei nº 5.815" → legislacao.
+- "03 de abril de 2017" → tempo.
+- "Lei Orgânica do Distrito Federal" → legislacao.
+- "Distrito Federal" → local.
+- "GOVERNADOR DO DISTRITO FEDERAL" → "Distrito Federal" is local.
+- "Câmara Legislativa do Distrito Federal" → organizacao.
+- "Crea-DF" → organizacao.
+- "CAU-DF" → organizacao.
+- "Deputado Rafael Prudente" → "Rafael Prudente" is pessoa.
+- "Art ." → legislacao.
+
+Wait, but in the input text, "Art ." is at the end. So that should be marked as legislacao. 
+
+Now, let me structure the HTML with these tags. Also, check for any other entities. For example, "Distrito Federal" is local. 
+
+So the final HTML should have all these tags. Let me make sure I didn't miss any. 
+
+Another thing: "Lei Orgânica do Distrito Federal" is a law, so legislacao. 
+
+Also, "Câmara Legislativa do Distrito Federal" is an organization. 
+
+So the final HTML should look like this, with all the entities marked correctly.
+</think>
+
+Desembargador Silvânio Barbosa dos Santos , <span class="organizacao">Procuradoria Geral de Justiça do Distrito Federal e Territórios</span> propôs a presente Ação Direta com o objetivo de ver declarada a inconstitucionalidade da <span class="legislacao">Lei nº 5.815</span> , de <span class="tempo">03 de abril de 2017</span> , oriunda de projeto de lei de iniciativa parlamentar , por suposta violação aos artigos 15 , incisos XIV e XV , 19 , caput , 53 , 71 , §1º , inciso IV e 100 , incisos VI e X , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . Confira-se o inteiro teor do diploma legal : <span class="legislacao">LEI Nº 5.815</span> , DE <span class="tempo">3 DE ABRIL DE 2017</span> ( <span class="pessoa">Autoria do Projeto : Deputado Rafael Prudente</span> ) Dispõe sobre convênio do Distrito Federal com o <span class="organizacao">CREA-DF</span> e o <span class="organizacao">CAU-DF</span> e dá outras providências . O <span class="local">GOVERNADOR DO DISTRITO FEDERAL</span> , Faço saber que a <span class="organizacao">Câmara Legislativa do Distrito Federal</span> decreta e eu sanciono a seguinte Lei : <span class="legislacao">Art .</span>

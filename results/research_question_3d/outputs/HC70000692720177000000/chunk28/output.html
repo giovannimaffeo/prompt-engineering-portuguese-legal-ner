@@ -1,0 +1,47 @@
+<think>
+Okay, let me tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. First, I need to carefully read the input text and identify all the entities according to the provided definitions.
+
+Starting with the first sentence: "Ao revés , o que se verifica na presente impetração é a reiterada tentativa de obstaculizar o prosseguimento da Ação Penal Militar nº 14-06.2010.7.11.0211 , que apura os fatos criminosos desencadeados por ocasião da deflagração da Operação Saúva , na qual a Polícia Federal objetivou desarticular um complexo esquema fraudulento envolvendo uma quadrilha especializada em manipular licitações em Órgãos Públicos no Estado do Amazonas ."
+
+Looking for entities here. The Ação Penal Militar nº 14-06.2010.7.11.0211 is a legal case number, so that's jurisprudência. The Operação Saúva is an operation, which might be an organization or a specific case. Wait, the definition says jurisprudência includes process numbers, so the case number is definitely jurisprudência. The Operação Saúva is a specific operation, so maybe it's an organization? But the example given for organization includes "Operação Saúva" as an example, but the user's example output shows "Operação Saúva" as a local? Wait, no. Let me check the definitions again.
+
+Wait, the user provided examples for each entity. For organization, examples include "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", etc. The Operação Saúva is a police operation, which might be considered an organization? Or perhaps it's a local? No, the local is a place. The Operação Saúva is an operation, which is an event, not a place. Wait, the user's example for organization includes "Operação Saúva" in the examples? Wait, looking back: the user's example for organization includes "Operação Saúva" as an example? Wait, the user's example for organization says "ex.: "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", "Câmara Legislativa", "UNIMED RIO COOPERATIVA..." So "Operação Saúva" isn't in the examples. Maybe it's not an organization. Then, maybe it's a jurisprudência? But the example for jurisprudência includes process numbers, not operations. Hmm. Maybe it's not an entity here. Wait, the text says "Operação Saúva" is part of the context, but according to the definitions, "Operação" might not be an entity. So perhaps it's not marked.
+
+Next, "Polícia Federal" is an organization. That's clear. Then "Estado do Amazonas" is a local, so that's a local. "Órgãos Públicos" is a generic term, so not a local. 
+
+Moving to the next part: "envolvendo uma quadrilha especializada em manipular licitações em Órgãos Públicos no Estado do Amazonas . O referido esquema envolvia um grupo de empresários da região , além de servidores públicos federais , estaduais e municipais , entre os quais militares do Exército Brasileiro ."
+
+"Quadrilha" is a group, but not an entity. "Empresários da região" – "região" is a generic term, so not a local. "Servidores públicos federais, estaduais e municipais" – these are generic terms, not entities. "Militares do Exército Brasileiro" – "Exército Brasileiro" is an organization. 
+
+So, in the text, the entities would be:
+
+- Ação Penal Militar nº 14-06.2010.7.11.0211 → jurisprudência
+- Operação Saúva → not sure, but maybe not an entity as per the examples. Wait, the user's example for organization includes "Operação Saúva" in the examples? Wait, no. The user's example for organization includes "Operação Saúva" in the examples? Let me check again. The user's examples for organization are "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", etc. So "Operação Saúva" is not an example. Therefore, it's not an organization. 
+
+Wait, maybe "Operação Saúva" is part of the case, but according to the definitions, it's not an entity. So it's not marked. 
+
+Other entities: "Estado do Amazonas" is a local. "Exército Brasileiro" is an organization. 
+
+Also, "Ação Penal Militar" is a type of legal action, but according to the definitions, jurisprudência includes process numbers and references to specific cases. The number "14-06.2010.7.11.0211" is a case number, so that's jurisprudência. 
+
+So, putting it all together:
+
+- "Ação Penal Militar nº 14-06.2010.7.11.0211" → jurisprudência
+- "Estado do Amazonas" → local
+- "Exército Brasileiro" → organização
+- "Polícia Federal" → organização
+
+Other parts like "Operação Saúva" are not marked as entities. "Quadrilha" is not an entity. "Empresários da região" – "região" is generic. "Servidores públicos" is generic. "Militares" is generic. 
+
+Wait, the user's example for jurisprudência includes "REsp 1694984/MS", so case numbers are marked. The case number here is "14-06.2010.7.11.0211", which is a process number. So that's marked as jurisprudência. 
+
+"Estado do Amazonas" is a local. "Exército Brasileiro" is an organization. "Polícia Federal" is an organization. 
+
+So the final HTML would have these tags. Let me check again to ensure I didn't miss any. 
+
+Yes, that seems to cover all the entities. So the output should have the appropriate spans with classes.
+</think>
+
+<div>
+  Ao revés , o que se verifica na presente impetração é a reiterada tentativa de obstaculizar o prosseguimento da <span class="jurisprudencia">Ação Penal Militar nº 14-06.2010.7.11.0211</span> , que apura os fatos criminosos desencadeados por ocasião da deflagração da <span class="organizacao">Operação Saúva</span> , na qual a <span class="organizacao">Polícia Federal</span> objetivou desarticular um complexo esquema fraudulento envolvendo uma quadrilha especializada em manipular licitações em <span class="local">Órgãos Públicos</span> no <span class="local">Estado do Amazonas</span> . O referido esquema envolvia um grupo de <span class="organizacao">empresários</span> da <span class="local">região</span> , além de <span class="organizacao">servidores públicos federais</span> , <span class="organizacao">estaduais</span> e <span class="organizacao">municipais</span> , entre os quais <span class="organizacao">militares</span> do <span class="organizacao">Exército Brasileiro</span> .
+</div>

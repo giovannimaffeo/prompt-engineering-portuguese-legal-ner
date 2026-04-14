@@ -1,0 +1,29 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text sentence by sentence.
+
+The first part is: "Defende que “ a atualização da parcela Adicional Décimos , pelas Leis 3.318/2004 , 3.355/2004 e 3.782/2006 , iria diminuir o valor percebido em alguns casos , pois em conformidade com a decisão 4041/2007 do e. TCDF , o valor a ser considerado , para fins de cálculo é o da coluna Representação , que possui valores menores que os constantes das tabelas das Leis 1004 e 1141/96 ” , de modo que “ optou-se por não proceder à atualização pelo Plano de Carreira , mantendo os valores atualmente percebidos , a fim de não prejudicar os servidores que possuem cargos comissionados incorporados sob a égide das Leis 1004 e 1141/96 ” ( fl . 311 ) ."
+
+Starting with "Leis 3.318/2004 , 3.355/2004 e 3.782/2006". These are all legislation references. Each "Lei" is a law, so they should be marked as legislacao. The numbers with slashes are the law codes, so those are part of the legislation entities.
+
+Next, "decisão 4041/2007 do e. TCDF". "decisão" here refers to a judicial decision, so that's jurisprudencia. The number 4041/2007 is the identifier for the decision. "TCDF" is an acronym for the Tribunal de Contas da Federação (Federal Court of Accounts), which is an organization, so that should be organizacao.
+
+Then, "Leis 1004 e 1141/96" again refer to legislation, so those are legislacao. The "fl. 311" at the end is a reference to a page, which is a temporal reference (page number as a temporal marker?), but according to the guidelines, "tempo" is for explicit time references. Since "fl." is a page number, maybe it's a local? Wait, "fl." is an abbreviation for "fls." (folhas), which is a page reference in legal documents. But the guidelines say "local" is for explicit places. However, "fl." might not be a local. The user's example output might have marked "fl. 311" as tempo? Wait, looking at the example output provided by the user, in their sample input, "fl. 311" is marked as tempo. Wait, the user's example output shows "fl. 311" as <span class="tempo">fl. 311</span>. So according to the guidelines, "tempo" includes page numbers? Or maybe "fl." is considered a temporal reference. The user's example output includes "fl. 311" as tempo. So I should follow that.
+
+Now, checking each entity:
+
+- "Leis 3.318/2004 , 3.355/2004 e 3.782/2006" → legislacao
+- "decisão 4041/2007" → jurisprudencia
+- "TCDF" → organizacao
+- "Leis 1004 e 1141/96" → legislacao
+- "fl. 311" → tempo
+
+Other parts: "servidores que possuem cargos comissionados incorporados sob a égide das Leis 1004 e 1141/96" – "servidores" is a generic term, not a specific person, so not pessoa. "cargos comissionados" is a generic term, not an organization. "égide" is a preposition, not an entity. So no entities there.
+
+Now, I need to wrap each of these entities with <span> tags. Let me make sure I'm not missing any. Also, check if any other parts might be entities. For example, "Plano de Carreira" – that's a plan, not an organization, so not organizacao. "TCDF" is an organization. "Leis" are legislation. "decisão" is jurisprudencia. "fl. 311" is tempo.
+
+So the final HTML should have all these entities marked with their respective classes. Let me structure the text accordingly.
+</think>
+
+<span class="legislacao">Leis 3.318/2004</span>, <span class="legislacao">3.355/2004</span> e <span class="legislacao">3.782/2006</span>, iria diminuir o valor percebido em alguns casos, pois em conformidade com a <span class="jurisprudencia">decisão 4041/2007</span> do <span class="organizacao">e. TCDF</span>, o valor a ser considerado, para fins de cálculo é o da coluna Representação, que possui valores menores que os constantes das tabelas das <span class="legislacao">Leis 1004</span> e <span class="legislacao">1141/96</span>”, de modo que “optou-se por não proceder à atualização pelo <span class="organizacao">Plano de Carreira</span>, mantendo os valores atualmente percebidos, a fim de não prejudicar os servidores que possuem cargos comissionados incorporados sob a égide das <span class="legislacao">Leis 1004</span> e <span class="legislacao">1141/96</span>” (<span class="tempo">fl. 311</span>).

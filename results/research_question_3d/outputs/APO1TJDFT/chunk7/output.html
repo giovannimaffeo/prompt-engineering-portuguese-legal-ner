@@ -1,0 +1,56 @@
+<think>
+Okay, let me tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each needs a class attribute.
+
+First, I need to go through the text carefully and identify each entity according to the definitions provided. Let me start by reading the text again.
+
+The text starts with "Disse que os substituídos pertencem aos quadros da Secretaria de Estado Fls . _____ Apelação / Reexame Necessário 20140110500434APO R E L A T Ó R I O Cuida-se de apelação com remessa de ofício interposta pelo DISTRITO FEDERAL ( fls . 305/313 ) contra sentença ( fls . 298/300 ) proferida no curso de ação revisional proposta pelo SINPRO/DF . Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 4 de Educação e em razão de terem exercido por vários anos cargos comissionados em funções gratificadas incorporaram aos seus vencimentos os quintos/décimos correspondentes , conforme a Lei 1.004/1996 , regulamentada pelo Decreto nº 17.182/96 . Com a inicial vieram os documentos de fls.12/226 com custas pagas a fls . 226 Determinada a citação à fls.229 com cumprimento à fls ."
+
+Now, let me break this down sentence by sentence.
+
+1. "Disse que os substituídos pertencem aos quadros da Secretaria de Estado Fls ."
+   - "Secretaria de Estado" is an organization. So, I'll mark that as organizacao.
+   - "Fls." is likely an abbreviation for "Folha" (page), which is a common abbreviation in legal documents. However, the user's guidelines say to mark only specific entities. Since "Fls" is an abbreviation for a page reference, which is a local? Wait, no. The local is defined as explicit places. "Fls" is an abbreviation for "Folhas" (pages), so it's not a local. It's a reference to pages, which is not one of the specified entities. So maybe not marked. The user's guidelines say to leave as is if no entities are found. So maybe leave "Fls." as is.
+
+2. "Apelação / Reexame Necessário 20140110500434APO"
+   - "20140110500434APO" seems like a legal case number or identifier. According to the jurisprudência definition, identifiers like this should be marked as jurisprudência. So I'll wrap that in <span class="jurisprudencia">.
+
+3. "R E L A T Ó R I O Cuida-se de apelação com remessa de ofício interposta pelo DISTRITO FEDERAL ( fls . 305/313 ) contra sentença ( fls . 298/300 ) proferida no curso de ação revisional proposta pelo SINPRO/DF ."
+   - "DISTRITO FEDERAL" is an organization, so mark as organizacao.
+   - "SINPRO/DF" is likely an organization (abbreviation for something like "Sindicato dos Profissionais da Educação do Distrito Federal"), so mark as organizacao.
+   - "fls. 305/313" and "fls. 298/300" are page references. The user's guidelines mention that "fls" is an abbreviation for "Folhas", which is not one of the specified entities. So leave them as is.
+
+4. "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P"
+   - "Código de Verificação" is a generic term, not an entity. The number "2018ACO899XSQTZBL81ZOE6V34P" seems like an identifier, but the user's guidelines don't mention codes like this. So maybe leave it as is.
+
+5. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 4 de Educação"
+   - "GABINETE DA DESEMBARGADORA" is an organization (since it's a government office). "MARIA IVATÔNIA" is a person's name, so mark as pessoa. "4 de Educação" is a department or section, which is part of an organization, but the user's guidelines say to mark only specific entities. Since "4 de Educação" is a generic term, not a specific name, it's not an entity. So "MARIA IVATÔNIA" is pessoa.
+
+6. "e em razão de terem exercido por vários anos cargos comissionados em funções gratificadas incorporaram aos seus vencimentos os quintos/décimos correspondentes , conforme a Lei 1.004/1996 , regulamentada pelo Decreto nº 17.182/96 ."
+   - "Lei 1.004/1996" is legislation, so mark as legislação.
+   - "Decreto nº 17.182/96" is also legislation, so mark as legislação.
+
+7. "Com a inicial vieram os documentos de fls.12/226 com custas pagas a fls . 226 Determinada a citação à fls.229 com cumprimento à fls ."
+   - Again, "fls." references pages, which are not entities. So leave as is.
+
+Now, compiling all these:
+
+- "Secretaria de Estado" → organizacao
+- "DISTRITO FEDERAL" → organizacao
+- "SINPRO/DF" → organizacao
+- "MARIA IVATÔNIA" → pessoa
+- "Lei 1.004/1996" → legislação
+- "Decreto nº 17.182/96" → legislação
+- "20140110500434APO" → jurisprudencia
+
+Other parts like "Fls." and "fls." are left as is. The rest don't fit any entity categories.
+
+So the final HTML would have the spans for these entities. Let me check again to ensure I didn't miss any. For example, "GABINETE DA DESEMBARGADORA" is an organization, but the user's guidelines say to mark the specific name. "GABINETE DA DESEMBARGADORA" is a generic term, but "DESEMBARGADORA" is a title, not a name. However, "MARIA IVATÔNIA" is a name. So only that person is marked. The organization would be "DISTRITO FEDERAL", "SINPRO/DF", and "Secretaria de Estado".
+
+Wait, "Secretaria de Estado" is an organization. So that's marked as organizacao. Similarly, "DISTRITO FEDERAL" is an organization. "SINPRO/DF" is an organization. "GABINETE DA DESEMBARGADORA" is part of an organization, but the user's guidelines say to mark specific names. Since "GABINETE DA DESEMBARGADORA" is a generic term, maybe not. But "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" would be a specific office, but the user's guidelines say to only mark names. So "MARIA IVATÔNIA" is the person.
+
+Also, "20140110500434APO" is a jurisprudencia identifier. The user's example includes numbers like "REsp 1694984/MS" as jurisprudencia, so this should be marked.
+
+So the final HTML should have those spans. Let me structure the text with these tags.
+</think>
+
+Disse que os substituídos pertencem aos quadros da <span class="organizacao">Secretaria de Estado</span> Fls . _____ <span class="jurisprudencia">Apelação / Reexame Necessário 20140110500434APO</span> R E L A T Ó R I O Cuida-se de apelação com remessa de ofício interposta pelo <span class="organizacao">DISTRITO FEDERAL</span> ( fls . 305/313 ) contra sentença ( fls . 298/300 ) proferida no curso de ação revisional proposta pelo <span class="organizacao">SINPRO/DF</span> . Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 4 de Educação e em razão de terem exercido por vários anos cargos comissionados em funções gratificadas incorporaram aos seus vencimentos os quintos/décimos correspondentes , conforme a <span class="legislacao">Lei 1.004/1996</span> , regulamentada pelo <span class="legislacao">Decreto nº 17.182/96</span> . Com a inicial vieram os documentos de fls.12/226 com custas pagas a fls . 226 Determinada a citação à fls.229 com cumprimento à fls .

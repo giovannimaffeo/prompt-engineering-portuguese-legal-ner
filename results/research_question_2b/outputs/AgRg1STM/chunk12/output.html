@@ -1,0 +1,52 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example input again: "Em Decisum de 09/11/2017 , fls . 79-83 , Vossa Excelência , Ministro Relator , Dr. José Barroso Filho , monocraticamente , negou seguimento a recursal utilizando os dispositivos legais : inc. V , do art . 12 , e do § 2º do art . 126 , todos do RISTM ."
+
+Looking for entities:
+
+1. **Tempo/Data**: The date "09/11/2017" is clearly a tempo entity. Also, "fls. 79-83" might refer to folhas, which is a legal term for pages, but the user hasn't specified that as an entity. Wait, the user's guide says to mark tempo, so maybe "fls. 79-83" is part of the date? Or is "fls" an abbreviation for "folhas" which is a local? Hmm, not sure. The user's example output might clarify. Let me check the sample output provided.
+
+Wait, the user provided the input and the output. Let me see the sample output. Oh, the user hasn't provided the output yet; they just gave the input. So I need to process the input.
+
+So, "09/11/2017" is a tempo. Then "RISTM" is likely an acronym for "Regulamento Interno do Serviço Técnico da Magistratura" or similar, which would be an organizacao. Wait, but the user's example output might have "RISTM" as legislacao? Or maybe it's an abbreviation for a legal regulation. Alternatively, "RISTM" could be an organization. Wait, the user's example output might have "RISTM" as legislacao. Let me think.
+
+In the input, the text mentions "dispositivos legais : inc. V , do art . 12 , e do § 2º do art . 126 , todos do RISTM ." So "RISTM" is the source of the legal provisions. So "RISTM" is a legislation (legislacao) entity. Therefore, I should mark "RISTM" as legislacao.
+
+Now, "Dr. José Barroso Filho" is a pessoa. "Ministro Relator" is a title, but the person's name is there, so "Dr. José Barroso Filho" is a pessoa. "Vossa Excelência" is a title of respect, not an entity. "Monocraticamente" is a term, not an entity. "Recursal" is a legal term but not an entity. "Art." refers to articles, which are part of legislation, but the user's guide says to mark "legislacao" for legal provisions. So "art. 12" and "§ 2º do art. 126" are parts of the legislation, so they should be marked as legislacao? Wait, the user's guide says to mark "legislacao" for legislation. So the articles mentioned are part of the legislation, so they should be marked as legislacao. But the user's example output might have "art. 12" and "§ 2º do art. 126" as part of the legislation. However, the user's guide says to mark the entities, so the actual legislation (like the name of the law) would be marked. But in this case, the text refers to "RISTM" as the source, so "RISTM" is the legislation. The articles are part of that legislation, but maybe they are not entities. Wait, the user's guide says to mark "legislacao" for legislation. So "RISTM" is the legislation. The articles (art. 12, § 2º) are parts of the legislation, but perhaps they are not entities. Wait, the user's example output might have "RISTM" as legislacao. Let me check the sample output again. The user hasn't provided the output yet, so I need to proceed.
+
+So, in the input text:
+
+- "09/11/2017" is tempo.
+- "Dr. José Barroso Filho" is pessoa.
+- "RISTM" is legislacao.
+- "art. 12" and "§ 2º do art. 126" are parts of the legislation, but since the user's guide says to mark "legislacao" for legislation, perhaps the actual legislation name is "RISTM", so those articles are part of it. Therefore, the articles are not entities but part of the legislation. So only "RISTM" is marked as legislacao.
+
+Other entities:
+
+- "Vossa Excelência" is a title, not an entity.
+- "Ministro Relator" is a title, not an entity.
+- "fls. 79-83" is a reference to pages, but the user hasn't specified that as an entity. So leave as is.
+- "monocraticamente" is a term, not an entity.
+- "recursal" is a legal term, not an entity.
+
+So the entities to mark are:
+
+- "09/11/2017" as tempo.
+- "Dr. José Barroso Filho" as pessoa.
+- "RISTM" as legislacao.
+
+Now, the HTML should have these marked with the appropriate classes. Let me structure the text accordingly.
+
+Original text: "Em Decisum de 09/11/2017 , fls . 79-83 , Vossa Excelência , Ministro Relator , Dr. José Barroso Filho , monocraticamente , negou seguimento a recursal utilizando os dispositivos legais : inc. V , do art . 12 , e do § 2º do art . 126 , todos do RISTM ."
+
+Marking:
+
+- "09/11/2017" → <span class="tempo">09/11/2017</span>
+- "Dr. José Barroso Filho" → <span class="pessoa">Dr. José Barroso Filho</span>
+- "RISTM" → <span class="legislacao">RISTM</span>
+
+Other parts remain as is. So the final HTML would have these spans inserted into the text.
+</think>
+
+Em Decisum de <span class="tempo">09/11/2017</span> , fls . 79-83 , Vossa Excelência , Ministro Relator , <span class="pessoa">Dr. José Barroso Filho</span> , monocraticamente , negou seguimento a recursal utilizando os dispositivos legais : inc. V , do art . 12 , e do § 2º do art . 126 , todos do <span class="legislacao">RISTM</span> .

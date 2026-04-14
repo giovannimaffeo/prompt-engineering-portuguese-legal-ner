@@ -1,0 +1,58 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 29 Peço vênias para , no ponto , transcrever trecho do parecer da douta Procuradoria de Justiça , que adoto como razões de decidir ( fl ."
+
+Looking for entities:
+
+1. "Ação Direta de Inconstitucionalidade" – This seems like a legal action, maybe a type of legislation? Wait, "Ação Direta de Inconstitucionalidade" is a legal term in Brazil, referring to a direct action for unconstitutionality. So that's a type of legislation? Or maybe it's part of the case name. Hmm, the user's example output shows "Ação Direta de Inconstitucionalidade" as a legislacao. Wait, but in the example output provided by the user, the output is:
+
+"Ação Direta de Inconstitucionalidade <span class="legislacao">20170020161362ADI</span> Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 29 Peço vênias para , no ponto , transcrever trecho do parecer da douta <span class="organizacao">Procuradoria de Justiça</span> , que adoto como razões de decidir ( fl ."
+
+Wait, so in the example, "20170020161362ADI" is marked as legislacao. But that looks like a case number. Maybe the user considers case numbers as part of legislation? Or perhaps the "ADI" stands for Ação Direta de Inconstitucionalidade, which is a type of legal action, so maybe it's part of the legislation. Alternatively, maybe the user's example is using "legislacao" for case numbers. I need to follow the example's approach.
+
+Looking at the example output, "20170020161362ADI" is marked as legislacao. So I should follow that. Then "2018" is marked as tempo. "GABINETE DO DESEMBARGADOR" is part of the organization? Wait, in the example, "SILVANIO BARBOSA DOS SANTOS" is marked as pessoa. So the person's name is marked as pessoa. "Procuradoria de Justiça" is an organization. 
+
+So applying that to the input text:
+
+- "Ação Direta de Inconstitucionalidade" – maybe part of the case name, but in the example, it's not marked. Wait, in the example output, the user's input starts with "Ação Direta de Inconstitucionalidade" and in the output, it's not marked. Wait, looking at the example output provided by the user, the output is:
+
+"Ação Direta de Inconstitucionalidade <span class="legislacao">20170020161362ADI</span> Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 29 Peço vênias para , no ponto , transcrever trecho do parecer da douta <span class="organizacao">Procuradoria de Justiça</span> , que adoto como razões de decidir ( fl ."
+
+So "Ação Direta de Inconstitucionalidade" is not marked. The "20170020161362ADI" is legislacao. "2018" is tempo. "SILVANIO BARBOSA DOS SANTOS" is pessoa. "Procuradoria de Justiça" is organizacao. 
+
+So the user's example shows that "Ação Direta de Inconstitucionalidade" is not marked. So maybe the user's example is using the case number as legislacao, and the year as tempo. 
+
+So for the input text, I need to:
+
+- Identify "20170020161362ADI" as legislacao.
+- "2018" as tempo.
+- "SILVANIO BARBOSA DOS SANTOS" as pessoa.
+- "Procuradoria de Justiça" as organizacao.
+
+Other parts like "GABINETE DO DESEMBARGADOR" might be part of the organization, but in the example, it's not marked. Wait, in the example, "GABINETE DO DESEMBARGADOR" is not marked. So maybe "GABINETE DO DESEMBARGADOR" is part of the organization, but in the example, it's not marked. Wait, the example shows "GABINETE DO DESEMBARGADOR" as part of the text without any tags. So perhaps "GABINETE DO DESEMBARGADOR" is not an entity here. 
+
+So applying that to the input text:
+
+The input text is: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 29 Peço vênias para , no ponto , transcrever trecho do parecer da douta Procuradoria de Justiça , que adoto como razões de decidir ( fl ."
+
+Breaking it down:
+
+- "Ação Direta de Inconstitucionalidade" – not marked.
+- "20170020161362ADI" – legislacao.
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – "2018" is tempo, the rest might be part of the code, not marked.
+- "GABINETE DO DESEMBARGADOR" – not marked.
+- "SILVANIO BARBOSA DOS SANTOS" – pessoa.
+- "29" – not marked.
+- "Procuradoria de Justiça" – organizacao.
+
+So the HTML would be:
+
+"Ação Direta de Inconstitucionalidade <span class="legislacao">20170020161362ADI</span> Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 29 Peço vênias para , no ponto , transcrever trecho do parecer da douta <span class="organizacao">Procuradoria de Justiça</span> , que adoto como razões de decidir ( fl ."
+
+I need to make sure that the tags are correctly placed. Also, check if "Código de Verificação" is part of the entity, but in the example, it's not marked. So only the "2018" is marked as tempo. The rest of the code is left as is. 
+
+So the final output should have the specified tags for the identified entities.
+</think>
+
+Ação Direta de Inconstitucionalidade <span class="legislacao">20170020161362ADI</span> Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 29 Peço vênias para , no ponto , transcrever trecho do parecer da douta <span class="organizacao">Procuradoria de Justiça</span> , que adoto como razões de decidir ( fl .

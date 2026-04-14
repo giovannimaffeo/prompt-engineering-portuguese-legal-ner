@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to understand each entity's definition to correctly identify them in the input text. Let me go through the definitions again to make sure I don't miss anything.
+
+Pessoa: Names of individuals, like full names or nicknames. Terms like "réu" or "vítima" are generic and shouldn't be marked. So, names like "José Barroso Filho" would be a pessoa.
+
+Organizacao: Formal entities like government bodies, courts, companies. For example, "MINISTÉRIO PÚBLICO FEDERAL" is an organization. Also, "2ª Auditoria da 1ª CJM" might be an organization since it refers to a specific court unit.
+
+Tempo: Dates and time references. The input has "6 de julho de 2016", "9 de março de 2017", "3 de outubro de 2017", and "22 de dezembro de 2016". These are all dates and should be marked as tempo.
+
+Local: Specific places like cities, states, countries. The text mentions "Corte" which might refer to a court, but I need to check if it's a specific location. However, "Corte" here is likely referring to a court, not a specific place. Wait, "egrégia Corte" could be a court, but the definition says to mark explicit locations. If "Corte" is a specific court name, like a tribunal, maybe it's an organization. Hmm, need to be careful here. The example given in the guidelines includes "COMARCA DE BELO HORIZONTE" as a local. In the input, "Corte" might not be a local but an organization. Maybe "Corte" here refers to a court, which is an organization.
+
+Legislacao: Laws, decrees, etc. The input has "Decreto nº 8.940" and "Decreto nº 8 . 940 , de 22 de dezembro de 2016". The "Decreto" is a legislative act, so it should be marked as legislacao. Also, "art. 61 , §1º , da Lei nº 9.430/96" from the example, but in the current input, the only legislative reference is the Decreto.
+
+Jurisprudencia: Legal precedents, decisions, súmulas. The input mentions "Recurso em Sentido Estrito nº 109- 80.2017.7.01.0201" which is a legal case number, so that's jurisprudencia. Also, "Documentos assinados eletronicamente por José Barroso Filho" – wait, that's a person, so José Barroso Filho is pessoa. The "Matricula 1117" might be a reference to a position or a number, but not an entity here.
+
+Now, let me go through the input text step by step.
+
+"A Audiência Admonitória foi realizada , em 6 de julho de 2016 , tendo o Sentenciado aceitado as condições estabelecidas e passado ao cumprimento da suspensão condicional da execução da pena ( sursis ) . Consoante a Decisão lavrada em 9 de março de 2017 ( fl . 3 ) , o JuizAuditor Substituto da 2ª Auditoria da 1ª CJM deixou de conceder o indulto ao Sursitário , devido não atender aos requisitos previsto no Decreto nº 8 . 940 , de 22 de dezembro de 2016 . Em juízo de retratação , a Juíza-Auditora da 2ª Auditoria da 1ª CJM manteve a decisão e determinou a remessa , em autos apartados , a esta egrégia Corte . No julgamento do Recurso em Sentido Estrito nº 109- 80.2017.7.01.0201 , em 3 de outubro de 2017 , esta egrégia Corte , por unanimidade , negou provimento ao pedido da Defesa , mantendo a Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 ."
+
+First, "6 de julho de 2016" is tempo. "9 de março de 2017" is tempo. "3 de outubro de 2017" is tempo. "22 de dezembro de 2016" is tempo.
+
+"Decreto nº 8 . 940 , de 22 de dezembro de 2016" – the "Decreto" is legislacao. The date is tempo. The number "8.940" is part of the decree, so it's part of the legislacao.
+
+"JuizAuditor Substituto da 2ª Auditoria da 1ª CJM" – "JuizAuditor" is a title, not a pessoa. "2ª Auditoria da 1ª CJM" is an organization. Similarly, "Juíza-Auditora da 2ª Auditoria da 1ª CJM" refers to an organization as well.
+
+"Esta egrégia Corte" – "Corte" might be a court, which is an organization. The example had "Corte" in the output as part of the organization, but in the example given, "Corte" was part of the organization. Wait, in the example, the user had "esta egrégia Corte" as an organization. So I think "Corte" here refers to a court, which is an organization. So "esta egrégia Corte" should be an organization.
+
+"Recurso em Sentido Estrito nº 109- 80.2017.7.01.0201" – this is a legal case number, so jurisprudencia.
+
+"José Barroso Filho" is a pessoa.
+
+"Matricula 1117" – this is a number, not an entity. The example in the guidelines mentions that "Matricula" is not an entity unless it's part of a specific reference. Since it's just a number, it's not marked.
+
+So putting it all together:
+
+- "6 de julho de 2016" → tempo
+- "9 de março de 2017" → tempo
+- "3 de outubro de 2017" → tempo
+- "22 de dezembro de 2016" → tempo
+- "Decreto nº 8 . 940" → legislacao
+- "2ª Auditoria da 1ª CJM" → organizacao
+- "Juíza-Auditora da 2ª Auditoria da 1ª CJM" → organizacao
+- "esta egrégia Corte" → organizacao
+- "Recurso em Sentido Estrito nº 109- 80.2017.7.01.0201" → jurisprudencia
+- "José Barroso Filho" → pessoa
+
+Wait, "Corte" in "esta egrégia Corte" – is that an organization? The example in the guidelines had "Corte" as part of the organization. For example, in the example input, "Corte" was marked as organizacao. So yes, "Corte" here is an organization.
+
+Also, "JuizAuditor Substituto da 2ª Auditoria da 1ª CJM" – "JuizAuditor" is a title, not a pessoa. The "2ª Auditoria da 1ª CJM" is an organization. Similarly for "Juíza-Auditora da 2ª Auditoria da 1ª CJM".
+
+So the HTML should have:
+
+- All the dates as tempo
+- Decreto nº 8.940 as legislacao
+- 2ª Auditoria da 1ª CJM as organizacao
+- esta egrégia Corte as organizacao
+- Recurso em Sentido Estrito nº ... as jurisprudencia
+- José Barroso Filho as pessoa
+
+Now, checking for any other entities. The text mentions "fl . 3" – "fl" is an abbreviation for "fls" (fólios), which is not an entity. "Matricula 1117" is just a number, not an entity. "Sursis" is a legal term but not an entity. "Indulto" is a term but not an entity. "Auto" is a term but not an entity. "Corte" is an organization. 
+
+So the final HTML should have all these entities marked with the appropriate classes.
+</think>
+
+A <span class="audiencia">Audiência Admonitória</span> foi realizada , em <span class="tempo">6 de julho de 2016</span> , tendo o <span class="pessoa">Sentenciado</span> aceitado as condições estabelecidas e passado ao cumprimento da suspensão condicional da execução da pena ( sursis ) . Consoante a <span class="legislacao">Decisão</span> lavrada em <span class="tempo">9 de março de 2017</span> ( fl . 3 ) , o <span class="organizacao">JuizAuditor Substituto da 2ª Auditoria da 1ª CJM</span> deixou de conceder o indulto ao <span class="pessoa">Sursitário</span> , devido não atender aos requisitos previsto no <span class="legislacao">Decreto nº 8 . 940</span> , de <span class="tempo">22 de dezembro de 2016</span> . Em juízo de retratação , a <span class="organizacao">Juíza-Auditora da 2ª Auditoria da 1ª CJM</span> manteve a decisão e determinou a remessa , em autos apartados , a esta <span class="organizacao">egrégia Corte</span> . No julgamento do <span class="jurisprudencia">Recurso em Sentido Estrito nº 109- 80.2017.7.01.0201</span> , em <span class="tempo">3 de outubro de 2017</span> , esta <span class="organizacao">egrégia Corte</span> , por unanimidade , negou provimento ao pedido da Defesa , mantendo a <span class="documento">Documento</span> assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , <span class="matricula">Matricula 1117</span> .

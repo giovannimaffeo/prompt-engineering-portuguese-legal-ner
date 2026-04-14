@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text sentence by sentence.
+
+The first sentence: "Exige-se dolo do agente e prejuízo ao ente público , bem como manifesta má-fé , conforme a doutrina e a jurisprudência majoritárias ( peça 66 , p. 15-16 ) ."
+
+Looking for entities here. "ente público" is a generic term, not a specific entity. "dolo", "prejuízo", "má-fé" are general terms. The phrase "jurisprudência majoritárias" refers to jurisprudence, but "majoritárias" is a modifier. However, the example shows that "jurisprudência" should be marked if it's a reference. Wait, the example in the guidelines says that "jurisprudência" as a general term isn't marked, but specific references like "REsp n. 1694984/MS" are. Here, "jurisprudência majoritárias" is a general reference, so maybe not. But the parentheses have "peça 66 , p. 15-16". The "peça 66" might be a reference to a document, but the example shows that "peça" isn't marked. Wait, the example in the output had "peça 66" not marked. So maybe "peça" is not an entity here. The parentheses might be part of a citation, but the user's examples don't mark those. So I should leave those as is.
+
+Next sentence: "O Poder Público pode manejar ação civil pública ou de ressarcimento contra qualquer pessoa que deu causa ao dano , sem se afastar da necessária seriedade na interpretação dos atos ímprobos ; b ) Embora o recorrente tenha cometido ato irregular que ensejou dano ao patrimônio público , não há indícios de má-fé dele ."
+
+Here, "Poder Público" is an organization. Wait, the definition says "organização" includes public organs. So "Poder Público" should be marked as organizacao. Then "ação civil pública" is a legal term but not an entity. "qualquer pessoa" is a generic term, not a specific entity. "patrimônio público" is a general term. "má-fé" is a general term. The "b )" is part of a list, but not an entity.
+
+Next part: "O ex-gestor entendia estar agindo de forma a dar efetiva garantia ao ato praticado , diferentemente do afirmado no item 24 do relatório do acórdão recorrido , transcrito no pedido ( peça 66 , p. 28-29 ) ."
+
+"ex-gestor" is a title, not a specific person. "acórdão recorrido" refers to a specific judicial decision. The example shows that "acórdão" with a number is marked as jurisprudencia. Here, "acórdão recorrido" is a reference to a specific decision, so "acórdão recorrido" should be marked as jurisprudencia. Wait, but the example in the guidelines says that "Acórdão n. 999404" is marked. Here, "acórdão recorrido" is a reference to a specific decision, so maybe the entire phrase should be marked. But the example in the output didn't mark "acórdão recorrido" as jurisprudencia. Wait, looking back at the example given in the problem statement: the input had "REsp n . 1694984/MS" and "Súmula 331 do TST" marked as jurisprudencia. So "acórdão recorrido" is a reference to a specific decision, so it should be marked. But the example in the problem didn't have that. Wait, maybe the example in the problem didn't include that. Let me check again.
+
+In the example input, the output marked "REsp n . 1694984/MS" and "Súmula 331 do TST" as jurisprudencia. So any specific reference to a judicial decision, like "acórdão recorrido" (if it's a specific one), should be marked. But in the input text, "acórdão recorrido" is a general term, not a specific reference. Wait, the text says "do relatório do acórdão recorrido", which is a reference to a specific decision. But the exact reference isn't given. So maybe it's not marked. However, the example in the problem shows that "acórdão" with a number is marked. So if the text has "acórdão recorrido" without a number, maybe it's not marked. But the example in the problem's output didn't mark "acórdão recorrido" as jurisprudencia. So perhaps only specific references with numbers or identifiers are marked. Therefore, "acórdão recorrido" is a general term and not marked.
+
+Then, the parentheses again have "peça 66 , p. 28-29" which are not marked.
+
+Next sentence: "A afirmação de que o responsável agiu de forma precipitada , com falta de cuidado , desconhece a realidade e poderia ser saneada na época dos fatos ."
+
+No entities here. "responsável" is a generic term. "época dos fatos" is a time reference but not a specific date. So no marking.
+
+Now, let's check for any other entities. "Poder Público" is an organization. "acórdão recorrido" is a reference to a judicial decision, but without a specific identifier, so not marked. "peça 66" is a reference to a document, but not an entity. "p. 15-16" is a page reference, not a time. "p. 28-29" same.
+
+So the only entity to mark is "Poder Público" as organizacao. Wait, but the example in the problem's input had "MINISTÉRIO PÚBLICO FEDERAL" marked as organizacao. So "Poder Público" is a public power, which is an organization. So yes, "Poder Público" should be marked as organizacao.
+
+Wait, but the definition says "organização" includes public organs. So "Poder Público" is an organization. Therefore, in the input text, "O Poder Público pode manejar..." should have "Poder Público" marked as organizacao.
+
+So the final output would have "Poder Público" as organizacao. Let me check again.
+
+Yes, that's correct. So the HTML should have <span class="organizacao">Poder Público</span>.
+
+Other parts: "peça 66" is not an entity. "p. 15-16" is a page reference, not a time. "acórdão recorrido" is a general term. So no other entities.
+
+Therefore, the final HTML should have "Poder Público" marked as organizacao.
+</think>
+
+O <span class="organizacao">Poder Público</span> pode manejar ação civil pública ou de ressarcimento contra qualquer pessoa que deu causa ao dano , sem se afastar da necessária seriedade na interpretação dos atos ímprobos ; b ) Embora o recorrente tenha cometido ato irregular que ensejou dano ao patrimônio público , não há indícios de má-fé dele . O ex-gestor entendia estar agindo de forma a dar efetiva garantia ao ato praticado , diferentemente do afirmado no item 24 do relatório do <span class="jurisprudencia">acórdão recorrido</span> , transcrito no pedido ( peça 66 , p. 28-29 ) . A afirmação de que o responsável agiu de forma precipitada , com falta de cuidado , desconhece a realidade e poderia ser saneada na época dos fatos .

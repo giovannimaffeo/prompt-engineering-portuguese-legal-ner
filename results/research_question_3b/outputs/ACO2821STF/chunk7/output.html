@@ -1,0 +1,77 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. The input is: "RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+Let me break it down word by word. 
+
+Starting with "RICARDO LEWANDOWSKI". These are two names, likely a person. Since both are names, they should be marked as 'pessoa'. So, I'll wrap each with <span class="pessoa">.
+
+Next is "AGTE". This is an abbreviation for "Agente" or "Agente da União", but in legal contexts, "AGTE" might stand for "Agente" or "Agente da União". However, the user's example output shows "AGTE" as part of the text without marking. Wait, looking at the example output provided by the user, they have "AGTE" as is. Wait, no, the example output is not given here. Wait, the user provided the input and the output example is the one they want. Wait, the user's example output is the one they want. Wait, the user's instruction says that the output should be the annotated text. Let me check the example again.
+
+Wait, the user provided the input text and the output example is the one they want. Wait, no, the user's input is the text, and the output is the HTML with tags. The user's example output is the one they want. Wait, the user's instruction says that the output should be the annotated text. So, I need to process the input text and mark the entities.
+
+So, back to the input. "AGTE" is likely an abbreviation for "Agente" or "Agente da União". But according to the guidelines, abbreviations that are part of legal terms might be considered as part of the entity. However, the user's example output shows that "AGTE" is not marked. Wait, maybe "AGTE" is part of a legal term. Let me think again.
+
+Wait, the input text is: "RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+Breaking it down:
+
+- "RICARDO LEWANDOWSKI" are names of a person, so they should be marked as 'pessoa'.
+- "AGTE" could be an abbreviation for "Agente" or "Agente da União". But since it's an abbreviation, maybe it's part of a legal term. However, the guidelines say to mark only full names. Wait, the definition for 'pessoa' includes names, but abbreviations might not be considered unless they are full names. However, "AGTE" is an abbreviation, so maybe it's not marked. But in the example output provided by the user, they have "AGTE" as is. Wait, the user's example output is not given here. Wait, the user's instruction says that the output should be the annotated text. So, I need to process the input text.
+
+Next, "UNIÃO" is an organization. The word "UNIÃO" in Portuguese can refer to the Union, which is a legal entity. So, "UNIÃO" should be marked as 'organizacao'.
+
+"ADV" is likely an abbreviation for "Advogado" (Attorney), but again, abbreviations might not be marked unless they are part of a full name. However, in legal contexts, "ADV" could be part of a designation. But according to the guidelines, only full names are marked. So "ADV" might not be marked.
+
+"ADVOGADO -GERAL DA UNIÃO" is a title. "ADVOGADO" is a profession, but the full title is "ADVOGADO GERAL DA UNIÃO", which is an organization or a position. Wait, "ADVOGADO GERAL DA UNIÃO" is a position within the Union, so it's an organization. But the user's example output might have "ADVOGADO GERAL DA UNIÃO" as part of the text. Wait, the input has "ADVOGADO -GERAL DA UNIÃO AGDO". Let me check again.
+
+The input text is: "RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+Breaking it down:
+
+- "RICARDO LEWANDOWSKI" → pessoa
+- "AGTE" → possibly an abbreviation, but not marked
+- "UNIÃO" → organizacao
+- "ADV" → abbreviation, not marked
+- "ADVOGADO -GERAL DA UNIÃO" → "ADVOGADO GERAL DA UNIÃO" is a position, but the full title might be an organization. However, "ADVOGADO GERAL DA UNIÃO" is a title, not an organization. So maybe not marked. But "UNIÃO" is already marked as organizacao.
+- "AGDO" → abbreviation for "Advogado", not marked
+- "ESTADO DE MATO GROSSO" → "ESTADO" is a local (state), "MATO GROSSO" is a state, so both should be marked as local.
+- "PROC" → abbreviation for "Processo" (Case), which is a legal term, but according to the guidelines, only specific entities are marked. "PROC" is an abbreviation, so not marked.
+
+Putting it all together:
+
+- "RICARDO LEWANDOWSKI" → <span class="pessoa">RICARDO LEWANDOWSKI</span>
+- "AGTE" → remains as is
+- "UNIÃO" → <span class="organizacao">UNIÃO</span>
+- "ADV" → remains as is
+- "ADVOGADO -GERAL DA UNIÃO" → "ADVOGADO" is a profession, not marked. "GERAL DA UNIÃO" is part of the title, but not an entity. So not marked.
+- "AGDO" → remains as is
+- "ESTADO DE MATO GROSSO" → "ESTADO" is a local (state), "MATO GROSSO" is a local (state). So both should be marked as local.
+- "PROC" → remains as is
+
+Wait, but "ESTADO DE MATO GROSSO" is a specific location, so both "ESTADO" and "MATO GROSSO" are local. However, "ESTADO" is a generic term, but in this context, it's part of the specific name "ESTADO DE MATO GROSSO", which is a state. So both parts should be marked as local. Wait, the guidelines say that only specific names should be marked. "ESTADO" is a generic term, but when combined with "MATO GROSSO", it becomes a specific location. So the entire phrase "ESTADO DE MATO GROSSO" is a local. But according to the guidelines, only specific names should be marked. So "MATO GROSSO" is a local, and "ESTADO" is a generic term. Wait, but "ESTADO DE MATO GROSSO" is the name of the state, so both parts are part of the local. However, the guidelines say that only specific names should be marked. So "MATO GROSSO" is a local, and "ESTADO" is a generic term. Wait, but "ESTADO" is part of the name. For example, "ESTADO DE MATO GROSSO" is the name of the state, so both "ESTADO" and "MATO GROSSO" are parts of the local. But according to the guidelines, only specific names should be marked. So "MATO GROSS, which is a specific state, should be marked as local. "ESTADO" is a generic term, so it's not marked. Wait, but in the phrase "ESTADO DE MATO GROSSO", "ESTADO" is part of the name. However, the guidelines state that only specific names should be marked. So "MATO GROSSO" is the specific name, so it's marked as local. "ESTADO" is a generic term, so it's not marked. Therefore, "ESTADO DE MATO GROSSO" would have "MATO GROSSO" marked as local, and "ESTADO" remains as is.
+
+Wait, but the user's example output might have "ESTADO DE MATO GROSSO" with "MATO GROSSO" marked. Let me check the input again. The input has "ESTADO DE MATO GROSSO PROC". So "ESTADO DE MATO GROSSO" is the name of the state, so "MATO GROSSO" is the specific local. Therefore, "MATO GROSSO" should be marked as local. "ESTADO" is a generic term, so not marked.
+
+Putting all together:
+
+- "RICARDO LEWANDOWSKI" → pessoa
+- "AGTE" → not marked
+- "UNIÃO" → organizacao
+- "ADV" → not marked
+- "ADVOGADO -GERAL DA UNIÃO" → not marked
+- "AGDO" → not marked
+- "ESTADO DE MATO GROSSO" → "MATO GROSSO" is local
+- "PROC" → not marked
+
+So the final HTML would be:
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE <span class="local">MATO GROSSO</span> PROC .
+
+Wait, but "ESTADO DE MATO GROSSO" is the full name of the state, so "MATO GROSSO" is the specific local. However, the entire phrase "ESTADO DE MATO GROSSO" is a specific location, but according to the guidelines, only specific names should be marked. So "MATO GROSSO" is the specific name, so it's marked. "ESTADO" is a generic term, so not marked. Therefore, the correct marking is "MATO GROSSO" as local.
+
+So the final output should have "MATO GROSSO" marked as local. The rest are as per the analysis.
+</think>
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE <span class="local">MATO GROSSO</span> PROC .

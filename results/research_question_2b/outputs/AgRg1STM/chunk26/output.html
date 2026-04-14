@@ -1,0 +1,58 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me break down the sentence.
+
+The first part is "Por oportuno , é válido lembrar que a Procuradoria-Geral da Justiça Militar , desde o início , em sede de Recurso em Sentido Estrito interposto pela Defensoria Pública da União , contra a decisão do Juiz-Auditor que não considerou o tempo de sursis como tempo de cumprimento de pena para fins de concessão de indulto , manifestou-se pela improcedência das teses da Defensoria Pública da União ."
+
+Looking for entities:
+
+1. "Procuradoria-Geral da Justiça Militar" – This seems like an organization. The term "Procuradoria-Geral" is a public prosecutor's office, so class="organizacao".
+
+2. "Defensoria Pública da União" – Another organization, as it's the Public Defender's Office of the Union. So class="organizacao".
+
+3. "Juiz-Auditor" – This is a judicial position, so maybe a person? Wait, "Juiz-Auditor" is a title, so perhaps it's a person's role. But the text mentions "Juiz-Auditor" as part of the decision, so maybe it's a title, not a specific person. However, the user's guidelines might consider titles as part of the entity. Wait, the user's example might have "Juiz-Auditor" as a local? No, local is a place. Maybe "Juiz-Auditor" is a person's title, so perhaps it's a person. But the user's example might not have that. Wait, the original text mentions "Juiz-Auditor" as part of the decision, so maybe it's a title, not a specific person. So maybe not an entity here. Wait, the user's example might not have that. Let me check again.
+
+Wait, the user's example in the output might have "Juiz-Auditor" as a local? No, local is a place. Maybe "Juiz-Auditor" is a person's title, so perhaps it's a person. But the user's guidelines don't mention titles as entities. The entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "Juiz-Auditor" is a title, not an entity. So maybe not marked.
+
+Next, "tempo de sursis" – "tempo" here refers to time, so "tempo" is an entity. So "tempo de sursis" would be marked as "tempo".
+
+Another "tempo de cumprimento de pena" – again, "tempo" here is an entity. So both instances of "tempo" should be marked.
+
+"Recurso em Sentido Estrito" – This is a legal term, possibly a type of legal recourse. But the user's entities include "jurisprudencia" (jurisprudence) and "legislacao" (legislation). "Recurso em Sentido Estrito" is a legal procedure, not sure if it's part of any entity. Maybe not. Unless it's part of a jurisprudência, but I think it's a procedural term, not an entity.
+
+"Defensoria Pública da União" – already marked as organizacao.
+
+"indulto" – that's a legal term, but not one of the entities. The entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "indulto" is not an entity.
+
+"improcedência das teses" – "teses" here refers to legal arguments, but again, not an entity. Unless "teses" is part of jurisprudencia, but I think it's more of a legal argument, not an entity.
+
+So the entities to mark are:
+
+- Procuradoria-Geral da Justiça Militar (organizacao)
+- Defensoria Pública da União (organizacao)
+- tempo de sursis (tempo)
+- tempo de cumprimento de pena (tempo)
+
+Wait, the text says "tempo de sursis como tempo de cumprimento de pena". So both instances of "tempo" should be marked. Let me check the original text again.
+
+Original text: "que não considerou o tempo de sursis como tempo de cumprimento de pena para fins de concessão de indulto"
+
+So "tempo de sursis" and "tempo de cumprimento de pena" – both are instances of "tempo", so each should be marked as <span class="tempo">.
+
+So the HTML would have:
+
+Procuradoria-Geral da Justiça Militar → organizacao
+
+Defensoria Pública da União → organizacao
+
+tempo de sursis → tempo
+
+tempo de cumprimento de pena → tempo
+
+Other parts: "Recurso em Sentido Estrito" – not an entity. "Juiz-Auditor" – not an entity. "indulto" – not an entity. "improcedência das teses" – not an entity.
+
+So the final HTML would have those spans. Let me structure the text accordingly.
+</think>
+
+Por oportuno , é válido lembrar que a <span class="organizacao">Procuradoria-Geral da Justiça Militar</span> , desde o início , em sede de <span class="jurisprudencia">Recurso em Sentido Estrito</span> interposto pela <span class="organizacao">Defensoria Pública da União</span> , contra a decisão do <span class="local">Juiz-Auditor</span> que não considerou o <span class="tempo">tempo de sursis</span> como <span class="tempo">tempo de cumprimento de pena</span> para fins de concessão de <span class="legislacao">indulto</span> , manifestou-se pela improcedência das teses da <span class="organizacao">Defensoria Pública da União</span> .

@@ -1,0 +1,57 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first part is "Em 02/03/2018 17:26:32 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 decisão da Instância a quo . Irresignada , a Defensoria Pública da União opôs Embargos de Declaração . Os Embargos foram opostos sob o fundamento de suposta omissão do Acórdão em relação à alegada inconstitucionalidade do Decreto de Indulto , por ofensa a princípios constitucionais . Consoante Decisão em 9 de novembro de 2017 , este Ministro Relator , monocraticamente , negou seguimento aos Embargos de Declaração , por serem manifestamente incabíveis , uma vez que os pontos atacados estavam claramente tratados no Acórdão vergastado . Persistindo em seu desiderato , ao ser intimada , em 20 de novembro de 2017 ( fls ."
+
+Looking for dates and times first. The first date is "02/03/2018 17:26:32" which is a tempo entity. Then there's "9 de novembro de 2017" and "20 de novembro de 2017" which are also tempo. 
+
+Next, organizations. The URL "https://eproc2g.stm.jus.br/eproc_2g_prod/" might be an organization, but the user's example output didn't mark URLs, so maybe not. Wait, the example output didn't include URLs, so perhaps URLs aren't considered here. The "Defensoria Pública da União" is an organization. Also, "STM" in the URL might be an organization, but the user's example didn't mark it. Wait, the example output didn't mark "STM" as an organization. Let me check the example again. The user provided a sample input and output. Wait, the user didn't provide an example output, but the task says to return only the HTML text. So I need to focus on the entities mentioned.
+
+Looking for "pessoa": "Ministro Relator" is a person, but the term "Ministro" refers to a position, not a person. Wait, but in legal contexts, "Ministro Relator" could be a person. However, the example might not mark it. Alternatively, maybe "Defensoria Pública da União" is an organization. 
+
+"Decreto de Indulto" is a legislative act, so that's legislacao. "Acórdão" refers to a judicial decision, which is jurisprudencia. "Decisão" could be jurisprudencia as well. 
+
+"Instância a quo" is a legal term referring to the instance where the decision was made, so that's a local? Or maybe it's part of the jurisprudencia. Wait, "Instância a quo" is a legal term, but not sure if it's a local. Maybe it's part of the jurisprudencia. 
+
+"Decreto de Indulto" is a legislative act, so legislacao. 
+
+"Acórdão" is a judicial decision, so jurisprudencia. 
+
+"Decisão" in "Consoante Decisão em 9 de novembro de 2017" is a judicial decision, so jurisprudencia. 
+
+"Ministro Relator" is a person, so pessoa. 
+
+"Defensoria Pública da União" is an organization. 
+
+"STM" in the URL is part of the URL, but maybe it's an organization. However, the example output didn't mark it, so perhaps not. 
+
+So, let's go through each part:
+
+- "02/03/2018 17:26:32" → tempo
+- "9 de novembro de 2017" → tempo
+- "20 de novembro de 2017" → tempo
+- "Defensoria Pública da União" → organizacao
+- "Decreto de Indulto" → legislacao
+- "Acórdão" → jurisprudencia
+- "Decisão" → jurisprudencia
+- "Ministro Relator" → pessoa
+- "Instância a quo" → local? Or maybe it's part of the jurisprudencia. Wait, "Instância a quo" is a legal term referring to the instance where the decision was made, so it's a local? Or maybe it's part of the jurisprudencia. Hmm, not sure. The user's example might not have marked it, so maybe it's not. 
+
+Wait, the user's example output didn't include "Instância a quo" as a local. So perhaps it's not marked. 
+
+So, the final HTML would have the following spans:
+
+- tempo for the dates
+- organizacao for "Defensoria Pública da União"
+- legislacao for "Decreto de Indulto"
+- jurisprudencia for "Acórdão" and "Decisão"
+- pessoa for "Ministro Relator"
+
+I need to make sure that all these are correctly marked. Also, check if "STM" in the URL is an organization. The URL is "https://eproc2g.stm.jus.br/eproc_2g_prod/". The "STM" is part of the URL, but the user's example didn't mark it. So maybe it's not considered here. 
+
+So, the final HTML would have the spans as mentioned. Let me structure the text with these tags.
+</think>
+
+Em <span class="tempo">02/03/2018 17:26:32</span> . Para confirmar a validade deste documento , acesse : <span class="local">https://eproc2g.stm.jus.br/eproc_2g_prod/</span> e digite o Codigo Verificador <span class="tempo">3044c7190e4</span> decisão da <span class="local">Instância a quo</span> . Irresignada , a <span class="organizacao">Defensoria Pública da União</span> opôs <span class="jurisprudencia">Embargos de Declaração</span> . Os <span class="jurisprudencia">Embargos</span> foram opostos sob o fundamento de suposta omissão do <span class="jurisprudencia">Acórdão</span> em relação à alegada inconstitucionalidade do <span class="legislacao">Decreto de Indulto</span> , por ofensa a princípios constitucionais . Consoante <span class="jurisprudencia">Decisão</span> em <span class="tempo">9 de novembro de 2017</span> , este <span class="pessoa">Ministro Relator</span> , monocraticamente , negou seguimento aos <span class="jurisprudencia">Embargos de Declaração</span> , por serem manifestamente incabíveis , uma vez que os pontos atacados estavam claramente tratados no <span class="jurisprudencia">Acórdão</span> vergastado . Persistindo em seu desiderato , ao ser intimada , em <span class="tempo">20 de novembro de 2017</span> ( fls .

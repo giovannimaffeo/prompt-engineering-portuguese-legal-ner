@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The input text starts with "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536377 . Inteiro Teor do Acórdão - Página 4 de 17 Voto - MIN . RICARDO LEWANDOWSKI 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO V O T O O Senhor Ministro Ricardo Lewandowski ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma ."
+
+Let me break it down:
+
+1. "http : //www.stf.jus.br/portal/autenticacao/" – This is a URL, but the task doesn't mention URLs as entities. The user specified to mark only the listed entities. So I'll leave this as is.
+
+2. "sob o número 14536377" – The number here is likely a case number, but the task doesn't mention numbers as entities. Unless it's part of a jurisprudencia reference. Wait, the example for jurisprudencia includes numbers like "REsp 1694984/MS". Here, "14536377" might be a case number, but the guidelines don't specify numbers as entities. So maybe not. I'll check the definitions again. The jurisprudencia examples include numbers, but the number here is just a case number, not a specific reference. So maybe not marked.
+
+3. "Inteiro Teor do Acórdão - Página 4 de 17" – These are parts of the document title, not entities. So no tags.
+
+4. "Voto - MIN . RICARDO LEWANDOWSKI" – "MIN" is an abbreviation for Ministro (Minister), and "RICARDO LEWANDOWSKI" is a person's name. So "RICARDO LEWANDOWSKI" should be marked as pessoa. "MIN" is an abbreviation, but the definition says to mark names, not titles. Wait, the definition for pessoa includes names, but "MIN" is a title. However, the example for pessoa includes "Ana Silva", "Carlos de Souza". So "RICARDO LEWANDOWSKI" is a person, so mark as <span class="pessoa">RICARDO LEWANDOWSKI</span>.
+
+5. "16/03/2018" – This is a date, so it's tempo. Mark as <span class="tempo">16/03/2018</span>.
+
+6. "PLENÁRIO" – This refers to the Plenary of the STF (Superior Court of Justice), which is an organization. So "PLENÁRIO" should be <span class="organizacao">PLENÁRIO</span>.
+
+7. "A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO" – Let's parse this. "A G .REG ." might be an abbreviation for "Agravo" (which is a legal term) but not sure. "NA AÇÃO CÍVEL ORIGINÁRIA 2.821" – "Ação Cível Originária" is a legal term, but not an entity. "2.821" could be a case number, but again, not specified as an entity. "MATO GROSSO" is a state in Brazil, so local. So "MATO GROSSO" should be <span class="local">MATO GROSSO</span>.
+
+8. "V O T O" – This is part of the document title, not an entity.
+
+9. "O Senhor Ministro Ricardo Lewandowski ( Relator ) : " – "Ministro Ricardo Lewandowski" is a person, so "Ricardo Lewandowski" is already marked. The "Relator" is a title, not a person. So no need to mark.
+
+10. "Bem examinados os autos , verifico que a decisão agravada não merece reforma ." – "autos" refers to the case, but not an entity. "decisão agravada" is a legal term, but not an entity. So no tags here.
+
+Now, let me check if I missed any entities. The "14536377" might be a case number, but the task doesn't mention numbers as entities. The "http" link is not an entity. "PLENÁRIO" is an organization. "RICARDO LEWANDOWSKI" is a pessoa. "16/03/2018" is tempo. "MATO GROSSO" is local. Are there any other entities?
+
+Wait, "A G .REG ." – maybe "REG" is an abbreviation for "Regimento" or something else. But the user's examples for jurisprudencia include numbers like "REsp 1694984/MS". Here, "2.821" might be a case number, but again, not specified. So I think I've covered all possible entities.
+
+So the final HTML should have the marked entities as per the above analysis.
+</think>
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536377 . Inteiro Teor do Acórdão - Página 4 de 17 Voto - <span class="pessoa">RICARDO LEWANDOWSKI</span> <span class="tempo">16/03/2018</span> <span class="organizacao">PLENÁRIO</span> A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> V O T O O Senhor <span class="pessoa">Ministro Ricardo Lewandowski</span> ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma .

@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me parse through each part.
+
+The text starts with "ISTO POSTO , julgo procedente o pedido para declarar , com efeitos '' ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da Lei nº 5.815 , de 3 de abril de 2017 , por violação ao disposto no artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal . É o voto ."
+
+Looking for entities:
+
+1. "Lei nº 5.815" – This is a law, so "legislacao".
+2. "3 de abril de 2017" – This is a date, so "tempo".
+3. "artigo53", "§ 1º", "artigo 71", "§ 1º", "IVe", "artigo100", "incisos IV , VI , X e XXIII" – These are references to articles and sections, which are part of legislation, so "legislacao".
+4. "Lei Orgânica do Distrito Federal" – This is another law, so "legislacao".
+5. "ex tunc" and "erga omnes" – These are legal terms, but they might not be entities here. The user didn't mention them, so maybe leave them as is.
+6. "ISTO POSTO" – This seems like a legal phrase, but not an entity. Similarly, "É o voto" is a conclusion, not an entity.
+
+So, the entities to mark are:
+
+- "Lei nº 5.815" → legislacao
+- "3 de abril de 2017" → tempo
+- "artigo53", "§ 1º", "artigo 71", "§ 1º", "IVe", "artigo100", "incisos IV , VI , X e XXIII" → legislacao
+- "Lei Orgânica do Distrito Federal" → legislacao
+
+Wait, the user mentioned "legislacao" for laws. The "Lei Orgânica do Distrito Federal" is a law, so it's legislacao. The articles and sections are parts of the legislation, so they should also be marked as legislacao.
+
+Now, I need to wrap each of these with <span> tags. Let me check the original text again to ensure I don't miss any parts.
+
+The text mentions "artigo53" (article 53), "§ 1º" (section 1), "artigo 71" (article 71), "§ 1º" again, "IVe" (probably IV and e, but maybe it's a typo for IV and e?), "artigo100" (article 100), "incisos IV , VI , X e XXIII" (incisos IV, VI, X, and XXIII). All these are parts of the legislation, so they should be marked as legislacao.
+
+Also, "Lei nº 5.815" and "Lei Orgânica do Distrito Federal" are laws, so legislacao.
+
+The date "3 de abril de 2017" is tempo.
+
+So, the HTML should have each of these parts wrapped in <span> with the appropriate class.
+
+Now, I need to make sure that the rest of the text remains unchanged. For example, "ISTO POSTO" and "É o voto" are not entities, so they stay as is.
+
+Putting it all together, the HTML should have the spans for the identified entities. Let me structure the output accordingly.
+</think>
+
+ISTO POSTO , julgo procedente o pedido para declarar , com efeitos <span class="tempo">ex tunc</span> e eficácia <span class="jurisprudencia">erga omnes</span> , a inconstitucionalidade formal da <span class="legislacao">Lei nº 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , por violação ao disposto no <span class="legislacao">artigo53</span> , <span class="legislacao">`` caput ``</span> e <span class="legislacao">§ 1º</span> , <span class="legislacao">artigo 71</span> , <span class="legislacao">§ 1º</span> , <span class="legislacao">IVe</span> <span class="legislacao">artigo100</span> , <span class="legislacao">incisos IV</span> , <span class="legislacao">VI</span> , <span class="legislacao">X</span> e <span class="legislacao">XXIII</span> , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . É o voto .

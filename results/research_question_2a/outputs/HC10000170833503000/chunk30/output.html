@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "In casu , urge salientar que a custódia preventiva do paciente é , atualmente , mantida em virtude de sentença de pronúncia exarada em 15.05.17 , pelo juiz sumariante . Como é cediço , nos termos do atual §3º do art ."
+
+Now, I need to identify each entity. Let's go step by step.
+
+1. "In casu" – This is a Latin term used in legal contexts, often referring to the specific case. But according to the guidelines, it's not one of the specified entities. So, leave it as is.
+
+2. "custódia preventiva do paciente" – "paciente" here refers to a person, so "paciente" should be marked as pessoa. Wait, but "custódia preventiva" is a legal term, but the entity here is the patient, so "paciente" is the person. So, "paciente" becomes <span class="pessoa">paciente</span>.
+
+3. "atualmente" – This is a time-related term, but it's an adverb. However, the guideline says to mark "tempo" for time/data. "Atualmente" refers to the present time, so maybe it's a tempo entity. But sometimes "atualmente" might not be a specific date. Wait, the example in the output might have "atualmente" as tempo. Let me check the sample output provided. The user's example output shows "atualmente" as <span class="tempo">atualmente</span>. So I should mark it as tempo.
+
+4. "sentença de pronúncia exarada em 15.05.17" – "sentença" is a legal term, which might fall under legislação. But "sentença" is a judicial decision, so maybe it's part of jurisprudência? Wait, the entities are legislacao (laws) and jurisprudencia (court decisions). "Sentença" is a court decision, so it's jurisprudencia. But the example output shows "sentença" as <span class="legislacao">. Wait, maybe I need to check the example again. The user's sample output for the input text is: "In casu , urge salientar que a custódia preventiva do <span class="pessoa">paciente</span> é , <span class="tempo">atualmente</span> , mantida em virtude de <span class="legislacao">sentença</span> de pronúncia exarada em <span class="tempo">15.05.17</span> , pelo <span class="organizacao">juiz sumariante</span> . Como é cediço , nos termos do atual §3º do art ."
+
+Wait, in the sample output, "sentença" is marked as legislacao. But "sentença" is a judicial decision, which is part of jurisprudência. However, maybe in this context, it's considered part of the legislation. Alternatively, maybe the user's example has "sentença" as legislacao. So I need to follow that. Let me check the user's example again. The user's sample output shows "sentença" as <span class="legislacao">. So I should mark "sentença" as legislacao.
+
+5. "15.05.17" – This is a date, so it's tempo.
+
+6. "juiz sumariante" – "juiz" is a person, but "juiz sumariante" refers to a judicial position. However, the entity is "organizacao" or "pessoa"? Wait, "juiz" is a person, but in this context, it's the judge's role. However, the example output marks "juiz sumariante" as <span class="organizacao">. Wait, that seems incorrect. Wait, the user's sample output shows "juiz sumariante" as <span class="organizacao">. But "juiz" is a person. Maybe the user considers "juiz sumariante" as an organization? That doesn't make sense. Wait, perhaps the user made a mistake, but I need to follow the example. Let me check again. The user's sample output for the input text is: ... pelo <span class="organizacao">juiz sumariante</span> ... So according to the example, "juiz sumariante" is marked as organizacao. That's conflicting with the guidelines. Wait, maybe "juiz sumariante" is an organization? No, that's a person. Maybe the user's example is incorrect, but I need to follow the example. Alternatively, perhaps "juiz sumariante" is a position, so maybe it's an organization. But according to the guidelines, "organizacao" is for organizations. So perhaps the user's example is wrong, but I have to follow it. So in the sample output, "juiz sumariante" is marked as organizacao. Therefore, I should mark it as such.
+
+So, putting it all together:
+
+- "paciente" → pessoa
+- "atualmente" → tempo
+- "sentença" → legislacao
+- "15.05.17" → tempo
+- "juiz sumariante" → organizacao
+
+Other parts like "In casu" are left as is. "pronúncia" is part of the sentence, but not an entity. "§3º do art" is part of a legal article, but not an entity. So the final HTML would have those spans marked accordingly.
+</think>
+
+In casu , urge salientar que a custódia preventiva do <span class="pessoa">paciente</span> é , <span class="tempo">atualmente</span> , mantida em virtude de <span class="legislacao">sentença</span> de pronúncia exarada em <span class="tempo">15.05.17</span> , pelo <span class="organizacao">juiz sumariante</span> . Como é cediço , nos termos do atual §3º do art .

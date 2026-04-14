@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities.
+
+Starting with the first line: "Apelação / Reexame Necessário 20140110500434APO A C Ó R D Ã O". The "Apelação" and "Reexame Necessário" might be legal terms, but they don't fit any of the entity types. The number "20140110500434APO" looks like a case number, which could be part of a legal document, but it's not one of the specified entities. The "CÓRDO" is likely "CÓRDO" (maybe a typo for "CÓRDO" or "CÓRDO" as in "Córdão" which is a legal term, but I'm not sure. Wait, the text says "A C Ó R D Ã O" which might be "ACÓRDAO" (Acórdão) which is a legal term for a court decision. But according to the guidelines, "jurisprudencia" refers to decisions, precedents, etc. So "Acórdão" would be a jurisprudência entity. Wait, but the user's example output shows "Acórdão" as part of the jurisprudência. Let me check the example output again.
+
+Looking at the example output provided by the user, they have "Acórdão" marked as jurisprudência. So I need to mark "Acórdão" as jurisprudência. Also, the case number "20140110500434APO" might be part of the legislation or jurisprudência, but since it's a case number, maybe it's part of the jurisprudência. Wait, the example output shows "20140110500434APO" as part of the jurisprudência. Wait, no, looking at the example output, the user's sample output has "20140110500430APO" marked as jurisprudência. Wait, maybe the case number is part of the jurisprudência. But I need to check the definitions again.
+
+The jurisprudência is defined as references to decisions, precedents, etc., usually with numbers, siglas, or identifiers. So case numbers like "20140110500434APO" would be part of jurisprudência. So I should mark that as jurisprudência.
+
+Next, "Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios". Here, "Tribunal de Justiça do Distrito Federal e Territórios" is an organization. So I need to mark that as organizacao. Also, "Distrito Federal e Territórios" is a local, so that should be local. Wait, "Distrito Federal" is a specific location, so that's a local. "Tribunal de Justiça" is an organization. So "Tribunal de Justiça do Distrito Federal e Territórios" is an organization. Wait, the entire phrase "Tribunal de Justiça do Distrito Federal e Territórios" is an organization. So I should mark that as organizacao. Also, "Distrito Federal e Territórios" is a local. Wait, but the user's example output shows "Distrito Federal e Territórios" as local. Let me check the example output again. The user's example output has "Distrito Federal e Territórios" marked as local. So I need to mark that as local. Also, "Tribunal de Justiça" is an organization. So the entire phrase "Tribunal de Justiça do Distrito Federal e Territórios" is an organization. Wait, but the user's example output shows "Tribunal de Justiça do Distrito Federal e Territórios" as organizacao. So I need to mark that as organizacao. Also, "Distrito Federal e Territórios" is a local. So I need to split that into two parts. Wait, but the user's example output shows "Distrito Federal e Territórios" as local. So I should mark that as local. Also, "Senhores Desembargadores" is a title, not a person. The names like "MARIA IVATÔNIA", "ANGELO PASSARELI", etc., are pessoas. So each of those names should be marked as pessoa. The "1º Vogal", "2º Vogal", etc., are titles, not entities. The "Brasilia ( DF )" is a local, so "Brasilia" and "DF" (Distrito Federal) are local. "21 de Março de 2018" is a tempo. Also, "ata do julgamento" is a document, but not one of the specified entities. "Notas taquigráficas" is a document, but again, not an entity. 
+
+Putting it all together, I need to mark each entity according to the definitions. Let me go through the text step by step.
+
+1. "Apelação / Reexame Necessário 20140110500434APO A C Ó R D Ã O" – "20140110500434APO" is a case number, so jurisprudência. "Acórdão" is a legal decision, so jurisprudência.
+
+2. "Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios" – "Tribunal de Justiça do Distrito Federal e Territórios" is an organization. "Distrito Federal e Territórios" is a local. "5ª TURMA CÍVEL" is a part of the organization's name, so it's part of the organization. 
+
+3. "MARIA IVATÔNIA - Relatora , ANGELO PASSARELI - 1º Vogal , SEBASTIÃO COELHO - 2º Vogal , SILVA LEMOS - 3º Vogal , JOSAPHA FRANCISCO DOS SANTOS - 4º Vogal , sob a presidência do Senhor Desembargador SEBASTIÃO COELHO" – All the names here are pessoas. "SEBASTIÃO COELHO" is repeated, so mark as pessoa. 
+
+4. "EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR . INSTAURADA A DIVERGÊNCIA PROSSEGUI-SE O JULGAMENTO INTEGRANDO O QUÓRUM O DES . SILVA LEMOS E O DES . JOSAPHÁ FRANCISCO . CONHECER DO RECURSO . RECEBER REMESSA DE OFÍCIO . NEGAR PROVIMENTO A AMBOS . MAIORIA . VENCIDO O 1º VOGAL. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 21 de Março de 2018 ." – "Brasilia ( DF )" is a local. "21 de Março de 2018" is tempo. 
+
+So, the entities to mark are:
+
+- "20140110500434APO" as jurisprudência
+- "Acórdão" as jurisprudência
+- "Tribunal de Justiça do Distrito Federal e Territórios" as organizacao
+- "Distrito Federal e Territórios" as local
+- All the names (MARIA IVATÔNIA, ANGELO PASSARELI, SEBASTIÃO COELHO, SILVA LEMOS, JOSAPHA FRANCISCO DOS SANTOS, SEBASTIÃO COELHO) as pessoa
+- "Brasilia" and "DF" as local
+- "21 de Março de 2018" as tempo
+
+Wait, but "DF" is an abbreviation for Distrito Federal, which is a local. So "Brasilia ( DF )" should have "Brasilia" as local and "DF" as local. Also, "21 de Março de 2018" is tempo.
+
+Now, I need to make sure that all these are marked correctly. Also, check if any other parts are entities. For example, "5ª TURMA CÍVEL" is part of the organization's name, so it's included in the organizacao. 
+
+Putting all together, the HTML should have the appropriate <span> tags for each entity. Let me structure the output accordingly.
+</think>
+
+Apelação / Reexame Necessário <span class="jurisprudencia">20140110500434APO</span> <span class="jurisprudencia">A C Ó R D Ã O</span> Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span> , <span class="pessoa">MARIA IVATÔNIA</span> - Relatora , <span class="pessoa">ANGELO PASSARELI</span> - 1º Vogal , <span class="pessoa">SEBASTIÃO COELHO</span> - 2º Vogal , <span class="pessoa">SILVA LEMOS</span> - 3º Vogal , <span class="pessoa">JOSAPHA FRANCISCO DOS SANTOS</span> - 4º Vogal , sob a presidência do Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span> , em proferir a seguinte decisão : EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR . INSTAURADA A DIVERGÊNCIA PROSSEGUI-SE O JULGAMENTO INTEGRANDO O QUÓRUM O DES . <span class="pessoa">SILVA LEMOS</span> E O DES . <span class="pessoa">JOSAPHÁ FRANCISCO</span> . CONHECER DO RECURSO . RECEBER REMESSA DE OFÍCIO . NEGAR PROVIMENTO A AMBOS . MAIORIA . VENCIDO O 1º VOGAL. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">21 de Março de 2018</span> .

@@ -1,0 +1,36 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me start by breaking down the text sentence by sentence.
+
+The first part is: "Defende que “ a atualização da parcela Adicional Décimos , pelas Leis 3.318/2004 , 3.355/2004 e 3.782/2006 , iria diminuir o valor percebido em alguns casos , pois em conformidade com a decisão 4041/2007 do e. TCDF , o valor a ser considerado , para fins de cálculo é o da coluna Representação , que possui valores menores que os constantes das tabelas das Leis 1004 e 1141/96 ” , de modo que “ optou-se por não proceder à atualização pelo Plano de Carreira , mantendo os valores atualmente percebidos , a fim de não prejudicar os servidores que possuem cargos comissionados incorporados sob a égide das Leis 1004 e 1141/96 ” ( fl . 311 ) ."
+
+Looking for legislacao first. The text mentions "Leis 3.318/2004", "3.355/2004", "3.782/2006", "Leis 1004", "1141/96". These are all legal codes, so they should be marked as legislacao. Also, "Lei 1004" and "Lei 1141/96" are part of the same pattern. Wait, in the example, "Lei nº 9.430/96" was marked as legislacao. So here, "Leis 3.318/2004" etc. are laws, so they should be legislacao. Also, "Leis 1004 e 1141/96" – but the example shows that "Lei nº 11.788" was marked as legislacao. So maybe "Leis 3.318/2004" should be "Leis 3.318/2004" as legislacao. Wait, the example input 3 was "LEI Nº 11.788, DE 25 DE SETEMBRO DE 2008." and the output was "LEI Nº 11.788" as legislacao. So in this case, "Leis 3.318/2004" would be legislacao. Also, "Leis 1004 e 1141/96" – but the example input 5 had "Leis 1004 e 1141/96" and the output marked them as legislacao. So I need to mark all those as legislacao.
+
+Next, "decisão 4041/2007 do e. TCDF" – "decisão" here is a jurisprudencia reference. The example input 1 had "REsp n . 1694984/MS" marked as jurisprudencia. So "decisão 4041/2007" is a jurisprudencia. Also, "TCDF" is an acronym for Tribunal de Contas da Federação, which is an organization. So "TCDF" should be organizacao.
+
+Then, "fl . 311" – "fl" is an abbreviation for "fls" (fólio), which is a reference to a page in a legal document. The example input 5 had "( fl . 311 )" and the output didn't mark it as anything. The guidelines say that only specific entities should be marked, and "fl" is not one of them. So "fl . 311" remains as is.
+
+Now, checking for other entities. Are there any pessoas? The text mentions "servidores" but that's a generic term, not a name. No names of people. Organizations: "TCDF" is an organization. "Plano de Carreira" is a program, not an organization. "Tribunal de Contas da Federação" is an organization, but in the text it's abbreviated as "TCDF". So "TCDF" is marked as organizacao.
+
+Time: The text has "2004", "2006", "2007", "1943" in the example, but in the input text, there's "2004", "2006", "2007" – but the example input 5 had "1o de maio de 1943" marked as tempo. However, in the current input, the dates are in the format "3.318/2004" which is a law, not a date. Wait, the input text has "Leis 3.318/2004" – the numbers are law numbers, not dates. So no time entities here. The only time reference is "2007" in "decisão 4041/2007", but that's part of the jurisprudencia reference. Wait, the example input 5 had "1o de maio de 1943" as tempo. So in the current text, there's no explicit date like that. So no tempo entities.
+
+Local: The text doesn't mention any specific locations. "TCDF" is an organization, not a local. So no local entities.
+
+Putting it all together:
+
+- "Leis 3.318/2004" → legislacao
+- "3.355/2004" → legislacao
+- "3.782/2006" → legislacao
+- "Leis 1004" → legislacao
+- "1141/96" → legislacao
+- "decisão 4041/2007" → jurisprudencia
+- "TCDF" → organizacao
+- "fl . 311" → remains as is
+
+Wait, the example input 5 had "Leis 1004 e 1141/96" marked as legislacao. So in the current text, "Leis 1004 e 1141/96" should be marked as legislacao. Also, "Leis 3.318/2004" etc. are all legislacao.
+
+So the final HTML should have those spans. Let me check again for any missed entities. No, I think that's all.
+</think>
+
+Defende que “ a atualização da parcela Adicional Décimos , pelas <span class="legislacao">Leis 3.318/2004</span> , <span class="legislacao">3.355/2004</span> e <span class="legislacao">3.782/2006</span> , iria diminuir o valor percebido em alguns casos , pois em conformidade com a <span class="jurisprudencia">decisão 4041/2007</span> do <span class="organizacao">e. TCDF</span> , o valor a ser considerado , para fins de cálculo é o da coluna Representação , que possui valores menores que os constantes das tabelas das <span class="legislacao">Leis 1004</span> e <span class="legislacao">1141/96</span> ” , de modo que “ optou-se por não proceder à atualização pelo Plano de Carreira , mantendo os valores atualmente percebidos , a fim de não prejudicar os servidores que possuem cargos comissionados incorporados sob a égide das <span class="legislacao">Leis 1004</span> e <span class="legislacao">1141/96</span> ” ( <span class="tempo">fl . 311</span> ) .

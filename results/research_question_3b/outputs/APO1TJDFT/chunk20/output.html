@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities. 
+
+Starting with "2º e 6º da Emenda Constitucional nº 41 , de 2003". Here, "Emenda Constitucional nº 41" is a legislative act, so that's legislacao. The year "2003" is a tempo. 
+
+Next, "servidor da União , dos Estados , do Distrito Federal e dos Municípios , incluídas suas autarquias e fundações". "União", "Estados", "Distrito Federal", "Municípios", "autarquias", and "fundações" are all organizations. Wait, "União" here refers to the federal government, so that's an organization. "Distrito Federal" is a local entity, but since it's a specific place, maybe it's local? Wait, the definition says local is explicit places like cities, states, countries. "Distrito Federal" is a specific region, so it's a local. But "União" is an organization. Hmm, need to check definitions again. 
+
+"União" is an organization, as it's a formal entity. "Distrito Federal" is a local. "Estados" refers to states, which are local. "Municípios" are municipalities, also local. So "União", "Distrito Federal", "Estados", "Municípios" are all organizations or locals? Wait, the definition for organizacao includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas." So "União" is an organization. "Distrito Federal" is a local. "Estados" and "Municípios" are local as well. Wait, but "Estados" here refers to states, which are local. So "União" is organizacao, "Distrito Federal" is local, "Estados" is local, "Municípios" is local. 
+
+Then "até 16 de dezembro de 1998" is a tempo. 
+
+"aposentar-se com proventos integrais" – no entities here. 
+
+"trinta e cinco anos de contribuição , se homem , e trinta anos de contribuição , se mulher" – no entities. 
+
+"vinte e cinco anos de efetivo exercício no serviço público , quinze anos de carreira e cinco anos no cargo em que se der a aposentadoria" – no entities. 
+
+"idade mínima resultante da redução , relativamente aos limites do art . 40 , Fls ." – "art. 40" refers to a legislative article, so that's legislacao. "Fls." might be an abbreviation for "Fls." which is a legal term for "Fls." (Fls. is a common abbreviation in legal documents for "Fls." which stands for "Fls." but it's not a specific entity. Wait, maybe "Fls." is part of the legislation? Not sure. The user's example output includes "Fls." as part of the legislacao. Wait, looking at the example output provided by the user, in the sample input, "art. 40 , Fls ." is marked as legislacao. So "Fls." is part of the legislation reference. So I should mark "art. 40" as legislacao and "Fls." as part of it? Or maybe "Fls." is a separate entity? The user's example output shows "art. 40 , Fls ." as legislacao. So I'll mark "art. 40" as legislacao and "Fls." as part of the same entity? Wait, the user's example output for the input text includes "art. 40 , Fls ." as legislacao. So I need to check that. 
+
+In the sample input, the user's output has "art. 40 , Fls ." marked as legislacao. So I should mark "art. 40" as legislacao and "Fls." as part of it? Or maybe "Fls." is a separate entity? The user's example shows that "art. 40 , Fls ." is marked as legislacao. So perhaps "Fls." is part of the legislation reference. 
+
+So, putting it all together:
+
+- "Emenda Constitucional nº 41" is legislacao.
+- "2003" is tempo.
+- "União" is organizacao.
+- "Distrito Federal" is local.
+- "Estados" is local.
+- "Municípios" is local.
+- "até 16 de dezembro de 1998" is tempo.
+- "art. 40" is legislacao.
+- "Fls." is part of the legislacao reference.
+
+Wait, but "Fls." might be an abbreviation for "Fls." which is a legal term, but according to the definitions, legislacao includes references to norms. So "Fls." might be part of the legislation reference. 
+
+So the final HTML would have all these entities marked with the appropriate classes. Let me structure the HTML accordingly.
+</think>
+
+<span class="legislacao">2º e 6º da Emenda Constitucional nº 41</span> , de <span class="tempo">2003</span> , o servidor da <span class="organizacao">União</span> , dos <span class="local">Estados</span> , do <span class="local">Distrito Federal</span> e dos <span class="local">Municípios</span> , incluídas suas <span class="organizacao">autarquias</span> e <span class="organizacao">fundações</span> , que tenha ingressado no serviço público até <span class="tempo">16 de dezembro de 1998</span> poderá aposentar-se com proventos integrais , desde que preencha , cumulativamente , as seguintes condições : I trinta e cinco anos de contribuição , se homem , e trinta anos de contribuição , se mulher ; II vinte e cinco anos de efetivo exercício no serviço público , quinze anos de carreira e cinco anos no cargo em que se der a aposentadoria ; III idade mínima resultante da redução , relativamente aos limites do <span class="legislacao">art . 40</span> , <span class="legislacao">Fls</span> .

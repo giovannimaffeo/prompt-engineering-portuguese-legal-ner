@@ -1,0 +1,93 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with appropriate tags. The entities to identify are pessoa, organizacao, tempo, local, legislação, and jurisprudencia.
+
+First, I need to go through the input text carefully. Let me read it again:
+
+"O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . Inteiro Teor do Acórdão - Página 5 de 17 Voto - MIN . RICARDO LEWANDOWSKI ACO 2821 A GR / MT que o Projeto de Lei Complementar 1/2016 encontra-se sob apreciação da Assembleia Legislativa do Estado . Salientou que sem o Certificado de Regularidade Previdenciária , o Estado de Mato Grosso está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais ."
+
+Alright, let's break it down sentence by sentence.
+
+First sentence: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 ."
+
+- "endereço eletrônico" is an electronic address, but according to the guidelines, URLs shouldn't be marked as local. So nothing here.
+- "sob o número 14536378" – the number is a document number, but the guidelines mention that identifiers like this, even without the word "acórdão", should be marked as jurisprudencia. Wait, the example given in the guidelines includes "20140110500434APO" as jurisprudencia. But here it's just a number. Wait, the user's example in the guidelines includes "REsp n . 1694984/MS" as jurisprudencia. So maybe numbers with some format? But the number here is 14536378. The guidelines say that identifiers like "Acórdão n. 999404" should be marked as jurisprudencia. So if it's a number with "n." maybe, but here it's just "sob o número 14536378". The guidelines also mention that isolated numbers like "número 14536378" might not be marked unless they are part of a specific identifier. So maybe not. So no entity here.
+
+Next sentence: "Inteiro Teor do Acórdão - Página 5 de 17 Voto - MIN . RICARDO LEWANDOWSKI ACO 2821 A GR / MT que o Projeto de Lei Complementar 1/2016 encontra-se sob apreciação da Assembleia Legislativa do Estado ."
+
+- "Inteiro Teor do Acórdão" – "Acórdão" is a legal term, but the guidelines say that if it's a generic term without a specific reference, it shouldn't be marked. But here it's part of "Inteiro Teor do Acórdão", which refers to the full text of an acordão. However, the example given in the guidelines includes "Acórdão n. 999404" as jurisprudencia. So maybe "Inteiro Teor do Acórdão" is the title, but the actual acordão number is not present here. So maybe not. Wait, the user's example in the guidelines has "REsp n . 1694984/MS" marked as jurisprudencia. So if there's a specific identifier, like a number, then it's jurisprudencia. Here, "Inteiro Teor do Acórdão" is just the title, not a specific identifier. So no entity here.
+
+- "MIN . RICARDO LEWANDOWSKI ACO 2821 A GR / MT" – "MIN" is likely an abbreviation for "Ministro" (Minister), but the guidelines say that titles like "Ministro" shouldn't be marked as pessoa. However, "RICARDO LEWANDOWSKI" is a full name, so that's a pessoa. "ACO 2821" – "ACO" might be an abbreviation for "Acórdão", but the number 2821 might be part of a specific identifier. Wait, "ACO 2821 A GR / MT" – maybe "ACO" is an acronym for something, but the number 2821 could be part of a jurisprudencia. However, the guidelines mention that identifiers like "REsp n . 1694984/MS" are marked as jurisprudencia. So if "ACO 2821" is a specific identifier, then it should be marked. But "ACO" might not be a known identifier. Alternatively, "ACO" could be a reference to a case or a specific legal document. However, without more context, it's hard to tell. The guidelines also mention that "Acórdão n. 999404" is jurisprudencia. So if there's a number here, maybe "2821" is part of it. But the format is "ACO 2821 A GR / MT". The "GR / MT" might refer to the states of Goiás and Mato Grosso. So "GR" and "MT" are local entities (states). So "GR" and "MT" should be marked as local. Wait, but the user's guidelines say that only specific names of places should be marked. "GR" is an abbreviation for Goiás, and "MT" for Mato Grosso. So those should be marked as local.
+
+- "Projeto de Lei Complementar 1/2016" – "Projeto de Lei Complementar" is a legislative document. The number "1/2016" is part of the legislation. According to the guidelines, legislation should be marked as "legislacao". So "Projeto de Lei Complementar 1/2016" would be legislation. But wait, the guidelines say that only references to norms should be marked. So "Projeto de Lei Complementar 1/2016" is a specific legislative project, so that should be marked as legislação.
+
+- "Assembleia Legislativa do Estado" – "Assembleia Legislativa" is an organization. The "do Estado" refers to the state, but the "Assembleia Legislativa" is the organization. So "Assembleia Legislativa" should be marked as organizacao.
+
+Next sentence: "Salientou que sem o Certificado de Regularidade Previdenciária , o Estado de Mato Grosso está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais ."
+
+- "Certificado de Regularidade Previdenciária" – this is a document, but according to the guidelines, it's not a law, so it's not legislation. It's a certificate, but not a legal norm, so no entity here.
+
+- "Estado de Mato Grosso" – "Mato Grosso" is a state, so it should be marked as local.
+
+- "Administração Direta ou Indireta da União" – "União" refers to the federal government, which is an organization. But "Administração Direta ou Indireta" are terms describing types of administration, not specific entities. So "União" is an organization, but the guidelines say that only specific names should be marked. "União" is a general term, so maybe not. Wait, the guidelines mention that "organizações" include "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas...". "União" is a general term, but in Brazilian context, "União" refers to the federal government as a whole. So perhaps it's an organization. But the guidelines say that only specific names should be marked. So maybe "União" is not marked. Alternatively, if it's part of a specific organization name, but here it's just "União". So maybe not. Hmm. But "Administração Direta ou Indireta da União" – the "União" here is the federal government, which is an organization. So maybe "União" should be marked as organizacao. However, the guidelines say that only specific names should be marked. Since "União" is a general term, but in this context, it refers to the federal government, which is an organization. However, the example given in the guidelines for organization includes "MINISTÉRIO PÚBLICO FEDERAL", which is a specific organization. So "União" might not be marked unless it's a specific name. So perhaps "União" is not marked here.
+
+- "instituições financeiras federais" – "federais" is an adjective, so not an entity. "instituições financeiras" are generic terms, not specific names.
+
+So putting it all together:
+
+- "MIN . RICARDO LEWANDOWSKI" – "RICARDO LEWANDOWSKI" is a person, so marked as pessoa. "MIN." is an abbreviation for "Ministro", which is a title, not a person, so not marked.
+
+- "ACO 2821 A GR / MT" – "GR" and "MT" are states (Goiás and Mato Grosso), so marked as local. "ACO 2821" – the number 2821 might be part of a jurisprudencia, but without a specific identifier like "n." or "REsp", it's unclear. However, the example in the guidelines includes "REsp n . 1694984/MS" as jurisprudencia. Here, "ACO 2821" might be a case number. If "ACO" is a case type, then "2821" is the number. But the guidelines mention that identifiers like "Acórdão n. 999404" are jurisprudencia. So if "ACO 2821" is a case number, it should be marked. However, the exact format isn't clear. Since the user's example includes "REsp n . 1694984/MS", which is a specific identifier, maybe "ACO 2821" is similar. So I'll mark "ACO 2821" as jurisprudencia.
+
+- "Projeto de Lei Complementar 1/2016" – this is a legislative project, so marked as legislação.
+
+- "Assembleia Legislativa" – this is an organization, so marked as organizacao.
+
+- "Estado de Mato Grosso" – "Mato Grosso" is a state, so marked as local.
+
+So the final HTML would be:
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . Inteiro Teor do Acórdão - Página 5 de 17 Voto - <span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A <span class="local">GR</span> / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa</span> do Estado . Salientou que sem o Certificado de Regularidade Previdenciária , o <span class="local">Estado de Mato Grosso</span> está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais .
+
+Wait, but the "ACO 2821" – I'm not sure if that's jurisprudencia. The example in the guidelines includes "REsp n . 1694984/MS" as jurisprudencia. Here, "ACO 2821" might be a case number. If "ACO" is an acronym for "Acórdão", then "2821" is the number. But the guidelines say that identifiers like "Acórdão n. 999404" are jurisprudencia. So "ACO 2821" might be similar. So I'll mark "ACO 2821" as jurisprudencia. Also, "GR" and "MT" are states, so they are local.
+
+Also, "Estado de Mato Grosso" – "Mato Grosso" is a state, so marked as local. "Estado" is a generic term, so not marked.
+
+So the final HTML would include:
+
+- "RICARDO LEWANDOWSKI" as pessoa
+- "GR" and "MT" as local
+- "Projeto de Lei Complementar 1/2016" as legislação
+- "Assembleia Legislativa" as organizacao
+- "Estado de Mato Grosso" as local (only "Mato Grosso")
+
+But wait, "Estado de Mato Grosso" – "Estado" is a generic term, so only "Mato Grosso" is marked as local.
+
+Also, "ACO 2821" – if it's a case number, then it's jurisprudencia. So adding <span class="jurisprudencia">ACO 2821</span>.
+
+So the corrected HTML would be:
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . Inteiro Teor do Acórdão - Página 5 de 17 Voto - <span class="pessoa">RICARDO LEWANDOWSKI</span> <span class="jurisprudencia">ACO 2821</span> A <span class="local">GR</span> / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa</span> do Estado . Salientou que sem o Certificado de Regularidade Previdenciária , o <span class="local">Mato Grosso</span> está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais .
+
+Wait, but in the original text, it's "Estado de Mato Grosso", so "Mato Grosso" is the local. So the correct marking is <span class="local">Mato Grosso</span>.
+
+So the final output would have:
+
+- RICARDO LEWANDOWSKI as pessoa
+- ACO 2821 as jurisprudencia
+- GR and MT as local
+- Projeto de Lei Complementar 1/2016 as legislação
+- Assembleia Legislativa as organizacao
+- Mato Grosso as local
+
+Thus, the HTML would be:
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . Inteiro Teor do Acórdão - Página 5 de 17 Voto - <span class="pessoa">RICARDO LEWANDOWSKI</span> <span class="jurisprudencia">ACO 2821</span> A <span class="local">GR</span> / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa</span> do Estado . Salientou que sem o Certificado de Regularidade Previdenciária , o <span class="local">Mato Grosso</span> está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais .
+
+But wait, the "ACO 2821" – is that a valid jurisprudencia? The example in the guidelines has "REsp n . 1694984/MS" as jurisprudencia. So if "ACO 2821" is a similar identifier, then it should be marked. However, the exact format isn't clear. The user's example might have "ACO" as part of a case number. But without more context, it's safer to mark it as jurisprudencia.
+
+Also, in the original text, "ACO 2821 A GR / MT" – the "A" might be "A" for "Acórdão" or "A" as a separator. So "ACO 2821" is the identifier, and "GR" and "MT" are states. So "ACO 2821" is marked as jurisprudencia.
+
+So the final HTML should have those tags.
+</think>
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . Inteiro Teor do Acórdão - Página 5 de 17 Voto - <span class="pessoa">RICARDO LEWANDOWSKI</span> <span class="jurisprudencia">ACO 2821</span> A <span class="local">GR</span> / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa</span> do Estado . Salientou que sem o Certificado de Regularidade Previdenciária , o <span class="local">Mato Grosso</span> está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais .

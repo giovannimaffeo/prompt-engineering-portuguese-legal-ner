@@ -1,0 +1,38 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The first sentence: "Assim , forçoso reconhecer a perda do objeto perseguido no presente writ quanto ao paciente Igor Leonardo , descabendo-se , conquanto , a concessão da ordem pleiteada , por impropriedade técnica , material de cumprimento , ainda , de inocuidade de eventual decisão em tal sentido ."
+
+Looking for names. "Igor Leonardo" is a person, so that's a pessoa. The rest of the sentence doesn't have any other entities. "writ" might be a legal term, but it's not one of the specified entities. So only "Igor Leonardo" is marked.
+
+Next sentence: "Estando a decisão que converteu a prisão em flagrante do paciente Wellington Douglas em preventiva devidamente fundamentada nas hipóteses do art . 312 do CPP , não há que se falar em constrangimento ilegal pela manutenção da prisão do paciente ."
+
+Here, "Wellington Douglas" is another pessoa. "art. 312 do CPP" refers to a legal article, so that's legislacao. "CPP" is the Código Penal, which is a legislation, so that's also legislacao. Wait, the user's example shows "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So "art. 312 do CPP" would be legislacao. The "CPP" is an abbreviation for Código Penal, which is a law, so it's part of the legislacao. So I need to mark "art. 312 do CPP" as legislacao.
+
+Next part: "A prisão cautelar deve ser decretada com a finalidade de impedir que o agente , solto , volte a delinqüir , garantir a ordem pública se faz necessário , a fim de se manter a ordem na sociedade que é abalada pela prática do delito em tese ."
+
+No entities here. "agente" is a generic term, not a specific person. "ordem pública" is a concept, not a specific entity. So nothing to mark here.
+
+Next sentence: "Consta dos autos que no dia 21 de julho de 2015 , por volta das 22:29 horas , na av."
+
+"21 de julho de 2015" is a date, so that's tempo. "22:29 horas" is a time, but the guidelines say only explicit dates should be marked. The user's example mentions that horários isolados like "17:26:32" shouldn't be marked. So "22:29 horas" is a time, but since it's a time (not a date), according to the guidelines, it's not marked. Wait, the guidelines say: "Horários isolados (como "17:26:32") não devem ser anotados como tempo; apenas datas explícitas devem ser anotadas." So "22:29 horas" is a time, but since it's not a date, it's not marked. So only "21 de julho de 2015" is marked as tempo.
+
+The last part: "na av." – "av." is an abbreviation for "avenida", which is a street, but the guidelines say that only specific locations should be marked. "Avenida" is a generic term, so unless it's followed by a specific name, it's not marked. Since it's just "av.", it's not a specific location. So no mark here.
+
+Putting it all together:
+
+- "Igor Leonardo" → pessoa
+- "Wellington Douglas" → pessoa
+- "art. 312 do CPP" → legislacao
+- "21 de julho de 2015" → tempo
+
+Other parts like "CPP" are part of the legislacao, so "art. 312 do CPP" is marked as legislacao. The "CPP" is part of the legislation, so the entire phrase is marked.
+
+Now, I need to make sure that the HTML tags are correctly placed. Also, check for any other entities I might have missed. For example, "autos" refers to the case file, but it's not an entity. "writ" is a legal term but not one of the specified entities. "CPP" is part of the legislation, so included in the legislacao tag.
+
+So the final HTML should have the spans for those entities.
+</think>
+
+Assim , forçoso reconhecer a perda do objeto perseguido no presente writ quanto ao paciente <span class="pessoa">Igor Leonardo</span> , descabendo-se , conquanto , a concessão da ordem pleiteada , por impropriedade técnica , material de cumprimento , ainda , de inocuidade de eventual decisão em tal sentido . Estando a decisão que converteu a prisão em flagrante do paciente <span class="pessoa">Wellington Douglas</span> em preventiva devidamente fundamentada nas hipóteses do <span class="legislacao">art . 312 do CPP</span> , não há que se falar em constrangimento ilegal pela manutenção da prisão do paciente . A prisão cautelar deve ser decretada com a finalidade de impedir que o agente , solto , volte a delinqüir , garantir a ordem pública se faz necessário , a fim de se manter a ordem na sociedade que é abalada pela prática do delito em tese . Consta dos autos que no dia <span class="tempo">21 de julho de 2015</span> , por volta das 22:29 horas , na av.

@@ -1,0 +1,59 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text sentence by sentence.
+
+Starting with "A hipotética mácula aos princípios constitucionais mencionados pela DPU foi examinada e repelida , considerando-se , por consequência lógica , o decreto de indulto como constitucional ."
+
+Here, "DPU" is an acronym. According to the guidelines, if it's a recognized legal entity, it should be marked. DPU is the Defensoria Pública da União in Brazil, which is an organization. So I'll mark "DPU" as organizacao.
+
+Next, "Evidente clareza no Acórdão atacado ." The word "Acórdão" refers to a judicial decision, which falls under jurisprudencia. So "Acórdão" should be marked as jurisprudencia.
+
+"Descabida a menção do Embargante à omissão , o que gerou a decisão de inadmissibilidade dos Embargos de Declaração ." "Embargante" is a legal term referring to a party in a legal proceeding, which is a person. So "Embargante" is pessoa. "Embargos de Declaração" is a legal term, but it's a type of procedural action, not a specific entity. So maybe not marked here.
+
+"Irresignação da DPU e interposição de Agravo Interno , contra a decisão monocrática de inadmissibilidade . " Again, "DPU" is an organization. "Agravo Interno" is a legal term, but it's a type of procedural action, not an entity. So "DPU" is organizacao.
+
+"Ausência de novos argumentos no Agravo Interno para modificar o entendimento anteriormente consignado . " "Agravo Interno" is a legal term, but again, not an entity. So no marking here.
+
+"Matéria prequestionada , para fins de exaurimento da instância . Agravo rejeitado . Decisão unânime . ACÓRDÃO Vistos , relatados e discutidos estes autos , acordam os ministros do Superior Tribunal Militar , em sessão de julgamento , sob a presidência do Ministra Dra ."
+
+"ACÓRDÃO" is another instance of a judicial decision, so jurisprudencia. "Superior Tribunal Militar" is an organization, so organizacao. "Ministra Dra." refers to a person, so pessoa. Wait, "Ministra Dra." is a title, but the name might be part of it. However, the text ends with "Ministra Dra." without a full name. Since it's a title and not a specific name, maybe it's not marked. But the guidelines say to mark names, so if "Ministra Dra." is part of a name, but here it's just the title. So maybe not mark it. Wait, the user's example in the output might have "Ministra Dra." as pessoa? Let me check the example output again.
+
+Looking at the sample output provided by the user, in the example, "Ministra Dra." is marked as pessoa. So I should follow that. So "Ministra Dra." is a person, so pessoa.
+
+Now, checking all the entities again:
+
+- DPU: organizacao
+- Acórdão: jurisprudencia
+- Embargante: pessoa
+- Superior Tribunal Militar: organizacao
+- Ministra Dra.: pessoa
+
+Wait, "Ministra Dra." is a title, but in the context, it's referring to a specific person. However, the text ends with "Ministra Dra." without a full name. But according to the guidelines, if it's a name, even if it's a title, maybe it's considered a person. But the example output from the user might have "Ministra Dra." as pessoa. Let me check the user's example output again.
+
+In the user's example, the output includes "Ministra Dra." as pessoa. So I should mark that as pessoa.
+
+So putting it all together:
+
+- DPU → organizacao
+- Acórdão → jurisprudencia
+- Embargante → pessoa
+- Superior Tribunal Militar → organizacao
+- Ministra Dra. → pessoa
+
+Other terms like "Agravo Interno" are legal terms but not entities. "Decreto de indulto" is a legislative act, so legislacao. Wait, "decreto" is a type of legislation. So "decreto de indulto" would be legislacao. Let me check the definitions again.
+
+Legislação includes decreto, medidas provisórias, etc. So "decreto de indulto" is a decree, which is legislation. So "decreto de indulto" should be marked as legislacao.
+
+Wait, in the original text: "o decreto de indulto como constitucional". So "decreto de indulto" is the entity. So that's legislacao.
+
+So adding that:
+
+- decreto de indulto → legislacao
+
+Also, "Superior Tribunal Militar" is an organization.
+
+So the final HTML would have these entities marked with their respective classes.
+</think>
+
+A hipotética mácula aos princípios constitucionais mencionados pela <span class="organizacao">DPU</span> foi examinada e repelida , considerando-se , por consequência lógica , o <span class="legislacao">decreto de indulto</span> como constitucional . Evidente clareza no <span class="jurisprudencia">Acórdão</span> atacado . Descabida a menção do <span class="pessoa">Embargante</span> à omissão , o que gerou a decisão de inadmissibilidade dos Embargos de Declaração . Irresignação da <span class="organizacao">DPU</span> e interposição de Agravo Interno , contra a decisão monocrática de inadmissibilidade . Ausência de novos argumentos no Agravo Interno para modificar o entendimento anteriormente consignado . Matéria prequestionada , para fins de exaurimento da instância . Agravo rejeitado . Decisão unânime . <span class="jurisprudencia">ACÓRDÃO</span> Vistos , relatados e discutidos estes autos , acordam os ministros do <span class="organizacao">Superior Tribunal Militar</span> , em sessão de julgamento , sob a presidência do <span class="pessoa">Ministra Dra</span> .

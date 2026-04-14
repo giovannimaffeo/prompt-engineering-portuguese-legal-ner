@@ -1,0 +1,63 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a given text, marking specific legal entities with appropriate tags. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the respective class.
+
+First, I need to carefully read the input text and identify which parts fit each category. Let me go through the text step by step.
+
+The input text starts with "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536376 . Inteiro Teor do Acórdão - Página 2 de 17 Relatório 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+Let me break it down:
+
+1. "endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/" – The URL is mentioned, but according to the guidelines, URLs shouldn't be marked as local. So this part remains as is.
+
+2. "sob o número 14536376" – The number here might be a jurisprudência reference, but the example shows that numbers like "14536376" might not be marked unless they are part of a specific identifier. Wait, the example mentions that identifiers like "20140110500434APO" should be marked. But "14536376" is just a number. Since there's no indication it's a specific case number, maybe it's not marked. So leave as is.
+
+3. "Inteiro Teor do Acórdão" – This is a title, not an entity. No marking.
+
+4. "Página 2 de 17" – This is a page number, not a time or date. So no marking.
+
+5. "Relatório 16/03/2018" – The date "16/03/2018" is a tempo entity. So wrap that in <span class="tempo">.
+
+6. "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO" – "PLENÁRIO" is part of the court, maybe an organization? Wait, "PLENÁRIO" refers to the full court, which is part of the STF (Superior Court of Justice). But according to the guidelines, "Turmas cíveis" like "4ª Turma Cível" are organizations. However, "PLENÁRIO" is a chamber, so it's an organization. Wait, the example mentions that expressions like "4ª Turma Cível" should be marked as organizacao. So "PLENÁRIO" might be part of an organization. But the text here is "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO". The "PLENÁRIO" is the chamber, so maybe it's an organization. But the example didn't have this. Let me check the guidelines again. The definition for organizacao includes "orgãos públicos, tribunais, unidades do sistema de justiça". So "PLENÁRIO" is part of the STF, which is an organization. However, the text here might be part of the case name. Let me check the rest.
+
+7. "RELATOR : MIN . RICARDO LEWANDOWSKI" – "MIN." is an abbreviation for "Ministro", which is a title, not a person. The name "RICARDO LEWANDOWSKI" is a person, so mark as <span class="pessoa">.
+
+8. "AGTE . ( S ) : UNIÃO" – "UNIÃO" refers to the Union, which is a legal entity. According to the guidelines, organizations include "entidades coletivas formalmente constituídas", so "UNIÃO" should be marked as <span class="organizacao">.
+
+9. "ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO" – "ADVOGADO -GERAL DA UNIÃO" is a title, not a specific name. So no marking.
+
+10. "AGDO . ( A / S ) : ESTADO DE MATO GROSSO" – "ESTADO DE MATO GROSSO" is a specific state, so mark as <span class="local">.
+
+11. "PROC ." – This is an abbreviation for "Processo", which is a legal term but not an entity. So no marking.
+
+Now, let's put all these together.
+
+The date "16/03/2018" is tempo. The person is "RICARDO LEWANDOWSKI". The organization is "UNIÃO" and "ESTADO DE MATO GROSSO" is local. The "PLENÁRIO" might be an organization, but I'm not sure. Wait, in the example, "Tribunal de Contas" was marked as organizacao. "PLENÁRIO" is part of the STF, so it's an organization. But in the input text, it's written as "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO". The "PLENÁRIO" is the chamber, so it's an organization. However, the example didn't have this, so maybe it's better to check if "PLENÁRIO" is part of the court's name. Since the user's example had "Tribunal de Contas" as organizacao, "PLENÁRIO" would be an organization. But the text here is part of the case name, which might not be an entity. Hmm. Alternatively, maybe "PLENÁRIO" is part of the court's name, so it's an organization. Let me mark it as organizacao.
+
+Wait, the guidelines say that "expressões que identificam entidades coletivas formalmente constituídas" should be marked as organizacao. So "PLENÁRIO" is part of the STF, which is an organization. Therefore, "PLENÁRIO" should be marked as organizacao.
+
+So the final text would have:
+
+- "Relatório <span class="tempo">16/03/2018</span> <span class="organizacao">PLENÁRIO</span> A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> RELATOR : <span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : <span class="local">ESTADO DE MATO GROSSO</span> PROC ."
+
+Wait, but "PLENÁRIO" is the chamber, so maybe it's part of the organization. However, in the text, it's written as "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO". The "PLENÁRIO" is the chamber, so it's part of the STF, which is an organization. So "PLENÁRIO" is an organization. So mark it as organizacao.
+
+Also, "MATO GROSSO" is a state, so local. "ESTADO DE MATO GROSSO" is a local as well.
+
+The number 14536376 is a case number, but according to the guidelines, identifiers like "20140110500434APO" should be marked as jurisprudencia. However, "14536376" is just a number. Since there's no indication it's a specific case number, maybe it's not marked. The example shows that "número 14536376" is not marked unless it's part of a specific identifier.
+
+So the final HTML would be:
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536376 . Inteiro Teor do Acórdão - Página 2 de 17 Relatório <span class="tempo">16/03/2018</span> <span class="organizacao">PLENÁRIO</span> A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> RELATOR : <span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : <span class="local">ESTADO DE MATO GROSSO</span> PROC .
+
+Wait, but "MATO GROSSO" is a state, so it's a local. But "ESTADO DE MATO GROSSO" is more specific. The guidelines say to mark specific names, so "ESTADO DE MATO GROSSO" is a local. The "MATO GROSSO" alone might be a local as well. However, in the text, it's part of "MATO GROSSO" and "ESTADO DE MATO GROSSO". So both should be marked as local.
+
+Wait, the text says "2.821 MATO GROSSO" – "MATO GROSSO" is the state, so mark as local. Then "ESTADO DE MATO GROSSO" is also a local.
+
+So the final output should have those marked. Also, "PLENÁRIO" is an organization.
+
+Another point: "AGTE . ( S ) : UNIÃO" – "UNIÃO" is an organization. "AGDO . ( A / S ) : ESTADO DE MATO GROSSO" – "ESTADO DE MATO GROSSO" is a local.
+
+So putting it all together, the HTML should have the marked entities as discussed.
+</think>
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536376 . Inteiro Teor do Acórdão - Página 2 de 17 Relatório <span class="tempo">16/03/2018</span> <span class="organizacao">PLENÁRIO</span> A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> RELATOR : <span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : <span class="local">ESTADO DE MATO GROSSO</span> PROC .

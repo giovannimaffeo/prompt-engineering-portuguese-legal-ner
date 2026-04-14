@@ -1,0 +1,71 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by identifying each entity according to the definitions provided.
+
+Looking at the text: "Como bem destacou o Magistrado de primeiro grau apontado coator em suas informações : '' ( ... ) o Código de Processo Civil exige que o advogado indique na petição inicial o seu email , a fim de possibilitar as comunicações processuais sejam realizadas por este meio , conforme artigos 319 , II , c/c o 270 , sendo que este último institui como regra a intimação por meio eletrônico : `` As intimações realizam-se , sempre que possível , por meio eletrônico , na forma da lei '' . Ora , se o CPPM prevê que as citações e as intimações sejam feitas por correio , em nenhum momento tendo exigido o aviso de recebimento , motivo não há para que se rejeite a notificação por correio eletrônico . Logo , ao contrário do que argumenta a impetrante , não há necessidade de confirmação pelo destinatário de que este recebeu correio eletrônico ou carta ."
+
+Starting with "Magistrado de primeiro grau" – "Magistrado" is a person, but the term "Magistrado" is a generic term for a judge, not a specific name. Wait, the definition says pessoa is names of specific individuals. So "Magistrado" here is a generic term, not a specific person. So maybe not mark it. But the user mentioned "pessoa" includes names, so if it's a specific name, like "Juiz João da Silva", that's a pessoa. But here, "Magistrado" is a title, not a specific person. So maybe not mark it.
+
+Next, "Código de Processo Civil" – that's a legal code, so that's legislacao. So I should mark "Código de Processo Civil" as <span class="legislacao">.
+
+Then "artigos 319 , II , c/c o 270" – these are articles of the legislation, so they should be marked as part of the legislacao. Wait, the definition says "referências a normas" should be marked. So "artigos 319" and "270" are references to articles in the legislation, so they should be marked as legislacao. But the user's example in the output might have them as part of the legislacao. Wait, the example given in the output might have "artigos 319" as part of the legislacao. Let me check the sample output provided by the user. Wait, the user hasn't provided a sample output, but the task says to return only the annotated text.
+
+So "artigos 319" and "270" are references to articles in the legislation, so they should be marked as legislacao. Also, "CPPM" is likely an acronym for "Código de Processo Penal" or similar, but in the text, it's mentioned as "CPPM prevê", so "CPPM" is a reference to a legal code, so that's legislacao. Wait, the text says "o CPPM prevê que as citações e as intimações sejam feitas por correio". So "CPPM" is an acronym for a legal code, so it should be marked as legislacao.
+
+Then "intimação por meio eletrônico" – "intimação" is a legal term, but it's not an entity. The term "meio eletrônico" is a method, not an entity. So maybe not mark those.
+
+Looking for "jurisprudencia" – the text mentions "súmulas" or "acórdãos" but in the input text, there's a quote: "As intimações realizam-se , sempre que possível , por meio eletrônico , na forma da lei". That's part of the legislation, so "forma da lei" refers to the law, so that's legislacao. There's no mention of jurisprudência here, like specific court decisions or precedents. So maybe no jurisprudencia entities.
+
+"impetrante" – that's a legal term for the petitioner, but it's a role, not a specific person. So not a pessoa. Unless it's a specific name, but here it's a generic term.
+
+"correio eletrônico" – that's a method, not an entity. "correio" is a method of communication, not a local or organization.
+
+"email" – that's a method, not an entity.
+
+"artigos 319 , II , c/c o 270" – these are references to articles in the legislation, so they should be marked as legislacao.
+
+"CPPM" – as mentioned, it's an acronym for a legal code, so legislacao.
+
+So the entities to mark are:
+
+- "Código de Processo Civil" (legislacao)
+- "artigos 319" (legislacao)
+- "270" (legislacao)
+- "CPPM" (legislacao)
+
+Wait, the user's example in the output might have "artigos 319" and "270" as part of the legislacao. Also, "Código de Processo Civil" is a code, so legislacao. "CPPM" is an acronym for a code, so also legislacao.
+
+So I need to wrap those parts with <span class="legislacao">.
+
+Let me check the text again:
+
+"o Código de Processo Civil exige que o advogado indique na petição inicial o seu email , a fim de possibilitar as comunicações processuais sejam realizadas por este meio , conforme artigos 319 , II , c/c o 270 , sendo que este último institui como regra a intimação por meio eletrônico : `` As intimações realizam-se , sempre que possível , por meio eletrônico , na forma da lei '' . Ora , se o CPPM prevê que as citações e as intimações sejam feitas por correio , em nenhum momento tendo exigido o aviso de recebimento , motivo não há para que se rejeite a notificação por correio eletrônico . Logo , ao contrário do que argumenta a impetrante , não há necessidade de confirmação pelo destinatário de que este recebeu correio eletrônico ou carta ."
+
+So "Código de Processo Civil" is legislacao.
+
+"artigos 319" and "270" are references to articles, so legislacao.
+
+"CPPM" is an acronym for a code, so legislacao.
+
+"forma da lei" refers to the law, so "forma da lei" is part of the legislacao? Wait, the text says "na forma da lei", which is a reference to the law, so "forma da lei" is part of the legislation. But the user's definition says "referências a normas" should be marked. So "forma da lei" is a reference to the law, so maybe "forma da lei" should be marked as legislacao. But the user's example might not include that. Alternatively, maybe only the specific articles or codes are marked.
+
+Alternatively, "Código de Processo Civil" is a code, so legislacao. "artigos 319" and "270" are articles of that code, so they are part of the legislacao. "CPPM" is another code, so legislacao. "forma da lei" is a reference to the law, but it's not a specific code or article. So maybe only the specific codes and articles are marked.
+
+So the entities to mark are:
+
+- "Código de Processo Civil" (legislacao)
+- "artigos 319" (legislacao)
+- "270" (legislacao)
+- "CPPM" (legislacao)
+
+Wait, "artigos 319" and "270" are part of the same legislation, so they should be marked as legislacao. Also, "CPPM" is another code, so legislacao.
+
+So the final HTML would have those parts wrapped in <span class="legislacao">.
+
+Other parts: "Magistrado de primeiro grau" – "Magistrado" is a generic term, not a specific person, so not marked. "impetrante" is a role, not a specific person. "email" is a method, not an entity. "correio" is a method, not an entity. "correio eletrônico" is a method. "local" – no specific places mentioned. "tempo" – no dates or times. "organizacao" – no organizations mentioned. "jurisprudencia" – no specific court decisions or precedents mentioned.
+
+So the final HTML should have the legislacao entities marked as described.
+</think>
+
+Como bem destacou o <span class="pessoa">Magistrado</span> de primeiro grau apontado coator em suas informações : '' ( ... ) o <span class="legislacao">Código de Processo Civil</span> exige que o advogado indique na petição inicial o seu email , a fim de possibilitar as comunicações processuais sejam realizadas por este meio , conforme <span class="legislacao">artigos 319</span> , II , c/c o <span class="legislacao">270</span> , sendo que este último institui como regra a intimação por meio eletrônico : `` As intimações realizam-se , sempre que possível , por meio eletrônico , na forma da lei '' . Ora , se o <span class="legislacao">CPPM</span> prevê que as citações e as intimações sejam feitas por correio , em nenhum momento tendo exigido o aviso de recebimento , motivo não há para que se rejeite a notificação por correio eletrônico . Logo , ao contrário do que argumenta a <span class="pessoa">impetrante</span> , não há necessidade de confirmação pelo destinatário de que este recebeu correio eletrônico ou carta .

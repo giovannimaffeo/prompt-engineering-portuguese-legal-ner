@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify which parts fit each category. Let me go through the text sentence by sentence.
+
+The first sentence: "Argumenta o ilustre impetrante , em síntese , com o excesso de prazo para a realização da sessão do Júri ."
+
+Here, "impetrante" is a legal term, but according to the guidelines, only names should be marked. Since "impetrante" is a generic term (like "petitioner"), it's not a specific name, so no tag. "Júri" refers to a court, which is an organization. Wait, the definition says organizations include courts. So "Júri" should be marked as organizacao.
+
+Next sentence: "Assevera , ademais , que o paciente encontra-se preso desde o dia 19.08.16 , sendo que a sessão de julgamento do Tribunal do Júri foi designada para o dia 25.01.18 , quando restará configurado o excesso de prazo para a formação da culpa ."
+
+"19.08.16" and "25.01.18" are dates, so they should be tempo. "Tribunal do Júri" is an organization. The "paciente" is a generic term, not a specific person, so no tag. "Júri" again is part of "Tribunal do Júri", which is an organization. So "Tribunal do Júri" gets organizacao.
+
+Third part: "Aduz , ainda , a nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , uma vez que `` ... a devassa dos dados contidos em celular apreendido , cujo conteúdo pode ser composto por mensagens privadas , e-mail particular [ ... ] , dados bancários e todo tipo de informação acerca da vida privada do cidadão , submete-se à reserva de jurisdição , exigindo-se a devida autorização judicial . '' ( fl ."
+
+The phrase "reserva de jurisdição" refers to a legal principle, but according to the guidelines, only specific legal norms (like laws, decrees) are marked as legislação. "Reserva de jurisdição" is a legal concept but not a specific law or regulation, so it's not marked. The rest of the text doesn't seem to have any entities. The "fl." at the end is likely "fls." (folios), which isn't an entity.
+
+So, compiling all the entities:
+
+- "Júri" in "sessão do Júri" and "Tribunal do Júri" are both organizations.
+- The dates "19.08.16" and "25.01.18" are tempo.
+- "Tribunal do Júri" is an organization, so the entire phrase should be marked. Wait, the user said to mark complete noun phrases. "Tribunal do Júri" is a complete noun phrase, so that's organizacao.
+
+Now, putting it all into HTML. Each entity should be wrapped in <span> with the appropriate class. Let me check again for any missed entities.
+
+Wait, "paciente" is a generic term, so no. "Júri" is part of "Tribunal do Júri", so both instances of "Júri" should be marked as organizacao. Also, the dates are tempo.
+
+So the final HTML would have:
+
+- "Júri" as organizacao in the first sentence.
+- "Tribunal do Júri" as organizacao.
+- "19.08.16" and "25.01.18" as tempo.
+
+I need to make sure that all instances are covered and that the tags are correctly applied. No other entities seem to be present. The rest of the text doesn't have any other legal entities. So the output should have the spans for those entities.
+</think>
+
+Argumenta o ilustre impetrante , em síntese , com o excesso de prazo para a realização da sessão do <span class="organizacao">Júri</span> . Assevera , ademais , que o paciente encontra-se preso desde o dia <span class="tempo">19.08.16</span> , sendo que a sessão de julgamento do <span class="organizacao">Tribunal do Júri</span> foi designada para o dia <span class="tempo">25.01.18</span> , quando restará configurado o excesso de prazo para a formação da culpa . Aduz , ainda , a nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , uma vez que `` ... a devassa dos dados contidos em celular apreendido , cujo conteúdo pode ser composto por mensagens privadas , e-mail particular [ ... ] , dados bancários e todo tipo de informação acerca da vida privada do cidadão , submete-se à reserva de jurisdição , exigindo-se a devida autorização judicial . '' ( fl .

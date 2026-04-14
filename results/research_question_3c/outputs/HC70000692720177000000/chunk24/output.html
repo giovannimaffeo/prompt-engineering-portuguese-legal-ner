@@ -1,0 +1,45 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first part is: "Nesse contexto , configura comportamento contraditório e violador da boa-fé objetiva a alegação de não ter sido notificada por e-mail das sessões dos dias 7 , 8 e 9 de novembro , tendo em vista que sempre anuiu em ser notificada via correio eletrônico e telefone . Logo há evidente venire contra factum proprium , rechaçado por nosso ordenamento jurídico . `` . As circunstâncias acima descritas pelo Juízo de primeiro grau afastam definitivamente a alegação de que `` ( ... ) esta Impetrante não participou de qualquer acordo neste sentido ( ... ) '' , pois a causídica , como visto , já havia sido notificada pela via do correio eletrônico em outras oportunidades ."
+
+Looking for entities:
+
+1. "7 , 8 e 9 de novembro" – these are dates, so "tempo".
+2. "Juízo de primeiro grau" – this is an organization, so "organizacao".
+3. "Impetrante" – this is a legal term referring to a party, but according to the guidelines, it's a generic term, not a specific name. So it's not a pessoa. Wait, the definition says "pessoa" is names of individuals. "Impetrante" is a role, not a specific name, so it shouldn't be marked.
+4. "causídica" – this is a term for a lawyer, but again, it's a generic term. The user mentioned that terms like "réu", "vítima", etc., are not to be marked. So "causídica" is a generic term, not a specific person, so no mark.
+5. "ordenamento jurídico" – this refers to the legal system, not a specific entity. So no mark.
+6. "correio eletrônico" – this is a method of communication, not an entity. So no mark.
+7. "notificada" – this is a verb, not an entity.
+8. "via do correio eletrônico" – again, method of communication, not an entity.
+
+Wait, maybe I missed something. Let me check again.
+
+Looking for "tempo": the dates "7 , 8 e 9 de novembro" are definitely temporal references. So those should be marked as "tempo".
+
+"Juízo de primeiro grau" is an organization, so "organizacao".
+
+"Impetrante" is a legal term, but according to the guidelines, terms like "réu", "vítima", etc., are not to be marked. Since "Impetrante" is a role, not a specific name, it's not a pessoa. So no mark.
+
+"causídica" is a term for a lawyer, but again, it's a generic term. The user's example says "réu" is not marked. So "causídica" is not a specific name, so no mark.
+
+Are there any other entities? Let me check again.
+
+The text mentions "notificada por e-mail" – "e-mail" is a method, not an entity. "correio eletrônico" is the same. "notificada" is a verb. "via do correio eletrônico" – again, method.
+
+So the only entities are the dates and the "Juízo de primeiro grau".
+
+Wait, "Juízo de primeiro grau" – is that an organization? According to the definition, organizations include courts. So yes, "organizacao".
+
+So the HTML should have:
+
+- "7 , 8 e 9 de novembro" as <span class="tempo">.
+- "Juízo de primeiro grau" as <span class="organizacao">.
+
+Other parts of the text don't have any of the specified entities. So the final HTML should have those two spans.
+</think>
+
+Nesse contexto , configura comportamento contraditório e violador da boa-fé objetiva a alegação de não ter sido notificada por e-mail das sessões dos dias <span class="tempo">7 , 8 e 9 de novembro</span> , tendo em vista que sempre anuiu em ser notificada via correio eletrônico e telefone . Logo há evidente venire contra factum proprium , rechaçado por nosso ordenamento jurídico . `` . As circunstâncias acima descritas pelo <span class="organizacao">Juízo de primeiro grau</span> afastam definitivamente a alegação de que `` ( ... ) esta Impetrante não participou de qualquer acordo neste sentido ( ... ) '' , pois a causídica , como visto , já havia sido notificada pela via do correio eletrônico em outras oportunidades .

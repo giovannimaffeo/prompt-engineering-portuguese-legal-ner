@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text carefully. The input is: "( Acórdão n.1014463 , 20160020497758ADI , Relator : WALDIR LEÔNCIO LOPES JÚNIOR CONSELHO ESPECIAL , Data de Julgamento : 25/04/2017 , Publicado no DJE : 08/05/2017 . Pág. : 407 ) . ( Grifos nossos ) . 2 ."
+
+Let me break it down. The first part is "( Acórdão n.1014463 , 20160020497758ADI , Relator : WALDIR LEÔNCIO LOPES JÚNIOR CONSELHO ESPECIAL , Data de Julgamento : 25/04/2017 , Publicado no DJE : 08/05/2017 . Pág. : 407 )". 
+
+Looking for entities:
+- "Acórdão" might be a legal term, but it's not one of the specified types. The user mentioned entities like pessoa, organizacao, etc. So maybe "Acórdão" isn't an entity here.
+- "n.1014463" could be a number, but not sure if it's an entity. The user didn't specify numbers as entities, so maybe not.
+- "20160020497758ADI" looks like a case number or identifier. Not sure if it's an entity type. The user didn't mention case numbers, so maybe not.
+- "Relator" is a role, not an entity. The person's name is "WALDIR LEÔNCIO LOPES JÚNIOR" which is a pessoa. Then "CONSELHO ESPECIAL" is an organization (organizacao).
+- "Data de Julgamento" is a date, so "25/04/2017" is tempo.
+- "Publicado no DJE" refers to a publication date, so "08/05/2017" is also tempo.
+- "Pág. : 407" is a page number, not an entity.
+- The next part is "( Grifos nossos )", which translates to "Our highlights". "Grifos nossos" might be a note, but not an entity.
+- The last "2" is a number, not an entity.
+
+So, the entities to mark are:
+- "WALDIR LEÔNCIO LOPES JÚNIOR" as pessoa.
+- "CONSELHO ESPECIAL" as organizacao.
+- "25/04/2017" and "08/05/2017" as tempo.
+
+Wait, the user mentioned "tempo" for dates. So both dates should be marked as tempo. Also, "CONSELHO ESPECIAL" is an organization. The relator's name is a pessoa. The rest are numbers or notes, so no entities.
+
+Now, I need to wrap those parts with the appropriate <span> tags. Let me check the original text again to ensure I don't miss any parts.
+
+Original text: The first part has "Relator : WALDIR LEÔNCIO LOPES JÚNIOR CONSELHO ESPECIAL". Wait, "CONSELHO ESPECIAL" is part of the relator's name? Or is "CONSELHO ESPECIAL" a separate entity? The structure is "Relator : [name] [organization]". So "WALDIR LEÔNCIO LOPES JÚNIOR" is the person, and "CONSELHO ESPECIAL" is the organization. So both should be marked.
+
+Then the dates: "Data de Julgamento : 25/04/2017" and "Publicado no DJE : 08/05/2017". Both dates are tempo.
+
+So the HTML should have:
+- <span class="pessoa">WALDIR LEÔNCIO LOPES JÚNIOR</span>
+- <span class="organizacao">CONSELHO ESPECIAL</span>
+- <span class="tempo">25/04/2017</span>
+- <span class="tempo">08/05/2017</span>
+
+Other parts remain as is. Let me reconstruct the text with these tags.
+</think>
+
+<span class="tempo">25/04/2017</span> , <span class="tempo">08/05/2017</span> . Pág. : 407 ) . ( Grifos nossos ) . 2 .

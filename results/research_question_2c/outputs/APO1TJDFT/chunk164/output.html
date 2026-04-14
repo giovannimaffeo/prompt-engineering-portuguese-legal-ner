@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to look at the input text: "Apelação / Reexame Necessário 20140110500434APO PEDIDO DE VISTA V O T O S O Senhor Desembargador SEBASTIÃO COELHO - Presidente e Vogal Acompanho a Relatora ."
+
+Let me break it down. The first part is "Apelação / Reexame Necessário". These seem like legal terms, maybe part of a case name or procedure. Not sure if they are entities. The number "20140110500434APO" looks like a case number, which might be a temporal entity? Or maybe it's part of a code. Not sure yet.
+
+Next, "PEDIDO DE VISTA" is a legal term, but not sure if it's an entity. Then "V O T O S O" – that's probably "Voto" (vote) in Portuguese, but maybe part of a legal document structure. 
+
+Then "Senhor Desembargador SEBASTIÃO COELHO - Presidente e Vogal Acompanho a Relatora ." Here, "Senhor Desembargador" is a title, "SEBASTIÃO COELHO" is a person's name. So "SEBASTIÃO COELHO" should be marked as pessoa. 
+
+"Presidente e Vogal" are titles, maybe part of an organization? Or positions within an organization. But the user's entities include organizacao, so maybe not. Unless "Presidente" refers to an organization, but in this context, it's part of the title for the person. 
+
+"Relatora" is a role, perhaps part of an organization or a position. But since there's no specific entity type for roles, maybe it's not marked. 
+
+Looking for other entities: "20140110500434APO" – the date part might be a tempo entity. The format is 20140110500434, which could be a date and time. So "20140110500434" would be tempo. 
+
+"Apelação" and "Reexame Necessário" are legal terms, but not sure if they are part of any entity type. The user's entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So maybe "Apelação" is part of a legal term, but not an entity. 
+
+So, the entities I can identify are:
+
+- "SEBASTIÃO COELHO" as pessoa.
+- "20140110500434" as tempo.
+
+Wait, the number "20140110500434APO" – maybe the "APO" is part of the case number. But the user's example in the output might have "20140110500434" as tempo. Let me check the example given. The user's sample input has "20140110500434APO" and the output has "20140110500434" as tempo. So maybe the number is the date, and the rest is part of the case code. So I should mark "20140110500434" as tempo.
+
+So the final HTML would have:
+
+- "SEBASTIÃO COELHO" in <span class="pessoa">.
+- "20140110500434" in <span class="tempo">.
+
+Other parts are left as is. Let me make sure there are no other entities. "Apelação" and "Reexame Necessário" are legal terms but not entities. "Vista" is a legal term, but not an entity. "Relatora" is a role, not an entity. So the only entities are the person and the date.
+</think>
+
+Apelação / Reexame Necessário <span class="tempo">20140110500434</span>APO PEDIDO DE VISTA V O T O S O Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span> - Presidente e Vogal Acompanho a Relatora .

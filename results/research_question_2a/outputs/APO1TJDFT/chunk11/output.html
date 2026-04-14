@@ -1,0 +1,63 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text. The first part is "Apelação / Reexame Necessário 20140110500434APO". The number "20140110500434APO" might be a case number, which could be considered a tempo or maybe part of a legal reference. But since it's a number followed by "APO", maybe it's a case identifier, not a date. So perhaps it's not a tempo entity. I'll note that and check later.
+
+Next, "A C Ó R D Ã O" – that's "ACÓRDAO" in Portuguese, which means "Decision" or "Acordão". This is likely a legal term, but not one of the specified entities. So no tag needed here.
+
+Then, "Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios". Here, "Senhores Desembargadores" refers to people, so "pessoa" for each name. Wait, but "Senhores Desembargadores" is a title, not a name. The names that follow are the relator and vogais. Let me check the names: MARIA IVATÔNIA - Relatora, ANGELO PASSARELI - 1º Vogal, SEBASTIÃO COELHO - 2º Vogal, etc. These are names of people, so they should be marked as "pessoa".
+
+"MARIA IVATÔNIA - Relatora" – "Relatora" is a title, so the name "MARIA IVATÔNIA" is a pessoa. Similarly for the others. So each name should be in <span class="pessoa">.
+
+Next, "Tribunal de Justiça do Distrito Federal e Territórios" – "Tribunal de Justiça" is an organization, so "organizacao". "Distrito Federal e Territórios" is a local, so "local".
+
+Then, "EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR" – "VOTO-VISTA" is a legal term, but not one of the entities. "2º VOGAL" refers to a position, so maybe not an entity. "RELATOR" is a title, so the person mentioned earlier would be the relator, but in the text, the relator is already mentioned as MARIA IVATÔNIA. So maybe no entities here.
+
+Wait, the case number "20140110500434APO" – maybe the date part? Let me check the format. The first part is 2014, which is a year, then 0110500434APO. Not sure if that's a date. Maybe it's a case number, so not a tempo entity. So no tag for that.
+
+So, the entities to mark are:
+
+- Names of people: MARIA IVATÔNIA, ANGELO PASSARELI, SEBASTIÃO COELHO, JOSAPHA FRANCISCO DOS SANTOS. Wait, the text mentions "SEBASTIÃO COELHO - 2º Vogal" and "JOSAPHA FRANCISCO DOS SANTOS - 4º Vogal". So those names are pessoas.
+
+- "Tribunal de Justiça" is an organization.
+
+- "Distrito Federal e Territórios" is a local.
+
+Wait, "Distrito Federal e Territórios" is a local, so that should be marked as "local".
+
+Also, "5ª TURMA CÍVEL" – "TURMA CÍVEL" is a court, so maybe part of the organization? Or is it a local? Hmm. The "Tribunal de Justiça do Distrito Federal e Territórios" is the organization. The "5ª TURMA CÍVEL" is part of that organization, so maybe not an entity here. So perhaps only "Tribunal de Justiça" is the organization.
+
+So, putting it all together:
+
+- "MARIA IVATÔNIA" is pessoa.
+
+- "ANGELO PASSARELI" is pessoa.
+
+- "SEBASTIÃO COELHO" is pessoa.
+
+- "JOSAPHA FRANCISCO DOS SANTOS" is pessoa.
+
+- "Tribunal de Justiça" is organizacao.
+
+- "Distrito Federal e Territórios" is local.
+
+Wait, but "Distrito Federal e Territórios" is a local, so that's correct.
+
+Now, the case number "20140110500434APO" – maybe it's a tempo? But it's not a date. The first part is 2014, but the rest is unclear. Since it's not a clear date, maybe it's not a tempo entity.
+
+So the final HTML should have the names marked as pessoa, "Tribunal de Justiça" as organizacao, and "Distrito Federal e Territórios" as local.
+
+Let me check again. The text says "Tribunal de Justiça do Distrito Federal e Territórios" – so "Tribunal de Justiça" is the organization, and "Distrito Federal e Territórios" is the local. So those two parts should be marked.
+
+So the output would have:
+
+<span class="pessoa">MARIA IVATÔNIA</span> - Relatora, <span class="pessoa">ANGELO PASSARELI</span> - 1º Vogal, <span class="pessoa">SEBASTIÃO COELHO</span> - 2º Vogal, <span class="pessoa">JOSAPHA FRANCISCO DOS SANTOS</span> - 4º Vogal, sob a presidência do Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span>, em proferir a seguinte decisão : EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR .
+
+Wait, but "SEBASTIÃO COELHO" is mentioned again as the presidência. So that's another pessoa. Wait, the original text says "sob a presidência do Senhor Desembargador SEBASTIÃO COELHO" – so that's another instance of the same person. So that should be marked as pessoa again.
+
+So all the names are pessoas. The organization is "Tribunal de Justiça", and the local is "Distrito Federal e Territórios".
+
+So the final HTML should have those tags. Let me make sure I didn't miss any other entities. The rest of the text doesn't have any other entities. So that's the plan.
+</think>
+
+Apelação / Reexame Necessário 20140110500434APO A C Ó R D Ã O Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span> , <span class="pessoa">MARIA IVATÔNIA</span> - Relatora , <span class="pessoa">ANGELO PASSARELI</span> - 1º Vogal , <span class="pessoa">SEBASTIÃO COELHO</span> - 2º Vogal , <span class="pessoa">SILVA LEMOS</span> - 3º Vogal , <span class="pessoa">JOSAPHA FRANCISCO DOS SANTOS</span> - 4º Vogal , sob a presidência do Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span> , em proferir a seguinte decisão : EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR .

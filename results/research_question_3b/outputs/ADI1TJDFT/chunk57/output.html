@@ -1,0 +1,64 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text sentence by sentence.
+
+Starting with "ISTO POSTO , julgo procedente o pedido para declarar , com efeitos '' ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da Lei nº 5.815 , de 3 de abril de 2017 , por violação ao disposto no artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal . É o voto . Argumenta que a matéria é competência privativa do Chefe do Poder Executivo e que o poder de polícia é atividade típica da administração pública e exclusiva de Estado , que não pode ser transferida aos Conselhos Profissionais , incorrendo a norma também em vício material de inconstitucionalidade . Ao contrário do que argumenta a Procuradoria-Geral , a lei apenas autorizou o Governador , segundo sua conveniência , a celebrar convênios com os Conselhos Profissionais que menciona , para a elaboração de parecer opinativo não Fls ."
+
+Looking for entities:
+
+1. "Lei nº 5.815 , de 3 de abril de 2017" – This is a law, so "legislacao".
+2. "artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII" – These are references to articles and sections of the law, so part of "legislacao".
+3. "Lei Orgânica do Distrito Federal" – Another law, so "legislacao".
+4. "Chefe do Poder Executivo" – This refers to a person, but it's a title, not a name. Wait, the definition says "nomes próprios" for pessoa. Since it's a title, maybe not. But the user's example might include titles if they refer to specific individuals. Wait, the example in the output includes "Chefe do Poder Executivo" as a pessoa? Wait, no. Let me check the definitions again. "Pessoa" is names of individuals. "Chefe do Poder Executivo" is a title, not a name. So maybe not. But the user's example might have it as "pessoa"? Wait, looking at the sample output provided by the user, in the example, "Chefe do Poder Executivo" is marked as "pessoa"? Wait, no. Wait, the user's example output is not given, but the assistant's previous response might have included it. Wait, the user's instruction says to return only the annotated text. Let me focus on the current text.
+
+Wait, the text mentions "Chefe do Poder Executivo" – this is a title, not a specific person's name. So according to the definitions, it's not a "pessoa". Similarly, "Procuradoria-Geral" is an organization. "Conselhos Profissionais" are organizations. "Governador" is a title, not a name. "Distrito Federal" is a local entity. "Lei nº 5.815" is legislation. "Lei Orgânica do Distrito Federal" is legislation. "artigo53" etc. are parts of legislation. "ex tunc" and "erga omnes" are legal terms, not entities. "voto" is a legal term, not an entity. "incisos IV , VI , X e XXIII" are parts of legislation. "Procuradoria-Geral" is an organization. "Governador" is a title. "Conselhos Profissionais" are organizations. "Fls" is an abbreviation, not an entity.
+
+So, the entities to mark are:
+
+- "Lei nº 5.815" – legislacao
+- "3 de abril de 2017" – tempo
+- "artigo53" – legislacao (part of the law)
+- "§ 1º" – legislacao (part of the law)
+- "artigo 71" – legislacao
+- "§ 1º" – legislacao
+- "IVe artigo100" – legislacao
+- "incisos IV , VI , X e XXIII" – legislacao
+- "Lei Orgânica do Distrito Federal" – legislacao
+- "Distrito Federal" – local
+- "Procuradoria-Geral" – organizacao
+- "Conselhos Profissionais" – organizacao
+- "Governador" – title, not pessoa
+- "Chefe do Poder Executivo" – title, not pessoa
+
+Wait, but "Chefe do Poder Executivo" is a title, but maybe in the context, it refers to a specific person. However, the definition says "nomes próprios" for pessoa. Since it's a title, not a name, it's not a pessoa. Similarly, "Governador" is a title, not a name. So they are not marked as pessoa.
+
+So, the HTML should have:
+
+- "Lei nº 5.815" as <span class="legislacao">Lei nº 5.815</span>
+- "3 de abril de 2017" as <span class="tempo">3 de abril de 2017</span>
+- "artigo53" as <span class="legislacao">artigo53</span>
+- "§ 1º" as <span class="legislacao">§ 1º</span>
+- "artigo 71" as <span class="legislacao">artigo 71</span>
+- "§ 1º" as <span class="legislacao">§ 1º</span>
+- "IVe artigo100" as <span class="legislacao">IVe artigo100</span>
+- "incisos IV , VI , X e XXIII" as <span class="legislacao">incisos IV , VI , X e XXIII</span>
+- "Lei Orgânica do Distrito Federal" as <span class="legislacao">Lei Orgânica do Distrito Federal</span>
+- "Distrito Federal" as <span class="local">Distrito Federal</span>
+- "Procuradoria-Geral" as <span class="organizacao">Procuradoria-Geral</span>
+- "Conselhos Profissionais" as <span class="organizacao">Conselhos Profissionais</span>
+
+Wait, but "artigo53" is part of the law, so it's part of the legislation. Similarly, "artigo 71" etc. are parts of the legislation. The same applies to "incisos IV" etc. So all those references to articles and sections are part of the legislation.
+
+Also, "Lei Orgânica do Distrito Federal" is a law, so legislacao.
+
+"Distrito Federal" is a local entity.
+
+"Procuradoria-Geral" is an organization.
+
+"Conselhos Profissionais" are organizations.
+
+So, putting it all together, the HTML should have those spans with the appropriate classes. The rest of the text remains as is.
+</think>
+
+ISTO POSTO , julgo procedente o pedido para declarar , com efeitos '' ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da <span class="legislacao">Lei nº 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , por violação ao disposto no <span class="legislacao">artigo53</span> , `` caput '' e <span class="legislacao">§ 1º</span> , <span class="legislacao">artigo 71</span> , <span class="legislacao">§ 1º</span> , IVe <span class="legislacao">artigo100</span> , <span class="legislacao">incisos IV</span> , <span class="legislacao">VI</span> , <span class="legislacao">X</span> e <span class="legislacao">XXIII</span> , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . É o voto . Argumenta que a matéria é competência privativa do Chefe do Poder Executivo e que o poder de polícia é atividade típica da administração pública e exclusiva de Estado , que não pode ser transferida aos <span class="organizacao">Conselhos Profissionais</span> , incorrendo a norma também em vício material de inconstitucionalidade . Ao contrário do que argumenta a <span class="organizacao">Procuradoria-Geral</span> , a lei apenas autorizou o <span class="organizacao">Governador</span> , segundo sua conveniência , a celebrar convênios com os <span class="organizacao">Conselhos Profissionais</span> que menciona , para a elaboração de parecer opinativo não <span class="local">Fls</span> .

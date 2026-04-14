@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The first sentence: "PASSO A PROFERIR O VOTO : Em análise dos autos , extrai-se que os pacientes foram presos em flagrante delito no dia 22/07/2015 , prisão esta convertida em preventiva em relação ao primeiro paciente , tendo sido concedida a liberdade provisória sem fiança , mediante medidas cautelares quanto ao segundo paciente ."
+
+Looking for entities here. "22/07/2015" is a date, so that's tempo. The rest of the sentence doesn't have any other entities. The word "auto" might refer to legal documents, but the guidelines say to mark only specific entities. Since "autos" here is part of the legal context but not a specific entity, I think it's not marked. The term "flagrante delito" is a legal term but not an entity. "Pacientes" are people, but the user's guidelines say to mark only names, not generic terms. So "pacientes" isn't marked. 
+
+Next sentence: "Consta que ambos foram denunciados sob acusação de terem praticado o crime tipificado no art . 155 , § 4º , incisos IV do Código Penal ."
+
+Here, "art. 155, § 4º, incisos IV do Código Penal" is legislation. So that's legislacao. The "Código Penal" is a legal code, so it's part of the legislation. The "art." and "§" are part of the reference, so the entire phrase should be marked as legislacao.
+
+Next part: "Consta dos autos que no dia 21 de julho de 2015 , por volta das 22:29 horas , na av. José Faria da Rocha , altura do nº 1708 , no bairro Eldorado , Contagem/MG , os pacientes , de posse de uma faca , conseguiram cortar aproximadamente um metro de cabo de telefonia da empresa OI , colocando-o no carrinho de reciclagem que conduziam ."
+
+Looking for entities here. "21 de julho de 2015" is a date, so tempo. "22:29 horas" is a time, but the guidelines say only explicit dates should be marked, not isolated times. So that's not marked. "av. José Faria da Rocha" is a street address, which is a local. "nº 1708" is part of the address, but the guidelines say to mark only specific places. The street name and number together form a local. "bairro Eldorado" is a neighborhood, which is a local. "Contagem/MG" is a city and state, so that's local. "empresa OI" is an organization. "OI" is the company name, so organizacao. 
+
+Wait, "OI" is a company, so that's an organization. The street address "av. José Faria da Rocha" is a local. The "bairro Eldorado" is a local. "Contagem/MG" is a city and state, so local. The "empresa OI" is an organization. 
+
+So putting it all together, the entities are:
+
+- 22/07/2015 (tempo)
+- art. 155, § 4º, incisos IV do Código Penal (legislacao)
+- av. José Faria da Rocha (local)
+- bairro Eldorado (local)
+- Contagem/MG (local)
+- empresa OI (organizacao)
+
+Wait, but the user's example shows that "av. José Faria da Rocha" is marked as local. Similarly, "bairro Eldorado" and "Contagem/MG" are also local. The "empresa OI" is an organization. 
+
+So in the output, these parts should be wrapped in the respective <span> tags. Also, the date "21 de julho de 2015" is another tempo. 
+
+Let me check again. The input text has "no dia 21 de julho de 2015" which is a date, so that's tempo. The "22/07/2015" is another date. 
+
+So the final HTML should have these entities marked. Let me make sure I didn't miss any. The "Código Penal" is part of the legislation, so the entire reference is marked. The "empresa OI" is an organization. The street, neighborhood, city, and state are all local. 
+
+I think that's all. Now, I'll format the text with the appropriate <span> tags.
+</think>
+
+PASSO A PROFERIR O VOTO : Em análise dos autos , extrai-se que os pacientes foram presos em flagrante delito no dia <span class="tempo">22/07/2015</span> , prisão esta convertida em preventiva em relação ao primeiro paciente , tendo sido concedida a liberdade provisória sem fiança , mediante medidas cautelares quanto ao segundo paciente . Consta que ambos foram denunciados sob acusação de terem praticado o crime tipificado no <span class="legislacao">art . 155 , § 4º , incisos IV do Código Penal</span> . Consta dos autos que no dia <span class="tempo">21 de julho de 2015</span> , por volta das 22:29 horas , na <span class="local">av. José Faria da Rocha</span> , altura do nº 1708 , no <span class="local">bairro Eldorado</span> , <span class="local">Contagem/MG</span> , os pacientes , de posse de uma faca , conseguiram cortar aproximadamente um metro de cabo de telefonia da <span class="organizacao">empresa OI</span> , colocando-o no carrinho de reciclagem que conduziam .

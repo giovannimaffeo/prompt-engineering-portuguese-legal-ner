@@ -1,0 +1,76 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class. 
+
+First, I need to carefully read the input text and identify which parts fit each category. Let me start by breaking down the text sentence by sentence.
+
+The first part is "2º desta Emenda". The "Emenda" here is part of the text, but I need to check if it's a legislation. However, "Emenda" alone isn't a specific law or code. The mention of "2º" might be a section number, but it's not a named legislation. So maybe this isn't a legislation entity.
+
+Next, "servidor da União , dos Estados , do Distrito Federal e dos Municípios , incluídas suas autarquias e fundações". Here, "União", "Estados", "Distrito Federal", and "Municípios" are all organizations. The "União" refers to the federal government, which is an organization. "Distrito Federal" is a specific region, so it's a local entity. Wait, but according to the guidelines, "local" should be specific places like cities, states, etc. "Distrito Federal" is a specific administrative region, so it should be marked as local. However, the guidelines also mention that "organizacao" includes "Distrito Federal" as an example. Wait, the example for organizacao includes "Distrito Federal" as an organization. Hmm, this might be conflicting. Let me check the definitions again. 
+
+In the "organizacao" definition, it says "unidades do sistema de justiça, casas legislativas, empresas..." So "Distrito Federal" as a region might be considered an organization? Or is it a local? Wait, the example for "local" includes "Distrito Federal". Wait, the example for "local" is "Distrito Federal", so that's a local. But the example for "organizacao" includes "Distrito Federal" as an example. Wait, no, looking back: the example for "organizacao" includes "Distrito Federal" in the list of examples. Wait, the user's example for "organizacao" says "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", "Câmara Legislativa", "UNIMED RIO COOPERATIVA...". So "Distrito Federal" is listed as an example for "organizacao"? Wait, no. Wait, the user's example for "organizacao" includes "Distrito Federal" in the list? Let me check the original text. 
+
+The user wrote: "Organização é definido como: expressões que identificam entidades coletivas formalmente constituídas, incluindo órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas (ex.: "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", "Câmara Legislativa", "UNIMED RIO COOPERATIVA DE TRABALHO MÉDICO DO RIO DE JANEIRO LTDA")." So the examples are "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", "Câmara Legislativa", and the cooperative. "Distrito Federal" is not in the example list for "organizacao". The example for "local" includes "Distrito Federal". So in the input text, "Distrito Federal" is a local entity. Therefore, in the text, "Distrito Federal" should be marked as local.
+
+Then, "autarquias e fundações" are part of the organizations, but since they are part of the description, maybe they are not entities. The main entities here are "União", "Estados", "Distrito Federal", "Municípios". Wait, "Estados" here refers to states, which are local entities. But the user's guidelines say that "local" includes states. So "Estados" (plural) would be a local entity? Or is it an organization? Wait, "Estados" in this context refers to the states of Brazil, which are local entities. So "Estados" should be marked as local. Similarly, "Municípios" (municipalities) are also local. But the user's guidelines for local include "estados", "cidades", etc. So "Estados" and "Municípios" should be marked as local.
+
+Wait, but the original text says "servidor da União , dos Estados , do Distrito Federal e dos Municípios". So "União" is the federal government, which is an organization. "Estados" (states), "Distrito Federal" (Federal District), and "Municípios" (municipalities) are all local entities. Therefore, "União" is an organization, and "Estados", "Distrito Federal", "Municípios" are local.
+
+Next part: "que tenha ingressado no serviço público até a data de publicação desta Emenda poderá aposentar-se com proventos integrais , que corresponderão à totalidade da remuneração do servidor no cargo efetivo em que se der a aposentadoria , na forma da lei , quando , observadas as reduções de idade e tempo de contribuição contidas no § 5º do art ."
+
+Here, "data de publicação desta Emenda" includes "data", which is a tempo entity. "Emenda" here is part of the text, but as discussed earlier, unless it's a specific law or code, it's not legislation. But "Emenda" in this context refers to an amendment, which might be part of a law. However, the user's example for legislation includes "Lei nº 8.666/93", etc. So "Emenda" alone isn't a specific legislation. Therefore, "data de publicação" is a tempo entity.
+
+Then, "§ 5º do art" refers to a section of an article. But the user's guidelines for legislação require specific references to laws, codes, etc. Since "§ 5º do art" is part of a legal text, but without the specific law name, it's not marked. Unless "art" refers to an article in a law. But the user's example includes "art. 71 da Lei 8.666/93", so if the text had "art. 71 da Lei...", then it would be legislation. Here, it's just "§ 5º do art", which is not a complete reference. So it's not marked as legislation.
+
+So putting it all together:
+
+- "União" is an organization.
+- "Estados" is a local.
+- "Distrito Federal" is a local.
+- "Municípios" is a local.
+- "data de publicação" is tempo.
+- "§ 5º do art" is not marked as legislation.
+
+Wait, but the original text has "2º desta Emenda" at the beginning. "2º" is a section number, but not a legislation. "Emenda" is part of a law, but without the specific law name, it's not marked as legislation. So "Emenda" is not a legislation entity here.
+
+Now, the HTML should have spans with the correct classes. Let me go through the text again.
+
+Original text: "2º desta Emenda , o servidor da União , dos Estados , do Distrito Federal e dos Municípios , incluídas suas autarquias e fundações , que tenha ingressado no serviço público até a data de publicação desta Emenda poderá aposentar-se com proventos integrais , que corresponderão à totalidade da remuneração do servidor no cargo efetivo em que se der a aposentadoria , na forma da lei , quando , observadas as reduções de idade e tempo de contribuição contidas no § 5º do art ."
+
+Breaking down:
+
+- "2º desta Emenda" → "2º" is a section number, not an entity. "Emenda" is part of a law but not specific enough.
+- "servidor da União" → "União" is an organization.
+- "dos Estados" → "Estados" is local.
+- "do Distrito Federal" → "Distrito Federal" is local.
+- "dos Municípios" → "Municípios" is local.
+- "data de publicação" → "data" is tempo.
+- "§ 5º do art" → not legislation.
+
+So the entities are:
+
+- União → organizacao
+- Estados → local
+- Distrito Federal → local
+- Municípios → local
+- data de publicação → tempo
+
+Now, I need to wrap these in <span> tags with the respective classes. Also, note that "data de publicação" is a time entity, so the entire phrase "data de publicação" should be marked as tempo.
+
+Let me check if "data" is the only part. The phrase is "data de publicação", which is a time reference. So the entire phrase is marked as tempo.
+
+Now, the HTML output should have these spans. Let me structure it:
+
+Original text: 2º desta Emenda , o servidor da União , dos Estados , do Distrito Federal e dos Municípios , incluídas suas autarquias e fundações , que tenha ingressado no serviço público até a data de publicação desta Emenda poderá aposentar-se com proventos integrais , que corresponderão à totalidade da remuneração do servidor no cargo efetivo em que se der a aposentadoria , na forma da lei , quando , observadas as reduções de idade e tempo de contribuição contidas no § 5º do art .
+
+Marking:
+
+- "União" → <span class="organizacao">União</span>
+- "Estados" → <span class="local">Estados</span>
+- "Distrito Federal" → <span class="local">Distrito Federal</span>
+- "Municípios" → <span class="local">Municípios</span>
+- "data de publicação" → <span class="tempo">data de publicação</span>
+
+So the final HTML would have these spans in the correct positions. Let me write that out.
+</think>
+
+2º desta Emenda , o servidor da <span class="organizacao">União</span> , dos <span class="local">Estados</span> , do <span class="local">Distrito Federal</span> e dos <span class="local">Municípios</span> , incluídas suas autarquias e fundações , que tenha ingressado no serviço público até a <span class="tempo">data de publicação</span> desta Emenda poderá aposentar-se com proventos integrais , que corresponderão à totalidade da remuneração do servidor no cargo efetivo em que se der a aposentadoria , na forma da lei , quando , observadas as reduções de idade e tempo de contribuição contidas no § 5º do art .

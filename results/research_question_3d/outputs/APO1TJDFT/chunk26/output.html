@@ -1,0 +1,79 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating their type.
+
+First, I need to go through the input text and identify which parts fit each category. Let me start by reading the text carefully.
+
+The input text starts with "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P". The "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" look like identifiers. According to the guidelines, these are jurisprudência since they are complete identifiers for decisions or processes. So I'll mark those.
+
+Next, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11 É como voto . Fls .". "GABINETE DA DESEMBARGADORA" seems like an organization. "MARIA IVATÔNIA" is a person's name. The "11" might be a number, but it's not a date or time, so maybe not. "Voto" is a generic term, not an entity. "Fls." is an abbreviation for "Folhas", which is a generic term, so no entity.
+
+Then, "Apelação / Reexame Necessário 20140110500434APO" repeats the same identifiers, so those are jurisprudência again.
+
+Next part: "O Senhor Desembargador ANGELO PASSARELI - Vogal Senhor Presidente , conheço e recebo a remessa .". "Desembargador ANGELO PASSARELI" is a person, so mark as pessoa. "Senhor Presidente" is a title, not a person's name, so no. "Vogal" is a role, not a name.
+
+Continuing: "A questão da Vantagem Pessoal Nominalmente Identificada - VPNI não é nova neste Tribunal e as leis garantiram paridade e irredutibilidade .". "Tribunal" is an organization. "Leis" is a generic term, but "VPNI" might be an acronym for a law, but the guidelines say to mark only specific legislation. Since it's not a full name, maybe not. Wait, the example for legislação includes "Lei nº 8.666/93", so if "VPNI" is a specific law, but the text doesn't mention it as a full name. So maybe not mark here.
+
+Next: "Isso se dá no momento da aposentação , porque foi previsto em regra expressa que a VPNI sofreria reajuste pelos aumentos gerais tidos pelos servidores do Poder que concede a aposentadoria .". "Poder" is a generic term, not an entity. "Aposentadoria" is a generic term.
+
+Finally: "No caso concreto , o que se quer fazer é que novas denominações de funções gratificadas , alterações e modificações venham substituir aquela que foi incorporada .". No entities here.
+
+So compiling all the entities found:
+
+- "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" as jurisprudência.
+- "ANGEL PASSARELI" as pessoa.
+- "GABINETE DA DESEMBARGADORA" as organizacao.
+- "MARIA IVATÔNIA" as pessoa.
+- "Tribunal" as organizacao.
+
+Wait, "Tribunal" is part of "neste Tribunal", which is an organization. So "Tribunal" should be marked as organizacao. But the example in the guidelines includes "Tribunal de Contas" as an organization. So "Tribunal" here is part of the organization name. So "Tribunal" should be in the <span class="organizacao">.
+
+Wait, but in the input text, it's "neste Tribunal". The "Tribunal" is a generic term, but in the context, it refers to a specific tribunal. However, the guidelines say to mark only specific names. For example, "Tribunal de Contas" is an organization, but "Tribunal" alone is a generic term. So maybe it's not marked. Hmm, this is a bit ambiguous. The user's example might have "Tribunal de Contas" as an organization, but "Tribunal" alone might not be. So maybe I shouldn't mark "Tribunal" here.
+
+So the entities are:
+
+- "20140110500434APO" (jurisprudência)
+- "2018ACO899XSQTZBL81ZOE6V34P" (jurisprudência)
+- "ANGEL PASSARELI" (pessoa)
+- "MARIA IVATÔNIA" (pessoa)
+- "GABINETE DA DESEMBARGADORA" (organizacao)
+
+Wait, "GABINETE DA DESEMBARGADORA" is part of the name. "GABINETE" is part of the organization. But the example given for organization includes "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11" as an organization? Wait, no. The example in the guidelines for organizacao includes "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", etc. So "GABINETE DA DESEMBARGADORA" is part of the organization's name. So "GABINETE DA DESEMBARGADORA" is an organization. But maybe the full name is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11". However, in the input text, it's written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11 É como voto . Fls .". So "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11" is the organization's name. But the user's example shows that "Turmas cíveis" should be marked as organizacao. So maybe the entire "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11" is an organization. However, the user's text might have "GABINETE DA DESEMBARGADORA" as part of the name. But perhaps the correct approach is to mark "GABINETE DA DESEMBARGADORA" as an organization, but the actual name includes "MARIA IVATÔNIA" which is a person. Wait, but the person is "MARIA IVATÔNIA" which is a separate entity. So "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. So in the text, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11" is the organization? Or is "MARIA IVATÔNIA" a person?
+
+This is a bit confusing. Let me re-read the input text:
+
+"GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11 É como voto . Fls ."
+
+So "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. The "11" might be a number, but not an entity. So "GABINETE DA DESEMBARGADORA" is an organization, and "MARIA IVATÔNIA" is a pessoa.
+
+Then, the other entities are the jurisprudência identifiers.
+
+So putting it all together:
+
+- "20140110500434APO" → jurisprudência
+- "2018ACO899XSQTZBL81ZOE6V34P" → jurisprudência
+- "ANGEL PASSARELI" → pessoa
+- "MARIA IVATÔNIA" → pessoa
+- "GABINETE DA DESEMBARGADORA" → organizacao
+
+Wait, but "GABINETE DA DESEMBARGADORA" is part of the organization's name. However, the user's example includes "Turmas cíveis" as organizacao. So "GABINETE DA DESEMBARGADORA" is an organization.
+
+Therefore, the HTML should have:
+
+- <span class="jurisprudência">20140110500434APO</span>
+- <span class="jurisprudência">2018ACO899XSQTZBL81ZOE6V34P</span>
+- <span class="pessoa">ANGEL PASSARELI</span>
+- <span class="pessoa">MARIA IVATÔNIA</span>
+- <span class="organizacao">GABINETE DA DESEMBARGADORA</span>
+
+But wait, the original text has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11". Should "MARIA IVATÔNIA" be part of the organization? No, because it's a person's name. So "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. So the correct marking is as above.
+
+Now, the other parts of the text:
+
+"O Senhor Desembargador ANGELO PASSARELI - Vogal Senhor Presidente , conheço e recebo a remessa ."
+
+Here, "ANGELO PASSARELI" is a pessoa. "Vogal" is a title, not a name. "Senhor Presidente" is a title, not a name. So only "ANGELO PASSARELI" is marked as pessoa.
+
+Then, "neste Tribunal" – "Tribunal" is a generic term, so not marked. So the final HTML would include all the entities identified.
+</think>
+
+<span class="jurisprudencia">20140110500434APO</span> Código de Verificação :<span class="jurisprudencia">2018ACO899XSQTZBL81ZOE6V34P</span> GABINETE DA DESEMBARGADORA <span class="pessoa">MARIA IVATÔNIA</span> 11 É como voto . Fls . <span class="jurisprudencia">20140110500434APO</span> O Senhor <span class="pessoa">ANGELO PASSARELI</span> - Vogal Senhor Presidente , conheço e recebo a remessa . A questão da Vantagem Pessoal Nominalmente Identificada - VPNI não é nova neste Tribunal e as leis garantiram paridade e irredutibilidade . Isso se dá no momento da aposentação , porque foi previsto em regra expressa que a VPNI sofreria reajuste pelos aumentos gerais tidos pelos servidores do Poder que concede a aposentadoria . No caso concreto , o que se quer fazer é que novas denominações de funções gratificadas , alterações e modificações venham substituir aquela que foi incorporada .

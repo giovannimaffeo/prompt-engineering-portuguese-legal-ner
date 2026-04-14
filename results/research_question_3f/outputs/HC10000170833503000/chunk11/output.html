@@ -1,0 +1,77 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The first sentence: "Nesse sentido , a decisão que decretou a prisão preventiva do paciente : [ ... ] '' O delito imputado ao investigado é punido com pena superior a quatro anos de privação de liberdade . Além disso , há fortíssimos indícios quanto à materialidade e autoria do delito , o que se extrai especialmente do depoimento da própria vítima à Autoridade Policial . Por outro lado , a prisão preventiva se justifica como forma de garantia da ordem pública , face à gravidade concreta do fato e diante da extremada periculosidade do investigado . Pelo que consta dos autos , no dia anterior ao fato a vítima estava em sua casa quando o Sr. Márcio Adair ligou o som de seu carro em volume excessivo sendo que , ao ser solicitado que o baixasse , disse que `` quem manda ali é ele '' ."
+
+Looking for entities:
+
+1. "Sr. Márcio Adair" – This is a person. "Sr." is a title, but the name "Márcio Adair" is a full name. According to the guidelines, only proper names should be marked. So "Márcio Adair" should be marked as pessoa. The "Sr." is a title, so it's not marked.
+
+2. "Autoridade Policial" – This is an organization. "Autoridade Policial" refers to a police authority, which is an organization. So mark as organizacao.
+
+3. "no dia anterior ao fato" – "dia" is part of a time reference. The phrase "no dia anterior ao fato" refers to a specific day, but the exact date isn't mentioned. However, the guidelines say that explicit dates like "DD/MM/YYYY" or "3 de abril de 2017" should be marked. Since there's no specific date here, maybe it's not a time entity. Wait, the example in the guidelines includes "3 de abril de 2017" as tempo. Here, "no dia anterior ao fato" is a relative time reference, not an explicit date. So maybe it's not marked as tempo. The user's example 5 has "1o de maio de 1943" marked as tempo. So if there's a specific date, it's marked. In this case, there's no specific date, so "no dia anterior ao fato" is not a time entity. So no span for tempo here.
+
+4. "Sr. Márcio Adair" – As mentioned, "Márcio Adair" is a pessoa. The "Sr." is a title, so not marked.
+
+5. "Autoridade Policial" – organization.
+
+6. "prisão preventiva" – This is a legal term, but it's not an entity. The guidelines say to mark only specific entities like legislation, jurisprudence, etc. "Prisão preventiva" is a legal concept, not an entity, so no span.
+
+7. "delito" – general term, not an entity.
+
+8. "vítima" – general term, not an entity.
+
+9. "investigado" – general term, not an entity.
+
+10. "Autoridade Policial" – already marked as organizacao.
+
+11. "ordem pública" – general term, not an entity.
+
+12. "gravidade concreta do fato" – general terms, no entity.
+
+13. "extremada periculosidade do investigado" – general terms.
+
+14. "Pelo que consta dos autos" – "autos" refers to legal documents, but it's not an entity. The guidelines don't mention "autos" as an entity. So no span.
+
+15. "no dia anterior ao fato" – again, no specific date, so not tempo.
+
+16. "Sr. Márcio Adair" – already marked.
+
+17. "quem manda ali é ele" – "ele" is a pronoun, not an entity.
+
+So the entities to mark are:
+
+- "Sr. Márcio Adair" → pessoa (only the name, not the title)
+- "Autoridade Policial" → organizacao
+
+Wait, but in the input text, the user wrote "Sr. Márcio Adair" – the "Sr." is a title, but the name is "Márcio Adair". According to the guidelines, only proper names should be marked. So "Márcio Adair" is a pessoa. The "Sr." is a title, so not marked. So the span should be around "Márcio Adair".
+
+Also, "Autoridade Policial" is an organization. So that's marked as organizacao.
+
+Are there any other entities? Let me check again.
+
+The text mentions "prisão preventiva" which is a legal term, but not an entity. "Delito" is a general term. "Vítima" is a general term. "Investigado" is a general term. "Autoridade Policial" is an organization. "Sr. Márcio Adair" is a pessoa. "no dia anterior ao fato" is a time reference but not an explicit date, so not marked. "Pelo que consta dos autos" – "autos" is a legal term but not an entity. 
+
+So the final HTML should have:
+
+- "Márcio Adair" as pessoa
+- "Autoridade Policial" as organizacao
+
+Wait, but in the input text, the user wrote "Sr. Márcio Adair" – the "Sr." is part of the name? Or is it a title? The guidelines say that only proper names should be marked. So "Márcio Adair" is the name, and "Sr." is a title. So the span should be around "Márcio Adair".
+
+So the correct HTML would be:
+
+Nesse sentido , a decisão que decretou a prisão preventiva do paciente : [ ... ] '' O delito imputado ao investigado é punido com pena superior a quatro anos de privação de liberdade . Além disso , há fortíssimos indícios quanto à materialidade e autoria do delito , o que se extrai especialmente do depoimento da própria vítima à <span class="organizacao">Autoridade Policial</span> . Por outro lado , a prisão preventiva se justifica como forma de garantia da ordem pública , face à gravidade concreta do fato e diante da extremada periculosidade do investigado . Pelo que consta dos autos , no dia anterior ao fato a vítima estava em sua casa quando o <span class="pessoa">Márcio Adair</span> ligou o som de seu carro em volume excessivo sendo que , ao ser solicitado que o baixasse , disse que `` quem manda ali é ele '' .
+
+Wait, but in the input text, the user wrote "Sr. Márcio Adair" – the "Sr." is part of the name? Or is it a title? The guidelines say that titles like "Sr." are not marked. So the name is "Márcio Adair", and the "Sr." is a title. So the span should be around "Márcio Adair".
+
+So the correct HTML would have "Márcio Adair" as pessoa, and "Autoridade Policial" as organizacao.
+
+I think that's all. Let me check the examples again. For example, in example 5, "Decreto-Lei no 5.452" is marked as legislacao. In example 4, "ESTADO DO ACRE" is marked as local. So in this case, the entities are "Autoridade Policial" (organizacao) and "Márcio Adair" (pessoa). 
+
+So the final output should have those two spans.
+</think>
+
+Nesse sentido , a decisão que decretou a prisão preventiva do paciente : [ ... ] '' O delito imputado ao investigado é punido com pena superior a quatro anos de privação de liberdade . Além disso , há fortíssimos indícios quanto à materialidade e autoria do delito , o que se extrai especialmente do depoimento da própria vítima à <span class="organizacao">Autoridade Policial</span> . Por outro lado , a prisão preventiva se justifica como forma de garantia da ordem pública , face à gravidade concreta do fato e diante da extremada periculosidade do investigado . Pelo que consta dos autos , no dia anterior ao fato a vítima estava em sua casa quando o <span class="pessoa">Márcio Adair</span> ligou o som de seu carro em volume excessivo sendo que , ao ser solicitado que o baixasse , disse que `` quem manda ali é ele '' .

@@ -1,0 +1,44 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text: "IMPETRADO : Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM - JUSTIÇA MILITAR DA UNIÃO - Brasília HABEAS CORPUS ."
+
+Let me break it down word by word.
+
+"IMPETRADO" – This seems like a legal term, maybe a type of petition. Not one of the entities listed, so leave as is.
+
+": " – Just a colon, no entity here.
+
+"Juiz-Auditor Substituto" – This is a title, probably a person's position. So "Juiz-Auditor Substituto" would be a pessoa. Wait, but is it a title or a person's name? The text mentions "Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM". The "da 2ª Auditoria da 11ª CJM" refers to the court, so the person is the Juiz-Auditor Substituto. So I should mark "Juiz-Auditor Substituto" as pessoa.
+
+"da 2ª Auditoria da 11ª CJM" – "CJM" is likely an acronym for a court, maybe "Corregedoria Militar" or similar. So "CJM" is part of an organization. Wait, the user's example output has "CJM" as part of the organization. Let me check the example. The user's sample input has "CJM" and in the output, it's marked as organizacao. So I should mark "CJM" as organizacao.
+
+Then "- JUSTIÇA MILITAR DA UNIÃO -" – This is an organization name. So "JUSTIÇA MILITAR DA UNIÃO" is organizacao.
+
+"Brasília" – This is a city, so local.
+
+"HABEAS CORPUS" – This is a legal term, a type of writ. Not one of the entities, so leave as is.
+
+Putting it all together:
+
+- "Juiz-Auditor Substituto" is pessoa.
+- "CJM" is organizacao.
+- "JUSTIÇA MILITAR DA UNIÃO" is organizacao.
+- "Brasília" is local.
+
+Wait, the original text has "da 2ª Auditoria da 11ª CJM". The "CJM" is part of the organization. So "CJM" should be marked as organizacao. Also, "JUSTIÇA MILITAR DA UNIÃO" is another organization. So both CJM and JUSTIÇA MILITAR DA UNIÃO are organizacao.
+
+So the HTML should have:
+
+<span class="pessoa">Juiz-Auditor Substituto</span> da 2ª Auditoria da 11ª <span class="organizacao">CJM</span> - <span class="organizacao">JUSTIÇA MILITAR DA UNIÃO</span> - <span class="local">Brasília</span> HABEAS CORPUS .
+
+Wait, but the original text has "da 2ª Auditoria da 11ª CJM". The "CJM" is part of the organization. So the entire "CJM" is the organization. Also, "JUSTIÇA MILITAR DA UNIÃO" is another organization. So those parts should be marked.
+
+So the final HTML would be:
+
+IMPETRADO : <span class="pessoa">Juiz-Auditor Substituto</span> da 2ª Auditoria da 11ª <span class="organizacao">CJM</span> - <span class="organizacao">JUSTIÇA MILITAR DA UNIÃO</span> - <span class="local">Brasília</span> HABEAS CORPUS .
+
+I need to make sure that the other parts are not marked. The "2ª Auditoria da 11ª" are just descriptors, not entities. The "HABEAS CORPUS" is a legal term but not one of the specified entities, so it remains as is.
+</think>
+
+IMPETRADO : <span class="pessoa">Juiz-Auditor Substituto</span> da 2ª Auditoria da 11ª <span class="organizacao">CJM</span> - <span class="organizacao">JUSTIÇA MILITAR DA UNIÃO</span> - <span class="local">Brasília</span> HABEAS CORPUS .

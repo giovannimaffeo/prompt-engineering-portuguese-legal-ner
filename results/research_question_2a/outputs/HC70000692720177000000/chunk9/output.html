@@ -1,0 +1,91 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is an acórdão from the Superior Tribunal Militar. Let me break it down sentence by sentence.
+
+Starting with "ACÓRDÃO Vistos , relatados e discutidos estes autos , acordam os ministros do Superior Tribunal Militar , em sessão de julgamento , sob a Presidência do Ministro Dr. JOSÉ COÊLHO FERREIRA , na conformidade do extrato da ata do julgamento , por unanimidade , em denegar a ordem de habeas corpus por falta de amparo legal ."
+
+Looking for entities:
+
+1. "Superior Tribunal Militar" – this is an organization. So I'll mark that as <span class="organizacao">.
+
+2. "Ministro Dr. JOSÉ COÊLHO FERREIRA" – here, "Ministro" refers to a person, so "JOSÉ COÊLHO FERREIRA" is a pessoa. The title "Ministro" might be part of the name, but since it's a title, maybe just the name part. Wait, the full name is "Dr. JOSÉ COÊLHO FERREIRA", so the entire name should be marked as pessoa.
+
+3. "sessão de julgamento" – "sessão" here refers to a session, which might be a local or a time? Wait, "sessão de julgamento" is a session of judgment, which is a time-related term. But maybe "sessão" is a local? Hmm, not sure. The user's guide says "tempo" for time/data. Since "sessão" is a session, which is an event, maybe it's not a time entity. Maybe it's not an entity here. Let me check again. The text mentions "em sessão de julgamento" – that's part of the context, not a specific time or date. So maybe no entity here.
+
+4. "extrato da ata do julgamento" – "ata" is a record, which might be a document, but not one of the specified entities. So no tag here.
+
+5. "habeas corpus" – this is a legal term, but it's not one of the entities listed. The entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "habeas corpus" is a legal concept, but not one of the specified types. So no tag.
+
+6. "falta de amparo legal" – "amparo legal" refers to legal support, but again, not one of the entities. So no tag.
+
+Now, checking for other possible entities:
+
+- "Superior Tribunal Militar" is definitely an organization. So that's <span class="organizacao">.
+
+- "Ministro Dr. JOSÉ COÊLHO FERREIRA" – the person's name. So "Dr. JOSÉ COÊLHO FERREIRA" is a pessoa. The title "Ministro" is part of the name, but maybe the full name is considered. Wait, in legal contexts, the title might be part of the name. So the entire "Dr. JOSÉ COÊLHO FERREIRA" is a pessoa.
+
+Are there any other entities? Let's see:
+
+- "Superior Tribunal Militar" is the organization.
+
+- "Ministro" is part of the person's title, but the name is the key. So the person is "Dr. JOSÉ COÊLHO FERREIRA".
+
+- "sessão de julgamento" – maybe "sessão" is a local? No, "sessão" is a session, which is an event, not a local. "Julgamento" is judgment, which is a legal term but not an entity here.
+
+- "extrato da ata do julgamento" – "ata" is a record, but not an entity.
+
+- "habeas corpus" is a legal term, but not an entity.
+
+- "falta de amparo legal" – no entity.
+
+So the only entities are the organization and the person. Let me make sure I didn't miss any.
+
+Wait, "Superior Tribunal Militar" is the organization. "Ministro Dr. JOSÉ COÊLHO FERREIRA" is the person. Are there any other entities?
+
+Looking again, "em sessão de julgamento" – "sessão" could be a time? But the user's guide says "tempo" for time/data. "Sessão" is a session, which is an event, not a specific time. So no.
+
+"na conformidade do extrato da ata do julgamento" – "extrato da ata" is part of the record, but not an entity.
+
+So the final HTML should have the organization and the person marked. Let me structure that.
+
+Original text: "ACÓRDÃO Vistos , relatados e discutidos estes autos , acordam os ministros do Superior Tribunal Militar , em sessão de julgamento , sob a Presidência do Ministro Dr. JOSÉ COÊLHO FERREIRA , na conformidade do extrato da ata do julgamento , por unanimidade , em denegar a ordem de habeas corpus por falta de amparo legal ."
+
+Marking:
+
+- "Superior Tribunal Militar" as organizacao.
+
+- "Dr. JOSÉ COÊLHO FERREIRA" as pessoa.
+
+So the HTML would be:
+
+ACÓRDÃO Vistos , relatados e discutidos estes autos , acordam os ministros do <span class="organizacao">Superior Tribunal Militar</span> , em sessão de julgamento , sob a Presidência do Ministro <span class="pessoa">Dr. JOSÉ COÊLHO FERREIRA</span> , na conformidade do extrato da ata do julgamento , por unanimidade , em denegar a ordem de habeas corpus por falta de amparo legal .
+
+Wait, but the "Ministro" is part of the title. Should I include "Ministro" in the pessoa tag? The full name is "Dr. JOSÉ COÊLHO FERREIRA", so the title "Ministro" is part of the name. But in the text, it's written as "Ministro Dr. JOSÉ COÊLHO FERREIRA". So the entire phrase "Ministro Dr. JOSÉ COÊLHO FERREIRA" is the person's name. But the user's guide says to mark the entity. So maybe the entire name, including the title, is considered. However, the user's example might have different handling. Let me check the example again.
+
+In the sample input, the user's output example isn't provided, but the instruction says to mark the entities. So if the text has "Ministro Dr. JOSÉ COÊLHO FERREIRA", the person is "Dr. JOSÉ COÊLHO FERREIRA", and "Ministro" is the title. But the user's guide says to mark the entity. So perhaps the entire name, including the title, is considered. However, the user's example might have different handling. Alternatively, maybe the title is part of the name. For example, in legal contexts, the full name would include the title. So "Ministro Dr. JOSÉ COÊLHO FERREIRA" is the person's full name. Therefore, the entire phrase should be marked as pessoa. Wait, but the user's guide says to use <span class="pessoa"> for a person. So if the text is "Ministro Dr. JOSÉ COÊLHO FERREIRA", then the entire phrase is the person's name. But maybe the title is not part of the name. Let me think. In Brazil, the title "Ministro" is part of the name, so the full name would be "Ministro Dr. JOSÉ COÊLHO FERREIRA". Therefore, the entire phrase should be marked as pessoa. However, the user's example might have different handling. Alternatively, maybe only the name part is marked. For example, "Dr. JOSÉ COÊLHO FERREIRA" is the person, and "Ministro" is part of the title. But the user's guide doesn't specify titles. So perhaps the entire name, including the title, is considered. Therefore, the correct marking would be:
+
+"Ministro Dr. JOSÉ COÊLHO FERREIRA" as pessoa.
+
+But the original text says "sob a Presidência do Ministro Dr. JOSÉ COÊLHO FERREIRA". So the person is "Dr. JOSÉ COÊLHO FERREIRA", and "Ministro" is the title. So the person's name is "Dr. JOSÉ COÊLHO FERREIRA", and the title is "Ministro". Therefore, the span should be around "Dr. JOSÉ COÊLHO FERREIRA".
+
+Wait, but the user's guide says to mark the entity. So if the text is "Ministro Dr. JOSÉ COÊLHO FERREIRA", then the person is "Dr. JOSÉ COÊLHO FERREIRA", and "Ministro" is part of the title. So the span should be around "Dr. JOSÉ COÊLHO FERREIRA".
+
+But in the text, it's written as "Ministro Dr. JOSÉ COÊLHO FERREIRA". So the entire phrase is the person's name. Therefore, the span should include "Ministro Dr. JOSÉ COÊLHO FERREIRA".
+
+But maybe the user's guide considers the title as part of the name. For example, in legal documents, the full name would include the title. So the entire phrase is the person's name. Therefore, the span should be around "Ministro Dr. JOSÉ COÊLHO FERREIRA".
+
+But I'm not sure. Let me check the user's example. Since there's no example provided, I'll have to make a judgment. The safest approach is to mark the name part, which is "Dr. JOSÉ COÊLHO FERREIRA", and the title "Ministro" is part of the title, not the name. Therefore, the span should be around "Dr. JOSÉ COÊLHO FERREIRA".
+
+But the original text says "sob a Presidência do Ministro Dr. JOSÉ COÊLHO FERREIRA". So the person is "Dr. JOSÉ COÊLHO FERREIRA", and "Ministro" is the title. Therefore, the span should be around "Dr. JOSÉ COÊLHO FERREIRA".
+
+So the final HTML would have:
+
+- "Superior Tribunal Militar" as organizacao.
+
+- "Dr. JOSÉ COÊLHO FERREIRA" as pessoa.
+
+Thus, the output is as I initially thought.
+</think>
+
+ACÓRDÃO Vistos , relatados e discutidos estes autos , acordam os ministros do <span class="organizacao">Superior Tribunal Militar</span> , em sessão de julgamento , sob a Presidência do Ministro <span class="pessoa">Dr. JOSÉ COÊLHO FERREIRA</span> , na conformidade do extrato da ata do julgamento , por unanimidade , em denegar a ordem de habeas corpus por falta de amparo legal .

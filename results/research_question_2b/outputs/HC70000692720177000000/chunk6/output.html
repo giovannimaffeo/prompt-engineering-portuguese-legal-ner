@@ -1,0 +1,91 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read the input text carefully. The text is about a legal document, specifically a Habeas Corpus. Let me break it down sentence by sentence.
+
+Starting with "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7". Here, the URL is mentioned. The URL might be part of an organization, but the domain is "jus.br", which is related to the judiciary. However, the task is to mark entities like organization, legislation, etc. The URL itself isn't an entity type, but maybe the organization is the "STM" (Superior Tribunal Militar) or "JUS" (Ministério da Justiça). Wait, the URL is "eproc2g.stm.jus.br". The "STM" is an organization, so maybe "STM" should be marked as organizacao. Also, "JUS" might be part of the organization. But I need to check if the URL is part of the organization's name. Alternatively, maybe the entire URL is not an entity, but the organization is "STM" or "JUS".
+
+Next part: "RELATÓRIO Trata-se de Habeas Corpus impetrado pela Defesa constituída do Cap Ex HENRIQUE DOS SANTOS BOTELHO contra ato do Juiz-Auditor da 2ª Auditoria da 11ª CJM nos autos da Ação Penal Militar nº 14- 06.2010.7.11.0011 ."
+
+Breaking this down:
+
+- "Habeas Corpus" is a legal term, so maybe it's part of the legislation or jurisprudencia? Wait, Habeas Corpus is a legal remedy, so it's a type of jurisprudencia? Or maybe it's part of the legislation. Hmm, the user's guide says to mark legislation, so maybe "Habeas Corpus" is a legal term, but I'm not sure if it's considered legislation here. Alternatively, maybe it's part of the jurisprudencia. But the example might not have it. Let me check the example output.
+
+Looking at the sample input and output, the user provided an example where "Habeas Corpus" is marked as jurisprudencia. Wait, the sample input is the same as the user's input, and the output is the same as the input but with entities marked. Wait, the user's example input is the same as the text provided, and the output is the same as the input but with entities marked. Wait, the user's example input is the same as the text given here. Wait, the user's input is the text provided, and the output is the same text but with entities marked. So I need to process the given text.
+
+Let me go through each part again.
+
+First, the URL: "https : //eproc2g.stm.jus.br/eproc_2g_prod/". The domain is "jus.br", which is the Ministry of Justice. So "STM" is the Superior Tribunal Militar, which is an organization. So "STM" should be marked as organizacao. Also, "JUS" might be part of the organization, but maybe the entire URL is not an entity. Alternatively, the URL is part of the organization's website. But the task is to mark entities, not URLs. So maybe "STM" is the organization. Let me check the text again.
+
+In the text, after the URL, it says "digite o Codigo Verificador 21030663f7". The code is a number, which might be a tempo (date) if it's a date code. But "21030663f7" doesn't look like a date. Maybe it's a code, not a tempo. So perhaps no entity there.
+
+Next, "RELATÓRIO Trata-se de Habeas Corpus impetrado pela Defesa constituída do Cap Ex HENRIQUE DOS SANTOS BOTELHO contra ato do Juiz-Auditor da 2ª Auditoria da 11ª CJM nos autos da Ação Penal Militar nº 14- 06.2010.7.11.0011 ."
+
+Breaking down:
+
+- "Defesa constituída do Cap Ex HENRIQUE DOS SANTOS BOTELHO": "HENRIQUE DOS SANTOS BOTELHO" is a person, so that's a pessoa.
+
+- "Juiz-Auditor da 2ª Auditoria da 11ª CJM": "CJM" is likely the Conselho de Justiça Militar, which is an organization. So "CJM" should be organizacao.
+
+- "Ação Penal Militar nº 14- 06.2010.7.11.0011": The number might be a case number, which is part of the legislation or jurisprudencia? Not sure. The "Ação Penal Militar" is a type of legal action, so maybe it's part of the legislation. But the user's guide says to mark legislation, so maybe "Ação Penal Militar" is legislation. Alternatively, it's part of the case number. The number itself might not be an entity. The "14- 06.2010.7.11.0011" could be a date, but the format is unclear. Maybe "06.2010" is a date (June 2010), so that's tempo.
+
+So, putting it all together:
+
+- "HENRIQUE DOS SANTOS BOTELHO" is pessoa.
+
+- "CJM" is organizacao.
+
+- "06.2010" is tempo.
+
+- "STM" in the URL is organizacao.
+
+- "Habeas Corpus" is jurisprudencia.
+
+Wait, the user's example output might have "Habeas Corpus" as jurisprudencia. Let me check the sample input and output again. The user provided the input text and the output text. Wait, the user's example input is the same as the text given here, and the output is the same text but with entities marked. Wait, the user's example input is the same as the text provided, and the output is the same text but with entities marked. So I need to process the given text.
+
+So, in the text:
+
+- "HENRIQUE DOS SANTOS BOTELHO" is a pessoa.
+
+- "CJM" is an organization.
+
+- "STM" is an organization.
+
+- "06.2010" is a tempo (date).
+
+- "Habeas Corpus" is a legal term, which might be jurisprudencia.
+
+So, the HTML would have:
+
+<span class="pessoa">HENRIQUE DOS SANTOS BOTELHO</span>
+
+<span class="organizacao">CJM</span>
+
+<span class="organizacao">STM</span>
+
+<span class="tempo">06.2010</span>
+
+<span class="jurisprudencia">Habeas Corpus</span>
+
+Also, the URL "https : //eproc2g.stm.jus.br/eproc_2g_prod/" has "STM" and "JUS" as parts of the domain. But "STM" is an organization, so "STM" should be marked. "JUS" might be part of the organization as well, but the user's guide doesn't mention "JUS" as an entity. Wait, the user's guide says to mark organizations, so "STM" is an organization. The URL itself is not an entity, but the parts of it like "STM" are.
+
+So, in the URL, "STM" is part of the domain, so it's an organization. So in the text, the URL is "https : //eproc2g.stm.jus.br/eproc_2g_prod/", so "STM" is in the URL. So I need to mark "STM" as organizacao.
+
+Putting all together, the HTML would have:
+
+- "HENRIQUE DOS SANTOS BOTELHO" as pessoa.
+
+- "CJM" as organizacao.
+
+- "STM" as organizacao.
+
+- "06.2010" as tempo.
+
+- "Habeas Corpus" as jurisprudencia.
+
+Other parts like "Defesa constituída do Cap Ex" are not entities. "Ação Penal Militar" might be legislation, but I'm not sure. The user's guide says to mark legislation, so maybe "Ação Penal Militar" is legislation. But the example might not have it. Alternatively, the case number "14- 06.2010.7.11.0011" could have "06.2010" as tempo.
+
+So, the final HTML would have the entities marked as per the above.
+</think>
+
+Para confirmar a validade deste documento , acesse : https : //eproc2g<span class="organizacao">stm</span>.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 RELATÓRIO Trata-se de <span class="jurisprudencia">Habeas Corpus</span> impetrado pela Defesa constituída do Cap Ex <span class="pessoa">HENRIQUE DOS SANTOS BOTELHO</span> contra ato do Juiz-Auditor da 2ª Auditoria da 11ª <span class="organizacao">CJM</span> nos autos da <span class="legislacao">Ação Penal Militar</span> nº 14- <span class="tempo">06.2010</span>.7.11.0011 .

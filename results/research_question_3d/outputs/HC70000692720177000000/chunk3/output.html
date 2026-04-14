@@ -1,0 +1,87 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. 
+
+First, I need to go through the text carefully and identify each entity according to the definitions provided. Let me start by reading the input text again:
+
+"Habeas corpus denegado . Unanimidade . ACÓRDÃO Vistos , relatados e discutidos estes autos , acordam os ministros do Superior Tribunal Militar , em sessão de julgamento , sob a Presidência do Ministro Dr. JOSÉ COÊLHO FERREIRA , na conformidade do extrato da ata do julgamento , por unanimidade , em denegar a ordem de habeas corpus por falta de amparo legal . Brasília , 15 de fevereiro de 2018 . Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA Relator Documento assinado eletronicamente Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 . Em 22/02/2018 18:56:14 ."
+
+Alright, let's break it down sentence by sentence.
+
+First sentence: "Habeas corpus denegado . Unanimidade . ACÓRDÃO Vistos , relatados e discutidos estes autos , acordam os ministros do Superior Tribunal Militar , em sessão de julgamento , sob a Presidência do Ministro Dr. JOSÉ COÊLHO FERREIRA , na conformidade do extrato da ata do julgamento , por unanimidade , em denegar a ordem de habeas corpus por falta de amparo legal ."
+
+Looking for entities here. "Superior Tribunal Militar" is an organization. "Dr. JOSÉ COÊLHO FERREIRA" is a person. The "Ministro" is a title, so not a person. "ACÓRDÃO" is a legal term but not a specific entity, so maybe not. "Brasília" is a local. "15 de fevereiro de 2018" is a tempo. "Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA" is another person. "Matricula 8553" is a number, not an entity. "22/02/2018" is tempo. "18:56:14" is a time, but the guidelines say only explicit dates, so maybe not. 
+
+Wait, the user said to mark tempo only if it's a date or explicit time. "15 de fevereiro de 2018" is a date, so that's tempo. "22/02/2018" is a date, so that's tempo. The time "18:56:14" is a time, but the guidelines say only dates, so maybe not. But the user mentioned "horários isolados" (isolated times) like "17:26:32" shouldn't be marked. So "18:56:14" is not marked as tempo.
+
+Now, "Brasília" is a local. "Superior Tribunal Militar" is an organization. "Dr. JOSÉ COÊLHO FERREIRA" is a pessoa. "Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA" is another pessoa. "ACÓRDÃO" is a jurisprudência? Wait, the definition says jurisprudência is specific decisions, like "REsp 1694984/MS", etc. But here, "ACÓRDÃO" is a general term, not a specific reference. So maybe not. Unless it's part of a specific reference. But in this case, it's just "ACÓRDÃO" as a noun, so not a specific jurisprudência. 
+
+Next sentence: "Brasília , 15 de fevereiro de 2018 . Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA Relator Documento assinado eletronicamente Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 . Em 22/02/2018 18:56:14 ."
+
+"Brasília" is a local. "15 de fevereiro de 2018" is tempo. "Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA" is a pessoa. "Cleonilson Nicácio Silva" is a pessoa. "Matricula 8553" is a number, not an entity. "22/02/2018" is tempo. "18:56:14" is time, but not marked as tempo. 
+
+Now, checking for any other entities. "Superior Tribunal Militar" is an organization. "Ministro" is a title, not a person. "Relator" is a role, not a person. "Documento assinado eletronicamente" is a generic term, not an entity. 
+
+So the entities are:
+
+- pessoa: Dr. JOSÉ COÊLHO FERREIRA, CLEONILSON NICÁCIO SILVA, Cleonilson Nicácio Silva (but the latter is a name, so need to check if it's the same as the previous one. Wait, in the text, it's "Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA Relator" and then "por Cleonilson Nicácio Silva". So the full name is "CLEONILSON NICÁCIO SILVA" and "Cleonilson Nicácio Silva" (maybe same person, but need to check if they are the same. The user says to mark names, so both instances should be marked. But the second one is written with lowercase, but the name is the same, so both should be marked as pessoa.
+
+- organizacao: Superior Tribunal Militar
+
+- local: Brasília
+
+- tempo: 15 de fevereiro de 2018, 22/02/2018
+
+- jurisprudência: ACÓRDÃO? Wait, the text says "ACÓRDÃO Vistos..." but the definition of jurisprudência requires specific references like "REsp 1694984/MS", etc. So "ACÓRDÃO" is a general term, not a specific jurisprudência entity. So maybe not. 
+
+Wait, the user's example in the guidelines for jurisprudência includes "Acórdão n. 999404", which is a specific reference. In this text, the word "ACÓRDÃO" is used, but without a number. So it's not a specific reference. Therefore, it's not marked as jurisprudência.
+
+So the only jurisprudência here would be if there's a specific reference. But in this text, there isn't. So no jurisprudência.
+
+Legislação: There's no mention of laws, codes, etc. So no.
+
+So the HTML should have:
+
+- <span class="pessoa">JOSÉ COÊLHO FERREIRA</span>
+- <span class="organizacao">Superior Tribunal Militar</span>
+- <span class="local">Brasília</span>
+- <span class="tempo">15 de fevereiro de 2018</span>
+- <span class="tempo">22/02/2018</span>
+- <span class="pessoa">CLEONILSON NICÁCIO SILVA</span>
+- <span class="pessoa">Cleonilson Nicácio Silva</span>
+
+Wait, but the user's guidelines say that only names should be marked, not titles. "Ministro" is a title, so not marked. "Dr." is a title, so not marked. So "Dr. JOSÉ COÊLHO FERREIRA" is a pessoa, but the "Dr." is not part of the name. So the name is "JOSÉ COÊLHO FERREIRA". Similarly, "Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA" is a person, but "Ministro Ten Brig Ar" are titles, so the name is "CLEONILSON NICÁCIO SILVA". The text then says "por Cleonilson Nicácio Silva", which is the same name, so that's another pessoa.
+
+So in the text, the first pessoa is "JOSÉ COÊLHO FERREIRA", the second is "CLEONILSON NICÁCIO SILVA" and "Cleonilson Nicácio Silva" (but the latter is the same as the former, just lowercase). So both instances should be marked as pessoa.
+
+Now, the text has "Brasília" as a local. "15 de fevereiro de 2018" and "22/02/2018" as tempo. "Superior Tribunal Militar" as organizacao.
+
+So putting all together into HTML:
+
+The original text is:
+
+Habeas corpus denegado . Unanimidade . ACÓRDÃO Vistos , relatados e discutidos estes autos , acordam os ministros do Superior Tribunal Militar , em sessão de julgamento , sob a Presidência do Ministro Dr. JOSÉ COÊLHO FERREIRA , na conformidade do extrato da ata do julgamento , por unanimidade , em denegar a ordem de habeas corpus por falta de amparo legal . Brasília , 15 de fevereiro de 2018 . Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA Relator Documento assinado eletronicamente Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 . Em 22/02/2018 18:56:14 .
+
+So replacing the entities:
+
+- "Superior Tribunal Militar" → <span class="organizacao">Superior Tribunal Militar</span>
+- "Dr. JOSÉ COÊLHO FERREIRA" → <span class="pessoa">JOSÉ COÊLHO FERREIRA</span>
+- "Brasília" → <span class="local">Brasília</span>
+- "15 de fevereiro de 2018" → <span class="tempo">15 de fevereiro de 2018</span>
+- "CLEONILSON NICÁCIO SILVA" → <span class="pessoa">CLEONILSON NICÁCIO SILVA</span>
+- "Cleonilson Nicácio Silva" → <span class="pessoa">Cleonilson Nicácio Silva</span>
+- "22/02/2018" → <span class="tempo">22/02/2018</span>
+
+Wait, but the user's example in the guidelines for jurisprudência includes "Acórdão n. 999404", which is a specific reference. In the text, "ACÓRDÃO" is used, but without a number. So it's not a specific reference. Therefore, it's not marked as jurisprudência.
+
+So the final HTML would have those tags. Also, the "Ministro Ten Brig Ar" are titles, so not marked. The "Matricula 8553" is a number, not an entity. The "18:56:14" is a time but not marked as tempo. 
+
+Putting all together, the HTML should look like this:
+
+Habeas corpus denegado . Unanimidade . ACÓRDÃO Vistos , relatados e discutidos estes autos , acordam os ministros do <span class="organizacao">Superior Tribunal Militar</span> , em sessão de julgamento , sob a Presidência do Ministro Dr. <span class="pessoa">JOSÉ COÊLHO FERREIRA</span> , na conformidade do extrato da ata do julgamento , por unanimidade , em denegar a ordem de habeas corpus por falta de amparo legal . <span class="local">Brasília</span> , <span class="tempo">15 de fevereiro de 2018</span> . Ministro Ten Brig Ar <span class="pessoa">CLEONILSON NICÁCIO SILVA</span> Relator Documento assinado eletronicamente Documento assinado eletronicamente por <span class="pessoa">Cleonilson Nicácio Silva</span> , Matricula 8553 . Em <span class="tempo">22/02/2018</span> 18:56:14 .
+
+I need to make sure that all the entities are correctly marked. Also, check if "Ministro Ten Brig Ar" is part of the name. But according to the guidelines, titles like "Ministro", "Ten Brig Ar" are not marked. Only the name "CLEONILSON NICÁCIO SILVA" is marked. 
+
+Yes, that's correct. So the final HTML should include all the entities as per the above.
+</think>
+
+Habeas corpus denegado . Unanimidade . ACÓRDÃO Vistos , relatados e discutidos estes autos , acordam os ministros do <span class="organizacao">Superior Tribunal Militar</span> , em sessão de julgamento , sob a Presidência do Ministro Dr. <span class="pessoa">JOSÉ COÊLHO FERREIRA</span> , na conformidade do extrato da ata do julgamento , por unanimidade , em denegar a ordem de habeas corpus por falta de amparo legal . <span class="local">Brasília</span> , <span class="tempo">15 de fevereiro de 2018</span> . Ministro Ten Brig Ar <span class="pessoa">CLEONILSON NICÁCIO SILVA</span> Relator Documento assinado eletronicamente Documento assinado eletronicamente por <span class="pessoa">Cleonilson Nicácio Silva</span> , Matricula 8553 . Em <span class="tempo">22/02/2018</span> 18:56:14 .

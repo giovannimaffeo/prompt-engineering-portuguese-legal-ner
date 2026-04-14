@@ -1,0 +1,63 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about an Action Directa de Inconstitucionalidade (ADI) with some code, a cabinet of a judge, a law, and some explanation about administrative decisions.
+
+Looking for the entities:
+
+1. "Ação Direta de Inconstitucionalidade 20170020161362ADI" – This seems like a legal action, maybe a case number. The "ADI" is likely an acronym for "Ação Direta de Inconstitucionalidade," which is a legal term. But the user's entities don't include "ação" or "ADI" as a category. Wait, the entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So "ADI" might not be one of these. Wait, maybe "ADI" is part of the legislation? Or perhaps it's a case number, which might not be any of the specified entities. The user's example output shows that "ADI" is not marked, so maybe it's not considered any of the entities here.
+
+Next, "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – The code here might be a reference, but again, none of the entities match. The "2018" is a year, which is a tempo entity. So "2018" should be marked as tempo.
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE" is part of an organization, maybe. "DESEMBARGADOR" is a judicial title, so the person's name "SILVANIO BARBOSA DOS SANTOS" is a pessoa. So "SILVANIO BARBOSA DOS SANTOS" should be a <span class="pessoa">.
+
+"28 lei" – "28" could be a number, but maybe "28 lei" refers to a law. Wait, the text says "28 lei , porque não haveria qualquer afronta à titularidade de atribuições do poder público..." So "28 lei" might be a law reference. "Lei" is legislation, so "28 lei" would be a legislacao entity. Wait, but "28" is a number. Maybe "28" is part of the law's number. For example, "Lei 28" would be a legislation. So "28" here is part of the legislation. So "28 lei" should be marked as legislacao.
+
+"concessão de alvarás" – "alvarás" is a legal term, but it's not one of the entities. The user's entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So "alvarás" is not an entity here.
+
+"Administração Pública" – This refers to a public administration, which is an organization. So "Administração Pública" should be an organizacao.
+
+Now, let's check each part again:
+
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" – No entity here. The code might be a case number, but not any of the specified entities.
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – "2018" is tempo.
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+- "28 lei" – "28" is part of the legislation, so "28 lei" is legislacao.
+- "Administração Pública" – organizacao.
+
+Wait, but "28 lei" – maybe "28" is a number, but the user's example output might have "28 lei" as legislacao. Let me check the example output provided by the user. The user's example input has "28 lei" and in the output, it's marked as legislacao. So yes, "28 lei" is legislacao.
+
+So putting it all together:
+
+- "2018" is tempo.
+- "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+- "28 lei" is legislacao.
+- "Administração Pública" is organizacao.
+
+Other parts like "GABINETE DO DESEMBARGADOR" – "GABINETE" is part of an organization, but the user's example output doesn't mark it. Wait, the user's example output shows that "GABINETE DO DESEMBARGADOR" is not marked. Wait, the user's example input is:
+
+Input: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 28 lei , porque não haveria qualquer afronta à titularidade de atribuições do poder público , apenas a permissão para a realização de convênios para elaboraçaõ de estudos técnicos atinentes à concessão de alvarás , e que a decisão caberá sempre à Administração Pública ."
+
+The output example is:
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 28 <span class="legislacao">lei</span> , porque não haveria qualquer afronta à titularidade de atribuições do poder público , apenas a permissão para a realização de convênios para elaboraçaõ de estudos técnicos atinentes à concessão de alvarás , e que a decisão caberá sempre à <span class="organizacao">Administração Pública</span> ."
+
+So in the example, "2018" is marked as tempo, "SILVANIO BARBOSA DOS SANTOS" as pessoa, "lei" as legislacao, and "Administração Pública" as organizacao.
+
+So in the input text, "28 lei" is marked as legislacao. So "28" is part of the legislacao? Wait, in the example, "28 lei" is marked as legislacao. So the entire "28 lei" is considered as legislacao. But "28" is a number, and "lei" is the legislation. So maybe the user considers "28 lei" as a reference to a law, hence legislacao. So in the input, "28 lei" is marked as legislacao.
+
+Similarly, "Administração Pública" is an organization.
+
+So applying that to the input text, the output should have:
+
+- "2018" as tempo.
+- "SILVANIO BARBOSA DOS SANTOS" as pessoa.
+- "28 lei" as legislacao.
+- "Administração Pública" as organizacao.
+
+Other parts like "GABINETE DO DESEMBARGADOR" are not marked, as they are part of the organization's name but not an entity in the specified categories. The user's example shows that "GABINETE DO DESEMBARGADOR" is not marked, so perhaps it's not considered an organization here.
+
+So the final HTML would have those spans marked accordingly.
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 28 <span class="legislacao">lei</span> , porque não haveria qualquer afronta à titularidade de atribuições do poder público , apenas a permissão para a realização de convênios para elaboraçaõ de estudos técnicos atinentes à concessão de alvarás , e que a decisão caberá sempre à <span class="organizacao">Administração Pública</span> .

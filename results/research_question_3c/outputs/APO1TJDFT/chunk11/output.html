@@ -1,0 +1,75 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The text starts with "Defende que “ a atualização da parcela Adicional Décimos , pelas Leis 3.318/2004 , 3.355/2004 e 3.782/2006 , iria diminuir o valor percebido em alguns casos , pois em conformidade com a decisão 4041/2007 do e. TCDF , o valor a ser considerado , para fins de cálculo é o da coluna Representação , que possui valores menores que os constantes das tabelas das Leis 1004 e 1141/96 ” , de modo que “ optou-se por não proceder à atualização pelo Plano de Carreira , mantendo os valores atualmente percebidos , a fim de não prejudicar os servidores que possuem cargos comissionados incorporados sob a égide das Leis 1004 e 1141/96 ” ( fl . 311 ) ."
+
+Looking for legal entities:
+
+1. "Leis 3.318/2004 , 3.355/2004 e 3.782/2006" – these are laws, so they should be marked as legislacao. Each law number is a separate entity. Also, "Leis 1004 e 1141/96" are also laws, so they need to be marked.
+
+2. "decisão 4041/2007 do e. TCDF" – "decisão" here refers to a judicial decision, so it's jurisprudencia. "TCDF" is an acronym for Tribunal de Contas da Federação, which is an organization, so that should be organizacao.
+
+3. "fl . 311" – "fl" is an abbreviation for "fls" (fólio), which is a page reference. Since it's a page number, it's a tempo entity? Wait, the definition for tempo includes dates, but page numbers might not be considered time. Wait, the tempo definition is about explicit temporal references like dates, years, etc. Page numbers like "fl. 311" are not temporal, so maybe they are not marked. But the user's example in the guidelines for tempo includes "fl. 311" as a possible example? Wait, looking back, the tempo examples include "fl. 311" as part of the input text. Wait, no, in the input text, the user provided "fl . 311" as part of the text. Wait, the user's example in the guidelines for tempo includes "fl. 311" as an example? Let me check the original guidelines again.
+
+Wait, the user's guidelines under tempo say: "expressões que contenham uma referência temporal explícita, incluindo datas completas, datas parciais, anos isolados, dias da semana, meses ou intervalos de tempo (ex.: "14/11/2017", "31 de dezembro de 2016", "2016", "março de 2013", "período de maio a novembro de 2014"). Apenas expressões que indiquem diretamente um ponto ou período no tempo devem ser marcadas." So "fl. 311" is not a temporal reference. It's a page reference, which is not covered under tempo. Therefore, "fl. 311" should not be marked. So I'll leave it as is.
+
+Now, let's go through each part:
+
+- "Leis 3.318/2004 , 3.355/2004 e 3.782/2006" – these are laws, so each law number is a legislacao. The word "Leis" is part of the name, so the entire phrase should be marked. Wait, the definition for legislacao says to mark references to norms, like "Lei nº 8.666/93". So "Leis 3.318/2004" would be legislacao. Similarly for the others.
+
+- "decisão 4041/2007" – "decisão" is a judicial decision, so it's jurisprudencia. The number 4041/2007 is part of the decision's identifier, so it's also jurisprudencia.
+
+- "e. TCDF" – "TCDF" is an acronym for Tribunal de Contas da Federação, which is an organization. So "TCDF" should be organizacao.
+
+- "Leis 1004 e 1141/96" – these are laws, so they are legislacao.
+
+- "Plano de Carreira" – this is a plan, not a legal entity. So no tag.
+
+- "servidores que possuem cargos comissionados incorporados sob a égide das Leis 1004 e 1141/96" – "Leis 1004 e 1141/96" are already marked as legislacao.
+
+Now, check for other entities:
+
+- "TCDF" is an organization, so "TCDF" is organizacao.
+
+- "fl . 311" – not a temporal reference, so no tag.
+
+- "Representação" – this is a column name, not a legal entity. So no tag.
+
+- "art. 71 da Lei 8.666/93" – in the example, but in the input text, there's no "art." here. So no need to mark.
+
+So, the entities to mark are:
+
+- "Leis 3.318/2004", "Leis 3.355/2004", "Leis 3.782/2006", "Leis 1004", "Leis 1141/96" – all legislacao.
+
+- "decisão 4041/2007" – jurisprudencia.
+
+- "TCDF" – organizacao.
+
+Wait, but the user's example in the guidelines for jurisprudencia includes "REsp 1694984/MS", which is a judicial decision. So "decisão 4041/2007" would be jurisprudencia. The number 4041/2007 is part of the decision's identifier, so the entire phrase "decisão 4041/2007" should be marked as jurisprudencia.
+
+Similarly, "TCDF" is an organization, so "TCDF" is organizacao.
+
+Now, let's structure the HTML with the appropriate spans.
+
+So, the input text has:
+
+"Defende que “ a atualização da parcela Adicional Décimos , pelas Leis 3.318/2004 , 3.355/2004 e 3.782/2006 , iria diminuir o valor percebido em alguns casos , pois em conformidade com a decisão 4041/2007 do e. TCDF , o valor a ser considerado , para fins de cálculo é o da coluna Representação , que possui valores menores que os constantes das tabelas das Leis 1004 e 1141/96 ” , de modo que “ optou-se por não proceder à atualização pelo Plano de Carreira , mantendo os valores atualmente percebidos , a fim de não prejudicar os servidores que possuem cargos comissionados incorporados sob a égide das Leis 1004 e 1141/96 ” ( fl . 311 ) ."
+
+Breaking down:
+
+- "Leis 3.318/2004" → legislacao
+- "Leis 3.355/2004" → legislacao
+- "Leis 3.782/2006" → legislacao
+- "decisão 4041/2007" → jurisprudencia
+- "TCDF" → organizacao
+- "Leis 1004" → legislacao
+- "Leis 1141/96" → legislacao
+
+So, the HTML should have these spans. Also, note that "Leis" is part of the law references, so the entire phrase is marked. For example, "Leis 3.318/2004" is a single entity, so the entire phrase is in a span.
+
+Now, let's write the HTML accordingly.
+</think>
+
+Defende que “ a atualização da parcela Adicional Décimos , pelas <span class="legislacao">Leis 3.318/2004</span> , <span class="legislacao">3.355/2004</span> e <span class="legislacao">3.782/2006</span> , iria diminuir o valor percebido em alguns casos , pois em conformidade com a <span class="jurisprudencia">decisão 4041/2007</span> do e. <span class="organizacao">TCDF</span> , o valor a ser considerado , para fins de cálculo é o da coluna Representação , que possui valores menores que os constantes das tabelas das <span class="legislacao">Leis 1004</span> e <span class="legislacao">1141/96</span> ” , de modo que “ optou-se por não proceder à atualização pelo Plano de Carreira , mantendo os valores atualmente percebidos , a fim de não prejudicar os servidores que possuem cargos comissionados incorporados sob a égide das <span class="legislacao">Leis 1004</span> e <span class="legislacao">1141/96</span> ” ( fl . 311 ) .

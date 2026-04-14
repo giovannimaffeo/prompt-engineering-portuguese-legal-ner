@@ -1,0 +1,46 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The first sentence starts with "Ao revés , o que se verifica na presente impetração é a reiterada tentativa de obstaculizar o prosseguimento da Ação Penal Militar nº 14-06.2010.7.11.0211 , que apura os fatos criminosos desencadeados por ocasião da deflagração da Operação Saúva , na qual a Polícia Federal objetivou desarticular um complexo esquema fraudulento envolvendo uma quadrilha especializada em manipular licitações em Órgãos Públicos no Estado do Amazonas . O referido esquema envolvia um grupo de empresários da região , além de servidores públicos federais , estaduais e municipais , entre os quais militares do Exército Brasileiro ."
+
+Looking for entities:
+
+1. "Ação Penal Militar nº 14-06.2010.7.11.0211" – This looks like a legal case number, so it's jurisprudencia. The number format with hyphens and digits is typical for legal cases.
+
+2. "Operação Saúva" – This is an operation name, which is likely an organization. But wait, the example shows "Operação Saúva" as part of a legal case. Wait, in the examples, "Operação Saúva" might be part of the case, but the user's examples don't have that. Wait, the example input 2 had "Superior Tribunal de Justiça RECURSO ESPECIAL Nº 1.583.083 - RS" and the output marked "Superior Tribunal de Justiça" as organizacao and the case number as jurisprudencia. So here, "Operação Saúva" is part of the case description, but maybe it's a specific operation, so perhaps it's an organization? Wait, the definition says "organizacao" includes "unidades do sistema de justiça, casas legislativas, etc." But "Operação Saúva" is an operation, not an organization. Wait, but in the example input 4, "ESTADO DO ACRE Rua Tribunal de Justiça, Via Verde, Rio BrancoAC" was marked as local. So maybe "Operação Saúva" is a specific operation, but not an organization. However, the user's examples don't have this case. Let me check the guidelines again. The definition for organizacao includes "unidades do sistema de justiça", but "Operação Saúva" is an operation, not an organization. So maybe it's not an organization. Wait, but the example input 2 had "Superior Tribunal de Justiça" as organizacao. So perhaps "Operação Saúva" is not an organization. So maybe it's not marked. Wait, but the user's example input 4 had "ESTADO DO ACRE" as local. So "Operação Saúva" is a name of an operation, which is a specific event, but not an organization. So maybe it's not marked. Wait, but the user's example input 2 had "RECURSO ESPECIAL Nº 1.583.083 - RS" as jurisprudencia. So the case number is marked. So in the input text, "Ação Penal Militar nº 14-06.2010.7.11.0211" is a case number, so jurisprudencia. Then "Operação Saúva" is a specific operation, but not an organization. So maybe it's not marked. Wait, but the user's example input 4 had "ESTADO DO ACRE" as local. So "Estado do Amazonas" would be local. So "Estado do Amazonas" is a local entity. So in the input text, "no Estado do Amazonas" would be marked as local. 
+
+Next, "Polícia Federal" is an organization. The example input 1 had "MINISTÉRIO PÚBLICO FEDERAL" as organizacao. So "Polícia Federal" is an organization. 
+
+"Quadrilha especializada em manipular licitações em Órgãos Públicos no Estado do Amazonas" – "Órgãos Públicos" is a generic term, so not marked. "Estado do Amazonas" is local. 
+
+"Empresários da região" – "região" is a generic term, not marked. 
+
+"Servidores públicos federais, estaduais e municipais" – these are generic terms, not marked. 
+
+"Militares do Exército Brasileiro" – "Exército Brasileiro" is an organization. 
+
+So putting it all together:
+
+- "Ação Penal Militar nº 14-06.2010.7.11.0211" → jurisprudencia
+- "Operação Saúva" → not marked (since it's an operation, not an organization)
+- "Polícia Federal" → organizacao
+- "Estado do Amazonas" → local
+- "Exército Brasileiro" → organizacao
+
+Wait, but "Operação Saúva" is part of the case description. The example input 2 had "RECURSO ESPECIAL Nº 1.583.083 - RS" as jurisprudencia. So the case number is marked. The "Operação Saúva" is part of the description, not a case number. So it's not marked. 
+
+So the final HTML would have:
+
+- "Ação Penal Militar nº 14-06.2010.7.11.0211" as jurisprudencia
+- "Polícia Federal" as organizacao
+- "Estado do Amazonas" as local
+- "Exército Brasileiro" as organizacao
+
+Other parts like "quadrilha" is a group, but not an entity. "Empresários" is a generic term. "Servidores públicos" is a generic term. 
+
+So the output should have those marked accordingly.
+</think>
+
+Ao revés , o que se verifica na presente impetração é a reiterada tentativa de obstaculizar o prosseguimento da <span class="jurisprudencia">Ação Penal Militar nº 14-06.2010.7.11.0211</span> , que apura os fatos criminosos desencadeados por ocasião da deflagração da <span class="organizacao">Operação Saúva</span> , na qual a <span class="organizacao">Polícia Federal</span> objetivou desarticular um complexo esquema fraudulento envolvendo uma quadrilha especializada em manipular licitações em Órgãos Públicos no <span class="local">Estado do Amazonas</span> . O referido esquema envolvia um grupo de empresários da região , além de servidores públicos federais , estaduais e municipais , entre os quais militares do <span class="organizacao">Exército Brasileiro</span> .

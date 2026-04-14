@@ -1,0 +1,95 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislação, and jurisprudência. 
+
+First, I need to go through the input text carefully and identify each entity according to the definitions provided. Let me start by reading the input text again:
+
+"Art . 2º O parecer de que trata o art . 1º pode ser rejeitado pela Administração Pública , fundamentadamente , por comprovada inobservância de norma legal em vigor ou supremacia do interesse público . Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art . 4º Esta Lei entra em vigor na data de sua publicação . Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI O Senhor Desembargador MARIO MACHADO - Vogal Presentes os pressupostos processuais e as condições da ação , admito o processamento da presente Ação Direta de Inconstitucionalidade . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 43 Art . 5º Revogam-se as disposições em contrário ."
+
+Now, let me break it down sentence by sentence.
+
+Starting with "Art . 2º O parecer de que trata o art . 1º pode ser rejeitado pela Administração Pública , fundamentadamente , por comprovada inobservância de norma legal em vigor ou supremacia do interesse público ."
+
+- "Administração Pública" is an organization? Wait, the definition says "organização" includes public organs, courts, etc. "Administração Pública" refers to the public administration, which is a formal entity. So I should mark it as organizacao.
+
+Next, "Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias ."
+
+- "Poder Executivo" is a government branch, so that's an organization. "Lei" is legislation, but the full name is "esta Lei", so the entire phrase "esta Lei" would be legislação. Wait, the example shows "art.61 , §1º , da Lei nº 9.430/96" as legislação. So "esta Lei" is a reference to a law, so it should be marked as legislação. Also, "60 dias" is a time reference, so that's tempo.
+
+Then, "Art . 4º Esta Lei entra em vigor na data de sua publicação ."
+
+- "data de sua publicação" is a date, so tempo.
+
+Moving on, "Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI"
+
+- "Ação Direta de Inconstitucionalidade" is a type of legal action, which would be jurisprudência? Wait, the definition for jurisprudência is references to decisions, precedents, etc. But here it's the name of a legal action, not a specific case or number. The example shows "REsp n . 1694984/MS" as jurisprudência. However, "Ação Direta de Inconstitucionalidade" is a type of proceeding, not a specific case. So maybe not. Wait, the example in the guidelines includes "Ação Direta de Inconstitucionalidade 20170020161362ADI" as a jurisprudência? Let me check the examples. The user provided an example where "Ação Direta de Inconstitucionalidade 20170020161362ADI" is part of the output. In that example, the output is "Ação Direta de Inconstitucionalidade 20170020161362ADI" as jurisprudência. So I should mark that as jurisprudência.
+
+Next, "O Senhor Desembargador MARIO MACHADO - Vogal"
+
+- "MARIO MACHADO" is a person, so pessoa. "Desembargador" is a title, not a name, so not marked.
+
+"Presentes os pressupostos processuais e as condições da ação , admito o processamento da presente Ação Direta de Inconstitucionalidade ."
+
+- "Ação Direta de Inconstitucionalidade" again, same as before, so jurisprudência.
+
+"Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ"
+
+- The code here is a number, but the guidelines say that identifiers like "2018ACONT2JYXTK52JCSL251NVQ" should be marked as jurisprudência if they are identifiers of decisions. But the example in the guidelines mentions "20140110500434APO" as jurisprudência. So maybe this code is an identifier for a process or decision, so mark as jurisprudência.
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 43"
+
+- "GABINETE DO DESEMBARGADOR" is an organization (a government office). "SILVANIO BARBOSA DOS SANTOS" is a person, so pessoa.
+
+"Art . 5º Revogam-se as disposições em contrário ."
+
+- No entities here.
+
+Now, compiling all these:
+
+- "Administração Pública" → organizacao
+- "Poder Executivo" → organizacao
+- "esta Lei" → legislação
+- "60 dias" → tempo
+- "data de sua publicação" → tempo
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" → jurisprudência
+- "MARIO MACHADO" → pessoa
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+- "GABINETE DO DESEMBARGADOR" → organizacao
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" → jurisprudência
+
+Wait, the "Código de Verificação" part: the example in the guidelines mentions that identifiers like "20140110500434APO" are marked as jurisprudência. So even if it's a code, if it's an identifier for a case or decision, it's jurisprudência. So the code here would be marked as jurisprudência.
+
+Now, putting all these into the HTML tags. Let me check each part again.
+
+Original text:
+
+Art . 2º O parecer de que trata o art . 1º pode ser rejeitado pela <span class="organizacao">Administração Pública</span> , fundamentadamente , por comprovada inobservância de norma legal em vigor ou supremacia do interesse público . Art . 3º O <span class="organizacao">Poder Executivo</span> regulamentará esta <span class="legislacao">Lei</span> no prazo de <span class="tempo">60 dias</span> . Art . 4º Esta <span class="legislacao">Lei</span> entra em vigor na <span class="tempo">data de sua publicação</span> . Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> O Senhor <span class="pessoa">Desembargador MARIO MACHADO</span> - Vogal Presentes os pressupostos processuais e as condições da ação , admito o processamento da presente <span class="jurisprudencia">Ação Direta de Inconstitucionalidade</span> . <span class="jurisprudencia">Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span> <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 43 Art . 5º Revogam-se as disposições em contrário .
+
+Wait, in the original text, "Poder Executivo" is part of the sentence "O Poder Executivo regulamentará esta Lei", so "Poder Executivo" is an organization. "Lei" is legislation. "60 dias" is tempo. "data de sua publicação" is tempo. 
+
+In the part "Ação Direta de Inconstitucionalidade 20170020161362ADI", the entire phrase is marked as jurisprudência. Also, "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" is a code, so jurisprudência. 
+
+"GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. 
+
+Wait, the original text has "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 43". So "GABINETE DO DESEMBARGADOR" is the organization, and "SILVANIO BARBOSA DOS SANTOS" is the person. 
+
+Putting all these together, the HTML should have the appropriate spans. 
+
+I need to make sure that all the entities are correctly marked according to the definitions. Let me double-check each entity:
+
+- "Administração Pública" → organizacao
+- "Poder Executivo" → organizacao
+- "Lei" → legislação (since it's referring to a law, even if not numbered)
+- "60 dias" → tempo
+- "data de sua publicação" → tempo
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" → jurisprudência
+- "MARIO MACHADO" → pessoa
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+- "GABINETE DO DESEMBARGADOR" → organizacao
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" → jurisprudência
+
+Yes, that seems correct. Now, structuring the HTML with these spans. Also, note that in the original text, "art . 2º" etc., the periods are with spaces, but the output should retain the original text, just adding the spans. 
+
+So the final HTML should look like the example provided, with the entities marked accordingly.
+</think>
+
+Art . 2º O parecer de que trata o art . 1º pode ser rejeitado pela <span class="organizacao">Administração Pública</span> , fundamentadamente , por comprovada inobservância de norma legal em vigor ou supremacia do interesse público . Art . 3º O <span class="organizacao">Poder Executivo</span> regulamentará esta <span class="legislacao">Lei</span> no prazo de <span class="tempo">60 dias</span> . Art . 4º Esta <span class="legislacao">Lei</span> entra em vigor na <span class="tempo">data de sua publicação</span> . Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> O Senhor <span class="pessoa">Desembargador MARIO MACHADO</span> - Vogal Presentes os pressupostos processuais e as condições da ação , admito o processamento da presente <span class="jurisprudencia">Ação Direta de Inconstitucionalidade</span> . <span class="jurisprudencia">Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span> <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 43 Art . 5º Revogam-se as disposições em contrário .

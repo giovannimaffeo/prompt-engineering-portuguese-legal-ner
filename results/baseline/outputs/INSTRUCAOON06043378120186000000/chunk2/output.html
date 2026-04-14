@@ -1,0 +1,131 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The text starts with "MINIST^|_UI Z FUX - PRESIDENTE E RELATOR". Here, "MINIST^|_UI Z FUX" seems like a name, possibly a person. But the caret and pipe might be typos or formatting issues. Maybe "MINIST^|_UI" is part of the title, and "Z FUX" is the name. Wait, the actual name might be "Luiz Fux", but the text has "LUIZ FUX" later. So "LUIZ FUX" is a person, so I should mark that as <span class="pessoa">.
+
+Next, "Inst n° 0604337-81.2018.6.00.0000/DF" – the "Inst" might be short for "Instrução" or "Instância", but the number is likely a case number. The "DF" at the end is the Distrito Federal, which is a local. So "DF" should be <span class="local">.
+
+Then, "RELATÓRIO/VOTO O SENHOR MINISTRO LUIZ FUX ( presidente e relator )". Here, "SENHOR MINISTRO LUIZ FUX" is a person, so "LUIZ FUX" again is a pessoa. The "presidente e relator" are titles, not entities, so no tag needed.
+
+Moving on, "competência normativa do Tribunal Superior Eleitoral" – "Tribunal Superior Eleitoral" is an organization, so that should be <span class="organizacao">.
+
+"Resoluções interpretativas da legislação de regência" – "legislação" is a entity, so "legislação" should be <span class="legislacao">.
+
+"Resolução-TSE n° 23.549" – "TSE" is the abbreviation for Tribunal Superior Eleitoral, which is an organization, so "TSE" should be <span class="organizacao">.
+
+"dispõe sobre Pesquisas Eleitorais" – "Pesquisas Eleitorais" is a topic, not an entity. "Resolução-TSE" is a resolution, which might be a jurisprudência or legislation, but since it's a resolution, maybe it's part of legislação. Wait, the user's example in the output shows "Resolução-TSE n° 23.549" as part of the text, but in the output, "Resolução-TSE" is marked as legislação? Wait, looking at the sample output provided by the user, in the example, "Resolução-TSE n° 23.549" is marked as legislação. So I should mark "Resolução-TSE" as legislação.
+
+"§§ 10 e 11" – these are sections, but not entities. "última assentada na Resolução-TSE n° 23.549" – "Resolução-TSE" again is legislação.
+
+"ocasionarem dúvidas razoáveis e insegurança em parte significativa da sociedade" – no entities here.
+
+"Diante desse impasse específico , optamos por revogar por ora aludidas disposições , no afã de debruçarmos com mais vagar sobre a temática versada ." – no entities here.
+
+Wait, the user's sample output shows that "Resolução-TSE" is marked as legislação. So I need to check each occurrence of "Resolução-TSE" and mark them as legislação. Also, "TSE" is an organization, so "TSE" should be <span class="organizacao">.
+
+Let me go through the text again step by step.
+
+Original text:
+
+"MINIST^|_UI Z FUX - PRESIDENTE E RELATOR Inst n° 0604337-81.2018.6.00.0000/DF 2 RELATÓRIO/VOTO O SENHOR MINISTRO LUIZ FUX ( presidente e relator ) : Senhores Ministros , a competência normativa do Tribunal Superior Eleitoral , materializada na expedição de Resoluções interpretativas da legislação de regência , tem por objetivo precípuo gerar um ambiente de previsibilidade e de segurança jurídica a todos os players da competição eleitoral . No entanto , os §§ 10 e 11 inseridos na última assentada na Resolução-TSE n° 23.549 , que dispõe sobre Pesquisas Eleitorais , destoaram desses vetores de atuação , ao ocasionarem dúvidas razoáveis e insegurança em parte significativa da sociedade . Diante desse impasse específico , optamos por revogar por ora aludidas disposições , no afã de debruçarmos com mais vagar sobre a temática versada ."
+
+Breaking down:
+
+- "MINIST^|_UI Z FUX" – possibly a title, but "LUIZ FUX" is a person. Wait, the text later says "SENHOR MINISTRO LUIZ FUX", so "LUIZ FUX" is a pessoa. The initial "MINIST^|_UI Z FUX" might be a typo, but the correct name is "LUIZ FUX", so I'll mark that as pessoa.
+
+- "Inst n° 0604337-81.2018.6.00.0000/DF" – "DF" is the Distrito Federal, so local.
+
+- "Tribunal Superior Eleitoral" – organization.
+
+- "Resoluções interpretativas da legislação de regência" – "legislação" is a entity.
+
+- "Resolução-TSE n° 23.549" – "Resolução-TSE" is a resolution, which is part of legislation, so legislação. "TSE" is an organization.
+
+- "Pesquisas Eleitorais" – not an entity.
+
+So, the entities to mark are:
+
+- "LUIZ FUX" as pessoa.
+
+- "DF" as local.
+
+- "Tribunal Superior Eleitoral" as organizacao.
+
+- "legislação" as legislação.
+
+- "Resolução-TSE" as legislação.
+
+- "TSE" as organizacao.
+
+Wait, but "Resolução-TSE" is a specific resolution, which is part of legislation, so it's a legislação. "TSE" is the abbreviation for Tribunal Superior Eleitoral, which is an organization.
+
+So, in the text, "Tribunal Superior Eleitoral" is an organization, so that's organizacao. "TSE" is the abbreviation, so also organizacao.
+
+"legislação" is a entity, so that's legislação.
+
+"Resolução-TSE" is a resolution, which is part of legislation, so legislação.
+
+"DF" is local.
+
+"LUIZ FUX" is pessoa.
+
+So, applying these tags:
+
+- "LUIZ FUX" becomes <span class="pessoa">LUIZ FUX</span>.
+
+- "DF" becomes <span class="local">DF</span>.
+
+- "Tribunal Superior Eleitoral" becomes <span class="organizacao">Tribunal Superior Eleitoral</span>.
+
+- "legislação" becomes <span class="legislacao">legislação</span>.
+
+- "Resolução-TSE" becomes <span class="legislacao">Resolução-TSE</span>.
+
+- "TSE" becomes <span class="organizacao">TSE</span>.
+
+Now, let me check the original text again to ensure I didn't miss any other entities.
+
+The text mentions "Resolução-TSE n° 23.549" – "Resolução-TSE" is marked as legislação, and "TSE" as organizacao.
+
+Also, "§§ 10 e 11" – no entities.
+
+"última assentada na Resolução-TSE" – "Resolução-TSE" again is legislação.
+
+So, all entities are covered. Now, I need to replace those parts in the text with the appropriate <span> tags.
+
+Let me reconstruct the text with the tags:
+
+Original text:
+
+"MINIST^|_UI Z FUX - PRESIDENTE E RELATOR Inst n° 0604337-81.2018.6.00.0000/DF 2 RELATÓRIO/VOTO O SENHOR MINISTRO LUIZ FUX ( presidente e relator ) : Senhores Ministros , a competência normativa do Tribunal Superior Eleitoral , materializada na expedição de Resoluções interpretativas da legislação de regência , tem por objetivo precípuo gerar um ambiente de previsibilidade e de segurança jurídica a todos os players da competição eleitoral . No entanto , os §§ 10 e 11 inseridos na última assentada na Resolução-TSE n° 23.549 , que dispõe sobre Pesquisas Eleitorais , destoaram desses vetores de atuação , ao ocasionarem dúvidas razoáveis e insegurança em parte significativa da sociedade . Diante desse impasse específico , optamos por revogar por ora aludidas disposições , no afã de debruçarmos com mais vagar sobre a temática versada ."
+
+Now, applying the tags:
+
+- "LUIZ FUX" becomes <span class="pessoa">LUIZ FUX</span>.
+
+- "DF" becomes <span class="local">DF</span>.
+
+- "Tribunal Superior Eleitoral" becomes <span class="organizacao">Tribunal Superior Eleitoral</span>.
+
+- "legislação" becomes <span class="legislacao">legislação</span>.
+
+- "Resolução-TSE" becomes <span class="legislacao">Resolução-TSE</span>.
+
+- "TSE" becomes <span class="organizacao">TSE</span>.
+
+Wait, in the original text, "TSE" is part of "Resolução-TSE", so "TSE" is the abbreviation. So in the text, "Resolução-TSE" is the full name, and "TSE" is the abbreviation. So both should be marked as organizacao.
+
+But in the original text, "Resolução-TSE" is written as one word, so "Resolução-TSE" is the entity, and "TSE" is part of it. Wait, no. The text says "Resolução-TSE n° 23.549", so "Resolução-TSE" is the name of the resolution, which is part of legislation. So "Resolução-TSE" is a legislação entity. "TSE" is the abbreviation for the organization, so "TSE" is organizacao.
+
+So in the text, "Resolução-TSE" is marked as legislação, and "TSE" is marked as organizacao.
+
+So, in the text, "Resolução-TSE" is a legislação, and "TSE" is an organizacao.
+
+Therefore, the final HTML should have those tags.
+
+Now, putting it all together, the output should have the text with the appropriate spans.
+</think>
+
+MINIST^|_UI Z FUX - PRESIDENTE E RELATOR Inst n° 0604337-81.2018.6.00.0000/DF 2 RELATÓRIO/VOTO O SENHOR MINISTRO <span class="pessoa">LUIZ FUX</span> ( presidente e relator ) : Senhores Ministros , a competência normativa do <span class="organizacao">Tribunal Superior Eleitoral</span> , materializada na expedição de Resoluções interpretativas da <span class="legislacao">legislação</span> de regência , tem por objetivo precípuo gerar um ambiente de previsibilidade e de segurança jurídica a todos os players da competição eleitoral . No entanto , os §§ 10 e 11 inseridos na última assentada na <span class="legislacao">Resolução-TSE</span> n° 23.549 , que dispõe sobre Pesquisas Eleitorais , destoaram desses vetores de atuação , ao ocasionarem dúvidas razoáveis e insegurança em parte significativa da sociedade . Diante desse impasse específico , optamos por revogar por ora aludidas disposições , no afã de debruçarmos com mais vagar sobre a temática versada .

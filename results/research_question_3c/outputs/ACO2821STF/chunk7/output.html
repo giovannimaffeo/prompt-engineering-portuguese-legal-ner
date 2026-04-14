@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating the type.
+
+First, I need to parse the input text carefully. The input is: "RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+Let me break it down word by word.
+
+Starting with "RICARDO LEWANDOWSKI". These are two names, likely a person. Since both are names, they should be marked as 'pessoa'. So, I'll wrap each with <span class="pessoa">.
+
+Next is "AGTE". This is an abbreviation for "Agente" or "Agente da União", but in legal contexts, "AGTE" might stand for "Agente" or "Agente da União". However, the user's guidelines mention that only proper names should be marked. Since "AGTE" is an abbreviation and not a proper name, it might not be marked. Wait, but in some contexts, "AGTE" could be an acronym for a specific role. However, the example given in the definitions for 'pessoa' includes names like "Ana Silva", so abbreviations like "AGTE" might not qualify unless they are proper names. Since "AGTE" is an abbreviation, I think it's safer not to mark it here.
+
+Then "( S )". The parentheses might indicate a role, like "S" for "Sociedade" or "Sociedade Civil", but again, without more context, it's unclear. The user's guidelines say to mark only proper names, so unless "S" is a proper name, it shouldn't be marked. Since it's an abbreviation, I'll leave it as is.
+
+Next is "UNIÃO". This is a proper noun, referring to the Union, which is an organization. So "UNIÃO" should be marked as 'organizacao'.
+
+"ADV" is likely an abbreviation for "Advogado", which is a title. Since it's an abbreviation and not a proper name, it's not marked.
+
+"( A / S )" – similar to the previous, "A/S" might be an abbreviation for "Advogado" or "Advogado da União", but again, it's an abbreviation. Unless it's a specific term, it's not marked.
+
+"ADVOGADO -GERAL DA UNIÃO" – "ADVOGADO" is a title, so not marked. "-GERAL DA UNIÃO" is part of the title, but "UNIÃO" is already marked as 'organizacao'. The hyphen and "GERAL DA" are descriptors, so they are part of the title but not entities themselves.
+
+"AGDO" is another abbreviation, possibly for "Agente da União" or similar. Since it's an abbreviation, not a proper name, it's not marked.
+
+"( A / S )" – same as before, not marked.
+
+"ESTADO DE MATO GROSSO" – "ESTADO" is a generic term, but "MATO GROSSO" is a state in Brazil, so it's a proper name. So "MATO GROSSO" should be marked as 'local'.
+
+"PROC" is likely an abbreviation for "Processo" or "Processo Judicial", which is a legal term but not a proper name. So it's not marked.
+
+Putting it all together:
+
+- RICARDO LEWANDOWSKI: pessoa
+- UNIÃO: organizacao
+- MATO GROSSO: local
+
+Other parts like AGTE, ADV, etc., are abbreviations or titles and not marked.
+
+So the HTML should have the spans for those three entities. Let me check again to ensure I didn't miss any. The rest of the text doesn't have any other entities. The user's example output might have similar structure, so I think this is correct.
+</think>
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : ADVOGADO -GERAL DA <span class="organizacao">UNIÃO</span> AGDO . ( A / S ) : <span class="local">ESTADO DE MATO GROSSO</span> PROC .

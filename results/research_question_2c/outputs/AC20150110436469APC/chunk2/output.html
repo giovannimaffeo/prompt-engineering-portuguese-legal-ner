@@ -1,0 +1,23 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal process description. Let me break it down sentence by sentence.
+
+Starting with "Processo : 20150110436469APC ( 0012843-03.2015.8.07.0001 )". The process number here probably isn't an entity, so I'll leave it as is. Next, "Apelante ( s ) : BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA". These are the appellants, which are organizations. So I need to mark both "BRASILIA CURSOS E CONCURSOS LTDA" and "GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" as organizacao.
+
+Then "Apelado ( s ) : ALISSON SILVA BATISTA DE MORAES". This is the appellant, which is a person. So "ALISSON SILVA BATISTA DE MORAES" should be pessoa.
+
+"Relatora : Desembargadora NÍDIA CORRÊA LIMA" – the relatora is a person, so "NÍDIA CORRÊA LIMA" is pessoa.
+
+"Acórdão N. : 1082726 CIVIL E PROCESSUAL CIVIL". The "CIVIL E PROCESSUAL CIVIL" might refer to the legal area, which could be considered jurisprudencia or legislacao. But since it's a legal area, maybe it's better to mark it as legislação. Wait, the user's guide says to use legislacao for legislation. However, "CIVIL E PROCESSUAL CIVIL" is a legal field, not a specific law. Maybe it's better to leave it as is unless there's a specific law mentioned. Since there's no specific law name, perhaps it's not an entity. Alternatively, maybe it's part of the jurisprudencia. Hmm, but the example output in the user's message shows that "CIVIL E PROCESSUAL CIVIL" is marked as legislação. Let me check the example output provided by the user.
+
+Looking at the user's example output, the text is:
+
+Processo : 20150110436469APC ( 0012843-03.2015.8.07.0001 ) Apelante ( s ) : <span class="organizacao">BRASILIA CURSOS E CONCURSOS LTDA</span> <span class="organizacao">GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA</span> Apelado ( s ) : <span class="pessoa">ALISSON SILVA BATISTA DE MORAES</span> Relatora : Desembargadora <span class="pessoa">NÍDIA CORRÊA LIMA</span> Acórdão N. : 1082726 <span class="legislacao">CIVIL E PROCESSUAL CIVIL</span> .
+
+So in the example, "CIVIL E PROCESSUAL CIVIL" is marked as legislacao. That's probably because it refers to the legal area, which is part of the legislation. So I'll follow that approach.
+
+Now, let me go through each part again to ensure I didn't miss any entities. The process number, the numbers in parentheses, and the acordão number are not entities. The rest are organizations, people, and the legal area. So the final HTML should have the appropriate spans for each entity.
+</think>
+
+Processo : 20150110436469APC ( 0012843-03.2015.8.07.0001 ) Apelante ( s ) : <span class="organizacao">BRASILIA CURSOS E CONCURSOS LTDA</span> <span class="organizacao">GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA</span> Apelado ( s ) : <span class="pessoa">ALISSON SILVA BATISTA DE MORAES</span> Relatora : Desembargadora <span class="pessoa">NÍDIA CORRÊA LIMA</span> Acórdão N. : 1082726 <span class="legislacao">CIVIL E PROCESSUAL CIVIL</span> .

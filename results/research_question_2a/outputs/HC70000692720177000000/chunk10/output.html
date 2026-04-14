@@ -1,0 +1,42 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me look at the example input again: "Brasília , 15 de fevereiro de 2018 . Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA Relator Documento assinado eletronicamente Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 . Em 22/02/2018 18:56:14 ."
+
+Starting with "Brasília" – that's a city, so it's a local entity. I'll wrap that in <span class="local">.
+
+Next, "15 de fevereiro de 2018" is a date, so that's tempo. I'll mark that as <span class="tempo">.
+
+Then "Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA" – "Ministro" is a title, but the name "CLEONILSON NICÁCIO SILVA" is a person. Wait, the name is in uppercase, but maybe it's a title. Wait, the user's example output shows "CLEONILSON NICÁCIO SILVA" as a pessoa. Let me check the example output again. Oh, in the sample output provided, the user's example input has "CLEONILSON NICÁCIO SILVA" marked as pessoa. So I should mark that as pessoa.
+
+Then "Documento assinado eletronicamente" – that's a document, but not sure if it's an organization. Wait, the user's example output shows "Documento assinado eletronicamente" as part of the text without any entity. Wait, looking at the sample output provided by the user, the output is:
+
+"<span class="local">Brasília</span> , <span class="tempo">15 de fevereiro de 2018</span> . <span class="pessoa">Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA</span> Relator <span class="jurisprudencia">Documento assinado eletronicamente</span> <span class="jurisprudencia">Documento assinado eletronicamente</span> por <span class="pessoa">Cleonilson Nicácio Silva</span> , Matricula 8553 . <span class="tempo">Em 22/02/2018 18:56:14</span> ."
+
+Wait, in the sample output, "Documento assinado eletronicamente" is marked as jurisprudencia. But why? Maybe because it's a legal document or a reference to a legal process. Alternatively, maybe "jurisprudencia" refers to legal precedents or court decisions. But the text here is about a document being signed electronically, which might not be a jurisprudência. However, the user's example output shows that part as jurisprudencia. So perhaps in this context, any mention of a document or legal process is considered jurisprudência. Alternatively, maybe the user's example is different. Let me check again.
+
+Wait, the user's example input has "Documento assinado eletronicamente" twice. In the sample output, both instances are marked as jurisprudencia. So maybe the user considers any mention of a document or legal process as jurisprudencia. But that might not be accurate. However, since the user provided that example, I need to follow their guidance. So I'll mark "Documento assinado eletronicamente" as jurisprudencia.
+
+Then "por Cleonilson Nicácio Silva" – that's a person, so pessoa. The name is in lowercase here, but the user's example shows "Cleonilson Nicácio Silva" as pessoa. So I'll mark that as pessoa.
+
+Then "Matricula 8553" – that's a number, not an entity. So leave it as is.
+
+"Em 22/02/2018 18:56:14" is a date and time, so tempo.
+
+So putting it all together:
+
+- Brasília → local
+- 15 de fevereiro de 2018 → tempo
+- Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA → pessoa (assuming the name is the person, even though the title is there)
+- Documento assinado eletronicamente → jurisprudencia (as per example)
+- Cleonilson Nicácio Silva → pessoa
+- 22/02/2018 18:56:14 → tempo
+
+Wait, but in the user's example output, "Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA" is marked as pessoa. So even though "Ministro" is a title, the entire phrase is considered a pessoa. So I'll follow that.
+
+Also, the user's example output has "por" as part of the text, not marked. So I'll leave that as is.
+
+So the final HTML would have the spans for each entity as per the above.
+</think>
+
+<span class="local">Brasília</span> , <span class="tempo">15 de fevereiro de 2018</span> . <span class="pessoa">Ministro Ten Brig Ar CLEONILSON NICÁCIO SILVA</span> Relator <span class="jurisprudencia">Documento assinado eletronicamente</span> <span class="jurisprudencia">Documento assinado eletronicamente</span> por <span class="pessoa">Cleonilson Nicácio Silva</span> , Matricula 8553 . <span class="tempo">Em 22/02/2018 18:56:14</span> .

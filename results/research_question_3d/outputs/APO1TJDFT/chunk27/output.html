@@ -1,0 +1,166 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating their type. 
+
+First, I need to go through the input text carefully and identify each entity according to the definitions provided. Let me start by reading the text again.
+
+The input text is: "Entendo , data maxima venia da eminente Relatora , que isso não é possível e que deve ser obedecida a lei que determina que os seus reajustes sejam feitos pelos reajustes gerais . Por sinal , não foi sequer determinado que ficasse até extinguir , essa verba desaparecer . Consequentemente , não vejo ofensa à Constituição Federal , porque foram para a aposentadoria com essas peculiaridades do servidor público , mas a dinâmica dos cargos comissionados , das funções comissionadas , não pode repercutir sobre aqueles que já não estão mais na ativa do serviço público . Peço a máxima vênia à eminente Relatora para dar provimento ao recurso e à remessa para julgar improcedente o pedido . O Senhor Desembargador SEBASTIÃO COELHO - Presidente e Vogal Peço vista . Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 12 Fls ."
+
+Now, let me break it down sentence by sentence.
+
+1. "Entendo , data maxima venia da eminente Relatora , que isso não é possível e que deve ser obedecida a lei que determina que os seus reajustes sejam feitos pelos reajustes gerais ."
+   - "Relatora" is a title, not a name. The user's guidelines say not to mark titles like "Desembargador" or "Relatora" as pessoa. So no entity here.
+   - "data maxima" is "data máxima" which is a time reference. Wait, the definition says "tempo" is explicit time references. "Data máxima" might be a time reference. But the example given for tempo includes "3 de abril de 2017". "Data máxima" is more of a legal term, not a specific date. So maybe not. Hmm. Wait, the user's example includes "data" as part of tempo? Let me check the definitions again. The tempo includes dates, but "data máxima" is a term, not a date. So probably not. So no entity here.
+
+2. "Por sinal , não foi sequer determinado que ficasse até extinguir , essa verba desaparecer ."
+   - No entities here. "extinguir" is a verb, not a name or date.
+
+3. "Consequentemente , não vejo ofensa à Constituição Federal , porque foram para a aposentadoria com essas peculiaridades do servidor público , mas a dinâmica dos cargos comissionados , das funções comissionadas , não pode repercutir sobre aqueles que já não estão mais na ativa do serviço público ."
+   - "Constituição Federal" is a law, so that's legislação. So I should mark "Constituição Federal" as <span class="legislacao">.
+   - "servidor público" is a generic term, not a specific entity. "cargos comissionados" and "funções comissionadas" are roles, not entities.
+
+4. "Peço a máxima vênia à eminente Relatora para dar provimento ao recurso e à remessa para julgar improcedente o pedido ."
+   - "Relatora" is a title again, not a name. So no entity.
+
+5. "O Senhor Desembargador SEBASTIÃO COELHO - Presidente e Vogal Peço vista ."
+   - "SEBASTIÃO COELHO" is a full name, so that's pessoa. "Desembargador" is a title, not a name. So mark "SEBASTIÃO COELHO" as <span class="pessoa">.
+
+6. "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 12 Fls ."
+   - "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is an organization, but the full name is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". Wait, "DESEMBARGADORA" is a title, but "MARIA IVATÔNIA" is a name. So the organization is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". Wait, but the definition says "organizacao" includes entities like tribunals, etc. "Gabinete da Desembargadora" is part of a court, so it's an organization. But "MARIA IVATÔNIA" is a person's name. Wait, but the text is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So "GABINETE" is part of the organization, and "MARIA IVATÔNIA" is the name of the Desembargadora. So the entire phrase is an organization. Wait, but the user's definition says that "organizacao" includes "unidades do sistema de justiça", so "Gabinete da Desembargadora" is an organization. However, "MARIA IVATÔNIA" is a person's name, but in this context, it's part of the organization's name. Wait, no. The "Gabinete da Desembargadora Maria Ivatônia" would be the organization, where "Maria Ivatônia" is the person (the Desembargadora). So "MARIA IVATÔNIA" is a pessoa. But the phrase is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So the organization is "GABINETE DA DESEMBARGADORA", and "MARIA IVATÔNIA" is the person. Wait, but the way it's written is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So perhaps "MARIA IVATÔNIA" is the name of the Desembargadora, making the entire phrase the name of the organization. But according to the guidelines, only names of organizations should be marked, not titles. Wait, the user's example says "Tribunal de Contas" is an organization. So "GABINETE DA DESEMBARGADORA" would be an organization, and "MARIA IVATÔNIA" is a person. But the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So maybe the entire phrase is the organization's name, with the person's name included. But the user's guidelines say that names of people should be marked as pessoa, not as organizacao. So "MARIA IVATÔNIA" is a pessoa. However, the phrase "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is a bit ambiguous. But according to the definition, "organizacao" includes "unidades do sistema de justiça", so "Gabinete da Desembargadora" is an organization. However, the text includes "MARIA IVATÔNIA" as part of the name. So perhaps "MARIA IVATÔNIA" is the person's name, and the rest is the organization. So the entire phrase is the name of the organization, which includes a person's name. But according to the guidelines, only names of organizations should be marked. Wait, but in the example, "Tribunal de Contas" is an organization. If the text is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", then "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. But the way it's written might be that "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is the full name of the organization. But that's not clear. Alternatively, "MARIA IVATÔNIA" is the name of the Desembargadora, so the organization is "GABINETE DA DESEMBARGADORA" and the person is "MARIA IVATÔNIA". 
+
+This is a bit confusing. Let me check the guidelines again. The user says that organizations include "unidades do sistema de justiça", so "Gabinete da Desembargadora" is an organization. The person's name "MARIA IVATÔNIA" should be marked as pessoa. But in the text, it's written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So maybe the entire phrase is the name of the organization, with the person's name included. But the user's example for organizacao includes "Tribunal de Contas", which is a specific name. So if the text is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", then "MARIA IVATÔNIA" is part of the organization's name. But according to the guidelines, only names of organizations should be marked. Wait, but in the example given for organizacao, "Câmara Legislativa" is an organization. So if the text is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", then the entire phrase is the name of the organization. But "MARIA IVATÔNIA" is a person's name. However, in the context of the organization's name, it's possible that "MARIA IVATÔNIA" is the person's name (the Desembargadora), making the organization's name include her name. But according to the guidelines, only names of organizations should be marked, not people. So perhaps "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is a pessoa. 
+
+But the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So it's possible that "MARIA IVATÔNIA" is part of the organization's name. But according to the guidelines, only the names of organizations should be marked, and not the names of people within them. So "MARIA IVATÔNIA" is a pessoa, and "GABINETE DA DESEMBARGADORA" is an organizacao. But the way it's written is a bit unclear. 
+
+Alternatively, maybe "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is the name of the organization, with "MARIA IVATÔNIA" being the person's name. But since the user's example includes "Tribunal de Contas" as an organization, which is a specific name, then "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" would be the name of the organization, including the person's name. However, the user's guidelines say that "organizacao" includes "unidades do sistema de justiça", so maybe "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. 
+
+This is tricky. I'll need to make a decision here. Given that the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", I'll consider "GABINETE DA DESEMBARGADORA" as the organization and "MARIA IVATÔNIA" as the pessoa. However, the way it's written might be that the entire phrase is the organization's name. But since "MARIA IVATÔNIA" is a name, it's better to mark it as pessoa. 
+
+So, in the text "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", "MARIA IVATÔNIA" is a pessoa, and "GABINETE DA DESEMBARGADORA" is an organizacao. But the user's guidelines say to mark entire syntagmas. So perhaps the entire phrase is an organization, but the person's name is part of it. However, according to the guidelines, only names of organizations should be marked, and not the people within them. 
+
+Alternatively, maybe "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. So I'll mark "MARIA IVATÔNIA" as pessoa and "GABINETE DA DESEMBARGADORA" as organizacao. 
+
+But the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", which is a bit unclear. Another approach: maybe "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person's name. So I'll mark "MARIA IVATÔNIA" as pessoa and "GABINETE DA DESEMBARGADORA" as organizacao. 
+
+Also, the phrase "12 Fls ." – "Fls" is an abbreviation for "Folhas", which is a legal term, but not an entity. 
+
+Now, let's go back to the other parts. 
+
+In the text, "Constituição Federal" is a law, so that's legislação. 
+
+The "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – the code is a number, but the user's guidelines say that only specific legal entities should be marked. The code might not be an entity unless it's a specific legal reference. But according to the guidelines, jurisprudência includes identifiers like "REsp 1694984/MS", but this code doesn't look like that. So probably not an entity. 
+
+In the text, "SEBASTIÃO COELHO" is a full name, so that's pessoa. 
+
+Putting it all together:
+
+- "Constituição Federal" → legislação
+- "SEBASTIÃO COELHO" → pessoa
+- "MARIA IVATÔNIA" → pessoa
+- "GABINETE DA DESEMBARGADORA" → organizacao
+- "Desembargador" is a title, not a name, so no entity.
+
+Wait, but "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – if the entire phrase is the organization's name, including the person's name, then "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" would be an organizacao. But according to the guidelines, only names of organizations should be marked, not people. So "MARIA IVATÔNIA" is a pessoa, and "GABINETE DA DESEMBARGADORA" is an organizacao. 
+
+But the way it's written is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", which might be the name of the organization, with "MARIA IVATÔNIA" as the person's name. However, the user's example for organizacao includes "Tribunal de Contas", which is a specific name. So if the text is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", it's possible that this is the full name of the organization, including the person's name. But according to the guidelines, only names of organizations should be marked. So perhaps the entire phrase is an organization, but "MARIA IVATÔNIA" is a name, so it's a pessoa. 
+
+This is confusing. Let me check the guidelines again. The user says that "organizacao" includes "unidades do sistema de justiça", which are specific names. So "GABINETE DA DESEMBARGADORA" is an organization. "MARIA IVATÔNIA" is a pessoa. 
+
+So the correct approach is to mark "MARIA IVATÔNIA" as pessoa and "GABINETE DA DESEMBARGADORA" as organizacao. 
+
+Now, the final text would have:
+
+- "Constituição Federal" → <span class="legislacao">Constituição Federal</span>
+- "SEBASTIÃO COELHO" → <span class="pessoa">SEBASTIÃO COELHO</span>
+- "MARIA IVATÔNIA" → <span class="pessoa">MARIA IVATÔNIA</span>
+- "GABINETE DA DESEMBARGADORA" → <span class="organizacao">GABINETE DA DESEMBARGADORA</span>
+
+Wait, but the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So the entire phrase is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". If "MARIA IVATÔNIA" is part of the organization's name, then perhaps it's better to mark the entire phrase as organizacao, but that's not correct because "MARIA IVATÔNIA" is a person's name. 
+
+Alternatively, the text may be "GABINETE DA DESEMBARGADORA" (organization) and "MARIA IVATÔNIA" (person). So in the text, "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. 
+
+So in the text: "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" would be split into two parts: "GABINETE DA DESEMBARGADORA" (organizacao) and "MARIA IVATÔNIA" (pessoa). 
+
+Therefore, the HTML would have:
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span>
+
+But the original text has them together. So the user's text is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". 
+
+So the correct approach is to split them into two entities. 
+
+Another point: "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – the code is not an entity. 
+
+So the final HTML would have:
+
+- "Constituição Federal" → <span class="legislacao">Constituição Federal</span>
+- "SEBASTIÃO COELHO" → <span class="pessoa">SEBASTIÃO COELHO</span>
+- "MARIA IVATÔNIA" → <span class="pessoa">MARIA IVATÔNIA</span>
+- "GABINETE DA DESEMBARGADORA" → <span class="organizacao">GABINETE DA DESEMBARGADORA</span>
+
+Now, putting all together into the text. 
+
+Let me check the original text again for any other entities. 
+
+- "data maxima" – not a date, so no.
+- "12 Fls ." – "Fls" is a legal abbreviation for "Folhas", but not an entity.
+- "Código de Verificação" – not an entity.
+- "PEÇO vista" – not an entity.
+- "Desembargador" is a title, not a name.
+
+So the entities are:
+
+- Constituição Federal (legislacao)
+- SEBASTIÃO COELHO (pessoa)
+- MARIA IVATÔNIA (pessoa)
+- GABINETE DA DESEMBARGADORA (organizacao)
+
+Now, the original text has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So the correct split is "GABINETE DA DESEMBARGADORA" (organizacao) and "MARIA IVATÔNIA" (pessoa). 
+
+So the final HTML would have:
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span>
+
+But in the original text, they are written together. So the HTML would have the entire phrase split into those two parts. 
+
+Now, putting all entities into the text:
+
+Original text: "Entendo , data maxima venia da eminente Relatora , que isso não é possível e que deve ser obedecida a lei que determina que os seus reajustes sejam feitos pelos reajustes gerais . Por sinal , não foi sequer determinado que ficasse até extinguir , essa verba desaparecer . Consequentemente , não vejo ofensa à Constituição Federal , porque foram para a aposentadoria com essas peculiaridades do servidor público , mas a dinâmica dos cargos comissionados , das funções comissionadas , não pode repercutir sobre aqueles que já não estão mais na ativa do serviço público . Peço a máxima vênia à eminente Relatora para dar provimento ao recurso e à remessa para julgar improcedente o pedido . O Senhor Desembargador SEBASTIÃO COELHO - Presidente e Vogal Peço vista . Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 12 Fls ."
+
+So the entities are:
+
+- "Constituição Federal" → legislação
+- "SEBASTIÃO COELHO" → pessoa
+- "MARIA IVATÔNIA" → pessoa
+- "GABINETE DA DESEMBARGADORA" → organizacao
+
+Therefore, the HTML would have:
+
+<span class="legislacao">Constituição Federal</span>
+<span class="pessoa">SEBASTIÃO COELHO</span>
+<span class="pessoa">MARIA IVATÔNIA</span>
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span>
+
+Now, I need to insert these into the text correctly, ensuring that the HTML tags are properly placed around the entities.
+
+So the final output would be:
+
+Entendo , data maxima venia da eminente Relatora , que isso não é possível e que deve ser obedecida a lei que determina que os seus reajustes sejam feitos pelos reajustes gerais . Por sinal , não foi sequer determinado que ficasse até extinguir , essa verba desaparecer . Consequentemente , não vejo ofensa à <span class="legislacao">Constituição Federal</span> , porque foram para a aposentadoria com essas peculiaridades do servidor público , mas a dinâmica dos cargos comissionados , das funções comissionadas , não pode repercutir sobre aqueles que já não estão mais na ativa do serviço público . Peço a máxima vênia à eminente Relatora para dar provimento ao recurso e à remessa para julgar improcedente o pedido . O Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span> - Presidente e Vogal Peço vista . Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 12 Fls .
+
+Wait, but "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is split into "GABINETE DA DESEMBARGADORA" and "MARIA IVATÔNIA". So in the text, it's written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So the HTML should have:
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span>
+
+Therefore, the final text would have those two entities marked.
+
+Now, checking for any other entities. 
+
+"12 Fls ." – "Fls" is not an entity. 
+
+"PEÇO vista" – no entity. 
+
+So that's all. 
+
+Now, I'll write the final HTML with the marked entities.
+</think>
+
+Entendo , data maxima venia da eminente Relatora , que isso não é possível e que deve ser obedecida a lei que determina que os seus reajustes sejam feitos pelos reajustes gerais . Por sinal , não foi sequer determinado que ficasse até extinguir , essa verba desaparecer . Consequentemente , não vejo ofensa à <span class="legislacao">Constituição Federal</span> , porque foram para a aposentadoria com essas peculiaridades do servidor público , mas a dinâmica dos cargos comissionados , das funções comissionadas , não pode repercutir sobre aqueles que já não estão mais na ativa do serviço público . Peço a máxima vênia à eminente Relatora para dar provimento ao recurso e à remessa para julgar improcedente o pedido . O Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span> - Presidente e Vogal Peço vista . Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 12 Fls .

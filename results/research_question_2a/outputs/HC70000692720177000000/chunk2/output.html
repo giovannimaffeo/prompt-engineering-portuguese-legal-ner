@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read the input text carefully. The text is: "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 Justiça Militar da União Superior Tribunal Militar Sec Gab Min Cleonilson Nicácio Silva RELATOR : Ministro Ten Brig Ar Cleonilson Nicácio Silva ."
+
+Let me break it down. The first part is a general instruction. Then there's a URL, which might be a local or organization. The code "21030663f7" could be a code, but maybe not an entity. Then "Justiça Militar da União" – that sounds like an organization. "Superior Tribunal Militar" is another organization. "Sec Gab Min Cleonilson Nicácio Silva" – "Sec" might be an abbreviation for "Secretaria" or "Section," but "Gab" could be "Gabinete," and "Min" might be "Ministro." Then "RELATOR : Ministro Ten Brig Ar Cleonilson Nicácio Silva" – "Ministro" is a title, so maybe "Ministro Ten Brig Ar Cleonilson Nicácio Silva" is a person. Wait, "Ministro" is a title, so the person's name would be "Cleonilson Nicácio Silva." Also, "Ten Brig Ar" might be a military rank, so the person's name is "Cleonilson Nicácio Silva" with the rank.
+
+So, entities to mark:
+
+- "Justiça Militar da União" – organization
+- "Superior Tribunal Militar" – organization
+- "Ministro Ten Brig Ar Cleonilson Nicácio Silva" – pessoa (since "Ministro" is a title, and the name is the person)
+- "Cleonilson Nicácio Silva" – pessoa (maybe the same person, but the full name is in the RELATOR part)
+- The URL might be a local or organization? The URL is "https://eproc2g.stm.jus.br/eproc_2g_prod/" – the domain is part of the STJ (Superior Tribunal de Justiça), so maybe "STM" is an organization. But the URL itself isn't an entity, but the parts like "STM" could be. Wait, the user's example in the output might have "STM" as an organization. Let me check the example output.
+
+Wait, the user provided an example input and output. Let me check that. The input text includes "Justiça Militar da União Superior Tribunal Militar" and the output has those marked as organizacao. Also, "Ministro Ten Brig Ar Cleonilson Nicácio Silva" is marked as pessoa. So, the URL is not marked, but the parts like "STM" in the URL might be part of the organization. However, the user's example output doesn't mark the URL. So maybe the URL is not considered an entity here. The code "21030663f7" is not an entity. The date "21030663f7" – wait, that's a code, not a date. So no tempo entity there.
+
+So, the entities are:
+
+- "Justiça Militar da União" – organizacao
+- "Superior Tribunal Militar" – organizacao
+- "Ministro Ten Brig Ar Cleonilson Nicácio Silva" – pessoa
+- "Cleonilson Nicácio Silva" – pessoa (since the RELATOR part mentions "Ministro Ten Brig Ar Cleonilson Nicácio Silva", so the name is the person)
+- "STM" in the URL? Maybe, but the URL is not marked. The user's example output doesn't mark the URL, so perhaps the URL is not considered an entity here. The user's example output for the input text includes "Justiça Militar da União" and "Superior Tribunal Militar" as organizacao, and "Ministro Ten Brig Ar Cleonilson Nicácio Silva" as pessoa. Also, "Cleonilson Nicácio Silva" is part of the same person. So I need to mark those.
+
+So, in the input text, the parts to mark are:
+
+- "Justiça Militar da União" → organizacao
+- "Superior Tribunal Militar" → organizacao
+- "Ministro Ten Brig Ar Cleonilson Nicácio Silva" → pessoa
+- "Cleonilson Nicácio Silva" → pessoa (since the name is repeated in the RELATOR part)
+
+Wait, the RELATOR part says "RELATOR : Ministro Ten Brig Ar Cleonilson Nicácio Silva" – so the full name is "Ministro Ten Brig Ar Cleonilson Nicácio Silva", which is a person. So the entire phrase is a pessoa. But the name "Cleonilson Nicácio Silva" is part of that. So maybe the entire "Ministro Ten Brig Ar Cleonilson Nicácio Silva" is the pessoa, and the name is part of that. So I should mark the entire phrase as pessoa.
+
+Also, the URL is not marked. The code "21030663f7" is not an entity. The date "21030663f7" is not a date, but a code. So no tempo entity.
+
+So the final HTML would have those parts marked with the appropriate classes.
+</think>
+
+Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 <span class="organizacao">Justiça Militar da União</span> <span class="organizacao">Superior Tribunal Militar</span> Sec Gab Min Cleonilson Nicácio Silva RELATOR : <span class="pessoa">Ministro Ten Brig Ar Cleonilson Nicácio Silva</span> .

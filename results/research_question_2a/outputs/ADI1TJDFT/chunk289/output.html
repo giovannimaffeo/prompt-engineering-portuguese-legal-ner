@@ -1,0 +1,31 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text. The input is: "Acórdão n.1078980 , 20170020135916ADI , Relator : JOSÉ DIVINO CONSELHO ESPECIAL , Data de Julgamento : 20/02/2018 , Publicado no DJE : 05/03/2018 ."
+
+Let me break it down. The first part is "Acórdão n.1078980". "Acórdão" is a legal term, but it's not one of the specified entities. The number "n.1078980" might be a case number, which could be considered as legislation or jurisprudence? Wait, the entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So case numbers might not be any of these. Maybe they are part of the legisprudencia or legislation? Not sure. Let me check the example.
+
+Looking at the sample output provided by the user, the output is:
+
+"<span class="jurisprudencia">Acórdão n.1078980</span> , <span class="legislacao">20170020135916ADI</span> , Relator : <span class="pessoa">JOSÉ DIVINO CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">20/02/2018</span> , Publicado no DJE : <span class="tempo">05/03/2018</span> ."
+
+Wait, the user's example shows that "Acórdão n.1078980" is marked as jurisprudencia. The number 20170020135916ADI is marked as legislacao. The relator's name is a pessoa. The dates are tempo. So I need to follow that pattern.
+
+So, the first part "Acórdão n.1078980" is jurisprudencia. The number 20170020135916ADI is legislacao. The relator's name is a pessoa. The dates are tempo. The DJE is a local? Wait, in the sample output, the dates are marked as tempo. The "DJE" is a publication medium, which might be a local, but in the sample, the user marked the dates as tempo. So maybe the dates are tempo, and the DJE is a local? Wait, in the sample output, the user has "Publicado no DJE : <span class="tempo">05/03/2018</span>". Wait, no, looking again: the sample output shows that the dates are marked as tempo. The "DJE" is part of the text but not marked. Wait, the original text is "Publicado no DJE : 05/03/2018". In the sample output, the date is marked as tempo. So the "DJE" is not marked. So maybe "DJE" is a local? But in the sample output, it's not marked. So perhaps the user's example is that the dates are marked as tempo, and the rest are as per the entities.
+
+So, applying that to the input text:
+
+- "Acórdão n.1078980" is jurisprudencia.
+- "20170020135916ADI" is legislacao.
+- "Relator : JOSÉ DIVINO CONSELHO ESPECIAL" is pessoa.
+- "Data de Julgamento : 20/02/2018" is tempo.
+- "Publicado no DJE : 05/03/2018" is tempo.
+
+So the output would be:
+
+<span class="jurisprudencia">Acórdão n.1078980</span> , <span class="legislacao">20170020135916ADI</span> , Relator : <span class="pessoa">JOSÉ DIVINO CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">20/02/2018</span> , Publicado no DJE : <span class="tempo">05/03/2018</span> .
+
+I need to make sure that the classes are correctly assigned. The "Relator" is a person, so the name is pessoa. The dates are tempo. The case number is legislacao. The Acórdão is jurisprudencia. The rest are not entities. So that's the correct approach.
+</think>
+
+<span class="jurisprudencia">Acórdão n.1078980</span> , <span class="legislacao">20170020135916ADI</span> , Relator : <span class="pessoa">JOSÉ DIVINO CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">20/02/2018</span> , Publicado no DJE : <span class="tempo">05/03/2018</span> .

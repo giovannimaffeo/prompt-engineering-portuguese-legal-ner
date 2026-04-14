@@ -1,0 +1,93 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read the input text carefully. The example given is a legal document snippet. Let me parse through each part.
+
+The text starts with "86/87 ) , da Decisão monocrática nos autos dos Embargos de Declaração nº 109-80.2017.7.01.0201 , a DPU interpôs o presente Agravo Interno aos 29 subsequentes ( fl . 91 ) . Aponta em seu pronunciamento ( fls . 91/94 ) , in verbis : ( ... ) cabível e necessário , até para o exaurimento de instância , é a interposição do presente Agravo Regimental ."
+
+Looking for entities:
+
+- "DPU" is likely an organization. In legal contexts, DPU could stand for something like "Defensoria Pública da União" in Brazil, which is a public defense organization. So I'll mark "DPU" as organizacao.
+
+- "Agravo Interno", "Agravo Regimental" are legal terms, possibly referring to types of legal procedures. These might fall under jurisprudencia since they relate to legal procedures and precedents. But I need to check if they are specific terms. Alternatively, maybe they are part of the legislation, but since they are procedural terms, jurisprudencia might be more appropriate.
+
+- "Decisão monocrática" refers to a monocratic decision, which is a type of judicial decision. This could be part of jurisprudencia or legislation. Since it's a decision, maybe it's part of jurisprudencia.
+
+- "Embargos de Declaração" is a legal term, possibly part of jurisprudencia or legislation. But since it's a type of legal action, maybe jurisprudencia.
+
+- "fl" and "fls" are abbreviations for "fls" (folhas) which are pages in legal documents. These are not entities, so they stay as is.
+
+- "nº 109-80.2017.7.01.0201" is a case number. This might be part of the legislation or jurisprudencia, but since it's a case reference, maybe it's part of jurisprudencia.
+
+Wait, the user's example output shows that "DPU" is marked as organizacao. Let me check the example output provided. The user's example input and output might have some clues. Wait, the user provided the input and the output. Let me check the example again.
+
+Wait, the user's example input is the text provided, and the output is the HTML version. Let me look at the example output they provided. Wait, the user hasn't provided an example output yet. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML. Não inclua explicações ou blocos de código." So the user is expecting me to generate the HTML with the entities marked.
+
+So, in the input text, the entities to find are:
+
+Looking for "pessoa": any names? The text mentions "DPU" which is an organization. Are there any people mentioned? The text doesn't have any names, so no pessoa.
+
+"organizacao": "DPU" is likely an organization, so mark that.
+
+"tempo": any dates or time references? The text has "2017" in the case number, which is a year, so that's tempo. Also, "fl" and "fls" are page numbers, but they are not time. The case number has "2017.7.01.0201" which includes a year, so that's tempo.
+
+"local": any locations? The text doesn't mention any specific locations, so no.
+
+"legislacao": any laws or regulations? The text mentions "Decisão monocrática" which is a judicial decision, not legislation. So maybe no.
+
+"jurisprudencia": terms like "Decisão monocrática", "Embargos de Declaração", "Agravo Interno", "Agravo Regimental" are legal procedures, which could be part of jurisprudencia.
+
+So, in the text:
+
+- "DPU" is organizacao.
+
+- "2017" is tempo.
+
+- "Decisão monocrática", "Embargos de Declaração", "Agravo Interno", "Agravo Regimental" are jurisprudencia.
+
+Wait, but the case number "109-80.2017.7.01.0201" includes "2017" as part of the case number. So the "2017" is part of the case number, which is a reference, not a time. But the user's guide says "tempo" is for time/data. So maybe the "2017" is considered tempo.
+
+So, in the text:
+
+- "DPU" → organizacao.
+
+- "2017" → tempo.
+
+- "Decisão monocrática" → jurisprudencia.
+
+- "Embargos de Declaração" → jurisprudencia.
+
+- "Agravo Interno" → jurisprudencia.
+
+- "Agravo Regimental" → jurisprudencia.
+
+So, the HTML would have these spans.
+
+Now, let me structure the HTML accordingly.
+
+Original text: "86/87 ) , da Decisão monocrática nos autos dos Embargos de Declaração nº 109-80.2017.7.01.0201 , a DPU interpôs o presente Agravo Interno aos 29 subsequentes ( fl . 91 ) . Aponta em seu pronunciamento ( fls . 91/94 ) , in verbis : ( ... ) cabível e necessário , até para o exaurimento de instância , é a interposição do presente Agravo Regimental ."
+
+Breaking down:
+
+- "Decisão monocrática" → jurisprudencia.
+
+- "Embargos de Declaração" → jurisprudencia.
+
+- "Agravo Interno" → jurisprudencia.
+
+- "Agravo Regimental" → jurisprudencia.
+
+- "DPU" → organizacao.
+
+- "2017" → tempo.
+
+So, the HTML would be:
+
+86/87 ) , da <span class="jurisprudencia">Decisão monocrática</span> nos autos dos <span class="jurisprudencia">Embargos de Declaração</span> nº 109-80.<span class="tempo">2017</span>.7.01.0201 , a <span class="organizacao">DPU</span> interpôs o presente <span class="jurisprudencia">Agravo Interno</span> aos 29 subsequentes ( fl . 91 ) . Aponta em seu pronunciamento ( fls . 91/94 ) , in verbis : ( ... ) cabível e necessário , até para o exaurimento de instância , é a interposição do presente <span class="jurisprudencia">Agravo Regimental</span> .
+
+I need to make sure that the "2017" is marked as tempo. Also, check if "nº" is part of the case number, but the user's guide doesn't mention numbers as entities unless they are dates. Since "2017" is a year, it's tempo.
+
+So, the final HTML should have those spans.
+</think>
+
+86/87 ) , da <span class="jurisprudencia">Decisão monocrática</span> nos autos dos <span class="jurisprudencia">Embargos de Declaração</span> nº 109-80.<span class="tempo">2017</span>.7.01.0201 , a <span class="organizacao">DPU</span> interpôs o presente <span class="jurisprudencia">Agravo Interno</span> aos 29 subsequentes ( fl . 91 ) . Aponta em seu pronunciamento ( fls . 91/94 ) , in verbis : ( ... ) cabível e necessário , até para o exaurimento de instância , é a interposição do presente <span class="jurisprudencia">Agravo Regimental</span> .

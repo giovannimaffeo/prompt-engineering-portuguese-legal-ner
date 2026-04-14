@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify which parts correspond to each entity type. Let me start by breaking down the text.
+
+The input text is: "40 da Constituição Federal , vier a preencher , cumulativamente , as seguintes condições : I - sessenta anos de idade , se homem , e cinqüenta e cinco anos de idade , se mulher ; II - trinta e cinco anos de contribuição , se homem , e trinta anos de contribuição , se mulher ; III - vinte anos de efetivo exercício no serviço público ; e IV - dez anos de carreira e cinco anos de efetivo exercício no cargo em que se der a aposentadoria '' . -- Emenda Constitucional 47/2005 '' Art . 3º Ressalvado o direito de opção à aposentadoria pelas normas estabelecidas pelo art . 40 da Constituição Federal ou pelas regras estabelecidas pelos arts ."
+
+Looking for entities:
+
+1. "Constituição Federal" – This is a legal document, so it's legislacao. The full name of a constitution is a legal norm.
+2. "Emenda Constitucional 47/2005" – This is an amendment to the Constitution, so it's also legislacao.
+3. "Art . 3º" – This refers to an article in a legal text, so it's legislacao.
+4. "art . 40 da Constituição Federal" – Again, this is a reference to an article in the Constitution, so legislacao.
+5. "arts ." – This is likely a typo for "artigos" (articles), so it's part of the legislacao reference.
+
+Now, checking for other entities:
+
+- There are no names of people, organizations, places, or time references. The text mentions conditions related to age and contribution years, which are not entities to mark. The terms like "sessenta anos" (sixty years) are time references, but according to the guidelines, only explicit temporal expressions should be marked. However, "sessenta anos" is a number with a unit, which might be considered tempo. Wait, the definition for tempo includes "datas completas, datas parciais, anos isolados, dias da semana, meses ou intervalos de tempo". So "sessenta anos" is a number with a unit, which is a time reference. Similarly, "trinta e cinco anos" and others. But the user's example in the guidelines includes "2016" as tempo. However, in the input text, the numbers are part of conditions, not explicit dates. The guidelines say to mark only explicit temporal expressions. So maybe these numbers are not marked as tempo because they are part of conditions, not direct time references. Wait, the example given for tempo includes "2016" as a year, but in the input text, the numbers are part of age and contribution years. The guidelines specify that only expressions that indicate a point or period in time should be marked. Since these are age requirements, not actual dates, they might not be considered tempo. So I should not mark them as tempo.
+
+Similarly, there are no local entities. The text mentions "serviço público" and "cargo em que se der a aposentadoria", which are generic terms, not specific places. So no local entities.
+
+No organizations, people, or jurisprudência (legal precedents) are mentioned. The text refers to constitutional articles and amendments, which are legislacao.
+
+So the entities to mark are:
+
+- "Constituição Federal" → legislacao
+- "Emenda Constitucional 47/2005" → legislacao
+- "Art . 3º" → legislacao
+- "art . 40 da Constituição Federal" → legislacao
+- "arts ." → legislacao (assuming it's a typo for "artigos", which refers to articles in a legal text)
+
+Wait, the user's example in the guidelines for legislacao includes "art. 71 da Lei 8.666/93" and "CF/88". So "art. 40 da Constituição Federal" is a reference to an article in the Constitution, which is legislacao. Similarly, "Art . 3º" is an article in a legal text, so legislacao. "arts ." is likely a typo for "artigos", which refers to articles, so it's part of the legislacao reference.
+
+So I need to wrap each of these instances with <span class="legislacao">.
+
+Now, let me go through the text again and mark each occurrence.
+
+Original text:
+
+"40 da Constituição Federal , vier a preencher , cumulativamente , as seguintes condições : I - sessenta anos de idade , se homem , e cinqüenta e cinco anos de idade , se mulher ; II - trinta e cinco anos de contribuição , se homem , e trinta anos de contribuição , se mulher ; III - vinte anos de efetivo exercício no serviço público ; e IV - dez anos de carreira e cinco anos de efetivo exercício no cargo em que se der a aposentadoria '' . -- Emenda Constitucional 47/2005 '' Art . 3º Ressalvado o direito de opção à aposentadoria pelas normas estabelecidas pelo art . 40 da Constituição Federal ou pelas regras estabelecidas pelos arts ."
+
+Breaking it down:
+
+- "40 da Constituição Federal" → "Constituição Federal" is legislacao.
+- "Emenda Constitucional 47/2005" → legislacao.
+- "Art . 3º" → legislacao.
+- "art . 40 da Constituição Federal" → "Constituição Federal" is legislacao again.
+- "arts ." → likely refers to articles, so legislacao.
+
+So the HTML should have:
+
+<span class="legislacao">Constituição Federal</span>
+<span class="legislacao">Emenda Constitucional 47/2005</span>
+<span class="legislacao">Art . 3º</span>
+<span class="legislacao">art . 40 da Constituição Federal</span>
+<span class="legislacao">arts .</span>
+
+Wait, but "arts ." is part of the text. The original text has "pelas regras estabelecidas pelos arts .". So "arts ." is part of the text. Since "arts" is plural of "art", referring to articles, which are part of legal texts, so it's legislacao.
+
+So all instances of "Constituição Federal", "Emenda Constitucional 47/2005", "Art . 3º", "art . 40 da Constituição Federal", and "arts ." should be marked as legislacao.
+
+Now, let me check if there are any other entities. The text mentions "serviço público" and "cargo em que se der a aposentadoria", which are not specific entities. The numbers like "sessenta anos" are part of conditions, not explicit time references. So no tempo entities.
+
+Therefore, the final HTML should have the marked entities as legislacao.
+</think>
+
+<span class="legislacao">Constituição Federal</span> , vier a preencher , cumulativamente , as seguintes condições : I - sessenta anos de idade , se homem , e cinqüenta e cinco anos de idade , se mulher ; II - trinta e cinco anos de contribuição , se homem , e trinta anos de contribuição , se mulher ; III - vinte anos de efetivo exercício no serviço público ; e IV - dez anos de carreira e cinco anos de efetivo exercício no cargo em que se der a aposentadoria '' . -- <span class="legislacao">Emenda Constitucional 47/2005</span> '' <span class="legislacao">Art . 3º</span> Ressalvado o direito de opção à aposentadoria pelas normas estabelecidas pelo <span class="legislacao">art . 40 da Constituição Federal</span> ou pelas regras estabelecidas pelos <span class="legislacao">arts .</span>

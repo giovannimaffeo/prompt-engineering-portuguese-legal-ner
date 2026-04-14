@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with "ISTO POSTO , julgo procedente o pedido para declarar , com efeitos '' ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da Lei nº 5.815 , de 3 de abril de 2017 , por violação ao disposto no artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal . É o voto . Argumenta que a matéria é competência privativa do Chefe do Poder Executivo e que o poder de polícia é atividade típica da administração pública e exclusiva de Estado , que não pode ser transferida aos Conselhos Profissionais , incorrendo a norma também em vício material de inconstitucionalidade . Ao contrário do que argumenta a Procuradoria-Geral , a lei apenas autorizou o Governador , segundo sua conveniência , a celebrar convênios com os Conselhos Profissionais que menciona , para a elaboração de parecer opinativo não Fls ."
+
+Looking for "pessoa": The text mentions "Chefe do Poder Executivo" which is a title, not a name. "Procuradoria-Geral" is an organization. "Governador" is a title, not a name. So no pessoa entities here.
+
+"organizacao": "Procuradoria-Geral" is an organization. Also, "Lei Orgânica do Distrito Federal" – wait, "Lei Orgânica" is a type of legislation, so that's legislacao. "Distrito Federal" is a local entity. So "Procuradoria-Geral" is an organization.
+
+"tempo": "3 de abril de 2017" is a date, so that's tempo.
+
+"local": "Distrito Federal" is a local entity. Also, "Distrito Federal" is part of the "Lei Orgânica do Distrito Federal", so that's local.
+
+"legislacao": "Lei nº 5.815" is a law, so that's legislacao. "Lei Orgânica do Distrito Federal" is also a law, so that's legislacao. The articles mentioned like "artigo53", "artigo 71", etc., are parts of the legislation, so they should be included in the legislacao tag. Also, "incisos IV , VI , X e XXIII" are parts of the legislation, so they should be part of the legislacao tag.
+
+"jurisprudencia": There's no mention of specific judicial decisions or precedents here, so no jurisprudencia entities.
+
+Now, I need to structure the HTML with the appropriate spans. Let me check each part again to make sure I didn't miss any entities.
+
+"Lei nº 5.815" is legislacao. "3 de abril de 2017" is tempo. "Lei Orgânica do Distrito Federal" is legislacao. "Distrito Federal" is local. "Procuradoria-Geral" is organizacao. The articles and incisos are part of the legislation, so they should be included in the legislacao tags. Also, "artigo53", "artigo 71", etc., need to be marked as legislacao.
+
+Wait, the example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So in this case, "artigo53", "artigo 71", etc., should be part of the legislacao. Also, "incisos IV , VI , X e XXIII" are parts of the legislation, so they should be included in the legislacao tag.
+
+Putting it all together, the HTML should have:
+
+- <span class="legislacao">Lei nº 5.815</span>
+- <span class="tempo">3 de abril de 2017</span>
+- <span class="legislacao">Lei Orgânica do Distrito Federal</span>
+- <span class="local">Distrito Federal</span>
+- <span class="organizacao">Procuradoria-Geral</span>
+- The articles and incisos as part of the legislacao.
+
+Wait, the "artigo53" and "artigo 71" are parts of the legislation. So they should be included in the legislacao tag. Also, "incisos IV , VI , X e XXIII" are part of the same legislation, so they should be included in the legislacao tag.
+
+So the full HTML would have those spans. Let me make sure I didn't miss any other entities. The rest of the text doesn't have any other entities. So the final output should have the appropriate tags.
+</think>
+
+ISTO POSTO , julgo procedente o pedido para declarar , com efeitos '' ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da <span class="legislacao">Lei nº 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , por violação ao disposto no <span class="legislacao">artigo 53</span> , `` caput '' e § 1º , <span class="legislacao">artigo 71</span> , § 1º , IV e <span class="legislacao">artigo 100</span> , incisos IV , VI , X e XXIII , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . É o voto . Argumenta que a matéria é competência privativa do Chefe do Poder Executivo e que o poder de polícia é atividade típica da administração pública e exclusiva de Estado , que não pode ser transferida aos Conselhos Profissionais , incorrendo a norma também em vício material de inconstitucionalidade . Ao contrário do que argumenta a <span class="organizacao">Procuradoria-Geral</span> , a lei apenas autorizou o Governador , segundo sua conveniência , a celebrar convênios com os Conselhos Profissionais que menciona , para a elaboração de parecer opinativo não Fls .

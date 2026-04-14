@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The input starts with "Cumpre ressaltar que conforme consta na FAC do paciente acostada às fls.319/324 o paciente já foi investigado e processado por crime contra o patrimônio e teve sua prisão preventiva decretada nos autos que originaram o presente HC em virtude de violação de uma das medidas cautelares diversas da prisão impostas pelo Magistrado a quo quando da concessão da liberdade provisória , nos termos do disposto no art . 312 , p.u do CPP , qual seja , a obrigação de informar qualquer alteração de seu endereço residencial . Neste sentido , acórdão de minha relatoria : EMENTA : HABEAS CORPUS - FURTO TENTADO - PÁTIO DA POLÍCIA CIVIL - PRISÃO EM FLAGRANTE CONVERTIDA EM PREVENTIVA - PRESENÇA DOS REQUISITOS DO ART ."
+
+Looking for pessoas: The text mentions "Magistrado a quo" which is a legal term referring to the judge, but it's a title, not a name. So no pessoa here. "Paciente" is a generic term, not a name. So no pessoa.
+
+Organizacao: "FAC" might be an acronym for "Ficha de Avaliação de Condição" but the user's examples show that acronyms like "FAC" might not be marked unless they are specific organizations. However, the example given in the guidelines for organizacao includes "MINISTÉRIO PÚBLICO FEDERAL" as an example. Since "FAC" isn't a full name of an organization, maybe it's not marked. Wait, the input says "FAC do paciente acostada às fls.319/324". FAC could be a document, but not an organization. So no organizacao here.
+
+Tempo: The text has "fls.319/324" which refers to pages, not a date. No tempo here.
+
+Local: "PÁTIO DA POLÍCIA CIVIL" is a specific location. "PÁTIO" is part of the name, so "PÁTIO DA POLÍCIA CIVIL" should be marked as local. Also, "endereço residencial" is a generic term, not a specific place. So only "PÁTIO DA POLÍCIA CIVIL" is local.
+
+Legislacao: "CPP" is the Código Penal, which is a legal code. So "CPP" should be marked as legislacao. Also, "art . 312 , p.u do CPP" – "art" is short for "artigo", and "CPP" is the code. So "CPP" is legislacao. The "art. 312" is part of the legislation, but the user's example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So "art. 312" would be part of the legislacao, but since the user's example includes the full reference, maybe "art. 312" is part of the legislacao. Wait, the example in the guidelines includes "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So in this case, "art. 312 , p.u do CPP" would be part of the legislacao. But the user's example shows that the entire reference is marked. So here, "art. 312 , p.u do CPP" should be marked as legislacao. Also, "CPP" is the code, so that's legislacao.
+
+Jurisprudencia: The text mentions "acórdão de minha relatoria" which is a judicial decision, so "acórdão" is jurisprudencia. Also, "EMENTA" is part of a judicial decision, but the example shows that "REsp n . 1694984/MS" is marked as jurisprudencia. However, "EMENTA" is a generic term, not a specific case. So "acórdão" is jurisprudencia. Also, "HABEAS CORPUS" is a legal term, but not a specific case. So only "acórdão" is marked as jurisprudencia.
+
+Wait, the input has "acórdão de minha relatoria" – "acórdão" is a judicial decision, so it should be marked as jurisprudencia. Also, "EMENTA" is part of the acórdão, but the example shows that "EMENTA" isn't marked unless it's part of a specific case. So "acórdão" is marked as jurisprudencia.
+
+Putting it all together:
+
+- "PÁTIO DA POLÍCIA CIVIL" is local.
+- "CPP" is legislacao.
+- "art. 312 , p.u do CPP" is part of the legislacao.
+- "acórdão" is jurisprudencia.
+
+Wait, the user's example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So in this case, "art. 312 , p.u do CPP" would be marked as legislacao. Also, "CPP" is part of that reference. So the entire "art. 312 , p.u do CPP" is legislacao.
+
+So the final HTML would have:
+
+- <span class="local">PÁTIO DA POLÍCIA CIVIL</span>
+- <span class="legislacao">art. 312 , p.u do CPP</span>
+- <span class="jurisprudencia">acórdão</span>
+
+Wait, but "acórdão" is part of the text. The example shows that "REsp n . 1694984/MS" is marked as jurisprudencia. So "acórdão" is a general term, but in the input, it's part of "acórdão de minha relatoria", which refers to a specific decision. However, the user's guidelines say that only specific references to decisions should be marked. Since "acórdão" is a general term, maybe it's not marked. Wait, the example in the guidelines includes "REsp n . 1694984/MS" as jurisprudencia. So if the text has "acórdão" without a specific identifier, it's not marked. But in the input, it's "acórdão de minha relatoria", which is a reference to a specific decision. However, the user's guidelines state that only specific references (like numbers, siglas, etc.) should be marked. Since "acórdão" is a general term, it's not marked. Therefore, only "PÁTIO DA POLÍCIA CIVIL" is local, "CPP" is legislacao, and "art. 312 , p.u do CPP" is part of the legislacao. Wait, but "CPP" is the code, so "CPP" is legislacao. The "art. 312" is part of the code, so the entire "art. 312 , p.u do CPP" is legislacao. Also, "CPP" is part of that reference. So the entire "art. 312 , p.u do CPP" is marked as legislacao. Also, "PÁTIO DA POLÍCIA CIVIL" is local. The "acórdão" is not marked because it's a general term. So the final HTML would have those two spans.
+</think>
+
+Cumpre ressaltar que conforme consta na FAC do paciente acostada às fls.319/324 o paciente já foi investigado e processado por crime contra o patrimônio e teve sua prisão preventiva decretada nos autos que originaram o presente HC em virtude de violação de uma das medidas cautelares diversas da prisão impostas pelo Magistrado a quo quando da concessão da liberdade provisória , nos termos do disposto no art . 312 , p.u do CPP , qual seja , a obrigação de informar qualquer alteração de seu endereço residencial . Neste sentido , <span class="jurisprudencia">acórdão</span> de minha relatoria : EMENTA : HABEAS CORPUS - FURTO TENTADO - <span class="local">PÁTIO DA POLÍCIA CIVIL</span> - PRISÃO EM FLAGRANTE CONVERTIDA EM PREVENTIVA - PRESENÇA DOS REQUISITOS DO <span class="legislacao">art . 312 , p.u do CPP</span> .

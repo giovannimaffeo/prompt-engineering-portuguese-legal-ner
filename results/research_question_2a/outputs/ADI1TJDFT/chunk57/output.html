@@ -1,0 +1,119 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is about the legislative and executive powers of the Distrito Federal, referencing the Lei Orgânica do Distrito Federal. 
+
+Looking for entities:
+
+- "Poder Legislativo" and "Poder Executivo Distrital" are both powers, but the task mentions "pessoa" and "organizacao". Wait, "Poder" here might refer to governmental branches, which are organizations. But the exact terms might need checking. However, the example output uses "organizacao" for "Poder Legislativo" and "Poder Executivo Distrital". Wait, no, looking at the sample output, maybe not. Wait, the sample output provided by the user shows that "Poder Legislativo" and "Poder Executivo Distrital" are marked as "organizacao"? Wait, no, the user's example output isn't shown here. Wait, the user provided the input and output as examples. Wait, the user's input is the text, and the output is the HTML with tags. Let me check the example again.
+
+Wait, the user's input is: "Ocorre que oPoder Legislativo e oPoder Executivo Distrital extraem suas competências diretamente da ordem constitucional máxima do ente federativo , qual seja : a Lei Orgânica do Distrito Federal , não competindo a um Poder conferir atribuições ou autorizações ao outro ."
+
+In the output, the user's example (which I can't see, but the user provided the input and output as examples) might have certain entities. But since I don't have the example, I need to process based on the given text.
+
+So, in the input text, the entities to identify are:
+
+- "Poder Legislativo" and "Poder Executivo Distrital" – these are governmental powers, which might be considered as organizations? Or maybe they are not entities. Wait, the task says to mark 'organizacao' for organizations. But "Poder Legislativo" is a branch of government, which is an organization. So perhaps they should be marked as 'organizacao'.
+
+- "Lei Orgânica do Distrito Federal" is a law, so that's 'legislacao'.
+
+- "Distrito Federal" is a local entity, so 'local'.
+
+Wait, but "Distrito Federal" is a local entity, so 'local'. Also, "Lei Orgânica do Distrito Federal" is a law, so 'legislacao'.
+
+Other parts: "ente federativo" – that's a local entity, so 'local'? Or maybe not. The term "ente federativo" refers to a federal entity, which is a local entity. So 'local'.
+
+"ordem constitucional máxima" – that's a constitutional order, not an entity. So no tag.
+
+"não competindo a um Poder conferir atribuições ou autorizações ao outro" – "Poder" here refers to the legislative and executive powers, which are organizations. So those instances of "Poder" should be marked as 'organizacao'.
+
+Wait, but in the original text, the user wrote "oPoder Legislativo" and "oPoder Executivo Distrital". The "o" is part of the text, but the actual entity is "Poder Legislativo" and "Poder Executivo Distrital". So I need to check if the "o" is part of the entity or not. The original text has "oPoder" which is "o Poder" (the article "o" + "Poder"). So the entity is "Poder Legislativo" and "Poder Executivo Distrital". So the "o" is part of the text, but the entity starts with "Poder".
+
+Wait, the original text is: "oPoder Legislativo e oPoder Executivo Distrital". So the "o" is part of the text, but the entity is "Poder Legislativo" and "Poder Executivo Distrital". So the "o" is part of the text, but the entity is the full term. So I need to check if the "o" is part of the entity or not. Since the user's example output (which I can't see) might have the "Poder" marked as 'organizacao', but the "o" is part of the text. Wait, but the user's input has "oPoder" which is "o Poder" (the article "o" + "Poder"). So the entity is "Poder Legislativo" and "Poder Executivo Distrital". Therefore, the "o" is part of the text, but the entity starts with "Poder".
+
+Wait, but the user's input has "oPoder" which is "o Poder" (the article "o" + "Poder"). So the entity is "Poder Legislativo" and "Poder Executivo Distrital". Therefore, the "o" is part of the text, but the entity is "Poder Legislativo" and "Poder Executivo Distrital". So the "o" is part of the text, but the entity is the full term. Therefore, the "o" is not part of the entity. So the entity is "Poder Legislativo" and "Poder Executivo Distrital".
+
+So, in the text, the entities are:
+
+- "Poder Legislativo" → 'organizacao'
+
+- "Poder Executivo Distrital" → 'organizacao'
+
+- "Lei Orgânica do Distrito Federal" → 'legislacao'
+
+- "Distrito Federal" → 'local'
+
+- "ente federativo" → 'local' (since it refers to a local entity)
+
+Wait, but "ente federativo" is a term that refers to a federal entity, which is a local entity. So 'local'.
+
+So, the HTML should have:
+
+- <span class="organizacao">Poder Legislativo</span> e <span class="organizacao">Poder Executivo Distrital</span> extraem suas competências diretamente da ordem constitucional máxima do <span class="local">ente federativo</span> , qual seja : <span class="legislacao">Lei Orgânica do Distrito Federal</span> , não competindo a um <span class="organizacao">Poder</span> conferir atribuições ou autorizações ao outro .
+
+Wait, but "Poder" in the last part is part of the text. The original text says "não competindo a um Poder conferir atribuições ou autorizações ao outro". So "Poder" here refers to the same powers as before. So "Poder" should be marked as 'organizacao'.
+
+But in the original text, the "Poder" is part of the sentence. So the entire "Poder" is the entity. So the HTML would have:
+
+<span class="organizacao">Poder</span> conferir atribuições ou autorizações ao outro.
+
+Wait, but the original text has "não competindo a um Poder conferir atribuições ou autorizações ao outro". So the "Poder" here is the same as the previous ones. So "Poder" should be marked as 'organizacao'.
+
+But in the original text, the "Poder" is part of the sentence. So the entire "Poder" is the entity. So the HTML would have:
+
+<span class="organizacao">Poder</span> conferir atribuições ou autorizações ao outro.
+
+But wait, the original text has "oPoder Legislativo" and "oPoder Executivo Distrital". The "o" is part of the text, but the entity is "Poder Legislativo" and "Poder Executivo Distrital". So the "o" is not part of the entity. Therefore, the "Poder" in the last part is part of the entity. So "Poder" is the entity, and should be marked as 'organizacao'.
+
+So putting it all together:
+
+The text becomes:
+
+Ocorre que o<span class="organizacao">Poder Legislativo</span> e o<span class="organizacao">Poder Executivo Distrital</span> extraem suas competências diretamente da ordem constitucional máxima do <span class="local">ente federativo</span> , qual seja : <span class="legislacao">Lei Orgânica do Distrito Federal</span> , não competindo a um <span class="organizacao">Poder</span> conferir atribuições ou autorizações ao outro .
+
+Wait, but the original text has "oPoder" which is "o Poder" (the article "o" + "Poder"). So the "o" is part of the text, but the entity is "Poder Legislativo" and "Poder Executivo Distrital". Therefore, the "o" is not part of the entity. So the entity is "Poder Legislativo" and "Poder Executivo Distrital", which includes the "Poder" part. So the "o" is part of the text, but the entity starts with "Poder".
+
+Wait, but the original text is "oPoder Legislativo" which is "o Poder Legislativo" (the article "o" + "Poder Legislativo"). So the entity is "Poder Legislativo", which includes the "Poder" part. Therefore, the "o" is part of the text, but the entity is "Poder Legislativo".
+
+So in the HTML, the "o" is not part of the entity. Therefore, the entity is "Poder Legislativo" and "Poder Executivo Distrital".
+
+So the HTML would have:
+
+Ocorre que o<span class="organizacao">Poder Legislativo</span> e o<span class="organizacao">Poder Executivo Distrital</span> extraem suas competências diretamente da ordem constitucional máxima do <span class="local">ente federativo</span> , qual seja : <span class="legislacao">Lei Orgânica do Distrito Federal</span> , não competindo a um <span class="organizacao">Poder</span> conferir atribuições ou autorizações ao outro .
+
+Wait, but the "Poder" in the last part is part of the sentence. So the "Poder" is the same as the previous ones. So it should be marked as 'organizacao'.
+
+But in the original text, the "Poder" is part of the sentence. So the entire "Poder" is the entity. Therefore, the HTML should have:
+
+Ocorre que o<span class="organizacao">Poder Legislativo</span> e o<span class="organizacao">Poder Executivo Distrital</span> extraem suas competências diretamente da ordem constitucional máxima do <span class="local">ente federativo</span> , qual seja : <span class="legislacao">Lei Orgânica do Distrito Federal</span> , não competindo a um <span class="organizacao">Poder</span> conferir atribuições ou autorizações ao outro .
+
+But wait, the original text has "não competindo a um Poder conferir atribuições ou autorizações ao outro". So the "Poder" here is the same as the previous ones. Therefore, it should be marked as 'organizacao'.
+
+So the final HTML would have the entities marked as follows:
+
+- "Poder Legislativo" → 'organizacao'
+
+- "Poder Executivo Distrital" → 'organizacao'
+
+- "Lei Orgânica do Distrito Federal" → 'legislacao'
+
+- "Distrito Federal" → 'local'
+
+- "ente federativo" → 'local'
+
+- "Poder" → 'organizacao'
+
+Wait, but "ente federativo" is a local entity, so 'local'.
+
+So the final HTML would be:
+
+Ocorre que o<span class="organizacao">Poder Legislativo</span> e o<span class="organizacao">Poder Executivo Distrital</span> extraem suas competências diretamente da ordem constitucional máxima do <span class="local">ente federativo</span> , qual seja : <span class="legislacao">Lei Orgânica do Distrito Federal</span> , não competindo a um <span class="organizacao">Poder</span> conferir atribuições ou autorizações ao outro .
+
+But wait, the original text has "oPoder" which is "o Poder" (the article "o" + "Poder"). So the "o" is part of the text, but the entity is "Poder Legislativo" and "Poder Executivo Distrital". Therefore, the "o" is not part of the entity. So the entity is "Poder Legislativo" and "Poder Executivo Distrital".
+
+But in the original text, the "Poder" in the last part is part of the sentence. So the "Poder" is the same as the previous ones. Therefore, it should be marked as 'organizacao'.
+
+So the final HTML would have the entities marked as described.
+</think>
+
+Ocorre que o<span class="organizacao">Poder Legislativo</span> e o<span class="organizacao">Poder Executivo Distrital</span> extraem suas competências diretamente da ordem constitucional máxima do <span class="local">ente federativo</span> , qual seja : <span class="legislacao">Lei Orgânica do Distrito Federal</span> , não competindo a um <span class="organizacao">Poder</span> conferir atribuições ou autorizações ao outro .

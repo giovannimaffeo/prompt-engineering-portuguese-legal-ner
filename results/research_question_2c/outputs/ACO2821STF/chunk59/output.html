@@ -1,0 +1,46 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text: "Supremo Tribunal Federal ACO 2821 A GR / MT postulou a inadmissão do recurso de agravo interno interposto pela União ."
+
+Let me break it down word by word.
+
+"Supremo Tribunal Federal" – that's the name of a Brazilian court, so it's an organization. So I'll mark that as organizacao.
+
+"ACO 2821" – ACO might stand for something, but without more context, I'm not sure. However, since it's part of a case number (ACO 2821), maybe it's a legal reference. But the user hasn't specified to mark case numbers, so perhaps it's not an entity here. Wait, the user's example output includes "ACO 2821" as part of the text without any tags. Let me check the example again. The user provided the input and output, but in the example, the output is the same as the input. Wait, no, the user's example shows that the output is the same as the input but with entities marked. Wait, the user's example input is "Supremo Tribunal Federal ACO 2821 A GR / MT postulou a inadmissão do recurso de agravo interno interposto pela União ." and the output is the same text but with entities marked. Wait, the user's example output isn't shown here, but the user's instruction says to return the text with entities marked. So I need to process the input text.
+
+Let me go back. The input text is: "Supremo Tribunal Federal ACO 2821 A GR / MT postulou a inadmissão do recurso de agravo interno interposto pela União ."
+
+Now, let's identify each entity:
+
+- "Supremo Tribunal Federal" is an organization (organizacao).
+- "ACO 2821" – not sure, but maybe it's a case number. However, the user hasn't specified to mark case numbers, so perhaps it's not an entity here. Alternatively, "ACO" could be an acronym for a legal term, but without more context, I'll leave it as is.
+- "A GR / MT" – "GR" might stand for "Recurso de Agravo" and "MT" for "Mato Grosso" (a state in Brazil). So "GR" could be a type of legal proceeding (maybe jurisprudencia?), but "GR" is an abbreviation for "Recurso de Agravo" which is a legal term. However, the user's entities include "jurisprudencia" which refers to judicial precedents. "GR" here might be part of the case reference, not a jurisprudência. "MT" is a state, so that's a local (local).
+- "postulou" – verb, not an entity.
+- "recurso de agravo interno" – legal term, but not an entity.
+- "interposto pela União" – "União" is the Brazilian federal government, so that's an organization (organizacao).
+
+So, the entities are:
+
+- "Supremo Tribunal Federal" → organizacao
+- "MT" → local
+- "União" → organizacao
+
+Wait, "GR" might be part of the case reference. But the user hasn't specified to mark case numbers. The example input includes "ACO 2821 A GR / MT" – perhaps "GR" is a type of legal proceeding, but the user's entities don't include "procedimento" or "processo". The user's entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "GR" might not be an entity here. Similarly, "ACO 2821" is a case number, but the user hasn't specified to mark that. So I'll leave those as is.
+
+So the final HTML would have:
+
+- "Supremo Tribunal Federal" as organizacao
+- "MT" as local
+- "União" as organizacao
+
+So the output would be:
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / <span class="local">MT</span> postulou a inadmissão do recurso de agravo interno interposto pela <span class="organizacao">União</span> .
+
+Wait, but the original text has "A GR / MT" – maybe "GR" is part of the case reference. But since the user hasn't specified to mark case numbers, I'll leave them as is. Also, "GR" could be an abbreviation for "Recurso de Agravo", which is a legal term, but the user's entities don't include that. So I'll not mark it.
+
+So the final HTML would be as above.
+</think>
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / <span class="local">MT</span> postulou a inadmissão do recurso de agravo interno interposto pela <span class="organizacao">União</span> .

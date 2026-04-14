@@ -1,0 +1,74 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me break down the sentence.
+
+The text starts with "Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a Decisão proferida em 9 de novembro de 2017 , que negou seguimento aos Embargos de Declaração opostos por Nelson Barroso Ferreira contra o Acórdão proferido por este Tribunal nos autos do Recurso em Sentido Estrito nº 109-80.2017.7.01.0201 , por seus próprios e jurídicos fundamentos ."
+
+Looking for entities:
+
+1. "Nelson Barroso Ferreira" is a person's name. So that's a 'pessoa'.
+2. "Acórdão" is a legal term, but I need to check if it's part of a specific entity. Wait, the entities are 'jurisprudencia' or 'legislacao'? Maybe 'Acórdão' refers to a judicial decision, which might fall under 'jurisprudencia' or 'legislacao'? Wait, 'jurisprudencia' is more about judicial precedents, while 'legislacao' is about laws. Since 'Acórdão' is a court decision, maybe it's part of 'jurisprudencia'? Or perhaps it's a 'organizacao'? Hmm, maybe not. Let me think again. The term 'Acórdão' is a judicial decision, so maybe it's part of 'jurisprudencia' as a legal entity. But I'm not sure. Alternatively, maybe it's part of the 'legislacao'? No, because 'legislacao' refers to laws, not court decisions. So perhaps 'Acórdão' is part of 'jurisprudencia'?
+
+Wait, the user's example output might help. Let me check the sample input and output. Wait, the user provided the input and the output. Wait, no, the user hasn't provided an example output yet. Wait, the user's instruction says to return only the text with the HTML tags. So I need to proceed.
+
+Another entity: "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" – this seems like a legal case number, so maybe it's part of 'organizacao'? Or perhaps it's a 'legislacao'? No, case numbers are part of the legal process, maybe 'organizacao'? Or maybe it's a 'local'? No, the number is a case identifier. Maybe it's not an entity. Wait, the user's entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So the case number might not be any of these. So perhaps it's not marked.
+
+"9 de novembro de 2017" is a date, so that's 'tempo'.
+
+"Este Tribunal" refers to the court, which is an organization. So 'organizacao'.
+
+"Embargos de Declaração" – these are legal procedures, maybe part of 'jurisprudencia'? Or perhaps not. Maybe they are part of the legal process, but not an entity. Wait, the user's entities include 'jurisprudencia' which refers to judicial precedents. So 'Embargos de Declaração' might be a type of legal action, but not an entity. So maybe not marked.
+
+"Agravo Interno" – this is a legal term, but again, not sure if it's an entity. Maybe it's part of 'jurisprudencia'? Or perhaps it's a 'organizacao'? Not sure. Maybe it's not an entity.
+
+"Acórdão" – as mentioned earlier, this is a judicial decision, so maybe 'jurisprudencia'.
+
+"Decisão" – this is a decision, which could be part of 'jurisprudencia' or 'legislacao'? Probably 'jurisprudencia'.
+
+"Recurso em Sentido Estrito" – this is a legal term, but again, not sure. Maybe it's part of 'organizacao'? Or not an entity.
+
+So, let's go step by step.
+
+First, "Nelson Barroso Ferreira" is a person, so <span class="pessoa">Nelson Barroso Ferreira</span>.
+
+"9 de novembro de 2017" is a date, so <span class="tempo">9 de novembro de 2017</span>.
+
+"Este Tribunal" refers to the court, which is an organization, so <span class="organizacao">Este Tribunal</span>.
+
+"Acórdão" – since it's a judicial decision, maybe 'jurisprudencia'? Or perhaps it's part of 'legislacao'? Wait, 'legislacao' is laws, not court decisions. So 'jurisprudencia' is more appropriate. So <span class="jurisprudencia">Acórdão</span>.
+
+"Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" – the case number might not be an entity, but the 'Recurso em Sentido Estrito' is a legal term. However, the user's entities don't include legal terms unless they are part of the specified categories. Since the case number is part of the case, maybe it's not an entity. So perhaps leave it as is.
+
+"Decisão" – this is a decision, which could be part of 'jurisprudencia' or 'legislacao'. Since it's a court decision, 'jurisprudencia' is more likely. So <span class="jurisprudencia">Decisão</span>.
+
+"Embargos de Declaração" – these are legal procedures, but not an entity. So leave as is.
+
+"Agravo Interno" – legal term, not an entity. So leave as is.
+
+"jurídicos fundamentos" – this is part of the text, not an entity. So leave as is.
+
+Putting it all together:
+
+Original text: "Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a Decisão proferida em 9 de novembro de 2017 , que negou seguimento aos Embargos de Declaração opostos por Nelson Barroso Ferreira contra o Acórdão proferido por este Tribunal nos autos do Recurso em Sentido Estrito nº 109-80.2017.7.01.0201 , por seus próprios e jurídicos fundamentos ."
+
+Marked entities:
+
+- Nelson Barroso Ferreira → pessoa
+- 9 de novembro de 2017 → tempo
+- Este Tribunal → organizacao
+- Acórdão → jurisprudencia
+- Decisão → jurisprudencia
+
+Wait, but "Acórdão" is a judicial decision, so maybe it's part of 'jurisprudencia'. Similarly, "Decisão" is a decision, so also 'jurisprudencia'.
+
+So the HTML would be:
+
+Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a <span class="jurisprudencia">Decisão</span> proferida em <span class="tempo">9 de novembro de 2017</span> , que negou seguimento aos Embargos de Declaração opostos por <span class="pessoa">Nelson Barroso Ferreira</span> contra o <span class="jurisprudencia">Acórdão</span> proferido por <span class="organizacao">este Tribunal</span> nos autos do Recurso em Sentido Estrito nº 109-80.2017.7.01.0201 , por seus próprios e jurídicos fundamentos .
+
+Wait, but "Acórdão" is a singular, so maybe it's a single entity. Also, "Decisão" is a decision, so both are marked as jurisprudencia.
+
+I think that's all. Let me check again for any other entities. The case number is part of the case, but not an entity. The rest seems covered.
+</think>
+
+Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a <span class="jurisprudencia">Decisão</span> proferida em <span class="tempo">9 de novembro de 2017</span> , que negou seguimento aos Embargos de Declaração opostos por <span class="pessoa">Nelson Barroso Ferreira</span> contra o <span class="jurisprudencia">Acórdão</span> proferido por <span class="organizacao">este Tribunal</span> nos autos do Recurso em Sentido Estrito nº 109-80.2017.7.01.0201 , por seus próprios e jurídicos fundamentos .

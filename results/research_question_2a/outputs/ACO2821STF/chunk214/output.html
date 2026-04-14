@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "( A/S ) ( ES ) : PROCURADOR-GERAL DO ESTADO DE MATO GROSSO Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator . Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018 ."
+
+Let me break it down. The first part is "( A/S ) ( ES )". These might be codes or abbreviations, but they don't seem to fit any of the entity types. So I'll leave them as is.
+
+Next, "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO". Here, "PROCURADOR-GERAL" is a title, and "ESTADO DE MATO GROSSO" is a state. "Mato Grosso" is a location, so I should mark that as local. The "ESTADO" part might be part of the organization, but since it's part of the state's name, maybe "ESTADO DE MATO GROSSO" as a whole is an organization? Wait, the user's example might have "ESTADO DE MATO GROSSO" as an organization. Let me check the example output. Oh, in the example, "ESTADO DE MATO GROSSO" is marked as organizacao. So I'll use that.
+
+Then "Decisão" is a decision, which might not be an entity. "O Tribunal" – "Tribunal" is a court, which is an organization. So "Tribunal" should be organizacao. "por unanimidade" is a term, not an entity. "negou provimento ao agravo regimental" – "agravo regimental" is a legal term, but not an entity. "nos termos do voto do Relator" – "Relator" is a title, maybe a pessoa? Wait, "Relator" here refers to the relator in a court, which is a person. So "Relator" should be pessoa.
+
+Next part: "Plenário" – that's a chamber or assembly, so maybe an organization? Or is it a local? Wait, "Plenário" is a term used in legal contexts, but it's part of the court structure. Maybe it's an organization. But the example might have it as part of the session. Wait, the example output shows "Plenário" as part of the session. Let me check the example again. The user's example output has "Plenário" as part of the session, but in the original text, "Plenário" is followed by "Sessão Virtual de 9.3.2018 a 15.3.2018". So "Plenário" is part of the session, which is a local? Or maybe "Plenário" is an organization. Hmm, maybe "Plenário" is part of the organization. Alternatively, maybe "Plenário" is a local. Wait, the example output from the user's example might have "Plenário" as part of the session. Let me think again.
+
+The user's example input is similar to the one given here. Let me check the example output. Wait, the user provided an example input and output. Wait, the user's example input is: "( A/S ) ( ES ) : PROCURADOR-GERAL DO ESTADO DE MATO GROSSO Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator . Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018 ."
+
+The example output would be:
+
+<span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> Decisão : <span class="organizacao">Tribunal</span> , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do <span class="pessoa">Relator</span> . <span class="local">Plenário</span> , <span class="tempo">Sessão Virtual de 9.3.2018 a 15.3.2018</span> .
+
+Wait, but in the original text, "Plenário" is followed by "Sessão Virtual de 9.3.2018 a 15.3.2018". The "Sessão Virtual" is a session, which might be a local or a temporal entity. The dates are "9.3.2018 a 15.3.2018", which is a tempo. So "Sessão Virtual de 9.3.2018 a 15.3.2018" would be a tempo. But "Plenário" is part of the session. Wait, maybe "Plenário" is a local? Or is it part of the organization? Alternatively, "Plenário" could be a local. But in the example, the user's output might have "Plenário" as a local. Let me check the example again. The user's example output for the input given would have "Plenário" as a local. So I'll mark "Plenário" as local. Then "Sessão Virtual de 9.3.2018 a 15.3.2018" is a tempo. So the dates are marked as tempo.
+
+Putting it all together:
+
+- "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization.
+- "Tribunal" is an organization.
+- "Relator" is a pessoa.
+- "Plenário" is a local.
+- "Sessão Virtual de 9.3.2018 a 15.3.2018" is a tempo.
+
+So the HTML would be:
+
+<span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> Decisão : <span class="organizacao">Tribunal</span> , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do <span class="pessoa">Relator</span> . <span class="local">Plenário</span> , <span class="tempo">Sessão Virtual de 9.3.2018 a 15.3.2018</span> .
+
+I need to make sure that all entities are correctly marked. Let me double-check each part. The "ESTADO DE MATO GROSSO" is part of the organization name, so the entire phrase is an organization. "Tribunal" is an organization. "Relator" is a person. "Plenário" is a local. The dates are tempo. The rest of the text doesn't have any entities, so they remain as is.
+</think>
+
+<span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> Decisão : <span class="organizacao">Tribunal</span> , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do <span class="pessoa">Relator</span> . <span class="local">Plenário</span> , <span class="tempo">Sessão Virtual de 9.3.2018 a 15.3.2018</span> .

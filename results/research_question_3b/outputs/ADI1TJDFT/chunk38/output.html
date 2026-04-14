@@ -1,0 +1,69 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about a legal action, mentioning things like "ADI Código de Verificação" and references to legal articles and laws. 
+
+Starting with the first part: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". Here, "ADI" is likely an acronym for "Ação Direta de Inconstitucionalidade", which is a legal term. But according to the guidelines, I should only mark entities that are specific names. "ADI" might be a legal term, but it's not a specific entity like a law or a case. Wait, the example output shows "ADI Código de Verificação" as a jurisprudencia? Wait, no. Let me check the example output again. Wait, the user provided an example input and output. Wait, no, the user hasn't provided an example output yet. Wait, the user's instruction says to return only the annotated text. Let me focus on the input text given.
+
+Looking at the input text: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 15 previsão constitucional distrital de que compete privativamente ao Governador '' celebrar ou autorizar convênios '' ( art . 100 , inciso XXIII , LODF ) e com os princípios da independência e harmonia dos Poderes ( art . 53 , `` caput '' , LODF ) . Acrescente-se , por oportuno , que as afirmações apresentadas pelo Excelentíssimo Senhor GOVERNADOR , em suas informações , no sentido de que a lei não ostentaria vícios de iniciativa , pois `` ( ... ) não foi sensivelmente alterada a estrutura administrativa distrital , nem criadas obrigações , porém faculdades '' ( fl . 53 ) , não são suficientes para afastar o vício de iniciativa que macula a norma ."
+
+First, I need to identify each entity. Let's go step by step.
+
+1. "Ação Direta de Inconstitucionalidade" – This is a legal term, but it's a type of legal action. However, according to the definitions, jurisprudencia refers to decisions, precedents, etc. But "Ação Direta de Inconstitucionalidade" is a legal procedure, not a specific case or decision. So maybe it's not an entity here. Wait, the example output might have marked it as jurisprudencia? Wait, the user hasn't provided an example output yet. Let me check the guidelines again.
+
+The user's instructions say to mark entities like 'pessoa', 'organizacao', 'tempo', 'local', 'legislacao', and 'jurisprudencia'. 
+
+Looking at the input text:
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – This is a person's name (SILVANIO BARBOSA DOS SANTOS) and an organization (GABINETE DO DESEMBARGADOR). So "SILVANIO BARBOSA DOS SANTOS" is a pessoa, and "GABINETE DO DESEMBARGADOR" is an organizacao.
+
+- "GOVERNADOR" – This is a title, not a specific name, so it's not a pessoa. But "GOVERNADOR" is a title, so maybe not an entity. Wait, the text mentions "Excelentíssimo Senhor GOVERNADOR" – here, "GOVERNADOR" is a title, not a specific person, so it's not a pessoa. However, in the text, there's a mention of "GOVERNADOR" as a title, but the actual person is not named. So maybe not an entity.
+
+- "LODF" – This is likely an acronym for "Lei Orgânica do Distrito Federal", which is a legislation. So "LODF" should be marked as legislacao.
+
+- "art . 100 , inciso XXIII , LODF" – "art" is short for "artigo", so "art. 100" refers to an article in a law, which is part of the legislation. So "art. 100" and "LODF" are part of the legislacao.
+
+- "caput" – This is a legal term referring to the main part of an article, but it's not a specific entity. So maybe not marked.
+
+- "fl . 53" – "fl" is short for "fls" (páginas), which is a reference to a page in a document. This is a temporal reference? Wait, "fl" is a page number, which is a reference to a document, not a time. So maybe not marked. But according to the guidelines, "tempo" is for explicit time references. "fl. 53" is a page number, not a time, so it's not marked.
+
+- "ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – "ADI" is a legal term, but not a specific entity. The code "2018ACONT2JYXTK52JCSL251NVQ" seems like a unique identifier, but it's not a known entity. So maybe not marked.
+
+Now, let's go through each part:
+
+1. "Ação Direta de Inconstitucionalidade" – This is a legal term, but not a specific entity. So no tag.
+
+2. "20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – These are codes, not entities. So no tags.
+
+3. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE DO DESEMBARGADOR" is an organization (organizacao), and "SILVANIO BARBOSA DOS SANTOS" is a pessoa.
+
+4. "15 previsão constitucional distrital" – "previsão constitucional distrital" is a description, not an entity.
+
+5. "de que compete privativamente ao Governador '' celebrar ou autorizar convênios '' ( art . 100 , inciso XXIII , LODF )" – "LODF" is legislacao.
+
+6. "e com os princípios da independência e harmonia dos Poderes ( art . 53 , `` caput '' , LODF )" – "LODF" again is legislacao.
+
+7. "Acrescente-se , por oportuno , que as afirmações apresentadas pelo Excelentíssimo Senhor GOVERNADOR , em suas informações , no sentido de que a lei não ostentaria vícios de iniciativa , pois `` ( ... ) não foi sensivelmente alterada a estrutura administrativa distrital , nem criadas obrigações , porém faculdades '' ( fl . 53 ) , não são suficientes para afastar o vício de iniciativa que macula a norma ." – "GOVERNADOR" is a title, not a specific person. "fl. 53" is a page reference, not a time. So no tags here.
+
+So the entities to mark are:
+
+- "SILVANIO BARBOSA DOS SANTOS" as pessoa.
+
+- "GABINETE DO DESEMBARGADOR" as organizacao.
+
+- "LODF" as legislacao.
+
+Wait, but "LODF" is part of the legislation, so it's a legislacao. Also, "art. 100" and "art. 53" are parts of the legislation, but the guidelines say to mark the references to norms. So "LODF" is the legislation, and the articles are part of it. So "LODF" should be marked as legislacao.
+
+Now, let's structure the HTML with the appropriate tags.
+
+The text would be:
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 15 previsão constitucional distrital de que compete privativamente ao Governador '' celebrar ou autorizar convênios '' ( art . 100 , inciso XXIII , <span class="legislacao">LODF</span> ) e com os princípios da independência e harmonia dos Poderes ( art . 53 , `` caput '' , <span class="legislacao">LODF</span> ) . Acrescente-se , por oportuno , que as afirmações apresentadas pelo Excelentíssimo Senhor GOVERNADOR , em suas informações , no sentido de que a lei não ostentaria vícios de iniciativa , pois `` ( ... ) não foi sensivelmente alterada a estrutura administrativa distrital , nem criadas obrigações , porém faculdades '' ( fl . 53 ) , não são suficientes para afastar o vício de iniciativa que macula a norma .
+
+Wait, but "LODF" is mentioned twice. Each occurrence should be marked. Also, the "art. 100" and "art. 53" are parts of the legislation, but the guidelines say to mark the references to norms. So "LODF" is the legislation, and the articles are part of it. So the "LODF" should be marked as legislacao.
+
+I think that's all. Let me check again for any other entities. The "GOVERNADOR" is a title, not a specific person, so no tag. "fl. 53" is a page reference, not a time. So no tags there. The rest of the text doesn't have any other entities. So the final HTML should have the three spans as mentioned.
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 15 previsão constitucional distrital de que compete privativamente ao Governador '' celebrar ou autorizar convênios '' ( art . 100 , inciso XXIII , <span class="legislacao">LODF</span> ) e com os princípios da independência e harmonia dos Poderes ( art . 53 , `` caput '' , <span class="legislacao">LODF</span> ) . Acrescente-se , por oportuno , que as afirmações apresentadas pelo Excelentíssimo Senhor GOVERNADOR , em suas informações , no sentido de que a lei não ostentaria vícios de iniciativa , pois `` ( ... ) não foi sensivelmente alterada a estrutura administrativa distrital , nem criadas obrigações , porém faculdades '' ( fl . 53 ) , não são suficientes para afastar o vício de iniciativa que macula a norma .

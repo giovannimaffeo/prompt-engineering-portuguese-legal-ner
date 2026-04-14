@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The first sentence starts with "Após a interposição de Recurso de Revisão pelo Ministério Público ( peça n.º 4 , pp 02/03 ) , as presentes contas foram reabertas , dando ensejo à modificação do julgamento anteriormente proferido , desta feita para se considerar irregulares as contas do ex-Diretor-Geral do STM , Senhor Carlos Aureliano Motta de Souza , com a sua condenação ao pagamento do débito apurado nos autos solidariamente com o Grupo OK Construções e Empreendimentos Ltda. , e regulares com ressalva as dos demais responsáveis , consoante se depreende do Acórdão n.º 1.466/2013 – Plenário ( peça n.º 28 ) . 3 . Referido decisum foi mantido inalterado pelo Tribunal ao apreciar os Embargos de Declaração opostos pelo Grupo OK Construções e Empreendimentos Ltda. , nos termos do Acórdão n.º 633/2014 – Plenário ( peça n.º 84 ) . 4 ."
+
+Looking for "organizacao": "Ministério Público" is an organization. Also, "Grupo OK Construções e Empreendimentos Ltda." is an organization. The "STM" might be an abbreviation for a court, but the user's examples include "Tribunal de Contas" as an organization. Wait, in the example, "MINISTÉRIO PÚBLICO FEDERAL" is marked as organizacao. So "Ministério Público" here is likely an organization. Also, "Grupo OK Construções e Empreendimentos Ltda." is a company, so that's an organization.
+
+Next, "ex-Diretor-Geral do STM" – "STM" might be an organization, but the user's examples include "Tribunal de Contas" as an organization. However, "STM" could be an abbreviation for a specific court or body. But the user's guidelines say to mark full names. Since "STM" is an abbreviation, maybe it's not marked unless it's a full name. Wait, the example includes "Tribunal de Contas" as an organization. So if "STM" is a known organization, it should be marked. But the input text has "ex-Diretor-Geral do STM" – the "STM" here is part of the title, but the user's guidelines say to mark full names. Since "STM" is an abbreviation, maybe it's not marked. Wait, the user's example includes "Tribunal de Contas" as an organization. So if "STM" is a known organization, it should be marked. However, without knowing the exact context, maybe it's safer to not mark it unless it's a full name. But the user's example includes "Tribunal de Contas" as an organization, so perhaps "STM" is an organization here. Wait, the input text has "ex-Diretor-Geral do STM" – the "STM" is part of the title, but the user's guidelines say to mark full names. Since "STM" is an abbreviation, maybe it's not marked. Hmm, this is a bit ambiguous. Let me check the example again. The example input had "MINISTÉRIO PÚBLICO FEDERAL" marked as organizacao. So if "STM" is a known organization, it should be marked. But since the user hasn't provided examples with "STM", maybe it's better to leave it as is unless it's a full name. Alternatively, maybe "STM" is an abbreviation for "Superior Tribunal de Justiça" or similar, which would be an organization. But without knowing, perhaps it's safer not to mark it. Wait, the user's guidelines say to mark full names. So if "STM" is an abbreviation, it's not a full name, so it's not marked. Therefore, "STM" is not marked.
+
+Next, "Senhor Carlos Aureliano Motta de Souza" – that's a person. So that's a pessoa.
+
+Then, "Grupo OK Construções e Empreendimentos Ltda." – that's an organization.
+
+Next, "Acórdão n.º 1.466/2013 – Plenário ( peça n.º 28 )" – "Acórdão" is a jurisprudencia. The number "1.466/2013" is part of the identifier, so it's marked as jurisprudencia. Similarly, "Acórdão n.º 633/2014 – Plenário ( peça n.º 84 )" is also jurisprudencia.
+
+Now, looking for "tempo": The text has "pp 02/03" – that's a page reference, not a date. "peça n.º 28" and "peça n.º 84" are references to documents, not dates. There's no explicit date mentioned, so no tempo entities.
+
+"Local": The text mentions "STM" but that's an abbreviation. The user's guidelines say to mark explicit locations. Since there's no explicit location mentioned, no local entities.
+
+"Legislacao": The text doesn't mention any laws or legal codes, so no legislacao entities.
+
+So, the entities to mark are:
+
+- "Ministério Público" as organizacao
+- "Carlos Aureliano Motta de Souza" as pessoa
+- "Grupo OK Construções e Empreendimentos Ltda." as organizacao
+- "Acórdão n.º 1.466/2013 – Plenário" as jurisprudencia
+- "Acórdão n.º 633/2014 – Plenário" as jurisprudencia
+
+Wait, the user's example includes "REsp n . 1694984/MS" as jurisprudencia. So the numbers with "n.º" and the year are part of the identifier. Similarly, "Acórdão n.º 1.466/2013 – Plenário" should be marked as jurisprudencia. Also, "peça n.º 28" is a reference to a document, but not a jurisprudencia. The user's guidelines say to mark only specific identifiers like process numbers, etc. So "Acórdão n.º 1.466/2013 – Plenário" is a jurisprudencia.
+
+So, putting it all together, the HTML should have the spans for those entities. Let me check again to make sure I didn't miss any.
+
+Yes, that's all. Now, I'll format the text accordingly.
+</think>
+
+Após a interposição de Recurso de Revisão pelo <span class="organizacao">Ministério Público</span> ( <span class="jurisprudencia">peça n.º 4</span> , <span class="tempo">pp 02/03</span> ) , as presentes contas foram reabertas , dando ensejo à modificação do julgamento anteriormente proferido , desta feita para se considerar irregulares as contas do ex-Diretor-Geral do STM , <span class="pessoa">Senhor Carlos Aureliano Motta de Souza</span> , com a sua condenação ao pagamento do débito apurado nos autos solidariamente com o <span class="organizacao">Grupo OK Construções e Empreendimentos Ltda.</span> , e regulares com ressalva as dos demais responsáveis , consoante se depreende do <span class="jurisprudencia">Acórdão n.º 1.466/2013 – Plenário</span> ( <span class="jurisprudencia">peça n.º 28</span> ) . 3 . Referido decisum foi mantido inalterado pelo Tribunal ao apreciar os Embargos de Declaração opostos pelo <span class="organizacao">Grupo OK Construções e Empreendimentos Ltda.</span> , nos termos do <span class="jurisprudencia">Acórdão n.º 633/2014 – Plenário</span> ( <span class="jurisprudencia">peça n.º 84</span> ) . 4 .

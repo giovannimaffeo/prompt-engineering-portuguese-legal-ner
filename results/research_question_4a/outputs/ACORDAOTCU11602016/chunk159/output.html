@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each span needs a class indicating the type.
+
+First, I need to understand the definitions for each entity. Let me go through them again to make sure I don't miss any details. 
+
+Pessoa is for names of individuals, like "Ana Silva" or "Carlos de Souza". So any full name or nickname should be marked. But terms like "réu" or "vítima" are generic and shouldn't be marked. 
+
+Organizacao includes formal entities like government bodies, courts, companies. For example, "MINISTÉRIO PÚBLICO FEDERAL" is an organization. Also, things like "4ª Turma Cível" should be marked as organizacao.
+
+Tempo refers to explicit time references: dates, years, months, etc. So "14/11/2017" or "março de 2013" need to be marked. But isolated times like "17:26:32" aren't included. 
+
+Local is for specific places: cities, states, countries, addresses. "Rio de Janeiro" or "Rua Maria Rita" would be local. But generic terms like "bairro" without a specific name aren't marked.
+
+Legislacao is about legal norms: laws, decrees, articles. For example, "Lei nº 8.666/93" or "art. 71 da Lei 8.666/93". The example given in the task includes "art.61 , §1º , da Lei nº 9.430/96" as legislacao. Also, "CF/88" refers to the Federal Constitution, so that's legislacao.
+
+Jurisprudencia is for judicial decisions, precedents, súmulas. Examples like "REsp 1694984/MS" or "Súmula 331 do TST" are jurisprudencia. Even if it's just "Acórdão n. 999404", that's jurisprudencia. But if the term is used generically, like "súmula" without a specific reference, it's not marked.
+
+Now, looking at the input text. Let me parse each sentence carefully.
+
+First sentence: "Acórdão 3003/2010 - Plenário | Relator : VALMIR CAMPELO O pagamento antecipado não é vedado pelo ordenamento jurídico , contudo , é admitido apenas em situações excepcionais . A possibilidade de pagamento adiantado deve ser condicionada à existência de interesse público devidamente demonstrado , previsão no edital e exigência de garantias . Acórdão 3614/2013 - Plenário | Relator : BENJAMIN ZYMLER ” Em regra , os pagamentos relativos a contratos devem ser efetuados após o regular cumprimento das obrigações . Pagamentos antecipados somente devem ser admitidos quando houver garantias suficientes de ressarcimento ao erário em caso de não cumprimento obrigacional , comprovada economia de recursos e desde que haja a devida justificativa . Acórdão 0496/2012 - Plenário | Relator : RAIMUNDO CARREIRO 24 ."
+
+Looking for entities:
+
+- "Acórdão 3003/2010" – this is a judicial decision, so jurisprudencia. The number is part of the identifier, so it should be marked. Similarly, "Acórdão 3614/2013" and "Acórdão 0496/2012" are all jurisprudencia. The numbers are identifiers for the decisions.
+
+- "Plenário" – this is part of the court's name, like "Plenário" in the context of a court session. But according to the guidelines, "Turmas cíveis" are organizations, but "Plenário" alone might not be. Wait, the example in the guidelines says "4ª Turma Cível" is an organization. But "Plenário" is a chamber, so maybe it's part of the organization. However, the example given in the task's output didn't mark "Plenário" as an organization. Wait, looking back at the example input and output:
+
+In the example input, "Plenário" was not marked. The example input had "Plenário" in the text, and the output didn't mark it. So maybe "Plenário" is not considered an organization here. The user's guidelines say that "expressões que identifiquem turmas cíveis" are organizations, but "Plenário" is a different term. So perhaps "Plenário" is not an organization. Therefore, it's not marked.
+
+- "Relator : VALMIR CAMPELO" – "VALMIR CAMPELO" is a person, so that's pessoa.
+
+- "BENJAMIN ZYMLER" – another person, so pessoa.
+
+- "RAIMUNDO CARREIRO 24" – "RAIMUNDO CARREIRO" is a person, but "24" is a number. Since the last part is "24", which might be a page number or something else. But according to the guidelines, only names are marked. So "RAIMUNDO CARREIRO" is pessoa, and "24" is not an entity.
+
+Now, checking for other entities:
+
+- "Acórdão 3003/2010" – jurisprudencia. The number is part of the identifier, so the entire "Acórdão 3003/2010" is marked as jurisprudencia. Similarly for the others.
+
+- "3003/2010" – the date part is part of the jurisprudencia identifier. So the entire "Acórdão 3003/2010" is marked.
+
+- "3614/2013" and "0496/2012" are part of the jurisprudencia identifiers.
+
+- "Plenário" – not marked as an organization.
+
+- "Relator" is a title, not a person's name. So "Relator" is not marked.
+
+- "VALMIR CAMPELO" is a person.
+
+- "BENJAMIN ZYMLER" is a person.
+
+- "RAIMUNDO CARREIRO" is a person.
+
+- "24" is a number, not an entity.
+
+So the HTML should mark:
+
+- All the "Acórdão X/XXXX" as jurisprudencia.
+
+- The names of the relators as pessoa.
+
+Other parts of the text don't have any entities. For example, "pagamento antecipado" is a generic term, not an entity. "Interesse público" is a concept, not an entity. "Edital" is a document, but not an entity. "Garantias" is a term, not an entity. The rest of the text is just legal discussion without specific entities.
+
+So the final HTML should have the jurisprudencia tags for the acórdãos and pessoa tags for the relators.
+</think>
+
+Acórdão <span class="jurisprudencia">3003/2010</span> - Plenário | Relator : <span class="pessoa">VALMIR CAMPELO</span> O pagamento antecipado não é vedado pelo ordenamento jurídico , contudo , é admitido apenas em situações excepcionais . A possibilidade de pagamento adiantado deve ser condicionada à existência de interesse público devidamente demonstrado , previsão no edital e exigência de garantias . Acórdão <span class="jurisprudencia">3614/2013</span> - Plenário | Relator : <span class="pessoa">BENJAMIN ZYMLER</span> ” Em regra , os pagamentos relativos a contratos devem ser efetuados após o regular cumprimento das obrigações . Pagamentos antecipados somente devem ser admitidos quando houver garantias suficientes de ressarcimento ao erário em caso de não cumprimento obrigacional , comprovada economia de recursos e desde que haja a devida justificativa . Acórdão <span class="jurisprudencia">0496/2012</span> - Plenário | Relator : <span class="pessoa">RAIMUNDO CARREIRO</span> 24 .

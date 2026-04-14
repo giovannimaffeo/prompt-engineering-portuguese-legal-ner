@@ -1,0 +1,26 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to look at the input text: "LEI COMPLEMENTAR DISTRITAL Nº 34 , DE 30.09.1997 .". Let's break it down.
+
+"LEI COMPLEMENTAR DISTRITAL" – these are parts of a law's name. "LEI" is a law, which falls under legislacao. "COMPLEMENTAR" might be part of the law's title, so maybe still legislacao. "DISTRITAL" could refer to a local jurisdiction, so maybe local? Wait, but "DISTRITAL" here is part of the law's name, so perhaps it's part of the legislacao. Alternatively, maybe "DISTRITAL" is a local term, but I'm not sure. Maybe it's better to consider the entire "LEI COMPLEMENTAR DISTRITAL" as part of the legislacao since it's the name of the law.
+
+"Nº 34" is the number of the law, so that's part of the legislacao. Then "DE 30.09.1997" – the date here is a tempo entity. The date format is day.month.year, so "30.09.1997" should be marked as tempo.
+
+Putting it all together:
+
+- "LEI COMPLEMENTAR DISTRITAL Nº 34" would be legislacao.
+- "DE 30.09.1997" is tempo.
+
+Wait, but the user's example output might have different markings. Let me check the example given. The user provided the input and output. Wait, the user's example input is "LEI COMPLEMENTAR DISTRITAL Nº 34 , DE 30.09.1997 ." and the output is:
+
+<span class="legislacao">LEI COMPLEMENTAR DISTRITAL Nº 34</span> <span class="tempo">30.09.1997</span>
+
+So the entire law name is marked as legislacao, and the date as tempo. The rest is left as is. So in this case, the "DE" and the comma are part of the text but not entities. So I need to make sure that only the specific parts are marked.
+
+So the correct approach is to mark "LEI COMPLEMENTAR DISTRITAL Nº 34" as legislacao and "30.09.1997" as tempo. The rest of the text (like the comma and space) remains unchanged.
+
+Therefore, the HTML output should have those two spans. Let me make sure there are no other entities. The text doesn't mention any organizations, people, locations, or jurisprudence, so those aren't marked. The output should only have the two spans as per the example.
+</think>
+
+<span class="legislacao">LEI COMPLEMENTAR DISTRITAL Nº 34</span> <span class="tempo">30.09.1997</span>

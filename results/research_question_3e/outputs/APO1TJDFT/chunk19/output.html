@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each span needs a class indicating the type.
+
+First, I need to parse the input text carefully. Let's look at the example given. The input has several parts. The first part mentions "40 da Constituição Federal" which is a reference to a constitutional article, so that's legislacao. Then there's "Emenda Constitucional 47/2005" which is an amendment, so that's also legislacao. The next part is "Art. 3º" which is an article in a law, so that's legislacao again. 
+
+Wait, the user's example output had "art.61 , §1º , da Lei nº 9.430/96" marked as legislacao. So any reference to laws, articles, amendments, etc., should be marked as legislacao. 
+
+Looking at the input text: "40 da Constituição Federal" – "Constituição Federal" is a law, so that's legislacao. "Emenda Constitucional 47/2005" is an amendment, so legislacao. "Art. 3º" is an article, so legislacao. 
+
+Are there any other entities? Let's check. The text mentions "vinte anos de efetivo exercício no serviço público" – that's a time period, but it's part of a condition. Wait, the definition says that time is explicit dates or periods. Here, "vinte anos" is a duration, which is a time period. So that should be marked as tempo. Similarly, "trinta e cinco anos de contribuição" and "trinta anos de contribuição" are also time periods. 
+
+Wait, but the guidelines say that only explicit temporal references should be marked. The example in the guidelines includes "31 de dezembro de 2016" as tempo. So "vinte anos" is a duration, which is a time period. So those should be marked as tempo. 
+
+Similarly, "dez anos de carreira e cinco anos de efetivo exercício" – those are durations, so tempo. 
+
+So, the text has several instances of time. Each of these phrases like "vinte anos", "trinta e cinco anos", etc., should be marked as tempo. 
+
+Now, checking for other entities. Are there any organizations, people, locations, jurisprudence? The input text doesn't mention any specific people, organizations, or locations. The only entities are legislacao and tempo. 
+
+So, the steps are:
+
+1. Identify all instances of legislacao. These are references to laws, articles, amendments, etc. In the input text, "40 da Constituição Federal", "Emenda Constitucional 47/2005", and "Art. 3º" are all legislacao.
+
+2. Identify all instances of tempo. The phrases like "sessenta anos", "cinqüenta e cinco anos", "trinta e cinco anos", "trinta anos", "vinte anos", "dez anos", "cinco anos" are all time periods, so they should be marked as tempo.
+
+3. Check for other entities. The text doesn't have any other entities. 
+
+So, the HTML output should have spans for each of these. For example, "40 da Constituição Federal" becomes <span class="legislacao">40 da Constituição Federal</span>, "Emenda Constitucional 47/2005" becomes <span class="legislacao">Emenda Constitucional 47/2005</span>, and "Art. 3º" becomes <span class="legislacao">Art. 3º</span>. 
+
+For the time periods: "sessenta anos de idade", "cinqüenta e cinco anos de idade", "trinta e cinco anos de contribuição", "trinta anos de contribuição", "vinte anos de efetivo exercício", "dez anos de carreira", "cinco anos de efetivo exercício" – each of these should be marked as tempo. However, according to the guidelines, only explicit temporal references should be marked. The example in the guidelines includes "31 de dezembro de 2016" as tempo. Here, the phrases are durations, which are time periods. So they should be marked. 
+
+Wait, but the guidelines say that "tempo é definido como expressões que contenham uma referência temporal explícita, incluindo datas completas, datas parciais, anos isolados, dias da semana, meses ou intervalos de tempo". So "vinte anos" is an interval of time, so it's tempo. Therefore, each of these phrases should be marked. 
+
+So, the final output should have all these instances marked. Let me check the example again. The example input had "art.61 , §1º , da Lei nº 9.430/96" marked as legislacao. Similarly, the input here has "40 da Constituição Federal" as legislacao. 
+
+Putting it all together, the HTML should have the spans for legislacao and tempo. No other entities. 
+
+Now, let me write the HTML accordingly.
+</think>
+
+O <span class="legislacao">40 da Constituição Federal</span>, vier a preencher, cumulativamente, as seguintes condições: I - <span class="tempo">sessenta anos de idade</span>, se homem, e <span class="tempo">cinqüenta e cinco anos de idade</span>, se mulher; II - <span class="tempo">trinta e cinco anos de contribuição</span>, se homem, e <span class="tempo">trinta anos de contribuição</span>, se mulher; III - <span class="tempo">vinte anos de efetivo exercício no serviço público</span>; e IV - <span class="tempo">dez anos de carreira</span> e <span class="tempo">cinco anos de efetivo exercício no cargo em que se der a aposentadoria</span>. -- <span class="legislacao">Emenda Constitucional 47/2005</span> '' <span class="legislacao">Art. 3º</span> Ressalvado o direito de opção à aposentadoria pelas normas estabelecidas pelo <span class="legislacao">art. 40 da Constituição Federal</span> ou pelas regras estabelecidas pelos <span class="legislacao">arts</span>.

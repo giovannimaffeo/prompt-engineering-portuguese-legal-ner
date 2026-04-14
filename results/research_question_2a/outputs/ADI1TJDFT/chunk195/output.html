@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about an Action Directa de Inconstitucionalidade (ADI) with some code, mentions of the Gabinete do Desembargador Silvanio Barbosa dos Santos, references to a law (lei), and some legal reasoning.
+
+Let me break down each part:
+
+1. "Ação Direta de Inconstitucionalidade 20170020161362ADI" – This seems like a legal action, but the ADI is a type of legal proceeding. The code "20170020161362ADI" might be a reference to the case. However, the user's entities don't include legal proceedings, so maybe the ADI itself isn't an entity here. Wait, the user specified to mark entities like 'pessoa', 'organizacao', etc. So ADI is a type of legal action, but not one of the specified entities. So maybe not marked.
+
+2. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – This looks like a code, but it's not one of the entities listed. So leave as is.
+
+3. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – Here, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. So I need to mark "GABINETE DO DESEMBARGADOR" as organizacao and "SILVANIO BARBOSA DOS SANTOS" as pessoa.
+
+4. "28 lei , porque não haveria qualquer afronta à titularidade de atribuições do poder público , apenas a permissão para a realização de convênios para elaboraçaõ de estudos técnicos atinentes à concessão de alvarás , e que a decisão caberá sempre à Administração Pública ."
+
+- "28 lei" – "lei" is legislation, so "28 lei" should be marked as legislacao. Wait, but "28" might be a number, but the user's example might have "28 lei" as part of the text. So "28 lei" would be legislacao.
+
+- "Administração Pública" – This is an organization, so "Administração Pública" should be organizacao.
+
+Now, checking for other entities:
+
+- "tempo": Any dates or times? The input has "20170020161362ADI" which might be a date code, but it's not clear. The user's example might not have any explicit dates, so maybe no tempo entities.
+
+- "local": Any locations? The text mentions "GABINETE DO DESEMBARGADOR" which is a location, but that's part of the organization. The user's example might not have other local entities.
+
+- "jurisprudencia": The text mentions "ADI" which is a type of legal action, but not jurisprudencia. The example doesn't have any references to judicial precedents, so no jurisprudencia.
+
+Putting it all together:
+
+- "GABINETE DO DESEMBARGADOR" → organizacao
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+- "28 lei" → legislacao
+- "Administração Pública" → organizacao
+
+Wait, "28 lei" – the user might have "28 lei" as part of the text. But "28" is a number, and "lei" is legislation. So "28 lei" would be marked as legislacao. However, the user's example might have "28 lei" as a reference to a law, so that's correct.
+
+So the final HTML would have those spans. Let me make sure I didn't miss any other entities. The rest of the text doesn't seem to have any of the specified entities. So the output should have the spans for those parts.
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 28 <span class="legislacao">lei</span> , porque não haveria qualquer afronta à titularidade de atribuições do poder público , apenas a permissão para a realização de convênios para elaboraçaõ de estudos técnicos atinentes à concessão de alvarás , e que a decisão caberá sempre à <span class="organizacao">Administração Pública</span> .

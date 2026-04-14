@@ -1,0 +1,48 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "Interessado : Tribunal Superior Eleitoral . Decisão : O Tribunal , por unanimidade , aprovou a proposta de alteração da Resolução-TSE n° 23.549/2017 , nos termos do voto do relator ."
+
+Let me break it down. The first part is "Interessado : Tribunal Superior Eleitoral ." Here, "Tribunal Superior Eleitoral" is an organization. So I should mark that as organizacao. 
+
+Next, "Decisão : O Tribunal , por unanimidade , aprovou a proposta de alteração da Resolução-TSE n° 23.549/2017 , nos termos do voto do relator ."
+
+The "Resolução-TSE n° 23.549/2017" is a legislative act, so that's legislacao. The "Tribunal" here refers to the same organization, Tribunal Superior Eleitoral, so that's another organizacao instance. The "n° 23.549/2017" includes a date, so that's tempo. 
+
+Wait, the number 23.549/2017 might be a resolution number with a date. The "n°" is part of the resolution's identifier, so the entire "Resolução-TSE n° 23.549/2017" is the legislation. The date part (2017) is tempo. 
+
+Also, "relator" is a person, but the text doesn't mention a name, just the title. However, the user's example might not include that. Wait, the original input doesn't have a name, just "relator", which is a role, not a specific person. So maybe "relator" isn't marked as pessoa here. 
+
+So, the entities are:
+- Tribunal Superior Eleitoral (organizacao)
+- Resolução-TSE n° 23.549/2017 (legislacao)
+- 2017 (tempo)
+- Tribunal (organizacao, since it refers to the same entity)
+
+Wait, the "Tribunal" in "O Tribunal" is the same organization, so that's another organizacao. 
+
+Putting it all together, the HTML should have spans for each of these. Let me check the example output again. The user's example output is:
+
+"Interessado : <span class="organizacao">Tribunal Superior Eleitoral</span> . Decisão : <span class="organizacao">O Tribunal</span> , por unanimidade , aprovou a proposta de alteração da <span class="legislacao">Resolução-TSE n° 23.549/2017</span> , nos termos do voto do <span class="pessoa">relator</span> ."
+
+Wait, in the example, "relator" is marked as pessoa. But the original text doesn't have a name, just the title. However, the user's example might consider "relator" as a person. Maybe in the context, "relator" refers to a person, even if not named. So I should mark "relator" as pessoa.
+
+Also, the date part "2017" in the resolution number is tempo. So the entire "Resolução-TSE n° 23.549/2017" is legislacao, and the "2017" is tempo. Wait, but the entire resolution is the legislation, and the date is part of it. So maybe the entire "Resolução-TSE n° 23.549/2017" is legislacao, and the "2017" is part of that. But the user's example doesn't split it. Let me check the user's example output again. In their example, the entire "Resolução-TSE n° 23.549/2017" is marked as legislacao. So I should do the same here.
+
+So the final HTML would have:
+
+- "Tribunal Superior Eleitoral" as organizacao
+- "O Tribunal" as organizacao
+- "Resolução-TSE n° 23.549/2017" as legislacao
+- "relator" as pessoa
+
+Wait, but the user's example output includes "relator" as pessoa. So I need to include that. Even though it's a title, maybe in this context, it's considered a person. So I'll mark "relator" as pessoa.
+
+So the final HTML would be:
+
+"Interessado : <span class="organizacao">Tribunal Superior Eleitoral</span> . Decisão : <span class="organizacao">O Tribunal</span> , por unanimidade , aprovou a proposta de alteração da <span class="legislacao">Resolução-TSE n° 23.549/2017</span> , nos termos do voto do <span class="pessoa">relator</span> ."
+
+I think that's correct. Let me make sure there are no other entities. The "n° 23.549/2017" is part of the legislation, so no need to mark "2017" as tempo. The user's example doesn't split it, so I'll follow that.
+</think>
+
+Interessado : <span class="organizacao">Tribunal Superior Eleitoral</span> . Decisão : <span class="organizacao">O Tribunal</span> , por unanimidade , aprovou a proposta de alteração da <span class="legislacao">Resolução-TSE n° 23.549/2017</span> , nos termos do voto do <span class="pessoa">relator</span> .

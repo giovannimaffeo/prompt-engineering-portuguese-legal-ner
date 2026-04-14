@@ -1,0 +1,82 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is "Documento Assinado Eletronicamente MARIA IVATÔNIA Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 3 O relatório é , em parte , o da sentença : “ RELATÓRIO ( ARTIGO 458 , I , CPC ) O SINPRO/DF - Sindicato dos Professores do Distrito Federal ajuizou ação contra o Distrito Federal formulando os seguintes pedidos : a . `` seja o Réu citado , na pessoa do seu representante legal , no endereço acima mencionado , para , querendo , responder aos termos da presente ação sob pena dos efeitos de revelia ; b ."
+
+Looking for entities:
+
+1. "MARIA IVATÔNIA" appears twice. The first instance is "MARIA IVATÔNIA Relatora" – since she's a relatora, which is a person, so that's a pessoa. The second instance is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – here, "DESEMBARGADORA" is a title, so "MARIA IVATÔNIA" is still a pessoa. Wait, but "GABINETE DA DESEMBARGADORA" might be an organization? Or is "GABINETE" part of the organization? Hmm. Maybe "GABINETE DA DESEMBARGADORA" is the organization, but the name is "MARIA IVATÔNIA" as the person. Wait, the text says "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – so the Gabinete (which is a part of the court) is associated with the Desembargadora (a judicial title), and the person is MARIA IVATÔNIA. So "MARIA IVATÔNIA" is a pessoa. The "GABINETE DA DESEMBARGADORA" might be an organization, but the exact term here is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – maybe the entire phrase is the organization? Or is "GABINETE" the organization? Not sure. Maybe "GABINETE" is part of the organization, but the main entity here is the person. Let me check the rest.
+
+Next, "SINPRO/DF - Sindicato dos Professores do Distrito Federal" – here, "SINPRO/DF" is an acronym for the organization, and "Sindicato dos Professores do Distrito Federal" is the full name. So both parts are organizacao. The "Distrito Federal" is a local, as it's a region.
+
+Then, "ARTIGO 458 , I , CPC" – "CPC" is the Código de Processo Civil, which is legislation. So "ARTIGO 458" is part of the legislation, and "CPC" is also legislation. Wait, "ARTIGO 458" is part of the legislation, so it should be marked as legislacao. "CPC" is the abbreviation for the Código de Processo Civil, so that's also legislacao.
+
+Now, "Réu" is the defendant, which is a person, but in the text, it's "Réu citado na pessoa do seu representante legal" – so "Réu" is a person, but the text refers to the defendant as a legal entity. Wait, but in legal terms, "Réu" is the defendant, which is a person or organization. However, in this context, the text says "na pessoa do seu representante legal" – meaning the defendant is a legal entity (like a company) and the representative is a person. But the actual entity here is the defendant, which might be the Distrito Federal. Wait, looking back, the original text says "O SINPRO/DF ajuizou ação contra o Distrito Federal" – so the defendant is the Distrito Federal, which is a local entity. Wait, but "Distrito Federal" is a local, but in this case, it's a legal entity (the government of the Federal District). So maybe "Distrito Federal" is an organizacao? Or is it a local? The user's guidelines say to mark "local" for locations. So "Distrito Federal" is a local. But in some contexts, it might be considered an organization. Hmm. The user's example might have "Distrito Federal" as a local. Let me check the original text again.
+
+In the input text, "Distrito Federal" is mentioned as the defendant. So in legal terms, the Distrito Federal is a local entity (the Federal District), but it's also a legal entity (the government). However, according to the guidelines, "local" is for locations, so "Distrito Federal" would be a local. But maybe the user considers it as an organization. Wait, the user's example might have "Distrito Federal" as a local. Let me proceed with that.
+
+So, the entities to mark:
+
+- "MARIA IVATÔNIA" as pessoa (twice)
+- "SINPRO/DF" and "Sindicato dos Professores do Distrito Federal" as organizacao
+- "Distrito Federal" as local
+- "ARTIGO 458" and "CPC" as legislacao
+- "Relatório" and "ARTIGO 458" might be part of jurisprudencia? Wait, "Relatório" is part of the text, but the user's example might not have jurisprudencia. Wait, the user's example includes "jurisprudencia" for legal precedents. In the input text, there's "RELATÓRIO ( ARTIGO 458 , I , CPC )" – the "Relatório" here is part of the legal document, but not necessarily jurisprudencia. Jurisprudencia refers to judicial precedents. So unless there's a reference to a specific case or precedent, it's not marked. So in this case, "Relatório" is part of the text, not a jurisprudencia. So no need to mark that.
+
+Now, let's go through the text step by step.
+
+Original text:
+
+"Documento Assinado Eletronicamente MARIA IVATÔNIA Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 3 O relatório é , em parte , o da sentença : “ RELATÓRIO ( ARTIGO 458 , I , CPC ) O SINPRO/DF - Sindicato dos Professores do Distrito Federal ajuizou ação contra o Distrito Federal formulando os seguintes pedidos : a . `` seja o Réu citado , na pessoa do seu representante legal , no endereço acima mencionado , para , querendo , responder aos termos da presente ação sob pena dos efeitos de revelia ; b ."
+
+Breaking it down:
+
+1. "MARIA IVATÔNIA" – pessoa
+2. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – here, "GABINETE DA DESEMBARGADORA" is part of the organization? Or is "MARIA IVATÔNIA" again a pessoa? The text says "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – so the Gabinete (which is a part of the court) is associated with the Desembargadora (a judicial title), and the person is MARIA IVATÔNIA. So "MARIA IVATÔNIA" is a pessoa again. The "GABINETE DA DESEMBARGADORA" might be an organization, but the exact term is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – perhaps the entire phrase is the organization, but I'm not sure. Alternatively, "GABINETE" is the organization, and "DESEMBARGADORA" is a title. But the user's guidelines might not require marking "GABINETE" as an organization unless it's a specific entity. Since the user's example might not have that, maybe I should only mark "MARIA IVATÔNIA" as pessoa.
+
+3. "SINPRO/DF - Sindicato dos Professores do Distrito Federal" – both parts are organizacao.
+
+4. "Distrito Federal" – local.
+
+5. "ARTIGO 458" and "CPC" – legislacao.
+
+6. "Réu" – in the text, "Réu citado na pessoa do seu representante legal" – "Réu" is the defendant, which is a person, but in this context, the defendant is the Distrito Federal, which is a local. Wait, the text says "ajuizou ação contra o Distrito Federal" – so the defendant is the Distrito Federal, which is a local. But "Réu" is the defendant, which is a legal entity. However, the user's guidelines don't have a "entidade jurídica" category, so maybe "Distrito Federal" is the local, and "Réu" is not an entity here. Wait, the text says "Réu citado na pessoa do seu representante legal" – meaning the defendant is a legal entity (like a company) and the representative is a person. But in this case, the defendant is the Distrito Federal, which is a local. So "Réu" is not an entity here, but "Distrito Federal" is a local.
+
+So, the entities to mark are:
+
+- MARIA IVATÔNIA (pessoa)
+- SINPRO/DF (organizacao)
+- Sindicato dos Professores do Distrito Federal (organizacao)
+- Distrito Federal (local)
+- ARTIGO 458 (legislacao)
+- CPC (legislacao)
+
+Now, let's apply the HTML tags accordingly.
+
+The original text has "MARIA IVATÔNIA" twice. The first occurrence is "MARIA IVATÔNIA Relatora" – so "MARIA IVATÔNIA" is a pessoa. The second occurrence is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – again, "MARIA IVATÔNIA" is a pessoa.
+
+Then, "SINPRO/DF - Sindicato dos Professores do Distrito Federal" – both parts are organizacao.
+
+"Distrito Federal" is a local.
+
+"ARTIGO 458" and "CPC" are legislacao.
+
+So, the HTML would have:
+
+<span class="pessoa">MARIA IVATÔNIA</span> Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA <span class="pessoa">MARIA IVATÔNIA</span></span> 3 O relatório é , em parte , o da sentença : “ RELATÓRIO ( <span class="legislacao">ARTIGO 458</span> , I , <span class="legislacao">CPC</span> ) <span class="organizacao">SINPRO/DF - Sindicato dos Professores do <span class="local">Distrito Federal</span></span> ajuizou ação contra o <span class="local">Distrito Federal</span> formulando os seguintes pedidos : a . `` seja o <span class="pessoa">Réu</span> citado , na pessoa do seu representante legal , no endereço acima mencionado , para , querendo , responder aos termos da presente ação sob pena dos efeitos de revelia ; b .
+
+Wait, but "Réu" is the defendant, which is the Distrito Federal. However, in the text, it's "Réu citado na pessoa do seu representante legal" – so "Réu" is the defendant, which is the Distrito Federal. But according to the guidelines, "Réu" is a person? Or is it a legal entity? The user's guidelines don't have a category for legal entities, so maybe "Réu" is not an entity here. Wait, the user's example might not have "Réu" as an entity. So perhaps "Réu" is not marked. But the text says "Réu citado na pessoa do seu representante legal" – meaning the defendant is a legal entity (like a company) and the representative is a person. However, in this case, the defendant is the Distrito Federal, which is a local. So "Réu" is not an entity here. Therefore, "Réu" is not marked.
+
+So, the final HTML would have:
+
+- "MARIA IVATÔNIA" as pessoa (twice)
+- "SINPRO/DF" and "Sindicato dos Professores do Distrito Federal" as organizacao
+- "Distrito Federal" as local
+- "ARTIGO 458" and "CPC" as legislacao
+
+Now, let's structure the HTML accordingly.
+</think>
+
+Documento Assinado Eletronicamente <span class="pessoa">MARIA IVATÔNIA</span> Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA <span class="pessoa">MARIA IVATÔNIA</span></span> 3 O relatório é , em parte , o da sentença : “ RELATÓRIO ( <span class="legislacao">ARTIGO 458</span> , I , <span class="legislacao">CPC</span> ) <span class="organizacao">SINPRO/DF - Sindicato dos Professores do <span class="local">Distrito Federal</span></span> ajuizou ação contra o <span class="local">Distrito Federal</span> formulando os seguintes pedidos : a . `` seja o <span class="pessoa">Réu</span> citado , na pessoa do seu representante legal , no endereço acima mencionado , para , querendo , responder aos termos da presente ação sob pena dos efeitos de revelia ; b .

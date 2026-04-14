@@ -1,0 +1,43 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "E M E N T A Órgão : 8ª TURMA CÍVEL". Here, "8ª TURMA CÍVEL" is an organization. The guidelines mention that expressions like "4ª Turma Cível" should be marked as organizacao. So I'll wrap that in <span class="organizacao">.
+
+Next, "Classe : APELAÇÃO CÍVEL" – "APELAÇÃO CÍVEL" is a legal term but not an entity. The example shows that generic terms like "APELAÇÃO" aren't marked. So no tag here.
+
+"Processo : 20150110436469APC ( 0012843-03.2015.8.07.0001 )". The process number "20150110436469APC" and the internal number "0012843-03.2015.8.07.0001" are jurisprudencia. The example shows that identifiers like "RECURSO ESPECIAL Nº 1.583.083 - RS" are marked as jurisprudencia. So both parts should be in <span class="jurisprudencia">.
+
+"Apelante ( s ) : BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA". Both "BRASILIA CURSOS E CONCURSOS LTDA" and "GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" are organizations. The example mentions that organizations like "UNIMED RIO COOPERATIVA..." are marked. So these should be <span class="organizacao">.
+
+"Apelado ( s ) : ALISSON SILVA BATISTA DE MORAES" – "ALISSON SILVA BATISTA DE MORAES" is a person. The example shows that full names are marked as pessoa. So wrap that in <span class="pessoa">.
+
+"Relatora : Desembargadora NÍDIA CORRÊA LIMA" – "NÍDIA CORRÊA LIMA" is a person. The title "Desembargadora" is a title, not a name, so only the name is marked.
+
+"Acórdão N. : 1082726 CIVIL E PROCESSUAL CIVIL . AÇÃO MONITÓRIA . CITAÇÃO REALIZADA APÓS O DECURSO DO PRAZO PRESCRICIONAL . PRESCRIÇÃO DA PRETENSÃO MONITÓRIA . RECONHECIMENTO . MANUTENÇÃO DA SENTENÇA . 1 . Nos termos da Súmula nº 503 do colendo Superior Tribunal de Justiça , `` O prazo para ajuizamento de ação monitória em face do emitente de cheque sem força executiva é quinquenal , a contar do dia seguinte à data de emissão estampada na cártula '' . 2 ."
+
+Here, "Súmula nº 503 do colendo Superior Tribunal de Justiça" is jurisprudencia. The example shows that "Súmula 331 do TST" is marked. So "Súmula nº 503 do colendo Superior Tribunal de Justiça" should be in <span class="jurisprudencia">. The "colendo Superior Tribunal de Justiça" is an organization, but the entire phrase is part of the jurisprudencia reference. Wait, the example shows that "REsp n . 1694984/MS" is marked as jurisprudencia, even though it's part of a larger phrase. So the entire "Súmula nº 503 do colendo Superior Tribunal de Justiça" is a reference to a jurisprudência, so it should be marked as such. Also, "colendo Superior Tribunal de Justiça" is an organization, but since it's part of the jurisprudencia reference, the entire phrase is marked as jurisprudencia. Wait, the guidelines say that only the identifiers of decisions should be marked. The example shows that "Súmula 331 do TST" is marked as jurisprudencia. So in this case, "Súm, 503 do colendo Superior Tribunal de Justiça" is a reference to a súmula, so it's jurisprudencia. The "colendo Superior Tribunal de Justiça" is an organization, but since it's part of the jurisprudencia reference, the entire phrase is marked as jurisprudencia. Wait, but the example shows that "Súmula 331 do TST" is marked as jurisprudencia, even though "TST" is an organization. So in this case, the entire phrase "Súmula nº 503 do colendo Superior Tribunal de Justiça" is marked as jurisprudencia. The "colendo Superior Tribunal de Justiça" is an organization, but since it's part of the jurisprudencia reference, the entire phrase is marked as such. So I'll wrap that in <span class="jurisprudencia">.
+
+Also, the date "1o de maio de 1943" is a tempo. The example shows that "1o de maio de 1943" is marked as tempo. So that part should be in <span class="tempo">.
+
+Wait, in the input text, there's a part that says "data de emissão estampada na cártula" – "data de emissão" is a date, but the example shows that "25 DE SETEMBRO DE 2008" is marked as tempo. So any date in the text should be marked as tempo. However, in the input text, the date "1o de maio de 1943" is present. So that should be marked as tempo.
+
+Putting it all together, I need to make sure each entity is correctly identified and tagged. Let me check each part again.
+
+- "8ª TURMA CÍVEL" → organizacao
+- "20150110436469APC" → jurisprudencia
+- "0012843-03.2015.8.07.0001" → jurisprudencia
+- "BRASILIA CURSOS E CONCURSOS LTDA" → organizacao
+- "GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" → organizacao
+- "ALISSON SILVA BATISTA DE MORAES" → pessoa
+- "NÍDIA CORRÊA LIMA" → pessoa
+- "Súmula nº 503 do colendo Superior Tribunal de Justiça" → jurisprudencia
+- "1o de maio de 1943" → tempo
+
+Wait, the "colendo Superior Tribunal de Justiça" is an organization, but since it's part of the jurisprudencia reference, the entire phrase is marked as jurisprudencia. So the entire "Súmula nº 503 do colendo Superior Tribunal de Justiça" is marked as jurisprudencia. Also, the "1o de maio de 1943" is a tempo.
+
+So the final HTML should have all these tags correctly placed. Let me structure the output accordingly.
+</think>
+
+<span class="organizacao">8ª TURMA CÍVEL</span> Classe : APELAÇÃO CÍVEL N . <span class="jurisprudencia">20150110436469APC</span> ( <span class="jurisprudencia">0012843-03.2015.8.07.0001</span> ) Apelante ( s ) : <span class="organizacao">BRASILIA CURSOS E CONCURSOS LTDA</span> <span class="organizacao">GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA</span> Apelado ( s ) : <span class="pessoa">ALISSON SILVA BATISTA DE MORAES</span> Relatora : Desembargadora <span class="pessoa">NÍDIA CORRÊA LIMA</span> <span class="jurisprudencia">Acórdão N. : 1082726 CIVIL E PROCESSUAL CIVIL . AÇÃO MONITÓRIA . CITAÇÃO REALIZADA APÓS O DECURSO DO PRAZO PRESCRICIONAL . PRESCRIÇÃO DA PRETENSÃO MONITÓRIA . RECONHECIMENTO . MANUTENÇÃO DA SENTENÇA . 1 . Nos termos da <span class="jurisprudencia">Súmula nº 503 do colendo Superior Tribunal de Justiça</span> , `` O prazo para ajuizamento de ação monitória em face do emitente de cheque sem força executiva é quinquenal , a contar do dia seguinte à data de emissão estampada na cártula '' . 2 .</span>

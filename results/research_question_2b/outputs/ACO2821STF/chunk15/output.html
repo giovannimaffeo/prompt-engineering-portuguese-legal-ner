@@ -1,0 +1,71 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first part is "Por oportuno , transcrevo o inteiro teor da decisão guerreada :". Here, "decisão guerreada" might refer to a legal decision, but "guerreada" isn't one of the specified entity types. So, I don't need to mark that. The rest of the sentence doesn't seem to have any entities, so I'll leave it as is.
+
+Next, "Trata-se de ação cível originária , com pedido de tutela de urgência , ajuizada pelo Estado de Mato Grosso contra a União , em razão da negativa do Ministério da Previdência Social de expedir o Certificado de Regularidade Previdenciária CRP , previsto no Decreto Federal 3.878/2001 , sob o argumento de que o Estado teria descumprido a Lei Federal 9.717/1998 ao não enviar o Demonstrativo da Política de Investimentos DPIN e o Demonstrativo das Aplicações e Investimentos dos Recursos DAIR , relativos ao exercício de 2016 , bem como em razão da não aprovação do Projeto de Lei Complementar 1/2016 , resultante da Mensagem 93/2015 , que dispõe sobre o Plano de Custeio do Regime Próprio de Previdência Social do Estado de Mato Grosso RPPS/MT ."
+
+Looking for entities here:
+
+- "Estado de Mato Grosso" is a local entity. Wait, "Mato Grosso" is a state in Brazil, so that's a local. But "Estado" is the name of the state, so I should mark "Estado de Mato Grosso" as a local? Wait, the user's guide says "local" for locations. So "Mato Grosso" is the local. But "Estado de Mato Grosso" is the full name, so maybe the entire phrase is a local? Or just "Mato Grosso"? Hmm. The user might consider "Mato Grosso" as the local. Let me check the example given in the output. Wait, the user provided an example output where "Estado de Mato Grosso" is marked as local. Wait, no, looking at the sample output, maybe not. Wait, the user's example output isn't provided here, but the user's instruction says to mark the entities. Let me think again.
+
+In the input text, "Estado de Mato Grosso" is a legal entity, which is a state. So "Estado de Mato Grosso" is a local entity. Wait, but "Estado" is the name of the state, so "Mato Grosso" is the local. Wait, maybe "Mato Grosso" is the local, and "Estado de Mato Grosso" is the full name. But the user's guide says to mark "local" for locations. So "Mato Grosso" is the local. But the text says "Estado de Mato Grosso" as the entity. Wait, maybe "Estado de Mato Grosso" is a local. Alternatively, maybe "Mato Grosso" is the local. Let me check the example given in the user's output. Wait, the user hasn't provided an example output, but the task says to return the text with the entities marked. So I need to decide based on the guidelines.
+
+The user's guide says to mark "local" for locations. So "Mato Grosso" is a local. Also, "Ministério da Previdência Social" is an organization. "União" is an organization. "Decreto Federal 3.878/2001" is legislation. "Lei Federal 9.717/1998" is legislation. "Projeto de Lei Complementar 1/2016" is legislation. "Mensagem 93/2015" is legislation. "Plano de Custeio do Regime Próprio de Previdência Social do Estado de Mato Grosso RPPS/MT" is a legal term, but not sure if it's legislation or jurisprudence. Wait, "RPPS/MT" is the acronym for the state's own pension system, so maybe it's a local or an organization. But the user's entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So "RPPS/MT" is part of the state's system, so maybe it's a local or an organization. But the user's example might have marked "Estado de Mato Grosso" as local. Let me check the input again.
+
+In the input, "Estado de Mato Grosso" is the subject, so that's a local. "União" is an organization. "Ministério da Previdência Social" is an organization. "Decreto Federal 3.878/2001" is legislation. "Lei Federal 9.717/1998" is legislation. "Projeto de Lei Complementar 1/2016" is legislation. "Mensagem 93/2015" is legislation. "Exercício de 2016" is a time entity. "Plano de Custeio do Regime Próprio de Previdência Social do Estado de Mato Grosso RPPS/MT" – the "RPPS/MT" is an acronym for the state's pension system, so maybe it's a local or an organization. But since it's part of the state's system, perhaps it's a local. Alternatively, maybe it's an organization. But the user's example might not have that. Let me proceed.
+
+So, the entities to mark:
+
+- "Estado de Mato Grosso" as local.
+- "União" as organizacao.
+- "Ministério da Previdência Social" as organizacao.
+- "Decreto Federal 3.878/2001" as legislacao.
+- "Lei Federal 9.717/1998" as legislacao.
+- "Projeto de Lei Complementar 1/2016" as legislacao.
+- "Mensagem 93/2015" as legislacao.
+- "Exercício de 2016" as tempo.
+- "RPPS/MT" as local or organizacao. Since it's part of the state's system, maybe it's a local. But the user's example might not have that. Alternatively, maybe it's an organization. But the user's guide doesn't specify, so I'll have to make a judgment. Since "RPPS/MT" is an acronym for the state's pension system, it's a local entity. So I'll mark "RPPS/MT" as local.
+
+Wait, but the user's example output might have different markings. Since the user hasn't provided an example, I need to rely on the guidelines. The user's guide says to mark "local" for locations. So "Mato Grosso" is a local. "RPPS/MT" is part of the state's system, so maybe it's a local. Alternatively, it's an organization. But since it's a system, perhaps it's an organization. Hmm. This is a bit ambiguous. Let me check the input again. The text mentions "Plano de Custeio do Regime Próprio de Previdência Social do Estado de Mato Grosso RPPS/MT". The "RPPS/MT" is the acronym for the state's own pension system. So "RPPS/MT" is an organization? Or a local? Since it's a specific system, maybe it's an organization. But the user's guide doesn't specify. Since the user hasn't provided an example, I'll proceed with the most straightforward approach. "RPPS/MT" is part of the state's system, so maybe it's a local. Alternatively, it's an organization. But since the user's example might not have that, I'll mark "RPPS/MT" as local.
+
+Wait, but the user's guide says to mark "organizacao" for organizations. So "Ministério da Previdência Social" is an organization. "União" is an organization. "RPPS/MT" is a system, so maybe it's an organization. But I'm not sure. Alternatively, it's a local. Since the user's example might not have that, I'll proceed with the entities I can confidently identify.
+
+So, the entities to mark:
+
+- "Estado de Mato Grosso" as local.
+- "União" as organizacao.
+- "Ministério da Previdência Social" as organizacao.
+- "Decreto Federal 3.878/2001" as legislacao.
+- "Lei Federal 9.717/1998" as legislacao.
+- "Projeto de Lei Complementar 1/2016" as legislacao.
+- "Mensagem 93/2015" as legislacao.
+- "Exercício de 2016" as tempo.
+- "RPPS/MT" as local or organizacao. Let's assume it's a local.
+
+Now, I'll go through the text and replace each entity with the appropriate <span> tags.
+
+Let me write out the HTML version step by step.
+
+Original text: "Por oportuno , transcrevo o inteiro teor da decisão guerreada : “ Trata-se de ação cível originária , com pedido de tutela de urgência , ajuizada pelo Estado de Mato Grosso contra a União , em razão da negativa do Ministério da Previdência Social de expedir o Certificado de Regularidade Previdenciária CRP , previsto no Decreto Federal 3.878/2001 , sob o argumento de que o Estado teria descumprido a Lei Federal 9.717/1998 ao não enviar o Demonstrativo da Política de Investimentos DPIN e o Demonstrativo das Aplicações e Investimentos dos Recursos DAIR , relativos ao exercício de 2016 , bem como em razão da não aprovação do Projeto de Lei Complementar 1/2016 , resultante da Mensagem 93/2015 , que dispõe sobre o Plano de Custeio do Regime Próprio de Previdência Social do Estado de Mato Grosso RPPS/MT ."
+
+Now, applying the tags:
+
+- "Estado de Mato Grosso" → <span class="local">Estado de Mato Grosso</span>
+- "União" → <span class="organizacao">União</span>
+- "Ministério da Previdência Social" → <span class="organizacao">Ministério da Previdência Social</span>
+- "Decreto Federal 3.878/2001" → <span class="legislacao">Decreto Federal 3.878/2001</span>
+- "Lei Federal 9.717/1998" → <span class="legislacao">Lei Federal 9.717/1998</span>
+- "Projeto de Lei Complementar 1/2016" → <span class="legislacao">Projeto de Lei Complementar 1/2016</span>
+- "Mensagem 93/2015" → <span class="legislacao">Mensagem 93/2015</span>
+- "exercício de 2016" → <span class="tempo">exercício de 2016</span>
+- "RPPS/MT" → <span class="local">RPPS/MT</span>
+
+Wait, "exercício de 2016" is the time entity. So "exercício de 2016" is marked as tempo.
+
+Putting it all together, the HTML should have these spans. Let me make sure I didn't miss any other entities. The rest of the text doesn't have any other entities. So the final HTML should have all these tags.
+</think>
+
+Por oportuno , transcrevo o inteiro teor da decisão guerreada : “ Trata-se de ação cível originária , com pedido de tutela de urgência , ajuizada pelo <span class="local">Estado de Mato Grosso</span> contra a <span class="organizacao">União</span> , em razão da negativa do <span class="organizacao">Ministério da Previdência Social</span> de expedir o Certificado de Regularidade Previdenciária CRP , previsto no <span class="legislacao">Decreto Federal 3.878/2001</span> , sob o argumento de que o <span class="local">Estado</span> teria descumprido a <span class="legislacao">Lei Federal 9.717/1998</span> ao não enviar o Demonstrativo da Política de Investimentos DPIN e o Demonstrativo das Aplicações e Investimentos dos Recursos DAIR , relativos ao <span class="tempo">exercício de 2016</span> , bem como em razão da não aprovação do <span class="legislacao">Projeto de Lei Complementar 1/2016</span> , resultante da <span class="legislacao">Mensagem 93/2015</span> , que dispõe sobre o Plano de Custeio do Regime Próprio de Previdência Social do <span class="local">Estado de Mato Grosso</span> <span class="local">RPPS/MT</span> .

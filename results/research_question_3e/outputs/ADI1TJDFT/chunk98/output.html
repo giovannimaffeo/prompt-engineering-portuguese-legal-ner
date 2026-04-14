@@ -1,0 +1,124 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each span should have a class indicating the type.
+
+First, I need to carefully read the input text and identify which parts fit each category. Let me start by going through the text sentence by sentence.
+
+The first sentence: "Segundo este princípio , as atribuições de um poder não podem ser delegadas a outro , exceto quando houver autorização do poder constituinte originário ."
+
+I don't see any specific entities here. Words like "princípio" are general terms, not specific entities. So no spans needed here.
+
+Next sentence: "O princípio da separação de poderes é aplicável a todos os entes da federação , em razão da simetria , que deve nortear e limitar a capacidade de autoorganização ."
+
+Again, "princípio", "separação de poderes", "entes da federação", "simetria" – these are all general terms. No entities here either.
+
+Third sentence: "Dessa forma , independentemente de previsão na lei orgânica ou nas constituições federais , os entes federativos devem seguir o parâmetro da Constituição Federal no estabelecimento de suas competências , incluindo , por certo , a iniciativa de projetos de leis ."
+
+Here, "Constituição Federal" is a legislative entity. So that should be marked as legislacao. Also, "lei orgânica" is a type of legislation, but the example shows that full names are needed. Wait, the user's example had "Lei nº 9.430/96" as legislacao. In this case, "lei orgânica" is mentioned but not a specific law. So maybe it's not marked. Wait, the guidelines say that "legislação" includes "leis, códigos, constituições, decretos..." So "Constituição Federal" is definitely a legislacao. Also, "Constituição Federal" is a specific law, so it should be marked. But "lei orgânica" is a type, not a specific one. So maybe only "Constituição Federal" is marked.
+
+Next sentence: "No caso da Lei Orgânica do Distrito Federal , existe previsão expressa quanto à vedação de delegação de atribuições entre os poderes : '' Art . 53 . São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes ."
+
+Here, "Lei Orgânica do Distrito Federal" is a specific law, so that's legislacao. "Distrito Federal" is a local entity, so that's local. The "Art. 53" refers to an article in the law, which is part of the legislation, so the entire "Art. 53" should be marked as legislacao. Also, "Distrito Federal" is a local entity. The "Executivo" and "Legislativo" are parts of the government, but they are not specific organizations. The example mentioned "MINISTÉRIO PÚBLICO FEDERAL" as an organization, so maybe "Distrito Federal" is an organization? Wait, the guidelines say that "organizacao" includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas..." So "Distrito Federal" is a political entity, which is an organization. But in the example, "Distrito Federal" was marked as local. Wait, the example had "Distrito Federal" in the input and the output marked as local. Let me check the example again.
+
+In the example input, the text had "Distrito Federal" and the output marked it as local. So according to the guidelines, "Distrito Federal" is a local entity. So that should be marked as local. Also, "Lei Orgânica do Distrito Federal" is a specific law, so that's legislacao. The "Art. 53" is part of that law, so it's part of legislacao. But the user's example had "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So in this case, "Art. 53" is part of the law, so it's part of the legislacao. But the user's example included the article number and section. So in this case, "Art. 53" would be marked as legislacao. Also, "§ 1º" is part of the law, so it's part of the legislacao.
+
+Putting it all together:
+
+- "Constituição Federal" is legislacao.
+- "Lei Orgânica do Distrito Federal" is legislacao.
+- "Distrito Federal" is local.
+- "Art. 53" and "§ 1º" are part of the legislacao.
+
+So the HTML should have spans for these. Let me check if there are any other entities. The text mentions "entes federativos" which is a general term, not a specific entity. "Poderes" are general terms. "Executivo" and "Legislativo" are parts of the government, but not specific organizations. So they are not marked.
+
+Now, let me structure the HTML. The original text has "Constituição Federal" and "Lei Orgânica do Distrito Federal". The "Distrito Federal" is a local entity. The "Art. 53" and "§ 1º" are parts of the law, so they should be included in the legislacao span.
+
+So the output would be:
+
+"Segundo este princípio , as atribuições de um poder não podem ser delegadas a outro , exceto quando houver autorização do poder constituinte originário . O princípio da separação de poderes é aplicável a todos os entes da federação , em razão da simetria , que deve nortear e limitar a capacidade de autoorganização . Dessa forma , independentemente de previsão na lei orgânica ou nas constituições federais , os entes federativos devem seguir o parâmetro da <span class="legislacao">Constituição Federal</span> no estabelecimento de suas competências , incluindo , por certo , a iniciativa de projetos de leis . No caso da <span class="legislacao">Lei Orgânica do Distrito Federal</span> , existe previsão expressa quanto à vedação de delegação de atribuições entre os poderes : '' <span class="legislacao">Art . 53</span> . São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . <span class="local">Distrito Federal</span> § 1º É vedada a delegação de atribuições entre os Poderes ."
+
+Wait, the "Art. 53" is part of the "Lei Orgânica do Distrito Federal", so the entire "Art. 53" should be marked as legislacao. Also, the "§ 1º" is part of the article, so it's included. But in the example, the user had "art.61 , §1º , da Lei nº 9.430/96" as a single span. So in this case, "Art . 53 . São Poderes..." – the "Art. 53" is the article, and the "§ 1º" is the section. So perhaps the entire "Art. 53" and "§ 1º" should be included in the legislacao span. But in the original text, the "Art. 53" is followed by a period, then the text continues. So maybe the "Art. 53" is part of the legislation, and the "§ 1º" is part of the same law. So the span should include "Art. 53" and "§ 1º".
+
+Wait, the example input had "art.61 , §1º , da Lei nº 9.430/96" as a single span. So in this case, the "Art. 53" and "§ 1º" are parts of the same legislation. So I should mark them as part of the legislacao. However, in the original text, the "Art. 53" is in the middle of the sentence, and the "§ 1º" comes after. So perhaps I need to mark "Art. 53" and "§ 1º" as part of the legislacao.
+
+But in the original text, the "Art. 53" is in quotes as part of the text. Let me check the exact text:
+
+"'' Art . 53 . São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes ."
+
+Wait, the original text has "Art . 53 ." which is part of the law. So the "Art. 53" is part of the legislation. The "§ 1º" is part of the same law. Therefore, the entire "Art. 53" and "§ 1º" should be included in the legislacao span. But in the text, they are separated by a period and the text continues. So perhaps I should mark the "Art. 53" as part of the legislacao, and then "§ 1º" is part of the same legislation.
+
+But the example had "art.61 , §1º , da Lei nº 9.430/96" as one span. So maybe in this case, the "Art. 53" and "§ 1º" are part of the same legislation, so they should be included in a single span. However, the original text has them as separate parts. Let me check the exact wording again.
+
+The input text says: "No caso da Lei Orgânica do Distrito Federal , existe previsão expressa quanto à vedação de delegação de atribuições entre os poderes : '' Art . 53 . São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes ."
+
+So the "Art. 53" is in quotes, and then the text continues. The "§ 1º" is part of the same law. Therefore, the entire "Art. 53" and "§ 1º" are part of the legislation. So I should mark them as part of the legislacao. However, in the original text, they are separated by a period. But the example shows that the article and section are part of the same span. So perhaps the entire "Art. 53" and "§ 1º" should be included in the legislacao span.
+
+But the user's example had "art.61 , §1º , da Lei nº 9.430/96" as a single span. So in this case, the "Art. 53" and "§ 1º" are part of the same legislation. So I should mark them as part of the legislacao. However, the original text has them in separate parts. So perhaps I need to include both in the same span. Let me see:
+
+The text says: "'' Art . 53 . São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes ."
+
+So the "Art . 53 ." is part of the law, and then the "§ 1º" is part of the same law. Therefore, the entire "Art. 53" and "§ 1º" should be included in the legislacao span. So the span would include "Art . 53 . § 1º" as part of the legislation. Wait, but in the example, the user had "art.61 , §1º , da Lei nº 9.430/96" as one span. So the article and section are included in the same span. Therefore, in this case, the "Art. 53" and "§ 1º" are part of the same legislation, so they should be included in the span.
+
+But the original text has the "Art. 53" followed by a period, then the text continues. So the span should include "Art. 53" and "§ 1º". However, the text has "Art . 53 ." which includes the period. So perhaps the entire "Art . 53 . § 1º" should be part of the legislacao span.
+
+But the user's example shows that the article and section are included in the same span. So in this case, the "Art. 53" and "§ 1º" are part of the same legislation. Therefore, the span should include both. So the HTML would have:
+
+<span class="legislacao">Art . 53 . § 1º</span>
+
+But in the original text, there's a period after "53" and then the text continues. So the span should include "Art . 53 . § 1º".
+
+Wait, the original text has:
+
+"'' Art . 53 . São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes ."
+
+So the "Art . 53 ." is followed by the text, and then "§ 1º" is part of the same law. So the entire "Art . 53 . § 1º" should be included in the legislacao span. Therefore, the span would be:
+
+<span class="legislacao">Art . 53 . § 1º</span>
+
+But in the original text, the "Art . 53 ." is part of the law, and the "§ 1º" is part of the same law. So the entire text from "Art . 53 ." to "§ 1º" should be included. However, the text after "Art . 53 ." is part of the law's content, not the reference. Wait, the user's example had "art.61 , §1º , da Lei nº 9.430/96" as a single span. So the article and section are part of the reference to the legislation. In the current case, the text is: "Art . 53 . São Poderes..." which is the content of the law, not the reference. So maybe the "Art. 53" is the article number, and the "§ 1º" is the section. Therefore, the reference to the legislation is "Art. 53, § 1º", so the span should include "Art. 53, § 1º".
+
+But the original text has "Art . 53 ." followed by the text. So perhaps the correct way is to mark "Art . 53" as part of the legislation, and "§ 1º" as part of it as well. So the span would be "Art . 53 . § 1º".
+
+But the example had "art.61 , §1º , da Lei nº 9.430/96" as the legislacao. So the article and section are part of the reference. Therefore, in this case, the "Art. 53" and "§ 1º" are part of the legislation reference. So the span should include "Art . 53 . § 1º".
+
+But in the original text, the "Art . 53 ." is part of the law's content, not the reference. Wait, the text says: "No caso da Lei Orgânica do Distrito Federal , existe previsão expressa quanto à vedação de delegação de atribuições entre os poderes : '' Art . 53 . São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes ."
+
+So the "Art . 53 ." is the article number, and the following text is the content of the law. Therefore, the reference to the legislation is "Art. 53", and the "§ 1º" is part of the article. So the entire "Art. 53" and "§ 1º" should be included in the legislacao span. Therefore, the span would be "Art . 53 . § 1º".
+
+But in the example, the user had "art.61 , §1º , da Lei nº 9.430/96" as a single span. So in this case, the article and section are part of the reference. Therefore, the span should include "Art . 53 . § 1º".
+
+So putting it all together, the final HTML would have:
+
+- "Constituição Federal" as legislacao
+- "Lei Orgânica do Distrito Federal" as legislacao
+- "Distrito Federal" as local
+- "Art . 53 . § 1º" as legislacao
+
+So the HTML would be:
+
+"Segundo este princípio , as atribuições de um poder não podem ser delegadas a outro , exceto quando houver autorização do poder constituinte originário . O princípio da separação de poderes é aplicável a todos os entes da federação , em razão da simetria , que deve nortear e limitar a capacidade de autoorganização . Dessa forma , independentemente de previsão na lei orgânica ou nas constituições federais , os entes federativos devem seguir o parâmetro da <span class="legislacao">Constituição Federal</span> no estabelecimento de suas competências , incluindo , por certo , a iniciativa de projetos de leis . No caso da <span class="legislacao">Lei Orgânica do Distrito Federal</span> , existe previsão expressa quanto à vedação de delegação de atribuições entre os poderes : '' <span class="legislacao">Art . 53 . § 1º</span> É vedada a delegação de atribuições entre os Poderes . <span class="local">Distrito Federal</span> ."
+
+Wait, the "Distrito Federal" is mentioned again at the end. In the original text, after the "§ 1º", there's a period and then "Distrito Federal" is mentioned again. Wait, the original text is: "§ 1º É vedada a delegação de atribuições entre os Poderes . Distrito Federal ."
+
+Wait, the original text has "Distrito Federal" at the end. Let me check again:
+
+Original text: "§ 1º É vedada a delegação de atribuições entre os Poderes . Distrito Federal ."
+
+So after the "§ 1º" and the period, there's "Distrito Federal" followed by a period. So that's the local entity. Therefore, it should be marked as local.
+
+So the final HTML would have:
+
+- "Constituição Federal" as legislacao
+- "Lei Orgânica do Distrito Federal" as legislacao
+- "Art . 53 . § 1º" as legislacao
+- "Distrito Federal" as local
+
+So the final text would be:
+
+"Segundo este princípio , as atribuições de um poder não podem ser delegadas a outro , exceto quando houver autorização do poder constituinte originário . O princípio da separação de poderes é aplicável a todos os entes da federação , em razão da simetria , que deve nortear e limitar a capacidade de autoorganização . Dessa forma , independentemente de previsão na lei orgânica ou nas constituições federais , os entes federativos devem seguir o parâmetro da <span class="legislacao">Constituição Federal</span> no estabelecimento de suas competências , incluindo , por certo , a iniciativa de projetos de leis . No caso da <span class="legislacao">Lei Orgânica do Distrito Federal</span> , existe previsão expressa quanto à vedação de delegação de atribuições entre os poderes : '' <span class="legislacao">Art . 53 . § 1º</span> É vedada a delegação de atribuições entre os Poderes . <span class="local">Distrito Federal</span> ."
+
+Wait, but the "Distrito Federal" at the end is after the period. So the span should be "<span class="local">Distrito Federal</span> .".
+
+Yes. That seems correct.
+</think>
+
+Segundo este princípio , as atribuições de um poder não podem ser delegadas a outro , exceto quando houver autorização do poder constituinte originário . O princípio da separação de poderes é aplicável a todos os entes da federação , em razão da simetria , que deve nortear e limitar a capacidade de autoorganização . Dessa forma , independentemente de previsão na lei orgânica ou nas constituições federais , os entes federativos devem seguir o parâmetro da <span class="legislacao">Constituição Federal</span> no estabelecimento de suas competências , incluindo , por certo , a iniciativa de projetos de leis . No caso da <span class="legislacao">Lei Orgânica do Distrito Federal</span> , existe previsão expressa quanto à vedação de delegação de atribuições entre os poderes : '' <span class="legislacao">Art . 53 . § 1º</span> É vedada a delegação de atribuições entre os Poderes . <span class="local">Distrito Federal</span> .

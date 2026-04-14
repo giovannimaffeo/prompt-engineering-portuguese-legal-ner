@@ -1,0 +1,49 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text line by line.
+
+Starting with the first sentence: "Assevera que a gratificação `` extra '' , `` fixa '' , `` executiva '' , `` assistência e suporte '' e `` geral '' não se incorporam para qualquer efeito . Aponta ofensa aos artigos 37 , caput , da Constituição Federal . Traz arestos para o cotejo de teses . À análise . O Tribunal Regional registrou que o Reclamante não recebia `` gratificação assistência e suporte '' , `` extra '' e `` fixa '' , razão pela qual as excluo da análise em debate . Pois bem . O artigo 129 da Constituição do Estado de São Paulo expressamente dispõe acerca da base de cálculo da parcela denominada `` sexta parte '' , determinando , pois , que a referida verba deve incidir sobre os vencimentos integrais . Dessarte , esta Corte Superior firmou o entendimento de que a parcela denominada `` sexta-parte '' deve incidir sobre os vencimentos integrais do servidor ."
+
+Looking for entities:
+
+1. "Constituição Federal" – this is a legal document, so it's legislacao.
+2. "Constituição do Estado de São Paulo" – another legal document, so legislacao.
+3. "Tribunal Regional" – this is an organization, so organizacao.
+4. "Corte Superior" – this is an organization, so organizacao.
+5. "Reclamante" – this is a person, but wait, the user's guidelines say that only proper names should be marked. "Reclamante" is a generic term for the plaintiff, so it's not a person. So no tag here.
+6. The terms like "extra", "fixa", "executiva", "assistência e suporte", "geral", "sexta parte", "sexta-parte" – these are descriptors, not entities. They are part of the text but not specific entities. So no tags.
+7. "artigos 37 , caput , da Constituição Federal" – "artigos" is part of the legislation reference. The "Constituição Federal" is already marked as legislacao. The "artigos 37" is part of the legislation, so the entire "artigos 37 , caput , da Constituição Federal" should be marked as legislacao. Wait, but the user's guidelines say that only references to norms should be marked. So "artigos 37" is part of the legislation, so the whole phrase "artigos 37 , caput , da Constituição Federal" is a reference to the legislation, so it should be marked as legislacao.
+
+Wait, but in the example given, "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So in this case, "artigos 37 , caput , da Constituição Federal" would be similar. So I need to mark that part as legislacao.
+
+Also, "artigo 129 da Constituição do Estado de São Paulo" – same logic, "artigo 129" is part of the legislation reference, so the entire phrase should be marked as legislacao.
+
+Now, checking for other entities:
+
+- "Tribunal Regional" is an organization, so organizacao.
+- "Corte Superior" is an organization, so organizacao.
+- "Estado de São Paulo" is a local, so local. Wait, "Estado de São Paulo" is a state, which is a local entity. So "Estado de São Paulo" should be marked as local.
+
+Wait, the user's guidelines say that local is defined as explicit places like cities, states, countries, etc. So "Estado de São Paulo" is a state, which is a local entity. So that should be marked as local.
+
+So putting it all together:
+
+- "Constituição Federal" → legislacao
+- "Constituição do Estado de São Paulo" → legislacao
+- "Tribunal Regional" → organizacao
+- "Corte Superior" → organizacao
+- "Estado de São Paulo" → local
+- "artigos 37 , caput , da Constituição Federal" → legislacao
+- "artigo 129 da Constituição do Estado de São Paulo" → legislacao
+
+Wait, but in the input text, the "artigos 37 , caput , da Constituição Federal" is part of the sentence. So the entire phrase "artigos 37 , caput , da Constituição Federal" should be marked as legislacao. Similarly, "artigo 129 da Constituição do Estado de São Paulo" is also a reference to legislation, so that should be marked as legislacao.
+
+Also, "Constituição do Estado de São Paulo" is a legislation, so that's legislacao.
+
+So the final HTML should have these tags. Let me make sure I didn't miss any other entities. The rest of the text doesn't have any other entities. The terms like "extra", "fixa", etc., are just descriptors and not entities. "Reclamante" is a generic term, not a person. "Tribunal Regional" and "Corte Superior" are organizations. "Estado de São Paulo" is a local. The legislation references are marked as legislacao.
+
+So the output should have the appropriate spans with the correct classes.
+</think>
+
+Assevera que a gratificação `` extra '' , `` fixa '' , `` executiva '' , `` assistência e suporte '' e `` geral '' não se incorporam para qualquer efeito . Aponta ofensa aos <span class="legislacao">artigos 37 , caput , da Constituição Federal</span> . Traz arestos para o cotejo de teses . À análise . O <span class="organizacao">Tribunal Regional</span> registrou que o Reclamante não recebia `` gratificação assistência e suporte '' , `` extra '' e `` fixa '' , razão pela qual as excluo da análise em debate . Pois bem . O <span class="legislacao">artigo 129 da Constituição do Estado de São Paulo</span> expressamente dispõe acerca da base de cálculo da parcela denominada `` sexta parte '' , determinando , pois , que a referida verba deve incidir sobre os vencimentos integrais . Dessarte , esta <span class="organizacao">Corte Superior</span> firmou o entendimento de que a parcela denominada `` sexta-parte '' deve incidir sobre os vencimentos integrais do servidor .

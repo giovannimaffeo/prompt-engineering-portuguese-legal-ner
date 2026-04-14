@@ -1,0 +1,47 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me look at the example given. The input text is: "Em 02/03/2018 17:26:32 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 Brasília , 26 de outubro de 2017 ."
+
+Let me break it down word by word. 
+
+Starting with "Em 02/03/2018 17:26:32". The date "02/03/2018" is a tempo (time/date) entity. The time "17:26:32" is also tempo. So both should be marked as <span class="tempo">.
+
+Next, "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4". The URL here is part of the website, but the task mentions organizations. The domain "stm.jus.br" might relate to a government organization, so "stm.jus.br" could be an organizacao. Wait, but the example output in the user's message shows that "stm.jus.br" is marked as organizacao. Let me check that again. The user's example output has "https : //eproc2g.stm.jus.br/eproc_2g_prod/" as <span class="organizacao">. So I need to mark the entire URL as organizacao? Or just the domain part? The example shows the entire URL is marked as organizacao. So I'll follow that.
+
+Then "Brasília , 26 de outubro de 2017". "Brasília" is a local (location), so that's <span class="local">. The date "26 de outubro de 2017" is tempo. So both parts need to be marked as tempo.
+
+Wait, the original text has "Brasília , 26 de outubro de 2017 ." So "Brasília" is a local, and "26 de outubro de 2017" is tempo. So those should be marked accordingly.
+
+Now, checking for other entities. Are there any pessoas, legislações, or jurisprudências mentioned? The text mentions "Codigo Verificador" which is a code, not an entity. The URL is part of an organization. The date and time are tempo. The location is Brasília. So the entities are:
+
+- 02/03/2018 → tempo
+- 17:26:32 → tempo
+- https://eproc2g.stm.jus.br/eproc_2g_prod/ → organizacao
+- Brasília → local
+- 26 de outubro de 2017 → tempo
+
+Wait, the original text has "Brasília , 26 de outubro de 2017 ." So "Brasília" is a local, and "26 de outubro de 2017" is tempo. Also, the URL is part of an organization. The date "02/03/2018" and time "17:26:32" are tempo. 
+
+So the HTML should have:
+
+- <span class="tempo">02/03/2018</span> <span class="tempo">17:26:32</span>
+- <span class="organizacao">https://eproc2g.stm.jus.br/eproc_2g_prod/</span>
+- <span class="local">Brasília</span> <span class="tempo">26 de outubro de 2017</span>
+
+Wait, but in the original text, the URL is written as "https : //eproc2g.stm.jus.br/eproc_2g_prod/". The user's example output shows that the entire URL is marked as organizacao. So I need to include the entire URL, even with the spaces. Wait, the original text has "acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/". So the URL is "https : //eproc2g.stm.jus.br/eproc_2g_prod/". But in the example output, it's marked as organizacao. So I should mark the entire URL as organizacao, including the spaces? Or maybe the user's example has a typo. Let me check the user's example output again.
+
+The user's example output is:
+
+"Em <span class="tempo">02/03/2018</span> <span class="tempo">17:26:32</span> . Para confirmar a validade deste documento , acesse : <span class="organizacao">https : //eproc2g.stm.jus.br/eproc_2g_prod/</span> e digite o Codigo Verificador 3044c7190e4 <span class="local">Brasília</span> , <span class="tempo">26 de outubro de 2017</span> ."
+
+So the URL is marked as organizacao, including the spaces. So I need to include the entire URL as organizacao. So in the input text, the URL is "https : //eproc2g.stm.jus.br/eproc_2g_prod/", which includes the spaces. So I should wrap that entire string in <span class="organizacao">.
+
+Also, the date "26 de outubro de 2017" is tempo. So the final HTML should have all those spans.
+
+Now, putting it all together. Let me make sure I didn't miss any entities. The text doesn't mention any pessoas, legislações, or jurisprudências. So those are not present. The only entities are tempo, organizacao, local, and another tempo.
+
+So the final HTML should be as per the example, with the correct spans.
+</think>
+
+Em <span class="tempo">02/03/2018</span> <span class="tempo">17:26:32</span> . Para confirmar a validade deste documento , acesse : <span class="organizacao">https : //eproc2g.stm.jus.br/eproc_2g_prod/</span> e digite o Codigo Verificador 3044c7190e4 <span class="local">Brasília</span> , <span class="tempo">26 de outubro de 2017</span> .

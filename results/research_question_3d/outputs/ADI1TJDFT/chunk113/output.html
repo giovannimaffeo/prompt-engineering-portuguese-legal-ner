@@ -1,0 +1,44 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify which entities are present.
+
+The text starts with "Evidente , pois , a inconstitucionalidade formal da lei impugnada . Pelo exposto , julgo procedente o pedido para declarar a inconstitucionalidade formal da Lei distrital nº 5.815 , de 03/04/2017 , com efeitos ex tunc e eficácia erga omnes . É o voto . Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI D E C I S Ã O Julgar procedente o pedido e declarar a inconstitucionalidade formal da Lei Distrital n . 5.815 , de 3 de abril de 2017 , com efeitos `` ex tunc '' e eficácia `` erga omnes '' . Maioria . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 46"
+
+Looking for entities:
+
+1. **Legislação**: The text mentions "Lei distrital nº 5.815" and "Lei Distrital n . 5.815". These are laws, so they should be marked as legislação. Also, "Código de Verificação" might be a code, but the user's guidelines say to mark only specific legal norms. Since "Código de Verificação" isn't a legal document, maybe not. Wait, the example given for legislação includes "Lei nº 8.666/93", so the format here is similar. The "Lei distrital nº 5.815" and "Lei Distrital n . 5.815" are laws, so they should be marked. Also, "Ação Direta de Inconstitucionalidade 20170020161362ADI" seems like a case number, which might be jurisprudência, but the guidelines say to mark only specific judicial decisions. The example for jurisprudência includes things like "REsp 1694984/MS" or "Súmula 331 do TST". The case number here might be a case, so perhaps jurisprudência. But the user's example for jurisprudência includes "Acórdão n. 999404", so maybe the case number here is part of a judicial decision. I'll need to check.
+
+2. **Tempo**: The dates mentioned are "03/04/2017" and "3 de abril de 2017". These are explicit dates, so they should be marked as tempo.
+
+3. **Organização**: The text has "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". This seems like an organization, possibly the office of a judge. Also, "46" might be a reference, but not sure. Wait, the user's guidelines mention that "expressões que identifiquem entidades coletivas formalmente constituídas" should be marked. The "GABINETE DO DESEMBARGADOR" is an organization, so that part should be marked as organizacao. Also, "46" might be a case number or a reference, but not sure. Maybe not.
+
+4. **Pessoa**: The name "SILVANIO BARBOSA DOS SANTOS" is a full name, so that's a pessoa.
+
+5. **Jurisprudência**: The case number "20170020161362ADI" might be a case, but the example given for jurisprudência includes numbers like "REsp 1694984/MS". The format here is "20170020161362ADI", which might be a case number. However, the user's example for jurisprudência includes "Acórdão n. 999404", so numbers with "n." are marked. Here, "ADI" might be an acronym for "Ação Direta de Inconstitucionalidade", which is a type of judicial action. The case number "20170020161362ADI" could be a jurisprudência entity. Also, "Ação Direta de Inconstitucionalidade 20170020161362ADI" might be a case, so that should be marked as jurisprudência.
+
+6. **Local**: The text mentions "Lei distrital" which refers to a district law, but "Distrito Federal" is a local. However, in the text, it's "Lei distrital nº 5.815" and "Lei Distrital n . 5.815". The "Distrito Federal" is a local entity, but I don't see that in the text. Wait, the text has "Lei distrital" which refers to a district law, but the actual local might be the Distrito Federal. However, the text doesn't explicitly mention the Distrito Federal, so maybe no local here.
+
+Now, putting it all together:
+
+- "Lei distrital nº 5.815" and "Lei Distrital n . 5.815" are legislação.
+- "03/04/2017" and "3 de abril de 2017" are tempo.
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is organizacao (the organization is the cabinet of the judge).
+- "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+- "20170020161362ADI" is jurisprudência (case number).
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" is also jurisprudência, as it's a case reference.
+
+Wait, the example for jurisprudência includes "REsp 1694984/MS", which is a case number. The text has "Ação Direta de Inconstitucionalidade 20170020161362ADI" which seems like a case name followed by a number. So the case number "20170020161362ADI" should be marked as jurisprudência. Also, "ADI" stands for "Ação Direta de Inconstitucionalidade", which is a type of judicial action, so the entire reference might be a jurisprudência entity.
+
+Also, "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the code might be a reference, but the user's guidelines say to mark only specific legal norms. Since "Código de Verificação" isn't a legal document, maybe not. The part after the colon is a string of numbers and letters, which might be a code, but not sure. The user's example for legislação includes "Lei nº 8.666/93", so the format here is similar. However, "2018ACONT2JYXTK52JCSL251NVQ" doesn't look like a law. So perhaps not.
+
+Now, let me structure the HTML with the appropriate <span> tags.
+
+For "Lei distrital nº 5.815" and "Lei Distrital n . 5.815", the "Lei distrital" is part of the legislation, so the whole expression should be marked as legislação. Wait, the user's guidelines say to mark complete NPs. So "Lei distrital nº 5.815" is a NP, so the entire phrase should be marked. Similarly, "Lei Distrital n . 5.815" is the same. Also, "03/04/2017" and "3 de abril de 2017" are tempo. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is an organization (the cabinet), and "SILVANIO BARBOSA DOS SANTOS" is the person. The case number "20170020161362ADI" and "Ação Direta de Inconstitucionalidade 20170020161362ADI" should be jurisprudência.
+
+So the final HTML would have these spans. Let me check again to make sure I'm not missing any entities. Also, the user mentioned to include all modifiers, articles, possessives, etc. For example, in "Lei distrital nº 5.815", "distrital" is a modifier, so the entire phrase is marked. The same applies to "Lei Distrital n . 5.815".
+
+I think that's all. Now, I'll write the HTML accordingly.
+</think>
+
+Evidente , pois , a inconstitucionalidade formal da lei impugnada . Pelo exposto , julgo procedente o pedido para declarar a inconstitucionalidade formal da <span class="legislacao">Lei distrital nº 5.815</span> , de <span class="tempo">03/04/2017</span> , com efeitos ex tunc e eficácia erga omnes . É o voto . Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> D E C I S Ã O Julgar procedente o pedido e declarar a inconstitucionalidade formal da <span class="legislacao">Lei Distrital n . 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , com efeitos `` ex tunc '' e eficácia `` erga omnes '' . Maioria . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 46

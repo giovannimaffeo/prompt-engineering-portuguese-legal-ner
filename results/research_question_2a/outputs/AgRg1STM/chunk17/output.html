@@ -1,0 +1,27 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read the input text carefully. The text is: "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 decisão da Instância a quo . Irresignada , a Defensoria Pública da União opôs Embargos de Declaração ."
+
+Let me break it down sentence by sentence.
+
+The first part is about accessing a URL. The URL is "https://eproc2g.stm.jus.br/eproc_2g_prod/". The domain here is "stm.jus.br", which might be an organization. But the user's example output didn't mark the URL, so maybe URLs aren't considered as any of the specified entities. Wait, the user's example output didn't mark the URL, so perhaps URLs aren't part of the entities to be marked. So I should leave the URL as is.
+
+Next, "Codigo Verificador 3044c7190e4" – the code is a string, but there's no entity here. Then "decisão da Instância a quo". "Instância a quo" is a legal term referring to the instance from which the appeal comes. But "Instância" is a term, not an entity. However, "Instância a quo" might be considered as a jurisprudência or legislation? Wait, the user's example output didn't mark "Instância a quo" as any entity. So maybe it's not part of the entities to be marked.
+
+Then, "Defensoria Pública da União" – this is an organization. So I should mark that as <span class="organizacao">. Also, "Embargos de Declaração" is a legal term, but it's a type of procedural act, not one of the specified entities. The user's example output didn't mark it, so I should leave it as is.
+
+Wait, the user's example output for the input text is: 
+
+"Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 decisão da Instância a quo . Irresignada , a <span class="organizacao">Defensoria Pública da União</span> opôs Embargos de Declaração ."
+
+So in the example, only "Defensoria Pública da União" is marked as organizacao. The rest are left as is. So I need to check if there are any other entities.
+
+Looking again: "Defensoria Pública da União" is an organization. Are there any other entities? The URL is part of the text but not marked. "Instância a quo" is a legal term but not one of the specified entities. "Codigo Verificador" is a code, not an entity. "3044c7190e4" is a code, not an entity. "Irresignada" is an adjective, not an entity. "Embargos de Declaração" is a legal term but not one of the specified entities. 
+
+So the only entity here is "Defensoria Pública da União" as an organization. Therefore, the correct HTML would be to wrap that part in <span class="organizacao">. The rest remains unchanged. 
+
+I need to make sure that I don't miss any other entities. Let me check again. The URL is part of the text but not marked. The user's example output didn't mark it, so I should leave it as is. The rest of the text doesn't have any of the specified entities. So the final output should have only the organization marked.
+</think>
+
+Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 decisão da Instância a quo . Irresignada , a <span class="organizacao">Defensoria Pública da União</span> opôs Embargos de Declaração .

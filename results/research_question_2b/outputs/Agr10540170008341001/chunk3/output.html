@@ -1,0 +1,56 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal document with various elements. Let me go through each part step by step.
+
+Starting with "AGRAVO DE INSTRUMENTO-CV Nº 1.0540.17.000834-1/001 - COMARCA DE RAUL SOARES - AGRAVANTE ( S ) : GENDIRE CARVALHO DA SILVA - AGRAVADO ( A ) ( S ) : CEMIG DISTRIBUIÇÃO S/A A C Ó R D Ã O Vistos etc. , acorda , em Turma , a 8ª CÂMARA CÍVEL do Tribunal de Justiça do Estado de Minas Gerais , na conformidade da ata dos julgamentos , em negar provimento ao recurso . DES . CARLOS ROBERTO DE FARIA RELATOR . DES ."
+
+Looking for entities:
+
+1. "AGRAVO DE INSTRUMENTO-CV Nº 1.0540.17.000834-1/001" – This seems like a case number, not an entity type. So no tag needed here.
+
+2. "COMARCA DE RAUL SOARES" – "COMARCA" is a legal term, but "RAUL SOARES" is a person's name. So "RAUL SOARES" should be <span class="pessoa">.
+
+3. "AGRAVANTE ( S ) : GENDIRE CARVALHO DA SILVA" – "AGRAVANTE" is a legal term, but the name "GENDIRE CARVALHO DA SILVA" is a person. So that's a <span class="pessoa">.
+
+4. "AGRAVADO ( A ) ( S ) : CEMIG DISTRIBUIÇÃO S/A" – "AGRAVADO" is another legal term, but "CEMIG DISTRIBUIÇÃO S/A" is an organization. So that's <span class="organizacao">.
+
+5. "A C Ó R D Ã O Vistos etc. , acorda , em Turma , a 8ª CÂMARA CÍVEL do Tribunal de Justiça do Estado de Minas Gerais , na conformidade da ata dos julgamentos , em negar provimento ao recurso . DES . CARLOS ROBERTO DE FARIA RELATOR . DES ."
+
+Here, "8ª CÂMARA CÍVEL" is a court chamber, which might be a local or organization. But "CÂMARA CÍVEL" is part of the court structure, so maybe "local" isn't right. Wait, "Tribunal de Justiça do Estado de Minas Gerais" is a legal body, so that's an organization. "Estado de Minas Gerais" is a state, so that's a local. "Tribunal de Justiça" is an organization. "8ª CÂMARA CÍVEL" is part of the court, so maybe it's a local? Or perhaps it's part of the organization. Hmm, need to be careful here. The "Tribunal de Justiça" is an organization, and "Estado de Minas Gerais" is a local. The "8ª CÂMARA CÍVEL" might be a local, but I'm not sure. Alternatively, maybe "CÂMARA CÍVEL" is part of the organization. Let me check the example output given. In the sample output, "Tribunal de Justiça do Estado de Minas Gerais" is marked as "organizacao" and "Estado de Minas Gerais" as "local". So I'll follow that. So "Tribunal de Justiça" is an organization, "Estado de Minas Gerais" is a local. 
+
+Then "DES . CARLOS ROBERTO DE FARIA RELATOR . DES ." – "CARLOS ROBERTO DE FARIA" is a person, so <span class="pessoa">.
+
+Putting it all together:
+
+- "RAUL SOARES" → pessoa
+- "GENDIRE CARVALHO DA SILVA" → pessoa
+- "CEMIG DISTRIBUIÇÃO S/A" → organizacao
+- "Estado de Minas Gerais" → local
+- "Tribunal de Justiça" → organizacao
+- "CARLOS ROBERTO DE FARIA" → pessoa
+
+Wait, the original text has "Tribunal de Justiça do Estado de Minas Gerais" as a single entity. So "Tribunal de Justiça" is an organization, and "Estado de Minas Gerais" is a local. So in the text, "Tribunal de Justiça do Estado de Minas Gerais" would have "Tribunal de Justiça" as organizacao and "Estado de Minas Gerais" as local. But in the input text, it's written as "Tribunal de Justiça do Estado de Minas Gerais", so the entire phrase is part of the organization's name. Wait, maybe the entire "Tribunal de Justiça do Estado de Minas Gerais" is an organization. But the user's example output might have split it. Let me check the sample output again. The user provided the sample output as:
+
+"<span class="pessoa">RAUL SOARES</span> - AGRAVANTE ( S ) : <span class="pessoa">GENDIRE CARVALHO DA SILVA</span> - AGRAVADO ( A ) ( S ) : <span class="organizacao">CEMIG DISTRIBUIÇÃO S/A</span> A C Ó R D Ã O Vistos etc. , acorda , em Turma , a <span class="local">Estado de Minas Gerais</span> , na conformidade da ata dos julgamentos , em negar provimento ao recurso . <span class="pessoa">CARLOS ROBERTO DE FARIA</span> RELATOR . DES ."
+
+So in the sample output, "Estado de Minas Gerais" is marked as local. So I'll follow that. Therefore, in the input text, "Estado de Minas Gerais" is a local. The "Tribunal de Justiça" is part of the organization, but in the input text, it's written as "Tribunal de Justiça do Estado de Minas Gerais", which is the full name of the organization. However, the sample output only marks "Estado de Minas Gerais" as local. So perhaps the entire "Tribunal de Justiça do Estado de Minas Gerais" is considered an organization, but the sample output splits it. Wait, the sample output shows "Estado de Minas Gerais" as local, so maybe the "Tribunal de Justiça" is part of the organization, but the sample output didn't mark it. Wait, the sample output has "Tribunal de Justiça do Estado de Minas Gerais" as part of the text, but only "Estado de Minas Gerais" is marked as local. So perhaps the "Tribual de Justiça" is not marked as an organization. Maybe the user's example output is different. Let me check again.
+
+In the sample output provided by the user, the text is:
+
+"AGRAVO DE INSTRUMENTO-CV Nº 1.0540.17.000834-1/001 - COMARCA DE <span class="pessoa">RAUL SOARES</span> - AGRAVANTE ( S ) : <span class="pessoa">GENDIRE CARVALHO DA SILVA</span> - AGRAVADO ( A ) ( S ) : <span class="organizacao">CEMIG DISTRIBUIÇÃO S/A</span> A C Ó R D Ã O Vistos etc. , acorda , em Turma , a <span class="local">Estado de Minas Gerais</span> , na conformidade da ata dos julgamentos , em negar provimento ao recurso . <span class="pessoa">CARLOS ROBERTO DE FARIA</span> RELATOR . DES ."
+
+So in the sample output, "Estado de Minas Gerais" is marked as local. The "Tribunal de Justiça" is not marked. So perhaps the user's example output only marks "Estado de Minas Gerais" as local. Therefore, in the input text, "Tribunal de Justiça do Estado de Minas Gerais" is part of the text, but only "Estado de Minas Gerais" is marked as local. So I need to follow that. Therefore, in the input text, "Estado de Minas Gerais" is a local. The rest of the text, like "Tribunal de Justiça" is not marked as an organization. Maybe because the user's example didn't mark it. So I'll proceed accordingly.
+
+So, the entities to mark are:
+
+- Raul Soares → pessoa
+- Gendire Carvalho da Silva → pessoa
+- Cemig Distribuição S/A → organizacao
+- Estado de Minas Gerais → local
+- Carlos Roberto de Faria → pessoa
+
+Other parts like "COMARCA DE RAUL SOARES" – "COMARCA" is a legal term, but "RAUL SOARES" is already marked as pessoa. The rest of the text doesn't have other entities. So the final HTML should have those spans with the respective classes.
+</think>
+
+AGRAVO DE INSTRUMENTO-CV Nº 1.0540.17.000834-1/001 - COMARCA DE RAUL SOARES - AGRAVANTE ( S ) : GENDIRE CARVALHO DA SILVA - AGRAVADO ( A ) ( S ) : CEMIG DISTRIBUIÇÃO S/A A C Ó R D Ã O Vistos etc. , acorda , em Turma , a <span class="local">Estado de Minas Gerais</span> , na conformidade da ata dos julgamentos , em negar provimento ao recurso . <span class="pessoa">CARLOS ROBERTO DE FARIA</span> RELATOR . DES .

@@ -1,0 +1,50 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example input again: "NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+I need to identify each entity. Let's break it down word by word.
+
+"NA AÇÃO CÍVEL ORIGINÁRIA 2.821" – "Ação Cível Originária" seems like a legal term, maybe a case type. The number 2.821 could be a case number, which might be considered as a 'tempo' or maybe not. Wait, the user's guide says 'tempo' is for time/date. The number might not be a date, so maybe not. Let me check the rest.
+
+"Mato Grosso" is a state in Brazil, so that's a 'local'.
+
+"RELATOR : MIN . RICARDO LEWANDOWSKI" – "RELATOR" is the role, but the name "RICARDO LEWANDOWSKI" is a person, so that's 'pessoa'.
+
+"AGTE . ( S ) : UNIÃO" – "AGTE" is short for "Agente" (party), and "UNIÃO" refers to the Union, which is an organization. So "UNIÃO" is 'organizacao'.
+
+"ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO" – "ADVOGADO -GERAL DA UNIÃO" is the title of the lawyer, so maybe part of an organization? Wait, "ADVOGADO-GERAL DA UNIÃO" is the position, so the organization here is "UNIÃO" again, but the title might not be an entity. Wait, the user's example output shows "ADVOGADO-GERAL DA UNIÃO" as part of the organization. Wait, no, looking at the example output provided by the user, maybe I should check that. Wait, the user provided the input and the output example. Wait, the user's example input is the text given, and the output is the HTML with entities marked. Let me check the example output again.
+
+Wait, the user's example input is the text provided, and the output is the HTML. Let me look at the example output they provided. Wait, the user hasn't provided an example output yet. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML. Não inclua explicações ou blocos de código." So the user is expecting me to generate the HTML with the entities marked.
+
+So, going back. Let's process each part:
+
+- "NA AÇÃO CÍVEL ORIGINÁRIA 2.821" – "Ação Cível Originária" is a legal term, not an entity. The number 2.821 is a case number, which might not be a 'tempo' entity. The user's guide says 'tempo' is for time/date. So maybe the number isn't a time entity. So these parts are not entities.
+
+- "Mato Grosso" is a local, so <span class="local">Mato Grosso</span>.
+
+- "RELATOR : MIN . RICARDO LEWANDOWSKI" – "RICARDO LEWANDOWSKI" is a person, so <span class="pessoa">RICARDO LEWANDOWSKI</span>.
+
+- "AGTE . ( S ) : UNIÃO" – "UNIÃO" is an organization, so <span class="organizacao">UNIÃO</span>.
+
+- "ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO" – "ADVOGADO-GERAL DA UNIÃO" is the title of the lawyer, but the organization here is "UNIÃO" again. Wait, but "ADVOGADO-GERAL DA UNIÃO" is part of the organization? Or is "UNIÃO" the organization again? So "UNIÃO" is already marked as an organization. The rest is part of the title, so maybe not an entity.
+
+- "AGDO . ( A / S ) : ESTADO DE MATO GROSSO" – "ESTADO DE MATO GROSSO" is another organization, since "ESTADO" refers to the state, which is an organization. So "ESTADO DE MATO GROSSO" would be an organization. Wait, but "Mato Grosso" is already a local. Wait, "ESTADO DE MATO GROSSO" is the state of Mato Grosso, which is an organization. So "ESTADO DE MATO GROSSO" should be <span class="organizacao">ESTADO DE MATO GROSSO</span>.
+
+Wait, but "Mato Grosso" was already marked as a local. So in the text, "ESTADO DE MATO GROSSO" is an organization. So the entire phrase "ESTADO DE MATO GROSSO" is an organization. So that's another 'organizacao'.
+
+Putting it all together:
+
+- "Mato Grosso" is local.
+- "RICARDO LEWANDOWSKI" is pessoa.
+- "UNIÃO" is organizacao.
+- "ESTADO DE MATO GROSSO" is organizacao.
+
+Other parts like "Ação Cível Originária 2.821" are not entities. The number 2.821 is a case number, but not a time entity. The rest like "RELATOR", "AGTE", "ADV", "AGDO" are roles or titles, not entities.
+
+So the final HTML would have the spans for the identified entities. Let me check again to make sure I didn't miss any.
+
+Yes, that's all. So the output should have the spans for local, pessoa, organizacao, and organizacao again.
+</think>
+
+NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> RELATOR : MIN . <span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : ADVOGADO -GERAL DA <span class="organizacao">UNIÃO</span> AGDO . ( A / S ) : <span class="organizacao">ESTADO DE MATO GROSSO</span> PROC .

@@ -1,0 +1,47 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. 
+
+First, I need to understand the definitions and examples provided. The key is to identify each entity type correctly based on the guidelines. Let's break down the input text step by step.
+
+The input text starts with "A regra geral de processo contida no art . 278 , do novel CPC , no Direito Brasileiro , é de que a parte deve arguir qualquer nulidade na primeira oportunidade em que lhe couber falar nos autos , sob pena de preclusão . 03 . Não há falar-se em constrangimento ilegal quando o juiz , na sentença de pronúncia , exerce , fundamentadamente , o juízo de cautelaridade previsto no §3º do art . 413 do CPP , reconhecendo presentes os requisitos autorizadores da prisão preventiva elencados no art . 312 do mesmo diploma legal . HABEAS CORPUS CRIMINAL Nº 1.0000.17.083350-3/000 - COMARCA DE VESPASIANO - PACIENTE ( S ) : MARCIO ADAIR COELHO JUNIOR - AUTORI . COATORA : JUIZ DE DIREITO DA 1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA COMARCA DE VESPASIANO - VÍTIMA : M.P.S . A C Ó R D Ã O Vistos etc."
+
+Looking for entities:
+
+1. "art . 278" – This is part of a legal article reference. Since it's part of the "CPC" (Novel Civil Procedure Code), it's a legislative reference. So, "art. 278" and "CPC" should be marked as legislação. Wait, the example had "art.61 , §1º , da Lei nº 9.430/96" marked as legislação. So here, "art . 278 , do novel CPC" – the "CPC" is the code, so "CPC" is part of the legislation. But the user's example marked "art.61" as part of the legislation. So in this case, "art. 278" and "CPC" should be marked as legislação. Wait, but the "novel CPC" is the code, so the entire reference is part of the legislation. However, the user's example didn't mark the code name (like "CPC") but the article. Let me check the example again. In the example, "art.61 , §1º , da Lei nº 9.430/96" is marked as legislação. So the code name (Lei nº 9.430/96) is part of the legislation. So here, "art . 278 , do novel CPC" – the "CPC" is the code, so "CPC" is part of the legislation. But in the example, the code was "Lei nº 9.430/96", so maybe "CPC" is a code, so it should be marked as legislação. Wait, but the example didn't mark "CPC" as legislação. Hmm. Wait, in the example, the user had "art.61 , §1º , da Lei nº 9.430/96" as legislação. So the code name (Lei) is part of the legislation. So here, "CPC" is the code, so "CPC" should be marked as legislação? Or is the entire reference "art. 278 do novel CPC" considered as part of the legislation? The example includes "art.61" as part of the legislation, so maybe "art. 278" and "CPC" should be marked. Wait, but the example didn't mark "CPC" as legislação. Maybe the code name (like "CPC") is not marked, but the article reference is. Wait, in the example, the user marked "art.61 , §1º , da Lei nº 9.430/96" as legislação. So the code name (Lei) is part of the legislation. So in this case, "CPC" is the code, so "CPC" should be marked as legislação. But in the example, "Lei nº 9.430/96" is marked. So here, "CPC" is the code, so "CPC" is part of the legislation. Therefore, "art . 278 , do novel CPC" would have "CPC" marked as legislação. Wait, but "CPC" is the code, so "CPC" is a legislative reference. So "CPC" should be marked as legislação. But the example didn't mark "CPC" in the input. Wait, the example input had "art.61 , §1º , da Lei nº 9.430/96" and the output marked it as legislação. So the code name (Lei) is part of the legislation. So here, "CPC" is the code, so "CPC" should be marked as legislação. But in the example, "Lei" is part of the legislation. Therefore, in this case, "CPC" should be marked as legislação. So the first part of the text would have "art . 278 , do novel <span class="legislacao">CPC</span>".
+
+Next, "Direito Brasileiro" – that's a generic term, not a specific entity, so it's not marked.
+
+Then, "§3º do art . 413 do CPP" – "CPP" is the Criminal Procedure Code, which is a legislative reference. So "CPP" should be marked as legislação. Similarly, "art . 312 do mesmo diploma legal" – "diploma legal" refers to the same code, so "CPP" is already marked. 
+
+Moving on, "HABEAS CORPUS CRIMINAL Nº 1.0000.17.083350-3/000" – this is a legal proceeding number, so it's jurisprudência. The format is like "HABEAS CORPUS CRIMINAL Nº..." which is a case number. So the entire number should be marked as jurisprudência.
+
+Then, "COMARCA DE VESPASIANO" – that's a local entity, so mark as local. 
+
+"PACIENTE ( S ) : MARCIO ADAIR COELHO JUNIOR" – "MARCIO ADAIR COELHO JUNIOR" is a person, so mark as pessoa.
+
+"AUTORI . COATORA : JUIZ DE DIREITO DA 1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA COMARCA DE VESPASIANO" – "JUIZ DE DIREITO" is a title, not a specific name, so not marked. "COMARCA DE VESPASIANO" is already marked as local. 
+
+"VÍTIMA : M.P.S ." – "M.P.S." is likely "Ministério Público do Estado" or similar, which is an organization. So mark as organizacao.
+
+"A C Ó R D Ã O Vistos etc." – "A CÓRDAO" is likely "Acórdão", which is a judicial decision. So "A CÓRDAO" should be marked as jurisprudência.
+
+Wait, but in the example, "Acórdão n. 999404" was marked as jurisprudência. Here, "A CÓRDAO" is the word "Acórdão", but the example says that when used generically, like "súmula", it's not marked. However, in this case, it's the term "Acórdão" which is a reference to a judicial decision. But the user's instruction says that "palavras como 'súmula', 'acórdão' ou 'jurisprudência', quando usadas de forma genérica e sem referência específica, não devem ser anotadas como jurisprudência." So if "Acórdão" is used without a specific number, it's not marked. However, in the input, it's followed by "Vistos etc." which might indicate that it's part of a case. Wait, but the exact phrase is "A C Ó R D Ã O Vistos etc." which is likely a typo for "Acórdão Vistos etc." So "Acórdão" is the term, but without a specific reference, it's not marked. So in this case, "A CÓRDAO" would not be marked. However, the user's example had "REsp n . 1694984/MS" marked as jurisprudência. So the presence of a number is key. In this case, there's no number, so "Acórdão" is not marked. 
+
+So putting it all together:
+
+- "art . 278 , do novel <span class="legislacao">CPC</span>"
+- "§3º do art . 413 do <span class="legislacao">CPP</span>"
+- "HABEAS CORPUS CRIMINAL Nº 1.0000.17.083350-3/000" → <span class="jurisprudencia">HABEAS CORPUS CRIMINAL Nº 1.0000.17.083350-3/000</span>
+- "COMARCA DE VESPASIANO" → <span class="local">COMARCA DE VESPASIANO</span>
+- "MARCI0 ADAIR COELHO JUNIOR" → <span class="pessoa">MARCI0 ADAIR COELHO JUNIOR</span>
+- "M.P.S." → <span class="organizacao">M.P.S.</span>
+- "VÍTIMA : M.P.S ." → "M.P.S." is already marked.
+
+Wait, the user's example had "M.P.S." as "Ministério Público do Estado", which is an organization. So "M.P.S." is an abbreviation for "Ministério Público" and should be marked as organizacao.
+
+So the final HTML would have all these entities marked accordingly. I need to make sure that all the entities are correctly identified and tagged. Also, check for any other possible entities like dates, times, or other local names. In the input, there's "03 ." which might be a date, but the user's guidelines say that only explicit dates should be marked. "03." is just a number, so not a date. The rest of the text doesn't have any other entities. 
+
+So the final output would be the text with the appropriate <span> tags for each entity.
+</think>
+
+A regra geral de processo contida no art . 278 , do novel <span class="legislacao">CPC</span> , no Direito Brasileiro , é de que a parte deve arguir qualquer nulidade na primeira oportunidade em que lhe couber falar nos autos , sob pena de preclusão . 03 . Não há falar-se em constrangimento ilegal quando o juiz , na sentença de pronúncia , exerce , fundamentadamente , o juízo de cautelaridade previsto no §3º do art . 413 do <span class="legislacao">CPP</span> , reconhecendo presentes os requisitos autorizadores da prisão preventiva elencados no art . 312 do mesmo diploma legal . <span class="jurisprudencia">HABEAS CORPUS CRIMINAL Nº 1.0000.17.083350-3/000</span> - <span class="local">COMARCA DE VESPASIANO</span> - PACIENTE ( S ) : <span class="pessoa">MARCIO ADAIR COELHO JUNIOR</span> - AUTORI . COATORA : JUIZ DE DIREITO DA 1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA <span class="local">COMARCA DE VESPASIANO</span> - VÍTIMA : <span class="organizacao">M.P.S.</span> . <span class="jurisprudencia">A CÓRDAO</span> Vistos etc.

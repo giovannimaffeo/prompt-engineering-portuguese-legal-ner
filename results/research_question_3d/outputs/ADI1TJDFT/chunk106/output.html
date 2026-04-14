@@ -1,0 +1,73 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute.
+
+First, I need to read through the input text carefully and identify each entity according to the definitions provided. Let me start by breaking down the text sentence by sentence.
+
+The first part is "Eis o teor da lei impugnada : LEI Nº 5.815 , DE 3 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) Dispõe sobre convênio do Distrito Federal com o CREA-DF e o CAU-DF e dá outras providências ."
+
+Here, "LEI Nº 5.815" is a legislation, so that's a legislacao. The date "3 DE ABRIL DE 2017" is a tempo. "Deputado Rafael Prudente" is a pessoa. "Distrito Federal" is a local. "CREA-DF" and "CAU-DF" are organizacoes, since they are organizations. 
+
+Next sentence: "O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal decreta e eu sanciono a seguinte Lei : Art . 1º O Distrito Federal pode firmar convênios com o Conselho Regional de Engenharia e Agronomia do Distrito Federal - CREA-DF e com o Conselho de Arquitetura e Urbanismo do Distrito Federal - CAU-DF para , por meio do seu corpo técnico e credenciados , analisar os processos de responsabilidade das administrações regionais de que trata a Lei nº 1.172 , de 24 de julho de 1996 , proferindo parecer por concessão ou negativa de pedido , ressalvadas as análises realizadas pelas concessionárias de serviço público e pelos órgãos públicos competentes ."
+
+"GOVERNADOR" is a pessoa, but since it's a title, according to the guidelines, it shouldn't be marked. "Câmara Legislativa do Distrito Federal" is an organizacao. "Distrito Federal" again is local. "CREA-DF" and "CAU-DF" are organizacoes. The date "24 de julho de 1996" is tempo. "Lei nº 1.172" is legislacao. 
+
+I need to make sure I'm not missing any entities. For example, "Distrito Federal" is local, "CREA-DF" and "CAU-DF" are organizations. The date "3 DE ABRIL DE 2017" and "24 de julho de 1996" are both tempo. The law numbers "LEI Nº 5.815" and "Lei nº 1.172" are legislacao. 
+
+Also, checking for any other entities. "Câmara Legislativa" is an organization. "GOVERNADOR" is a title, so not marked. The other parts like "Deputado Rafael Prudente" is a pessoa. 
+
+Wait, "Deputado" is a title, so only "Rafael Prudente" should be a pessoa. But the text says "Autoria do Projeto : Deputado Rafael Prudente". So "Deputado" is a title, but "Rafael Prudente" is the person. So I need to split that. So the entire "Deputado Rafael Prudente" is a pessoa, but according to the guidelines, only names should be marked. Wait, the definition says "expressões que correspondem exclusivamente a nomes próprios usados para identificar indivíduos específicos". So "Deputado" is a title, but "Rafael Prudente" is the name. However, the example given includes "Ana Silva", "Carlos de Souza", which are full names. So perhaps "Deputado Rafael Prudente" is considered as a name, but according to the guidelines, titles like "Deputado" shouldn't be marked. Wait, the guidelines say: "Somente nomes próprios de pessoas devem ser anotados. Cargos, funções, títulos ou formas de tratamento — como 'juiz', 'Ministro', 'Desembargador', 'Governador', 'Dra.', 'Sr.' ou similares — não devem ser anotados como pessoa." So "Deputado" is a title and shouldn't be marked. So only "Rafael Prudente" is the pessoa. Wait, but the text says "Autoria do Projeto : Deputado Rafael Prudente". So the full name is "Deputado Rafael Prudente". But according to the guidelines, only the name, not the title. So should I mark "Rafael Prudente" as pessoa? Or is "Deputado Rafael Prudente" considered as a person's name with a title? The example given for pessoa is "Ana Silva", "Carlos de Souza". So maybe "Rafael Prudente" is the name, and "Deputado" is the title. Therefore, only "Rafael Prudente" should be marked as pessoa. But the text has "Deputado Rafael Prudente" as the author. So perhaps the entire "Deputado Rafael Prudente" is considered as the full name, but according to the guidelines, titles shouldn't be included. So I need to check if "Deputado" is part of the name. Since the guidelines say to mark only names, not titles, then "Deputado" is not part of the name. So the correct way is to mark "Rafael Prudente" as pessoa, and leave "Deputado" as is. But the text has "Deputado Rafael Prudente" as the author. So maybe the user expects that the full name including the title is marked. Wait, but the guidelines explicitly say that titles like "Deputado" should not be marked. Therefore, only "Rafael Prudente" should be marked. So in the text, "Deputado Rafael Prudente" would have "Rafael Prudente" as pessoa, and "Deputado" as a title not marked. 
+
+So in the first part, "Autoria do Projeto : Deputado Rafael Prudente" should have "Rafael Prudente" as pessoa. 
+
+Another point: "Câmara Legislativa do Distrito Federal" is an organization. "Distrito Federal" is local. 
+
+Then, in the law text, "Câmara Legislativa do Distrito Federal" is an organizacao. 
+
+Also, "LEI Nº 5.815" is legislacao. 
+
+"24 de julho de 1996" is tempo. 
+
+"Lei nº 1.172" is legislacao. 
+
+So putting it all together, I need to replace each entity with the corresponding <span> tags. 
+
+Let me go through each part again to ensure I didn't miss any. 
+
+First sentence: 
+
+"Eis o teor da lei impugnada : <span class='legislacao'>LEI Nº 5.815</span> , DE <span class='tempo'>3 DE ABRIL DE 2017</span> ( Autoria do Projeto : <span class='pessoa'>Rafael Prudente</span> ) Dispõe sobre convênio do <span class='local'>Distrito Federal</span> com o <span class='organizacao'>CREA-DF</span> e o <span class='organizacao'>CAU-DF</span> e dá outras providências ."
+
+Wait, "Deputado Rafael Prudente" should be split into "Deputado" (title, not marked) and "Rafael Prudente" (pessoa). So the correct mark is "Rafael Prudente" as pessoa. 
+
+Then, "Câmara Legislativa do Distrito Federal" is an organization. "Distrito Federal" is local. 
+
+In the next part: "O <span class='pessoa'>GOVERNADOR</span> DO <span class='local'>Distrito Federal</span> , Faço saber que a <span class='organizacao'>Câmara Legislativa</span> do <span class='local'>Distrito Federal</span> decreta e eu sanciono a seguinte <span class='legislacao'>Lei</span> : Art . 1º O <span class='local'>Distrito Federal</span> pode firmar convênios com o <span class='organizacao'>Conselho Regional de Engenharia e Agronomia do Distrito Federal - CREA-DF</span> e com o <span class='organizacao'>Conselho de Arquitetura e Urbanismo do Distrito Federal - CAU-DF</span> para , por meio do seu corpo técnico e credenciados , analisar os processos de responsabilidade das administrações regionais de que trata a <span class='legislacao'>Lei nº 1.172</span> , de <span class='tempo'>24 de julho de 1996</span> , proferindo parecer por concessão ou negativa de pedido , ressalvadas as análises realizadas pelas concessionárias de serviço público e pelos órgãos públicos competentes ."
+
+Wait, "GOVERNADOR" is a title, so it shouldn't be marked. But the user's example in the guidelines says that titles like "juiz", "Ministro", etc., shouldn't be marked. So "GOVERNADOR" is a title, so it's not marked. 
+
+But the text says "O GOVERNADOR DO DISTRITO FEDERAL..." So "GOVERNADOR" is a title, so not marked. 
+
+Then, "Câmara Legislativa" is an organizacao. "Distrito Federal" is local. 
+
+"Lei nº 1.172" is legislacao. 
+
+"24 de julho de 1996" is tempo. 
+
+Also, "Conselho Regional de Engenharia e Agronomia do Distrito Federal - CREA-DF" is an organizacao. The full name includes "CREA-DF" which is an abbreviation. 
+
+Similarly for "Conselho de Arquitetura e Urbanismo do Distrito Federal - CAU-DF", which is an organizacao. 
+
+So all these should be marked as organizacao. 
+
+I need to make sure that all the parts are correctly tagged. 
+
+Another thing to check: "Distrito Federal" is a local, so each occurrence should be marked. 
+
+Also, "CREA-DF" and "CAU-DF" are abbreviations for organizations. 
+
+So putting it all together, the HTML should have all those tags. 
+
+I think that's it. Now, I need to structure the HTML correctly, making sure that each entity is properly wrapped in the correct span tags with the right class.
+</think>
+
+Eis o teor da lei impugnada : <span class="legislacao">LEI Nº 5.815</span> , DE <span class="tempo">3 DE ABRIL DE 2017</span> ( Autoria do Projeto : <span class="pessoa">Rafael Prudente</span> ) Dispõe sobre convênio do <span class="local">Distrito Federal</span> com o <span class="organizacao">CREA-DF</span> e o <span class="organizacao">CAU-DF</span> e dá outras providências . O <span class="pessoa">GOVERNADOR</span> DO <span class="local">Distrito Federal</span> , Faço saber que a <span class="organizacao">Câmara Legislativa</span> do <span class="local">Distrito Federal</span> decreta e eu sanciono a seguinte <span class="legislacao">Lei</span> : Art . 1º O <span class="local">Distrito Federal</span> pode firmar convênios com o <span class="organizacao">Conselho Regional de Engenharia e Agronomia do Distrito Federal - CREA-DF</span> e com o <span class="organizacao">Conselho de Arquitetura e Urbanismo do Distrito Federal - CAU-DF</span> para , por meio do seu corpo técnico e credenciados , analisar os processos de responsabilidade das administrações regionais de que trata a <span class="legislacao">Lei nº 1.172</span> , de <span class="tempo">24 de julho de 1996</span> , proferindo parecer por concessão ou negativa de pedido , ressalvadas as análises realizadas pelas concessionárias de serviço público e pelos órgãos públicos competentes .

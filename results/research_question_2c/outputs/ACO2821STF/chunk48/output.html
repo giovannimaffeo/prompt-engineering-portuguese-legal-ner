@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The text starts with "( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO". Here, "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" seems like an organization. The title "PROCURADOR-GERAL" is a position, so maybe it's an organization. Wait, but "PROCURADOR-GERAL" is a person's title. Wait, but the full name might be an organization. Hmm, maybe "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is the name of the organization. So I should mark that as organizacao.
+
+Next, "Senhor Ministro Ricardo Lewandowski ( Relator )". "Senhor Ministro" is a title, so "Ricardo Lewandowski" is a pessoa. The "( Relator )" is a role, but maybe not an entity here. So "Ricardo Lewandowski" is a pessoa.
+
+Then, "Agravo regimental interposto pela União contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo Estado do Mato Grosso". Here, "União" is an organization. "Estado do Mato Grosso" is a local, but wait, "Estado do Mato Grosso" is a state, so it's a local. Wait, but "Estado do Mato Grosso" is also an organization? Or is it a local? The term "Estado" refers to a state, which is a local entity. So "Estado do Mato Grosso" should be local. Wait, but sometimes states can be considered as organizations. Hmm, need to check. In legal contexts, "Estado" as a state is a local entity. So "Estado do Mato Grosso" is local. But maybe "Mato Grosso" is the local. Wait, the text says "Estado do Mato Grosso", so the entire phrase is the state, which is a local. So I'll mark "Estado do Mato Grosso" as local.
+
+Next, "Certificado de Regularidade Previdenciária do Estado de Mato Grosso". "Estado de Mato Grosso" again is a local. Wait, but earlier it was "Estado do Mato Grosso". Maybe the user wants to mark "Mato Grosso" as local. Wait, the original text has "Estado do Mato Grosso" and "Estado de Mato Grosso". Maybe the user wants to mark "Mato Grosso" as local. But the exact phrase is "Estado do Mato Grosso" and "Estado de Mato Grosso". So "Mato Grosso" is the local. So I'll mark "Mato Grosso" as local.
+
+Then, "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV". These are acronyms for different registries, so they might be considered as legislação or maybe organizacao. Wait, CADPREV is a registry, so maybe it's a legislação? Or perhaps they are part of the legislation. Alternatively, they could be considered as organizacao. But the user's example might have them as legislação. Wait, the user's example in the output might have them as legislação. Let me check the sample output provided. Wait, the user hasn't provided a sample output, but the task says to mark them. Let me think. CADPREV is a registry, so maybe it's part of the legislation. Alternatively, they might be considered as organizacao. Hmm, this is a bit ambiguous. Maybe the user considers them as legislação. Alternatively, since they are part of the legal system, perhaps they are part of the legislação. But I'm not sure. Maybe I should check if any of these are known as legal entities. CADPREV is the Cadastro de Regime Próprio de Previdência Social, which is a registry, so maybe it's part of the legislation. Alternatively, they might be considered as organizacao. But the user's example might have them as legislação. Let me proceed with that.
+
+Then, "Decreto 3.788/2001" and "Portaria MPS n° 204/2008" are legislative acts, so they should be marked as legislação. The "Decreto" and "Portaria" are types of legal documents, so they are part of the legislação.
+
+Now, putting it all together. Let me go through the text again and mark each entity.
+
+Original text: 
+
+"( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO R E L A T Ó R I O O Senhor Ministro Ricardo Lewandowski ( Relator ) : Trata-se de agravo regimental interposto pela União contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo Estado do Mato Grosso , determinando-se à União `` que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS n° 204/2008 e de suas posteriores alterações '' .
+
+Breaking down:
+
+- "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" → organizacao
+- "Senhor Ministro Ricardo Lewandowski" → pessoa (Ricardo Lewandowski)
+- "União" → organizacao
+- "Estado do Mato Grosso" → local (Mato Grosso)
+- "Certificado de Regularidade Previdenciária do Estado de Mato Grosso" → "Estado de Mato Grosso" is local (Mato Grosso)
+- "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" → maybe legislação or organizacao. Since they are acronyms for registries, perhaps they are part of the legislação. Alternatively, they could be considered as organizacao. But since they are part of the legal system, maybe legislação.
+- "Decreto 3.788/2001" → legislação
+- "Portaria MPS n° 204/2008" → legislação
+
+Now, applying the tags:
+
+- "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" → <span class="organizacao">PROCURADOR -GERAL DO ESTADO DE MATO GROSSO</span>
+- "Ricardo Lewandowski" → <span class="pessoa">Ricardo Lewandowski</span>
+- "União" → <span class="organizacao">União</span>
+- "Estado do Mato Grosso" → <span class="local">Estado do Mato Grosso</span>
+- "Mato Grosso" → <span class="local">Mato Grosso</span>
+- "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" → <span class="legislacao">CADPREV</span>, etc.
+- "Decreto 3.788/2001" → <span class="legislacao">Decreto 3.788/2001</span>
+- "Portaria MPS n° 204/2008" → <span class="legislacao">Portaria MPS n° 204/2008</span>
+
+Wait, but in the original text, "Estado do Mato Grosso" is mentioned twice. The first time is "Estado do Mato Grosso" and the second time is "Estado de Mato Grosso". The user might consider "Mato Grosso" as the local, so both instances should be marked as local. Also, the acronyms like CADPREV, etc., are part of the legal system, so they are legislação.
+
+Now, putting all together in HTML format, ensuring that each entity is marked correctly. Also, check for any other entities. For example, "Agravo regimental" is a legal term, but it's not an entity. "Ação Cível Originária" is a legal term, but not an entity. "Relator" is a role, not an entity. "Ministro" is a title, so the person is marked. "Decreto" and "Portaria" are types of legislation, so they are marked as legislação.
+
+So the final HTML should have all these tags. Let me write that out.
+</think>
+
+<span class="organizacao">PROCURADOR -GERAL DO ESTADO DE MATO GROSSO</span> R E L A T Ó R I O O <span class="pessoa">Senhor Ministro Ricardo Lewandowski</span> ( Relator ) : Trata-se de agravo regimental interposto pela <span class="organizacao">União</span> contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo <span class="local">Estado do Mato Grosso</span> , determinando-se à <span class="organizacao">União</span> `` que renove o Certificado de Regularidade Previdenciária do <span class="local">Estado de Mato Grosso</span> , retirando-o do conceito de irregular do <span class="legislacao">Cadastro de Regime Próprio de Previdência Social-CADPREV</span> ou retirando-o de qualquer outro <span class="legislacao">cadastro de inadimplentes</span> pelo mesmo motivo ( <span class="legislacao">CADIN</span> , <span class="legislacao">CA UC</span> , <span class="legislacao">SIAFI</span> , <span class="legislacao">SICONV</span> ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS n° 204/2008</span> e de suas posteriores alterações '' .

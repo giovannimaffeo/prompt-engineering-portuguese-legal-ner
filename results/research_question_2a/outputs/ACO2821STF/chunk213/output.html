@@ -1,0 +1,65 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example input again:
+
+"Inteiro Teor do Acórdão - Página 16 de 17 Extrato de Ata - 16/03/2018 PLENÁRIO EXTRATO DE ATA AG.REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 PROCED . : MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A/S ) : ADVOGADO-GERAL DA UNIÃO AGDO . ( A/S ) : ESTADO DE MATO GROSSO PROC ."
+
+Alright, let's break it down word by word.
+
+Starting with "Inteiro Teor do Acórdão" – these are probably part of the document title, so no entity here. Then "- Página 16 de 17" – "Página" is a local? Wait, "Página" is a word, but maybe "16 de 17" is a time or a number. Wait, the user's guide says "tempo" for time/data. So "16/03/2018" is definitely a tempo. Let me check that.
+
+Next, "Extrato de Ata" – that's part of the document, maybe not an entity. Then "AG.REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 PROCED . : MATO GROSSO" – "Mato Grosso" is a local, so that should be <span class="local">Mato Grosso</span>.
+
+"RELATOR : MIN . RICARDO LEWANDOWSKI" – "MIN." is an abbreviation for Ministro, which is a person, so "RICARDO LEWANDOWSKI" is a pessoa. So <span class="pessoa">RICARDO LEWANDOWSKI</span>.
+
+"AGTE . ( S ) : UNIÃO" – "UNIÃO" is an organization, so <span class="organizacao">UNIÃO</span>.
+
+"ADV . ( A/S ) : ADVOGADO-GERAL DA UNIÃO" – "ADVOGADO-GERAL DA UNIÃO" is part of the organization, so maybe the entire phrase is an organization? Wait, "ADVOGADO-GERAL DA UNIÃO" is the title of the lawyer, so maybe it's an organization. But the user's example might have "ADVOGADO-GERAL DA UNIÃO" as an organization. Wait, the user's example output has "ADVOGADO-GERAL DA UNIÃO" as an organizacao? Let me check the example output again.
+
+Wait, the user provided the input and the output. Let me check the example output. Wait, the user hasn't provided the output yet. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML." So I need to process the input text and mark the entities.
+
+So, "AGTE . ( S ) : UNIÃO" – "UNIÃO" is an organization. Then "ADV . ( A/S ) : ADVOGADO-GERAL DA UNIÃO" – "ADVOGADO-GERAL DA UNIÃO" is the name of the lawyer, which is an organization? Or is it a person? Wait, "ADVOGADO-GERAL DA UNIÃO" is the title, so maybe it's an organization. But in legal terms, the ADVOGADO-GERAL DA UNIÃO is a position, so maybe it's an organization. Alternatively, maybe it's part of the organization. Hmm.
+
+Then "AGDO . ( A/S ) : ESTADO DE MATO GROSSO" – "ESTADO DE MATO GROSSO" is a local, since it's a state. So "ESTADO DE MATO GROSSO" should be <span class="local">ESTADO DE MATO GROSSO</span>.
+
+Also, "16/03/2018" is a tempo, so that should be <span class="tempo">16/03/2018</span>.
+
+Let me go through each part again:
+
+- "16/03/2018" → tempo
+- "Mato Grosso" → local
+- "RICARDO LEWANDOWSKI" → pessoa
+- "UNIÃO" → organizacao
+- "ADVOGADO-GERAL DA UNIÃO" → maybe organizacao? Or is it part of the organization? Wait, "ADVOGADO-GERAL DA UNIÃO" is the name of the lawyer, which is an organization? Or is it a person? Wait, the ADVOGADO-GERAL DA UNIÃO is a position, so maybe it's an organization. But in some contexts, it could be a person. However, since it's a title, perhaps it's an organization. Alternatively, maybe it's part of the organization. Hmm. The user's example might have it as an organizacao. Let me check the example output again. Wait, the user hasn't provided the example output yet. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML." So I need to process the input text.
+
+So, "ADVOGADO-GERAL DA UNIÃO" – the term "ADVOGADO-GERAL DA UNIÃO" is the name of the lawyer, which is an organization? Or is it a person? Wait, in Brazil, the ADVOGADO-GERAL DA UNIÃO is a position held by a person, but the term itself is the title. So maybe it's an organization. Alternatively, maybe it's part of the organization. But the user's guide says to mark organizations. So perhaps "ADVOGADO-GERAL DA UNIÃO" is an organization. But I'm not sure. Alternatively, maybe it's part of the organization. Wait, the user's example might have it as an organizacao. Let me think again.
+
+In the input text, "AGTE . ( S ) : UNIÃO" – "UNIÃO" is an organization. Then "ADV . ( A/S ) : ADVOGADO-GERAL DA UNIÃO" – "ADVOGADO-GERAL DA UNIÃO" is the name of the lawyer, which is an organization? Or is it a person? Maybe it's an organization. Alternatively, maybe it's part of the organization. But I'm not sure. Let me check the example output again. Wait, the user hasn't provided the example output. So I need to make the best judgment.
+
+Alternatively, maybe "ADVOGADO-GERAL DA UNIÃO" is an organization. So I'll mark it as organizacao. Similarly, "ESTADO DE MATO GROSSO" is a local. So that's marked as local.
+
+So putting it all together:
+
+- "16/03/2018" → tempo
+- "Mato Grosso" → local
+- "RICARDO LEWANDOWSKI" → pessoa
+- "UNIÃO" → organizacao
+- "ADVOGADO-GERAL DA UNIÃO" → organizacao
+- "ESTADO DE MATO GROSSO" → local
+
+Wait, but "ESTADO DE MATO GROSSO" is a local, so that's correct. Also, "AG.REG" might be an abbreviation for "Ação Regulada" or something else, but maybe it's part of the jurisprudencia? Not sure. The user's guide says to mark jurisprudencia, but I don't see any terms that fit that. Similarly, "PLENÁRIO" is a part of the court, maybe not an entity. "EXTRATO DE ATA" is part of the document, not an entity. "AÇÃO CÍVEL ORIGINÁRIA 2.821" – "Ação Cível" is a legal term, but not an entity. "PROCED . : MATO GROSSO" – "PROCED" is part of the document, not an entity. "RELATOR : MIN . RICARDO LEWANDOWSKI" – "MIN." is an abbreviation for Ministro, so "RICARDO LEWANDOWSKI" is a pessoa. "AGTE . ( S ) : UNIÃO" – "UNIÃO" is an organizacao. "ADV . ( A/S ) : ADVOGADO-GERAL DA UNIÃO" – "ADVOGADO-GERAL DA UNIÃO" is an organizacao. "AGDO . ( A/S ) : ESTADO DE MATO GROSSO" – "ESTADO DE MATO GROSSO" is a local.
+
+So the final HTML would have:
+
+- <span class="tempo">16/03/2018</span>
+- <span class="local">Mato Grosso</span>
+- <span class="pessoa">RICARDO LEWANDOWSKI</span>
+- <span class="organizacao">UNIÃO</span>
+- <span class="organizacao">ADVOGADO-GERAL DA UNIÃO</span>
+- <span class="local">ESTADO DE MATO GROSSO</span>
+
+Wait, but "ADVOGADO-GERAL DA UNIÃO" – is that an organization? Or is it a person? Maybe it's a person. Wait, the ADVOGADO-GERAL DA UNIÃO is a position, so the person holding that position is a pessoa. But the term itself is the title. So maybe it's not an entity. Hmm. This is a bit ambiguous. The user's guide says to mark organizations, so if "ADVOGADO-GERAL DA UNIÃO" is an organization, then it's marked as such. Otherwise, if it's a person, then it's marked as pessoa. But since it's a title, maybe it's an organization. Alternatively, maybe it's part of the organization. I think the safest approach is to mark "ADVOGADO-GERAL DA UNIÃO" as an organizacao. Similarly, "UNIÃO" is an organization. So that's how I'll proceed.
+</think>
+
+Inteiro Teor do Acórdão - Página 16 de 17 Extrato de Ata - <span class="tempo">16/03/2018</span> PLENÁRIO EXTRATO DE ATA AG.REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 PROCED . : <span class="local">MATO GROSSO</span> RELATOR : <span class="pessoa">MIN . RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A/S ) : <span class="organizacao">ADVOGADO-GERAL DA UNIÃO</span> AGDO . ( A/S ) : <span class="local">ESTADO DE MATO GROSSO</span> PROC .

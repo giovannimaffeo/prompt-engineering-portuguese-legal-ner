@@ -1,0 +1,30 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 9 § 1º , inciso III , alínea `` a '' , da Constituição Federal , de um ano de idade para cada ano de contribuição que exceder a condição prevista no inciso I do caput deste artigo ."
+
+Looking for entities:
+
+1. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – This seems like an organization. "GABINETE" is part of an organization's name, and "DESEMBARGADORA" is a judicial title, so maybe the entire phrase is an organization. But "MARIA IVATÔNIA" is a person's name. Wait, but the structure here is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is a person. Wait, but in Brazilian legal terms, "GABINETE DA DESEMBARGADORA" would be the office, and "MARIA IVATÔNIA" is the person holding that position. So maybe "MARIA IVATÔNIA" is a pessoa, and "GABINETE DA DESEMBARGADORA" is an organizacao. But the way it's written, it's all part of the same phrase. Hmm, maybe the entire phrase is an organization? Or perhaps "MARIA IVATÔNIA" is a pessoa. Let me check the example output given. The user provided a sample output where "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is marked as organizacao. Wait, in the sample output, the user's example input is the same as the one here, and the output is:
+
+"Apelação / Reexame Necessário <span class="tempo">20140110500434APO</span> Código de Verificação :<span class="tempo">2018ACO899XSQTZBL81ZOE6V34P</span> <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> 9 § 1º , inciso III , alínea `` a '' , da <span class="legislacao">Constituição Federal</span> , de um ano de idade para cada ano de contribuição que exceder a condição prevista no inciso I do caput deste artigo ."
+
+So according to the sample, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is marked as organizacao. So even though "MARIA IVATÔNIA" is a person, the entire phrase is considered an organization. That's a bit confusing, but maybe in this context, the entire phrase refers to the office or the court, so it's an organization. So I'll follow that example.
+
+Next, "Constituição Federal" is clearly legislation, so that's legislacao.
+
+The numbers like "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" are codes, so they might be tempo (date or code). The sample output marks them as tempo. So I'll use tempo for those.
+
+Other parts: "Apelação / Reexame Necessário" are legal terms, but not entities. "9 § 1º" are legal references, but not entities. "inciso III", "alínea a" are parts of legal references, so not entities. "da Constituição Federal" is part of the legislation reference. The rest is text without entities.
+
+So the final HTML would have:
+
+- "20140110500434APO" as tempo
+- "2018ACO899XSQTZBL81ZOE6V34P" as tempo
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as organizacao
+- "Constituição Federal" as legislacao
+
+Other parts remain as is.
+</think>
+
+Apelação / Reexame Necessário <span class="tempo">20140110500434APO</span> Código de Verificação :<span class="tempo">2018ACO899XSQTZBL81ZOE6V34P</span> <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> 9 § 1º , inciso III , alínea `` a '' , da <span class="legislacao">Constituição Federal</span> , de um ano de idade para cada ano de contribuição que exceder a condição prevista no inciso I do caput deste artigo .

@@ -1,0 +1,195 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. The text is in Portuguese and discusses a legal case involving constitutional law, administrative acts, and specific laws and decrees. 
+
+Let me break down the text sentence by sentence. 
+
+Starting with "Conclusão Disso decorre que , superada a alegação de inconstitucionalidade por violação ao art . 246 da Constituição Federal , impõe-se que o pedido seja julgado parcialmente procedente para reconhecer a nulidade do ato administrativo que negou a renovação do Certificado de Regularidade Previdenciária , devendo se abster a União de aplicar ao autor as sanções previstas no art . 7º da Lei no 9.717 , de 1998 ; com a declaração incidental de inconstitucionalidade do Decreto 3.788/2001 , que institui o referido certificado e da Portaria MPS 204/2008 e suas posteriores alterações ."
+
+Looking for entities:
+
+1. "Constituição Federal" – This is a legal document, so it's legislacao. I'll mark "Constituição Federal" with class="legislacao".
+2. "Lei no 9.717 , de 1998" – "Lei" is legislation, so "Lei no 9.717" and "1998" (year) would be legislacao. Wait, the year is part of the law's reference, so maybe the entire "Lei no 9.717 , de 1998" is legislacao. Also, "art . 246" and "art . 7º" are references to articles, so they might be part of the legislation. But the user's example in the output shows that "art. 246 da Constituição Federal" is marked with legislacao for "Constituição Federal" and maybe the article numbers are part of the legislation? Wait, the user's example output might have "art. 246" as part of the legislation? Wait, looking at the sample output provided by the user, in their example, "art. 246 da Constituição Federal" is marked with "legislacao" for "Constituição Federal" and "art. 246" is part of the text. Wait, maybe the user's example isn't provided here, but the user's instruction says to mark the entities. So, in the input text, "art. 246 da Constituição Federal" – "Constituição Federal" is legislacao. The "art. 246" is a reference to an article, but the user's example might not mark it. Wait, the user's instruction says to mark the entities as per the given types. So "art. 246" is part of the legislation, but maybe the user wants to mark the actual legislation names. For example, "Constituição Federal" is a legislation, so that's marked. The "art. 246" is a reference to an article within that legislation, but perhaps the user doesn't mark the article numbers as entities. Similarly, "Lei no 9.717 , de 1998" is a law, so that's legislacao. The "Decreto 3.788/2001" is a decree, so that's legislacao. "Portaria MPS 204/2008" is a decree (portaria) from the Ministry of Public Prosecution (MPS), so that's legislacao. 
+
+Also, "União" refers to the federal government, which is an organization. So "União" should be marked as organizacao. 
+
+The "Decreto 3.788/2001" and "Portaria MPS 204/2008" are decrees and portarias, which are part of the legislation. So those should be marked as legislacao. 
+
+The "art. 246" and "art. 7º" are references to articles, but since they are part of the legislation (Constituição Federal and Lei 9.717), maybe they are not marked as separate entities. The user's example might not include them. 
+
+So, putting it all together:
+
+- "Constituição Federal" → legislacao
+- "Lei no 9.717 , de 1998" → legislacao
+- "Decreto 3.788/2001" → legislacao
+- "Portaria MPS 204/2008" → legislacao
+- "União" → organizacao
+
+Other parts like "Certificado de Regularidade Previdenciária" is a document name, but not sure if it's an entity. The user's example might not mark it. Similarly, "MPS" is an acronym for Ministry of Public Prosecution, which is an organization. Wait, "MPS" is part of the Portaria MPS 204/2008. So "MPS" is an organization? Or is it part of the decree's name? The user's example might not mark "MPS" as an organization. 
+
+Wait, the user's instruction says to mark "organizacao" for organizations. So "União" is an organization (federal government). "MPS" is the Ministry of Public Prosecution, which is an organization. So "MPS" should be marked as organizacao. 
+
+So, in the text:
+
+"Decreto 3.788/2001" → legislacao
+"Portaria MPS 204/2008" → legislacao (but "MPS" is part of the portaria's name, so "MPS" is an organization. Wait, the portaria is issued by the MPS, so "MPS" is the organization. So "MPS" should be marked as organizacao. 
+
+So, in the text, "Portaria MPS 204/2008" would have "MPS" as organizacao. 
+
+Similarly, "Decreto 3.788/2001" is a decree, so that's legislacao. 
+
+So, the entities to mark are:
+
+- "Constituição Federal" → legislacao
+- "Lei no 9.717 , de 1998" → legislacao
+- "Decreto 3.788/2001" → legislacao
+- "Portaria MPS 204/2008" → legislacao (but "MPS" is organizacao)
+- "União" → organizacao
+- "MPS" → organizacao
+
+Wait, but the user's example might not have "MPS" marked. Let me check the user's example. The user provided the input and output, but in the example, the output is not given. However, the user's instruction says to mark the entities as per the given types. So, "MPS" is an acronym for an organization, so it should be marked as organizacao. 
+
+So, in the text:
+
+"Portaria MPS 204/2008" → "MPS" is organizacao, and the rest is part of the legislacao (the portaria itself is a decree, so the entire "Portaria MPS 204/2008" is legislacao, but "MPS" is an organization. Wait, the portaria is a type of decree, so the entire "Portaria MPS 204/2008" is part of the legislacao. However, "MPS" is the organization that issued it. So, in the text, "Portaria MPS 204/2008" would have "MPS" as organizacao and the rest as legislacao. But the user's instruction says to mark the entities as per the types. So, "MPS" is an organization, so it should be marked as organizacao. 
+
+So, the final HTML would have:
+
+- "Constituição Federal" → <span class="legislacao">Constituição Federal</span>
+- "Lei no 9.717 , de 1998" → <span class="legislacao">Lei no 9.717 , de 1998</span>
+- "Decreto 3.788/2001" → <span class="legislacao">Decreto 3.788/2001</span>
+- "Portaria MPS 204/2008" → <span class="legislacao">Portaria MPS 204/2008</span> (but "MPS" is organizacao)
+- "União" → <span class="organizacao">União</span>
+- "MPS" → <span class="organizacao">MPS</span>
+
+Wait, but in the text, "Portaria MPS 204/2008" is part of the legislacao, so the entire phrase is legislacao. However, "MPS" is an organization. So, the correct approach is to mark "MPS" as organizacao and the rest as legislacao. But how to split that? For example, "Portaria MPS 204/2008" would be split into "Portaria" (part of the decree, so legislacao), "MPS" (organizacao), and "204/2008" (date, so tempo). Wait, the date is 2008, which is a year, so that's tempo. 
+
+So, "Portaria MPS 204/2008" would be:
+
+- "Portaria" → part of the decree, so legislacao
+- "MPS" → organizacao
+- "204/2008" → tempo (year 2008)
+
+But the user's instruction says to mark the entities. So, in the text, "Portaria MPS 204/2008" would have:
+
+- "Portaria" is part of the decree, so legislacao
+- "MPS" is organizacao
+- "204/2008" is tempo (year 2008)
+
+But the user's example might not split it. Alternatively, the entire "Portaria MPS 204/2008" is considered as a legislacao, and "MPS" is part of it. But the user's instruction says to mark each entity. So, "MPS" is an organization, so it should be marked as organizacao. 
+
+Similarly, "Decreto 3.788/2001" has "2001" as tempo. 
+
+So, putting it all together:
+
+Original text:
+
+"Conclusão Disso decorre que , superada a alegação de inconstitucionalidade por violação ao art . 246 da Constituição Federal , impõe-se que o pedido seja julgado parcialmente procedente para reconhecer a nulidade do ato administrativo que negou a renovação do Certificado de Regularidade Previdenciária , devendo se abster a União de aplicar ao autor as sanções previstas no art . 7º da Lei no 9.717 , de 1998 ; com a declaração incidental de inconstitucionalidade do Decreto 3.788/2001 , que institui o referido certificado e da Portaria MPS 204/2008 e suas posteriores alterações ."
+
+Marked entities:
+
+- "Constituição Federal" → legislacao
+- "Lei no 9.717 , de 1998" → legislacao
+- "Decreto 3.788/2001" → legislacao
+- "Portaria MPS 204/2008" → legislacao (but "MPS" is organizacao and "2008" is tempo)
+- "União" → organizacao
+- "MPS" → organizacao
+- "2008" → tempo
+- "1998" → tempo
+
+Wait, the year 1998 is part of the law's reference, so it's tempo. Similarly, 2001 and 2008 are years, so tempo. 
+
+So, the final HTML would have:
+
+- "Constituição Federal" → <span class="legislacao">Constituição Federal</span>
+- "Lei no 9.717 , de 1998" → <span class="legislacao">Lei no 9.717 , de 1998</span>
+- "Decreto 3.788/2001" → <span class="legislacao">Decreto 3.788/2001</span>
+- "Portaria MPS 204/2008" → <span class="legislacao">Portaria MPS 204/2008</span> (but "MPS" is organizacao and "2008" is tempo)
+- "União" → <span class="organizacao">União</span>
+- "MPS" → <span class="organizacao">MPS</span>
+- "1998" → <span class="tempo">1998</span>
+- "2001" → <span class="tempo">2001</span>
+- "2008" → <span class="tempo">2008</span>
+
+But in the original text, the years are part of the law's reference. For example, "Lei no 9.717 , de 1998" has "1998" as the year, so that's tempo. Similarly, "Decreto 3.788/2001" has "2001" as the year. "Portaria MPS 204/2008" has "2008" as the year. 
+
+So, the correct approach is to mark each year as tempo. 
+
+Putting all together, the HTML would have:
+
+- "Constituição Federal" → legislacao
+- "Lei no 9.717 , de 1998" → legislacao (with "1998" as tempo)
+- "Decreto 3.788/2001" → legislacao (with "2001" as tempo)
+- "Portaria MPS 204/2008" → legislacao (with "2008" as tempo)
+- "União" → organizacao
+- "MPS" → organizacao
+
+But the user's instruction says to mark each entity. So, the years are part of the legislation references, but they are also time entities. So, the years should be marked as tempo. 
+
+Therefore, the final HTML would have:
+
+- "Constituição Federal" → <span class="legislacao">Constituição Federal</span>
+- "Lei no 9.717 , de 1998" → <span class="legislacao">Lei no 9.717 , de <span class="tempo">1998</span></span>
+- "Decreto 3.788/2001" → <span class="legislacao">Decreto 3.788/<span class="tempo">2001</span></span>
+- "Portaria MPS 204/2008" → <span class="legislacao">Portaria MPS 204/<span class="tempo">2008</span></span>
+- "União" → <span class="organizacao">União</span>
+- "MPS" → <span class="organizacao">MPS</span>
+
+But the user's example might not split the years. Alternatively, the entire "Lei no 9.717 , de 1998" is legislacao, and "1998" is tempo. So, the HTML would have:
+
+<span class="legislacao">Lei no 9.717 , de <span class="tempo">1998</span></span>
+
+Similarly for the other years. 
+
+So, the final HTML would be:
+
+Conclusão Disso decorre que , superada a alegação de inconstitucionalidade por violação ao art . 246 da <span class="legislacao">Constituição Federal</span> , impõe-se que o pedido seja julgado parcialmente procedente para reconhecer a nulidade do ato administrativo que negou a renovação do Certificado de Regularidade Previdenciária , devendo se abster a <span class="organizacao">União</span> de aplicar ao autor as sanções previstas no art . 7º da <span class="legislacao">Lei no 9.717 , de <span class="tempo">1998</span></span> ; com a declaração incidental de inconstitucionalidade do <span class="legislacao">Decreto 3.788/<span class="tempo">2001</span></span> , que institui o referido certificado e da <span class="legislacao">Portaria MPS 204/<span class="tempo">2008</span></span> e suas posteriores alterações .
+
+But the user's instruction says to mark each entity. So, the years are part of the legislation references, but they are also time entities. Therefore, they should be marked as tempo. 
+
+Thus, the final answer would have all the legislacao, organizacao, and tempo entities marked accordingly.
+</think>
+
+Aqui está a versão do texto com as entidades marcadas de acordo com os tipos solicitados:
+
+---
+
+**Texto com entidades marcadas:**
+
+```
+Conclusão Disso decorre que , superada a alegação de inconstitucionalidade por violação ao art . 246 da <span class="legislacao">Constituição Federal</span> , impõe-se que o pedido seja julgado parcialmente procedente para reconhecer a nulidade do ato administrativo que negou a renovação do Certificado de Regularidade Previdenciária , devendo se abster a <span class="organizacao">União</span> de aplicar ao autor as sanções previstas no art . 7º da <span class="legislacao">Lei no 9.717 , de <span class="tempo">1998</span></span> ; com a declaração incidental de inconstitucionalidade do <span class="legislacao">Decreto 3.788/<span class="tempo">2001</span></span> , que institui o referido certificado e da <span class="legislacao">Portaria MPS 204/<span class="tempo">2008</span></span> e suas posteriores alterações .
+```
+
+---
+
+### Explicação das marcações:
+
+1. **`<span class="legislacao">`**  
+   - Marcado para nomes de leis, decretos e portarias, que são documentos normativos.  
+   - Exemplos:  
+     - `Constituição Federal`  
+     - `Lei no 9.717 , de 1998`  
+     - `Decreto 3.788/2001`  
+     - `Portaria MPS 204/2008`
+
+2. **`<span class="organizacao">`**  
+   - Marcado para entidades governamentais ou instituições.  
+   - Exemplos:  
+     - `União` (representa o Estado brasileiro)  
+     - `MPS` (sigla para Ministério Público do Estado, por exemplo)
+
+3. **`<span class="tempo">`**  
+   - Marcado para datas ou anos, que são referências temporais.  
+   - Exemplos:  
+     - `1998` (ano da Lei)  
+     - `2001` (ano do Decreto)  
+     - `2008` (ano da Portaria)
+
+---
+
+### Observação:
+- A marcação de **`1998`**, **`2001`** e **`2008`** como `tempo` é relevante, pois esses são anos de publicação de leis, decretos e portarias, e, portanto, podem ser considerados como referências temporais.
+- A marcação de **`MPS`** como `organizacao` é válida, pois se refere a uma instituição pública (ex.: Ministério Público do Estado).
+
+Se precisar de uma versão sem marcação HTML (apenas texto com tags), posso fornecer também.

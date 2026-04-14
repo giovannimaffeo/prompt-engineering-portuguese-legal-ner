@@ -1,0 +1,91 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+Starting with "E M E N T A Poder Judiciário da União TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS Fls . _____ Órgão : CONSELHO ESPECIAL Classe : AÇÃO DIRETA DE INCONSTITUCIONALIDADE N . Processo : 20170020161362ADI ( 0016947-70.2017.8.07.0000 ) Curador ( s ) : PROCURADORA-GERAL DO DISTRITO FEDERAL E OUTROS Requerido ( s ) : GOVERNADOR DO DISTRITO FEDERAL E OUTROS Relator : Desembargador SILVANIO BARBOSA DOS SANTOS Acórdão N. : 1085399 AÇÃO DIRETA DE INCONSTITUCIONALIDADE . LEI DISTRITAL N.º 5.815/17 . LEI AUTORIZATIVA . CONVÊNIOS ENTRE O DISTRITO FEDERAL E O CREA-DF E O CAU-DF . ANÁLISE DE PROCESSOS E EMISSÃO DE PARECERES PARA CONCESSÃO OU NEGATIVA DE CARTAS DE HABITESE E ALVARÁS DE CONSTRUÇÃO DE EDIFICAÇÕES . VÍCIO FORMAL.PEDIDO JULGADO PROCEDENTE . 1 . A lei meramente autorizativa comporta exame de constitucionalidade na via abstrata . Precedente TJDFT . 2 ."
+
+Looking for organizations first. "Poder Judiciário da União" is an organization. Then "TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS" is another organization. "CONSELHO ESPECIAL" is an organization. "Processo : 20170020161362ADI ( 0016947-70.2017.8.07.0000 )" – the process number is a jurisprudencia. "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization. "GOVERNADOR DO DISTRITO FEDERAL" is a person? Wait, "GOVERNADOR" is a title, not a name. So maybe not. Wait, the definition says only proper names. "GOVERNADOR" is a title, so not a person. Similarly, "Desembargador SILVANIO BARBOSA DOS SANTOS" – "Desembargador" is a title, but the name "SILVANIO BARBOSA DOS SANTOS" is a person. So that's a pessoa. 
+
+"Acórdão N. : 1085399" – the number is a jurisprudencia. "LEI DISTRITAL N.º 5.815/17" – "LEI DISTRITAL" is legislation. "CONVÊNIOS ENTRE O DISTRITO FEDERAL E O CREA-DF E O CAU-DF" – "DISTRITO FEDERAL" is a local, "CREA-DF" and "CAU-DF" are organizations. 
+
+Wait, "CREA-DF" is the Conselho Regional de Engenharia e Agronomia do Distrito Federal, which is an organization. Similarly, "CAU-DF" is the Conselho Regional de Arquitetura e Urbanismo do Distrito Federal, also an organization. 
+
+"VÍCIO FORMAL.PEDIDO JULGADO PROCEDENTE" – no entities here. "Precedente TJDFT" – "TJDFT" is an abbreviation for Tribunal de Justiça do Distrito Federal e Territórios, which is an organization. 
+
+So, putting it all together:
+
+- "Poder Judiciário da União" → organizacao
+- "TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS" → organizacao
+- "CONSELHO ESPECIAL" → organizacao
+- "PROCURADORA-GERAL DO DISTRITO FEDERAL" → organizacao (since it's a title, but the name might be part of it. Wait, the definition says only proper names. "PROCURADORA-GERAL" is a title, but the name might be part of it. Wait, the example in the guidelines says that expressions like "MINISTÉRIO PÚBLICO FEDERAL" are organizations. So "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization? Wait, no. Wait, the example says "MINISTÉRIO PÚBLICO FEDERAL" is an organization. So "PROCURADORA-GERAL DO DISTRITO FEDERAL" is a title, but the actual name might be part of it. Wait, maybe "PROCURADORA-GERAL" is a title, but the full name would be "PROCURADORA-GERAL DO DISTRITO FEDERAL" as an organization? Or is it a person? Hmm, this is tricky. The example in the guidelines includes "PROCURADORA-GERAL DO DISTRITO FEDERAL" as an organization? Wait, looking back at the examples, in example 5, "Decreto-Lei no 5.452" is legislation. So maybe "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization. Wait, but the user's input has "Curador ( s ) : PROCURADORA-GERAL DO DISTRITO FEDERAL E OUTROS" – here, "PROCURADORA-GERAL" is a title, but the actual name might be part of the organization. Wait, maybe "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization. But I'm not sure. Alternatively, maybe it's a person. Wait, the example in the guidelines includes "PROCURADORA-GERAL DO DISTRITO FEDERAL" as an organization? Let me check the examples again. In example 5, "Decreto-Lei no 5.452" is legislation. So maybe "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization. But I'm not certain. Alternatively, maybe it's a person. Wait, the user's input has "Curador ( s ) : PROCURADORA-GERAL DO DISTRITO FEDERAL E OUTROS" – "Curador" is a title, so the person is the procuradora-geral. But the name might be part of the organization. Wait, this is confusing. Let me check the guidelines again. The definition for organizacao includes "TRIBUNAL DE JUSTIÇA" as an organization. So "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization? Or is it a person? Maybe it's a person. Wait, the example in the guidelines includes "PROCURADORA-GERAL DO DISTRITO FEDERAL" as an organization? No, in example 5, the input is "altera a redação do art . 428 da Consolidação das Leis do Trabalho – CLT, aprovada pelo Decreto-Lei no 5.452, de 1o de maio de 1943" and the output is "altera a redação do <span class="legislacao">art . 428 da Consolidação das Leis do Trabalho</span> – <span class="legislacao">CLT</span>, aprovada pelo <span class="legislacao">Decreto-Lei no 5.452</span>, de <span class="tempo">1o de maio de 1943</span>". So "Decreto-Lei no 5.452" is legislation. So "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization? Or is it a person? Maybe it's a person. Wait, the example in the guidelines includes "PROCURADORA-GERAL DO DISTRITO FEDERAL" as an organization? No, in example 5, the input is about a law, not about a person. So maybe "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization. But I'm not sure. Alternatively, maybe it's a person. Wait, the user's input has "Curador ( s ) : PROCURADORA-GERAL DO DISTRITO FEDERAL E OUTROS" – "Curador" is a title, so the person is the procuradora-geral. But the name might be part of the organization. Hmm. This is a bit ambiguous. Let me proceed with the assumption that "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization. 
+
+Wait, but in the example 2, "Superior Tribunal de Justiça RECURSO ESPECIAL Nº 1.583.083 - RS" becomes "<span class="organizacao">Superior Tribunal de Justiça</span> <span class="jurisprudencia">RECURSO ESPECIAL Nº 1.583.083 - RS</span>". So "Superior Tribunal de Justiça" is an organization. Similarly, "TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS" is an organization. So "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization? Or is it a person? Maybe it's a person. Wait, the example in the guidelines includes "PROCURADORA-GERAL DO DISTRITO FEDERAL" as an organization? No, in example 5, the input is about a law, not about a person. So maybe "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization. But I'm not sure. Alternatively, maybe it's a person. Let me check the example 4: "ESTADO DO ACRE Rua Tribunal de Justiça, Via Verde, Rio BrancoAC" becomes "<span class="local">ESTADO DO ACRE</span> <span class="local">Rua Tribunal de Justiça</span>, <span class="local">Via Verde</span>, <span class="local">Rio BrancoAC</span>". So "Rua Tribunal de Justiça" is a local. So "TRIBUNAL DE JUSTIÇA" is an organization. So "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization? Or is it a person? Maybe it's a person. Wait, the example in the guidelines includes "PROCURADORA-GERAL DO DISTRITO FEDERAL" as an organization? No, in example 5, the input is about a law. So maybe "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization. But I'm not certain. Let me proceed with the assumption that "PROCURADORA-GERAL DO DISTRITO FEDERAL" is an organization. 
+
+Then, "GOVERNADOR DO DISTRITO FEDERAL" – "GOVERNADOR" is a title, so it's a person? Wait, the name is "GOVERNADOR DO DISTRITO FEDERAL" – but the actual name would be the person's name. Since the input doesn't have a name, maybe it's a title. So "GOVERNADOR DO DISTRITO FEDERAL" is an organization? Or is it a person? This is confusing. 
+
+Wait, the example in the guidelines includes "GOVERNADOR DO DISTRITO FEDERAL" as a person? No, in example 5, the input is about a law. So maybe "GOVERNADOR DO DISTRITO FEDERAL" is a person. But the input doesn't have a name. Wait, the input has "Requerido ( s ) : GOVERNADOR DO DISTRITO FEDERAL E OUTROS" – "GOVERNADOR" is a title, so the person is the governor. But the name isn't provided. So maybe it's not a person. Alternatively, maybe it's an organization. 
+
+This is getting complicated. Let me focus on the entities that are clearly defined. 
+
+"Acórdão N. : 1085399" – this is a jurisprudencia. 
+
+"LEI DISTRITAL N.º 5.815/17" – "LEI DISTRITAL" is legislation. 
+
+"CONVÊNIOS ENTRE O DISTRITO FEDERAL E O CREA-DF E O CAU-DF" – "DISTRITO FEDERAL" is a local, "CREA-DF" and "CAU-DF" are organizations. 
+
+"Precedente TJDFT" – "TJDFT" is an abbreviation for Tribunal de Justiça do Distrito Federal e Territórios, which is an organization. 
+
+So, putting all together:
+
+- "Poder Judiciário da União" → organizacao
+- "TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS" → organizacao
+- "CONSELHO ESPECIAL" → organizacao
+- "PROCURADORA-GERAL DO DISTRITO FEDERAL" → organizacao (assuming it's an organization)
+- "GOVERNADOR DO DISTRITO FEDERAL" → maybe a person, but since the name isn't given, perhaps it's an organization? Or maybe it's a title. This is unclear. Let me check the example 5 again. In example 5, "Decreto-Lei no 5.452" is legislation. So "GOVERNADOR DO DISTRITO FEDERAL" is a person? But the name isn't given. Maybe it's not an entity. 
+
+Wait, the user's input has "Curador ( s ) : PROCURADORA-GERAL DO DISTRITO FEDERAL E OUTROS" – "Curador" is a title, so the person is the procuradora-geral. But the name isn't given. So maybe it's not an entity. 
+
+This is getting too complicated. Let me proceed with the entities that are clearly defined. 
+
+So, the final answer would include:
+
+- "Poder Judiciário da União" → organizacao
+- "TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS" → organizacao
+- "CONSELHO ESPECIAL" → organizacao
+- "PROCURADORA-GERAL DO DISTRITO FEDERAL" → organizacao (assuming)
+- "GOVERNADOR DO DISTRITO FEDERAL" → maybe not an entity
+- "Acórdão N. : 1085399" → jurisprudencia
+- "LEI DISTRITAL N.º 5.815/17" → legislação
+- "CREA-DF" → organizacao
+- "CAU-DF" → organizacao
+- "TJDFT" → organizacao
+
+But I'm not sure about some parts. Let me proceed with the answer based on the examples provided.
+</think>
+
+```html
+<poder-judiciario-da-uniao> Poder Judiciário da União</poder-judiciario-da-uniao>
+<trial-de-justica-do-distrito-federal-e-territorios> TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS</trial-de-justica-do-distrito-federal-e-territorios>
+<conselho-especial> CONSELHO ESPECIAL</conselho-especial>
+<procuradora-geral-do-distrito-federal> PROCURADORA-GERAL DO DISTRITO FEDERAL</procuradora-geral-do-distrito-federal>
+<governador-do-distrito-federal> GOVERNADOR DO DISTRITO FEDERAL</governador-do-distrito-federal>
+<acordao-n-1085399> Acórdão N. : 1085399</acordao-n-1085399>
+<lei-districal-n-581517> LEI DISTRITAL N.º 5.815/17</lei-districal-n-581517>
+<crea-df> CREA-DF</crea-df>
+<cau-df> CAU-DF</cau-df>
+<tjdft> TJDFT</tjdft>
+```
+
+**Explicação:**
+
+- **`<poder-judiciario-da-uniao>`** e **`<trial-de-justica-do-distrito-federal-e-territorios>`** são entidades governamentais (organizações).
+- **`<conselho-especial>`** é uma instituição judicial.
+- **`<procuradora-geral-do-distrito-federal>`** é uma função pública, mas, como não há nome específico, é considerada uma entidade institucional.
+- **`<governador-do-distrito-federal>`** é uma função pública, mas, novamente, sem nome, é tratada como uma entidade institucional.
+- **`<acordao-n-1085399>`** é um documento judicial (jurisprudência).
+- **`<lei-districal-n-581517>`** é uma lei (legislação).
+- **`<crea-df>`** e **`<cau-df>`** são órgãos de fiscalização profissional (organizações).
+- **`<tjdft>`** é uma sigla para "Tribunal de Justiça do Distrito Federal e Territórios", uma instituição judicial.
+
+**Nota:** A classificação de algumas entidades (como `governador` e `procuradora-geral`) pode variar dependendo do contexto, mas, com base nos exemplos fornecidos, foram tratadas como instituições.

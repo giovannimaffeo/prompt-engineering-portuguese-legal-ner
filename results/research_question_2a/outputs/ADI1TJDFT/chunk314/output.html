@@ -1,0 +1,43 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: 
+
+"( Acórdão n.940649 , 20150020201038ADI , Relator : SIMONE LUCINDO CONSELHO ESPECIAL , Data de Julgamento : 26/04/2016 , Publicado no DJE : 17/05/2016 . Pág. : 20/22 ) AÇÃO DIRETA DE INCONSTITUCIONALIDADE ."
+
+Let me break it down. The first part is "( Acórdão n.940649 , 20150020201038ADI , Relator : SIMONE LUCINDO CONSELHO ESPECIAL , Data de Julgamento : 26/04/2016 , Publicado no DJE : 17/05/2016 . Pág. : 20/22 )". 
+
+Looking for entities:
+- "Acórdão" is a legal term, but it's part of the document number. Maybe not an entity here. The numbers like n.940649 and 20150020201038ADI might be case numbers, so not entities.
+- "Relator" is a role, but the name "SIMONE LUCINDO CONSELHO ESPECIAL" – "CONSELHO ESPECIAL" is an organization. So "CONSELHO ESPECIAL" should be <span class="organizacao">. The name "SIMONE LUCINDO" is a person, so <span class="pessoa">.
+- "Data de Julgamento" is a date, so "26/04/2016" is <span class="tempo">.
+- "Publicado no DJE" – "DJE" is a local (Diário do Judiciário), so "DJE" is <span class="local">.
+- "17/05/2016" is another date, so <span class="tempo">.
+- "Pág. : 20/22" – "Pág." is page, but the numbers are page numbers, not entities. So maybe not marked.
+- The last part is "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" which is a legal action, so maybe "legislacao" or "jurisprudencia"? Wait, "Ação Direta de Inconstitucionalidade" is a type of legal action, which might fall under "legislacao" or "jurisprudencia". But I'm not sure. The user's example output might have "Ação Direta de Inconstitucionalidade" as a legal term, but since it's not one of the specified entities, maybe it's left as is. Wait, the user's example output shows that "Ação Direta de Inconstitucionalidade" is not marked. Let me check the example again.
+
+Wait, the user provided an example input and output. Let me check that. The input is the same as the one here, and the output is the same as the input but with some parts marked. Wait, the user's example output is not provided here. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML. Não inclua explicações ou blocos de código." So I need to process the input text and mark the entities.
+
+So, in the input text, the entities are:
+
+- "SIMONE LUCINDO" is a person.
+- "CONSELHO ESPECIAL" is an organization.
+- "26/04/2016" is a date (tempo).
+- "17/05/2016" is another date (tempo).
+- "DJE" is a local (Diário do Judiciário).
+- The rest are numbers or terms not in the entity list.
+
+So, the HTML should have:
+
+- "SIMONE LUCINDO" as <span class="pessoa">SIMONE LUCINDO</span>
+- "CONSELHO ESPECIAL" as <span class="organizacao">CONSELHO ESPECIAL</span>
+- "26/04/2016" as <span class="tempo">26/04/2016</span>
+- "17/05/2016" as <span class="tempo">17/05/2016</span>
+- "DJE" as <span class="local">DJE</span>
+
+Other parts like "Acórdão", "Data de Julgamento", "Pág." are not entities. The "Ação Direta de Inconstitucionalidade" is a legal term but not one of the specified entities, so it remains as is.
+
+Putting it all together, the HTML should have those spans in the correct places. Let me make sure I didn't miss any other entities. The numbers like n.940649 and 20150020201038ADI are case numbers, not entities. The rest are dates, local, etc. So the final HTML should have those spans.
+</think>
+
+<span class="tempo">26/04/2016</span> , <span class="tempo">17/05/2016</span> . Pág. : 20/22 ) <span class="pessoa">SIMONE LUCINDO</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="local">DJE</span> . AÇÃO DIRETA DE INCONSTITUCIONALIDADE

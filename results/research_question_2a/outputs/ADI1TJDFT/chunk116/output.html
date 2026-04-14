@@ -1,0 +1,48 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "( Acórdão n.1049279 , 20160020153586ADI , Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL , Data de Julgamento : 19/09/2017 , Publicado no DJE : 28/09/2017 . Pág. : 27-29 ) ( grifo nosso ) 5 ."
+
+Let me break it down. The first part is "( Acórdão n.1049279 , 20160020153586ADI , Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL , Data de Julgamento : 19/09/2017 , Publicado no DJE : 28/09/2017 . Pág. : 27-29 )". 
+
+Looking for entities:
+- "Acórdão" might be a legal term, but it's not one of the specified types. The user mentioned entities like pessoa, organizacao, etc. So maybe "Acórdão" isn't an entity here.
+- "n.1049279" and "20160020153586ADI" look like case numbers or identifiers. These might be part of the legislation or jurisprudence, but the user hasn't specified that. Wait, the user's entities are specific: the types are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So maybe "Acórdão" is part of jurisprudencia? Or maybe the case numbers are part of legislação? Not sure. The user might expect that "Acórdão" is a type of jurisprudencia, but I need to check the guidelines.
+
+Wait, the user's example output might help. Let me think. The input has "Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL". "Relator" is a person, so "MARIOZAM BELMIRO" is a pessoa. "CONSELHO ESPECIAL" is an organization, so that's organizacao. 
+
+Then "Data de Julgamento : 19/09/2017" is a tempo (date). "Publicado no DJE : 28/09/2017" is another tempo. "Pág. : 27-29" is a page number, which might not be an entity. 
+
+The "grifo nosso" is a note, not an entity. The "5" at the end is probably a reference number, not an entity. 
+
+So, the entities to mark are:
+- "MARIOZAM BELMIRO" as pessoa.
+- "CONSELHO ESPECIAL" as organizacao.
+- "19/09/2017" and "28/09/2017" as tempo.
+- The case numbers "n.1049279" and "20160020153586ADI" might be part of legislação or jurisprudencia? But the user hasn't specified that. Wait, the user's example output might have these as part of the text. Let me check the example output provided by the user. Wait, the user hasn't given an example output, but the task says to return the text with the entities marked. 
+
+Wait, the user's input has "Acórdão n.1049279 , 20160020153586ADI , Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL , Data de Julgamento : 19/09/2017 , Publicado no DJE : 28/09/2017 . Pág. : 27-29 )". 
+
+So "Acórdão" is a legal term, but not one of the specified entities. The case numbers "n.1049279" and "20160020153586ADI" might be part of the legislação or jurisprudencia. But the user hasn't specified that. The user's entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. 
+
+Wait, "Acórdão" is a type of jurisprudencia? Maybe. But the user's example might not have that. Alternatively, maybe the case numbers are part of the legislação. But I'm not sure. The user's instruction says to mark the entities as per the given types. So perhaps the case numbers are not entities. 
+
+So, focusing on the entities that are clearly present:
+- "MARIOZAM BELMIRO" is a pessoa.
+- "CONSELHO ESPECIAL" is an organizacao.
+- "19/09/2017" and "28/09/2017" are tempo.
+- "grifo nosso" is a note, not an entity.
+- "5" is a number, not an entity.
+
+So, the HTML should have:
+- <span class="pessoa">MARIOZAM BELMIRO</span>
+- <span class="organizacao">CONSELHO ESPECIAL</span>
+- <span class="tempo">19/09/2017</span>
+- <span class="tempo">28/09/2017</span>
+
+Other parts remain as is. The rest of the text like "Acórdão n.1049279" and "20160020153586ADI" are not marked because they don't fit the specified entity types. 
+
+So the final HTML would have those spans. Let me check again. The user's example output might have the case numbers as part of legislação or jurisprudencia, but since the user hasn't specified that, I should stick to the given types. Therefore, the correct approach is to mark the identified entities as per the guidelines.
+</think>
+
+<span class="tempo">19/09/2017</span> , <span class="tempo">28/09/2017</span> . Pág. : 27-29 ) ( <span class="pessoa">MARIOZAM BELMIRO</span> <span class="organizacao">CONSELHO ESPECIAL</span> ) 5 .

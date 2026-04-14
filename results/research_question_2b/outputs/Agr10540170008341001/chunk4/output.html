@@ -1,0 +1,34 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "CARLOS ROBERTO DE FARIA ( RELATOR ) V O T O Trata-se de agravo de instrumento interposto Gendire Carvalho Da Silva , nos autos da Ação de Obrigação de Fazer c/c Indenização por Danos Morais , ajuizada em face de Cemig Distribuição S/A , contra decisão de fls . 36/37-TJ , que indeferiu a tutela provisória de urgência ."
+
+Starting with the first part: "CARLOS ROBERTO DE FARIA ( RELATOR )". Here, "CARLOS ROBERTO DE FARIA" is a person, so that should be a <span class="pessoa">. The "( RELATOR )" part might be a title, but since it's part of the name, maybe it's still a pessoa. Wait, the RELATOR is a role, but the name itself is a person. So I'll mark the full name as pessoa.
+
+Next, "Gendire Carvalho Da Silva" is another person, so that's another <span class="pessoa">.
+
+Then, "Cemig Distribuição S/A" is an organization, so <span class="organizacao">.
+
+The part "ajuizada em face de" refers to the organization, so that's already covered. 
+
+Looking for tempo, local, legislacao, jurisprudencia. The text mentions "fls. 36/37-TJ" which might refer to a court decision, so "TJ" could be an abbreviation for Tribunal de Justiça, which is a local or part of the jurisprudencia? Wait, "TJ" here is part of the document reference, like page numbers. Maybe "TJ" is an abbreviation for a local (like Tribunal de Justiça), but in the context, it's part of the citation. However, the user's example output might have marked "TJ" as local. Let me check the example output provided by the user.
+
+Wait, the user provided the input and the output. Let me check the example. The input text includes "fls . 36/37-TJ" and in the output, "TJ" is marked as local. So I need to mark "TJ" as local. Also, "fls" is an abbreviation for "folhas" (pages), which is a temporal reference? Or maybe it's part of the document reference. But according to the guidelines, "tempo" is for time/data. However, "fls" here refers to pages, not time. So maybe "fls" is not marked. The "TJ" is part of the court reference, so it's a local. 
+
+So in the output, "TJ" is marked as local. 
+
+Other parts: "Agravo de instrumento" is a legal term, but not an entity. "Ação de Obrigação de Fazer c/c Indenização por Danos Morais" are legal terms, not entities. "tutela provisória de urgência" is a legal concept, not an entity. 
+
+So the entities are:
+
+- CARLOS ROBERTO DE FARIA: pessoa
+- Gendire Carvalho Da Silva: pessoa
+- Cemig Distribuição S/A: organizacao
+- TJ: local
+
+Wait, the user's example output might have "TJ" as local. Let me check the example output again. The user's example input includes "fls . 36/37-TJ" and in the output, "TJ" is marked as local. So I need to do the same here.
+
+So the final HTML would have those spans. Let me structure the text accordingly, replacing the entities with the appropriate tags.
+</think>
+
+CARLOS ROBERTO DE FARIA ( RELATOR ) V O T O Trata-se de agravo de instrumento interposto <span class="pessoa">Gendire Carvalho Da Silva</span> , nos autos da Ação de Obrigação de Fazer c/c Indenização por Danos Morais , ajuizada em face de <span class="organizacao">Cemig Distribuição S/A</span> , contra decisão de fls . 36/37-<span class="local">TJ</span> , que indeferiu a tutela provisória de urgência .

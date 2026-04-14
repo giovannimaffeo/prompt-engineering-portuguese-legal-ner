@@ -1,0 +1,83 @@
+ERROR ANALYSIS: ACORDAOTCU11602016 (chunk1)
+================================================================================
+
+Start: "Número do Acórdão ACÓRDÃO 1160/2016 - PLENÁRIO"
+End: "Carlos Aureliano Motta de Souza ( 090.118.467-53 ) ."
+File: data/test/ACORDAOTCU11602016.bio, lines 1-143
+
+GOLD ENTITIES (16):
+text: "ACÓRDÃO 1160/2016", entity: "JURISPRUDENCIA"
+text: "PLENÁRIO", entity: "ORGANIZACAO"
+text: "AUGUSTO NARDES", entity: "PESSOA"
+text: "Processo 006.010/2000-4", entity: "JURISPRUDENCIA"
+text: "11/05/2016", entity: "TEMPO"
+text: "Ana Arraes", entity: "PESSOA"
+text: "Superior Tribunal Militar", entity: "ORGANIZACAO"
+text: "Aldo da Silva Fagundes", entity: "PESSOA"
+text: "Antonio Carlos de Nogueira", entity: "PESSOA"
+text: "Carlos Aureliano Motta de Souza", entity: "PESSOA"
+text: "Carlos de Almeida Baptista", entity: "PESSOA"
+text: "Edson Alves Mey", entity: "PESSOA"
+text: "Grupo Ok Construções e Empreendimentos Ltda.", entity: "ORGANIZACAO"
+text: "Luiz de Oliveira Alves", entity: "PESSOA"
+text: "Raul Lopes Biangolino", entity: "PESSOA"
+text: "Carlos Aureliano Motta de Souza", entity: "PESSOA"
+
+PREDICTED ENTITIES (16):
+text: "ACÓRDÃO 1160/2016 - PLENÁRIO", entity: "JURISPRUDENCIA"
+text: "AUGUSTO NARDES", entity: "PESSOA"
+text: "006.010/2000-4", entity: "JURISPRUDENCIA"
+text: "11/05/2016", entity: "TEMPO"
+text: "16/2016", entity: "JURISPRUDENCIA"
+text: "Ana Arraes", entity: "PESSOA"
+text: "Superior Tribunal Militar", entity: "ORGANIZACAO"
+text: "Aldo da Silva Fagundes", entity: "PESSOA"
+text: "Antonio Carlos de Nogueira", entity: "PESSOA"
+text: "Carlos Aureliano Motta de Souza", entity: "PESSOA"
+text: "Carlos de Almeida Baptista", entity: "PESSOA"
+text: "Edson Alves Mey", entity: "PESSOA"
+text: "Grupo Ok Construções e Empreendimentos Ltda.", entity: "ORGANIZACAO"
+text: "Luiz de Oliveira Alves", entity: "PESSOA"
+text: "Raul Lopes Biangolino", entity: "PESSOA"
+text: "Carlos Aureliano Motta de Souza", entity: "PESSOA"
+
+================================================================================
+ERROR DISTRIBUTION:
+================================================================================
+
+BOUNDARY ERRORS (2):
+--------------------------------------------------------------------------------
+1. Gold: "ACÓRDÃO 1160/2016" (JURISPRUDENCIA)
+   Pred: "ACÓRDÃO 1160/2016 - PLENÁRIO" (JURISPRUDENCIA)
+   → Predicted entity is longer, includes suffix "- PLENÁRIO"
+
+2. Gold: "Processo 006.010/2000-4" (JURISPRUDENCIA)
+   Pred: "006.010/2000-4" (JURISPRUDENCIA)
+   → Predicted entity is shorter, missing the prefix "Processo"
+
+MISSING ENTITY (1):
+--------------------------------------------------------------------------------
+1. Gold: "PLENÁRIO" (ORGANIZACAO)
+   Pred: (not predicted as separate entity, merged into "ACÓRDÃO 1160/2016 - PLENÁRIO")
+   → Entity was not detected separately
+
+INCORRECT EXTRACTION (1):
+--------------------------------------------------------------------------------
+1. Pred: "16/2016" (JURISPRUDENCIA)
+   Gold: (not annotated)
+   → False positive
+
+================================================================================
+SUMMARY:
+================================================================================
+Total errors: 4
+- Boundary errors: 2 (50%)
+- Missing entities: 1 (25%)
+- Incorrect extraction (False positives): 1 (25%)
+- Incorrect entity type: 0
+
+Notes:
+- Most entities match exactly between gold and predicted (12 out of 16)
+- Two boundary errors: one entity extended, one entity shortened
+- "PLENÁRIO" was not detected as separate ORGANIZACAO entity (merged with JURISPRUDENCIA)
+- One false positive: "16/2016" predicted as JURISPRUDENCIA but not annotated in gold

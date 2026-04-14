@@ -1,0 +1,34 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with appropriate tags. First, I need to understand the definitions provided for each entity type: pessoa, organização, tempo, local, legislação, and jurisprudência.
+
+Looking at the input text: "Transcrevo , por oportuno , as conclusões expendidas pela eminente Ministra Rosa Weber , do Supremo Tribunal Federal , no sentido de que : '' ( ... ) Se não há constrangimento atual ou próximo à liberdade de locomoção , se a perspectiva de prisão é remota e depende de incerta e futura condenação criminal transitada em julgado , o remédio apropriado contra eventuais ilegalidades ou abusos é o devido processo legal , com o trâmite natural da ação penal , e seus consectários . '' ( Habeas Corpus nº 115.012 , Dje : 13/05/2013 ) . Diante do exposto , denego a ordem de habeas corpus por falta de amparo legal ."
+
+First, I need to scan for each entity type. Let's start with "pessoa". The text mentions "Ministra Rosa Weber". "Ministra" is a title, not a name, so according to the guidelines, titles like that shouldn't be marked. However, "Rosa Weber" is a name. So "Rosa Weber" should be marked as pessoa.
+
+Next, "organização". The text refers to "Supremo Tribunal Federal" which is a formal organization. That should be an organization. Also, "Supremo Tribunal Federal" is a specific entity, so it's an organization.
+
+"Tempo" entities are dates. The text has "Dje : 13/05/2013". That's a date in DD/MM/YYYY format, so it's a tempo entity.
+
+"Local" – The text doesn't mention any specific locations like cities or states, so no local entities here.
+
+"Legislação" – The text mentions "ação penal" and "devido processo legal", but those are general terms, not specific laws. There's no mention of a specific law or code, so no legislation here.
+
+"Jurisprudência" – The text has "Habeas Corpus nº 115.012" which is a specific case number, so that's jurisprudência. Also, "Dje" is likely "Diário da Justiça Eletrônico", but the date is already marked as tempo. The "Habeas Corpus nº 115.012" is a specific legal case, so it should be marked as jurisprudência.
+
+Now, check the examples. In the example, "REsp n . 1694984/MS" was marked as jurisprudência. Similarly, here "Habeas Corpus nº 115.012" is a specific case, so it's jurisprudência. Also, the date "13/05/2013" is tempo.
+
+Need to make sure not to mark any generic terms. For example, "Ministra" is a title, not a name. "Supremo Tribunal Federal" is an organization. "Rosa Weber" is a person. The date is tempo. The Habeas Corpus is jurisprudência.
+
+So the HTML should have:
+
+- "Rosa Weber" as pessoa.
+- "Supremo Tribunal Federal" as organização.
+- "13/05/2013" as tempo.
+- "Habeas Corpus nº 115.012" as jurisprudência.
+
+Check if there are any other entities. The text also mentions "ação penal" and "devido processo legal", but these are general terms, not specific entities. So they remain as is.
+
+Putting it all together, the HTML tags should be applied correctly. Let me make sure I didn't miss any. The rest of the text doesn't have any other entities. So the final output should have those four entities marked with their respective classes.
+</think>
+
+Transcrevo , por oportuno , as conclusões expendidas pela eminente <span class="pessoa">Rosa Weber</span> , do <span class="organizacao">Supremo Tribunal Federal</span> , no sentido de que : '' ( ... ) Se não há constrangimento atual ou próximo à liberdade de locomoção , se a perspectiva de prisão é remota e depende de incerta e futura condenação criminal transitada em julgado , o remédio apropriado contra eventuais ilegalidades ou abusos é o devido processo legal , com o trâmite natural da ação penal , e seus consectários . '' ( <span class="jurisprudencia">Habeas Corpus nº 115.012</span> , <span class="tempo">Dje : 13/05/2013</span> ) . Diante do exposto , denego a ordem de habeas corpus por falta de amparo legal .

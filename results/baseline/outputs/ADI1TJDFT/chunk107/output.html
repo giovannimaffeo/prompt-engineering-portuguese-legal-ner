@@ -1,0 +1,74 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify all instances of these entities. Let me start by breaking down the text into parts.
+
+The first part is "Art . 2º O parecer de que trata o art . 1º pode ser rejeitado pela Administração Pública , fundamentadamente , por comprovada inobservância de norma legal em vigor ou supremacia do interesse público . Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art . 4º Esta Lei entra em vigor na data de sua publicação . Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI O Senhor Desembargador MARIO MACHADO - Vogal Presentes os pressupostos processuais e as condições da ação , admito o processamento da presente Ação Direta de Inconstitucionalidade . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 43 Art . 5º Revogam-se as disposições em contrário ."
+
+Looking for entities:
+
+1. "Administração Pública" – this is an organization, so class="organizacao".
+2. "Poder Executivo" – another organization, same class.
+3. "Lei" – this is legislation, so class="legislacao".
+4. "60 dias" – this is a time period, class="tempo".
+5. "data de sua publicação" – "data" here refers to a date, so class="tempo".
+6. "Ação Direta de Inconstitucionalidade" – this is a legal action, which might fall under jurisprudencia or legislation. Wait, "Ação Direta de Inconstitucionalidade" is a type of legal action, so maybe jurisprudencia? Or is it a legal term? Hmm, maybe it's a legal procedure, so perhaps it's part of jurisprudencia. Alternatively, maybe it's a specific case, so maybe not. Need to check. Since it's a specific legal action, maybe it's jurisprudencia. But I'm not sure. Alternatively, maybe it's a legal term, so maybe legislacao? Wait, "Ação Direta de Inconstitucionalidade" is a type of legal action, so perhaps it's a jurisprudencia entity. But I'm not certain. Let me think again. Jurisprudencia refers to judicial decisions or precedents. Since this is a specific case, maybe it's a jurisprudencia. Alternatively, maybe it's a legal term, so maybe legislacao. Hmm. Maybe I should mark it as jurisprudencia since it's a legal action. Alternatively, maybe it's a legal term, so legislacao. Wait, the user's example in the output might help. Let me check the sample output provided. Wait, the user hasn't provided a sample output, but the example given in the task might have some clues. Wait, the user's example input includes "Ação Direta de Inconstitucionalidade" and in the output, maybe it's marked as jurisprudencia. Alternatively, maybe it's a legal term, so legislacao. I'm a bit confused here. Let me check the original text again. The text mentions "Ação Direta de Inconstitucionalidade" which is a specific legal action, so perhaps it's a jurisprudencia entity. Alternatively, maybe it's a legal term, so legislacao. But I think in this context, since it's a specific case, it's more likely to be jurisprudencia. So I'll mark it as such.
+
+Next, "Senhor Desembargador MARIO MACHADO" – "MARIO MACHADO" is a person, so class="pessoa".
+
+"Desembargador" is a title, so maybe not an entity. Wait, the person's name is "MARIO MACHADO", so that's a pessoa.
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "SILVANIO BARBOSA DOS SANTOS" is another person, so class="pessoa".
+
+"Art . 5º Revogam-se as disposições em contrário ." – "Art" is part of the article number, so not an entity.
+
+Now, checking for other entities:
+
+- "Fls . _____" – Fls is an abbreviation for "Folhas", which is a legal term, but not sure if it's a local, tempo, or something else. Since it's an abbreviation, maybe not an entity. So leave as is.
+
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – This seems like a code, not an entity. So leave as is.
+
+- "43" – This is a number, not an entity.
+
+So, the entities to mark are:
+
+- Administração Pública (organizacao)
+- Poder Executivo (organizacao)
+- Lei (legislacao)
+- 60 dias (tempo)
+- data de sua publicação (tempo)
+- Ação Direta de Inconstitucionalidade (jurisprudencia)
+- MARIO MACHADO (pessoa)
+- SILVANIO BARBOSA DOS SANTOS (pessoa)
+
+Wait, "data de sua publicação" – "data" here refers to the date when the law comes into effect, so that's a tempo entity. So I need to mark "data de sua publicação" as tempo.
+
+Also, "Ação Direta de Inconstitucionalidade" is a specific legal action, so jurisprudencia.
+
+Now, let me go through the text again and apply the tags accordingly.
+
+Original text:
+
+Art . 2º O parecer de que trata o art . 1º pode ser rejeitado pela Administração Pública , fundamentadamente , por comprovada inobservância de norma legal em vigor ou supremacia do interesse público . Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art . 4º Esta Lei entra em vigor na data de sua publicação . Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI O Senhor Desembargador MARIO MACHADO - Vogal Presentes os pressupostos processuais e as condições da ação , admito o processamento da presente Ação Direta de Inconstitucionalidade . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 43 Art . 5º Revogam-se as disposições em contrário .
+
+Now, applying the tags:
+
+- "Administração Pública" → <span class="organizacao">Administração Pública</span>
+- "Poder Executivo" → <span class="organizacao">Poder Executivo</span>
+- "Lei" → <span class="legislacao">Lei</span>
+- "60 dias" → <span class="tempo">60 dias</span>
+- "data de sua publicação" → <span class="tempo">data de sua publicação</span>
+- "Ação Direta de Inconstitucionalidade" → <span class="jurisprudencia">Ação Direta de Inconstitucionalidade</span>
+- "MARIO MACHADO" → <span class="pessoa">MARIO MACHADO</span>
+- "SILVANIO BARBOSA DOS SANTOS" → <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>
+
+Wait, but in the text, "Ação Direta de Inconstitucionalidade" appears twice. The first occurrence is "Ação Direta de Inconstitucionalidade 20170020161362ADI" and then again later. So both instances should be marked as jurisprudencia.
+
+Also, "Fls . _____" – "Fls" is an abbreviation for "Folhas", which is a legal term, but not sure if it's a local or something else. Since it's an abbreviation, maybe not an entity. So leave as is.
+
+Putting it all together, the HTML should have these spans with the appropriate classes. Let me make sure I didn't miss any other entities. For example, "Código de Verificação" – that's a code, not an entity. "GABINETE DO DESEMBARGADOR" – "GABINETE" is a place, so maybe local? Wait, "GABINETE DO DESEMBARGADOR" is the office of the judge, so maybe it's a local? Or is it an organization? Hmm. The term "GABINETE" can refer to an office or a local. But in this context, it's part of the name of the organization, so maybe it's part of the organization. However, the user's example might have different interpretations. Since the user hasn't provided examples, I'll stick with the initial analysis. "GABINETE DO DESEMBARGADOR" is part of the name of the organization, but since the user's instruction is to mark entities, and "GABINETE" is a place, maybe it's a local. But I'm not sure. Alternatively, since it's part of the organization's name, maybe it's an organization. However, the user's instruction says to mark "organizacao" for organizations. So "GABINETE DO DESEMBARGADOR" is part of the organization's name, but the actual organization is the "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". Wait, the text says "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 43". So "GABINETE DO DESEMBARGADOR" is part of the organization's name. But the user's instruction is to mark "organizacao" for organizations. So perhaps "GABINETE DO DESEMBARGADOR" is part of the organization's name, but the actual organization is the entire name. However, the user's example might not have that. Since the user hasn't provided examples, I'll proceed with the initial entities identified.
+
+So, the final HTML should have the spans for the identified entities. Let me write that out.
+</think>
+
+Art . 2º O parecer de que trata o art . 1º pode ser rejeitado pela <span class="organizacao">Administração Pública</span> , fundamentadamente , por comprovada inobservância de norma legal em vigor ou supremacia do interesse público . Art . 3º O <span class="organizacao">Poder Executivo</span> regulamentará esta <span class="legislacao">Lei</span> no prazo de <span class="tempo">60 dias</span> . Art . 4º Esta <span class="legislacao">Lei</span> entra em vigor na <span class="tempo">data de sua publicação</span> . Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade</span> 20170020161362ADI O Senhor <span class="pessoa">Desembargador MARIO MACHADO</span> - Vogal Presentes os pressupostos processuais e as condições da ação , admito o processamento da presente <span class="jurisprudencia">Ação Direta de Inconstitucionalidade</span> . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 43 Art . 5º Revogam-se as disposições em contrário .

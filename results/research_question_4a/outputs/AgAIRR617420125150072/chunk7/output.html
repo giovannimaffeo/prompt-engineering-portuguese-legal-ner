@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "Ministro Ricardo Lewandowski , 2ª Turma , DJe de 12/03/2014 , ...". 
+
+"Ministro Ricardo Lewandowski" – here, "Ricardo Lewandowski" is a person's name, so that's a pessoa. "Ministro" is a title, not a name, so it shouldn't be marked. 
+
+"2ª Turma" – this is a court chamber, which is an organization. The example mentions that expressions like "4ª Turma Cível" are organizations, so "2ª Turma" should be organizacao.
+
+"DJe de 12/03/2014" – "DJe" is likely an acronym for Diário da Justiça Eletrônico, which is a legal publication. But according to the guidelines, only specific entities like legislation, jurisprudence, etc., are marked. Wait, the user's examples show that "DJe" isn't marked. Wait, the user's example input had "DJe de 12/03/2014" and in the output, "DJe" wasn't marked. Wait, but the user's example output for "DJe de 12/03/2014" was left as is. Wait, no, looking back, in the example input, the output didn't mark "DJe" but the date "12/03/2014" was marked as tempo. So in this case, "DJe" is part of the date reference, but since it's an acronym, maybe it's not marked. Wait, the guidelines say that only specific entities are marked. "DJe" is a publication, but the user's example didn't mark it. So perhaps "DJe" isn't considered an entity here. So the date "12/03/2014" is tempo.
+
+Next, "legítima e plenamente compatível com preceitos da Constituição Federal e da legislação infraconstitucional ( artigos 93 , inciso IX , da Constituição Federal , 458 , inciso II , do CPC e 832 da CLT )". 
+
+"Constituição Federal" is a legislation, so that's legislacao. "CPC" is Código de Processo Civil, which is legislation. "CLT" is Consolidação das Leis do Trabalho, also legislation. The "artigos 93, inciso IX" refers to articles in the Constitution, so that's part of the legislation. Similarly, "458, inciso II do CPC" and "832 da CLT" are parts of the legislation. So all these should be marked as legislacao.
+
+Then, "o julgamento per relationem , consubstanciado na remissão aos fundamentos de fato e/ou de direito que deram suporte à decisão anterior , bem como a outros atos , manifestações ou peças processuais constantes dos autos ."
+
+Here, "autos" refers to the case files, but it's a generic term, so not marked. The rest seems to be general terms, no entities.
+
+"A jurisprudência da SBDI-1 desta Corte orienta-se no sentido de conferir plena validade à referida técnica de julgamento , conforme os seguintes precedentes : E-Ed-AIRR-10307-04.2010.5.05.0000 , Rel . Ministro Augusto César Leite de Carvalho , DEJT de 03/04/2012 ; E-ED-AIRR-129900-34.2009.5.15.0016 , Rel ."
+
+"SBDI-1" is a court chamber, so organizacao. "Corte" refers to the court, which is an organization. The "precedentes" are jurisprudencia. The numbers like "E-Ed-AIRR-10307-04.2010.5.05.0000" are jurisprudencia. "DEJT de 03/04/2012" – "DEJT" is another acronym, but the date "03/04/2012" is tempo. "Ministro Augusto César Leite de Carvalho" is a pessoa. 
+
+Wait, the user's example had "REsp n . 1694984/MS" marked as jurisprudencia. So any number with a specific identifier, even without the word "acórdão", should be marked. So "E-Ed-AIRR-10307-04.2010.5.05.0000" and "E-ED-AIRR-129900-34.2009.5.15.0016" are jurisprudencia. 
+
+Also, "Rel . Ministro Augusto César Leite de Carvalho" – "Ministro" is a title, but the name "Augusto César Leite de Carvalho" is a pessoa. 
+
+Putting it all together, I need to mark each of these entities with the appropriate class. Let me check each part again to ensure I didn't miss any.
+
+So, the final HTML should have all these entities marked. Let me structure the output accordingly.
+</think>
+
+Ministro <span class="pessoa">Ricardo Lewandowski</span> , <span class="organizacao">2ª Turma</span> , <span class="tempo">DJe de 12/03/2014</span> , revelando-se legítima e plenamente compatível com preceitos da <span class="legislacao">Constituição Federal</span> e da <span class="legislacao">legislação infraconstitucional</span> ( <span class="legislacao">artigos 93</span> , <span class="legislacao">inciso IX</span> , da <span class="legislacao">Constituição Federal</span> , <span class="legislacao">458</span> , <span class="legislacao">inciso II</span> , do <span class="legislacao">CPC</span> e <span class="legislacao">832 da CLT</span> ) o julgamento per relationem , consubstanciado na remissão aos fundamentos de fato e/ou de direito que deram suporte à decisão anterior , bem como a outros atos , manifestações ou peças processuais constantes dos autos . A <span class="jurisprudencia">jurisprudência</span> da <span class="organizacao">SBDI-1</span> desta <span class="organizacao">Corte</span> orienta-se no sentido de conferir plena validade à referida técnica de julgamento , conforme os seguintes precedentes : <span class="jurisprudencia">E-Ed-AIRR-10307-04.2010.5.05.0000</span> , Rel . <span class="pessoa">Ministro Augusto César Leite de Carvalho</span> , <span class="tempo">DEJT de 03/04/2012</span> ; <span class="jurisprudencia">E-ED-AIRR-129900-34.2009.5.15.0016</span> , Rel .

@@ -1,0 +1,90 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be aware of the terms used. Let me go through each part step by step.
+
+The input text starts with "14 , II , ambos do CP , e ora pronunciado nos exatos termos da denúncia , objetivando , com o writ , o relaxamento da prisão do paciente ou , alternativamente , o direito de aguardar o julgamento perante o Tribunal do Júri em liberdade . Requer , ainda , a antecipação da sessão de julgamento designada para o dia 25.01.18 . Argumenta o ilustre impetrante , em síntese , com o excesso de prazo para a realização da sessão do Júri ."
+
+Looking for entities:
+
+1. "CP" – that's Código Penal (Penal Code), which is legislation. So "CP" should be <span class="legislacao">CP</span>.
+
+2. "Tribunal do Júri" – this is a court, which is an organization. So "Tribunal do Júri" becomes <span class="organizacao">Tribunal do Júri</span>.
+
+3. "25.01.18" – this is a date, so it's a tempo entity. The format is day.month.year, so "25.01.18" becomes <span class="tempo">25.01.18</span>.
+
+4. "ilustre impetrante" – "impetrante" refers to a petitioner, which is a person. So "ilustre impetrante" becomes <span class="pessoa">ilustre impetrante</span>.
+
+Wait, but "ilustre" is an adjective, so maybe the person is "impetrante". But the user's example might have "impetrante" as the person. Let me check the original text again. The text says "Argumenta o ilustre impetrante..." So "impetrante" is the person, so "ilustre impetrante" would be the person. But maybe "ilustre" is just an adjective, so the person is "impetrante". However, the user's example might have "impetrante" as the person. Let me check the example output. Wait, the user hasn't provided an example output yet. The user's instruction says to return the text with the entities marked. So I need to make sure that "impetrante" is a person. In legal terms, "impetrante" is the petitioner, so it's a person. So "impetrante" should be <span class="pessoa">impetrante</span>, and "ilustre" is just an adjective, so it's left as is. Wait, but the user's instruction says to mark the entities. So if "impetrante" is the person, then the entire phrase "ilustre impetrante" would be a person? Or just "impetrante"? Hmm. The user's example might have "impetrante" as the person. Let me think. In the input text, "Argumenta o ilustre impetrante..." So "impetrante" is the person. So "impetrante" is the person, and "ilustre" is an adjective. So the person is "impetrante", so the span should be around "impetrante". But the user's instruction says to mark the entities. So maybe "impetrante" is the person. So I should wrap "impetrante" in <span class="pessoa">. But the text says "ilustre impetrante", so maybe the entire phrase is the person? Or just "impetrante"? I think "impetrante" is the person, so the span is around "impetrante". But the user's example might have "impetrante" as the person. Let me check the original text again. The text is: "Argumenta o ilustre impetrante , em síntese , com o excesso de prazo para a realização da sessão do Júri ."
+
+So "impetrante" is the person. So "impetrante" is the person. Therefore, the span should be around "impetrante". But the text says "ilustre impetrante", so maybe "ilustre" is part of the person's title? Not sure. But according to the user's instruction, the entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So "impetrante" is a person. So the span is around "impetrante".
+
+Other entities:
+
+- "writ" – this is a legal term, but is it a jurisprudencia or legislation? "Writ" is a legal action, but in the context, it's part of the legal process. However, the user's entities don't include "writ" as a category. So maybe it's not marked. Unless "writ" is considered part of jurisprudencia, but I think it's more of a legal term, not an entity. So leave it as is.
+
+- "júri" – this refers to the jury, which is part of the court, so maybe part of the organization. But "Tribunal do Júri" is the organization. So "júri" is part of the organization's name. So "Tribunal do Júri" is the organization, so the entire phrase is marked as organizacao.
+
+- "sessão de julgamento" – this is a session, but not an entity. So no tag.
+
+- "excesso de prazo" – this is a legal term, but not an entity. So no tag.
+
+So the entities to mark are:
+
+- "CP" → legislacao
+- "Tribunal do Júri" → organizacao
+- "25.01.18" → tempo
+- "impetrante" → pessoa
+
+Wait, but in the text, "impetrante" is part of "ilustre impetrante". So the person is "impetrante", so the span is around "impetrante".
+
+So the final HTML would have:
+
+- "CP" as <span class="legislacao">CP</span>
+- "Tribunal do Júri" as <span class="organizacao">Tribunal do Júri</span>
+- "25.01.18" as <span class="tempo">25.01.18</span>
+- "impetrante" as <span class="pessoa">impetrante</span>
+
+Other parts are left as is.
+
+Now, let me reconstruct the text with these tags.
+
+Original text:
+
+"14 , II , ambos do CP , e ora pronunciado nos exatos termos da denúncia , objetivando , com o writ , o relaxamento da prisão do paciente ou , alternativamente , o direito de aguardar o julgamento perante o Tribunal do Júri em liberdade . Requer , ainda , a antecipação da sessão de julgamento designada para o dia 25.01.18 . Argumenta o ilustre impetrante , em síntese , com o excesso de prazo para a realização da sessão do Júri ."
+
+Marked entities:
+
+- "CP" → <span class="legislacao">CP</span>
+- "Tribunal do Júri" → <span class="organizacao">Tribunal do Júri</span>
+- "25.01.18" → <span class="tempo">25.01.18</span>
+- "impetrante" → <span class="pessoa">impetrante</span>
+
+So the final HTML would be:
+
+"14 , II , ambos do <span class="legislacao">CP</span> , e ora pronunciado nos exatos termos da denúncia , objetivando , com o writ , o relaxamento da prisão do paciente ou , alternativamente , o direito de aguardar o julgamento perante o <span class="organizacao">Tribunal do Júri</span> em liberdade . Requer , ainda , a antecipação da sessão de julgamento designada para o dia <span class="tempo">25.01.18</span> . Argumenta o ilustre <span class="pessoa">impetrante</span> , em síntese , com o excesso de prazo para a realização da sessão do Júri ."
+
+I think that's all. Let me check again for any missed entities. "Júri" is part of the organization's name, so it's already covered in "Tribunal do Júri". "Writ" is not an entity. "Paciente" is a person? Wait, "paciente" is a person, but in the context, it's "prisão do paciente", which refers to the patient's imprisonment. So "paciente" is a person. Wait, but the user's instruction says to mark 'pessoa' entities. So "paciente" is a person. So I should mark "paciente" as <span class="pessoa">paciente</span>.
+
+Wait, I missed that. Let me check again.
+
+Original text: "o relaxamento da prisão do paciente"
+
+So "paciente" is a person. So "paciente" should be marked as pessoa.
+
+So adding that:
+
+- "paciente" → <span class="pessoa">paciente</span>
+
+So the corrected HTML would have:
+
+"14 , II , ambos do <span class="legislacao">CP</span> , e ora pronunciado nos exatos termos da denúncia , objetivando , com o writ , o relaxamento da prisão do <span class="pessoa">paciente</span> ou , alternativamente , o direito de aguardar o julgamento perante o <span class="organizacao">Tribunal do Júri</span> em liberdade . Requer , ainda , a antecipação da sessão de julgamento designada para o dia <span class="tempo">25.01.18</span> . Argumenta o ilustre <span class="pessoa">impetrante</span> , em síntese , com o excesso de prazo para a realização da sessão do Júri ."
+
+That's better. So I missed "paciente" as a person. So that's an additional entity.
+
+Another check: "excesso de prazo" – no entity. "Júri" is part of the organization's name. "writ" is not an entity. "CP" is legislation. "Tribunal do Júri" is organization. "25.01.18" is tempo. "impetrante" and "paciente" are pessoas.
+
+So the final HTML should include all these.
+</think>
+
+14 , II , ambos do <span class="legislacao">CP</span> , e ora pronunciado nos exatos termos da denúncia , objetivando , com o writ , o relaxamento da prisão do <span class="pessoa">paciente</span> ou , alternativamente , o direito de aguardar o julgamento perante o <span class="organizacao">Tribunal do Júri</span> em liberdade . Requer , ainda , a antecipação da sessão de julgamento designada para o dia <span class="tempo">25.01.18</span> . Argumenta o ilustre <span class="pessoa">impetrante</span> , em síntese , com o excesso de prazo para a realização da sessão do Júri .

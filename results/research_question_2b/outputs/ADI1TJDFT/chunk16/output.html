@@ -1,0 +1,62 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. The text is about the administration of the Distrito Federal, mentioning the Poderes (Executive and Legislative), articles 53 and 71, and some legal terms. 
+
+Looking for entities:
+
+- "Distrito Federal" is a local, so I should mark that as local.
+- "Poderes do Distrito Federal" refers to the local's powers, so "Distrito Federal" is still local.
+- "Câmara Legislativa" is an organization, so that's organizacao.
+- "Governador do Distrito Federal" is a person, so "Governador" would be pessoa. Wait, but "Governador" is a title, so maybe the full name would be a pessoa. However, the text just says "Governador", so maybe it's a title. But the instruction says to mark people, so perhaps "Governador" is a person. Hmm, maybe I should check if there's a specific name. Since it's not given, maybe it's better to mark "Governador" as pessoa. Alternatively, if it's a title, maybe not. But the example might have it as pessoa. Let me think. In legal texts, titles like "Governador" are often used for people, so I'll mark it as pessoa.
+- "Art. 53" and "Art. 71" are articles of legislation, so they should be legislacao. Wait, "Art." is part of the legislation, so the numbers 53 and 71 are part of the legislation. So "Art. 53" and "Art. 71" would be legislacao.
+- "leis complementares e ordinárias" refers to legislation, so those terms are part of legislacao.
+- "Câmara Legislativa" is an organization, so that's organizacao.
+- "Legislativo" is part of the organization, but maybe it's part of the local? Wait, "Legislativo" is a branch of the government, so maybe it's part of the local? Or is it part of the organization? Wait, the text says "Poderes do Distrito Federal" which are the Executive and Legislative. So "Legislativo" is part of the local's structure. But the entity is "Legislativo" as part of the organization? Or is it part of the local? Hmm, maybe "Legislativo" is part of the local's structure, but the entity is "Legislativo" as a part of the organization. Wait, the user's example might have "Câmara Legislativa" as organizacao. So "Câmara Legislativa" is an organization. "Legislativo" is part of the local's powers. So maybe "Legislativo" is part of the local? Or is it part of the organization? I'm a bit confused here. Let me check the original text again.
+
+Original text: "São Poderes do Distrito Federal, independentes e harmônicos entre si, o Executivo e o Legislativo." So "Executivo" and "Legislativo" are the powers of the Distrito Federal. So "Executivo" and "Legislativo" are parts of the local's structure. But the user's entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "Distrito Federal" is local. "Executivo" and "Legislativo" are parts of the local's structure, but they are not entities to be marked. Unless they are considered as organizations. Wait, maybe "Legislativo" is part of the organization? Or is it part of the local? The user's example might have "Câmara Legislativa" as organizacao. So "Câmara Legislativa" is an organization. "Legislativo" is a branch, so maybe it's part of the local. But the user's instruction says to mark "organizacao" for organizations. So "Câmara Legislativa" is an organization. "Legislativo" is part of the local's powers. So in the text, "Legislativo" is part of the local's structure, so it's not an entity to be marked. 
+
+So, in the text, the entities to mark are:
+
+- "Distrito Federal" as local.
+- "Câmara Legislativa" as organizacao.
+- "Governador do Distrito Federal" as pessoa (since "Governador" is a person's title).
+- "Art. 53" and "Art. 71" as legislacao.
+- "leis complementares e ordinárias" as legislacao (since they are types of laws).
+
+Wait, "leis complementares e ordinárias" are types of legislation, so they should be marked as legislacao. Also, "Art. 53" and "Art. 71" are articles of legislation, so they are part of legislacao.
+
+So putting it all together:
+
+- "Distrito Federal" → local.
+- "Câmara Legislativa" → organizacao.
+- "Governador do Distrito Federal" → pessoa (Governador is the person).
+- "Art. 53" → legislacao.
+- "Art. 71" → legislacao.
+- "leis complementares e ordinárias" → legislacao.
+
+Wait, but "leis complementares e ordinárias" is part of the text, so I need to check if that's a term referring to legislation. Yes, they are types of laws, so they are part of legislacao.
+
+So the HTML would have:
+
+<span class="local">Distrito Federal</span>
+<span class="organizacao">Câmara Legislativa</span>
+<span class="pessoa">Governador</span> (assuming "Governador" is the person, even though it's a title)
+<span class="legislacao">Art. 53</span>
+<span class="legislacao">Art. 71</span>
+<span class="legislacao">leis complementares e ordinárias</span>
+
+Wait, but "leis complementares e ordinárias" is part of the text. Let me check the original text again:
+
+"A iniciativa das leis complementares e ordinárias cabe a qualquer membro ou comissão da Câmara Legislativa , ao Governador do Distrito Federal e , nos termos do art ."
+
+So "leis complementares e ordinárias" is part of the text. So that should be marked as legislacao.
+
+Also, "art." in "art. 53" and "art. 71" are part of the legislation. So "Art. 53" and "Art. 71" are legislacao.
+
+So the final HTML would have those spans. Let me make sure I didn't miss any other entities. The text doesn't mention any other entities like time, place, etc. So the rest remains as is.
+
+Now, putting it all together in HTML format.
+</think>
+
+A administração pública direta , indireta ou fundacional , de qualquer dos <span class="local">Distrito Federal</span> , obedecerá aos princípios de legalidade , impessoalidade , moralidade , publicidade , razoabilidade , motivação e interesse público , e também ao seguinte : <span class="legislacao">Art . 53</span> . São <span class="local">Poderes do Distrito Federal</span> , independentes e harmônicos entre si , o Executivo e o Legislativo . <span class="legislacao">Art . 71</span> . A iniciativa das <span class="legislacao">leis complementares e ordinárias</span> cabe a qualquer membro ou comissão da <span class="organizacao">Câmara Legislativa</span> , ao <span class="pessoa">Governador do Distrito Federal</span> e , nos termos do <span class="legislacao">art</span> .

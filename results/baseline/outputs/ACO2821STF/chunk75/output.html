@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is: "Isso posto , confirmo a tutela de urgência anteriormente deferida e julgo procedente a presente ação para determinar à ré que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CAUC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS nº 204/2008 e de suas posteriores alterações ” ."
+
+Looking for entities here. "Estado de Mato Grosso" is a local, so I'll mark that as <span class="local">. "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" are likely acronyms for organizations or registries, so maybe "organizacao". But wait, the user specified "organizacao" for organizations. However, these might be names of registries, which could be considered as organizations. Alternatively, they might be part of the legislation. Wait, the user's example in the output shows "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" as legislacao. So I should mark those as legislacao. The acronyms like CADPREV, CADIN, etc., might be part of the legislation or organizations. Let me check the example output provided. In the sample output, "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" are marked as legislacao. So I should do the same here. The acronyms like CADPREV, CADIN, etc., might be part of the legislation or organizations. Wait, the user's example shows "CADPREV" as part of the text, but in the output, they are not marked. Wait, looking at the sample output provided by the user, the output is:
+
+"Isso posto , confirmo a tutela de urgência anteriormente deferida e julgo procedente a presente ação para determinar à ré que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social <span class="organizacao">CADPREV</span> ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( <span class="organizacao">CADIN</span> , <span class="organizacao">CAUC</span> , <span class="organizacao">SIAFI</span> , <span class="organizacao">SICONV</span> ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS nº 204/2008</span> e de suas posteriores alterações ” . Os argumentos lançados no regimental não são capazes de afastar os fundamentos da decisão combatida , que , por tal razão , deve ser mantida . Ante o exposto , nego provimento ao agravo regimental . É como voto ."
+
+Wait, in the sample output, the acronyms like CADPREV, CADIN, etc., are marked as "organizacao". So I need to follow that. Also, "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" are marked as "legislacao". 
+
+So, in the input text, "Estado de Mato Grosso" is a local, so that's marked as local. The acronyms CADPREV, CADIN, CAUC, SIAFI, SICONV are organizations. The Decreto and Portaria are legislation. 
+
+Now, the next part: "Os argumentos lançados no regimental não são capazes de afastar os fundamentos da decisão combatida , que , por tal razão , deve ser mantida . Ante o exposto , nego provimento ao agravo regimental . É como voto ."
+
+Looking for entities here. "regimental" might refer to a legal term, but it's not one of the specified entities. "agravo regimental" is a legal term, but again, not one of the specified entities. So no entities here. 
+
+So, the final HTML should have the local marked as Estado de Mato Grosso, the acronyms as organizacao, and the Decreto and Portaria as legislacao. 
+
+Wait, in the input text, the user wrote "CADPREV" as part of the text. In the sample output, they are marked as "organizacao". So I need to do the same. 
+
+So, the final HTML would have:
+
+- "Estado de Mato Grosso" as local.
+- "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" as organizacao.
+- "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" as legislacao.
+
+I need to make sure that all these are correctly marked. Also, check if any other entities are present. For example, "Mato Grosso" is part of the local, so the entire phrase "Estado de Mato Grosso" is the local. 
+
+So, the final HTML should have those spans with the correct classes.
+</think>
+
+Isso posto , confirmo a tutela de urgência anteriormente deferida e julgo procedente a presente ação para determinar à ré que renove o Certificado de Regularidade Previdenciária do Estado de <span class="local">Mato Grosso</span> , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social <span class="organizacao">CADPREV</span> ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( <span class="organizacao">CADIN</span> , <span class="organizacao">CAUC</span> , <span class="organizacao">SIAFI</span> , <span class="organizacao">SICONV</span> ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS nº 204/2008</span> e de suas posteriores alterações ” . Os argumentos lançados no regimental não são capazes de afastar os fundamentos da decisão combatida , que , por tal razão , deve ser mantida . Ante o exposto , nego provimento ao agravo regimental . É como voto .

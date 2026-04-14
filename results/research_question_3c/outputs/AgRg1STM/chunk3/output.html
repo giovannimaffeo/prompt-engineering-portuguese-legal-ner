@@ -1,0 +1,65 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example input again:
+
+"MARIA ELIZABETH GUIMARÃES TEIXEIRA , na conformidade do Extrato da Ata do Julgamento , por unanimidade de votos , em rejeitar o Agravo Interno , nos termos do voto do Relator Ministro JOSÉ BARROSO FILHO . Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 . Em 02/03/2018 17:26:32 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 Brasília , 26 de outubro de 2017 ."
+
+Alright, let's go step by step.
+
+1. **Pessoa**: Names of individuals. The first part is "MARIA ELIZABETH GUIMARÃES TEIXEIRA" – that's a full name, so that's a pessoa. Then "JOSÉ BARROSO FILHO" is another full name, so that's also pessoa. Also, "José Barroso Filho" is mentioned again later, so that's another pessoa. Wait, but the user said to mark only names, not titles like "Ministro" or "Relator". So "Ministro JOSÉ BARROSO FILHO" – the title "Ministro" is part of the name? Or is it a title? Wait, the example in the guidelines says that terms like "réu", "vítima", etc., are not to be marked. So "Ministro" is a title, not a name. So the name is "JOSÉ BARROSO FILHO", and the "Ministro" is part of the title, not the name. So the name is "JOSÉ BARROSO FILHO" and "José Barroso Filho" are the same person. So I need to mark both instances as pessoa.
+
+2. **Organizacao**: The example includes "MINISTÉRIO PÚBLICO FEDERAL" as an organization. In the input, there's "Tribunal de Contas" mentioned in the guidelines, but in the input text, I don't see any organization names. Wait, the input text has "Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 ." – that's a person, not an organization. The URL "https : //eproc2g.stm.jus.br/eproc_2g_prod/" – the domain might be an organization, but the user's guidelines say to mark only explicit names. The example in the guidelines includes "Tribunal de Contas" as an organization. In the input, there's no explicit organization name. Wait, the input has "Brasília" which is a local, but that's a city. So maybe there are no organizations here. Wait, the input has "Tribunal de Contas" in the guidelines, but in the input text, I don't see that. So maybe there are no organizations in the input text. Wait, the input text has "Brasília" as a local. So no organizations here.
+
+3. **Tempo**: Dates and times. The input has "Em 02/03/2018 17:26:32" – that's a date and time, so that's tempo. Also, "26 de outubro de 2017" is a date, so that's tempo. The "26 de outubro de 2017" is in the last part of the text.
+
+4. **Local**: Places. "Brasília" is a city, so that's local. Also, "Brasília , 26 de outubro de 2017" – the "Brasília" is the local.
+
+5. **Legislacao**: Legal norms. The input doesn't mention any specific laws, codes, or decrets. The example in the guidelines includes "Lei nº 8.666/93", but the input text doesn't have such references. So no legislacao here.
+
+6. **Jurisprudencia**: Legal precedents. The input mentions "Agravo Interno" and "voto do Relator Ministro JOSÉ BARROSO FILHO". But "Agravo Interno" is a legal term, but is it a jurisprudencia? The example includes "REsp 1694984/MS" as jurisprudencia. The input has "Agravo Interno" which is a type of legal action, not a specific precedent. So maybe no jurisprudencia here.
+
+Now, let's check each part of the input text:
+
+- "MARIA ELIZABETH GUIMARÃES TEIXEIRA" – pessoa.
+- "JOSÉ BARROSO FILHO" – pessoa.
+- "Ministro JOSÉ BARROSO FILHO" – the "Ministro" is a title, so the name is "JOSÉ BARROSO FILHO", which is already marked.
+- "02/03/2018 17:26:32" – tempo.
+- "26 de outubro de 2017" – tempo.
+- "Brasília" – local.
+- "Matricula 1117" – not an entity.
+- "https : //eproc2g.stt.jus.br/eproc_2g_prod/" – URL, but not an entity.
+- "Codigo Verificador 3044c7190e4" – not an entity.
+- "Brasília , 26 de outubro de 2017" – "Brasília" is local, "26 de outubro de 2017" is tempo.
+
+Wait, the input text has "Brasília , 26 de outubro de 2017 ." – so "Brasília" is a local, and "26 de outubro de 2017" is tempo.
+
+So the entities are:
+
+- pessoa: MARIA ELIZABETH GUIMARÃES TEIXEIRA, JOSÉ BARROSO FILHO, José Barroso Filho
+- tempo: 02/03/2018 17:26:32, 26 de outubro de 2017
+- local: Brasília
+
+Wait, the input text has "Brasília , 26 de outubro de 2017 ." – so "Brasília" is a local, and "26 de outubro de 2017" is tempo.
+
+Now, the user's example output in the guidelines includes "Brasília" as local and "26 de outubro de 2017" as tempo.
+
+So, putting it all together, the HTML should have:
+
+- <span class="pessoa">MARIA ELIZABETH GUIMARÃES TEIXEIRA</span>
+- <span class="pessoa">JOSÉ BARROSO FILHO</span>
+- <span class="pessoa">José Barroso Filho</span>
+- <span class="tempo">02/03/2018 17:26:32</span>
+- <span class="tempo">26 de outubro de 2017</span>
+- <span class="local">Brasília</span>
+
+Wait, but in the input text, the "José Barroso Filho" is mentioned again. Let me check the input text again:
+
+"Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 . Em 02/03/2018 17:26:32 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 Brasília , 26 de outubro de 2017 ."
+
+So "José Barroso Filho" is another instance of the same person, so it should be marked as pessoa. Also, "Brasília" is a local, and "26 de outubro de 2017" is tempo.
+
+So the final HTML should have all these entities marked with their respective classes.
+</think>
+
+<span class="pessoa">MARIA ELIZABETH GUIMARÃES TEIXEIRA</span> , na conformidade do Extrato da Ata do Julgamento , por unanimidade de votos , em rejeitar o Agravo Interno , nos termos do voto do Relator <span class="pessoa">Ministro JOSÉ BARROSO FILHO</span> . Documento assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , Matricula 1117 . Em <span class="tempo">02/03/2018 17:26:32</span> . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 <span class="local">Brasília</span> , <span class="tempo">26 de outubro de 2017</span> .

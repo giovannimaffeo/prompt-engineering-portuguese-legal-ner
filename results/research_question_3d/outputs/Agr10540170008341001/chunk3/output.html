@@ -1,0 +1,46 @@
+<think>
+Okay, I need to process this legal text and mark the entities as specified. Let me start by reading through the text carefully.
+
+First, the user wants HTML tags with specific classes for each entity type: pessoa, organização, tempo, local, legislação, and jurisprudência. I need to identify each of these in the text.
+
+Looking at the first sentence: "CARLOS ROBERTO DE FARIA ( RELATOR ) V O T O Trata-se de agravo de instrumento interposto Gendire Carvalho Da Silva , nos autos da Ação de Obrigação de Fazer c/c Indenização por Danos Morais , ajuizada em face de Cemig Distribuição S/A , contra decisão de fls . 36/37-TJ , que indeferiu a tutela provisória de urgência ."
+
+Here, "CARLOS ROBERTO DE FARIA" is a full name, so that's a pessoa. Then "Gendire Carvalho Da Silva" is another full name, so also pessoa. "Cemig Distribuição S/A" is an organization. The "fls. 36/37-TJ" might be a reference to a court decision, but I need to check if it's a jurisprudência. However, the example given in the guidelines mentions things like "REsp 1694984/MS" as jurisprudência. Here, "fls. 36/37-TJ" seems like a page reference, not a specific case number, so maybe not. Wait, "TJ" stands for Tribunal de Justiça, which is an organization. So "TJ" should be organização. But the text says "decisão de fls. 36/37-TJ", so "TJ" is part of the organization's name. So "TJ" is an organization. Also, "Cemig Distribuição S/A" is an organization.
+
+Next part: "Em suas razões recursais , alega o agravante que reside em um imóvel rural , porém não é provido por energia elétrica , razão pela qual procurou a agravada e preencheu o formulário de solicitação de atendimento rural , tendo seu direito reconhecido pelo réu , que constatou que o mesmo se enquadrava nos critérios estabelecidos . Aduz que recebeu uma notificação do agravado , informando que a obra seria realizada até 31/12/2018 . Aduz que o prazo não poderia ser superior a 120 dias ."
+
+Here, "31/12/2018" is a date, so that's tempo. "120 dias" is a time period, so also tempo. The term "agravante" refers to the appellant, which is a role, not a person's name, so not pessoa. "Agravada" is the respondent, again a role, not a person. "Réu" is the defendant, a role, not a person. So no new entities here except the date.
+
+Another part: "que reside em um imóvel rural" – "imóvel rural" is a generic term, not a specific location, so no local. "Cemig Distribuição S/A" is already marked as organização.
+
+Wait, in the original text, "Cemig Distribuição S/A" is an organization. The user's example includes "UNIMED RIO COOPERATIVA..." as an organization. So "Cemig Distribuição S/A" should be <span class="organizacao">Cemig Distribuição S/A</span>.
+
+Also, "fls. 36/37-TJ" – "fls." is an abbreviation for "fls." which is "fls." in Portuguese, meaning "folhas" (pages). The "TJ" is the Tribunal de Justiça, which is an organization. So "TJ" should be <span class="organizacao">TJ</span>.
+
+Wait, the user's guidelines mention that "expressões que identificam entidades coletivas formalmente constituídas" should be marked as organização. So "TJ" is an organization. So in "decisão de fls. 36/37-TJ", the "TJ" is part of the organization's name. Therefore, "TJ" should be marked as organização.
+
+Also, in the text, "RELATOR" is a role, not a person's name, so not pessoa. The full name is "CARLOS ROBERTO DE FARIA", which is a pessoa. "Gendire Carvalho Da Silva" is another pessoa. "Cemig Distribuição S/A" is organização. "TJ" is organização. The date "31/12/2018" is tempo. "120 dias" is tempo.
+
+Wait, the user's example for tempo includes "31 de dezembro de 2016" and "2016", "março de 2013", etc. So "31/12/2018" is a date in DD/MM/YYYY format, so it's tempo. "120 dias" is a time period, so also tempo.
+
+Now, checking for other entities. "Agravo de instrumento" is a legal term, but not an entity. "Ação de Obrigação de Fazer c/c Indenização por Danos Morais" is a legal action, but not an entity. "Agravo" is a legal term, but not an entity. "Agravante" and "agravada" are roles, not entities. "Réu" is a role. "Agravado" is a role. "Imóvel rural" is a generic term, not a local. "Cemig Distribuição S/A" is already covered. "TJ" is organização. "fls." is a reference to pages, not an entity. "31/12/2018" and "120 dias" are tempo.
+
+So the entities to mark are:
+
+- CARLOS ROBERTO DE FARIA: pessoa
+- Gendire Carvalho Da Silva: pessoa
+- Cemig Distribuição S/A: organização
+- TJ: organização
+- 31/12/2018: tempo
+- 120 dias: tempo
+
+Wait, "120 dias" is a time period, so it's tempo. The user's guidelines say that "intervalos de tempo" should be marked as tempo. So yes.
+
+Now, check if there are any other entities. The text mentions "fls. 36/37-TJ" – "fls." is a reference to pages, not an entity. "TJ" is the organization. So the "TJ" should be marked as organização.
+
+So the final HTML would have these spans. Let me structure it accordingly.
+</think>
+
+<div>
+  <span class="pessoa">CARLOS ROBERTO DE FARIA</span> ( RELATOR ) V O T O Trata-se de agravo de instrumento interposto <span class="pessoa">Gendire Carvalho Da Silva</span> , nos autos da Ação de Obrigação de Fazer c/c Indenização por Danos Morais , ajuizada em face de <span class="organizacao">Cemig Distribuição S/A</span> , contra decisão de fls . 36/37-<span class="organizacao">TJ</span> , que indeferiu a tutela provisória de urgência . Em suas razões recursais , alega o agravante que reside em um imóvel rural , porém não é provido por energia elétrica , razão pela qual procurou a agravada e preencheu o formulário de solicitação de atendimento rural , tendo seu direito reconhecido pelo réu , que constatou que o mesmo se enquadrava nos critérios estabelecidos . Aduz que recebeu uma notificação do agravado , informando que a obra seria realizada até <span class="tempo">31/12/2018</span> . Aduz que o prazo não poderia ser superior a <span class="tempo">120 dias</span> .
+</div>

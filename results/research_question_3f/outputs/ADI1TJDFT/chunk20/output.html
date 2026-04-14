@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with the first part: "3 ) Na ADI , o perigo da demora e a fumaça do bom direito são , por si e em `` se '' , bastantes e aptos a justificarem a concessão de liminar e assim suspenderem o texto , com efeitos `` ex nunc '' e `` erga omnes '' , até decisão definitiva da Corte de Justiça . ( Acórdão n.187778 , 20030020042411ADI , Relator : EDUARDO DE MORAES OLIVEIRA CONSELHO ESPECIAL , Data de Julgamento : 23/09/2003 , Publicado no DJU SEÇÃO 3 : 23/03/2004 . Pág. : 82 ) Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI V O T O S O Senhor Desembargador SILVANIO BARBOSA DOS SANTOS - Relator Admissibilidade Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 9 Dessa forma , conheço da Ação Direta de Inconstitucionalidade ."
+
+Looking for entities:
+
+1. "ADI" – This is an acronym for Ação Direta de Inconstitucionalidade, which is a legal term. But according to the guidelines, only specific references to legal documents should be marked. However, "ADI" is a type of legal action, but the example shows that "ADI" is not marked unless it's part of a specific reference. Wait, in the example input 5, "ADI" is part of "ADI 20170020161362ADI" which is marked as jurisprudencia. So in this case, "ADI" might be part of a jurisprudencia reference. Let me check the text again.
+
+In the input, there's "Acórdão n.187778 , 20030020042411ADI , Relator : EDUARDO DE MORAES OLIVEIRA CONSELHO ESPECIAL , Data de Julgamento : 23/09/2003 , Publicado no DJU SEÇÃO 3 : 23/03/2004 . Pág. : 82 ) Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI V O T O S O Senhor Desembargador SILVANIO BARBOSA DOS SANTOS - Relator Admissibilidade Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 9 Dessa forma , conheço da Ação Direta de Inconstitucionalidade ."
+
+So "Acórdão n.187778" is a jurisprudencia reference. Then "20030020042411ADI" is another jurisprudencia. Also, "20170020161362ADI" is part of "Ação Direta de Inconstitucionalidade 20170020161362ADI" which is a specific reference to a legal action, so that should be marked as jurisprudencia.
+
+Next, "EDUARDO DE MORAES OLIVEIRA" is a person's name, so that's a pessoa. "CONSELHO ESPECIAL" is an organization, as it's a legal body. "Data de Julgamento : 23/09/2003" is a tempo. "Publicado no DJU SEÇÃO 3 : 23/03/2004" – "23/03/2004" is tempo. "Pág. : 82" is not an entity. "Senhor Desembargador SILVANIO BARBOSA DOS SANTOS" – "SILVANIO BARBOSA DOS SANTOS" is a pessoa. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE DO DESEMBARGADOR" is part of the organization, but the full name might be an organization. Wait, the example input 4 has "ESTADO DO ACRE Rua Tribunal de Justiça, Via Verde, Rio BrancoAC" which is marked as local. So "GABINETE DO DESEMBARGADOR" is part of the organization, but maybe the full name is an organization. However, the example input 2 has "Superior Tribunal de Justiça" as an organization. So "GABINETE DO DESEMBARGADOR" might be an organization. But the example input 5 has "Decreto-Lei no 5.452" as legislacao. 
+
+Also, "Ação Direta de Inconstitucionalidade" is a type of legal action, but the specific number like "20170020161362ADI" is a jurisprudencia. 
+
+So putting it all together:
+
+- "Acórdão n.187778" → jurisprudencia
+- "20030020042411ADI" → jurisprudencia
+- "EDUARDO DE MORAES OLIVEIRA" → pessoa
+- "CONSELHO ESPECIAL" → organizacao
+- "23/09/2003" → tempo
+- "23/03/2004" → tempo
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" → organizacao (since it's the office of the judge)
+- "20170020161362ADI" → jurisprudencia
+
+Wait, the example input 5 has "Decreto-Lei no 5.452" as legislacao. So "Decreto-Lei no 5.452" is a legislacao. Similarly, "Ação Direta de Inconstitucionalidade" is a type of action, but the specific number is a jurisprudencia. 
+
+So in the input text, "Ação Direta de Inconstitucionalidade 20170020161362ADI" is a specific reference, so the number part is jurisprudencia. 
+
+Also, "Relator : EDUARDO DE MORAES OLIVEIRA CONSELHO ESPECIAL" – "CONSELHO ESPECIAL" is an organization. 
+
+So the final HTML should have all these entities marked with the appropriate classes.
+</think>
+
+3 ) Na ADI , o perigo da demora e a fumaça do bom direito são , por si e em `` se '' , bastantes e aptos a justificarem a concessão de liminar e assim suspenderem o texto , com efeitos `` ex nunc '' e `` erga omnes '' , até decisão definitiva da Corte de Justiça . ( <span class="jurisprudencia">Acórdão n.187778</span> , <span class="jurisprudencia">20030020042411ADI</span> , Relator : <span class="pessoa">EDUARDO DE MORAES OLIVEIRA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">23/09/2003</span> , Publicado no DJU SEÇÃO 3 : <span class="tempo">23/03/2004</span> . Pág. : 82 ) Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> V O T O S O Senhor <span class="pessoa">Desembargador SILVANIO BARBOSA DOS SANTOS</span> - Relator Admissibilidade Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 9 Dessa forma , conheço da Ação Direta de Inconstitucionalidade .

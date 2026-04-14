@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "Vejamos o que dispõe a Lei Orgânica do Distrito Federal : SEÇÃO II DAS ATRIBUIÇÕES DO GOVERNADOR Art ."
+
+Looking for the entities:
+
+- "Lei Orgânica do Distrito Federal" is a law, so that's legislacao. I should mark "Lei Orgânica" as legislacao. Wait, but the full name might be considered as a single entity. However, the exact term here is "Lei Orgânica do Distrito Federal", which is a specific law. So the entire phrase should be marked as legislacao.
+
+- "SEÇÃO II DAS ATRIBUIÇÕES DO GOVERNADOR" seems like a section title. Since it's part of the law's structure, maybe it's part of the legislacao. But the user's example output shows that "Lei Orgânica do Distrito Federal" is marked as legislacao. The rest might not be entities. 
+
+Wait, the user's example output for the input text is: 
+
+"<span class="legislacao">Lei Orgânica do Distrito Federal</span> : SEÇÃO II DAS ATRIBUIÇÕES DO GOVERNADOR Art ."
+
+So in the example, only "Lei Orgânica do Distrito Federal" is marked as legislacao. The rest is left as is. 
+
+So I need to check if any other parts are entities. "GOVERNADOR" could be a person (pessoa), but in this context, it's part of the law's title, so maybe not. "SEÇÃO II" is part of the law's structure, not an entity. "Art" is likely "Artigo" (Article), which is part of the law's structure, not an entity. 
+
+Therefore, the only entity here is "Lei Orgânica do Distrito Federal", which is legislacao. The rest of the text remains unchanged. 
+
+So the HTML output should have the legislacao span around that phrase, and the rest as is. Let me make sure there are no other entities. "Distrito Federal" is a local entity? Wait, "Distrito Federal" is a local, but in the example, it's part of the legislacao. Wait, the user's example output shows that "Lei Orgânica do Distrito Federal" is marked as legislacao. So the entire phrase is considered as legislacao. 
+
+Therefore, the correct output is to wrap "Lei Orgânica do Distrito Federal" in a <span class="legislacao">, and leave the rest as is. 
+
+I need to ensure that the HTML is properly formatted, with the spans correctly placed. Also, check for any other possible entities. For example, "GOVERNADOR" could be a person, but in this context, it's part of the law's title, so it's not marked. 
+
+So the final HTML should be:
+
+<span class="legislacao">Lei Orgânica do Distrito Federal</span> : SEÇÃO II DAS ATRIBUIÇÕES DO GOVERNADOR Art .
+</think>
+
+<span class="legislacao">Lei Orgânica do Distrito Federal</span> : SEÇÃO II DAS ATRIBUIÇÕES DO GOVERNADOR Art .

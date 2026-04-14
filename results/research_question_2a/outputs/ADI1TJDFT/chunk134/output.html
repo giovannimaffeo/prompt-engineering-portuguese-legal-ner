@@ -1,0 +1,58 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 20 Súmula nº 5/STF . Doutrina . Precedentes . ( ... ) ( ADI 2867 , Relator ( a ) : Min ."
+
+Looking for entities:
+
+1. "Ação Direta de Inconstitucionalidade" – This seems like a legal action, maybe a type of case, but not sure if it's an entity. The user's examples might have specific terms. Wait, the example output in the user's message shows that "ADI 2867" is marked as jurisprudencia. So ADI is likely a jurisprudencial entity.
+
+2. "20170020161362ADI" – This looks like a code, maybe a case number. The example output marks "ADI 2867" as jurisprudencia, so maybe "ADI" is part of that. But the code here is "20170020161362ADI" – perhaps the "ADI" part is the jurisprudencia, but the entire code might be a case number. However, the user's example shows that "ADI 2867" is marked as jurisprudencia. So maybe "ADI" is the jurisprudencia, and the numbers are part of the code. Wait, the example output in the user's message shows that "ADI 2867" is marked as jurisprudencia. So in the input text, "ADI 2867" would be marked as jurisprudencia. But in the input text provided here, there's "ADI 2867" as part of the text. So I need to check if that's present.
+
+Looking at the input text again: "ADI 2867 , Relator ( a ) : Min ." So "ADI 2867" is part of the text. So that should be marked as jurisprudencia.
+
+Other parts:
+
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – The code here might be a code, but the user hasn't specified that codes are entities. The example output doesn't mark codes, so maybe they are left as is.
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE DO DESEMBARGADOR" is an organization? Or maybe "DESEMBARGADOR" is a title. Wait, "DESEMBARGADOR" is a judicial title, so maybe the person's name is "SILVANIO BARBOSA DOS SANTOS" which is a pessoa. So "SILVANIO BARBOSA DOS SANTOS" should be marked as pessoa.
+
+- "20 Súmula nº 5/STF" – "Súmula" is a legal term, but the user's example shows "Súmula nº 5/STF" as part of the text. The example output in the user's message shows that "Súmula nº 5/STF" is not marked, but maybe "STF" is an organization. Wait, "STF" is the Superior Court of Justice in Brazil, so that's an organization. So "STF" should be marked as organizacao.
+
+- "Doutrina . Precedentes ." – These are terms, not entities. "Doutrina" is doctrine, "Precedentes" are precedents, but they are not entities. So they remain as is.
+
+- "Relator ( a ) : Min ." – "Relator" is a title, "Min." is an abbreviation for "Ministro" (Minister), which is a title. So "Min." might be part of a person's title, but the user's example shows "Min." as part of the text. Wait, in the example output, "Min." is not marked. So maybe "Min." is not an entity here. The user's example shows that "ADI 2867" is marked as jurisprudencia, but "Min." is not. So perhaps "Min." is not an entity here.
+
+Putting it all together:
+
+- "SILVANIO BARBOSA DOS SANTOS" is a pessoa.
+- "STF" is an organizacao.
+- "ADI 2867" is jurisprudencia.
+- "ADI" in "20170020161362ADI" – maybe "ADI" is part of jurisprudencia, but the example shows "ADI 2867" as jurisprudencia. So "ADI" alone might not be marked unless it's part of a code. However, the example input has "ADI 2867" marked as jurisprudencia. So in the input text, "ADI 2867" is present, so that should be marked. The code "20170020161362ADI" might have "ADI" as part of the code, but since the example shows "ADI 2867" as jurisprudencia, perhaps "ADI" is part of that. However, the code "20170020161362ADI" is a code, but the user hasn't specified that codes are entities. So maybe only "ADI 2867" is marked as jurisprudencia.
+
+So the final HTML would have:
+
+- "SILVANIO BARBOSA DOS SANTOS" as pessoa.
+- "STF" as organizacao.
+- "ADI 2867" as jurisprudencia.
+
+Other parts are left as is. Let me check the example output again. The user's example input has "ADI 2867" marked as jurisprudencia. So in the input text provided, "ADI 2867" is present, so that's marked. The code "20170020161362ADI" is part of the text, but since it's a code, maybe it's not marked. The "GABINETE DO DESEMBARGADOR" is part of the organization, but the user's example shows that "GABINETE DO DESEMBARGADOR" is not marked. Wait, in the example input, the user's output shows that "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is not marked. Wait, the user's example input is: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 20 Súmula nº 5/STF . Doutrina . Precedentes . ( ... ) ( ADI 2867 , Relator ( a ) : Min ."
+
+In the example output, the user's example shows that "ADI 2867" is marked as jurisprudencia. So in the input text, "ADI 2867" is present. So in the input text provided, "ADI 2867" is part of the text. So that should be marked as jurisprudencia.
+
+Also, "SILVANIO BARBOSA DOS SANTOS" is a pessoa. "STF" is an organizacao. The rest are left as is.
+
+So the final HTML would have:
+
+- "SILVANIO BARBOSA DOS SANTOS" as pessoa.
+- "STF" as organizacao.
+- "ADI 2867" as jurisprudencia.
+
+Other parts like "GABINETE DO DESEMBARGADOR" are not marked as entities. The code "20170020161362ADI" is not marked. The "20 Súmula nº 5/STF" is not marked. The rest are left as is.
+
+So the final HTML would be:
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 20 Súmula nº 5/<span class="organizacao">STF</span> . Doutrina . Precedentes . ( ... ) ( <span class="jurisprudencia">ADI 2867</span> , Relator ( a ) : Min .
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 20 Súmula nº 5/<span class="organizacao">STF</span> . Doutrina . Precedentes . ( ... ) ( <span class="jurisprudencia">ADI 2867</span> , Relator ( a ) : Min .

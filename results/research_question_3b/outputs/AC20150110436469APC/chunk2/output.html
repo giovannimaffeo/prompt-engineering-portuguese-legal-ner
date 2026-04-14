@@ -1,0 +1,55 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+Starting with the first sentence: "Evidenciado que a citação somente foi aperfeiçoada após o decurso do prazo prescricional , tem-se por correta a extinção da demanda monitória , com resolução do mérito , nos termos do artigo 485 , inciso II , do Código de Processo Civil ."
+
+Here, "Código de Processo Civil" is a legal code, so that's legislacao. The "artigo 485" refers to an article in that code, so that's also legislacao. The "inciso II" is part of the article, so it's part of the legislacao entity.
+
+Next, "Recurso de Apelação conhecido e não provido ." – "Recurso de Apelação" is a legal term, but it's a type of process, not an entity. So maybe not an entity here. Wait, the jurisprudencia is about decisions, precedents, etc. But here it's just a type of appeal, not a specific case or decision. So maybe not marked.
+
+Then, "A C Ó R D Ã O Acordam os Senhores Desembargadores da 8ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios , NÍDIA CORRÊA LIMA - Relatora , DIAULAS COSTA RIBEIRO - 1º Vogal , EUSTÁQUIO DE CASTRO - 2º Vogal , sob a presidência do Senhor Desembargador DIAULAS COSTA RIBEIRO , em proferir a seguinte decisão : RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO . UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas ."
+
+Here, "NÍDIA CORRÊA LIMA" and "DIAULAS COSTA RIBEIRO" and "EUSTÁQUIO DE CASTRO" are names of people, so they are pessoas. The "8ª TURMA CÍVEL" is a court organization, so organizacao. "Tribunal de Justiça do Distrito Federal e Territórios" is an organization, so organizacao. "Brasilia ( DF )" is a local, so local. "15 de Março de 2018" is a date, so tempo.
+
+Also, "Código de Processo Civil" is already marked as legislacao. The "artigo 485" and "inciso II" are part of that code, so they are included in the legislacao span.
+
+Wait, the user's example output shows that "Código de Processo Civil" is marked as legislacao, and "artigo 485" and "inciso II" are part of that. So I need to make sure that the entire reference to the article is included in the legislacao span.
+
+Also, "Tribunal de Justiça do Distrito Federal e Territórios" is an organization, so organizacao. "Distrito Federal" is a local, so local. "Brasilia ( DF )" is a local, so local. "15 de Março de 2018" is tempo.
+
+Now, checking for any other entities. The "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" is a legal term, but it's a type of decision, not a specific case. So maybe not marked. The "ata do julgamento" is a record, but not an entity. "notas taquigráficas" is a type of note, not an entity.
+
+So, compiling all the entities:
+
+- Pessoas: NÍDIA CORRÊA LIMA, DIAULAS COSTA RIBEIRO, EUSTÁQUIO DE CASTRO, DIAULAS COSTA RIBEIRO (again, but maybe the same person, so need to check if they are the same. Wait, the first one is "NÍDIA CORRÊA LIMA - Relatora", then "DIAULAS COSTA RIBEIRO - 1º Vogal", "EUSTÁQUIO DE CASTRO - 2º Vogal", and then "sob a presidência do Senhor Desembargador DIAULAS COSTA RIBEIRO". So DIAULAS COSTA RIBEIRO is mentioned again as the president. So all these names are pessoas.
+
+- Organizacao: "8ª TURMA CÍVEL", "Tribunal de Justiça do Distrito Federal e Territórios"
+
+- Local: "Brasilia ( DF )", "Distrito Federal"
+
+- Tempo: "15 de Março de 2018"
+
+- Legislacao: "Código de Processo Civil", "artigo 485", "inciso II"
+
+Wait, the "artigo 485" and "inciso II" are parts of the "Código de Processo Civil", so they should be included in the same span as the code. But the user's example output shows that "artigo 485" and "inciso II" are part of the legislacao. So I need to make sure that the entire reference is included in the legislacao span.
+
+So, the HTML should have:
+
+<span class="legislacao">Código de Processo Civil</span> and then "artigo 485" and "inciso II" are part of that same span? Or are they separate? Wait, the original text says "nos termos do artigo 485 , inciso II , do Código de Processo Civil". So the entire phrase "artigo 485 , inciso II , do Código de Processo Civil" refers to the legislation. So maybe the entire phrase should be marked as legislacao. But the user's example output shows that "Código de Processo Civil" is marked, and "artigo 485" and "inciso II" are part of the same span. Wait, looking at the user's example output, the text is:
+
+"nos termos do <span class="legislacao">artigo 485 , inciso II , do Código de Processo Civil</span> ."
+
+So the entire phrase is marked as legislacao. So I need to include all parts of the reference to the legislation in one span.
+
+Similarly, "Tribunal de Justiça do Distrito Federal e Territórios" is an organization, so that's organizacao. "Distrito Federal" is a local, so local. "Brasilia ( DF )" is a local, so local. "15 de Março de 2018" is tempo.
+
+So putting it all together, the HTML should have the appropriate spans for each entity. Let me make sure I didn't miss any. Also, check for any other entities. For example, "8ª TURMA CÍVEL" is an organization, so organizacao. "Tribunal de Justiça" is part of the organization. "Distrito Federal" is a local. "DF" is an abbreviation for Distrito Federal, so it's part of the local. "Brasilia" is a local. "15 de Março de 2018" is tempo.
+
+Now, the names of the people: NÍDIA CORRÊA LIMA, DIAULAS COSTA RIBEIRO, EUSTÁQUIO DE CASTRO, and DIAULAS COSTA RIBEIRO again. So all these are pessoas.
+
+So the final HTML should have all these entities marked with the correct classes.
+</think>
+
+Evidenciado que a citação somente foi aperfeiçoada após o decurso do prazo prescricional , tem-se por correta a extinção da demanda monitória , com resolução do mérito , nos termos do <span class="legislacao">artigo 485 , inciso II , do Código de Processo Civil</span> . 3 . <span class="recurso">Recurso de Apelação</span> conhecido e não provido . A C Ó R D Ã O Acordam os Senhores Desembargadores da <span class="organizacao">8ª TURMA CÍVEL</span> do <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span> , <span class="pessoa">NÍDIA CORRÊA LIMA</span> - Relatora , <span class="pessoa">DIAULAS COSTA RIBEIRO</span> - 1º Vogal , <span class="pessoa">EUSTÁQUIO DE CASTRO</span> - 2º Vogal , sob a presidência do Senhor Desembargador <span class="pessoa">DIAULAS COSTA RIBEIRO</span> , em proferir a seguinte decisão : <span class="recurso">RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO</span> . UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasília ( DF )</span> , <span class="tempo">15 de Março de 2018</span> .

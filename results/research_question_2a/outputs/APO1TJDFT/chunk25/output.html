@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to look at the input text: "282/288 . Intimada as partes sobre as provas a produzir `` fls.291 '' . Disse a parte autora não ter outras provas à fls . 293 não havendo manifestação do requerido à fls.294 . Vieram os autos conclusos para sentença ” ( fl . 298/298-v ) ."
+
+I should scan through each part to identify any entities. Let's break it down:
+
+- "282/288" – This looks like a reference number, maybe a court case number. But none of the entity types match this. It's a number, not a date, location, etc. So probably not an entity here.
+
+- "Intimada as partes sobre as provas a produzir `` fls.291 '' " – "fls" is likely "fls" as in "fls" (fólio) in legal documents, which refers to pages. But "fls.291" is a page reference. Since "fls" is part of the legal document's pagination, maybe it's a local? Wait, the local entity is for places. "fls" is more about document pages, not a location. So maybe not. But the user's guide says to use local for locations. Hmm. Maybe "fls" isn't an entity here.
+
+- "Disse a parte autora não ter outras provas à fls . 293" – "parte autora" refers to the plaintiff in a legal case. That's a person, right? So "parte autora" should be marked as pessoa. Wait, but "parte autora" is a role, not a specific person's name. The user's guide says to mark people. If the text refers to a specific person, like "João da Silva", then it's pessoa. But here, "parte autora" is a role, not a name. So maybe not a pessoa. Wait, the instruction says "pessoa" for people. If the text refers to a person by name, then mark. But here, it's a role. So maybe not. But maybe the user considers "parte autora" as a person. Hmm, need to check.
+
+- "não havendo manifestação do requerido à fls.294" – "requerido" is the defendant. Again, a role, not a name. So same as above. Not a pessoa unless it's a specific name.
+
+- "Vieram os autos conclusos para sentença ” ( fl . 298/298-v ) ." – "autos" refers to the case file. "fls.298/298-v" is a page reference. Again, "fls" is part of the document's pagination. So maybe "fls.291", "fls.293", "fls.294", "fls.298/298-v" are all local? Wait, no. Local is for locations. Maybe these are page numbers, so not entities. Unless the user considers "fls" as a local, but that doesn't make sense. Alternatively, maybe "fls" is an abbreviation for "fólio" which is a page in a legal document, so it's part of the document's structure, not a location. So perhaps none of these are entities.
+
+Wait, the user's example output is the same as the input text. So maybe there are no entities to mark here. Let me check again.
+
+Looking for any possible entities:
+
+- "282/288" – could be a case number, but not one of the specified types. The types are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So no.
+
+- "fls.291", "fls.293", "fls.294", "fls.298/298-v" – these are page references. Not sure if they are considered as local, but the user's guide says local is for locations. So probably not.
+
+- "parte autora" and "requerido" are roles, not specific people or organizations. So not pessoa or organizacao.
+
+- No mention of legislation, jurisprudence, or time. So none of the entities are present.
+
+Therefore, the output should be the same as the input text without any <span> tags. So the user's example output is correct.
+</think>
+
+282/288 . Intimada as partes sobre as provas a produzir `` fls.291 '' . Disse a parte autora não ter outras provas à fls . 293 não havendo manifestação do requerido à fls.294 . Vieram os autos conclusos para sentença ” ( fl . 298/298-v ) .

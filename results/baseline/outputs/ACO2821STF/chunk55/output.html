@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by identifying each entity. 
+
+The first part mentions "Supremo Tribunal Federal". That's a federal court, so it's an organization. I'll mark that as <span class="organizacao">.
+
+Next, "ACO 2821 A GR / MT" – ACO might stand for some legal case or acronym. Since it's part of a case reference, maybe it's a legislation or jurisprudence? Wait, the user's example output shows ACO as part of the case numbers, so perhaps it's part of the jurisprudencia or legislation. But looking at the example output, they marked "ACO 2821 A GR / MT" as part of the jurisprudencia. Wait, no, in the example output provided by the user, they have "ACO 2821 A GR / MT" as part of the jurisprudencia? Wait, let me check the example again. The user's example output shows that "ACO 2821 A GR / MT" is marked as jurisprudencia. Wait, maybe not. Let me look again.
+
+Wait, the user's example output is the text with entities marked. Let me check the original input and the example output. The original input has "Supremo Tribunal Federal ACO 2821 A GR / MT servidores..." The example output shows "Supremo Tribunal Federal <span class="jurisprudencia">ACO 2821 A GR / MT</span> servidores...". So ACO 2821 is marked as jurisprudencia. But I need to confirm if that's correct. Maybe ACO is an acronym for a legal case or a specific reference. Since the user's example marks it as jurisprudencia, I'll follow that.
+
+Then "servidores ativos e inativos e dos pensionistas" – these are people, so "servidores" is a term for public employees, so maybe "pessoa" or "organizacao"? Wait, "servidores" refers to people working in public administration, so they are individuals, hence "pessoa". But the user's example output marks "servidores" as "pessoa"? Let me check the example again. In the example output, "servidores ativos e inativos e dos pensionistas" is marked as "pessoa". So I'll follow that.
+
+Next, "critérios que preservem o equilíbrio financeiro e atuarial" – these are criteria, not entities, so no tag.
+
+"disposto neste artigo" – "artigo" refers to a legislative article, so "legislacao". So "neste artigo" becomes "neste <span class="legislacao">artigo</span>".
+
+Then "Alguns Estados-membros" – "Estados-membros" refers to member states, which are organizations or entities. Wait, "Estados-membros" is a term for member states, which are countries. So "Estados-membros" would be "local" or "organizacao"? Wait, "Estados-membros" are countries, so they are local entities. But the user's example output marks "Estados-membros" as "local". Let me check the example. In the example, "Alguns <span class="local">Estados-membros</span> , como faz o autor , questionam..." So yes, "Estados-membros" is marked as local.
+
+"como faz o autor" – "autor" refers to the author, which is a person. So "como faz o <span class="pessoa">autor</span> , questionam..."
+
+"questionam o caráter geral do previsto nos dispositivos impugnados" – no entities here.
+
+"argumentando tratar-se de disposições que invadem a esfera de competência de Estados e do Distrito Federal" – "Distrito Federal" is a local entity, so "Distrito Federal" becomes <span class="local">Distrito Federal</span>.
+
+"constituindo , na verdade , normas específicas sobre a matéria" – no entities.
+
+"A Procuradoria-Geral da República" – this is an organization, so <span class="organizacao">Procuradoria-Geral da República</span>.
+
+"já emitiu parecer nesse sentido , v.g. , nas ações ACO 830/PR ( 18/03/2011 ) ; ACO 702/CE ( 01/04/2011 e ACO 1.062/MG ( 31/08/2009 ) 2 ." – The "ACO 830/PR", "ACO 702/CE", "ACO 1.062/MG" are case numbers, which might be jurisprudencia. The dates like "18/03/2011" are tempo. So "ACO 830/PR" becomes <span class="jurisprudencia">ACO 830/PR</span>, and the dates are <span class="tempo">18/03/2011</span>, etc.
+
+Putting it all together, I need to make sure each entity is correctly tagged. Let me go through the text again step by step to ensure I didn't miss any.
+</think>
+
+Supremo Tribunal Federal <span class="jurisprudencia">ACO 2821 A GR / MT</span> servidores ativos e inativos e dos pensionistas , observados critérios que preservem o equilíbrio financeiro e atuarial e o disposto neste <span class="legislacao">artigo</span>. ’ Alguns <span class="local">Estados-membros</span> , como faz o <span class="pessoa">autor</span> , questionam o caráter geral do previsto nos dispositivos impugnados , argumentando tratar-se de disposições que invadem a esfera de competência de <span class="local">Estados</span> e do <span class="local">Distrito Federal</span> , constituindo , na verdade , normas específicas sobre a matéria . <span class="organizacao">Procuradoria-Geral da República</span> já emitiu parecer nesse sentido , v.g. , nas ações <span class="jurisprudencia">ACO 830/PR</span> ( <span class="tempo">18/03/2011</span> ) ; <span class="jurisprudencia">ACO 702/CE</span> ( <span class="tempo">01/04/2011</span> ) e <span class="jurisprudencia">ACO 1.062/MG</span> ( <span class="tempo">31/08/2009</span> ) 2 .

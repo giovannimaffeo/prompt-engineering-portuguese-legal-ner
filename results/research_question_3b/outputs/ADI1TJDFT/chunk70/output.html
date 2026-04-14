@@ -1,0 +1,57 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities.
+
+Starting with the first part: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". Here, "Ação Direta de Inconstitucionalidade" seems like a legal action, which might be a jurisprudencia reference. The number "20170020161362ADI" could be a case number, so maybe that's part of the jurisprudencia. The "Código de Verificação" might be a code, but I'm not sure if it's a legislation or another entity. The "2018ACONT2JYXTK52JCSL251NVQ" looks like a code, possibly a legal code, so maybe legislacao.
+
+Next, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. So I need to mark both as organizacao and pessoa.
+
+Then, "28 lei , porque não haveria qualquer afronta à titularidade de atribuições do poder público , apenas a permissão para a realização de convênios para elaboraçaõ de estudos técnicos atinentes à concessão de alvarás , e que a decisão caberá sempre à Administração Pública .". The word "lei" is legislation, so that's legislacao. "Administração Pública" is an organization, so organizacao.
+
+"A Procuradoria-Geral do Distrito Federal também manifesta-se pela improcedência da ação . A Procuradoria-Geral de Justiça do Distrito Federal e Territórios , por sua vez , manifestou-se pela procedência da ação .". "Procuradoria-Geral do Distrito Federal" and "Procuradoria-Geral de Justiça do Distrito Federal e Territórios" are organizations. "Distrito Federal" is a local, so local.
+
+"Sustenta que a norma dispões de tema cuja competência é privativa do Chefe do Poder Executivo ." "Chefe do Poder Executivo" is a position, but since it's a title, maybe it's not an entity. Wait, the user's definitions say that organizations are formal entities. "Chefe do Poder Executivo" is a title, not a specific name, so maybe not an entity. But "Poder Executivo" is part of the government structure, but the user's definition for organizacao includes órgãos públicos. However, "Poder Executivo" is a general term, not a specific organization. So maybe not marked.
+
+Now, checking for time entities. The text has "2017" and "2018" in the codes. But the user's definition for tempo includes dates, years, etc. However, in the input, the numbers like "20170020161362ADI" and "2018ACONT..." might be codes, not actual dates. The user's example might have "2017" as a year, but in the input, it's part of a code. So maybe those numbers are not marked as tempo. Unless the "2017" is a year. Wait, the first part has "20170020161362ADI" which is a code, not a date. The "2018" in "Código de Verificação :2018..." might be a year, so that's tempo.
+
+Wait, the user's example in the input has "20170020161362ADI" which is a code, not a date. The "2018" in "Código de Verificação :2018..." is part of the code, so maybe not a tempo. Unless the "2018" is a year. But the user's definition for tempo includes years. However, in the input, the "2018" is part of a code, so maybe it's not marked as tempo. The user's example might have "2017" as a year, but in the input, it's part of a code. So I need to check if the numbers are part of a date or code.
+
+In the input, "20170020161362ADI" is a code, so not tempo. The "2018" in "Código de Verificação :2018..." is part of the code, so not tempo. So no tempo entities here.
+
+Now, checking for local. "Distrito Federal" is a local, so that's local. "Distrito Federal e Territórios" is also a local.
+
+Legislacao: "lei" is a legislation, so that's legislacao. Also, "Código de Verificação" might be a code, but the user's definition for legislacao includes codes. Wait, the user's definition for legislacao includes "códigos", so "Código de Verificação" is a code, so that's legislacao. Wait, but "Código de Verificação" is a code, but the user's example might have "Código de Verificação" as a code. Wait, the user's definition for legislacao includes "códigos", so "Código de Verificação" is a code, so that's legislacao. But the user's example might have "Código de Verificação" as a code, so I need to mark that as legislacao.
+
+Wait, the user's example in the input has "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". The "Código de Verificação" is a code, so that's legislacao. The "2018..." is part of the code, but not a tempo. So "Código de Verificação" is legislacao.
+
+Now, jurisprudencia: "Ação Direta de Inconstitucionalidade 20170020161362ADI" is a legal action, so that's jurisprudencia. The number "20170020161362ADI" is part of the case number, so that's also jurisprudencia.
+
+Putting it all together:
+
+- "Ação Direta de Inconstitucionalidade" is jurisprudencia.
+- "20170020161362ADI" is part of the case number, so jurisprudencia.
+- "Código de Verificação" is legislacao.
+- "GABINETE DO DESEMBARGADOR" is organizacao.
+- "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+- "28 lei" has "lei" as legislacao.
+- "Procuradoria-Geral do Distrito Federal" is organizacao.
+- "Distrito Federal" is local.
+- "Procuradoria-Geral de Justiça do Distrito Federal e Territórios" is organizacao.
+- "Distrito Federal e Territórios" is local.
+- "Chefe do Poder Executivo" is not an entity, as it's a title, not a specific name.
+
+Wait, "Procuradoria-Geral do Distrito Federal" is an organization. "Distrito Federal" is a local. "Procuradoria-Geral de Justiça do Distrito Federal e Territórios" is an organization. "Distrito Federal e Territórios" is a local.
+
+So, the HTML should have:
+
+- <span class="jurisprudencia">Ação Direta de Inconstitucionalidade</span> 20170020161362ADI <span class="jurisprudencia">ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 28 <span class="legislacao">lei</span> ... <span class="organizacao">Procuradoria-Geral do Distrito Federal</span> <span class="local">Distrito Federal</span> <span class="organizacao">Procuradoria-Geral de Justiça do Distrito Federal e Territórios</span> <span class="local">Distrito Federal e Territórios</span> ...
+
+Wait, the "Código de Verificação" is a code, so that's legislacao. The "2018" in "Código de Verificação :2018..." is part of the code, but not a tempo. So "Código de Verificação" is legislacao. The "2018" is part of the code, but not a tempo. So no tempo here.
+
+Also, "20170020161362ADI" is part of the case number, so that's jurisprudencia. The "ADI" is part of the case number, so also jurisprudencia.
+
+So the final HTML should have all these tags. Let me make sure I didn't miss any entities.
+</think>
+
+<span class="jurisprudencia">Ação Direta de Inconstitucionalidade</span> <span class="jurisprudencia">20170020161362ADI</span> <span class="legislacao">Código de Verificação</span> :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 28 <span class="legislacao">lei</span> , porque não haveria qualquer afronta à titularidade de atribuições do poder público , apenas a permissão para a realização de convênios para elaboraçaõ de estudos técnicos atinentes à concessão de alvarás , e que a decisão caberá sempre à <span class="organizacao">Administração Pública</span> . <span class="organizacao">Procuradoria-Geral do Distrito Federal</span> também manifesta-se pela improcedência da ação . <span class="organizacao">Procuradoria-Geral de Justiça do Distrito Federal e Territórios</span> , por sua vez , manifestou-se pela procedência da ação . Sustenta que a norma dispões de tema cuja competência é privativa do <span class="organizacao">Chefe do Poder Executivo</span> .

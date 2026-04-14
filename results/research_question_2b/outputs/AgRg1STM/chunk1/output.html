@@ -1,0 +1,61 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities.
+
+Starting with the first part: "Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 . Em 02/03/2018 17:26:32 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000 RELATOR : MINISTRO JOSÉ BARROSO FILHO AGRAVANTE : NELSON BARROSO FERREIRA DEFENSORIA PÚBLICA DA UNIÃO AGRAVADO : MINISTÉRIO PÚBLICO MILITAR EMENTA : AGRAVO INTERNO . ART . 290 CPM . CONTAGEM PERÍODO PROVA DE SURSIS PARA FINS DE INDULTO . INCONSTITUCIONALIDADE DO DECRETO PRESIDENCIAL DE INDULTO ."
+
+Looking for pessoas: "José Barroso Filho" and "MINISTRO JOSÉ BARROSO FILHO" are people. Also "NELSON BARROSO FERREIRA" is another person. So those should be marked as pessoa.
+
+Organizações: "DEFENSORIA PÚBLICA DA UNIÃO" and "MINISTÉRIO PÚBLICO MILITAR" are organizations. Those need to be organizacao.
+
+Tempo: The date "02/03/2018 17:26:32" is a time entity. Also, the number "7000077-04.2017.7.00.0000" might be a case number, but the user didn't mention that as an entity. Wait, the user specified the entities as pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. The case number might not be any of these. So only the date is tempo.
+
+Local: The URL "https : //eproc2g.stm.jus.br/eproc_2g_prod/" is a local, but the user's example might not include URLs as local. Wait, the user's example in the output includes "https://eproc2g.stm.jus.br/eproc_2g_prod/" as a local? Wait, looking back at the user's example, in the output, the URL is marked as local. Wait, the user's example shows that the URL is marked as local. Let me check the sample output provided by the user. Wait, the user provided a sample output where the URL is marked as local. So I need to mark URLs as local.
+
+Legislacao: The term "ART . 290 CPM" refers to a legal article. "CPM" is the Código Penal Militar, which is legislation. So "ART . 290 CPM" should be legislacao. Also, "DECRETO PRESIDENCIAL DE INDULTO" is a decree, which is legislation. So that part should be legislacao.
+
+Jurisprudencia: The term "AGRAVO INTERNO" is a legal term, but is it jurisprudencia? Wait, the user's example might have "AGRAVO INTERNO" as jurisprudencia. Wait, looking at the sample output provided by the user, in the text "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" is marked as jurisprudencia. Wait, no, the user's sample output might not be provided. Wait, the user's instruction says to return the text with the entities marked. So I need to check each part.
+
+Let me go through the text again step by step.
+
+1. "José Barroso Filho" is a person. So <span class="pessoa">José Barroso Filho</span>.
+
+2. "Matricula 1117" – not an entity, so leave as is.
+
+3. "Em 02/03/2018 17:26:32" – this is a date/time, so <span class="tempo">02/03/2018 17:26:32</span>.
+
+4. "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4" – the URL is a local, so <span class="local">https://eproc2g.stm.jus.br/eproc_2g_prod/</span>.
+
+5. "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" – "AGRAVO INTERNO" is a legal term, but is it jurisprudencia? The user's example might have it as jurisprudencia. Wait, the user's sample output might not be provided, but according to the guidelines, "jurisprudencia" is for jurisprudence. "AGRAVO INTERNO" is a type of legal action, so maybe it's not jurisprudencia. Wait, the user's example might have "AGRAVO INTERNO" as jurisprudencia. Alternatively, maybe the case number is not an entity. Let me check the user's example again. The user's sample output is not provided, but the user's instruction says to mark the entities as per the given types. So "AGRAVO INTERNO" is a legal term, but not sure if it's jurisprudencia. Maybe it's part of the case number. The case number "7000077-04.2017.7.00.0000" is a case number, which is not one of the specified entities. So perhaps "AGRAVO INTERNO" is part of the case title, but not an entity. Wait, the user's example might have "AGRAVO INTERNO" as jurisprudencia. Alternatively, maybe "AGRAVO INTERNO" is a type of legal action, so not an entity. Hmm, this is a bit ambiguous. Let me check the rest of the text.
+
+6. "RELATOR : MINISTRO JOSÉ BARROSO FILHO" – "MINISTRO JOSÉ BARROSO FILHO" is a person, already marked as pessoa.
+
+7. "AGRAVANTE : NELSON BARROSO FERREIRA" – "NELSON BARROSO FERREIRA" is a pessoa.
+
+8. "DEFENSORIA PÚBLICA DA UNIÃO" – this is an organization, so <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span>.
+
+9. "AGRAVADO : MINISTÉRIO PÚBLICO MILITAR" – "MINISTÉRIO PÚBLICO MILITAR" is an organization, so <span class="organizacao">MINISTÉRIO PÚBLICO MILITAR</span>.
+
+10. "EMENTA : AGRAVO INTERNO . ART . 290 CPM . CONTAGEM PERÍODO PROVA DE SURSIS PARA FINS DE INDULTO . INCONSTITUCIONALIDADE DO DECRETO PRESIDENCIAL DE INDULTO ."
+
+Here, "ART . 290 CPM" refers to a legal article, so "ART . 290 CPM" is legislacao. "DECRETO PRESIDENCIAL DE INDULTO" is a decree, so that's also legislacao. "AGRAVO INTERNO" is a legal term, but not sure if it's jurisprudencia. Maybe "AGRAVO INTERNO" is part of the case title, so not an entity. Alternatively, if "AGRAVO INTERNO" is a type of legal action, it's not an entity. So perhaps only the parts with "ART" and "DECRETO" are legislacao.
+
+Putting it all together, the HTML should have the following entities marked:
+
+- José Barroso Filho (pessoa)
+- 02/03/2018 17:26:32 (tempo)
+- https://eproc2g.stm.jus.br/eproc_2g_prod/ (local)
+- DEFENSORIA PÚBLICA DA UNIÃO (organizacao)
+- MINISTÉRIO PÚBLICO MILITAR (organizacao)
+- ART . 290 CPM (legislacao)
+- DECRETO PRESIDENCIAL DE INDULTO (legislacao)
+- MINISTRO JOSÉ BARROSO FILHO (pessoa)
+- NELSON BARROSO FERREIRA (pessoa)
+
+Wait, the "MINISTRO JOSÉ BARROSO FILHO" is part of the RELATOR, which is a person. So that's another pessoa.
+
+Also, the "AGRAVO INTERNO" in the EMENTA might be part of the case title, but not an entity. So I think that's all. Now, I need to make sure that all these entities are correctly marked with the appropriate classes.
+</think>
+
+Documento assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , Matricula 1117 . Em <span class="tempo">02/03/2018 17:26:32</span> . Para confirmar a validade deste documento , acesse : <span class="local">https://eproc2g.stm.jus.br/eproc_2g_prod/</span> e digite o Codigo Verificador 3044c7190e4 <span class="jurisprudencia">AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000</span> RELATOR : <span class="pessoa">MINISTRO JOSÉ BARROSO FILHO</span> AGRAVANTE : <span class="pessoa">NELSON BARROSO FERREIRA</span> <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span> AGRAVADO : <span class="organizacao">MINISTÉRIO PÚBLICO MILITAR</span> EMENTA : <span class="jurisprudencia">AGRAVO INTERNO</span> . <span class="legislacao">ART . 290 CPM</span> . CONTAGEM PERÍODO PROVA DE SURSIS PARA FINS DE INDULTO . <span class="legislacao">INCONSTITUCIONALIDADE DO DECRETO PRESIDENCIAL DE INDULTO</span> .

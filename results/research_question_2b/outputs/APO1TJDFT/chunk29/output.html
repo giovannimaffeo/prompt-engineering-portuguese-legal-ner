@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The text mentions "Emenda Constitucional nº 41 , de 2003". Here, "Emenda Constitucional" is part of the legislation, so that's legislacao. The number 41 and the year 2003 are part of the legislation's reference, so they should be included in the legislacao span. Wait, but the user's example output shows that "Emenda Constitucional nº 41" is marked as legislacao. So I'll need to make sure that the entire reference is covered.
+
+Next, "servidor da União , dos Estados , do Distrito Federal e dos Municípios , incluídas suas autarquias e fundações". Here, "União", "Estados", "Distrito Federal", and "Municípios" are all organizations or entities. Wait, "União" in this context refers to the federal government, so it's an organization. Similarly, "Distrito Federal" is a local entity, but maybe it's considered a local here. Wait, the user's example output marks "Distrito Federal" as local. So I need to check that. Also, "autarquias" and "fundações" are types of organizations, so they should be marked as organizacao.
+
+Then, "até 16 de dezembro de 1998" is a date, so that's tempo. The year 1998 is part of the tempo entity.
+
+The phrase "aposentar-se com proventos integrais" is just a legal term, no entity here.
+
+Looking at the conditions: "trinta e cinco anos de contribuição" – this is a time period, but the user's example output doesn't mark numbers like "trinta e cinco" as tempo. Wait, the example output shows that "16 de dezembro de 1998" is marked as tempo. So maybe only explicit dates are marked as tempo. The numbers like "trinta e cinco" are part of the text but not marked. So I should only mark explicit dates and times.
+
+"vinte e cinco anos de efetivo exercício no serviço público" – again, the numbers here are part of the text but not marked as tempo. The user's example output doesn't mark these numbers, so I'll follow that.
+
+"quinze anos de carreira e cinco anos no cargo em que se der a aposentadoria" – same as above, these are numbers but not marked as tempo.
+
+"idade mínima resultante da redução , relativamente aos limites do art" – "art" is short for "artigo", which is part of legislation. So "art" should be marked as legislacao. Wait, the example output shows "art" as part of legislacao. Let me check the example output again.
+
+Looking at the example output provided by the user, the text "art" is marked as legislacao. So in the input text, "do art" would be part of the legislacao. So I need to mark "art" as legislacao.
+
+Putting it all together:
+
+- "Emenda Constitucional nº 41" is legislacao.
+- "2003" is part of the legislacao reference.
+- "União", "Estados", "Distrito Federal", "Municípios" are organizacao or local? Wait, "Distrito Federal" is a local entity, so it's local. The others like "União" and "Estados" are organizations. Wait, "União" is a federal entity, so maybe it's an organization. "Distrito Federal" is a local. "Municípios" are local. So "União" is organizacao, "Distrito Federal" is local, "Municípios" is local. "Estados" is organizacao? Or is it a local? Hmm, maybe "Estados" refers to the states, which are local entities. Wait, but in Brazil, the "Estados" are part of the federation, so maybe they are considered as organizacao. This is a bit ambiguous. The user's example output marks "Distrito Federal" as local, so I'll follow that. So "União" is organizacao, "Estados" is organizacao, "Distrito Federal" is local, "Municípios" is local.
+
+"até 16 de dezembro de 1998" is tempo.
+
+"art" is part of legislacao.
+
+So the HTML would have spans for each of these entities. Let me structure the text accordingly, replacing the entities with the appropriate spans.
+</think>
+
+<span class="legislacao">2º e 6º da Emenda Constitucional nº 41</span>, de <span class="tempo">2003</span>, o servidor da <span class="organizacao">União</span>, dos <span class="organizacao">Estados</span>, do <span class="local">Distrito Federal</span> e dos <span class="local">Municípios</span>, incluídas suas <span class="organizacao">autarquias</span> e <span class="organizacao">fundações</span>, que tenha ingressado no serviço público até <span class="tempo">16 de dezembro de 1998</span> poderá aposentar-se com proventos integrais, desde que preencha, cumulativamente, as seguintes condições: I <span class="tempo">trinta e cinco anos</span> de contribuição, se homem, e <span class="tempo">trinta anos</span> de contribuição, se mulher; II <span class="tempo">vinte e cinco anos</span> de efetivo exercício no serviço público, <span class="tempo">quinze anos</span> de carreira e <span class="tempo">cinco anos</span> no cargo em que se der a aposentadoria; III idade mínima resultante da redução, relativamente aos limites do <span class="legislacao">art</span>.

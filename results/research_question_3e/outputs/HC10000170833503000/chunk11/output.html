@@ -1,0 +1,25 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a given legal text, marking specific entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each span needs a class indicating the entity type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The text starts with "Nesse sentido , a decisão que decretou a prisão preventiva do paciente : [ ... ] '' O delito imputado ao investigado é punido com pena superior a quatro anos de privação de liberdade . Além disso , há fortíssimos indícios quanto à materialidade e autoria do delito , o que se extrai especialmente do depoimento da própria vítima à Autoridade Policial . Por outro lado , a prisão preventiva se justifica como forma de garantia da ordem pública , face à gravidade concreta do fato e diante da extremada periculosidade do investigado . Pelo que consta dos autos , no dia anterior ao fato a vítima estava em sua casa quando o Sr. Márcio Adair ligou o som de seu carro em volume excessivo sendo que , ao ser solicitado que o baixasse , disse que `` quem manda ali é ele '' ."
+
+Looking for pessoas: The text mentions "Sr. Márcio Adair". "Sr." is a title, so it's not a person. But "Márcio Adair" is a full name, so that's a pessoa. Also, "vítima" is a generic term, not a specific name, so no. "Autoridade Policial" is an organization, not a person. "Investigado" is a role, not a name. So only "Márcio Adair" is a pessoa.
+
+Organizações: "Autoridade Policial" is an organization. "Autoridade Policial" is a specific entity, so that's an organizacao.
+
+Tempo: The text mentions "no dia anterior ao fato". "Dia anterior ao fato" is a time reference, but it's a relative time. However, the guidelines say to mark explicit dates. Since "dia anterior ao fato" isn't a specific date, maybe it's not marked. Wait, the example in the guidelines includes "3 de abril de 2017" as tempo. Here, "no dia anterior ao fato" is a relative time, not an explicit date. So maybe it's not marked. Also, "no dia anterior ao fato" is part of the text but not an explicit date. So no tempo entity here.
+
+Local: The text mentions "sua casa" which is a generic place, not a specific location. "Ali" is a generic term, not a specific location. So no local entities.
+
+Legislação: The text doesn't mention any laws, decrees, etc. So no legislação.
+
+Jurisprudência: There's no mention of court decisions, precedents, or súmulas. So no jurisprudência.
+
+Now, checking again for any missed entities. "Autoridade Policial" is an organization. "Sr. Márcio Adair" is a pessoa. "vítima" is a generic term, not a specific name. "Investigado" is a role, not a name. "Autoridade Policial" is an organization. The rest are general terms. 
+
+So the HTML should mark "Márcio Adair" as pessoa and "Autoridade Policial" as organizacao. The rest remains as is. Let me structure the HTML accordingly.
+</think>
+
+Nesse sentido , a decisão que decretou a prisão preventiva do paciente : [ ... ] '' O delito imputado ao investigado é punido com pena superior a quatro anos de privação de liberdade . Além disso , há fortíssimos indícios quanto à materialidade e autoria do delito , o que se extrai especialmente do depoimento da própria vítima à <span class="organizacao">Autoridade Policial</span> . Por outro lado , a prisão preventiva se justifica como forma de garantia da ordem pública , face à gravidade concreta do fato e diante da extremada periculosidade do investigado . Pelo que consta dos autos , no dia anterior ao fato a vítima estava em sua casa quando o <span class="pessoa">Márcio Adair</span> ligou o som de seu carro em volume excessivo sendo que , ao ser solicitado que o baixasse , disse que `` quem manda ali é ele '' .

@@ -1,0 +1,52 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to go through the input text carefully. Let me start by reading the entire text to understand the context. The text seems to be a legal document discussing constitutional issues, possibly related to administrative organs and laws.
+
+Looking for 'pessoa' (people). The text mentions "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – that's a person's name, so I should mark "SILVANIO BARBOSA DOS SANTOS" as pessoa. Also, "Chefe do Poder Executivo" is a title, not a specific name, so maybe not. Wait, the user's definition says only names of individuals. So "Chefe" is a title, not a name, so not marked.
+
+Next, 'organizacao' (organizations). The text has "ÓRGÃOS E ENTIDADES DA ADMINISTRAÇÃO PÚBLICA LOCAL" – "ÓRGÃOS" and "ENTIDADES" are parts of the organization names. But the user's definition says to mark expressions that identify formal entities. "ÓRGÃOS E ENTIDADES DA ADMINISTRAÇÃO PÚBLICA LOCAL" is a general term, not a specific organization. Wait, but maybe "Secretarias de Estado" is an organization. Wait, the text says "Secretarias de Estado" – that's part of the administration, so maybe they should be marked as organizacao. But the user's definition says to mark entities like public organs, courts, etc. So "Secretarias de Estado" are part of the administration, so they are organizations. So I should mark "Secretarias de Estado" as organizacao.
+
+Then 'tempo' (time). The text has "20170020161362ADI" – that's a code, not a date. Wait, the text also mentions "ALei 5.764/2016" – the year 2016 is a time entity. So "2016" should be marked as tempo. Also, "ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the "2018" is part of the code, but maybe not a date. Wait, the user's definition says to mark explicit temporal references. The "2016" in "ALe i 5.764/2016" is a year, so that's tempo. Also, "ADI" might be an acronym for Ação Direta de Inconstitucionalidade, which is a legal action, not a time. So "2016" is tempo.
+
+'local' (places). The text mentions "bem público distrital ( águas subterrâneas )" – "distrital" refers to a district, so "distrital" might be a local. Wait, but the user's definition says to mark specific places. "Distrital" is an adjective, not a specific place. So maybe not. The text also has "Secretarias de Estado" – "Estado" is a state, which is a local. Wait, but "Estado" is a general term. The user's definition says to mark specific places. So "Secretarias de Estado" might not be marked as local. Wait, maybe "Secretarias de Estado" are part of the administration, so they are organizations. So maybe not local. Hmm, need to be careful here.
+
+'legislacao' (legislation). The text has "ALe i 5.764/2016" – that's a law, so "ALe i 5.764/2016" should be marked as legislacao. Also, "art . 52 da LODF" – "LODF" is a law (Lei Orgânica do Distrito Federal), so "LODF" should be marked as legislacao. Also, "ADI" is a type of legal action, but the user's definition for legislação includes laws, so "ADI" is not legislation. Wait, "ADI" is a type of action, not a law. So "ALe i 5.764/2016" is a law, so that's legislacao. "LODF" is a law, so that's legislacao.
+
+'jurisprudencia' (jurisprudence). The text mentions "Ação Direta de Inconstitucionalidade 20170020161362ADI" – "ADI" is a type of legal action, but the user's definition for jurisprudencia is decisions, precedents, etc. So "ADI" is a legal action, not a jurisprudential reference. So maybe not marked here. The text also has "Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI" – "ADI" is part of the case number, but not a jurisprudential reference. So no jurisprudencia here.
+
+Now, let's go through the text step by step.
+
+Original text: "INGERÊNCIA INDEVIDA NO FUNCIONAMENTO DE ÓRGÃOS E ENTIDADES DA ADMINISTRAÇÃO PÚBLICA LOCAL . INCONSTITUCIONALIDADE FORMAL CONFIGURADA . 1 . O ordenamento jurídico não confere ao Legislativo a Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 33 faculdade de apresentar projetos de lei que interfiram na organização e na estrutura dos órgãos e de entidades da Administração Pública , nas atribuições dos respectivos cargos e Secretarias de Estado , porquanto tal competência é reservada ao Chefe do Poder Executivo . 2 . ALei 5.764/2016 , ao dispor critérios para exploração e uso de bem público distrital ( águas subterrâneas ) , invadiu competência do Poder Executivo , nos termos do art . 52 da LODF . 3 ."
+
+First, "ÓRGÃOS E ENTIDADES DA ADMINISTRAÇÃO PÚBLICA LOCAL" – these are parts of the administration, but not specific organizations. So maybe not marked. "Secretarias de Estado" – these are part of the administration, so they are organizations. So "Secretarias de Estado" should be marked as organizacao.
+
+"ALe i 5.764/2016" – the "5.764/2016" is a law, so "ALe i 5.764/2016" is legislacao. "LODF" is a law, so "LODF" is legislacao.
+
+"2016" in "ALe i 5.764/2016" is a year, so tempo.
+
+"2018" in "Código de Verificação :2018..." is a year, so tempo.
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – the person's name is "SILVANIO BARBOSA DOS SANTOS", so that's pessoa.
+
+"Chefe do Poder Executivo" – "Chefe" is a title, not a name, so not marked.
+
+"Secretarias de Estado" – as mentioned, these are organizations.
+
+"art . 52 da LODF" – "LODF" is legislacao.
+
+So putting it all together:
+
+- "SILVANIO BARBOSA DOS SANTOS" as pessoa.
+- "Secretarias de Estado" as organizacao.
+- "2016" and "2018" as tempo.
+- "ALe i 5.764/2016" and "LODF" as legislacao.
+
+Wait, "ALe i 5.764/2016" – the user's example might have "ALe i" as part of the law code. But the exact code is "ALe i 5.764/2016". The user's definition for legislação includes laws, so the entire "ALe i 5.764/2016" should be marked as legislacao. Similarly, "LODF" is a law, so that's legislacao.
+
+Also, "20170020161362ADI" – this seems like a case number, but the user's definition for jurisprudencia is about decisions, precedents, etc. So maybe not marked here. The "ADI" is part of the case number, but not a jurisprudential reference.
+
+So the final HTML should have the appropriate spans for each entity.
+</think>
+
+<span class="organizacao">ÓRGÃOS E ENTIDADES DA ADMINISTRAÇÃO PÚBLICA LOCAL</span> . INCONSTITUCIONALIDADE FORMAL CONFIGURADA . 1 . O ordenamento jurídico não confere ao Legislativo a Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 33 faculdade de apresentar projetos de lei que interfiram na <span class="organizacao">organização</span> e na <span class="organizacao">estrutura</span> dos <span class="organizacao">órgãos</span> e de <span class="organizacao">entidades</span> da <span class="organizacao">Administração Pública</span> , nas <span class="organizacao">atribuições</span> dos respectivos <span class="organizacao">cargos</span> e <span class="organizacao">Secretarias de Estado</span> , porquanto tal competência é reservada ao <span class="organizacao">Chefe do Poder Executivo</span> . 2 . <span class="legislacao">ALe i 5.764/2016</span> , ao dispor critérios para exploração e uso de bem público distrital ( águas subterrâneas ) , invadiu competência do Poder Executivo , nos termos do <span class="legislacao">art . 52 da LODF</span> . 3 .

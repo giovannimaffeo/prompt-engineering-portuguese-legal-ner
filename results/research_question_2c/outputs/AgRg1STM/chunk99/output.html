@@ -1,0 +1,59 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me break down the sentence.
+
+The text starts with "Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a Decisão proferida em 9 de novembro de 2017 , que negou seguimento aos Embargos de Declaração opostos por Nelson Barroso Ferreira contra o Acórdão proferido por este Tribunal nos autos do Recurso em Sentido Estrito nº 109-80.2017.7.01.0201 , por seus próprios e jurídicos fundamentos ."
+
+Looking for entities:
+
+1. "Nelson Barroso Ferreira" is a person's name. So that's a 'pessoa'.
+2. "Acórdão" is a legal term, but I need to check if it's part of a jurisprudência or legislation. Wait, "Acórdão" refers to a court decision, which might be part of jurisprudência. But in the text, it's part of "Acórdão proferido por este Tribunal", so maybe it's a specific decision, which could be jurisprudência. However, sometimes "Acórdão" is part of the legal process, not a specific entity. Hmm, maybe it's part of the 'jurisprudencia' class. But I need to be careful here.
+
+3. "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" – the number here is a case number, which might be a local entity, but the format suggests it's a legal case reference. However, the user's guidelines don't mention case numbers as a specific entity. The 'local' is for places, so maybe not. The 'legislacao' is for laws, so this case number isn't that. Maybe it's part of the 'jurisprudencia' since it's a legal case. Alternatively, maybe it's part of the 'organizacao' if it's a court, but the number is more likely a case reference. Since the user hasn't specified case numbers as an entity, perhaps it's left as is. Wait, the user's example in the output might have something similar. Let me check the sample output.
+
+Wait, the user provided a sample input and output. Let me check that. The sample input is the same as the one given here. The sample output is:
+
+"<span class="pessoa">Nelson Barroso Ferreira</span> contra o <span class="jurisprudencia">Acórdão</span> proferido por este <span class="organizacao">Tribunal</span> nos autos do <span class="jurisprudencia">Recurso em Sentido Estrito nº 109-80.2017.7.01.0201</span> , por seus próprios e <span class="jurisprudencia">jurídicos</span> fundamentos ."
+
+Wait, in the sample output, "Acórdão" is marked as jurisprudencia, "Tribunal" as organizacao, and the case number as jurisprudencia. Also, "jurídicos" is marked as jurisprudencia. But "jurídicos" is an adjective here, so maybe it's part of the jurisprudencia. But I need to check if that's correct.
+
+So, in the original text, "Acórdão" is part of a court decision, which is a jurisprudência. The "Tribunal" is an organization. The case number "Recurso em Sentido Estrito nº..." is part of the legal process, so maybe it's considered jurisprudencia. The word "jurídicos" is an adjective, but in the sample output, it's marked as jurisprudencia. That might be a mistake, but according to the sample, it's done that way.
+
+So, following the sample, I need to mark "Nelson Barroso Ferreira" as pessoa, "Acórdão" as jurisprudencia, "Tribunal" as organizacao, the case number as jurisprudencia, and "jurídicos" as jurisprudencia.
+
+Wait, but "jurídicos" is an adjective, but in the sample, it's marked as jurisprudencia. Maybe the user considers any legal term related to jurisprudence as such. So, I'll follow that.
+
+Now, checking the date: "9 de novembro de 2017" is a tempo (date). So that should be marked as tempo.
+
+So, the steps are:
+
+1. Identify all instances of the entities in the text.
+2. Wrap them with <span> tags with the appropriate class.
+3. Leave the rest as is.
+
+Let me go through the text again:
+
+Original text: "Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a Decisão proferida em 9 de novembro de 2017 , que negou seguimento aos Embargos de Declaração opostos por Nelson Barroso Ferreira contra o Acórdão proferido por este Tribunal nos autos do Recurso em Sentido Estrito nº 109-80.2017.7.01.0201 , por seus próprios e jurídicos fundamentos ."
+
+Breaking it down:
+
+- "Nelson Barroso Ferreira" is a pessoa.
+- "9 de novembro de 2017" is tempo.
+- "Acórdão" is jurisprudencia.
+- "Tribunal" is organizacao.
+- "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" is jurisprudencia (case reference).
+- "jurídicos" is jurisprudencia (adjective related to legal terms).
+
+Other terms like "Agravo Interno", "Embargos de Declaração" are legal terms but not in the specified entity list, so they remain as is.
+
+So, the HTML would be:
+
+Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a Decisão proferida em <span class="tempo">9 de novembro de 2017</span> , que negou seguimento aos Embargos de Declaração opostos por <span class="pessoa">Nelson Barroso Ferreira</span> contra o <span class="jurisprudencia">Acórdão</span> proferido por este <span class="organizacao">Tribunal</span> nos autos do <span class="jurisprudencia">Recurso em Sentido Estrito nº 109-80.2017.7.01.0201</span> , por seus próprios e <span class="jurisprudencia">jurídicos</span> fundamentos .
+
+Wait, but in the sample output, "jurídicos" is marked as jurisprudencia. So I need to include that. Also, the date is marked as tempo. The case number is marked as jurisprudencia. The "Tribunal" is organizacao. The "Acórdão" is jurisprudencia. The person is marked as pessoa.
+
+I think that's all. Let me check again for any other entities. The "Decisão" is a legal term but not in the specified list. "Embargos de Declaração" are legal terms but not entities. So they remain as is. The rest of the text is left untouched.
+</think>
+
+Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a Decisão proferida em <span class="tempo">9 de novembro de 2017</span> , que negou seguimento aos Embargos de Declaração opostos por <span class="pessoa">Nelson Barroso Ferreira</span> contra o <span class="jurisprudencia">Acórdão</span> proferido por este <span class="organizacao">Tribunal</span> nos autos do <span class="jurisprudencia">Recurso em Sentido Estrito nº 109-80.2017.7.01.0201</span> , por seus próprios e <span class="jurisprudencia">jurídicos</span> fundamentos .

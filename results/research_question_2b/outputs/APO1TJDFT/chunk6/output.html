@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by identifying each entity. 
+
+Looking at the text: "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 2 Fls . _____ Apelação / Reexame Necessário 20140110500434APO A C Ó R D Ã O Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios , MARIA IVATÔNIA - Relatora , ANGELO PASSARELI - 1º Vogal , SEBASTIÃO COELHO - 2º Vogal , SILVA LEMOS - 3º Vogal , JOSAPHA FRANCISCO DOS SANTOS - 4º Vogal , sob a presidência do Senhor Desembargador SEBASTIÃO COELHO , em proferir a seguinte decisão : EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR ."
+
+Starting with "Código de Verificação" – that seems like a code, maybe a legal code, but the user didn't mention codes as entities. The entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "Código de Verificação" might not be an entity here. The number after it, "2018ACO899XSQTZBL81ZOE6V34P" is likely a case number, which isn't one of the specified types. 
+
+Next, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is an organization, but "DESEMBARGADORA" is a title, so maybe "MARIA IVATÔNIA" is a person. Wait, "GABINETE DA DESEMBARGADORA" is the office, so "GABINETE" as an organization? Or maybe "GABINETE" is part of the organization name. But the user's example in the output shows "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as an organization. Wait, looking at the sample output provided by the user, they have "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as an organization. So I should mark that as organizacao.
+
+Then "2 Fls." – "Fls." is short for "Folhas", which is a legal term for pages, but it's not one of the entities. So no tag here.
+
+"Apelação / Reexame Necessário" – these are legal terms, but not entities. The numbers like "20140110500434APO" are case numbers, not entities.
+
+"A C Ó R D Ã O" – this is "ACÓRDAO" in Portuguese, which is a legal term for a court decision. But the user's entities include jurisprudencia, which is case law. However, "ACÓRDAO" is a document, not necessarily jurisprudencia. Maybe it's part of the legislation? Not sure. The user's example output doesn't mark this, so perhaps it's not an entity.
+
+"Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios" – "Tribunal de Justiça do Distrito Federal e Territórios" is an organization. So that should be organizacao. "5ª TURMA CÍVEL" is a court, so maybe part of the organization. But the user's example output marks "Tribunal de Justiça do Distrito Federal e Territórios" as organizacao.
+
+"MARIA IVATÔNIA" is a person, so pessoa. "ANGELO PASSARELI", "SEBASTIÃO COELHO", "SILVA LEMOS", "JOSAPHA FRANCISCO DOS SANTOS" are all names of people, so pessoa. "SEBASTIÃO COELHO" is mentioned again as the president, so also pessoa.
+
+"EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR" – "VOTO-VISTA" is a legal term, but not an entity. "2º VOGAL" is a position, not an entity. "RELATOR" is a role, not an entity.
+
+So, compiling all the entities:
+
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" → organizacao
+- "Tribunal de Justiça do Distrito Federal e Territórios" → organizacao
+- "MARIA IVATÔNIA" → pessoa
+- "ANGELO PASSARELI" → pessoa
+- "SEBASTIÃO COELHO" → pessoa (twice)
+- "SILVA LEMOS" → pessoa
+- "JOSAPHA FRANCISCO DOS SANTOS" → pessoa
+
+Wait, the user's sample output shows "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as organizacao, and "Tribunal de Justiça do Distrito Federal e Territórios" as organizacao. Also, "MARIA IVATÔNIA" is pessoa. The other names are pessoas. 
+
+So I need to wrap those in the respective classes. Also, check for any other entities. The date "2018" might be tempo, but the user's example doesn't mark it. The user's example output doesn't include any tempo, so maybe the numbers are not considered. 
+
+So the final HTML should have the specified spans for the identified entities.
+</think>
+
+Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> 2 Fls . _____ Apelação / Reexame Necessário 20140110500434APO <span class="legislacao">A C Ó R D Ã O</span> Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span> , <span class="pessoa">MARIA IVATÔNIA</span> - Relatora , <span class="pessoa">ANGELO PASSARELI</span> - 1º Vogal , <span class="pessoa">SEBASTIÃO COELHO</span> - 2º Vogal , <span class="pessoa">SILVA LEMOS</span> - 3º Vogal , <span class="pessoa">JOSAPHA FRANCISCO DOS SANTOS</span> - 4º Vogal , sob a presidência do Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span> , em proferir a seguinte decisão : EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR .

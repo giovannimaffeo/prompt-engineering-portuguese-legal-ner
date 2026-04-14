@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input is a legal document with various elements like "MATO GROSSO", "MIN. RICARDO LEWANDOWSKI", "UNIÃO", "ADVOGADO-GERAL DA UNIÃO", "ESTADO DE MATO GROSSO", "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO", and dates like "9.3.2018" and "15.3.2018".
+
+Starting with "MATO GROSSO" – that's a location, so I should mark it as local. Then "MIN. RICARDO LEWANDOWSKI" – "MIN." likely stands for Ministro (Judge), so that's a pessoa. "UNIÃO" is a legal entity, so that's organizacao. "ADVOGADO-GERAL DA UNIÃO" is part of the organization, so maybe organizacao again. "ESTADO DE MATO GROSSO" is another organizacao. "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is part of the organization, so organizacao. The dates "9.3.2018" and "15.3.2018" are tempo. 
+
+Wait, the date format is day.month.year, so those should be tempo. The "Plenário" might be a location, but I'm not sure. Maybe it's part of the court, so perhaps local. But the example output from the user shows "Plenário" as part of the text without a tag. Wait, looking at the sample output provided by the user, they have "Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018 ." with the dates marked as tempo. So "Plenário" is left as is. 
+
+So, I need to check each term. Let me go through each part step by step. 
+
+"NA AÇÃO CÍVEL ORIGINÁRIA 2.821 PROCED . : MATO GROSSO" – "MATO GROSSO" is local. 
+
+"RELATOR : MIN . RICARDO LEWANDOWSKI" – "MIN." is an abbreviation for Ministro, so pessoa. 
+
+"AGTE . ( S ) : UNIÃO" – "UNIÃO" is organizacao. 
+
+"ADV . ( A/S ) : ADVOGADO-GERAL DA UNIÃO" – "ADVOGADO-GERAL DA UNIÃO" is part of the organization, so organizacao. 
+
+"AGDO . ( A/S ) : ESTADO DE MATO GROSSO" – "ESTADO DE MATO GROSSO" is organizacao. 
+
+"PROC . ( A/S ) ( ES ) : PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" – "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is part of the organization, so organizacao. 
+
+"Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator . Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018 ." – The dates "9.3.2018" and "15.3.2018" are tempo. 
+
+So, putting it all together, I need to wrap each entity with the appropriate span tags. Let me make sure I didn't miss any. 
+
+Wait, "Plenário" is part of the court, but the example output from the user didn't tag it. So maybe it's not an entity here. The user's sample output shows "Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018 ." with the dates marked. So "Plenário" remains as is. 
+
+Also, "Agravo regimental" is a legal term, but it's not one of the specified entities. So no tag needed. 
+
+So the final HTML should have the local, pessoa, organizacao, and tempo entities marked. Let me structure the HTML accordingly.
+</think>
+
+NA AÇÃO CÍVEL ORIGINÁRIA 2.821 PROCED . : <span class="local">MATO GROSSO</span> RELATOR : <span class="pessoa">MIN . RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A/S ) : <span class="organizacao">ADVOGADO-GERAL DA UNIÃO</span> AGDO . ( A/S ) : <span class="organizacao">ESTADO DE MATO GROSSO</span> PROC . ( A/S ) ( ES ) : <span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator . <span class="local">Plenário</span> , Sessão Virtual de <span class="tempo">9.3.2018</span> a <span class="tempo">15.3.2018</span> .

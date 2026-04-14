@@ -1,0 +1,92 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first part is "( A/S ) ( ES ) : PROCURADOR-GERAL DO ESTADO DE MATO GROSSO". Here, "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" seems like an organization. So I'll mark that as <span class="organizacao">. Also, "MATO GROSSO" is a local, so that should be <span class="local">.
+
+Next, "Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator . Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018 .". The "Tribunal" here might be an organization, but since it's part of the court's name, maybe it's part of the organization. Wait, the full name might be "Tribunal de Justiça" or similar, but the text just says "Tribunal". Maybe it's part of the organization. Alternatively, "Plenário" is a part of the court, so maybe not an entity. The dates "9.3.2018 a 15.3.2018" are time entities, so those should be <span class="tempo">.
+
+Then, "Composição : Ministros Cármen Lúcia ( Presidente ) , Celso de Mello , Marco Aurélio , Gilmar Mendes , Ricardo Lewandowski , Dias Toffoli , Luiz Fux , Rosa Weber , Roberto Barroso , Edson Fachin e Alexandre de Moraes .". The names like "Cármen Lúcia" are people, so each should be <span class="pessoa">. The "Presidente" is a title, not an entity. The "Ministros" is a title, so not an entity.
+
+Next, "p/ Doralúcia das Neves Santos Assessora-Chefe do Plenário". "Doralúcia das Neves Santos" is a person, so <span class="pessoa">. "Assessora-Chefe do Plenário" is a title, not an entity.
+
+Then, "Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil .". The "MP n° 2.200-2/2001" is a legislative act, so <span class="legislacao">. The date "24/08/2001" is a tempo entity.
+
+The URL "http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp" is a local, but since it's a URL, maybe it's a local. Wait, the instruction says "local" refers to places, so maybe not. But the URL is part of the document's access, so perhaps it's not an entity. The "ICP-Brasil" is a legislative or organizational term, but the MP is the legislation. The "Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil" might be an organization, but the MP is the legislation. So "MP n° 2.200-2/2001" is the legislation.
+
+Finally, "Inteiro Teor do Acórdão - Página 17 de 17". "Acórdão" is a legal term, but it's not one of the specified entities. So no tag needed.
+
+Now, I need to make sure all entities are correctly tagged. Let me go through each part again.
+
+- "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" → organizacao
+- "MATO GROSSO" → local
+- "9.3.2018 a 15.3.2018" → tempo
+- "Cármen Lúcia", "Celso de Mello", etc. → pessoa
+- "Doralúcia das Neves Santos" → pessoa
+- "MP n° 2.200-2/2001" → legislacao
+- "24/08/2001" → tempo
+
+Wait, the date "24/08/2001" is part of the MP reference, so it's part of the legislation. But the user's instruction says to mark "tempo" for dates. So "24/08/2001" should be <span class="tempo">.
+
+Also, "Plenário" might be part of the organization, but in the context, it's part of the court's name. However, the original text has "Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018". The "Plenário" here refers to the court's chamber, so maybe it's part of the organization. But the user's example might not have it. Let me check the original text again.
+
+In the input, "Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018" — "Plenário" is part of the court's name, so maybe it's part of the organization. But the original text doesn't have "Tribunal" as an entity. Wait, the first part is "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" which is an organization. The "Tribunal" might be part of the organization, but the text doesn't specify. Since the user's example might not have it, perhaps "Plenário" is not an entity here.
+
+So, the main entities are:
+
+- organizacao: PROCURADOR-GERAL DO ESTADO DE MATO GROSSO
+- local: MATO GROSSO
+- tempo: 9.3.2018 a 15.3.2018, 24/08/2001
+- pessoa: Cármen Lúcia, Celso de Mello, Marco Aurélio, Gilmar Mendes, Ricardo Lewandowski, Dias Toffoli, Luiz Fux, Rosa Weber, Roberto Barroso, Edson Fachin, Alexandre de Moraes, Doralúcia das Neves Santos
+- legislacao: MP n° 2.200-2/2001
+
+Wait, the "MP n° 2.200-2/2001" is a legislative act, so it's legislacao. The date "24/08/2001" is tempo.
+
+Now, I need to make sure all these are correctly tagged. Also, check if "ICP-Brasil" is part of the legislation or organization. The text says "que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil", so the MP is the legislation, and ICP-Brasil is the organization. Wait, but the user's entities are "legislacao" and "organizacao". So "ICP-Brasil" would be an organization. But the original text doesn't mention it as an entity. The user's instruction says to mark the entities found in the text. The text mentions "MP n° 2.200-2/2001" as the legislation, and "ICP-Brasil" is part of the description of the MP. So maybe "ICP-Brasil" is an organization. But the user's example might not include it. Let me check the original text again.
+
+The original text says: "Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil ."
+
+So "MP n° 2.200-2/2001" is the legislation. "Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil" is the organization. So "ICP-Brasil" is an organization. Therefore, I should mark "ICP-Brasil" as <span class="organizacao">.
+
+Wait, but the user's instruction says to mark entities found in the text. The text includes "ICP-Brasil" as part of the description, so it's an organization. So I need to include that.
+
+So, the entities are:
+
+- organizacao: PROCURADOR-GERAL DO ESTADO DE MATO GROSSO, ICP-Brasil
+- local: MATO GROSSO
+- tempo: 9.3.2018 a 15.3.2018, 24/08/2001
+- pessoa: Cármen Lúcia, Celso de Mello, Marco Aurélio, Gilmar Mendes, Ricardo Lewandowski, Dias Toffoli, Luiz Fux, Rosa Weber, Roberto Barroso, Edson Fachin, Alexandre de Moraes, Doralúcia das Neves Santos
+- legislacao: MP n° 2.200-2/2001
+
+Wait, but the "MP n° 2.200-2/2001" is the legislation. The date "24/08/2001" is part of the MP's date, so it's a tempo entity.
+
+Now, I need to make sure all these are correctly tagged. Let me go through the text again and apply the tags.
+
+Original text:
+
+"( A/S ) ( ES ) : PROCURADOR-GERAL DO ESTADO DE MATO GROSSO Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator . Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018 . Composição : Ministros Cármen Lúcia ( Presidente ) , Celso de Mello , Marco Aurélio , Gilmar Mendes , Ricardo Lewandowski , Dias Toffoli , Luiz Fux , Rosa Weber , Roberto Barroso , Edson Fachin e Alexandre de Moraes . p/ Doralúcia das Neves Santos Assessora-Chefe do Plenário Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp sob o número 14532100 Inteiro Teor do Acórdão - Página 17 de 17"
+
+Breaking it down:
+
+- "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" → organizacao
+- "MATO GROSSO" → local
+- "9.3.2018 a 15.3.2018" → tempo
+- "Cármen Lúcia", "Celso de Mello", etc. → pessoa
+- "Doralúcia das Neves Santos" → pessoa
+- "MP n° 2.200-2/2001" → legislacao
+- "24/08/2001" → tempo
+- "Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil" → organizacao
+
+Wait, the "Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil" is part of the description of the MP, so "ICP-Brasil" is an organization. So I need to mark "ICP-Brasil" as <span class="organizacao">.
+
+Also, the URL "http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp" is a local? Or is it a URL, which is not an entity. The user's instruction says "local" refers to places, so the URL is not a local. So no tag.
+
+Now, putting it all together, the HTML should have all these tags. Let me make sure I didn't miss any entities.
+
+Another check: "Plenário" is part of the court's name, but the original text doesn't have it as an entity. The user's example might not include it. So no tag for "Plenário".
+
+So the final HTML should have all the entities marked as per the above.
+</think>
+
+<span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator . <span class="local">MATO GROSSO</span> , Sessão Virtual de <span class="tempo">9.3.2018 a 15.3.2018</span> . Composição : Ministros <span class="pessoa">Cármen Lúcia</span> ( Presidente ) , <span class="pessoa">Celso de Mello</span> , <span class="pessoa">Marco Aurélio</span> , <span class="pessoa">Gilmar Mendes</span> , <span class="pessoa">Ricardo Lewandowski</span> , <span class="pessoa">Dias Toffoli</span> , <span class="pessoa">Luiz Fux</span> , <span class="pessoa">Rosa Weber</span> , <span class="pessoa">Roberto Barroso</span> , <span class="pessoa">Edson Fachin</span> e <span class="pessoa">Alexandre de Moraes</span> . p/ <span class="pessoa">Doralúcia das Neves Santos</span> Assessora-Chefe do Plenário Documento assinado digitalmente conforme <span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a Infra-estrutura de Chaves Públicas Brasileira - <span class="organizacao">ICP-Brasil</span> . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp sob o número 14532100 Inteiro Teor do Acórdão - Página 17 de 17

@@ -1,0 +1,60 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "CELSO DE MELLO , Tribunal Pleno , julgado em 03/12/2003 , DJ 09-02-2007 PP-00016 EMENT VOL-02263- 01 PP-00067 RTJ VOL-00202-01 PP-00078 ) ( grifo nosso ) Na mesma linha , vejamos os precedentes já exarados por este egrégio Conselho Especial do Tribunal de Justiça do Distrito Federal e dos Territórios : 1 ."
+
+Let me break it down word by word. 
+
+Starting with "CELSO DE MELLO" – that's a person's name, so "pessoa". Then "Tribunal Pleno" – "Tribunal" is an organization, maybe? Or could it be part of a title? Wait, "Tribunal Pleno" is likely an organization, like the full court. So "organizacao".
+
+Next, "julgado em 03/12/2003" – the date is "tempo". Then "DJ 09-02-2007" – DJ here might be an abbreviation for "Diário da Justiça", which is a legal publication, so maybe "legislacao" or "jurisprudencia"? Wait, "DJ" is a publication, so maybe "legislacao" isn't right. Alternatively, "jurisprudencia" refers to judicial precedents. But "DJ" is a source, so perhaps it's part of the legislation or jurisprudence. Hmm, maybe "legislacao" isn't the right fit here. Wait, the user's example output might have "DJ" as part of the jurisprudencia? Or maybe it's a publication, so maybe not an entity. Wait, the user's example output shows "DJ 09-02-2007" as part of the jurisprudencia? Let me check the example output provided.
+
+Looking at the sample input and output, the user's example output for the input text is:
+
+<span class="pessoa">CELSO DE MELLO</span> , <span class="organizacao">Tribunal Pleno</span> , <span class="tempo">03/12/2003</span> , DJ 09-02-2007 PP-00016 EMENT VOL-02263- 01 PP-00067 RTJ VOL-00202-01 PP-00078 ) ( <span class="jurisprudencia">grifo nosso</span> ) Na mesma linha , vejamos os precedentes já exarados por este egrégio <span class="organizacao">Conselho Especial</span> do <span class="organizacao">Tribunal de Justiça do Distrito Federal e dos Territórios</span> : 1 .
+
+Wait, in the sample output, "DJ 09-02-2007" is not marked. But "grifo nosso" is marked as jurisprudencia. Wait, "grifo nosso" is a note indicating the emphasis is the author's, so maybe that's part of jurisprudencia? Or perhaps it's a note, but the user's example shows it as jurisprudencia. So maybe "grifo nosso" is considered jurisprudencia here. 
+
+So, in the input text, "grifo nosso" is marked as jurisprudencia. So I need to check each part. 
+
+Let me go through the input again:
+
+"CELSO DE MELLO" – pessoa.
+
+"Tribunal Pleno" – organizacao.
+
+"julgado em 03/12/2003" – tempo (the date).
+
+"DJ 09-02-2007" – maybe part of a publication, but not sure. The sample output doesn't mark it, so perhaps it's not an entity. 
+
+"PP-00016 EMENT VOL-02263- 01 PP-00067 RTJ VOL-00202-01 PP-00078" – these look like case numbers or references, so maybe not entities. 
+
+") ( grifo nosso )" – "grifo nosso" is marked as jurisprudencia in the sample. 
+
+"Na mesma linha , vejamos os precedentes já exarados por este egrégio Conselho Especial do Tribunal de Justiça do Distrito Federal e dos Territórios : 1 ."
+
+Here, "Conselho Especial" is an organization, and "Tribunal de Justiça do Distrito Federal e dos Territórios" is another organization. 
+
+So, the entities are:
+
+- CELSO DE MELLO: pessoa
+- Tribunal Pleno: organizacao
+- 03/12/2003: tempo
+- grifo nosso: jurisprudencia
+- Conselho Especial: organizacao
+- Tribunal de Justiça do Distrito Federal e dos Territórios: organizacao
+
+The rest like DJ, PP, EMENT, RTJ, etc., are not marked as entities. 
+
+So, applying that to the input text, the HTML should have the spans for those entities. 
+
+Now, I need to make sure that each entity is correctly identified and wrapped in the appropriate span. Also, the rest of the text remains as is. 
+
+Let me check again. The sample output from the user shows that "grifo nosso" is marked as jurisprudencia. So in the input text, "grifo nosso" is part of the jurisprudencia. 
+
+So, putting it all together, the HTML should have the spans for those entities. 
+
+I think that's all. Now, I'll format the text accordingly.
+</think>
+
+<span class="pessoa">CELSO DE MELLO</span> , <span class="organizacao">Tribunal Pleno</span> , <span class="tempo">03/12/2003</span> , DJ 09-02-2007 PP-00016 EMENT VOL-02263- 01 PP-00067 RTJ VOL-00202-01 PP-00078 ) ( <span class="jurisprudencia">grifo nosso</span> ) Na mesma linha , vejamos os precedentes já exarados por este egrégio <span class="organizacao">Conselho Especial</span> do <span class="organizacao">Tribunal de Justiça do Distrito Federal e dos Territórios</span> : 1 .

@@ -1,0 +1,88 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example input again: "Pág. : 407 ) . `` AÇÃO DIRETA DE INCONSTITUCIONALIDADE . LEI 3.220 , DE 05 DE NOVEMBRO DE 2003 . INCONSTITUCIONALIDADE . PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL . COLIDÊNCIA COM A LEI ORGÂNICA DO DISTRITO FEDERAL . RESERVA DE INICIATIVA . VÍCIO FORMAL DE INCONSTITUCIONALIDADE ."
+
+Now, I need to identify each entity. Let's go step by step.
+
+1. "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" – This seems like a legal action, so maybe it's a type of jurisprudencia? Or perhaps it's a legal term, but the user's guide doesn't mention legal terms as entities. Wait, the entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" is a legal procedure, which might fall under jurisprudencia? Or maybe it's part of the legislation? Not sure. Maybe it's not an entity here.
+
+2. "LEI 3.220 , DE 05 DE NOVEMBRO DE 2003" – This is a law, so "legislacao". The number and date are part of the law's identifier. So "LEI 3.220" and "05 DE NOVEMBRO DE 2003" should be marked as legislacao. Wait, the date is part of the law's enactment date, so the entire "LEI 3.220 , DE 05 DE NOVEMBRO DE 2003" is a legislation entity. So I should wrap that in <span class="legislacao">.
+
+3. "PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL" – "PROJETO DE LEI" is a legislative project, so that's part of legislacao. "DEPUTADO DISTRITAL" refers to a person (a deputy), so that's pessoa. Wait, "DEPUTADO DISTRITAL" is a title, but the person is the deputy. So "DEPUTADO DISTRITAL" might be an organization? Or is it a title? Hmm. The user's guide says "pessoa" for people. So "DEPUTADO DISTRITAL" is a person's title, so maybe the actual person's name isn't here. Wait, the text says "APRESENTADO POR DEPUTADO DISTRITAL" – so the person is the deputy. But the text doesn't mention a specific name. So maybe "DEPUTADO DISTRITAL" is an organization? Or perhaps it's part of the legislation. Wait, the user's guide says "organizacao" for organizations. So "DEPUTADO DISTRITAL" is a person, so "pessoa". But the text doesn't have a specific name. Wait, maybe "DEPUTADO DISTRITAL" is an organization? Or is it a title? Maybe it's not an entity here. Wait, the user's example output might help. Let me check the sample output.
+
+Wait, the user provided the input and the output. Let me check the sample output. The user's example input is the text given, and the output is the HTML with entities marked. Let me see the sample output. Wait, the user hasn't provided the sample output yet. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML. Não inclua explicações ou blocos de código." So the user is expecting me to generate the HTML with the entities marked.
+
+So back to the text. Let's go through each part again.
+
+- "Pág. : 407 ) . ``" – These are page numbers and punctuation, no entities here.
+
+- "AÇÃO DIRETA DE INCONSTITUCIONIDADE" – This is a legal term, but not an entity as per the guide. So no tag.
+
+- "LEI 3.220 , DE 05 DE NOVEMBRO DE 2003" – This is a law, so "legislacao". The entire phrase is a legislation entity. So wrap that in <span class="legislacao">.
+
+- "INCONSTITUCIONALIDADE" – This is a legal term, not an entity. So no tag.
+
+- "PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL" – "PROJETO DE LEI" is part of legislation, so "legislacao". "DEPUTADO DISTRITAL" refers to a person (a deputy), so "pessoa". Wait, but the text doesn't mention a specific name. However, the user's guide says "pessoa" for people. So "DEPUTADO DISTRITAL" is a title, but the person is the deputy. However, the text doesn't have a specific name. So maybe "DEPUTADO DISTRITAL" is an organization? Or is it a title? Maybe it's not an entity here. Wait, the user's guide says "organizacao" for organizations. So if "DEPUTADO DISTRITAL" is an organization, but that's not correct. A deputy is a person. So perhaps "DEPUTADO DISTRITAL" is a person's title, but since there's no specific name, maybe it's not marked. Alternatively, maybe "DEPUTADO DISTRITAL" is part of the legislation. Hmm. Maybe the entire "PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL" is part of the legislation. But the user's guide says to mark each entity. So "PROJETO DE LEI" is part of legislacao, and "DEPUTADO DISTRITAL" is a pessoa. Wait, but the text doesn't have a specific name. So maybe "DEPUTADO DISTRITAL" is an organization? Or perhaps it's not an entity. This is a bit ambiguous. Let me think again.
+
+The user's guide says to mark "pessoa" for people. So if the text refers to a person, even if it's a title, like "DEPUTADO DISTRITAL", which is a position, but the person is the one who holds that position. However, the text doesn't mention a specific name. So maybe it's not an entity. Alternatively, maybe "DEPUTADO DISTRITAL" is an organization. But that's not correct. So perhaps it's not marked. Alternatively, maybe "DEPUTADO DISTRITAL" is part of the legislation. Hmm. Maybe I should mark "PROJETO DE LEI" as legislacao and "DEPUTADO DISTRITAL" as pessoa. But since there's no specific name, maybe it's not. Alternatively, maybe the entire "PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL" is part of the legislation. But the user's guide says to mark each entity. So perhaps "PROJETO DE LEI" is legislacao, and "DEPUTADO DISTRITAL" is pessoa. But again, without a specific name, maybe it's not. This is tricky.
+
+Next, "COLIDÊNCIA COM A LEI ORGÂNICA DO DISTRITO FEDERAL" – "LEI ORGÂNICA DO DISTRITO FEDERAL" is a law, so "legislacao". So wrap that in <span class="legislacao">.
+
+"RESERVA DE INICIATIVA" – This is a legal term, not an entity. So no tag.
+
+"VÍCIO FORMAL DE INCONSTITUCIONALIDADE" – Legal term, no entity.
+
+So putting it all together:
+
+- "LEI 3.220 , DE 05 DE NOVEMBRO DE 2003" → legislacao
+- "LEI ORGÂNICA DO DISTRITO FEDERAL" → legislacao
+- "DEPUTADO DISTRITAL" → pessoa (assuming it refers to a person, even if it's a title)
+- "PROJETO DE LEI" → legislacao
+
+Wait, but "PROJETO DE LEI" is part of the legislation. So maybe "PROJETO DE LEI" is legislacao. But the text says "PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL" – so "PROJETO DE LEI" is part of the legislation. So "PROJETO DE LEI" is legislacao. "DEPUTADO DISTRITAL" is pessoa. So the entire "PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL" would have "PROJETO DE LEI" as legislacao and "DEPUTADO DISTRITAL" as pessoa.
+
+But the user's guide says to mark each entity. So I need to split the text into parts where each entity is marked. Let me try to parse each part.
+
+Original text:
+
+"AÇÃO DIRETA DE INCONSTITUCIONALIDADE . LEI 3.220 , DE 05 DE NOVEMBRO DE 2003 . INCONSTITUCIONALIDADE . PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL . COLIDÊNCIA COM A LEI ORGÂNICA DO DISTRITO FEDERAL . RESERVA DE INICIATIVA . VÍCIO FORMAL DE INCONSTITUCIONALIDADE ."
+
+Breaking it down:
+
+1. "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" – no entity
+2. "LEI 3.220 , DE 05 DE NOVEMBRO DE 2003" – legislacao
+3. "INCONSTITUCIONALIDADE" – no entity
+4. "PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL" – "PROJETO DE LEI" is legislacao, "DEPUTADO DISTRITAL" is pessoa
+5. "COLIDÊNCIA COM A LEI ORGÂNICA DO DISTRITO FEDERAL" – "LEI ORGÂNICA DO DISTRITO FEDERAL" is legislacao
+6. "RESERVA DE INICIATIVA" – no entity
+7. "VÍCIO FORMAL DE INCONSTITUCIONALIDADE" – no entity
+
+So the HTML would be:
+
+"AÇÃO DIRETA DE INCONSTITUCIONALIDADE . <span class="legislacao">LEI 3.220 , DE 05 DE NOVEMBRO DE 2003</span> . INCONSTITUCIONALIDADE . <span class="legislacao">PROJETO DE LEI</span> APRESENTADO POR <span class="pessoa">DEPUTADO DISTRITAL</span> . <span class="legislacao">LEI ORGÂNICA DO DISTRITO FEDERAL</span> . RESERVA DE INICIATIVA . VÍCIO FORMAL DE INCONSTITUCIONALIDADE ."
+
+Wait, but "PROJETO DE LEI" is part of the legislation, so it should be marked as legislacao. However, the text says "PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL" – so "PROJETO DE LEI" is the legislation, and "DEPUTADO DISTRITAL" is the person. So the HTML would have "PROJETO DE LEI" as legislacao and "DEPUTADO DISTRITAL" as pessoa.
+
+But the user's example output might have different markings. Let me check again.
+
+Another thing: "05 DE NOVEMBRO DE 2003" is a date, which is "tempo". So the entire "LEI 3.220 , DE 05 DE NOVEMBRO DE 2003" is a legislation, but the date is part of it. However, the user's guide says to mark "tempo" for dates. So maybe the date part should be marked as "tempo", but the entire law is "legislacao". Wait, the user's guide says to mark each entity. So "LEI 3.220" is part of the legislation, and "05 DE NOVEMBRO DE 2003" is a date (tempo). But the entire phrase is a legislation, so maybe the entire phrase is "legislacao", and the date is part of it. Or should the date be marked as "tempo"?
+
+This is a bit ambiguous. The user's guide says to mark "tempo" for dates. So "05 DE NOVEMBRO DE 2003" should be marked as "tempo". But the entire "LEI 3.220 , DE 05 DE NOVEMBRO DE 2003" is a legislation. So perhaps the entire phrase is "legislacao", and the date is part of it. But the user's guide might expect the date to be marked as "tempo". However, the user's example might not have that. Let me think again.
+
+The user's guide says to mark each entity. So if "LEI 3.220" is a law, and "05 DE NOVEMBRO DE 2003" is a date, then both are entities. But the entire phrase is a legislation, so maybe the entire phrase is "legislacao", and the date is part of it. But the user's guide might expect the date to be marked as "tempo". However, the user's example might not have that. Since the user hasn't provided an example, I need to make a judgment call.
+
+In legal texts, the date of enactment is part of the legislation, so the entire phrase "LEI 3.220 , DE 05 DE NOVEMBRO DE 2003" is a legislation entity. Therefore, the entire phrase should be marked as "legislacao". The date is part of the legislation, not a separate entity. So the date is not marked as "tempo" here. So the entire phrase is "legislacao".
+
+Similarly, "LEI ORGÂNICA DO DISTRITO FEDERAL" is a law, so "legislacao".
+
+So the final HTML would be:
+
+"AÇÃO DIRETA DE INCONSTITUCIONALIDADE . <span class="legislacao">LEI 3.220 , DE 05 DE NOVEMBRO DE 2003</span> . INCONSTITUCIONALIDADE . <span class="legislacao">PROJETO DE LEI</span> APRESENTADO POR <span class="pessoa">DEPUTADO DISTRITAL</span> . <span class="legislacao">LEI ORGÂNICA DO DISTRITO FEDERAL</span> . RESERVA DE INICIATIVA . VÍCIO FORMAL DE INCONSTITUCIONALIDADE ."
+
+Wait, but "PROJETO DE LEI" is part of the legislation, so it's "legislacao". "DEPUTADO DISTRITAL" is a person, so "pessoa".
+
+But the user's guide says to mark each entity. So the answer should have those tags.
+</think>
+
+AÇÃO DIRETA DE INCONSTITUCIONALIDADE . <span class="legislacao">LEI 3.220 , DE 05 DE NOVEMBRO DE 2003</span> . INCONSTITUCIONALIDADE . <span class="legislacao">PROJETO DE LEI</span> APRESENTADO POR <span class="pessoa">DEPUTADO DISTRITAL</span> . <span class="legislacao">LEI ORGÂNICA DO DISTRITO FEDERAL</span> . RESERVA DE INICIATIVA . VÍCIO FORMAL DE INCONSTITUCIONALIDADE .

@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text sentence by sentence.
+
+The first sentence: "Sustenta que esses honorários não são créditos trabalhistas , nem de natureza alimentar , devendo ser atualizados pelos critérios dos créditos de natureza civil - Lei n° 6.899/81 e Decreto n° 86.649/81 ."
+
+Here, "Lei n° 6.899/81" and "Decreto n° 86.649/81" are clearly legal legislation references. So I'll mark those as <span class="legislacao">.
+
+Next sentence: "Transcreve arestos para o confronto de teses . Por violação o recurso não prospera , pois os dispositivos constitucionais apontados não guardam nenhuma relação com o decidido , nem o Regional foi instado a adotar tese a respeito dos princípios neles contidos , o que atrai o óbice do Enunciado n° 297/TST ."
+
+"Enunciado n° 297/TST" seems like a jurisprudential reference. The TST is the Superior Labor Court, so this should be <span class="jurisprudencia">.
+
+Next part: "O recurso , no entanto , merece ser conhecido , por divergência jurisprudencial , uma vez que os três primeiros arestos de fl . 263 adotam entendimento diametralmente oposto ao do Regional , de que os honorários periciais não devem seguir o mesmo critério de correção dos débitos trabalhistas , mas sim pelos índices previstos na legislação civil ."
+
+"arestos" here might refer to judicial decisions, so they should be marked as jurisprudencia. Also, "fl. 263" is a reference to a page in a document, which might be part of a legal document, but the example shows that "arestos" are marked. Wait, the example in the guidelines mentions "REsp n . 1694984/MS" as jurisprudencia. So "arestos" here are likely judicial decisions, so they should be marked as jurisprudencia. Also, "fl. 263" is a page reference, but the guidelines don't mention page numbers as entities. So maybe not. But the example in the guidelines includes "REsp" as jurisprudencia. So "arestos" here are part of the jurisprudencia.
+
+Wait, the user's example input had "REsp n . 1694984/MS" marked as jurisprudencia. So in the input text, "arestos" might be similar. So I should mark "arestos" as jurisprudencia. Also, "fl. 263" is a page reference, but the guidelines don't mention that. So maybe not. But the example in the guidelines includes "Súmula 331 do TST" as jurisprudencia. So "arestos" here are part of the jurisprudencia.
+
+So, in the text, "arestos" should be marked as jurisprudencia. Also, "Enunciado n° 297/TST" is jurisprudencia. The "Lei n° 6.899/81" and "Decreto n° 86.649/81" are legislacao. The "Enunciado n° 297/TST" is jurisprudencia. The "fl. 263" is a page reference, but not an entity. The "Regional" here refers to a court, which is an organization. Wait, "Regional" in the context of a court, like "Regional" as in a regional court, should be marked as organizacao. But the example in the guidelines didn't mark "Regional" as an organization. Wait, the example input had "Regional" in "Regional foi instado", but in the example output, it wasn't marked. Wait, the example input was: "O MINISTÉRIO PÚBLICO FEDERAL, por meio do Procurador CARLOS HENRIQUE ALVES, propôs ação com base no art.61 , §1º , da Lei nº 9.430/96, conforme entendimento do REsp n . 1694984/MS e da Súmula 331 do TST." The output marked "REsp n . 1694984/MS" as jurisprudencia and "Súmula 331 do TST" as jurisprudencia. So "Regional" in the input text here is part of the sentence "o Regional foi instado a adotar tese a respeito dos princípios neles contidos". Since "Regional" refers to a court, which is an organization, but in the example, "Regional" wasn't marked. Wait, the example input had "Regional" in the text, but the output didn't mark it. Wait, looking back at the example input and output:
+
+Input: "O MINISTÉRIO PÚBLICO FEDERAL, por meio do Procurador CARLOS HENRIQUE ALVES, propôs ação com base no art.61 , §1º , da Lei nº 9.430/96, conforme entendimento do REsp n . 1694984/MS e da Súmula 331 do TST."
+
+Output: "O <span class="organizacao">MINISTÉRIO PÚBLICO FEDERAL</span>, por meio do Procurador <span class="pessoa">CARLOS HENRIQUE ALVES</span>, propôs ação com base no <span class="legislacao">art.61 , §1º , da Lei nº 9.430/96</span>, conforme entendimento do <span class="jurisprudencia">REsp n . 1694984/MS</span> e da <span class="jurisprudencia">Súmula 331 do TST</span>."
+
+So "Regional" in the input text here is not marked. Wait, the input text in the example had "Regional" in the sentence "o Regional foi instado a adotar tese a respeito dos princípios neles contidos". But in the output, it wasn't marked. So maybe "Regional" here refers to a court, but in the example, it wasn't marked. Wait, maybe "Regional" is part of a court's name, like "Regional do Trabalho", but in the input text, it's just "Regional". So according to the guidelines, "Regional" as a generic term (like a regional court) might not be marked unless it's a specific name. But the example didn't mark it. So perhaps "Regional" here is not marked as an organization. Therefore, in the current input text, "Regional" is not marked as an organization.
+
+So, in the current input text, the entities are:
+
+- "Lei n° 6.899/81" → legislacao
+- "Decreto n° 86.649/81" → legislacao
+- "Enunciado n° 297/TST" → jurisprudencia
+- "arestos" → jurisprudencia (since they are judicial decisions)
+- "fl. 263" → not an entity
+- "Regional" → not marked as organization
+
+Wait, but "arestos" in the input text is plural. The example had "REsp" as jurisprudencia. So "arestos" here are judicial decisions, so they should be marked as jurisprudencia. Also, "Enunciado n° 297/TST" is a jurisprudencial reference. So the output should have those marked.
+
+So putting it all together, the HTML should have:
+
+- "Lei n° 6.899/81" as legislacao
+- "Decreto n° 86.649/81" as legislacao
+- "Enunciado n° 297/TST" as jurisprudencia
+- "arestos" as jurisprudencia
+- "fl. 263" is not marked
+- "Regional" is not marked
+
+Wait, but in the input text, "arestos" is plural. The example had "REsp" as a single case. So "arestos" here are plural, but they are still judicial decisions. So they should be marked as jurisprudencia.
+
+So the final output would have those entities marked accordingly.
+</think>
+
+Sustenta que esses honorários não são créditos trabalhistas , nem de natureza alimentar , devendo ser atualizados pelos critérios dos créditos de natureza civil - <span class="legislacao">Lei n° 6.899/81</span> e <span class="legislacao">Decreto n° 86.649/81</span> . Transcreve <span class="jurisprudencia">arestos</span> para o confronto de teses . Por violação o recurso não prospera , pois os dispositivos constitucionais apontados não guardam nenhuma relação com o decidido , nem o <span class="organizacao">Regional</span> foi instado a adotar tese a respeito dos princípios neles contidos , o que atrai o óbice do <span class="jurisprudencia">Enunciado n° 297/TST</span> . O recurso , no entanto , merece ser conhecido , por divergência jurisprudencial , uma vez que os três primeiros <span class="jurisprudencia">arestos</span> de fl . 263 adotam entendimento diametralmente oposto ao do <span class="organizacao">Regional</span> , de que os honorários periciais não devem seguir o mesmo critério de correção dos débitos trabalhistas , mas sim pelos índices previstos na <span class="legislacao">legislação civil</span> .

@@ -1,0 +1,42 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The input starts with "Isso posto , confirmo a tutela de urgência anteriormente deferida e julgo procedente a presente ação para determinar à ré que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CAUC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS nº 204/2008 e de suas posteriores alterações ” . Os argumentos lançados no regimental não são capazes de afastar os fundamentos da decisão combatida , que , por tal razão , deve ser mantida . Ante o exposto , nego provimento ao agravo regimental . É como voto ."
+
+Looking for pessoas: The text mentions "ré" which is a legal term for defendant, but it's a generic term, not a specific name. So no pessoa here.
+
+Organizacoes: "Estado de Mato Grosso" is a local entity, so that's a local. "Cadastro de Regime Próprio de Previdência Social CADPREV" – CADPREV is an acronym for a specific organization, so that's an organizacao. Similarly, CADIN, CAUC, SIAFI, SICONV are acronyms for specific registries, so they are organizacoes. "Decreto 3.788/2001" is a legislative act, so legislacao. "Portaria MPS nº 204/2008" – Portaria is a type of decree, so legislacao. "MPS" is the acronym for Ministério Público da União, which is an organization. Wait, but in the input, it's "Portaria MPS nº 204/2008" – the MPS here is part of the decree's name, so it's part of the legislacao. But the MPS itself is an organization. Wait, the user's guidelines say that "organizacao" includes "orgãos públicos, tribunais, etc." So "MPS" as an acronym for Ministério Público da União would be an organizacao. But in the text, it's part of the Portaria's name, so maybe it's part of the legislacao. Hmm, need to check the guidelines again.
+
+The guidelines state that "legislação" includes decreto, portaria, etc. So "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" are both legislacao. The MPS here is part of the Portaria's name, so it's part of the legislacao. But the MPS itself is an organization. However, in the context, it's part of the decree's name, so it's part of the legislacao. Wait, the example in the guidelines for "organizacao" includes "MINISTÉRIO PÚBLICO FEDERAL" as an organizacao. So if "MPS" is an acronym for an organization, then it should be marked as organizacao. But in the text, it's part of the Portaria's name. So maybe the entire "Portaria MPS nº 204/2008" is legislacao, and "MPS" is part of that. But the user's example shows that "Decreto-Lei no 5.452" is legislacao. So in this case, "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" are both legislacao. The MPS here is part of the Portaria's name, so it's part of the legislacao. Therefore, "MPS" is not a separate entity here.
+
+Tempo: The text has "2001" and "2008" as years, so those are tempo. Also, "1o de maio de 1943" in the example was marked as tempo, but in the input text, there's no such date. Wait, the input text here doesn't have any dates. Wait, the input text has "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" – the years 2001 and 2008 are part of the legislacao, but the years themselves are part of the legislacao's name. However, the guidelines say that "tempo" includes years isolated. But in this case, the years are part of the legislacao's name, so they are part of the legislacao, not as separate tempo entities. So no tempo here.
+
+Local: "Estado de Mato Grosso" is a local. "Mato Grosso" is a state, so that's a local. Also, "CADPREV" is an acronym for a specific registry, but it's part of the organizacao. Wait, "CADPREV" is a specific organization, so it's an organizacao. The other acronyms like CADIN, CAUC, SIAFI, SICONV are also organizations. So those should be marked as organizacao.
+
+Legislacao: "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" are both legislacao. Also, "Decreto-Lei no 5.452" in the example was marked as legislacao. So here, "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" are legislacao.
+
+Jurisprudencia: The text mentions "inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS nº 204/2008" – these are legislacao, not jurisprudencia. There's no mention of court decisions or legal precedents here. So no jurisprudencia.
+
+So putting it all together:
+
+- "Estado de Mato Grosso" is local.
+- "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" are organizacao.
+- "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" are legislacao.
+- The years 2001 and 2008 are part of the legislacao, not as separate tempo.
+
+Wait, but the guidelines say that "tempo" includes years. However, in the context of legislacao, the years are part of the name, so they are part of the legislacao. So no need to mark them as tempo.
+
+So the final HTML should have:
+
+- "Estado de Mato Grosso" as local.
+- "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" as organizacao.
+- "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" as legislacao.
+
+Also, check if "Mato Grosso" is a local. Since it's a state, yes. So "Estado de Mato Grosso" is a local. The "Estado" is part of the name, so the entire phrase is a local.
+
+Now, let's structure the HTML accordingly.
+</think>
+
+<span class="local">Estado de Mato Grosso</span> , retirando-o do conceito de irregular do <span class="organizacao">Cadastro de Regime Próprio de Previdência Social CADPREV</span> ou retirando-o de qualquer outro <span class="organizacao">cadastro de inadimplentes</span> pelo mesmo motivo ( <span class="organizacao">CADIN</span> , <span class="organizacao">CAUC</span> , <span class="organizacao">SIAFI</span> , <span class="organizacao">SICONV</span> ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS nº 204/2008</span> e de suas posteriores alterações ” . Os argumentos lançados no regimental não são capazes de afastar os fundamentos da decisão combatida , que , por tal razão , deve ser mantida . Ante o exposto , nego provimento ao agravo regimental . É como voto .

@@ -1,0 +1,58 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to go through the input text carefully. Let me start by reading the text again to identify all possible entities.
+
+The text starts with "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11 É como voto . Fls . _____ Apelação / Reexame Necessário 20140110500434APO O Senhor Desembargador ANGELO PASSARELI - Vogal Senhor Presidente , conheço e recebo a remessa . A questão da Vantagem Pessoal Nominalmente Identificada - VPNI não é nova neste Tribunal e as leis garantiram paridade e irredutibilidade . Isso se dá no momento da aposentação , porque foi previsto em regra expressa que a VPNI sofreria reajuste pelos aumentos gerais tidos pelos servidores do Poder que concede a aposentadoria . No caso concreto , o que se quer fazer é que novas denominações de funções gratificadas , alterações e modificações venham substituir aquela que foi incorporada ."
+
+Looking for entities:
+
+1. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11" – "GABINETE" is an organization. "DESEMBARGADORA MARIA IVATÔNIA" – "MARIA IVATÔNIA" is a person. The "11" might be a number, but not sure if it's part of the entity. Maybe the entire "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11" is an organization? Wait, "GABINETE" is an organization, and "DESEMBARGADORA" is a title, so maybe "MARIA IVATÔNIA" is the person. So "MARIA IVATÔNIA" is a pessoa. "GABINETE" is organizacao.
+
+2. "ANGELO PASSARELI" – that's a person's name, so pessoa.
+
+3. "Senhor Presidente" – "Presidente" is a title, not a specific person, so not an entity. "Senhor" is a title, not a name.
+
+4. "Vantagem Pessoal Nominalmente Identificada - VPNI" – "VPNI" is an acronym, but the text says to mark legislation, jurisprudence, etc. "VPNI" might be a term, but not sure if it's a legal entity. The text mentions "leis garantiram paridade e irredutibilidade" – "leis" is legislation. So "leis" should be marked as legislacao.
+
+5. "momento da aposentação" – "aposentação" is a general term, not a specific entity. "regra expressa" – "regra" is a general term. "aumentos gerais tidos pelos servidores do Poder que concede a aposentadoria" – "Poder" here refers to the power, not a specific entity. "Poder" is a general term, so not an entity.
+
+6. "novas denominações de funções gratificadas , alterações e modificações" – these are general terms, not entities.
+
+Now, checking for other entities:
+
+- "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" – these look like codes or identifiers, not entities. The user's guidelines say to mark only specific entities, so these might not be marked.
+
+- "Reexame Necessário" – that's a legal term, but not an entity. "Apelação" is a legal term, but again, not an entity.
+
+So, the entities to mark are:
+
+- "MARIA IVATÔNIA" as pessoa.
+- "ANGELO PASSARELI" as pessoa.
+- "GABINETE" as organizacao.
+- "leis" as legislacao.
+
+Wait, "leis" is plural, but the user's example might have "leis" as legislation. Let me check the definitions again. The legislacao is defined as expressions that identify legal norms like laws, codes, etc. So "leis" (laws) would be legislacao.
+
+Also, "VPNI" – the text mentions "Vantagem Pessoal Nominalmente Identificada - VPNI". The VPNI is an acronym, but the user's guidelines say to mark only specific entities. Since VPNI is a term used in the context, but not a specific law or regulation, maybe it's not marked. Unless it's a specific legal term. But the user's example might not include it. Let me check the original text again.
+
+The text says "as leis garantiram paridade e irredutibilidade" – "leis" is the plural of "lei", which is legislation. So "leis" should be marked as legislacao.
+
+So, the HTML should have:
+
+- <span class="pessoa">MARIA IVATÔNIA</span>
+- <span class="pessoa">ANGELO PASSARELI</span>
+- <span class="organizacao">GABINETE</span>
+- <span class="legislacao">leis</span>
+
+Wait, but "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11" – the entire phrase might be an organization. But "GABINETE" is an organization, and "DESEMBARGADORA" is a title. So maybe "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 11" is the organization. But the user's guidelines say to mark only the entities. So "GABINETE" is the organization, and "MARIA IVATÔNIA" is the person. The "11" is a number, not an entity. So the correct marking would be:
+
+- "GABINETE" as organizacao.
+- "MARIA IVATÔNIA" as pessoa.
+
+Also, "ANGELO PASSARELI" is a pessoa.
+
+So the final HTML would have those spans. Let me make sure there are no other entities. The rest of the text doesn't have any other entities. The "VPNI" is a term but not a specific entity. The "regra expressa" is a general term. The "Poder" is a general term. So the answer should include those four entities.
+</think>
+
+<span class="organizacao">GABINETE</span> DA DESEMBARGADORA <span class="pessoa">MARIA IVATÔNIA</span> 11 É como voto . Fls . _____ Apelação / Reexame Necessário 20140110500434APO O Senhor Desembargador <span class="pessoa">ANGELO PASSARELI</span> - Vogal Senhor Presidente , conheço e recebo a remessa . A questão da Vantagem Pessoal Nominalmente Identificada - VPNI não é nova neste Tribunal e as <span class="legislacao">leis</span> garantiram paridade e irredutibilidade . Isso se dá no momento da aposentação , porque foi previsto em regra expressa que a VPNI sofreria reajuste pelos aumentos gerais tidos pelos servidores do Poder que concede a aposentadoria . No caso concreto , o que se quer fazer é que novas denominações de funções gratificadas , alterações e modificações venham substituir aquela que foi incorporada .

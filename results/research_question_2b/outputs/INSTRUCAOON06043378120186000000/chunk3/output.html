@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is: "No entanto , os §§ 10 e 11 inseridos na última assentada na Resolução-TSE n° 23.549 , que dispõe sobre Pesquisas Eleitorais , destoaram desses vetores de atuação , ao ocasionarem dúvidas razoáveis e insegurança em parte significativa da sociedade ."
+
+Looking for entities here. "Resolução-TSE n° 23.549" seems like a legislative document, so that's legislacao. "TSE" might be an organization, but the full name isn't given. Wait, TSE is the Tribunal Superior Eleitoral, which is an organization. So "TSE" should be organizacao. Also, "Pesquisas Eleitorais" is part of the legislation, maybe part of the legislacao. Wait, the Resolução-TSE is the legislation, so the entire "Resolução-TSE n° 23.549" is legislacao. The "Pesquisas Eleitorais" is the subject of the legislation, so maybe not an entity here. 
+
+Next part: "Diante desse impasse específico , optamos por revogar por ora aludidas disposições , no afã de debruçarmos com mais vagar sobre a temática versada . Inst n° 0604337-81.2018.6.00.0000/DF 3 EXTRATO DA ATA Inst n° 0604337-81.2018.6.00.0000/DF . Relator : Ministro Luiz Fux . Interessado : Tribunal Superior Eleitoral ."
+
+"Inst n° 0604337-81.2018.6.00.0000/DF" looks like an instance number, maybe a legal case number. Not sure if that's a specific entity type. The user didn't mention case numbers, so maybe leave as is. "Relator : Ministro Luiz Fux" – "Ministro Luiz Fux" is a person, so pessoa. "Tribunal Superior Eleitoral" is an organization, so organizacao. 
+
+Also, "Inst" might be part of the case number, but since it's not one of the specified types, leave it. The date "2018" is part of the case number, so maybe tempo? But the user's example might not include that. Wait, the user's example in the output includes "Inst n° 0604337-81.2018.6.00.0000/DF" as is. So maybe case numbers are not marked. 
+
+So, the entities to mark are:
+
+- "Resolução-TSE n° 23.549" → legislacao
+- "TSE" → organizacao
+- "Ministro Luiz Fux" → pessoa
+- "Tribunal Superior Eleitoral" → organizacao
+
+Wait, "Tribunal Superior Eleitoral" is the same as TSE, so maybe "TSE" is already covered. But in the text, it's written as "Tribunal Superior Eleitoral" in the last part. So that's an organization. 
+
+Also, "Pesquisas Eleitorais" is part of the legislation's subject, but not an entity. 
+
+So, applying the tags:
+
+- "Resolução-TSE n° 23.549" → <span class="legislacao">Resolução-TSE n° 23.549</span>
+- "TSE" → <span class="organizacao">TSE</span>
+- "Ministro Luiz Fux" → <span class="pessoa">Ministro Luiz Fux</span>
+- "Tribunal Superior Eleitoral" → <span class="organizacao">Tribunal Superior Eleitoral</span>
+
+Other parts like "Inst n° ..." and "EXTRATO DA ATA" are not in the specified entity types, so they remain as is. 
+
+Now, putting it all together in the text, making sure to wrap the identified entities with the correct spans.
+</think>
+
+No entanto , os §§ 10 e 11 inseridos na última assentada na <span class="legislacao">Resolução-TSE n° 23.549</span> , que dispõe sobre Pesquisas Eleitorais , destoaram desses vetores de atuação , ao ocasionarem dúvidas razoáveis e insegurança em parte significativa da sociedade . Diante desse impasse específico , optamos por revogar por ora aludidas disposições , no afã de debruçarmos com mais vagar sobre a temática versada . Inst n° 0604337-81.2018.6.00.0000/DF 3 EXTRATO DA ATA Inst n° 0604337-81.2018.6.00.0000/DF . Relator : <span class="pessoa">Ministro Luiz Fux</span> . Interessado : <span class="organizacao">Tribunal Superior Eleitoral</span> .

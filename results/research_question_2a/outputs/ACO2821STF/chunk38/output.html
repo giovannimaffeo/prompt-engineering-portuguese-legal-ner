@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text: "RICARDO LEWANDOWSKI ACO 2821 A GR / MT que o Projeto de Lei Complementar 1/2016 encontra-se sob apreciação da Assembleia Legislativa do Estado ."
+
+Let me break it down word by word.
+
+"RICARDO LEWANDOWSKI" – these are names, so they should be 'pessoa'. So, both names get <span class="pessoa">.
+
+"ACO 2821 A GR / MT" – Hmm, not sure. ACO might be an acronym, but without context, maybe it's part of a code. The numbers and letters might not be entities here. The "/ MT" could be a location, like the state of Mato Grosso (MT). So "MT" is a local entity. Wait, but "MT" is an abbreviation for Mato Grosso, which is a state in Brazil. So "MT" should be <span class="local">.
+
+"Projeto de Lei Complementar 1/2016" – "Projeto de Lei Complementar" is a legislative project, so "legislacao" applies here. The number 1/2016 is a date, so "tempo" for the year 2016. Wait, but the entire "Projeto de Lei Complementar 1/2016" is the legislation, so maybe the whole phrase is legislacao. But the user's example might have split it. Let me check the example output.
+
+Wait, the user provided an example input and output. Let me check that. The input was "RICARDO LEWANDOWSKI ACO 2821 A GR / MT que o Projeto de Lei Complementar 1/2016 encontra-se sob apreciação da Assembleia Legislativa do Estado ." and the output was:
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A <span class="local">GR</span> / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa</span> do <span class="local">Estado</span> .
+
+Wait, in the example, "GR" and "MT" are marked as local. But "GR" could be a state abbreviation, like Goiás (GR) or something else. But in Brazil, MT is Mato Grosso, and GR might be Goiás. So both are local. The "Projeto de Lei Complementar 1/2016" is legislation. "Assembleia Legislativa" is an organization. "Estado" is a local (state). 
+
+So applying that to the input text:
+
+- "RICARDO LEWANDOWSKI" → pessoa
+- "ACO 2821 A GR / MT" → ACO and 2821 might not be entities. "GR" and "MT" are local.
+- "Projeto de Lei Complementar 1/2016" → legislacao
+- "Assembleia Legislativa" → organizacao
+- "Estado" → local
+
+So the HTML would be:
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A <span class="local">GR</span> / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa</span> do <span class="local">Estado</span> .
+
+I need to make sure that "Estado" is marked as local. Also, check if "ACO 2821" are any entities. Since they don't match the categories, they remain as is. The same for "ACO 2821 A" – maybe "A" is part of an abbreviation, but without more context, it's safer to leave them as is. So the final output should have the spans for the identified entities.
+</think>
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A <span class="local">GR</span> / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa</span> do <span class="local">Estado</span> .

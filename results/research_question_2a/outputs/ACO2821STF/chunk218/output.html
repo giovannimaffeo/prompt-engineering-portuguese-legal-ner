@@ -1,0 +1,31 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is:
+
+"( S ) : UNIÃO ADV . ( A/S ) : ADVOGADO-GERAL DA UNIÃO AGDO . ( A/S ) : ESTADO DE MATO GROSSO PROC . ( A/S ) ( ES ) : PROCURADOR-GERAL DO ESTADO DE MATO GROSSO Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator ."
+
+Looking for entities, I'll go step by step.
+
+Starting with "UNIÃO ADV". "UNIÃO" here is likely an organization, maybe the Union. Then "ADVOGADO-GERAL DA UNIÃO AGDO" – "ADVOGADO-GERAL" is a title, so maybe part of an organization. "AGDO" could be an abbreviation for "Advogado-Geral da União" or another organization. Then "ESTADO DE MATO GROSSO" is a state, so that's a local entity. "PROC" might be short for "Procurador-Geral", which is a title, so maybe part of an organization. "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is a title, so again, part of an organization. 
+
+Wait, the user's example output shows that "UNIÃO" is marked as organizacao, "ADVOGADO-GERAL DA UNIÃO AGDO" as organizacao, "ESTADO DE MATO GROSSO" as local, and "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" as organizacao. Also, "Decisão" is part of the text but not an entity. The rest seems to be part of the legal process, so no entities there.
+
+So, I need to identify each entity. Let me check each part again.
+
+"UNIÃO" – organization. "ADVOGADO-GERAL DA UNIÃO AGDO" – "ADVOGADO-GERAL" is a title, but "AGDO" might be an abbreviation for "Advogado-Geral da União", so maybe the entire phrase is an organization. Wait, the example output shows "ADVOGADO-GERAL DA UNIÃO AGDO" as organizacao. Similarly, "ESTADO DE MATO GROSSO" is local. "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is organizacao. 
+
+So, the key is to identify the names of organizations, people, places, etc. 
+
+In the input text, "UNIÃO" is an organization. "ADVOGADO-GERAL DA UNIÃO AGDO" – maybe "AGDO" is an abbreviation for "Advogado-Geral da União", so the entire phrase is an organization. Similarly, "ESTADO DE MATO GROSSO" is a local entity. "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization. 
+
+So, I'll wrap each of these parts with the appropriate span tags. The rest of the text, like "Decisão" and the rest, remains as is. 
+
+Now, I need to make sure that each entity is correctly classified. For example, "UNIÃO" is an organization. "ADVOGADO-GERAL DA UNIÃO AGDO" is an organization. "ESTADO DE MATO GROSSO" is a local. "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization. 
+
+I should also check if there are any other entities. The text mentions "agravo regimental" which is a legal term, but not an entity type here. So no need to mark that. 
+
+Putting it all together, the HTML should have the spans with the correct classes. Let me structure the output accordingly.
+</think>
+
+<span class="organizacao">UNIÃO</span> ADV . <span class="organizacao">ADVOGADO-GERAL DA UNIÃO AGDO</span> . <span class="local">ESTADO DE MATO GROSSO</span> PROC . <span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator .

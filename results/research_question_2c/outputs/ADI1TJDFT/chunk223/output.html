@@ -1,0 +1,25 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example input again: "CELSO DE MELLO , Tribunal Pleno , julgado em 03/12/2003 , DJ 09-02-2007 PP-00016 EMENT VOL-02263- 01 PP-00067 RTJ VOL-00202-01 PP-00078 ) ( grifo nosso ) Na mesma linha , vejamos os precedentes já exarados por este egrégio Conselho Especial do Tribunal de Justiça do Distrito Federal e dos Territórios : 1 ."
+
+Starting with "CELSO DE MELLO" – that's a person's name, so I should mark that as pessoa. Then "Tribunal Pleno" is an organization, so organizacao. The date "03/12/2003" is tempo. "DJ 09-02-2007" – DJ might be an abbreviation for Diário da Justiça, which is a legal publication, so maybe that's part of the legislação or jurisprudencia? Wait, the user's example output shows "DJ 09-02-2007" as part of the jurisprudencia. Wait, looking at the example output provided by the user, they have "DJ 09-02-2007" as part of jurisprudencia. Hmm, maybe the DJ is part of the jurisprudencia. Also, "EMENT" and "RTJ" are likely abbreviations for legal documents. "EMENT" might be Ementa (summary), and "RTJ" could be Revista do Tribunal de Justiça. These might fall under jurisprudencia. 
+
+Then there's "Distrito Federal e dos Territórios" – that's a local entity, so local. The "Tribunal de Justiça do Distrito Federal e dos Territórios" is an organization, so organizacao. The "grifo nosso" is a note, not an entity. The "precedentes já exarados" refers to precedents, which are part of jurisprudencia. 
+
+Wait, the user's example output shows "DJ 09-02-2007" as part of jurisprudencia. So I need to check each part. Let me go step by step.
+
+Breaking down the input:
+
+1. CELSO DE MELLO – pessoa
+2. Tribunal Pleno – organizacao
+3. julgado em 03/12/2003 – tempo (date)
+4. DJ 09-02-2007 – jurisprudencia (since DJ is a legal journal)
+5. PP-00016 EMENT VOL-02263- 01 PP-00067 RTJ VOL-00202-01 PP-00078 – these are references to legal documents. EMENT and RTJ are likely part of jurisprudencia.
+6. Conselho Especial do Tribunal de Justiça do Distrito Federal e dos Territórios – organizacao (since it's a court)
+7. Distrito Federal e dos Territórios – local
+
+So, the HTML should have each of these parts marked with the appropriate classes. Let me make sure I'm not missing any other entities. The "grifo nosso" is a note, not an entity. The rest seems to be covered. Now, I'll structure the HTML accordingly, ensuring that each entity is correctly tagged.
+</think>
+
+<span class="pessoa">CELSO DE MELLO</span> , <span class="organizacao">Tribunal Pleno</span> , julgado em <span class="tempo">03/12/2003</span> , <span class="jurisprudencia">DJ 09-02-2007</span> PP-00016 <span class="jurisprudencia">EMENT</span> VOL-02263- 01 PP-00067 <span class="jurisprudencia">RTJ</span> VOL-00202-01 PP-00078 ) ( <span class="jurisprudencia">grifo nosso</span> ) Na mesma linha , vejamos os precedentes já exarados por este <span class="organizacao">egrégio Conselho Especial do Tribunal de Justiça do Distrito Federal e dos Territórios</span> : 1 .

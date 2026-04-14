@@ -1,0 +1,80 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be aware of the terms used. Let me break down the sentence.
+
+The text starts with "Evidentemente , não se configurou qualquer omissão no Acórdão vergastado , inclusive tendo sido mencionados , literalmente , os princípios constitucionais citados pela DPU , supostamente maculados pelo decreto de indulto , tido por inconstitucional nas razões de Embargos de Declaração ."
+
+Looking for entities:
+
+1. "Acórdão" – This is a legal term, possibly referring to a court decision. In legal contexts, "Acórdão" is a judicial decision, so maybe it's a jurisprudência or legislacao? Wait, "jurisprudência" refers to judicial precedents or case law. "Acórdão" is a specific document, so maybe it's a jurisprudência? Or perhaps it's part of the legislation? Hmm, not sure. Maybe it's a jurisprudência here.
+
+2. "DPU" – That's likely an acronym for a legal entity. In Brazil, DPU stands for "Defensoria Pública da União" which is a public defender organization. So that's an organizacao.
+
+3. "decreto de indulto" – "Decreto" is a legislative act, so that's legislacao. "Indulto" is a pardon, so the decree itself is a legislative act.
+
+4. "Embargos de Declaração" – This is a legal procedural term, referring to a type of judicial remedy. It's part of the legal process, so maybe it's a jurisprudência or part of the legislation? Or perhaps it's a term that doesn't need tagging. Wait, the user's guide says to mark entities like legislacao, jurisprudencia, etc. "Embargos de Declaração" is a legal procedure, so maybe it's part of the jurisprudência? Or maybe it's a term that's part of the legal system but not an entity. The user's example might help, but since I don't have that, I need to decide based on the guide.
+
+Wait, the user's example in the output might have some clues. Let me check the sample input and output. The sample input is the text provided, and the output is the HTML with tags. Let me think again.
+
+In the input text, "DPU" is an organization. "Acórdão" is a judicial decision, which could be part of jurisprudência. "Decreto" is a legislative act, so legislacao. "Embargos de Declaração" is a legal term, but maybe it's part of the jurisprudência or not. Alternatively, maybe it's a term that's part of the legal process but not an entity. The user's guide says to mark entities like legislacao, jurisprudencia, etc. So "Embargos de Declaração" might be a legal term but not an entity. So perhaps only DPU, Acórdão, Decreto are entities.
+
+Wait, "Acórdão" is a judicial decision, which is part of jurisprudência. So I should tag "Acórdão" as jurisprudencia. "Decreto" is a legislative act, so legislacao. "DPU" is an organization. The rest of the terms like "princípios constitucionais" are part of the constitution, which is legislacao. Wait, "princípios constitucionais" are part of the constitution, so that's legislacao. But the user's example might not have that. Let me check again.
+
+The original text mentions "princípios constitucionais citados pela DPU". So "princípios constitucionais" are part of the constitution, which is legislacao. But the user's guide says to mark legislacao. So "princípios constitucionais" would be part of legislacao. However, the user's example might not have that. Alternatively, maybe "princípios constitucionais" are part of the constitution, so they are part of legislacao. But the user's guide says to mark entities like legislacao, so perhaps "princípios constitucionais" are part of legislacao. But I'm not sure. Alternatively, maybe "princípios constitucionais" are not entities but part of the text.
+
+Alternatively, maybe "Decreto de indulto" is a legislacao. So "Decreto" is a legislative act, so that's legislacao. "Embargos de Declaração" is a legal term, but not an entity. So the entities are:
+
+- DPU (organizacao)
+- Acórdão (jurisprudencia)
+- Decreto (legislacao)
+- Embargos de Declaração (maybe not, unless it's a term that's part of jurisprudencia)
+
+Wait, "Embargos de Declaração" is a type of legal remedy, so it's part of the legal process, but not an entity. So the entities are DPU (organizacao), Acórdão (jurisprudencia), Decreto (legislacao). Also, "princípios constitucionais" are part of the constitution, so that's legislacao. But the user's guide says to mark legislacao. So "princípios constitucionais" would be part of legislacao. But the user's example might not have that. Alternatively, maybe "princípios constitucionais" are not entities but part of the text.
+
+This is a bit tricky. Let me try to tag the entities as per the text.
+
+In the input text:
+
+- "DPU" is an organization (organizacao)
+- "Acórdão" is a judicial decision, so jurisprudencia
+- "Decreto" is a legislative act, so legislacao
+- "Embargos de Declaração" is a legal term, but not an entity. Unless it's part of jurisprudencia, but I'm not sure. Maybe it's a term that's part of the legal process, so not an entity.
+
+So the HTML would have:
+
+<span class="organizacao">DPU</span>
+<span class="jurisprudencia">Acórdão</span>
+<span class="legislacao">Decreto</span>
+
+Wait, but "Decreto" is part of "decreto de indulto", so the entire phrase "decreto de indulto" is a legislative act. So maybe the entire phrase should be tagged as legislacao. Similarly, "Acórdão" is a single term, so tag it as jurisprudencia. "DPU" is an organization. The rest of the terms like "princípios constitucionais" are part of the constitution, so they are part of legislacao. But the user's guide says to mark legislacao. So "princípios constitucionais" would be part of legislacao. But the user's example might not have that. Alternatively, maybe "princípios constitucionais" are not entities but part of the text.
+
+Alternatively, maybe "princípios constitucionais" are part of the constitution, which is legislacao. So the entire phrase "princípios constitucionais" would be legislacao. But the user's guide says to mark entities, so perhaps only specific terms are marked. For example, "Decreto" is a legislacao, "DPU" is organizacao, "Acórdão" is jurisprudencia. The rest are not entities.
+
+So the final HTML would have:
+
+Evidentemente , não se configurou qualquer omissão no <span class="jurisprudencia">Acórdão</span> vergastado , inclusive tendo sido mencionados , literalmente , os <span class="legislacao">princípios constitucionais</span> citados pela <span class="organizacao">DPU</span> , supostamente maculados pelo <span class="legislacao">decreto</span> de indulto , tido por inconstitucional nas razões de <span class="jurisprudencia">Embargos de Declaração</span> .
+
+Wait, but "princípios constitucionais" are part of the constitution, so they are part of legislacao. "Decreto" is a legislative act, so legislacao. "Embargos de Declaração" is a legal term, but maybe it's part of jurisprudencia. Alternatively, maybe it's a term that's part of the legal process, so not an entity. But the user's guide says to mark jurisprudencia. So "Embargos de Declaração" could be a jurisprudencia. But I'm not sure. Alternatively, maybe it's a term that's part of the legal process, so not an entity. 
+
+This is a bit ambiguous. But based on the user's example, perhaps the correct tags are:
+
+- DPU: organizacao
+- Acórdão: jurisprudencia
+- Decreto: legislacao
+- Embargos de Declaração: jurisprudencia (as a legal term)
+
+So the final HTML would have those tags. Let me check again.
+
+The user's sample input is the text provided, and the output is the HTML with the tags. So I need to make sure that all entities are correctly tagged. Based on the analysis, the entities are DPU (organizacao), Acórdão (jurisprudencia), Decreto (legislacao), and Embargos de Declaração (jurisprudencia). 
+
+So the final HTML would be:
+
+Evidentemente , não se configurou qualquer omissão no <span class="jurisprudencia">Acórdão</span> vergastado , inclusive tendo sido mencionados , literalmente , os <span class="legislacao">princípios constitucionais</span> citados pela <span class="organizacao">DPU</span> , supostamente maculados pelo <span class="legislacao">decreto</span> de indulto , tido por inconstitucional nas razões de <span class="jurisprudencia">Embargos de Declaração</span> .
+
+Wait, but "princípios constitucionais" are part of the constitution, which is legislacao. So that's correct. "Decreto" is a legislative act, so legislacao. "Acórdão" and "Embargos de Declaração" are judicial terms, so jurisprudencia. 
+
+Yes, that seems right. So the final HTML would have those tags.
+</think>
+
+Evidentemente , não se configurou qualquer omissão no <span class="jurisprudencia">Acórdão</span> vergastado , inclusive tendo sido mencionados , literalmente , os <span class="legislacao">princípios constitucionais</span> citados pela <span class="organizacao">DPU</span> , supostamente maculados pelo <span class="legislacao">decreto</span> de indulto , tido por inconstitucional nas razões de <span class="jurisprudencia">Embargos de Declaração</span> .

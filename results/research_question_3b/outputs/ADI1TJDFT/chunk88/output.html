@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The text starts with "Nesse sentido , confira-se a manifestação do MPDFT :". Here, "MPDFT" is likely an acronym for an organization. Since it's an acronym, it's part of the organization's name. So I'll mark "MPDFT" as an organization.
+
+Next, there's "Com efeito , decorre do referido entendimento que a atividade fiscalizadora é exercida pelos conselhos de fiscalização profissional como parcela de poder de polícia delegado .". The word "conselhos" here refers to councils, which are organizations. So "conselhos de fiscalização profissional" should be marked as organizacao. Wait, but "conselhos" is a generic term. Wait, the definition says organizations are entities formally constituted. If "conselhos de fiscalização profissional" are specific organizations, then they should be marked. But the text doesn't specify their names, just the role. Hmm, maybe not. The user's guidelines say to mark only if they are specific names. Since it's a generic term, maybe not. Wait, the example in the output might help. Let me check the sample output provided.
+
+Looking at the sample output, the user's example shows that "ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" is marked as legislação. So the ADI (Ação Direta de Inconstitucionalidade) is a legal action, so it's legislação. Also, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is an organization, as it's a specific office. 
+
+So back to the text. "conselhos de fiscalização profissional" – since they are specific councils, maybe they are organizations. But the text doesn't give their names, just the role. The guidelines say to mark only if they are specific names. Since it's a generic term, maybe not. Wait, the definition for organizacao includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas." So if "conselhos de fiscalização profissional" are specific organizations, even if not named, they might be considered. But the text doesn't mention their names, just their role. So maybe not. I'll have to decide based on the context. Since the text refers to them as "conselhos de fiscalização profissional," which are specific entities, perhaps they should be marked as organizacao. But the problem is that the text doesn't give their names, just the role. The guidelines say to mark only if they are specific names. So maybe not. I'll skip them for now.
+
+Next, "Não obstante , revela-se patente que a delegação é restrita ao poder Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 35 de polícia relativo ao exercício da profissão , não havendo como se considerar válida a delegação de poderes estranhos àqueles para os quais este tipo de entidade foi concebida ."
+
+Here, "Ação Direta de Inconstitucionalidade 20170020161362ADI" is a legal action, so it's legislação. The "ADI" is part of the code, so the entire "Ação Direta de Inconstitucionalidade 20170020161362ADI" should be marked as legislação. Also, "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the "Código de Verificação" is part of the legislation, so that's also legislação. 
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is an organization, as it's the office of a judge. "SILVANIO BARBOSA DOS SANTOS" is a person, so that should be marked as pessoa. 
+
+"Fls . _____" – "Fls" is an abbreviation for "Fls" which is a legal term for "Fls" (Folha), but it's not an entity. So no marking. 
+
+"35 de polícia" – "35" is a number, but it's part of a phrase. The "poder de polícia" is a legal term, but not an entity. 
+
+Putting it all together, the entities are:
+
+- MPDFT: organizacao
+- Ação Direta de Inconstitucionalidade 20170020161362ADI: legislação
+- Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ: legislação
+- GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS: organizacao
+- SILVANIO BARBOSA DOS SANTOS: pessoa
+
+Wait, the "GABINETE DO DESEMBARGADOR" is part of the organization's name. So the entire "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is the organization. The person is "SILVANIO BARBOSA DOS SANTOS" within that organization. So I need to mark both the organization and the person. 
+
+Also, "ADI" is part of the legislation, so the entire "Ação Direta de Inconstitucionalidade 20170020161362ADI" is legislação. The "Código de Verificação" is part of the legislation as well. 
+
+So the final HTML should have these spans marked accordingly.
+</think>
+
+<span class="organizacao">MPDFT</span> : &quot; Com efeito , decorre do referido entendimento que a atividade fiscalizadora é exercida pelos conselhos de fiscalização profissional como parcela de poder de polícia delegado . Não obstante , revela-se patente que a delegação é restrita ao poder Fls . _____ <span class="legislacao">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> <span class="legislacao">Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span> <span class="organizacao">GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span></span> 35 de polícia relativo ao exercício da profissão , não havendo como se considerar válida a delegação de poderes estranhos àqueles para os quais este tipo de entidade foi concebida .

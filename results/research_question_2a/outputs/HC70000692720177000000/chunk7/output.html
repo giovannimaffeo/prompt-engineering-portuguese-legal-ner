@@ -1,0 +1,47 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read through the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me parse each part.
+
+The text starts with "Além disso , a Certidão expedida por servidor do Cartório do Juízo apontado coator goza de fé pública , tornando a alegação da Impetrante de que não teria sido intimada para a Audiência de inquirição de testemunhas incipiente , haja vista não ter sido apresentada prova em sentido contrário , inexistindo , pois , causa de nulidade que justifique a concessão da ordem ."
+
+Looking for entities:
+
+1. "Certidão" – This might be a legal document, but the user's entities don't include documents. Wait, the entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "Certidão" isn't one of them. Maybe "Cartório" is an organization? "Cartório do Juízo apontado coator" – "Cartório" is an organization. So "Cartório" should be <span class="organizacao">.
+
+2. "Impetrante" – This is a legal term, referring to a person who files a petition. So that's a pessoa. So "Impetrante" becomes <span class="pessoa">.
+
+3. "Audiência de inquirição de testemunhas incipiente" – "Audiência" is a hearing, which might be a local or a term, but not sure. Wait, "incipiente" refers to something that has just begun, which is a temporal term. So "incipiente" would be <span class="tempo">.
+
+4. "fé pública" – This is a legal term, but not one of the specified entities. So no tag.
+
+5. "causa de nulidade" – Not an entity. "concessão da ordem" – Also not an entity.
+
+So, the entities to mark are:
+
+- "Cartório" as organizacao
+- "Impetrante" as pessoa
+- "incipiente" as tempo
+
+Wait, "incipiente" is a temporal term. Let me check again. The user's guide says "tempo" for time/date. "incipiente" means something that has just begun, so it's a temporal reference. So yes, "incipiente" should be <span class="tempo">.
+
+Now, let me go through the text again and replace those terms.
+
+Original text:
+
+"Além disso , a Certidão expedida por servidor do Cartório do Juízo apontado coator goza de fé pública , tornando a alegação da Impetrante de que não teria sido intimada para a Audiência de inquirição de testemunhas incipiente , haja vista não ter sido apresentada prova em sentido contrário , inexistindo , pois , causa de nulidade que justifique a concessão da ordem ."
+
+Breaking it down:
+
+- "Cartório" → organizacao
+- "Impetrante" → pessoa
+- "incipiente" → tempo
+
+So the HTML would be:
+
+Além disso , a Certidão expedida por servidor do <span class="organizacao">Cartório</span> do Juízo apontado coator goza de fé pública , tornando a alegação da <span class="pessoa">Impetrante</span> de que não teria sido intimada para a Audiência de inquirição de testemunhas <span class="tempo">incipiente</span> , haja vista não ter sido apresentada prova em sentido contrário , inexistindo , pois , causa de nulidade que justifique a concessão da ordem .
+
+Wait, but "incipiente" is part of "testemunhas incipiente". So the entire phrase "testemunhas incipiente" is the term? Or is "incipiente" the only entity here? The user's guide says to mark the entities, so if "incipiente" is a temporal term, then it should be marked. The rest of the text doesn't have any other entities. So the final HTML should have those three spans.
+</think>
+
+Além disso , a Certidão expedida por servidor do <span class="organizacao">Cartório</span> do Juízo apontado coator goza de fé pública , tornando a alegação da <span class="pessoa">Impetrante</span> de que não teria sido intimada para a Audiência de inquirição de testemunhas <span class="tempo">incipiente</span> , haja vista não ter sido apresentada prova em sentido contrário , inexistindo , pois , causa de nulidade que justifique a concessão da ordem .

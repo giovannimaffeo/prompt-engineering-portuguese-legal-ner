@@ -1,0 +1,47 @@
+<think>
+Okay, let me tackle this task. The user wants me to generate an HTML version of a given legal text, marking specific entities with appropriate tags. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to read the input text carefully. Let me look at the example provided to understand the expected output. The example input had entities like "MINISTÉRIO PÚBLICO FEDERAL" marked as organizacao, "CARLOS HENRIQUE ALVES" as pessoa, and so on. The output used <span> tags with the correct classes.
+
+Now, looking at the given text: "De fato , para a análise da inconstitucionalidade de lei estadual que , em tese , afrontaria o disposto no art . 24 da Carta da República , exige-se conhecimento jurídico e investidura jurisdicional , com vistas a que se possa , eventualmente , despejá-la do ordenamento jurídico pátrio . Aliás , da perspectiva da constitucionalidade das leis estaduais , cumpre salientar que tanto o Tribunal de Justiça local quanto o próprio Supremo Tribunal Federal podem ser acionados , consoante tratar-se de contrariedade à Constituição local ou à Constituição da República ."
+
+I need to scan for each entity type. Let's start with organizacao. The text mentions "Tribunal de Justiça local" and "Supremo Tribunal Federal". Both are organizations. So, those should be marked as organizacao.
+
+Next, "Carta da República" refers to the Constitution, which is a legislation. So that should be marked as legislacao. Also, "Constituição local" and "Constituição da República" are references to constitutional laws, so those are also legislacao.
+
+The term "art . 24" refers to an article in a law, which is part of legislation. So "art . 24 da Carta da República" should be marked as legislacao.
+
+Now, checking for pessoas. The text doesn't mention any specific names, so no pessoa entities here.
+
+Tempo: There's no date or time mentioned, so nothing for tempo.
+
+Local: The text mentions "Tribunal de Justiça local" but "local" here is a modifier, not a specific place. The example guidelines say that generic terms like "local" shouldn't be marked. So "local" in "Tribunal de Justiça local" is not a local entity. Similarly, "Constituição local" is a generic reference, not a specific location. So no local entities here.
+
+Jurisprudencia: The text doesn't mention any specific legal precedents, cases, or súmulas. So no jurisprudencia entities.
+
+So the entities to mark are:
+- "Tribunal de Justiça local" as organizacao (but wait, the example says that expressions like "4ª Turma Cível" are organizacao. However, "Tribunal de Justiça local" is a specific organization. But "local" here is a modifier. Wait, the guidelines say that expressions that identify organizations should be marked. "Tribunal de Justiça local" is a specific organization, so it should be marked as organizacao. Similarly, "Supremo Tribunal Federal" is another organization.
+
+Then, "Carta da República" is a legislation, so "Carta da República" should be marked as legislacao. Also, "Constituição local" and "Constituição da República" are references to constitutional laws, so those are legislacao.
+
+"art . 24 da Carta da República" is part of a legislative reference, so the entire phrase should be marked as legislacao.
+
+Wait, the example in the guidelines mentions that "art. 61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So in this case, "art . 24 da Carta da República" would be similar. So the entire phrase "art . 24 da Carta da República" should be marked as legislacao.
+
+So putting it all together:
+
+- "Tribunal de Justiça local" → organizacao
+- "Supremo Tribunal Federal" → organizacao
+- "Carta da República" → legislacao
+- "Constituição local" → legislacao
+- "Constituição da República" → legislacao
+- "art . 24 da Carta da República" → legislacao
+
+Wait, but "Constituição local" and "Constituição da República" are both part of the legislation. So they should be marked as legislacao. Also, "art . 24 da Carta da República" is a reference to a specific article in the Constitution, so that's part of legislacao.
+
+Now, checking the text again to ensure I didn't miss any entities. The text mentions "Tribunal de Justiça local" and "Supremo Tribunal Federal" as organizations. "Carta da República" and "Constituição local" and "Constituição da República" are all legislation. The "art . 24" is part of the legislation reference.
+
+So the final HTML should have those entities marked with the appropriate classes. Let me structure the output accordingly.
+</think>
+
+De fato , para a análise da inconstitucionalidade de lei estadual que , em tese , afrontaria o disposto no <span class="legislacao">art . 24 da Carta da República</span> , exige-se conhecimento jurídico e investidura jurisdicional , com vistas a que se possa , eventualmente , despejá-la do ordenamento jurídico pátrio . Aliás , da perspectiva da constitucionalidade das leis estaduais , cumpre salientar que tanto o <span class="organizacao">Tribunal de Justiça local</span> quanto o próprio <span class="organizacao">Supremo Tribunal Federal</span> podem ser acionados , consoante tratar-se de contrariedade à <span class="legislacao">Constituição local</span> ou à <span class="legislacao">Constituição da República</span> .

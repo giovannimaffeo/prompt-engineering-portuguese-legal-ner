@@ -1,0 +1,36 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first part is "MINIST^|_UI Z FUX - PRESIDENTE E RELATOR Inst n° 0604337-81.2018.6.00.0000/DF 2 RELATÓRIO/VOTO O SENHOR MINISTRO LUIZ FUX ( presidente e relator ) :". 
+
+Looking for organizations: "MINISTÉRIO PÚBLICO FEDERAL" is an organization, but in the text, it's written as "MINIST^|_UI Z FUX" which might be a typo or formatting issue. Wait, the actual text has "MINISTÉRIO PÚBLICO FEDERAL" but in the input, it's written as "MINIST^|_UI Z FUX". Maybe that's a mistake. Wait, the input text provided is: "MINIST^|_UI Z FUX - PRESIDENTE E RELATOR Inst n° 0604337-81.2018.6.00.0000/DF 2 RELATÓRIO/VOTO O SENHOR MINISTRO LUIZ FUX ( presidente e relator ) :". Hmm, maybe "MINIST^|_UI Z FUX" is supposed to be "MINISTÉRIO PÚBLICO FEDERAL" but there's a typo. Alternatively, maybe "MINISTRO LUIZ FUX" is a person. Wait, "LUIZ FUX" is a person's name, so that should be marked as 'pessoa'. Also, "MINISTRO" is part of the title, but the actual name is "LUIZ FUX".
+
+Next, "Inst n° 0604337-81.2018.6.00.0000/DF" – the "Inst" might be an abbreviation for "Instituto" or something else, but the number here is likely a process number. The "DF" at the end could be a local (Distrito Federal). So "DF" should be marked as 'local'.
+
+Then, "Resolução-TSE n° 23.549" – "TSE" is an organization (Tribunal Superior Eleitoral), so that should be 'organizacao'. The number "23.549" is part of the resolution, so maybe the entire "Resolução-TSE n° 23.549" is a legislation reference? Wait, "Resolução-TSE" is a type of legislation, so the entire phrase "Resolução-TSE n° 23.549" would be 'legislacao'.
+
+Also, "art. 71 da Lei 8.666/93" is a reference to legislation, but in the input text, there's no mention of that. Wait, the input text mentions "Resolução-TSE n° 23.549" which is a resolution, so that's legislation. The "n° 0604337-81.2018.6.00.0000/DF" is a process number, which might not be an entity unless it's a specific reference. But according to the guidelines, only specific entities like legislation, jurisprudence, etc., should be marked. The process number might not be an entity here.
+
+Looking for jurisprudence: The text mentions "REsp 1694984/MS" in the example, but in the input text, there's no such reference. The input text has "Resolução-TSE n° 23.549" which is a legislative reference, so that's 'legislacao'.
+
+Also, "Distrito Federal" is a local, so "DF" is part of that. The "DF" in the process number is the local, so that should be marked as 'local'.
+
+Now, checking for other entities. "Senhores Ministros" – "Ministros" is a title, not a specific person, so not marked. "LUIZ FUX" is a person, so 'pessoa'. "TSE" is an organization, so 'organizacao'. "Resolução-TSE n° 23.549" is legislation, so 'legislacao'. "DF" is local. 
+
+Wait, the input text has "Inst n° 0604337-81.2018.6.00.0000/DF" – the "Inst" might be an abbreviation for "Instituto", but the exact term isn't clear. However, the "DF" at the end is the local. So "DF" is marked as 'local'.
+
+Putting it all together, the HTML should have:
+
+- "LUIZ FUX" as 'pessoa'
+- "TSE" as 'organizacao'
+- "Resolução-TSE n° 23.549" as 'legislacao'
+- "DF" as 'local'
+
+Other parts like "MINISTRO" are titles, not specific entities. The process number "0604337-81.2018.6.00.0000/DF" might have the "DF" as local, but the rest is a number, which isn't an entity. 
+
+So the final HTML should have the appropriate spans for each identified entity.
+</think>
+
+<span class="organizacao">MINISTÉRIO PÚBLICO FEDERAL</span> - <span class="pessoa">LUIZ FUX</span> ( presidente e relator ) : Senhores Ministros , a competência normativa do Tribunal Superior Eleitoral , materializada na expedição de <span class="legislacao">Resoluções</span> interpretativas da legislação de regência , tem por objetivo precípuo gerar um ambiente de previsibilidade e de segurança jurídica a todos os players da competição eleitoral . No entanto , os §§ 10 e 11 inseridos na última assentada na <span class="legislacao">Resolução-TSE n° 23.549</span> , que dispõe sobre Pesquisas Eleitorais , destoaram desses vetores de atuação , ao ocasionarem dúvidas razoáveis e insegurança em parte significativa da sociedade . Diante desse impasse específico , optamos por revogar por ora aludidas disposições , no afã de debruçarmos com mais vagar sobre a temática versada .

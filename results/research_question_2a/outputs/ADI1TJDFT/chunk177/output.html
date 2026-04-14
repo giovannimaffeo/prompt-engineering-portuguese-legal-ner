@@ -1,0 +1,43 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "A Senhora Desembargadora CARMELITA BRASIL - Vogal Acompanho o eminente Relator , pedindo vênia à divergência ."
+
+Looking for each entity type:
+
+1. **pessoa**: The text mentions "Senhora Desembargadora CARMELITA BRASIL" and "Relator". "CARMELITA BRASIL" is a person's name, so that's a pessoa. "Relator" is likely a title for a person, so maybe that's also a pessoa. Wait, but "Relator" is a role, not a name. The user might consider "Relator" as a title, but the example output shows "Relator" as a pessoa. Wait, looking at the sample output provided by the user, in the example, "Relator" is marked as pessoa. Wait, the user's example input is "A Senhora Desembargadora CARMELITA BRASIL - Vogal Acompanho o eminente Relator , pedindo vênia à divergência ." and the output is:
+
+"<span class="pessoa">Senhora Desembargadora</span> <span class="pessoa">CARMELITA BRASIL</span> - Vogal Acompanho o <span class="pessoa">eminente Relator</span> , pedindo vênia à divergência ."
+
+Wait, but in the sample output, "Senhora Desembargadora" is marked as pessoa, and "CARMELITA BRASIL" as pessoa. Also, "eminente Relator" is marked as pessoa. So maybe any title or role that refers to a person is considered pessoa. So "Relator" here is a title, but since it's part of the name, maybe it's considered as part of the pessoa. Alternatively, maybe "Relator" is a role, but the user's example shows it as pessoa. So I need to follow the example.
+
+In the input text, "Senhora Desembargadora CARMELITA BRASIL" is a person's name. "Vogal" might be a title, but the example output doesn't mark it. Wait, in the sample output provided by the user, the output is:
+
+"<span class="pessoa">Senhora Desembargadora</span> <span class="pessoa">CARMELITA BRASIL</span> - Vogal Acompanho o <span class="pessoa">eminente Relator</span> , pedindo vênia à divergência ."
+
+So "Senhora Desembargadora" is marked as pessoa, "CARMELITA BRASIL" as pessoa, and "eminente Relator" as pessoa. So "Relator" is considered a pessoa here. So maybe any title that refers to a person is marked as pessoa. So "Vogal" might be a title, but in the sample output, it's not marked. Wait, the input text is "A Senhora Desembargadora CARMELITA BRASIL - Vogal Acompanho o eminente Relator , pedindo vênia à divergência ."
+
+In the sample output, "Vogal" is not marked. So perhaps "Vogal" is not considered an entity here. So the entities are "Senhora Desembargadora", "CARMELITA BRASIL", and "eminente Relator" as pessoa. The rest are left as is.
+
+So applying that to the input text:
+
+- "Senhora Desembargadora CARMELITA BRASIL" is a person's name. Split into "Senhora Desembargadora" and "CARMELITA BRASIL" as pessoa. Wait, but maybe the entire name is considered as one entity. Wait, in the sample output, it's split into two spans. Wait, the sample input is "Senhora Desembargadora CARMELITA BRASIL" and the output is two spans: "Senhora Desembargadora" and "CARMELITA BRASIL". So maybe the name is split into parts. But perhaps the user's example is different. Let me check again.
+
+The user's input text is: "A Senhora Desembargadora CARMELITA BRASIL - Vogal Acompanho o eminente Relator , pedindo vênia à divergência ."
+
+The sample output is:
+
+"<span class="pessoa">Senhora Desembargadora</span> <span class="pessoa">CARMELITA BRASIL</span> - Vogal Acompanho o <span class="pessoa">eminente Relator</span> , pedindo vênia à divergência ."
+
+So "Senhora Desembargadora" is marked as pessoa, "CARMELITA BRASIL" as pessoa, and "eminente Relator" as pessoa. So the entire name "Senhora Desembargadora CARMELITA BRASIL" is split into two parts. Maybe "Senhora Desembargadora" is a title, and "CARMELITA BRASIL" is the name. So each part is marked as pessoa. Alternatively, maybe the entire name is considered as one entity, but the sample shows two spans. So I need to follow the sample.
+
+So in the input text, "Senhora Desembargadora CARMELITA BRASIL" is split into two pessoa entities. Then "eminente Relator" is another pessoa. So the rest of the text is left as is.
+
+So the final HTML would be:
+
+<span class="pessoa">Senhora Desembargadora</span> <span class="pessoa">CARMELITA BRASIL</span> - Vogal Acompanho o <span class="pessoa">eminente Relator</span> , pedindo vênia à divergência .
+
+No other entities are present. So that's the output.
+</think>
+
+<span class="pessoa">Senhora Desembargadora</span> <span class="pessoa">CARMELITA BRASIL</span> - Vogal Acompanho o <span class="pessoa">eminente Relator</span> , pedindo vênia à divergência .

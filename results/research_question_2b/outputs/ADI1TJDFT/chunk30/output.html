@@ -1,0 +1,135 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal document snippet mentioning an ADI (Ação Direta de Inconstitucionalidade), a court decision, and some dates.
+
+Looking for entities:
+
+1. "ADI" – This is likely an acronym for a legal action, but the user hasn't specified it as one of the entity types. The types are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. ADI might be part of a jurisprudencia or legislacao, but I'm not sure. Wait, the example output in the user's message shows that "ADI" is marked as jurisprudencia. Let me check the example output they provided.
+
+Wait, the user provided a sample input and output. Let me look at that. The input text includes "ADI" and in the output, it's marked as <span class="jurisprudencia">ADI</span>. So I need to follow that example.
+
+So, "ADI" is considered jurisprudencia here. Then, "Corte de Justiça" is an organization, so that should be <span class="organizacao">Corte de Justiça</span>.
+
+Looking at dates: "23/09/2003" and "23/03/2004" are tempo. The "Data de Julgamento" is a date, so that's tempo. Also, "DJU SEÇÃO 3" – DJU is probably a legal abbreviation for Diário da Justiça, which is an organization, so that would be <span class="organizacao">DJU</span>.
+
+"Conselho ESPECIAL" – "Conselho" is a body, so that's an organization. "Relator: EDUARDO DE MORAES OLIVEIRA" – Eduardo is a person, so <span class="pessoa">EDUARDO DE MORAES OLIVEIRA</span>.
+
+"Acórdão n.187778" – Acórdão is a legal term, but the user hasn't specified it as an entity. The example output doesn't mark it, so maybe it's not an entity here. Similarly, "DJU SEÇÃO 3" is an organization, so "DJU" is part of that.
+
+"Publicado no DJU SEÇÃO 3" – "DJU" is an organization, so that's marked as such.
+
+Now, checking the example output provided by the user. The output they gave is:
+
+<span class="jurisprudencia">ADI</span> , o perigo da demora e a fumaça do bom direito são , por si e em `` se '' , bastantes e aptos a justificarem a concessão de liminar e assim suspenderem o <span class="legislacao">texto</span> , com efeitos `` ex nunc '' e `` erga omnes '' , até decisão definitiva da <span class="organizacao">Corte de Justiça</span> . ( <span class="jurisprudencia">Acórdão</span> n.187778 , <span class="tempo">20030020042411ADI</span> , <span class="pessoa">Relator : EDUARDO DE MORAES OLIVEIRA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">Data de Julgamento : 23/09/2003</span> , <span class="tempo">Publicado no DJU SEÇÃO 3 : 23/03/2004</span> . Pág. : 82 ) Fls .
+
+Wait, in their example, "20030020042411ADI" is marked as tempo. That seems odd because it's a date code, but maybe the user considers it as tempo. Also, "CONSELHO ESPECIAL" is an organization. So I need to follow that.
+
+So, in the input text, the entities are:
+
+- ADI: jurisprudencia
+- Corte de Justiça: organizacao
+- Data de Julgamento: tempo (but the actual date is 23/09/2003)
+- DJU SEÇÃO 3: organizacao (DJU is the organization)
+- Eduardo de Moraes Oliveira: pessoa
+- Conselho ESPECIAL: organizacao
+- 23/09/2003: tempo
+- 23/03/2004: tempo
+- Acórdão: jurisprudencia (maybe, but in the example, "Acórdão" is marked as jurisprudencia)
+- 20030020042411ADI: tempo (as per the example)
+- Publicado no DJU SEÇÃO 3: DJU is organizacao
+
+Wait, the example output has "20030020042411ADI" as tempo. That's a code, but maybe the user considers it as a date. So I need to mark that as tempo.
+
+Also, "texto" is marked as legislacao. Wait, in the example output, "texto" is <span class="legislacao">texto</span>. But "texto" here refers to the text of the law, so maybe that's legislacao. So I need to check that.
+
+So, the steps are:
+
+1. Identify each entity in the text.
+2. Apply the appropriate span tags with the correct class.
+3. Ensure that the rest of the text remains unchanged.
+
+Now, applying this to the input text:
+
+Original text: "3 ) Na ADI , o perigo da demora e a fumaça do bom direito são , por si e em `` se '' , bastantes e aptos a justificarem a concessão de liminar e assim suspenderem o texto , com efeitos `` ex nunc '' e `` erga omnes '' , até decisão definitiva da Corte de Justiça . ( Acórdão n.187778 , 20030020042411ADI , Relator : EDUARDO DE MORAES OLIVEIRA CONSELHO ESPECIAL , Data de Julgamento : 23/09/2003 , Publicado no DJU SEÇÃO 3 : 23/03/2004 . Pág. : 82 ) Fls ."
+
+Breaking it down:
+
+- "ADI" → jurisprudencia
+- "Corte de Justiça" → organizacao
+- "Acórdão" → jurisprudencia
+- "20030020042411ADI" → tempo
+- "EDUARDO DE MORAES OLIVEIRA" → pessoa
+- "CONSELHO ESPECIAL" → organizacao
+- "Data de Julgamento : 23/09/2003" → tempo (date)
+- "Publicado no DJU SEÇÃO 3 : 23/03/2004" → "DJU SEÇÃO 3" is organizacao, "23/03/2004" is tempo
+- "texto" → legislacao (as per example)
+- "DJU" → organizacao (part of "DJU SEÇÃO 3")
+
+So, the HTML would have:
+
+<span class="jurisprudencia">ADI</span> , o perigo da demora e a fumaça do bom direito são , por si e em `` se '' , bastantes e aptos a justificarem a concessão de liminar e assim suspenderem o <span class="legislacao">texto</span> , com efeitos `` ex nunc '' e `` erga omnes '' , até decisão definitiva da <span class="organizacao">Corte de Justiça</span> . ( <span class="jurisprudencia">Acórdão</span> n.187778 , <span class="tempo">20030020042411ADI</span> , <span class="pessoa">Relator : EDUARDO DE MORAES OLIVEIRA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">Data de Julgamento : 23/09/2003</span> , <span class="tempo">Publicado no <span class="organizacao">DJU</span> SEÇÃO 3 : 23/03/2004</span> . Pág. : 82 ) Fls .
+
+Wait, in the example output, "DJU SEÇÃO 3" is marked as organizacao, but in the input, it's "DJU SEÇÃO 3". So "DJU" is part of that. So in the HTML, "DJU" should be <span class="organizacao">DJU</span>, and "SEÇÃO 3" is part of the same organization? Or is "DJU SEÇÃO 3" considered as a single entity? The example output shows "DJU SEÇÃO 3" as part of the tempo, but in the example, "Publicado no DJU SEÇÃO 3 : 23/03/2004" is marked as tempo. Wait, no. Let me check the example output again.
+
+In the example output provided by the user, the text is:
+
+<span class="jurisprudencia">ADI</span> , o perigo da demora e a fumaça do bom direito são , por si e em `` se '' , bastantes e aptos a justificarem a concessão de liminar e assim suspenderem o <span class="legislacao">texto</span> , com efeitos `` ex nunc '' e `` erga omnes '' , até decisão definitiva da <span class="organizacao">Corte de Justiça</span> . ( <span class="jurisprudencia">Acórdão</span> n.187778 , <span class="tempo">20030020042411ADI</span> , <span class="pessoa">Relator : EDUARDO DE MORAES OLIVEIRA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">Data de Julgamento : 23/09/2003</span> , <span class="tempo">Publicado no DJU SEÇÃO 3 : 23/03/2004</span> . Pág. : 82 ) Fls .
+
+So "Publicado no DJU SEÇÃO 3 : 23/03/2004" is marked as tempo. But "DJU SEÇÃO 3" is part of the organization. Wait, maybe the user considers "DJU SEÇÃO 3" as a single entity, but in the example, it's not marked. Wait, in the example output, "DJU SEÇÃO 3" is not marked. Wait, looking at the example output:
+
+The text after "Data de Julgamento : 23/09/2003" is "Publicado no DJU SEÇÃO 3 : 23/03/2004". In the example output, this is marked as <span class="tempo">Publicado no DJU SEÇÃO 3 : 23/03/2004</span>. So the entire phrase is marked as tempo. But "DJU SEÇÃO 3" is an organization. So perhaps the user is marking the entire date as tempo, and not the organization. That's conflicting with the example.
+
+Alternatively, maybe "DJU SEÇÃO 3" is part of the organization, but in the example, it's not marked. Wait, the example output shows "DJU SEÇÃO 3" as part of the tempo. So perhaps the user is marking the entire date as tempo, and not the organization. That's confusing. But according to the example, "DJU SEÇÃO 3" is not marked as organizacao. So maybe the user is not marking "DJU" as an organization. Wait, in the example output, "DJU SEÇÃO 3" is part of the tempo. So perhaps the user is not marking "DJU" as an organization. That's conflicting with the initial instruction.
+
+This is a bit confusing. Let me recheck the example output provided by the user. The user's example output is:
+
+<span class="jurisprudencia">ADI</span> , o perigo da demora e a fumaça do bom direito são , por si e em `` se '' , bastantes e aptos a justificarem a concessão de liminar e assim suspenderem o <span class="legislacao">texto</span> , com efeitos `` ex nunc '' e `` erga omnes '' , até decisão definitiva da <span class="organizacao">Corte de Justiça</span> . ( <span class="jurisprudencia">Acórdão</span> n.187778 , <span class="tempo">20030020042411ADI</span> , <span class="pessoa">Relator : EDUARDO DE MORAES OLIVEIRA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">Data de Julgamento : 23/09/2003</span> , <span class="tempo">Publicado no DJU SEÇÃO 3 : 23/03/2004</span> . Pág. : 82 ) Fls .
+
+So "Publicado no DJU SEÇÃO 3 : 23/03/2004" is marked as tempo. But "DJU SEÇÃO 3" is part of the organization. However, in the example, it's not marked. So perhaps the user is not marking "DJU" as an organization. That's conflicting with the initial instruction. Maybe the user considers "DJU" as part of the date, but that's not clear.
+
+Alternatively, maybe the user is marking "DJU" as an organization. Let me check the example again. In the example output, "DJU SEÇÃO 3" is not marked. So perhaps the user is not marking "DJU" as an organization. That's confusing. But according to the example, "DJU SEÇÃO 3" is part of the tempo. So perhaps the user is not marking "DJU" as an organization. Therefore, I should follow the example and not mark "DJU" as an organization.
+
+So, in the input text, "DJU SEÇÃO 3" is part of the tempo. Therefore, the entire phrase "Publicado no DJU SEÇÃO 3 : 23/03/2004" is marked as tempo. So "DJU SEÇÃO 3" is not marked as an organization. That's conflicting with the initial instruction, but the example shows that.
+
+Therefore, I need to follow the example provided by the user. So, in the output, "DJU SEÇÃO 3" is not marked as an organization. Therefore, I should not mark "DJU" as an organization. Instead, the entire "Publicado no DJU SEÇÃO 3 : 23/03/2004" is marked as tempo.
+
+So, putting it all together, the HTML would be:
+
+<span class="jurisprudencia">ADI</span> , o perigo da demora e a fumaça do bom direito são , por si e em `` se '' , bastantes e aptos a justificarem a concessão de liminar e assim suspenderem o <span class="legislacao">texto</span> , com efeitos `` ex nunc '' e `` erga omnes '' , até decisão definitiva da <span class="organizacao">Corte de Justiça</span> . ( <span class="jurisprudencia">Acórdão</span> n.187778 , <span class="tempo">20030020042411ADI</span> , <span class="pessoa">Relator : EDUARDO DE MORAES OLIVEIRA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">Data de Julgamento : 23/09/2003</span> , <span class="tempo">Publicado no DJU SEÇÃO 3 : 23/03/2004</span> . Pág. : 82 ) Fls .
+
+But wait, in the example, "CONSELHO ESPECIAL" is marked as organizacao. So "CONSELHO ESPECIAL" is an organization. Therefore, in the input text, "CONSELHO ESPECIAL" is part of the organization. So the HTML should have <span class="organizacao">CONSELHO ESPECIAL</span>.
+
+Therefore, the final HTML would be as per the example, with the following entities marked:
+
+- ADI: jurisprudencia
+- texto: legislacao
+- Corte de Justiça: organizacao
+- Acórdão: jurisprudencia
+- 20030020042411ADI: tempo
+- Relator : EDUARDO DE MORAES OLIVEIRA: pessoa
+- CONSELHO ESPECIAL: organizacao
+- Data de Julgamento : 23/09/2003: tempo
+- Publicado no DJU SEÇÃO 3 : 23/03/2004: tempo
+
+So, the final HTML is as per the example.
+</think>
+
+Aqui está a versão formatada do texto com as entidades marcadas conforme solicitado, seguindo o exemplo fornecido:
+
+```html
+<span class="jurisprudencia">ADI</span> , o perigo da demora e a fumaça do bom direito são , por si e em `` se '' , bastantes e aptos a justificarem a concessão de liminar e assim suspenderem o <span class="legislacao">texto</span> , com efeitos `` ex nunc '' e `` erga omnes '' , até decisão definitiva da <span class="organizacao">Corte de Justiça</span> . ( <span class="jurisprudencia">Acórdão</span> n.187778 , <span class="tempo">20030020042411ADI</span> , <span class="pessoa">Relator : EDUARDO DE MORAES OLIVEIRA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">Data de Julgamento : 23/09/2003</span> , <span class="tempo">Publicado no DJU SEÇÃO 3 : 23/03/2004</span> . Pág. : 82 ) Fls .
+```
+
+### Explicação das marcações:
+- **`ADI`** → `jurisprudencia`: refere-se a uma decisão judicial.
+- **`texto`** → `legislacao`: indica uma referência a um texto legal.
+- **`Corte de Justiça`** → `organizacao`: nome de uma instituição judicial.
+- **`Acórdão`** → `jurisprudencia`: termo jurídico que indica uma decisão de um tribunal.
+- **`20030020042411ADI`** → `tempo`: data ou código de referência temporal.
+- **`Relator : EDUARDO DE MORAES OLIVEIRA`** → `pessoa`: nome de uma pessoa envolvida no processo.
+- **`CONSELHO ESPECIAL`** → `organizacao`: nome de uma instituição ou comissão.
+- **`Data de Julgamento : 23/09/2003`** → `tempo`: data de julgamento.
+- **`Publicado no DJU SEÇÃO 3 : 23/03/2004`** → `tempo`: data de publicação.
+
+Se houver outras partes do texto que precisem ser analisadas, posso ajudar com a marcação também.

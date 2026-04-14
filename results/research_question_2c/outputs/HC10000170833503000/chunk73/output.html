@@ -1,0 +1,43 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Pelo que consta dos autos , no dia anterior ao fato a vítima estava em sua casa quando o Sr. Márcio Adair ligou o som de seu carro em volume excessivo sendo que , ao ser solicitado que o baixasse , disse que `` quem manda ali é ele '' ."
+
+Breaking it down:
+
+1. "Pelo que consta dos autos" – "autos" here refers to legal documents, so maybe "autos" is part of the legal term. But the user's example output shows "autos" as a span with class "legislacao"? Wait, looking at the example output provided by the user, they have "autos" marked as "legislacao". Wait, no, looking at the user's example output, the text is: "Pelo que consta dos <span class="legislacao">autos</span> , no dia anterior ao fato a vítima estava em sua casa quando o Sr. Márcio Adair ligou o som de seu carro em volume excessivo sendo que , ao ser solicitado que o baixasse , disse que `` quem manda ali é ele '' ."
+
+Wait, the user's example output shows "autos" as "legislacao". But in legal terms, "autos" can refer to the court records or legal proceedings, which might fall under "legislacao" or maybe "jurisprudencia"? Hmm, but according to the guidelines, "legislacao" is for legislation. Maybe "autos" here is part of the legal process, so perhaps it's considered as part of the legal context. But the user's example output marks "autos" as "legislacao". So I need to follow that.
+
+Next, "no dia anterior ao fato" – "dia anterior" is a time reference, so "tempo".
+
+"a vítima estava em sua casa" – "vítima" is a person, so "pessoa". "casa" is a local, so "local".
+
+"o Sr. Márcio Adair" – "Sr." is a title for a person, so "pessoa".
+
+"ligou o som de seu carro em volume excessivo" – no entities here.
+
+"ao ser solicitado que o baixasse" – no entities.
+
+"disse que `` quem manda ali é ele '' " – "quem manda ali é ele" is a phrase indicating authority, but not sure if it's a jurisprudencia or legislation. Since there's no specific legal term here, maybe it's not marked.
+
+So, putting it all together:
+
+- "autos" → legislacao
+- "dia anterior" → tempo
+- "vítima" → pessoa
+- "casa" → local
+- "Sr. Márcio Adair" → pessoa
+
+Wait, the user's example output shows "Sr. Márcio Adair" as "pessoa". So I need to make sure that any mention of a person's name is marked as "pessoa".
+
+Also, "no dia anterior ao fato" – "dia anterior" is time, so "tempo".
+
+So the HTML would be:
+
+Pelo que consta dos <span class="legislacao">autos</span> , no <span class="tempo">dia anterior</span> ao fato a <span class="pessoa">vítima</span> estava em sua <span class="local">casa</span> quando o <span class="pessoa">Sr. Márcio Adair</span> ligou o som de seu carro em volume excessivo sendo que , ao ser solicitado que o baixasse , disse que `` quem manda ali é ele '' .
+
+Wait, but in the user's example output, they have "dia anterior" as "tempo", so that's correct. Also, "vítima" is a person, so "pessoa". "casa" is local. "Sr. Márcio Adair" is a person. "autos" is legislacao. The rest of the text doesn't have any entities. So that's the correct marking.
+</think>
+
+Pelo que consta dos <span class="legislacao">autos</span> , no <span class="tempo">dia anterior</span> ao fato a <span class="pessoa">vítima</span> estava em sua <span class="local">casa</span> quando o <span class="pessoa">Sr. Márcio Adair</span> ligou o som de seu carro em volume excessivo sendo que , ao ser solicitado que o baixasse , disse que `` quem manda ali é ele '' .

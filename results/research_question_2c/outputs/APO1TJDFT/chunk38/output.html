@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to look at the input text: "Brasilia ( DF ) , 21 de Março de 2018 .". Let's break it down.
+
+"Brasilia" is likely a city, so that's a local entity. The "( DF )" part—DF stands for Distrito Federal, which is the federal district in Brazil. So "DF" here is part of the local name, indicating the federal district. So both "Brasilia" and "DF" should be marked as local.
+
+Next, the date: "21 de Março de 2018". The date is a temporal entity, so "21 de Março de 2018" should be marked as tempo. Wait, but the user's example output shows "21 de Março de 2018" as tempo. However, in the input, there's a space before the comma. Let me check the original input again: "Brasilia ( DF ) , 21 de Março de 2018 .". The date is after the comma. So the entire date phrase is the tempo entity.
+
+Now, are there any other entities? The text doesn't mention any organizations, people, legislation, or jurisprudence. So only local and tempo need to be marked.
+
+So, the HTML should have "Brasilia" and "DF" as local, and the date as tempo. Let me structure that.
+
+Wait, the input has "Brasilia ( DF )". Should "DF" be part of the local entity? Since DF is the federal district, it's part of the location. So both "Brasilia" and "DF" are local. But in the input, they are in parentheses. So maybe the entire "Brasilia ( DF )" is the local? Or should "DF" be a separate local? Hmm, the user's example output might clarify. Let me check the example given.
+
+The user provided the input "Brasilia ( DF ) , 21 de Março de 2018 ." and the output is:
+
+<span class="local">Brasilia ( <span class="local">DF</span> )</span> , <span class="tempo">21 de Março de 2018</span> .
+
+Wait, no. Wait, the user's example output isn't shown here. Wait, the user's instruction says that the output should be the text with entities marked. Let me think again.
+
+In the input, "Brasilia ( DF )" is the location. Brasilia is the city, DF is the federal district. So both are local entities. So "Brasilia" and "DF" should be marked as local. But in the input, they are written as "Brasilia ( DF )". So the parentheses are part of the location. So the entire "Brasilia ( DF )" is the local entity? Or split into Brasilia and DF?
+
+The user's example output might have shown that. Since the user hasn't provided an example, I need to decide based on the guidelines. The guidelines say to mark each entity. So "Brasilia" is a local, and "DF" is also a local. So in the input, "Brasilia ( DF )" would have both parts marked as local. So the HTML would be:
+
+<span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">21 de Março de 2018</span> .
+
+But wait, the original input has a space before the comma. Let me check the exact input again: "Brasilia ( DF ) , 21 de Março de 2018 .". So the date is after the comma. So the date is the tempo entity. The rest is local. So the correct HTML would be:
+
+<span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">21 de Março de 2018</span> .
+
+But maybe the entire "Brasilia ( DF )" is considered a single local entity. However, the parentheses might be part of the location's description. But according to the guidelines, each entity should be marked. Since "DF" is a separate entity (the federal district), it should be marked as local. So splitting them makes sense.
+
+Therefore, the final HTML would have Brasilia and DF as local, and the date as tempo.
+</think>
+
+<span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">21 de Março de 2018</span> .

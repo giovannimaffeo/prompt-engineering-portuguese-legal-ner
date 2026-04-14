@@ -1,0 +1,31 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organização, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let's go through the text step by step.
+
+Starting with "ALei distrital 1.271 , de 27 de novembro de 1996". Here, "ALei distrital 1.271" is likely a legislative act. According to the guidelines, legislation includes laws, decrees, etc. The number "1.271" with "ALei" might be a law. So I should mark "ALei distrital 1.271" as legislação. Then "27 de novembro de 1996" is a date, which is tempo. So those parts should be in <span class="legislacao"> and <span class="tempo"> respectively.
+
+Next, "padece de inconstitucionalidade formal" – this is a legal term but not an entity. Then "fruto de emenda parlamentar" – "emenda parlamentar" is a legislative action, so maybe part of the legislation? Wait, but the main entity here is the law itself. The text mentions "ALei distrital 1.271" as the law, so the rest might be explanations. The "emenda parlamentar" refers to a parliamentary amendment, which is part of the legislative process, but the entity here is the law itself. So maybe "emenda parlamentar" isn't an entity here. 
+
+Moving on: "afrontando reserva à iniciativa do Governador do DF , em ofensa à LODF". "Governador do DF" is a person (the Governor of the Federal District), so that should be a <span class="pessoa">. "LODF" is likely a legislative act, maybe "Lei Orgânica do Distrito Federal", so that's <span class="legislacao">.
+
+Next part: "Ação Direta de Inconstitucionalidade julgada procedente . Unânime . ( Acórdão n.987488 , 20160020314727ADI , Relator : ROMEU GONZAGA NEIVA CONSELHO ESPECIAL , Data de Julgamento : 06/12/2016 , Publicado no DJE : 19/12/2016 . Pág. : 24 )". The "Ação Direta de Inconstitucionalidade" is a legal action, but the specific case numbers like "Acórdão n.987488" and "20160020314727ADI" are jurisprudência entities. "ROMEU GONZAGA NEIVA" is a person, so <span class="pessoa">. "CONSELHO ESPECIAL" is an organization, so <span class="organizacao">. The dates "06/12/2016" and "19/12/2016" are tempo. 
+
+Then "Destaque-se , outrossim , que sequer a ulterior sanção do Chefe do Poder Executivo ao projeto de lei tem o condão de sanar a inconstitucionalidade formal . Fls ." Here, "Chefe do Poder Executivo" refers to the head of the executive branch, which is a person (the President or Governor), so <span class="pessoa">. "Poder Executivo" is an organization, so <span class="organizacao">. 
+
+I need to ensure that all entities are correctly identified and tagged. For example, "DF" stands for Distrito Federal, which is a local, so <span class="local">. "DJE" is the Diário da Justiça Eletrônico, which is an organization, so <span class="organizacao">. 
+
+Wait, the user mentioned that "local" includes cities, states, etc. "DF" is the Federal District, so it's a local. "LODF" is a law, so that's legislação. 
+
+Also, "Acórdão n.987488" is a judicial decision, so jurisprudência. The number "20160020314727ADI" is also a jurisprudência reference. 
+
+I need to check if all the dates are marked as tempo. "27 de novembro de 1996" is a full date, so tempo. "06/12/2016" and "19/12/2016" are also dates. 
+
+The "Relator : ROMEU GONZAGA NEIVA" is a person, so pessoa. "CONSELHO ESPECIAL" is an organization. 
+
+I should also check if "ALei distrital 1.271" is the correct legislation. The user's example output might have "ALei distrital 1.271" as legislação. 
+
+Putting it all together, I'll go through each part of the text, identify the entities, and wrap them with the appropriate span tags. Making sure not to miss any and to follow the guidelines strictly, like not marking generic terms or modifiers unless they are part of the entity.
+</think>
+
+<span class="legislacao">ALei distrital 1.271</span> , de <span class="tempo">27 de novembro de 1996</span> , padece de inconstitucionalidade formal , pois fruto de emenda parlamentar que enseja inadmissível aumento de despesa , afrontando reserva à iniciativa do <span class="pessoa">Governador do DF</span> , em ofensa à <span class="legislacao">LODF</span> . 6 . <span class="jurisprudencia">Ação Direta de Inconstitucionalidade</span> julgada procedente . Unânime . ( <span class="jurisprudencia">Acórdão n.987488</span> , <span class="jurisprudencia">20160020314727ADI</span> , Relator : <span class="pessoa">ROMEU GONZAGA NEIVA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">06/12/2016</span> , Publicado no <span class="organizacao">DJE</span> : <span class="tempo">19/12/2016</span> . Pág. : 24 ) ( grifo nosso ) Destaque-se , outrossim , que sequer a ulterior sanção do <span class="pessoa">Chefe do Poder Executivo</span> ao projeto de lei tem o condão de sanar a inconstitucionalidade formal . Fls .

@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about a legal decision declaring a law unconstitutional. 
+
+Looking for entities:
+
+1. "Lei nº 5.815/2017" – this is a law, so "legislacao".
+2. "artigo 53 , `` caput '' e § 1º , artigo 71 , §1º , IV , artigo 100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal ." – these are references to articles and sections of a law, so "legislacao".
+3. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – this seems like a code or reference, maybe not an entity. The user didn't mention codes, so maybe leave it as is.
+4. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – this is an organization or a person? "GABINETE" is a part of the court, so maybe "organizacao". The name "SILVANIO BARBOSA DOS SANTOS" is a person, so "pessoa".
+5. "2 Fls ." – "Fls" is short for "Folhas", which refers to pages, so maybe "tempo" or not. But the user's example output didn't mark it, so perhaps leave it.
+
+Wait, the example output in the user's message shows that "Lei nº 5.815/2017" is marked as legislacao, and "Lei Orgânica do Distrito Federal" is also legislacao. The "artigo" references are part of the legislation, so they should be under legislacao. 
+
+The "GABINETE DO DESEMBARGADOR" is an organization, so "organizacao". The person's name "SILVANIO BARBOSA DOS SANTOS" is "pessoa". 
+
+The "Código de Verificação" might not be an entity, so leave it. The "2 Fls" is probably a page reference, not an entity. 
+
+So, applying the tags:
+
+- "Lei nº 5.815/2017" → legislacao
+- "artigo 53" → legislacao
+- "§ 1º" → legislacao
+- "artigo 71" → legislacao
+- "§1º" → legislacao
+- "IV" → legislacao
+- "artigo 100" → legislacao
+- "incisos IV , VI , X e XXIII" → legislacao
+- "Lei Orgânica do Distrito Federal" → legislacao
+- "GABINETE DO DESEMBARGADOR" → organizacao
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+
+Wait, the user's example output in the problem statement shows that "Lei Orgânica do Distrito Federal" is marked as legislacao. So I need to make sure all law references are marked. 
+
+Also, "ex tunc" and "erga omnes" are legal terms, but they are not entities as per the given types. So leave them. 
+
+Putting it all together, the HTML should have the appropriate spans. Let me check again to ensure I didn't miss any entities. The rest of the text like "Código de Verificação" and "2 Fls" are not entities, so they remain as is.
+</think>
+
+Pedido julgado procedente para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto no <span class="legislacao">artigo 53</span> , `` caput '' e <span class="legislacao">§ 1º</span> , <span class="legislacao">artigo 71</span> , <span class="legislacao">§1º</span> , IV , <span class="legislacao">artigo 100</span> , <span class="legislacao">incisos IV</span> , <span class="legislacao">VI</span> , <span class="legislacao">X</span> e <span class="legislacao">XXIII</span> , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 2 Fls .

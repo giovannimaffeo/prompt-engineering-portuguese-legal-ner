@@ -1,0 +1,95 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organização, tempo, local, legislação, and jurisprudência. Each should have the appropriate class.
+
+First, I need to go through the input text carefully. Let me start by reading the entire text to spot any entities.
+
+The first part is "5.815 , DE 3 DE ABRIL DE 2017 , COM EFEITOS `` EX TUNC '' E EFICÁCIA `` ERGA OMNES '' . MAIORIA. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 13 de Março de 2018 . Documento Assinado Eletronicamente SILVANIO BARBOSA DOS SANTOS Relator Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 3 A norma impugnada possui a seguinte redação : LEI Nº 5.815 , DE 03 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) Dispõe sobre convênio do Distrito Federal com o CREADF e o CAU-DF e dá outras providências . O GOVERNADOR DO DISTRITO FEDERAL , FAÇO SABER QUE A CÂMARA LEGISLATIVA DO DISTRITO FEDERAL DECRETA E EU SANCIONO A SEGUINTE LEI : Art ."
+
+Starting with the first part: "5.815 , DE 3 DE ABRIL DE 2017". Here, "3 DE ABRIL DE 2017" is a date, so that's tempo. The number 5.815 might be a law number, but the example shows "Lei nº 9.430/96" as legislação. Wait, in the input, it's "LEI Nº 5.815" later. So "LEI Nº 5.815" is legislação. Also, "DE 03 DE ABRIL DE 2017" is another date, so that's tempo.
+
+Next, "Brasilia ( DF )" is a local. "DF" is the abbreviation for Distrito Federal, so "Brasilia" is the city, and "DF" is the state. But according to the guidelines, only explicit names of places should be marked. So "Brasilia" is local, and "DF" might be part of the local, but the example shows "COMARCA DE BELO HORIZONTE" as local. So "Brasilia ( DF )" should be marked as local. Wait, the example says "Distrito Federal" is an organization? Wait, the definition says "organização" includes "unidades do sistema de justiça, casas legislativas, etc." So "Distrito Federal" as an organization? Or is it a local? Wait, the example for local includes "Distrito Federal" as a local. Wait, looking back at the definitions:
+
+Local is defined as "expressões que correspondem a lugares explicitamente identificáveis, como cidades, estados, países, bairros, regiões, comarcas, distritos, áreas geográficas ou logradouros reconhecíveis". So "Distrito Federal" is a local. But "Distrito Federal" is also an administrative division, which might be considered an organization. Wait, the definitions for organização include "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, etc." So "Distrito Federal" as an administrative entity could be an organization. But the example in the guidelines for local includes "Distrito Federal" as a local. Hmm, this is a bit ambiguous. The example given for local includes "Distrito Federal", so I should mark it as local. But in the text, "Distrito Federal" appears in "GOVERNADOR DO DISTRITO FEDERAL" and "CÂMARA LEGISLATIVA DO DISTRITO FEDERAL". So "Distrito Federal" here refers to the administrative division, which might be considered an organization. Wait, the definition of organização includes "unidades do sistema de justiça, casas legislativas, etc." So "Distrito Federal" as an administrative region might be an organization. But the example in the guidelines for local includes "Distrito Federal", so I need to check the guidelines again. The example in the guidelines under local: "Distrito Federal" is listed as an example. So I should mark "Distrito Federal" as local. But the user's example shows "MINISTÉRIO PÚBLICO FEDERAL" as organização. So maybe "Distrito Federal" is considered an organization. Wait, the definition of organização includes "unidades do sistema de justiça, casas legislativas, etc." So if "Distrito Federal" is part of the system of justice, perhaps it's an organization. But the example under local includes "Distrito Federal", so perhaps it's a local. This is confusing. Let me check the example given in the user's examples. In the example input, the output has "Câmara Legislativa" as organização. Wait, in the example input, "Câmara Legislativa" is an organization. So "Distrito Federal" as a local. So in the text, "Brasilia ( DF )" is local. "DF" is the abbreviation for Distrito Federal, which is a local. So "Brasilia" is local, and "DF" is part of the local. But the user's example shows that "Distrito Federal" is an organization. Wait, in the example input, "GOVERNADOR DO DISTRITO FEDERAL" is part of the text. So "Distrito Federal" here refers to the administrative region. But according to the definitions, "organização" includes "unidades do sistema de justiça, casas legislativas, etc." So "Distrito Federal" as an administrative entity might be an organization. However, the example under local includes "Distrito Federal", so I need to decide based on the guidelines. The example for local includes "Distrito Federal", so I'll mark it as local.
+
+Next, "SILVANIO BARBOSA DOS SANTOS" is a person. "Relator" is a title, so not a person. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "DESEMBARGADOR" is a title, so not a person. The full name "SILVANIO BARBOSA DOS SANTOS" is a pessoa.
+
+Then, "LEI Nº 5.815 , DE 03 DE ABRIL DE 2017" – "LEI Nº 5.815" is legislação. "03 DE ABRIL DE 2017" is tempo.
+
+"Deputado Rafael Prudente" – "Deputado" is a title, so not a pessoa. "Rafael Prudente" is a pessoa.
+
+"CREADF" and "CAU-DF" – these are abbreviations. "CREADF" might be an organization (like Conselho Regional de Engenharia e Agronomia do Distrito Federal), but the example shows "UNIMED RIO COOPERATIVA..." as organização. So if "CREADF" is an organization, it should be marked as such. Similarly, "CAU-DF" is likely an organization (Conselho Administrativo de Unidades – maybe CAU is a common abbreviation for Conselho de Administração or something similar). So they should be marked as organização.
+
+"GOVERNADOR DO DISTRITO FEDERAL" – "GOVERNADOR" is a title, so not a pessoa. "Distrito Federal" as discussed earlier is local or organização. According to the example, "Distrito Federal" is an organization. Wait, the example for organização includes "Tribunal de Contas", "Câmara Legislativa", etc. So "Distrito Federal" as an administrative region might be an organization. But in the example under local, "Distrito Federal" is an example. So I need to check the guidelines again. The definition for organização includes "unidades do sistema de justiça, casas legislativas, etc." So "Distrito Federal" as an administrative region might be considered an organization. But in the example, "Distrito Federal" is under local. This is conflicting. Let me check the example given by the user. In the example input, the output has "Câmara Legislativa" as organização. So "Distrito Federal" as a local. Therefore, "Distrito Federal" is local. So "GOVERNADOR DO DISTRITO FEDERAL" – "Distrito Federal" is local. "GOVERNADOR" is a title, so not a pessoa. 
+
+"CÂMARA LEGISLATIVA DO DISTRITO FEDERAL" – "CÂMARA LEGISLATIVA" is an organization. So that should be marked as organização.
+
+Putting this all together, I need to mark each entity accordingly. Let me go step by step.
+
+First sentence: "5.815 , DE 3 DE ABRIL DE 2017 , COM EFEITOS `` EX TUNC '' E EFICÁCIA `` ERGA OMNES '' . MAIORIA. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 13 de Março de 2018 . Documento Assinado Eletronicamente SILVANIO BARBOSA DOS SANTOS Relator Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 3 A norma impugnada possui a seguinte redação : LEI Nº 5.815 , DE 03 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) Dispõe sobre convênio do Distrito Federal com o CREADF e o CAU-DF e dá outras providências . O GOVERNADOR DO DISTRITO FEDERAL , FAÇO SABER QUE A CÂMARA LEGISLATIVA DO DISTRITO FEDERAL DECRETA E EU SANCIONO A SEGUINTE LEI : Art ."
+
+Breaking it down:
+
+- "5.815" – this is part of the law number. The example shows "Lei nº 9.430/96" as legislação. So "LEI Nº 5.815" is legislação. But in the text, it's "LEI Nº 5.815 , DE 03 DE ABRIL DE 2017" – the full law number is "LEI Nº 5.815", so that's legislação.
+
+- "DE 3 DE ABRIL DE 2017" – this is a date, so tempo.
+
+- "Brasilia ( DF )" – "Brasilia" is local, "DF" is part of the local (Distrito Federal). So both should be marked as local? Wait, the example for local includes "Distrito Federal" as an example. So "DF" is an abbreviation for Distrito Federal, which is a local. So "Brasilia ( DF )" – "Brasilia" is local, "DF" is also local. But the example in the guidelines shows "Distrito Federal" as local, so "DF" is part of that. So I should mark "Brasilia" as local and "DF" as local.
+
+- "13 de Março de 2018" – date, so tempo.
+
+- "SILVANIO BARBOSA DOS SANTOS" – pessoa.
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "DESEMBARGADOR" is a title, not a pessoa. "GABINETE" is an organization (like the office of the judge). So "GABINETE" is organização. Wait, but the example shows "Tribunal de Contas" as organização. So "GABINETE" is an organization. So the entire "GABINETE DO DESEMBARGADOR" – but the user's example says "Tribunal de Contas" is organização. So "GABINETE" is an organization. So "GABINETE" is organização. However, the full phrase is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". The "GABINETE" is the organization, and "DESEMBARGADOR" is a title. So the entire phrase would be "GABINETE DO DESEMBARGADOR" as organização, but the example shows "Câmara Legislativa" as organização. So maybe "GABINETE" is an organization. So in the text, "GABINETE DO DESEMBARGADOR" is an organization.
+
+- "LEI Nº 5.815" – legislação.
+
+- "DE 03 DE ABRIL DE 2017" – tempo.
+
+- "Deputado Rafael Prudente" – "Deputado" is a title, "Rafael Prudente" is pessoa.
+
+- "CREADF" and "CAU-DF" – these are abbreviations. "CREADF" is likely an organization (like Conselho Regional de Engenharia e Agronomia do Distrito Federal), so organização. "CAU-DF" is another organization (like Conselho Regional de Administração do Distrito Federal), so organização.
+
+- "GOVERNADOR DO DISTRITO FEDERAL" – "GOVERNADOR" is a title, "Distrito Federal" is local.
+
+- "CÂMARA LEGISLATIVA DO DISTRITO FEDERAL" – "CÂMARA LEGISLATIVA" is organização, "Distrito Federal" is local.
+
+Now, let's apply all these to the text. I'll go through each part and mark the appropriate entities.
+
+First, the initial part:
+
+"5.815 , DE 3 DE ABRIL DE 2017 , COM EFEITOS `` EX TUNC '' E EFICÁCIA `` ERGA OMNES '' . MAIORIA. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 13 de Março de 2018 . Documento Assinado Eletronicamente SILVANIO BARBOSA DOS SANTOS Relator Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 3 A norma impugnada possui a seguinte redação : LEI Nº 5.815 , DE 03 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) Dispõe sobre convênio do Distrito Federal com o CREADF e o CAU-DF e dá outras providências . O GOVERNADOR DO DISTRITO FEDERAL , FAÇO SABER QUE A CÂMARA LEGISLATIVA DO DISTRITO FEDERAL DECRETA E EU SANCIONO A SEGUINTE LEI : Art ."
+
+Marking:
+
+- "5.815" is part of the law number. The full law is "LEI Nº 5.815", so in the text, "LEI Nº 5.815" is legislação. But in the first part, it's "5.815 , DE 3 DE ABRIL DE 2017" – here, "5.815" is part of the law number, but the full law is mentioned later. Wait, in the text, after "3 de Abril de 2017", it says "LEI Nº 5.815 , DE 03 DE ABRIL DE 2017". So that's the full law number. So in the first part, "5.815" is part of the law number, but the full "LEI Nº 5.815" is in the later part. So the first part has "5.815" as part of the law, but the full "LEI Nº 5.815" is marked as legislação.
+
+So in the first sentence, "5.815 , DE 3 DE ABRIL DE 2017" – "3 DE ABRIL DE 2017" is tempo. "5.815" is part of the law number, but not yet fully specified. However, the example shows that "Lei nº 9.430/96" is marked as legislação. So in the text, "LEI Nº 5.815" is the full law, so when it's mentioned as "LEI Nº 5.815 , DE 03 DE ABRIL DE 2017", that's legislação.
+
+So the first part of the text:
+
+"5.815 , DE 3 DE ABRIL DE 2017" – "3 DE ABRIL DE 2017" is tempo. The "5.815" is part of the law number, but since the full law is mentioned later, maybe we don't mark it yet. Wait, the user's example has "art.61 , §1º , da Lei nº 9.430/96" as legislação. So the law number is marked as legislação. So in the text, when "LEI Nº 5.815" is mentioned, that's legislação. So in the first part, "5.815" is not yet fully specified, but when it's part of "LEI Nº 5.815", then it's marked. So in the first sentence, "5.815 , DE 3 DE ABRIL DE 2017" – the "3 DE ABRIL DE 2017" is tempo, and "5.815" is part of the law but not yet fully specified. So maybe we don't mark it yet. Wait, the example shows that "Lei nº 9.430/96" is marked as legislação. So in the text, when the law number is fully specified as "LEI Nº 5.815", then it's marked. So in the first sentence, "5.815" is part of the law but not yet fully specified. So maybe we don't mark it here. But in the later part, "LEI Nº 5.815 , DE 03 DE ABRIL DE 2017" is the full law, so that's marked as legislação.
+
+So the first part's "5.815" is not yet marked. Then, "Brasilia ( DF )" – "Brasilia" is local, "DF" is local.
+
+"13 de Março de 2018" – tempo.
+
+"SILVANIO BARBOSA DOS SANTOS" – pessoa.
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE" is organização, "DESEMBARGADOR" is a title. But the full phrase is "GABINETE DO DESEMBARGADOR" – so "GABINETE" is organização.
+
+"LEI Nº 5.815" – legislação.
+
+"DE 03 DE ABRIL DE 2017" – tempo.
+
+"Deputado Rafael Prudente" – "Deputado" is title, "Rafael Prudente" is pessoa.
+
+"CREADF" and "CAU-DF" – organização.
+
+"GOVERNADOR DO DISTRITO FEDERAL" – "GOVERNADOR" is title, "Distrito Federal" is local.
+
+"CÂMARA LEGISLATIVA DO DISTRITO FEDERAL" – "CÂMARA LEGISLATIVA" is organização, "Distrito Federal" is local.
+
+Putting all this together, the HTML would have the appropriate spans. Now, I need to ensure that all these entities are correctly marked, and that the rest of the text remains unchanged.
+</think>
+
+O <span class="tempo">3 DE ABRIL DE 2017</span> , COM EFEITOS `` EX TUNC '' E EFICÁCIA `` ERGA OMNES '' . MAIORIA. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">13 de Março de 2018</span> . Documento Assinado Eletronicamente <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> Relator Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 3 A norma impugnada possui a seguinte redação : <span class="legislacao">LEI Nº 5.815</span> , <span class="tempo">DE 03 DE ABRIL DE 2017</span> ( Autoria do Projeto : <span class="pessoa">Deputado Rafael Prudente</span> ) Dispõe sobre convênio do <span class="local">Distrito Federal</span> com o <span class="organizacao">CREADF</span> e o <span class="organizacao">CAU-DF</span> e dá outras providências . O <span class="organizacao">GOVERNADOR</span> DO <span class="local">Distrito Federal</span> , FAÇO SABER QUE A <span class="organizacao">CÂMARA LEGISLATIVA</span> DO <span class="local">Distrito Federal</span> DECRETA E EU SANCIONO A SEGUINTE LEI : Art .

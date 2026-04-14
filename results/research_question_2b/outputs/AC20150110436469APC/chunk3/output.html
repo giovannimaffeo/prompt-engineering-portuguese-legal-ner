@@ -1,0 +1,63 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal decision, so there are several entities here. 
+
+Starting with "CÓRDO" – wait, the original text has "C Ó R D Ã O" which might be "CÓRDO" but maybe it's part of a title. However, the user's example output shows "CÓRDO" as part of the text without any tag. Wait, looking at the sample output, maybe the user's example has some tags. Let me check the sample output again.
+
+Wait, the user provided the input text and the output. Let me look at the sample output. The sample output is:
+
+A CÓRDO Acordam os Senhores Desembargadores da 8ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios , NÍDIA CORRÊA LIMA - Relatora , DIAULAS COSTA RIBEIRO - 1º Vogal , EUSTÁQUIO DE CASTRO - 2º Vogal , sob a presidência do Senhor Desembargador DIAULAS COSTA RIBEIRO , em proferir a seguinte decisão : RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO . UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 15 de Março de 2018 .
+
+Wait, the sample output seems to have the same text as the input. But the user's instruction says to mark entities. So maybe the sample output is just the input text without any tags. Wait, no, the user's example shows that the output is the same as the input, but perhaps with some tags. Wait, maybe the user made a mistake in the example. Let me check again.
+
+Wait, the user's instruction says that the output should be the text with entities marked. The sample input is the text provided, and the sample output is the same text but with some entities marked. Wait, maybe the user's example is not properly formatted. Let me re-examine the user's message.
+
+The user provided the input text and the output text. The output text is the same as the input, but with some entities marked. For example, "NÍDIA CORRÊA LIMA" is a person, so it should be wrapped in <span class="pessoa">. Similarly, "DIAULAS COSTA RIBEIRO" appears multiple times, so those should be marked as pessoa. "Brasilia ( DF )" is a local, so <span class="local">. "15 de Março de 2018" is a tempo, so <span class="tempo">. "Tribunal de Justiça do Distrito Federal e Territórios" is an organization, so <span class="organizacao">. "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" might be jurisprudencia, but I'm not sure. Wait, "jurisprudencia" refers to legal precedents or court decisions. The phrase "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" is a legal decision, so maybe it's jurisprudencia. Also, "8ª TURMA CÍVEL" could be an organization. Let me go through each part step by step.
+
+First, "CÓRDO" – maybe it's part of the court's name, but in the sample output, it's not tagged. Wait, the user's sample output shows that the text is the same as the input, but perhaps the user made a mistake. Wait, the user's instruction says to return the text with entities marked. So I need to process the input text and tag each entity accordingly.
+
+Let me break down the input text:
+
+"A C Ó R D Ã O Acordam os Senhores Desembargadores da 8ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios , NÍDIA CORRÊA LIMA - Relatora , DIAULAS COSTA RIBEIRO - 1º Vogal , EUSTÁQUIO DE CASTRO - 2º Vogal , sob a presidência do Senhor Desembargador DIAULAS COSTA RIBEIRO , em proferir a seguinte decisão : RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO . UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 15 de Março de 2018 ."
+
+Now, let's identify each entity:
+
+1. "NÍDIA CORRÊA LIMA" – pessoa
+2. "DIAULAS COSTA RIBEIRO" – pessoa (appears twice)
+3. "EUSTÁQUIO DE CASTRO" – pessoa
+4. "Tribunal de Justiça do Distrito Federal e Territórios" – organizacao
+5. "Brasilia ( DF )" – local
+6. "15 de Março de 2018" – tempo
+7. "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" – jurisprudencia (since it's a legal decision)
+8. "UNÂNIME." – maybe part of the decision, but not sure. The user's example output doesn't tag it, so perhaps it's not an entity.
+9. "8ª TURMA CÍVEL" – organizacao (as part of the court's name)
+
+Wait, "8ª TURMA CÍVEL" is part of the Tribunal de Justiça, so maybe it's part of the organization. So the entire "Tribunal de Justiça do Distrito Federal e Territórios" is the organization. The "8ª TURMA CÍVEL" is part of that organization. So I should tag "Tribunal de Justiça do Distrito Federal e Territórios" as organizacao.
+
+Also, "Brasilia ( DF )" is a local. "15 de Março de 2018" is tempo. The "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" is a legal decision, so jurisprudencia. The "UNÂNIME." might be part of the decision, but since it's not a specific entity, maybe it's left as is.
+
+So, applying the tags:
+
+- "NÍDIA CORRÊA LIMA" → <span class="pessoa">NÍDIA CORRÊA LIMA</span>
+- "DIAULAS COSTA RIBEIRO" → <span class="pessoa">DIAULAS COSTA RIBEIRO</span> (twice)
+- "EUSTÁQUIO DE CASTRO" → <span class="pessoa">EUSTÁQUIO DE CASTRO</span>
+- "Tribunal de Justiça do Distrito Federal e Territórios" → <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span>
+- "Brasilia ( DF )" → <span class="local">Brasilia ( DF )</span>
+- "15 de Março de 2018" → <span class="tempo">15 de Março de 2018</span>
+- "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" → <span class="jurisprudencia">RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO</span>
+
+Wait, the original text has "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" as part of the decision. So that's a jurisprudencia. Also, "8ª TURMA CÍVEL" is part of the organization, but since the full name is "Tribunal de Justiça do Distrito Federal e Territórios", maybe the "8ª TURMA CÍVEL" is part of that organization. However, in the input text, it's written as "da 8ª TURMA CÍVEL do Tribunal de Justiça...", so the "8ª TURMA CÍVEL" is part of the organization. But since the full organization is "Tribunal de Justiça do Distrito Federal e Territórios", perhaps the "8ª TURMA CÍVEL" is a part of it. However, the user's example output doesn't tag "8ª TURMA CÍVEL", so maybe it's not considered an entity. Alternatively, maybe it's part of the organization. But since the user's example output doesn't tag it, perhaps it's not. So I'll focus on the entities that are clearly defined.
+
+Putting it all together, the HTML should have the tags for each identified entity. Now, I need to make sure that the HTML is correctly formatted, with the tags properly placed around the entities. Also, the original text has some spaces and punctuation, so I need to preserve that.
+
+So the final HTML would look like:
+
+A CÓRDO Acordam os Senhores Desembargadores da 8ª TURMA CÍVEL do <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span> , <span class="pessoa">NÍDIA CORRÊA LIMA</span> - Relatora , <span class="pessoa">DIAULAS COSTA RIBEIRO</span> - 1º Vogal , <span class="pessoa">EUSTÁQUIO DE CASTRO</span> - 2º Vogal , sob a presidência do Senhor Desembargador <span class="pessoa">DIAULAS COSTA RIBEIRO</span> , em proferir a seguinte decisão : <span class="jurisprudencia">RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO</span> . UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia ( DF )</span> , <span class="tempo">15 de Março de 2018</span> .
+
+Wait, but the original text has "Brasilia ( DF )" as a local, so that's tagged. The "15 de Março de 2018" is tempo. The "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" is jurisprudencia. The "Tribunal de Justiça do Distrito Federal e Territórios" is organizacao. The names of the people are tagged as pessoa. The "8ª TURMA CÍVEL" is part of the organization's name, but since the full name is already tagged, maybe it's not necessary to tag it again. The user's example output doesn't include it, so I'll leave it as is.
+
+I think that's all. Now, I'll format the HTML accordingly.
+</think>
+
+A CÓRDO Acordam os Senhores Desembargadores da 8ª TURMA CÍVEL do <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span> , <span class="pessoa">NÍDIA CORRÊA LIMA</span> - Relatora , <span class="pessoa">DIAULAS COSTA RIBEIRO</span> - 1º Vogal , <span class="pessoa">EUSTÁQUIO DE CASTRO</span> - 2º Vogal , sob a presidência do Senhor Desembargador <span class="pessoa">DIAULAS COSTA RIBEIRO</span> , em proferir a seguinte decisão : <span class="jurisprudencia">RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO</span> . UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasília ( DF )</span> , <span class="tempo">15 de Março de 2018</span> .

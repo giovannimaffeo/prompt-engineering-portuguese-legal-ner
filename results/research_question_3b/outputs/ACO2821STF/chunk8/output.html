@@ -1,0 +1,36 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances that fit each category. Let me start by breaking down the text.
+
+The text starts with "( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO". Here, "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization. The title "PROCURADOR-GERAL" is a position, but the full name includes "ESTADO DE MATO GROSSO", which is a state, so that's a local. Wait, but "ESTADO DE MATO GROSSO" is the name of the state, so that's a local. But the entire title "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization? Or is "PROCURADOR-GERAL" a position within an organization? Hmm, maybe "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is the name of the organization, which is the Public Prosecutor's Office of Mato Grosso. So that's an organization. So I should mark "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" as organizacao.
+
+Next, "Senhor Ministro Ricardo Lewandowski ( Relator )". "Ricardo Lewandowski" is a person, so that's pessoa. The "( Relator )" is a title, but since it's part of the name, maybe not. Wait, the Relator is a role, but the name is "Ricardo Lewandowski", so that's a pessoa.
+
+Then, "Trata-se de agravo regimental interposto pela União contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo Estado do Mato Grosso". Here, "União" is an organization. "Estado do Mato Grosso" is a local, since it's the name of the state. "Ação Cível Originária" is a legal term, but not an entity. "Agravo regimental" is a legal procedure, not an entity. "Decisão monocrática" is a legal term, not an entity. "Ação Cível Originária" is a legal action, but not an entity. So "União" is organizacao, "Estado do Mato Grosso" is local.
+
+Next part: "determinando-se à União `` que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS n° 204/2008 e de suas posteriores alterações '' ."
+
+Here, "União" is again an organization. "Estado de Mato Grosso" is a local. "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" are acronyms for legal registries, so they might be considered as legislação or maybe not. Wait, the user's definition for legislação includes norms like laws, decrees, etc. But these are registries, not laws. However, the user's definition says "normas jurídicas" which includes decrees, but these are registries. Maybe they are not considered legislação. Alternatively, maybe they are part of the legal system, but the task is to mark only the entities as per the definitions. So "CADPREV", "CADIN", etc., are acronyms for registries, which are part of the legal system, but not laws or decrees. So perhaps they are not marked as legislação. However, the user's example might have different interpretations. Let me check the example again.
+
+In the sample input, the output includes "Decreto 3.788/2001" as legislacao and "Portaria MPS n° 204/2008" as legislacao. So any decree or portaria is considered legislação. Therefore, "Decreto 3.788/2001" and "Portaria MPS n° 204/2008" are legislacao. The acronyms like CADPREV, CADIN, etc., are part of the legal system but not laws, so they might not be marked. However, the user's definition for legislação includes "normas jurídicas", which could include these registries. Wait, the definition says "normas jurídicas, como leis, códigos, constituições, decretos, medidas provisórias, regimentos ou equivalentes, bem como dispositivos internos claramente associados a essas normas e siglas reconhecidas que representem textos legislativos." So "CADPREV" is a sigla (abbreviation) for a registry, which is a dispositivo interno claramente associado a normas. So maybe they should be marked as legislação. But I'm not sure. Alternatively, maybe they are not considered as legislação but as part of the legal system. The user's example might not have such cases, so perhaps I should mark them as legislação. Alternatively, maybe they are not. Let me check the example again. The sample input includes "Decreto 3.788/2001" and "Portaria MPS n° 204/2008" as legislacao. So any decree or portaria is legislacao. The acronyms like CADPREV, CADIN, etc., are not decrees or portarias, so they might not be marked. Therefore, I should not mark them as legislação. So in the text, "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" are not marked. 
+
+Then, "Decreto 3.788/2001" is legislacao, "Portaria MPS n° 204/2008" is legislacao. 
+
+So putting it all together:
+
+- "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is organizacao.
+- "Ricardo Lewandowski" is pessoa.
+- "União" is organizacao.
+- "Estado do Mato Grosso" is local.
+- "Decreto 3.788/2001" is legislacao.
+- "Portaria MPS n° 204/2008" is legislacao.
+
+Other parts like "Agravo regimental", "Ação Cível Originária" are legal terms but not entities. The rest of the text doesn't have any other entities. 
+
+Now, I need to make sure that all the entities are marked with the correct classes. Also, check for any other possible entities. For example, "Mato Grosso" is a local, but in the text, it's part of "Estado do Mato Grosso", which is a local. So "Estado do Mato Grosso" is a local. 
+
+So the final HTML should have the appropriate spans with the correct classes.
+</think>
+
+<span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> <span class="pessoa">Ricardo Lewandowski</span> : Trata-se de <span class="jurisprudencia">agravo regimental</span> interposto pela <span class="organizacao">União</span> contra decisão monocrática que julgou procedente <span class="jurisprudencia">Ação Cível Originária</span> ajuizada pelo <span class="local">Estado do Mato Grosso</span> , determinando-se à <span class="organizacao">União</span> `` que renove o Certificado de Regularidade Previdenciária do <span class="local">Estado de Mato Grosso</span> , retirando-o do conceito de irregular do <span class="legislacao">Cadastro de Regime Próprio de Previdência Social-CADPREV</span> ou retirando-o de qualquer outro <span class="legislacao">cadastro de inadimplentes</span> pelo mesmo motivo ( <span class="legislacao">CADIN</span> , <span class="legislacao">CA UC</span> , <span class="legislacao">SIAFI</span> , <span class="legislacao">SICONV</span> ) , declarando-se ainda , incidenter tantum , a <span class="legislacao">inconstitucionalidade</span> do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS n° 204/2008</span> e de suas posteriores alterações '' .

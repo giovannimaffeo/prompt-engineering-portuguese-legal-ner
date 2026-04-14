@@ -1,0 +1,36 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read the input text carefully. The text is about a legal document, specifically a Habeas Corpus. Let me break it down sentence by sentence.
+
+Starting with "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7". Here, the URL is mentioned. The URL might be part of an organization, but the domain is "jus.br", which is related to the judiciary. However, the task says to mark organizations. The URL itself isn't an organization, but the domain might be. Wait, the example in the output shows "https://eproc2g.stm.jus.br/eproc_2g_prod/" as a link, but in the output, it's not marked. Wait, looking at the sample output provided, the URL isn't marked. So maybe URLs aren't considered as organizations here. The user might not want URLs marked unless they are part of an organization's name. So perhaps the URL is left as is.
+
+Next, "RELATÓRIO Trata-se de Habeas Corpus impetrado pela Defesa constituída do Cap Ex HENRIQUE DOS SANTOS BOTELHO contra ato do Juiz-Auditor da 2ª Auditoria da 11ª CJM nos autos da Ação Penal Militar nº 14- 06.2010.7.11.0011 ."
+
+Breaking this down:
+
+- "Defesa constituída do Cap Ex HENRIQUE DOS SANTOS BOTELHO": "Defesa" is the defense, which is an organization. "Cap Ex" is likely an abbreviation for "Capitão Exercício" (a military rank), so the person's name is HENRIQUE DOS SANTOS BOTELHO. So "HENRIQUE DOS SANTOS BOTELHO" is a pessoa.
+
+- "Juiz-Auditor da 2ª Auditoria da 11ª CJM": "Juiz-Auditor" is a judicial position, but the entity here is the organization. "CJM" might stand for "Corregedoria Militar" or similar, which is an organization. The "11ª CJM" could be part of the organization's name. So "11ª CJM" might be an organizacao.
+
+- "Ação Penal Militar nº 14- 06.2010.7.11.0011": The number here is a case number, which might be part of the legislation or jurisprudencia? Wait, the case number is part of the legal process, but the task is to mark entities. The case number itself isn't an entity, but the "Ação Penal Militar" could be a type of legislation or a legal term. However, the user's example output doesn't mark the case number. So maybe the case number isn't an entity here.
+
+Putting it all together:
+
+- "Defesa" is an organization.
+- "HENRIQUE DOS SANTOS BOTELHO" is a pessoa.
+- "11ª CJM" is an organizacao.
+- "Ação Penal Militar" might be a type of legislation, but the example output doesn't mark it. Wait, looking at the sample output provided by the user, the output is:
+
+"Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 RELATÓRIO Trata-se de <span class="jurisprudencia">Habeas Corpus</span> impetrado pela <span class="organizacao">Defesa</span> constituída do Cap Ex <span class="pessoa">HENRIQUE DOS SANTOS BOTELHO</span> contra ato do <span class="organizacao">Juiz-Auditor da 2ª Auditoria da 11ª CJM</span> nos autos da <span class="legislacao">Ação Penal Militar</span> nº 14- 06.2010.7.11.0011 ."
+
+Wait, in the sample output, "Habeas Corpus" is marked as jurisprudencia. But Habeas Corpus is a legal remedy, which is part of jurisprudencia. The "Ação Penal Militar" is marked as legislacao. But "Ação Penal Militar" is a type of legal action, which might be part of legislation. However, the user's example shows that "Ação Penal Militar" is marked as legislacao. So I need to follow that.
+
+So, in the input text, "Habeas Corpus" is a legal remedy, so jurisprudencia. "Defesa" is an organization. "HENRIQUE DOS SANTOS BOTELHO" is a pessoa. "Juiz-Auditor da 2ª Auditoria da 11ª CJM" is an organizacao. "Ação Penal Militar" is legislacao.
+
+The URL is left as is. The case number is not marked. The "CJM" might be part of the organizacao, but in the sample output, the entire "Juiz-Auditor da 2ª Auditoria da 11ª CJM" is marked as organizacao. So I should mark that entire phrase as organizacao.
+
+So, the final HTML would have the specified spans with the correct classes.
+</think>
+
+Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 RELATÓRIO Trata-se de <span class="jurisprudencia">Habeas Corpus</span> impetrado pela <span class="organizacao">Defesa</span> constituída do Cap Ex <span class="pessoa">HENRIQUE DOS SANTOS BOTELHO</span> contra ato do <span class="organizacao">Juiz-Auditor da 2ª Auditoria da 11ª CJM</span> nos autos da <span class="legislacao">Ação Penal Militar</span> nº 14- 06.2010.7.11.0011 .

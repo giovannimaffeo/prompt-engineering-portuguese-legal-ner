@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The first part is: "Na mesma linha vem se orientando o Excelso Supremo Tribunal Federal , quando da admissibilidade do recurso extraordinário , também dotado de natureza jurídica especial como o de revista ( Ag.158.982-PR , Rel . Min . Sydney Sanches - Ag . 182.811-SP , Rel . Min . Celso de Mello - Ag 174.473-MG , Rel . Min . Celso de Mello - Ag.188.762-PR , Rel . Min . Sydney Sanches ) . CONCLUSÃO DENEGO seguimento ao recurso de revista. ” ( fls . 47/49 )"
+
+Looking for organizations: "Excelso Supremo Tribunal Federal" is an organization, so that should be <span class="organizacao">. Also, "Supremo Tribunal Federal" is a known organization, so I'll mark that. The "Tribunal Federal" might be part of it, but the full name is "Supremo Tribunal Federal", so I'll check if that's the case. Wait, the original text says "Excelso Supremo Tribunal Federal" – maybe "Excelso" is an honorific, but the main organization is "Supremo Tribunal Federal". So I'll mark that as organizacao.
+
+Next, the part in parentheses has several entries like "Ag.158.982-PR" – these look like jurisprudencia entries. The format "Ag.158.982-PR" is similar to case numbers, so they should be marked as jurisprudencia. Also, "Rel . Min . Sydney Sanches" – "Min." is short for Ministro, which is a title, not a person's name. But "Sydney Sanches" is a person's name, so that should be pessoa. Wait, the example shows "REsp n . 1694984/MS" as jurisprudencia, so the format here is similar. The "Ag." might be an abbreviation for "Agravo", which is a legal term, but the number is the key. So "Ag.158.982-PR" is a jurisprudencia entry. Similarly, "Ag . 182.811-SP" and others. The "Rel . Min . Sydney Sanches" – "Sydney Sanches" is a person, so that's pessoa. The "Min." is a title, so not marked.
+
+Then, "CONCLUSÃO DENEGO seguimento ao recurso de revista." – "recurso de revista" is a legal term, but not an entity. The "recurso extraordinário" is also a legal term, not an entity. So no marking here.
+
+Next part: "Acrescento que não há de se falar em violação do artigo 114 , § 3º , da Constituição Federal , posto que referido dispositivo revela-se impertinente , tratando da possibilidade de ajuizamento de dissídio coletivo pelo Ministério Público do Trabalho nos casos de greve em atividade essencial . No que tange à alegação de que “ o procedimento sumaríssimo não se aplica ao recorrente , Autarquia Federal , nos termos do parágrafo único , do art ."
+
+Here, "Constituição Federal" is a legislation, so that's <span class="legislacao">. "Ministério Público do Trabalho" is an organization, so that's <span class="organizacao">. "Autarquia Federal" is an organization, so that's <span class="organizacao">. The "artigo 114" is part of the legislation, so "artigo 114" should be part of the legislacao tag. Also, "parágrafo único" is part of the legislation reference.
+
+Now, checking for any other entities. The "fls . 47/49" – "fls" is an abbreviation for "fls" (fólio), which is a legal term but not an entity. So no marking. The "art . " is part of the legislation reference.
+
+Putting it all together, I need to mark each entity with the correct class. Let me go through the text again to ensure I didn't miss any.
+
+Wait, in the first part, "Excelso Supremo Tribunal Federal" – "Excelso" is an honorific, but the main organization is "Supremo Tribunal Federal". So I'll mark "Supremo Tribunal Federal" as organizacao. The "Excelso" might be part of the name, but according to the example, "MINISTÉRIO PÚBLICO FEDERAL" is marked as organizacao. So "Supremo Tribunal Federal" is the correct organization here.
+
+Also, "Ministério Público do Trabalho" is an organization, so that's marked. "Autarquia Federal" is an organization, so that's marked. "Constituição Federal" is legislation. "artigo 114" is part of the legislation. "parágrafo único" is part of the legislation reference.
+
+Now, the jurisprudencia entries: "Ag.158.982-PR", "Ag . 182.811-SP", "Ag 174.473-MG", "Ag.188.762-PR" – all these are case numbers, so they should be marked as jurisprudencia. Also, "Sydney Sanches" is a person, so that's pessoa. "Celso de Mello" is another person, so that's pessoa.
+
+Wait, in the original text, the entries are: "Ag.158.982-PR , Rel . Min . Sydney Sanches - Ag . 182.811-SP , Rel . Min . Celso de Mello - Ag 174.473-MG , Rel . Min . Celso de Mello - Ag.188.762-PR , Rel . Min . Sydney Sanches". So each "Ag." is a case number, and "Rel . Min . [Name]" refers to the relator, which is a person. So "Sydney Sanches" and "Celso de Mello" are pessoas. The "Min." is a title, not a person.
+
+So, the final HTML should have all these entities marked with the appropriate classes. Let me structure the output accordingly.
+</think>
+
+Na mesma linha vem se orientando o <span class="organizacao">Supremo Tribunal Federal</span>, quando da admissibilidade do recurso extraordinário, também dotado de natureza jurídica especial como o de revista (<span class="jurisprudencia">Ag.158.982-PR</span>, <span class="pessoa">Sydney Sanches</span> - <span class="jurisprudencia">Ag.182.811-SP</span>, <span class="pessoa">Celso de Mello</span> - <span class="jurisprudencia">Ag.174.473-MG</span>, <span class="pessoa">Celso de Mello</span> - <span class="jurisprudencia">Ag.188.762-PR</span>, <span class="pessoa">Sydney Sanches</span>). <span class="organizacao">CONCLUSÃO DENEGO</span> seguimento ao recurso de revista. ” (fls. 47/49) <span class="legislacao">Acrescento que não há de se falar em violação do artigo 114</span>, <span class="legislacao">§ 3º</span>, da <span class="legislacao">Constituição Federal</span>, posto que referido dispositivo revela-se impertinente, tratando da possibilidade de ajuizamento de dissídio coletivo pelo <span class="organizacao">Ministério Público do Trabalho</span> nos casos de greve em atividade essencial. No que tange à alegação de que “o procedimento sumaríssimo não se aplica ao recorrente, <span class="organizacao">Autarquia Federal</span>, nos termos do parágrafo único, do <span class="legislacao">art</span>.”

@@ -1,0 +1,104 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudencia. Each should have a class attribute.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let's start by breaking down the input.
+
+The input text is: "MÉRITO O presente recurso é tempestivo , por ter sido interposto no prazo legal e preenche os demais requisitos para sua admissibilidade , merecendo ser conhecido . Quanto ao mérito , o presente Agravo deve ser rejeitado . Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 . Em 02/03/2018 17:26:32 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 No tocante ao pedido de reconsideração , inexistem motivos ou fatos novos hábeis a provocar a modificação da Decisão recorrida . razão pela qual , ao ser mantido , submete-se o Agravo Interno ao julgamento de mérito do Plenário , ex vi do art . 118 , § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM ) ."
+
+Let me go through each sentence.
+
+First sentence: "MÉRITO O presente recurso é tempestivo , por ter sido interposto no prazo legal e preenche os demais requisitos para sua admissibilidade , merecendo ser conhecido ."
+
+Here, "MÉRITO" might be a term, but according to the guidelines, generic terms like "mérito" aren't marked. So no entity here.
+
+Next: "Quanto ao mérito , o presente Agravo deve ser rejeitado ."
+
+"Agravo" is a legal term, but it's a generic term, not a specific entity. So no mark.
+
+Third sentence: "Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 ."
+
+"José Barroso Filho" is a full name, so that's a pessoa. "Matricula 1117" is a number, not an entity. So mark José Barroso Filho as pessoa.
+
+Next: "Em 02/03/2018 17:26:32 ."
+
+The date "02/03/2018" is a tempo entity, but the time "17:26:32" is not marked as tempo because the guidelines say only dates, not times. So only "02/03/2018" is tempo.
+
+Then: "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4"
+
+The URL is not a local, so no mark. "Codigo Verificador" is a generic term, not an entity.
+
+Next part: "No tocante ao pedido de reconsideração , inexistem motivos ou fatos novos hábeis a provocar a modificação da Decisão recorrida . razão pela qual , ao ser mantido , submete-se o Agravo Interno ao julgamento de mérito do Plenário , ex vi do art . 118 , § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM ) ."
+
+"Superior Tribunal Militar ( RISTM )" is an organization. The acronym RISTM is part of the name, so the full name "Superior Tribunal Militar" is an organizacao. Also, "Regimento Interno" is a legislation? Wait, "Regimento Interno" is a type of internal regulation, which might be considered legislação. But the example in the guidelines says that "Regimento Interno" is part of the legislation. Wait, the example given for legislação includes "Regimento Interno" in the example output? Let me check the examples again.
+
+In the example, the user had "Regimento Interno do Superior Tribunal Militar ( RISTM )" and in the output, it's marked as legislação. So in this case, "Regimento Interno" is part of the legislation. So "Regimento Interno do Superior Tribunal Militar ( RISTM )" should be marked as legislação. Also, "art. 118 , § 2°" is part of a legislation, so that's legislação.
+
+Wait, the user's input has "ex vi do art . 118 , § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM )". So "art. 118" refers to an article in the "Regimento Interno", which is a legislation. So the entire "Regimento Interno do Superior Tribunal Militar ( RISTM )" is a legislation. Also, "art. 118" is part of that legislation, so that should be marked as legislação.
+
+So in the text, "Regimento Interno do Superior Tribunal Militar ( RISTM )" is a legislation. Also, "art. 118" is part of that legislation, so it should be marked as legislação.
+
+Putting it all together:
+
+- "José Barroso Filho" is pessoa.
+- "02/03/2018" is tempo.
+- "Superior Tribunal Militar ( RISTM )" is organizacao? Wait, the example had "Superior Tribunal Militar ( RISTM )" marked as legislação. Wait, let me check the example again.
+
+In the example given, the user had "Regimento Interno do Superior Tribunal Militar ( RISTM )" marked as legislação. So the "Regimento Interno" is part of the legislation. So in this case, "Regimento Interno do Superior Tribunal Militar ( RISTM )" is a legislation. Also, "art. 118" is part of that legislation.
+
+So in the input, "Regimento Interno do Superior Tribunal Militar ( RISTM )" is a legislation, and "art. 118" is part of that. So I need to mark both as legislação.
+
+Wait, but "Superior Tribunal Militar" is an organization. But in the example, the user had "Regimento Interno" as legislation. So maybe the "Regimento Interno" is the legislation, and "Superior Tribunal Militar" is the organization. However, the example's output marked "Regimento Interno" as legislação. So perhaps in the input, "Regimento Interno do Superior Tribunal Militar ( RISTM )" should be marked as legislação. The "Superior Tribunal Militar" is an organization, but the entire phrase is part of the legislation. Hmm, this is a bit confusing.
+
+Alternatively, maybe "Regimento Interno" is a legislation, and "Superior Tribunal Militar" is an organization. So the phrase "Regimento Interno do Superior Tribunal Militar ( RISTM )" would have both parts. But according to the guidelines, only the legislation part should be marked. So "Regimento Interno" is the legislation, and "Superior Tribunal Militar" is an organization. But the example shows that "Regimento Interno" is marked as legislação. Therefore, in this case, "Regimento Interno" is the legislation, and "Superior Tribunal Militar" is an organization. However, the input has "Regimento Interno do Superior Tribunal Militar ( RISTM )", so the entire phrase is part of the legislation. Wait, the example had "Regimento Interno do Superior Tribunal Militar ( RISTM )" marked as legislação. So the entire phrase is considered as legislation. Therefore, I should mark the entire "Regimento Interno do Superior Tribunal Militar ( RISTM )" as legislação. Also, "art. 118" is part of that legislation.
+
+So the final HTML would have:
+
+- "José Barroso Filho" as pessoa
+- "02/03/2018" as tempo
+- "Regimento Interno do Superior Tribunal Militar ( RISTM )" as legislação
+- "art. 118" as legislação
+
+Wait, but the example shows that "art. 118" is part of the legislation. So in the input, "art. 118" is part of the "Regimento Interno", so it's part of the legislation. Therefore, I should mark "art. 118" as legislação.
+
+Putting it all together, the HTML would look like:
+
+"Documento assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , Matricula 1117 . Em <span class="tempo">02/03/2018</span> . ... ex vi do <span class="legislacao">art . 118 , § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM )</span> ."
+
+Wait, but the "Regimento Interno" is part of the legislation. So the entire phrase "Regimento Interno do Superior Tribunal Militar ( RISTM )" is the legislation. Also, "art. 118" is part of that legislation, so it's included in the same span.
+
+So the correct marking would be:
+
+- "Regimento Interno do Superior Tribunal Militar ( RISTM )" is legislação
+- "art. 118" is part of that legislation, so included in the same span.
+
+Therefore, the HTML would mark the entire "Regimento Interno do Superior Tribunal Militar ( RISTM )" as legislação, and "art. 118" is part of that. However, the example shows that the "art. 118" is marked as legislação. Wait, in the example given by the user, the input was "art. 118 , § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM )" and the output was marked as legislação. So the entire phrase is considered as legislation. Therefore, in the input, "art. 118" is part of the legislation, so it's included in the same span.
+
+So the final HTML would have:
+
+- "José Barroso Filho" as pessoa
+- "02/03/2018" as tempo
+- "Regimento Interno do Superior Tribunal Militar ( RISTM )" as legislação
+- "art. 118" as part of that legislation, so included in the same span.
+
+Wait, but the example shows that "art. 118" is part of the legislation. So the entire phrase "art. 118 , § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM )" is marked as legislação. Therefore, in the input, the phrase "art. 118 , § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM )" should be marked as legislação.
+
+Therefore, the correct HTML would have:
+
+- <span class="pessoa">José Barroso Filho</span>
+- <span class="tempo">02/03/2018</span>
+- <span class="legislacao">art. 118 , § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM )</span>
+
+Also, check if "Superior Tribunal Militar" is an organization. According to the guidelines, "organizaçoes" include tribunais, so "Superior Tribunal Militar" is an organization. However, in the example, the user had "Regimento Interno" marked as legislação, so the "Superior Tribunal Militar" is an organization. But in the input, the phrase is "Regimento Interno do Superior Tribunal Militar ( RISTM )", so the "Superior Tribunal Militar" is part of the legislation. Wait, but the example shows that "Regimento Interno" is the legislation. So perhaps the entire phrase is the legislation, including the "Superior Tribunal Militar" as part of the legislation's name. Alternatively, the "Superior Tribunal Militar" is an organization, and "Regimento Interno" is the legislation. So the "Regimento Interno" is part of the legislation, and the "Superior Tribunal Militar" is an organization. However, in the example, the user marked "Regimento Interno do Superior Tribunal Militar ( RISTM )" as legislação, so the entire phrase is considered legislation.
+
+This is a bit confusing, but based on the example provided, the entire phrase "Regimento Interno do Superior Tribunal Militar ( RISTM )" is marked as legislação. Therefore, in the input, the same applies. So the entire phrase is marked as legislação.
+
+Therefore, the final HTML would be:
+
+"Documento assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , Matricula 1117 . Em <span class="tempo">02/03/2018</span> . ... ex vi do <span class="legislacao">art . 118 , § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM )</span> ."
+
+I also need to check if there are any other entities. The URL is not a local. "RISTM" is an acronym for "Regimento Interno do Superior Tribunal Militar", but the guidelines say that acronyms are part of the legislation, so "RISTM" is part of the legislation. So the entire phrase "Regimento Interno do Superior Tribunal Militar ( RISTM )" is marked as legislação.
+
+So that's all. Now, putting it all together.
+</think>
+
+Documento assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , Matricula 1117 . Em <span class="tempo">02/03/2018</span> . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 No tocante ao pedido de reconsideração , inexistem motivos ou fatos novos hábeis a provocar a modificação da Decisão recorrida . razão pela qual , ao ser mantido , submete-se o Agravo Interno ao julgamento de mérito do Plenário , ex vi do <span class="legislacao">art . 118 , § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM )</span> .

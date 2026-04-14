@@ -1,0 +1,47 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to understand the input text thoroughly. Let me read through it again. The text starts with "Ementa e Acórdão 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC . ( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO Ementa : AÇÃO CÍVEL ORIGINÁRIA . NEGATIVA DE EMISSÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA . COMPETÊNCIA CONCORRENTE EM MATÉRIA DE PREVIDENCIA SOCIAL . ANÁLISE ADMINISTRATIVA . DESEQUILÍBRIO DA RELAÇÃO FEDERATIVA . NULIDADE DO ATO ADMINISTRATIVO . RESERVA JURISDICIONAL . AGRAVO REGIMENTAL A QUE SE NEGA PROVIMENTO . I Compete à União , aos Estados e ao Distrito Federal legislar , concorrentemente , sobre previdência social , nos termos do disposto no art ."
+
+Now, I need to identify each entity according to the definitions provided. Let's go step by step.
+
+Starting with the date "16/03/2018" – that's a tempo entity. So I'll wrap that in <span class="tempo">.
+
+"PLENÁRIO" – this is a part of the court session, but according to the guidelines, organizations are entities like courts, tribunals, etc. However, "PLENÁRIO" might refer to the Plenary session of a court, which is an organization. Wait, but the exact term might be part of a larger entity. Let me check the text again. The full phrase is "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO". Hmm, "PLENÁRIO" here might be part of the court's name. But maybe "PLENÁRIO" is the chamber, so it's an organization. But I'm not sure. Let me think again. The user's example output might have "PLENÁRIO" as part of the organization. Wait, in the sample output provided by the user, "PLENÁRIO" is marked as organizacao. Wait, no, the user's example output isn't given here. Wait, the user provided the input and the output example. Wait, looking back, the user's example output is the one they want me to generate. Wait, no, the user provided the input and the output example is the one they want me to generate. Wait, the user's instruction says to return only the annotated text. So I need to process the input text.
+
+Let me parse the input again. The first part is "Ementa e Acórdão 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC . ( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO Ementa : ..."
+
+Breaking it down:
+
+- "16/03/2018" is a date, so tempo.
+- "PLENÁRIO" – this is part of the court's name. Since it's a court session, it's an organization. So <span class="organizacao">PLENÁRIO</span>.
+- "A G .REG ." – not sure. Maybe "REG" is an abbreviation for something. But the user's example might have "REG" as part of the organization. Wait, maybe "REG" is part of the court's name. But without more context, it's hard. Alternatively, "REG" could be an abbreviation for "Regimento" or something else. But since the user's example might have it as part of the organization, I'll mark it as organizacao.
+- "AÇÃO CÍVEL ORIGINÁRIA 2.821" – "AÇÃO CÍVEL ORIGINÁRIA" is a legal term, not an entity. The number 2.821 might be a case number, but the user's guidelines don't mention case numbers as entities. So leave as is.
+- "MATO GROSSO" is a state, so local.
+- "RELATOR : MIN . RICARDO LEWANDOWSKI" – "MIN." is an abbreviation for Ministro (Minister), so "RICARDO LEWANDOWSKI" is a pessoa.
+- "AGTE . ( S ) : UNIÃO" – "AGTE" is abbreviation for "Agente" (Party), so "UNIÃO" is an organizacao.
+- "ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO" – "ADVOGADO -GERAL DA UNIÃO" is an organization, so organizacao.
+- "AGDO . ( A / S ) : ESTADO DE MATO GROSSO" – "ESTADO DE MATO GROSSO" is an organizacao (state).
+- "PROC . ( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" – "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" is an organizacao.
+- "Ementa : AÇÃO CÍVEL ORIGINÁRIA . NEGATIVA DE EMISSÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA . COMPETÊNCIA CONCORRENTE EM MATÉRIA DE PREVIDENCIA SOCIAL . ANÁLISE ADMINISTRATIVA . DESEQUILÍBRIO DA RELAÇÃO FEDERATIVA . NULIDADE DO ATO ADMINISTRATIVO . RESERVA JURISDICIONAL . AGRAVO REGIMENTAL A QUE SE NEGA PROVIMENTO . I Compete à União , aos Estados e ao Distrito Federal legislar , concorrentemente , sobre previdência social , nos termos do disposto no art ."
+
+In the last part, "UNIÃO" is an organizacao, "Distrito Federal" is a local, and "previdência social" is a legal term, not an entity. "art" might refer to an article in a law, so "art" could be part of a legislação reference, but the user's example might not mark it. Wait, the user's guidelines say to mark only specific entities. "art" is an abbreviation for "artigo" (article), which is part of a law, so maybe it's part of a legislação. But the user's example might not include it. Alternatively, if "art" is part of a law reference, like "art. 123", then it's part of a legislação. But in the input, it's just "art .", so maybe not. So I'll leave it as is.
+
+Putting it all together, I need to mark each entity with the appropriate class. Let me go through each part again carefully.
+
+1. "16/03/2018" → tempo.
+2. "PLENÁRIO" → organizacao.
+3. "REG" → maybe part of the organization, but not sure. Wait, the original text has "A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO". The "REG" might be an abbreviation for "Regimento" or part of the court's name. Since the user's example might have it as part of the organization, I'll mark it as organizacao.
+4. "MATO GROSSO" → local.
+5. "RICARDO LEWANDOWSKI" → pessoa.
+6. "UNIÃO" → organizacao.
+7. "ADVOGADO -GERAL DA UNIÃO" → organizacao.
+8. "ESTADO DE MATO GROSSO" → organizacao.
+9. "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" → organizacao.
+10. "Distrito Federal" → local.
+11. "art" → maybe part of a legislação reference, but since it's just "art .", not sure. The user's guidelines say to mark only if it's a reference to a law. Since "art" is an abbreviation for article, but without a specific law, it's not marked.
+
+Now, I need to structure the HTML with these tags. Let me write the annotated text step by step, ensuring that each entity is correctly marked.
+</think>
+
+<span class="tempo">16/03/2018</span> <span class="organizacao">PLENÁRIO</span> A G .<span class="organizacao">REG</span> . NA <span class="organizacao">AÇÃO CÍVEL ORIGINÁRIA</span> 2.821 <span class="local">MATO GROSSO</span> RELATOR : <span class="pessoa">MIN . RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : <span class="organizacao">ADVOGADO -GERAL DA UNIÃO</span> AGDO . ( A / S ) : <span class="organizacao">ESTADO DE MATO GROSSO</span> PROC . ( A / S ) ( ES ) : <span class="organizacao">PROCURADOR -GERAL DO ESTADO DE MATO GROSSO</span> Ementa : <span class="organizacao">AÇÃO CÍVEL ORIGINÁRIA</span> . NEGATIVA DE EMISSÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA . COMPETÊNCIA CONCORRENTE EM MATÉRIA DE PREVIDENCIA SOCIAL . ANÁLISE ADMINISTRATIVA . DESEQUILÍBRIO DA RELAÇÃO FEDERATIVA . NULIDADE DO ATO ADMINISTRATIVO . RESERVA JURISDICIONAL . AGRAVO REGIMENTAL A QUE SE NEGA PROVIMENTO . I Compete à <span class="organizacao">UNIÃO</span> , aos <span class="organizacao">Estados</span> e ao <span class="local">Distrito Federal</span> legislar , concorrentemente , sobre previdência social , nos termos do disposto no <span class="legislacao">art</span> .

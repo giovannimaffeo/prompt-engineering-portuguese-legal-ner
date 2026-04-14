@@ -1,0 +1,56 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The text starts with "Manifestação da Mesa Diretora da Câmara Legislativa do Distrito Federal , trecho à fl . 47". Here, "Câmara Legislativa do Distrito Federal" is an organization, so I'll mark that as organizacao. "Distrito Federal" is a local, so that's local. "fl. 47" might be a page reference, but it's not a standard entity type, so maybe it's just left as is.
+
+Next, "O Excelentíssimo Senhor GOVERNADOR" – "GOVERNADOR" is a person, so pessoa. Then "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "DESEMBARGADOR" is a title, but the name "SILVANIO BARBOSA DOS SANTOS" is a person, so pessoa. 
+
+Looking at "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – "Ação Direta de Inconstitucionalidade" is a legal term, but not sure if it's legislação or jurisprudência. Maybe it's a case, so perhaps jurisprudencia? Wait, the user's example might have "ADI" as a case, so maybe it's jurisprudencia. But I need to check if "ADI" is a type of legislation or jurisprudence. Since ADI is a type of action, maybe it's jurisprudencia. 
+
+Then "Código de Verificação" – that's a code, not an entity. 
+
+"13 propugnou pela constitucionalidade da norma" – "13" could be a number, but not an entity. 
+
+"que : `` A busca por parcerias , desde que preservados todos os interesses públicos em jogo , é uma tendência da moderna administração pública , de modo a tornar os serviços mais céleres e eficientes ao cidadão '' . De fato , é inolvidável que a celebração de convênios é um instrumento apto a incrementar a atuação estatal , conferindo eficiência aos serviços e atribuições da Administração Pública ."
+
+In this part, "Administração Pública" is an organization, so organizacao. 
+
+Wait, "Câmara Legislativa do Distrito Federal" is an organization. "Distrito Federal" is a local. "GOVERNADOR" is a person. "SILVANIO BARBOSA DOS SANTOS" is a person. "Código de Verificação" is not an entity. "ADI" might be a case, so jurisprudencia. "Administração Pública" is an organization. 
+
+Let me go through each part again to make sure I didn't miss any. 
+
+"Manifestação da Mesa Diretora da Câmara Legislativa do Distrito Federal" – "Câmara Legislativa do Distrito Federal" is an organization. "Distrito Federal" is a local. 
+
+"trecho à fl . 47" – "fl" is a page reference, not an entity. 
+
+"O Excelentíssimo Senhor GOVERNADOR" – "GOVERNADOR" is a person. 
+
+"Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – "Ação Direta de Inconstitucionalidade" is a legal action, maybe jurisprudencia. The number "20170020161362ADI" could be a case number, so maybe jurisprudencia. 
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "SILVANIO BARBOSA DOS SANTOS" is a person. 
+
+"13 propugnou pela constitucionalidade da norma" – "13" is a number, not an entity. 
+
+"Administração Pública" – organization. 
+
+So, the entities are:
+
+- Câmara Legislativa do Distrito Federal: organizacao
+- Distrito Federal: local
+- GOVERNADOR: pessoa
+- SILVANIO BARBOSA DOS SANTOS: pessoa
+- Ação Direta de Inconstitucionalidade 20170020161362ADI: jurisprudencia
+- Administração Pública: organizacao
+
+Wait, but "Ação Direta de Inconstitucionalidade" is a type of legal action, which might be considered jurisprudencia. The number might be part of the case, so it's part of the jurisprudencia entity. 
+
+Also, "Câmara Legislativa do Distrito Federal" is an organization. "Distrito Federal" is a local. 
+
+So, I'll mark those accordingly. 
+
+Now, I need to make sure that each entity is wrapped in <span> with the correct class. Let me structure the HTML accordingly.
+</think>
+
+<span class="organizacao">Câmara Legislativa do Distrito Federal</span> , trecho à fl . 47 ) O Excelentíssimo Senhor <span class="pessoa">GOVERNADOR</span> , nas informações , Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span> GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 13 propugnou pela constitucionalidade da norma , asseverando , dentre outros argumentos , que : `` A busca por parcerias , desde que preservados todos os interesses públicos em jogo , é uma tendência da moderna <span class="organizacao">Administração Pública</span> , de modo a tornar os serviços mais céleres e eficientes ao cidadão '' . De fato , é inolvidável que a celebração de convênios é um instrumento apto a incrementar a atuação estatal , conferindo eficiência aos serviços e atribuições da <span class="organizacao">Administração Pública</span> .

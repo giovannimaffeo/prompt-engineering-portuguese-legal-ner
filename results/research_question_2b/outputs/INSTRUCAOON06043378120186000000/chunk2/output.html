@@ -1,0 +1,72 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by looking for any mentions of people. The text mentions "SENHOR MINISTRO LUIZ FUX" which is a person, so that should be marked as 'pessoa'. Then there's "MINIST^|_UI Z FUX - PRESIDENTE E RELATOR" – the name "LUIZ FUX" is another person, so that's another 'pessoa'.
+
+Next, organizations. The text has "MINIST^|_UI Z FUX" which might be an organization, but the caret and underscore might be typos. Maybe it's supposed to be "MINISTÉRIO" or something similar. Wait, the original text has "MINIST^|_UI Z FUX" which could be a typo for "MINISTÉRIO" or "MINISTÉRIO DA JUSTIÇA" but the exact text is "MINIST^|_UI Z FUX". Since the user provided the text as is, I should take it literally. However, "MINIST^|_UI Z FUX" might be part of an organization name. Maybe it's "MINISTÉRIO" with some formatting issues. Alternatively, "PRESIDENTE E RELATOR" is a title, not an organization. So perhaps "MINIST^|_UI Z FUX" is an organization, but I'm not sure. Maybe it's a typo for "MINISTÉRIO" and the rest is part of the name. Alternatively, maybe "MINIST^|_UI Z FUX" is the name of an organization. I'll mark it as 'organizacao' since it's a title or name.
+
+Looking for time or date. The text says "Esta resolução entra em vigor na data de sua publicação" which mentions "data de sua publicação" – that's a date, so 'tempo'.
+
+Local: "DF" stands for Distrito Federal, which is a location, so 'local'.
+
+Legislacao: The text mentions "legislação de regência" so that's 'legislacao'.
+
+Jurisprudencia: The text refers to "segurança jurídica" but 'jurisprudencia' is a specific term. Wait, the text says "segurança jurídica" which is more about legal security, not jurisprudence. However, the term 'jurisprudencia' is part of the entities. Wait, the original text has "segurança jurídica" but the entity 'jurisprudencia' is not directly mentioned. Wait, the user's example output includes "segurança jurídica" as part of the text, but maybe there's a mention of jurisprudencia. Let me check again. The text says "segurança jurídica" which is about legal security, not jurisprudence. So maybe there's no 'jurisprudencia' entity here. Wait, the original text has "segurança jurídica" but the entity 'jurisprudencia' is not present. So perhaps there's no 'jurisprudencia' in the text. So I need to check each part again.
+
+Let me go through the text step by step:
+
+1. "Esta resolução entra em vigor na data de sua publicação" – "data de sua publicação" is a date, so 'tempo'.
+
+2. "MINIST^|_UI Z FUX - PRESIDENTE E RELATOR" – "MINIST^|_UI Z FUX" might be an organization, but the caret and underscore are probably typos. Maybe it's "MINISTÉRIO" or "MINISTÉRIO DA JUSTIÇA" but the exact text is "MINIST^|_UI Z FUX". Since the user provided it as is, I'll mark it as 'organizacao'.
+
+3. "Inst n° 0604337-81.2018.6.00.0000/DF" – "DF" is a location (Distrito Federal), so 'local'.
+
+4. "SENHOR MINISTRO LUIZ FUX" – "LUIZ FUX" is a person, so 'pessoa'.
+
+5. "competência normativa do Tribunal Superior Eleitoral" – "Tribunal Superior Eleitoral" is an organization, so 'organizacao'.
+
+6. "Resoluções interpretativas da legislação de regência" – "legislação" is 'legislacao'.
+
+7. "segurança jurídica" – 'jurisprudencia' is not directly mentioned here. The term 'jurisprudencia' refers to judicial precedents or legal principles, but the text mentions 'segurança jurídica' which is about legal security, not jurisprudence. So no 'jurisprudencia' entity here.
+
+So the entities are:
+
+- 'pessoa': LUIZ FUX
+- 'organizacao': MINIST^|_UI Z FUX, Tribunal Superior Eleitoral
+- 'tempo': data de sua publicação
+- 'local': DF
+- 'legislacao': legislação
+- 'jurisprudencia': none
+
+Wait, the text also mentions "Resoluções interpretativas da legislação de regência" – 'legislação' is present, so that's 'legislacao'.
+
+Now, I need to wrap each of these in <span> tags with the correct class. Let me reconstruct the text with the entities marked.
+
+Original text:
+
+"2o ] Esta resolução entra em vigor na data de sua publicação . MINIST^|_UI Z FUX - PRESIDENTE E RELATOR Inst n° 0604337-81.2018.6.00.0000/DF 2 RELATÓRIO/VOTO O SENHOR MINISTRO LUIZ FUX ( presidente e relator ) : Senhores Ministros , a competência normativa do Tribunal Superior Eleitoral , materializada na expedição de Resoluções interpretativas da legislação de regência , tem por objetivo precípuo gerar um ambiente de previsibilidade e de segurança jurídica a todos os players da competição eleitoral ."
+
+Breaking it down:
+
+- "data de sua publicação" → tempo
+- "MINIST^|_UI Z FUX" → organizacao
+- "DF" → local
+- "LUIZ FUX" → pessoa
+- "Tribunal Superior Eleitoral" → organizacao
+- "legislação" → legislacao
+
+So the HTML would have:
+
+<span class="tempo">data de sua publicação</span>
+<span class="organizacao">MINIST^|_UI Z FUX</span>
+<span class="local">DF</span>
+<span class="pessoa">LUIZ FUX</span>
+<span class="organizacao">Tribunal Superior Eleitoral</span>
+<span class="legislacao">legislação</span>
+
+Wait, but in the original text, "Tribunal Superior Eleitoral" is part of the sentence: "competência normativa do Tribunal Superior Eleitoral". So that's an organization. Also, "Resoluções interpretativas da legislação de regência" has "legislação" as a term.
+
+So the final HTML should have all these entities marked. Let me make sure I didn't miss any. The rest of the text doesn't have any other entities. So the output should be the original text with these spans.
+</think>
+
+<span class="tempo">data de sua publicação</span> . <span class="organizacao">MINIST^|_UI Z FUX</span> - PRESIDENTE E RELATOR Inst n° 0604337-81.2018.6.00.0000/<span class="local">DF</span> 2 RELATÓRIO/VOTO O <span class="pessoa">SENHOR MINISTRO LUIZ FUX</span> ( presidente e relator ) : Senhores Ministros , a competência normativa do <span class="organizacao">Tribunal Superior Eleitoral</span> , materializada na expedição de <span class="jurisprudencia">Resoluções interpretativas da legislação de regência</span> , tem por objetivo precípuo gerar um ambiente de previsibilidade e de segurança jurídica a todos os players da competição eleitoral .

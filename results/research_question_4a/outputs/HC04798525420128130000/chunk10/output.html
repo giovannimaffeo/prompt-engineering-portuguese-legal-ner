@@ -1,0 +1,54 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with the first sentence: "Requer seja concedida a ordem de `` habeas corpus '' em sede liminar , a fim de que seja restituída a liberdade ao paciente , com a expedição de competente alvará de soltura e , no mérito , o deferimento em definitivo da ordem concedida liminarmente ."
+
+Looking for entities here. "habeas corpus" is a legal term, but according to the guidelines, it's a generic term and not a specific entity. So no tag needed. "liminar" is a legal term but not an entity. "alvará de soltura" is a legal document, but again, it's a generic term. So no tags here.
+
+Next sentence: "O pedido liminar foi INDEFERIDO pelo plantonista , Desembargador Eduardo Brum , fls . 301/301v ."
+
+"INDEFERIDO" is a legal term but not an entity. "plantonista" is a role, not a person. "Desembargador Eduardo Brum" – "Desembargador" is a title, so not a person. "Eduardo Brum" is a person's name. So I need to mark "Eduardo Brum" as pessoa. Also, "fls" is an abbreviation for "fls" (fólio), which is a legal term but not an entity. So only "Eduardo Brum" is marked.
+
+Next: "A Autoridade apontada como Coatora prestou informações acompanhadas de documentos , fls . 307/324 e 331/348 ."
+
+"Autoridade" is a generic term. "Coatora" is a term, but not an entity. "fls" again, no tag. So nothing here.
+
+"A douta Procuradoria-Geral de Justiça , através de parecer do Procurador de Justiça Dr. Albino Vitório-Bernardo , fls . 325/329 , opina pela denegação da ordem ."
+
+"Procuradoria-Geral de Justiça" is an organization. So mark that as organizacao. "Dr. Albino Vitório-Bernardo" – "Dr." is a title, so not a person. "Albino Vitório-Bernardo" is a person's name. So mark that as pessoa. "fls" again, no tag.
+
+"É O RELATÓRIO . PASSO A PROFERIR O VOTO : Em análise dos autos , extrai-se que o paciente preso preventivamente pela prática , em tese , dos delitos tipificados nos art . 155 , §4º , II e IV c/c art . 288 , ambos do CPB ."
+
+"art" refers to articles in legislation. "CPB" is the abbreviation for Código Penal Brasileiro, which is a legal code. So "art. 155" and "art. 288" are parts of the legislation. "CPB" is a legislation. So mark "art. 155 , §4º , II e IV c/c art . 288" as legislacao, and "CPB" as legislacao.
+
+Wait, the user's example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So in this case, "art. 155" and "art. 288" are parts of the legislation. Also, "CPB" is a legislation. So I need to mark those.
+
+Putting it all together:
+
+- "Eduardo Brum" as pessoa.
+- "Procuradoria-Geral de Justiça" as organizacao.
+- "Albino Vitório-Bernardo" as pessoa.
+- "art. 155 , §4º , II e IV c/c art . 288" as legislacao.
+- "CPB" as legislacao.
+
+Wait, the original text has "art . 155 , §4º , II e IV c/c art . 288 , ambos do CPB". So "art. 155" and "art. 288" are parts of the legislation, and "CPB" is the legislation. So the entire phrase "art . 155 , §4º , II e IV c/c art . 288 , ambos do CPB" should be marked as legislacao. But according to the guidelines, only the references to norms should be marked. So "art. 155" and "art. 288" are parts of the legislation, and "CPB" is the legislation. So the entire phrase is part of the legislation. So I need to mark the entire part as legislacao.
+
+Wait, the example in the guidelines shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So in this case, the entire reference to the articles and the code should be marked. So in the input text, "art . 155 , §4º , II e IV c/c art . 288 , ambos do CPB" is the legislation part. So I need to mark that as legislacao.
+
+So the final HTML would have:
+
+- "Eduardo Brum" as pessoa.
+- "Procuradoria-Geral de Justiça" as organizacao.
+- "Albino Vitório-Bernardo" as pessoa.
+- "art . 155 , §4º , II e IV c/c art . 288 , ambos do CPB" as legislacao.
+
+Wait, but "CPB" is the abbreviation for Código Penal Brasileiro, which is a legislation. So "CPB" should be marked as legislacao. So the entire phrase is part of the legislation. So the entire part from "art . 155" to "CPB" is marked as legislacao.
+
+So the final output would have those tags. Let me check again.
+
+Yes, that's correct. So the HTML should have the spans for those entities.
+</think>
+
+Requer seja concedida a ordem de `` habeas corpus '' em sede liminar , a fim de que seja restituída a liberdade ao paciente , com a expedição de competente alvará de soltura e , no mérito , o deferimento em definitivo da ordem concedida liminarmente . O pedido liminar foi INDEFERIDO pelo plantonista , <span class="pessoa">Desembargador Eduardo Brum</span> , fls . 301/301v . A Autoridade apontada como Coatora prestou informações acompanhadas de documentos , fls . 307/324 e 331/348 . A <span class="organizacao">douta Procuradoria-Geral de Justiça</span> , através de parecer do <span class="pessoa">Procurador de Justiça Dr. Albino Vitório-Bernardo</span> , fls . 325/329 , opina pela denegação da ordem . É O RELATÓRIO . PASSO A PROFERIR O VOTO : Em análise dos autos , extrai-se que o paciente preso preventivamente pela prática , em tese , dos delitos tipificados nos <span class="legislacao">art . 155 , §4º , II e IV c/c art . 288 , ambos do CPB</span> .

@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute.
+
+First, I need to parse the input text carefully. Let me read through the example provided to understand the structure. The input text has several parts: mentions of legal terms, court decisions, dates, and references to laws. 
+
+Starting with the first part: "2º , 3º e 4º impõe novas obrigações às Secretarias de Saúde e Educação e seus agentes". The "Secretarias de Saúde e Educação" are organizations. So I should mark "Secretarias de Saúde e Educação" as organizacao. Also, "Secretarias" is plural, but the example includes "Secretarias" as part of the organization name. Wait, the definition says "expressões que identificam entidades coletivas". So "Secretarias de Saúde e Educação" is an organization. 
+
+Next, "ADI n° 20050020113565" – ADI is an acronym for Ação Direta de Inconstitucionalidade, which is a legal term, but the example shows that "ADI" is part of the jurisprudência. Wait, the user's example output has "ADI n° 20050020113565" marked as jurisprudência. Let me check the guidelines. Jurisprudência includes references to specific decisions, like "ADI n° ...". So that should be marked as jurisprudência. 
+
+Then "Rel . Des . : NATANAEL CAETANO" – "Des." is short for Desembargador, which is a title, not a person. But the name "NATANAEL CAETANO" is a person, so mark that as pessoa. 
+
+"CONSELHO ESPECIAL" – this is an organization, as it refers to a judicial council. So mark as organizacao. 
+
+"Acórdão n.267633" – this is a court decision, so jurisprudência. 
+
+"DJe : 31/07/2007" – the date is a tempo entity. 
+
+"Pág. : 81" – page number, not an entity. 
+
+Then "Parquet" – this is the public prosecutor's office, which is an organization. So mark "Parquet" as organizacao. 
+
+"art . 15 , incisos XIV e XV da Lei Orgânica do Distrito Federal" – "Lei Orgânica do Distrito Federal" is legislation. So mark that as legislação. 
+
+"Distrito Federal" is a local entity, so mark as local. 
+
+Now, checking the example output provided by the user. They have "Secretarias de Saúde e Educação" as organizacao, "ADI n° 20050020113565" as jurisprudência, "NATANAEL CAETANO" as pessoa, "CONSELHO ESPECIAL" as organizacao, "Acórdão n.267633" as jurisprudência, "31/07/2007" as tempo, "Parquet" as organizacao, and "Lei Orgânica do Distrito Federal" as legislação, "Distrito Federal" as local. 
+
+I need to ensure that all these entities are correctly marked. Also, check for any other possible entities. For example, "Distrito Federal" is a local, so that's correct. 
+
+I should also check for any other dates, like "DJe : 31/07/2007" which is a date, so tempo. 
+
+Make sure that terms like "art." are not marked, only the legislation name. 
+
+Also, the example has "Lei Orgânica do Distrito Federal" as legislação, which is correct. 
+
+Now, putting it all together in HTML. Each entity is wrapped in a <span> with the appropriate class. 
+
+Let me go through the text again and apply these tags.
+</think>
+
+<span class="organizacao">Secretarias de Saúde e Educação</span> e seus agentes , cumprindo , assim , seja declarada inconstitucional , com efeitos erga omnes e ex tunc '' . (<span class="jurisprudencia">ADI n° 20050020113565</span> . <span class="pessoa">NATANAEL CAETANO</span> . <span class="organizacao">CONSELHO ESPECIAL</span> . <span class="jurisprudencia">Acórdão n.267633</span> . <span class="tempo">31/07/2007</span> . Pág. : 81 ) Além do mais , como bem destaca o <span class="organizacao">Parquet</span> em sua manifestação , a expedição de alvarás de construção e cartas de habite-se é fruto do exercício do poder de polícia , atividade típica do Estado e , portanto , indelegável , nos termos do <span class="legislacao">art . 15 , incisos XIV e XV da Lei Orgânica do Distrito Federal</span> , verbis : '' Art . 15 . <span class="local">Distrito Federal</span> .

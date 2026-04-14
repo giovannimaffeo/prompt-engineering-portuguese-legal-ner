@@ -1,0 +1,34 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text sentence by sentence.
+
+Starting with "In casu , urge salientar que a custódia preventiva do paciente é , atualmente , mantida em virtude de sentença de pronúncia exarada em 15.05.17 , pelo juiz sumariante ."
+
+Here, "15.05.17" is a date, so that's a tempo entity. The "juiz sumariante" refers to a judge, which is a pessoa. Wait, but "juiz" is a generic term. The guidelines say to mark only names, not generic terms. So "juiz sumariante" might not be a pessoa unless it's a specific name. But in this case, it's a title, so maybe not. Wait, the example for pessoa includes names like "Ana Silva", so if "juiz sumariante" is a specific person's title, but the text doesn't mention a name. So maybe it's not a pessoa. So only the date is marked as tempo.
+
+Next sentence: "Como é cediço , nos termos do atual §3º do art . 413 do Código de Processo Penal , `` O juiz decidirá , motivadamente , no caso de manutenção , revogação ou substituição da prisão ou medida restritiva de liberdade anteriormente decretada e , tratando-se de acusado solto , sobre a necessidade da decretação da prisão ou imposição de quaisquer das medidas previstas no Título IX do Livro I deste Código . ''"
+
+Here, "Código de Processo Penal" is a legislation, so that's legislacao. The "§3º do art . 413" refers to a specific article, so that's part of the legislacao. Also, "Título IX do Livro I" is part of the same legislation. So those parts should be marked as legislacao.
+
+Then, "Observa-se que a decisão de pronúncia , que manteve a custódia provisória do paciente , ao contrário do que asseverou o impetrante , deixa clara a necessidade de manutenção do acusado no cárcere tendo em vista que os motivos fáticos e jurídicos que deram causa a decretação de sua segregação cautelar ainda perduram ."
+
+The "impetrante" is a legal term, but it's a generic term referring to a party in a legal proceeding. The guidelines say not to mark generic terms unless they are specific names. So "impetrante" is not a pessoa. The "acusado" is a generic term for the accused, so not a pessoa. The "cárcere" is a place, but it's a generic term for prison, not a specific location. So no local here. The "segregação cautelar" is a legal measure, not an entity. 
+
+Wait, the "decisão de pronúncia" is a legal decision, but the guidelines mention jurisprudencia as decisions, precedents, etc. However, "decisão de pronúncia" is a specific legal decision, so maybe that's jurisprudencia. But the example for jurisprudencia includes things like "REsp 1694984/MS" or "Súmula 331 do TST". The text here refers to a decision made by the judge, but it's not a specific case or precedent. So maybe not. The guidelines say to mark only references to specific cases, precedents, etc. Since this is a general reference to a decision, not a specific one, it might not be marked. 
+
+So, in the entire text, the entities are:
+
+- "15.05.17" as tempo
+- "Código de Processo Penal" as legislacao
+- "§3º do art . 413" as part of legislacao
+- "Título IX do Livro I" as part of legislacao
+
+Wait, the "§3º do art . 413" is part of the legislation, so the entire "§3º do art . 413 do Código de Processo Penal" should be marked as legislacao. Similarly, "Título IX do Livro I" is part of the same legislation. So those parts need to be marked.
+
+Also, "juiz sumariante" is a title, not a specific person, so not a pessoa. "impetrante" is a generic term, not a pessoa. "acusado" is a generic term. "cárcere" is a generic term for prison, not a specific location. 
+
+So the final HTML should have the date marked as tempo, and the legislation parts marked as legislacao. The rest remains as is.
+</think>
+
+<span class="tempo">15.05.17</span> , pelo <span class="organizacao">juiz sumariante</span> . ... nos termos do atual §3º do art . 413 do <span class="legislacao">Código de Processo Penal</span> , `` O <span class="organizacao">juiz</span> decidirá , motivadamente , no caso de manutenção , revogação ou substituição da prisão ou medida restritiva de liberdade anteriormente decretada e , tratando-se de <span class="pessoa">acusado</span> solto , sobre a necessidade da decretação da prisão ou imposição de quaisquer das medidas previstas no <span class="legislacao">Título IX do Livro I</span> deste <span class="legislacao">Código de Processo Penal</span> . '' ... <span class="jurisprudencia">decisão de pronúncia</span> , que manteve a custódia provisória do <span class="pessoa">paciente</span> , ... <span class="pessoa">impetrante</span> , deixa clara a necessidade de manutenção do <span class="pessoa">acusado</span> no <span class="local">cárcere</span> ...

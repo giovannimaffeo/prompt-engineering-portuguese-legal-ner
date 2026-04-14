@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. The input is: "Alega o autor que é credor do réu da importância representada por duas cártulas de cheques do Banco Real , no valor de R $ 175,50 cada cártula , atualizado até 30/03/2015 em R $ 469,24 ."
+
+Let me go through each part. 
+
+Starting with "Banco Real" – that's an organization, so I'll mark it as <span class="organizacao">Banco Real</span>.
+
+Next, "R $ 175,50" and "R $ 469,24" are monetary values. The problem says to leave the text as is if no entities are found. Since these are amounts, not entities, they stay unchanged.
+
+The date "30/03/2015" is a tempo (time/date) entity. So I'll wrap that in <span class="tempo">30/03/2015</span>.
+
+Now, checking for other entities. "autor" and "réu" are people, but the text says "o autor" and "do réu". However, the user's example output doesn't mark "autor" or "réu" as pessoa. Wait, maybe in the context, "autor" refers to the plaintiff in a legal case, which is a person. Similarly, "réu" is the defendant, also a person. But the example output provided by the user doesn't mark them. Wait, looking back at the user's example, the output is:
+
+"Alega o <span class="pessoa">autor</span> que é credor do <span class="pessoa">réu</span> da importância representada por duas cártulas de cheques do <span class="organizacao">Banco Real</span> , no valor de R $ 175,50 cada cártula , atualizado até <span class="tempo">30/03/2015</span> em R $ 469,24 ."
+
+Wait, in the user's example, "autor" and "réu" are marked as pessoa. But in the original input, the user's example output shows that. So maybe in this case, "autor" and "réu" are considered pessoas. So I need to mark them as <span class="pessoa">.
+
+Wait, the original input text is: "Alega o autor que é credor do réu da importância..." So "autor" is the plaintiff, and "réu" is the defendant. Both are people, so they should be marked as pessoa.
+
+So the correct HTML would have "autor" and "réu" as pessoa. Also, "Banco Real" as organizacao, and "30/03/2015" as tempo.
+
+Other parts like "R $ 175,50" and "R $ 469,24" are not entities, so they remain as is.
+
+So putting it all together:
+
+"Alega o <span class="pessoa">autor</span> que é credor do <span class="pessoa">réu</span> da importância representada por duas cártulas de cheques do <span class="organizacao">Banco Real</span> , no valor de R $ 175,50 cada cártula , atualizado até <span class="tempo">30/03/2015</span> em R $ 469,24 ."
+
+I need to make sure that the tags are correctly placed and that the classes are properly assigned. Also, check for any other possible entities. For example, "cártulas de cheques" – "cheques" is a legal term, but it's not one of the specified entities. So no tag needed. The rest of the text doesn't have any other entities. So the final output should include the three spans for pessoa, organizacao, and tempo.
+</think>
+
+Alega o <span class="pessoa">autor</span> que é credor do <span class="pessoa">réu</span> da importância representada por duas cártulas de cheques do <span class="organizacao">Banco Real</span> , no valor de R $ 175,50 cada cártula , atualizado até <span class="tempo">30/03/2015</span> em R $ 469,24 .

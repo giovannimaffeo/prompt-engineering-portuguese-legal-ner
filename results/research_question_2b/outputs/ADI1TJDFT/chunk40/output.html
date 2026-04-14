@@ -1,0 +1,32 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about an Action Directa de Inconstitucionalidade (ADI) with some code, mentions of the Gabinete do Desembargador Silvanio Barbosa dos Santos, and references to legislation.
+
+Looking for the entities:
+
+1. "pessoa": The name "Silvanio Barbosa dos Santos" is likely a person. So I should mark that as a pessoa.
+2. "organizacao": The term "Gabinete do Desembargador" might be an organization. But wait, "Gabinete" here refers to the office or chamber of a judge, which is part of the judicial system. Maybe it's better to consider "Gabinete" as an organization. Alternatively, "Desembargador" is a title, so maybe the full name "Gabinete do Desembargador Silvanio Barbosa dos Santos" is an organization. But the example output in the user's message shows "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as an organization. So I'll mark that as organizacao.
+3. "tempo": The code "20170020161362ADI" includes a year 2017, which is a tempo entity. Also, "2018" in "2018ACONT2JYXTK52JCSL251NVQ" might be a date, so that's tempo.
+4. "local": The text doesn't mention any specific location, so maybe none here.
+5. "legislacao": The phrase "na forma da legislação em vigor" refers to legislation, so "legislação" is a legislacao entity.
+6. "jurisprudencia": The text mentions "Grifos nossos" which might be a reference to jurisprudence, but I'm not sure. Alternatively, "ADI" is a type of legal action, but not sure if it's jurisprudencia. Wait, the example output in the user's message doesn't mark "ADI" as jurisprudencia. Let me check the example again. The user's example output shows "ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" with "2018" as tempo. So "ADI" is not marked, but "Código de Verificação" is part of the text. Maybe "ADI" is a legal term but not an entity here. So perhaps "jurisprudencia" isn't present here. The example output doesn't have any jurisprudencia tags, so maybe there's none in this text.
+
+Now, applying the tags:
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as organizacao.
+- "2017" and "2018" as tempo.
+- "legislação" as legislacao.
+
+Wait, the input text has "legislação em vigor" so "legislação" is the entity. Also, "ADI" is part of the text but not an entity here. The code "2018ACONT2JYXTK52JCSL251NVQ" includes "2018" as tempo.
+
+So the final HTML should have:
+
+- <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span>
+- <span class="tempo">2017</span> and <span class="tempo">2018</span>
+- <span class="legislacao">legislação</span>
+
+Other parts like "ADI" and "Código de Verificação" are not entities. The rest of the text remains as is.
+</think>
+
+<span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 11 Orgânica ; ( ... ) XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da <span class="legislacao">legislação</span> em vigor ; ( Grifos nossos ) Art . 71 . <span class="tempo">2017</span>0020161362ADI Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ

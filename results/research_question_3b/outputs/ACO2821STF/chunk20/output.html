@@ -1,0 +1,52 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input is a legal text mentioning various entities. My job is to identify each entity according to the definitions given.
+
+Starting with the first part: "Supremo Tribunal Federal ACO 2821 A GR / MT". "Supremo Tribunal Federal" is a well-known Brazilian court, so that's an organization. "ACO 2821 A GR" might be an acronym or a case number. Wait, "ACO" could stand for something, but the example output shows "ACO 2821 A GR" as part of the text without marking. Wait, looking at the example output, maybe "ACO 2821 A GR" is part of a case reference. But according to the guidelines, jurisprudencia refers to decisions, precedents, etc., with numbers or identifiers. So "ACO 2821 A GR" might be a case number, so it should be marked as jurisprudencia. Wait, but the example output shows it as is. Hmm, maybe I need to check the example output again.
+
+Wait, the user provided an example input and output. Let me check the example output they provided. The input is: "Supremo Tribunal Federal ACO 2821 A GR / MT que o Projeto de Lei Complementar 1/2016 encontra-se sob apreciação da Assembleia Legislativa do Estado . Salientou que sem o Certificado de Regularidade Previdenciária , o Estado de Mato Grosso está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais ."
+
+The example output is: 
+
+"<span class="organizacao">Supremo Tribunal Federal</span> <span class="jurisprudencia">ACO 2821 A GR</span> / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa do Estado</span> . Salientou que sem o <span class="legislacao">Certificado de Regularidade Previdenciária</span> , o <span class="local">Estado de Mato Grosso</span> está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais ."
+
+So, in the example, "ACO 2821 A GR" is marked as jurisprudencia. That makes sense because it's a case reference. "MT" is a local (state abbreviation). "Projeto de Lei Complementar 1/2016" is legislation. "Assembleia Legislativa do Estado" is an organization. "Certificado de Regularidade Previdenciária" is legislation. "Estado de Mato Grosso" is a local.
+
+Now, applying this to the input text. Let me go through each part step by step.
+
+First sentence: "Supremo Tribunal Federal ACO 2821 A GR / MT que o Projeto de Lei Complementar 1/2016 encontra-se sob apreciação da Assembleia Legislativa do Estado ."
+
+- "Supremo Tribunal Federal" is an organization (organizacao).
+- "ACO 2821 A GR" is a case reference, so jurisprudencia.
+- "MT" is a state abbreviation, so local.
+- "Projeto de Lei Complementar 1/2016" is a legislative project, so legislacao.
+- "Assembleia Legislativa do Estado" is an organization (organizacao).
+- "Estado" is part of "Estado de Mato Grosso" which is a local, but "Estado" alone is a generic term, so not marked. However, in the example, "Estado de Mato Grosso" is marked as local. So "Estado de Mato Grosso" is a local.
+
+Next part: "Salientou que sem o Certificado de Regularidade Previdenciária , o Estado de Mato Grosso está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais ."
+
+- "Certificado de Regularidade Previdenciária" is a legislative document, so legislacao.
+- "Estado de Mato Grosso" is a local (since it's a specific state).
+- "Administração Direta ou Indireta da União" refers to federal administration, but "União" is the federal government, which is an organization. However, in the example, "Administração Direta ou Indireta da União" is not marked. Wait, the example output doesn't mark "União" as an organization. Wait, in the example, "União" is part of "Administração Direta ou Indireta da União" and is not marked. But according to the definitions, "organizacao" includes federal government entities. However, "União" is a term used for the federal government, so maybe it's an organization. But in the example, it's not marked. Hmm, maybe the example doesn't mark it because it's part of a longer phrase. The guidelines say to mark complete NPs. So "União" alone is a generic term, but when part of a phrase like "Administração Direta ou Indireta da União", maybe it's not marked. Alternatively, "União" could be an organization. But the example output doesn't mark it. So perhaps in this case, "União" is not marked. Similarly, "instituições financeiras federais" refers to federal financial institutions, but they are not specific names, so not marked.
+
+So, putting it all together, the HTML should have the appropriate spans for each entity. Let me check each part again to ensure I'm not missing any.
+
+Another thing to note: "ACO 2821 A GR" is marked as jurisprudencia. The example output shows that. So I need to make sure that any case numbers or references are marked as jurisprudencia.
+
+Also, "Projeto de Lei Complementar 1/2016" is a legislative project, so legislacao.
+
+"Certificado de Regularidade Previdenciária" is a document, so legislacao.
+
+"Estado de Mato Grosso" is a local.
+
+"Supremo Tribunal Federal" is an organization.
+
+"Assembleia Legislativa do Estado" is an organization.
+
+"MT" is a local (abbreviation for Mato Grosso).
+
+So, the final HTML should have all these spans correctly placed. I need to make sure that the tags are properly closed and that the text is not altered otherwise. Also, check for any other entities that might have been missed, like "União" or "Federais", but according to the example, they are not marked. So I'll follow the example's approach.
+</think>
+
+<span class="organizacao">Supremo Tribunal Federal</span> <span class="jurisprudencia">ACO 2821 A GR</span> / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa do Estado</span> . Salientou que sem o <span class="legislacao">Certificado de Regularidade Previdenciária</span> , o <span class="local">Estado de Mato Grosso</span> está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais .

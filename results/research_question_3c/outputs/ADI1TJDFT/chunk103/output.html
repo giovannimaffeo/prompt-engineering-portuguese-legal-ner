@@ -1,0 +1,90 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text has several parts. Let me break it down step by step.
+
+Starting with "Acórdão n.1078980 , 20170020135916ADI , Relator : JOSÉ DIVINO CONSELHO ESPECIAL , Data de Julgamento : 20/02/2018 , Publicado no DJE : 05/03/2018 . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da Lei 5.815/2017 . É o voto . Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls ."
+
+Looking for entities:
+
+1. "Acórdão n.1078980" – Acórdão is a legal term, but the number might be a jurisprudência reference. Wait, the example output shows "Acórdão n.1078980" as part of a jurisprudência. But according to the guidelines, jurisprudência includes references to acórdãos, recursos, etc. So "n.1078980" is a number, but the full reference might be the jurisprudência. However, the example output in the user's message shows "Acórdão n.1078980" as part of a jurisprudência. Wait, looking at the sample output provided by the user, they have "Acórdão n.1078980" marked as jurisprudência. Wait, no, the user's sample output is not given, but the example input and output. Wait, the user provided the input and the expected output. Wait, the user's instruction says that the output should be the annotated text. Let me check the example again.
+
+Wait, the user provided the input text and the expected output. Wait, no, the user's instruction says that the output should be the annotated text. Let me focus on the input text.
+
+Looking for entities:
+
+- "Relator : JOSÉ DIVINO CONSELHO ESPECIAL" – "JOSÉ DIVINO CONSELHO ESPECIAL" is a person. So that's a pessoa.
+
+- "Data de Julgamento : 20/02/2018" – this is a date, so tempo.
+
+- "Publicado no DJE : 05/03/2018" – another date, tempo.
+
+- "Lei 5.815/2017" – this is legislation, so legislacao.
+
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" – this seems like a legal case reference, so jurisprudencia.
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "SILVANIO BARBOSA DOS SANTOS" is a person, so pessoa.
+
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – this is a code, not an entity.
+
+- "DESEMBARGADOR" – this is a title, not a person's name. Wait, but "SILVANIO BARBOSA DOS SANTOS" is a person, so that's a pessoa.
+
+Also, "20170020135916ADI" and "20170020161362ADI" are likely jurisprudência references, as they are case numbers.
+
+So, the entities to mark are:
+
+- JOSÉ DIVINO CONSELHO ESPECIAL (pessoa)
+- 20/02/2018 (tempo)
+- 05/03/2018 (tempo)
+- Lei 5.815/2017 (legislacao)
+- Ação Direta de Inconstitucionalidade 20170020161362ADI (jurisprudencia)
+- SILVANIO BARBOSA DOS SANTOS (pessoa)
+- 20170020135916ADI (jurisprudencia)
+- 20170020161362ADI (jurisprudencia)
+
+Wait, but the example output in the user's message (the one they provided) might have different markings. Wait, the user's instruction says that the output should be the annotated text. Let me check the example again.
+
+Wait, the user's input text includes "Acórdão n.1078980" and "20170020135916ADI" and "20170020161362ADI". The example output in the user's message (the one they provided) is not given, but the user's instruction says to return the annotated text. So I need to process the input text as per the guidelines.
+
+So, in the input text:
+
+- "Relator : JOSÉ DIVINO CONSELHO ESPECIAL" – "JOSÉ DIVINO CONSELHO ESPECIAL" is a person (pessoa).
+
+- "Data de Julgamento : 20/02/2018" – tempo.
+
+- "Publicado no DJE : 05/03/2018" – tempo.
+
+- "Lei 5.815/2017" – legislacao.
+
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" – this is a legal case, so jurisprudencia.
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "SILVANIO BARBOSA DOS SANTOS" is a person (pessoa).
+
+- "20170020135916ADI" – this is a case number, so jurisprudencia.
+
+- "20170020161362ADI" – same as above, jurisprudencia.
+
+Also, "Acórdão n.1078980" – the number is part of the case reference, so jurisprudencia.
+
+Wait, but the example output in the user's message (the one they provided) might have different markings. Wait, the user's instruction says that the output should be the annotated text. So I need to make sure that all the entities are marked correctly.
+
+So, putting it all together, the HTML should have:
+
+- <span class="pessoa">JOSÉ DIVINO CONSELHO ESPECIAL</span>
+- <span class="tempo">20/02/2018</span>
+- <span class="tempo">05/03/2018</span>
+- <span class="legislacao">Lei 5.815/2017</span>
+- <span class="jurisprudencia">Acórdão n.1078980</span>
+- <span class="jurisprudencia">20170020135916ADI</span>
+- <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span>
+- <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>
+- <span class="jurisprudencia">20170020161362ADI</span>
+
+Wait, but "Acórdão n.1078980" is part of the text. The number is part of the case reference, so it's jurisprudencia. Similarly, "20170020135916ADI" and "20170020161362ADI" are case numbers. The "Ação Direta de Inconstitucionalidade" is part of the case reference, so it's jurisprudencia.
+
+Also, "GABINETE DO DESEMBARGADOR" is part of the text, but "SILVANIO BARBOSA DOS SANTOS" is a person.
+
+So, the final HTML should have all these entities marked with their respective classes.
+</think>
+
+<span class="jurisprudencia">Acórdão n.1078980</span>, <span class="jurisprudencia">20170020135916ADI</span>, Relator : <span class="pessoa">JOSÉ DIVINO CONSELHO ESPECIAL</span>, Data de Julgamento : <span class="tempo">20/02/2018</span>, Publicado no DJE : <span class="tempo">05/03/2018</span>. Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da <span class="legislacao">Lei 5.815/2017</span>. É o voto . Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 41 Fls .

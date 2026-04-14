@@ -1,0 +1,48 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances that fit each category. Let me go through the text sentence by sentence.
+
+Starting with "Entendo , data maxima venia da eminente Relatora , que isso não é possível e que deve ser obedecida a lei que determina que os seus reajustes sejam feitos pelos reajustes gerais . Por sinal , não foi sequer determinado que ficasse até extinguir , essa verba desaparecer . Consequentemente , não vejo ofensa à Constituição Federal , porque foram para a aposentadoria com essas peculiaridades do servidor público , mas a dinâmica dos cargos comissionados , das funções comissionadas , não pode repercutir sobre aqueles que já não estão mais na ativa do serviço público . Peço a máxima vênia à eminente Relatora para dar provimento ao recurso e à remessa para julgar improcedente o pedido . O Senhor Desembargador SEBASTIÃO COELHO - Presidente e Vogal Peço vista . Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 12 Fls ."
+
+Looking for pessoas: "Relatora" and "SEBASTIÃO COELHO" are names. Also, "Desembargador SEBASTIÃO COELHO" – the title "Desembargador" is part of the name, so the full name should be marked. "Maria IVATÔNIA" is another name. Wait, "Maria IVATÔNIA" is a name, so that's a pessoa. Also, "Senhor Desembargador SEBASTIÃO COELHO" – the title is part of the name, so the entire name including the title should be marked as pessoa.
+
+Organizacoes: "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – this is an organization, so that's organizacao. Also, "Código de Verificação" might be part of a code, but it's not an organization. "GABINETE DA DESEMBARGADORA" is part of the organization name, so the full phrase "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" should be marked as organizacao.
+
+Tempo: "data maxima" – "data" is a temporal reference, but "data maxima" might be a term, not a specific date. Wait, the user's definition says "expressões que contenham uma referência temporal explícita, incluindo datas completas, datas parciais, anos isolados, dias da semana, meses, ou intervalos de tempo." So "data maxima" is a term, not a specific date, so it's not marked. "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – the year 2018 is a tempo entity. So "2018" should be marked as tempo.
+
+Local: The text mentions "Constituição Federal" which is a legal document, not a local. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organization, not a local. No specific locations mentioned, so no local entities.
+
+Legislacao: "Constituição Federal" is a legal document, so that's legislacao. Also, "Código de Verificação" is a code, but not a legal document. "Código de Verificação" might be part of a code, but the user's definition says "normas jurídicas" like leis, códigos, etc. So "Constituição Federal" is legislacao.
+
+Jurisprudencia: The text mentions "recurso" and "improcedente o pedido" which are legal terms, but not specific jurisprudential references. No specific cases or precedents mentioned, so no jurisprudencia entities.
+
+Now, let me check each part again to make sure I didn't miss anything. "Relatora" is a title, but the name is "Relatora" – wait, "Relatora" is a title, but the user's definition for pessoa includes names. Wait, "Relatora" is a title, but the user's example in the input has "Relatora" as part of the text. Wait, the input has "eminente Relatora" – "Relatora" is a title, but the user's definition for pessoa is names. So "Relatora" is a title, not a name. Wait, but the user's example in the input has "SEBASTIÃO COELHO" as a name. So "Relatora" is a title, not a name. So maybe "Relatora" is not a pessoa. Wait, but the user's example in the input has "Relatora" as part of the text. Wait, the user's input has "eminente Relatora" – "Relatora" is a title, but the user's definition for pessoa is names. So "Relatora" is not a pessoa. Wait, but the user's example in the input has "SEBASTIÃO COELHO" as a name. So "SEBASTIO COELHO" is a pessoa. Also, "Maria IVATÔNIA" is a name. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organization. "Código de Verificação :2018..." has "2018" as tempo. "Constituição Federal" is legislacao. "Código de Verificação" is not a legal document, so not legislacao. "Código de Verificação" is a code, but not a legal document. So the only legislacao is "Constituição Federal". 
+
+Wait, "Código de Verificação" is a code, but the user's definition for legislacao includes "códigos", so maybe "Código de Verificação" is a code, but the user's example in the input has "Código de Verificação" as part of the text. Wait, the user's definition says "normas jurídicas, como leis, códigos, constituições, decretos, medidas provisórias, regimentos ou equivalentes". So "Código de Verificação" is a code, but the term "Código de Verificação" is not a legal document. Wait, the user's example in the input has "Código de Verificação :2018..." which is a code, but not a legal document. So "Código de Verificação" is not a legislacao. Therefore, the only legislacao is "Constituição Federal".
+
+So, the entities are:
+
+- pessoa: SEBASTIÃO COELHO, Maria IVATÔNIA
+- organizacao: GABINETE DA DESEMBARGADORA MARIA IVATÔNIA
+- tempo: 2018
+- legislacao: Constituição Federal
+
+Wait, "SEBASTIÃO COELHO" is a name, so pessoa. "Maria IVATÔNIA" is a name, so pessoa. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organization. "2018" is tempo. "Constituição Federal" is legislacao.
+
+Now, let me check the text again for any other entities. "Código de Verificação" is not a legal document, so not legislacao. "Relatora" is a title, not a name. "Desembargador" is a title, but the full name is "SEBASTIÃO COELHO" which is a pessoa. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organization. "12 Fls." is a page number, not a local, tempo, or legislacao. 
+
+So the final HTML should have the following spans:
+
+- <span class="pessoa">SEBASTIÃO COELHO</span>
+- <span class="pessoa">Maria IVATÔNIA</span>
+- <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span>
+- <span class="tempo">2018</span>
+- <span class="legislacao">Constituição Federal</span>
+
+Wait, but in the input text, "Código de Verificação :2018..." has "2018" as part of the code. So "2018" is a tempo entity. Also, "Constituição Federal" is a legislacao. 
+
+So the final HTML should have those spans. Let me make sure I didn't miss any other entities. The rest of the text doesn't have any other entities. So the output should be the original text with those spans.
+</think>
+
+Entendo , data maxima venia da eminente Relatora , que isso não é possível e que deve ser obedecida a lei que determina que os seus reajustes sejam feitos pelos reajustes gerais . Por sinal , não foi sequer determinado que ficasse até extinguir , essa verba desaparecer . Consequentemente , não vejo ofensa à <span class="legislacao">Constituição Federal</span> , porque foram para a aposentadoria com essas peculiaridades do servidor público , mas a dinâmica dos cargos comissionados , das funções comissionadas , não pode repercutir sobre aqueles que já não estão mais na ativa do serviço público . Peço a máxima vênia à eminente Relatora para dar provimento ao recurso e à remessa para julgar improcedente o pedido . <span class="pessoa">O Senhor Desembargador SEBASTIÃO COELHO</span> - Presidente e Vogal Peço vista . <span class="tempo">Código de Verificação :2018</span> <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> 12 Fls .

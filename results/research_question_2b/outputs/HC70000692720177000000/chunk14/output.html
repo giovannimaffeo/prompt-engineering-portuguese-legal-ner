@@ -1,0 +1,57 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is: "A 2ª Auditoria da 11ª CJM prestou as informações requisitadas , delas se extraindo que : '' ( ... ) Inicialmente , verifica-se que o ponto fulcral da impetração diz respeito à suposta ausência de intimação da ilustre causídica quanto à data de realização das sessões de inquirição de testemunhas , o que teria causado violações aos princípios do contraditório e da ampla defesa . Entretanto , vê-se que a alegação não possui suporte fático a embasá-la ."
+
+Looking for entities:
+
+1. "2ª Auditoria da 11ª CJM" – Here, "CJM" might be an organization. In Brazilian legal context, CJM stands for "Corregedoria Geral de Justiça" or similar, so it's an organization. The "2ª Auditoria" could be part of the organization's name, so maybe the entire phrase is an organization. But I need to check if "CJM" is the main entity. Alternatively, "11ª CJM" might be a specific unit, so maybe "CJM" is the organization. Wait, the user's example in the output might have "CJM" as an organization. Let me check the sample output provided. Wait, the user didn't provide a sample output, but the example in the task shows that "CJM" is marked as organizacao. So I'll mark "CJM" as organizacao.
+
+2. "data de realização das sessões de inquirição de testemunhas" – "data" here refers to a date, so that's a tempo entity. The word "data" in Portuguese is "date", so that's a tempo.
+
+3. "princípios do contraditório e da ampla defesa" – These are legal principles, but the user's entities don't include "princípio" as a category. The user's entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So these principles aren't part of the entities to mark. So no tag here.
+
+4. "ilustre causídica" – "causídica" refers to a lawyer or legal professional. But the entity is "pessoa" if it's a person. However, "causídica" is an adjective, so the actual person might be referred to as "ilustre causídica" but the term itself is an adjective. Wait, maybe "ilustre causídica" is a title or a role, not a specific person. So perhaps there's no pessoa entity here. Unless "ilustre causídica" is a specific person's name, but the text doesn't indicate that. So maybe no pessoa here.
+
+5. "alegação" – This is a legal term, but it's not one of the entities listed. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So no tag here.
+
+6. "suposta ausência de intimação" – "intimação" is a legal term, but again, not an entity type. So no tag.
+
+So the entities to mark are:
+
+- "CJM" as organizacao
+- "data" as tempo
+
+Wait, but in the text, "data de realização" – the word "data" is the entity. So I need to mark "data" as tempo. Also, "2ª Auditoria da 11ª CJM" – maybe "CJM" is the organization. Let me check again. The user's example in the output might have "CJM" as organizacao. So in the input text, "CJM" is part of the organization name. So I should mark "CJM" as organizacao. Also, "data" is a tempo entity.
+
+So the HTML would have:
+
+<span class="organizacao">CJM</span> and <span class="tempo">data</span>.
+
+Wait, but the original text has "data de realização" – the word "data" is the entity. So in the text, wherever "data" appears, it should be marked as tempo. Let me check the exact text.
+
+Looking at the input text: "quanto à data de realização das sessões de inquirição de testemunhas" – the word "data" is there. So that's a tempo entity. So in the output, "data" should be wrapped in <span class="tempo">.
+
+Also, "CJM" is part of the organization. The full phrase is "2ª Auditoria da 11ª CJM" – but "CJM" is the organization. So "CJM" should be marked as organizacao.
+
+So the final HTML would have:
+
+- "CJM" as organizacao
+- "data" as tempo
+
+Other parts of the text don't have any of the specified entities. So the rest remains as is.
+
+Now, I need to make sure that the HTML is correctly formatted, with the spans properly placed. Let me reconstruct the text with the entities marked.
+
+Original text: "A 2ª Auditoria da 11ª CJM prestou as informações requisitadas , delas se extraindo que : '' ( ... ) Inicialmente , verifica-se que o ponto fulcral da impetração diz respeito à suposta ausência de intimação da ilustre causídica quanto à data de realização das sessões de inquirição de testemunhas , o que teria causado violações aos princípios do contraditório e da ampla defesa . Entretanto , vê-se que a alegação não possui suporte fático a embasá-la ."
+
+Marking "CJM" as organizacao and "data" as tempo:
+
+"A 2ª Auditoria da 11ª <span class="organizacao">CJM</span> prestou as informações requisitadas , delas se extraindo que : '' ( ... ) Inicialmente , verifica-se que o ponto fulcral da impetração diz respeito à suposta ausência de intimação da ilustre causídica quanto à <span class="tempo">data</span> de realização das sessões de inquirição de testemunhas , o que teria causado violações aos princípios do contraditório e da ampla defesa . Entretanto , vê-se que a alegação não possui suporte fático a embasá-la ."
+
+That should be the correct output.
+</think>
+
+A 2ª Auditoria da 11ª <span class="organizacao">CJM</span> prestou as informações requisitadas , delas se extraindo que : '' ( ... ) Inicialmente , verifica-se que o ponto fulcral da impetração diz respeito à suposta ausência de intimação da ilustre causídica quanto à <span class="tempo">data</span> de realização das sessões de inquirição de testemunhas , o que teria causado violações aos princípios do contraditório e da ampla defesa . Entretanto , vê-se que a alegação não possui suporte fático a embasá-la .

@@ -1,0 +1,49 @@
+<think>
+Okay, let me tackle this query. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text mentions several names and terms that might fit into these categories.
+
+Starting with "RICARDO LEWANDOWSKI" – that's a full name, so that's a pessoa. Then "ACO 2821 A GR / MT Previdenciária CRP" – I need to check if these are legal entities. "ACO" might be an acronym, but the user's guidelines mention that only specific references like process numbers should be marked as jurisprudência. "ACO 2821 A GR / MT" could be a process number, but I'm not sure. Wait, the example output has "ACO 2821 A GR / MT" as jurisprudência. Maybe "ACO" stands for "Acórdão" or something similar. The user's example output includes "ACO 2821 A GR / MT" as jurisprudência, so I'll follow that.
+
+Next, "STF" is the Superior Court of Justice, which is an organization. "Min. JOAQUIM BARBOSA" – "Min." is an abbreviation for Ministro, which is a title, so not a pessoa. The full name "JOAQUIM BARBOSA" is a pessoa. 
+
+The date "3 fev . 2004" is a tempo. The law "Lei no 9.717 , de 1998" is legislação. "STF" again is organizacao. "Min. JOAQUIM BARBOSA" – the "Min." is a title, so not a pessoa. "Lei Federal 9.717/98" is legislação. 
+
+Looking at the rest of the text: "Deputados Estaduais do Ceará" – "Ceará" is a local. "Regime próprio de previdência dos Deputados Estaduais do Ceará" – "Ceará" is local. 
+
+"CRP" might be an acronym, but in the example output, it's not marked. Wait, the input has "CRP" after "Previdenciária". Maybe "CRP" is an abbreviation for something else, but according to the guidelines, only specific references like process numbers or legal entities should be marked. Since "CRP" isn't a known legal entity here, maybe it's not marked. 
+
+The phrase "art . 7o da Lei no 9.717 , de 1998" – "art." is a reference to an article in a law, so the law is marked as legislação. 
+
+The example output includes "ACO 2821 A GR / MT" as jurisprudência. The user's example shows that even if the acronym isn't clear, if it's a reference to a legal decision, it should be marked. 
+
+Also, "STF" is an organization, "Lei Federal 9.717/98" is legislação. "Ceará" is a local. 
+
+I need to make sure that all the entities are correctly categorized. Let me go through each part step by step. 
+
+- "RICARDO LEWANDOWSKI" – pessoa.
+- "ACO 2821 A GR / MT" – jurisprudência (as per the example).
+- "STF" – organizacao.
+- "JOAQUIM BARBOSA" – pessoa.
+- "3 fev . 2004" – tempo.
+- "Lei no 9.717 , de 1998" – legislação.
+- "Ceará" – local.
+- "STF" again – organizacao.
+- "Min. JOAQUIM BARBOSA" – "Min." is a title, so not pessoa, but the full name is pessoa.
+
+Wait, in the text, "Min. JOAQUIM BARBOSA" – "Min." is an abbreviation for Ministro, which is a title, not a name. So only "JOAQUIM BARBOSA" is pessoa. 
+
+Similarly, "Deputados Estaduais do Ceará" – "Ceará" is a local. 
+
+The rest of the text mentions "Regime próprio de previdência dos Deputados Estaduais do Ceará" – again, "Ceará" is local. 
+
+So putting it all together, I need to wrap each entity with the appropriate <span> tags. 
+
+I should also check for any other entities. For example, "MT" might be an acronym for a state or something else, but in the context, it's part of "ACO 2821 A GR / MT", which is marked as jurisprudência. 
+
+I need to ensure that all the entities are correctly identified and that the HTML is properly formatted without any markdown. 
+
+Now, let me construct the HTML by replacing each entity with the corresponding <span> tags.
+</think>
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> <span class="jurisprudencia">ACO 2821 A GR / MT</span> Previdenciária CRP , tendo por motivo a existência de regime próprio de previdência dos <span class="organizacao">Deputados Estaduais do Ceará</span> e , pelo mesmo motivo , de negar a emissão do Certificado de Regularidade Previdenciária e de aplicar as sanções previstas no <span class="legislacao">art . 7o da Lei no 9.717 , de 1998</span> ( <span class="organizacao">STF</span> . <span class="jurisprudencia">ACO 702</span> . Rel . : <span class="pessoa">Min . JOAQUIM BARBOSA</span> . <span class="tempo">DJ , 3 fev . 2004 . </span> ) <span class="legislacao">Lei Federal 9.717/98</span> , assim como aquelas posteriores que a modificaram , decorre do exercício da competência referida . Dispõe sobre as normas gerais para a organização e o funcionamento dos regimes próprios de previdência social dos servidores públicos da União , dos Estados , do <span class="local">Distrito Federal</span> e dos Municípios e dos militares dos Estados e do <span class="local">Distrito Federal</span> , com o propósito de fazer com que os entes da Federação se adaptem ao modelo referido .

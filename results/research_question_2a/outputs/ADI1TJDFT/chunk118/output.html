@@ -1,0 +1,79 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example input again: "Ação Direta de Inconstitucionalidade julgada procedente . Unânime . ( Acórdão n.987488 , 20160020314727ADI , Relator : ROMEU GONZAGA NEIVA CONSELHO ESPECIAL , Data de Julgamento : 06/12/2016 , Publicado no DJE : 19/12/2016 ."
+
+Looking for entities:
+
+1. "Ação Direta de Inconstitucionalidade" – This seems like a legal action, maybe a type of legislation? Wait, "Ação Direta de Inconstitucionalidade" is a legal term referring to a direct action for unconstitutionality. But the user's entities include 'legislacao' and 'jurisprudencia'. Since this is a legal action, perhaps it's part of jurisprudência? Or maybe it's a type of legislation? Hmm, not sure. Maybe it's part of the case name, so maybe not an entity here. Let me check the example output provided. The example output has "Ação Direta de Inconstitucionalidade" as is, so maybe it's not marked. Wait, the example output given by the user is the text with some entities marked. Let me check the example output again.
+
+Wait, the user provided the input and the output. Let me look at the example output. The user's example output is:
+
+"Ação Direta de Inconstitucionalidade julgada procedente . Unânime . ( <span class="jurisprudencia">Acórdão n.987488</span> , <span class="tempo">20160020314727ADI</span> , <span class="pessoa">ROMEU GONZAGA NEIVA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">06/12/2016</span> , Publicado no DJE : <span class="tempo">19/12/2016</span> ."
+
+Wait, in the example output, "Acórdão n.987488" is marked as jurisprudencia. The number 20160020314727ADI is marked as tempo. The relator's name is marked as pessoa, and the organization is CONSELHO ESPECIAL. The dates are marked as tempo. 
+
+So, the key is to identify each entity. Let's go through the input again.
+
+Original text: "Ação Direta de Inconstitucionalidade julgada procedente . Unânime . ( Acórdão n.987488 , 20160020314727ADI , Relator : ROMEU GONZAGA NEIVA CONSELHO ESPECIAL , Data de Julgamento : 06/12/2016 , Publicado no DJE : 19/12/2016 ."
+
+Breaking it down:
+
+- "Ação Direta de Inconstitucionalidade" – This is a legal term, but not sure if it's an entity. The example output didn't mark it, so maybe it's not considered an entity here. So leave as is.
+
+- "Acórdão n.987488" – This is an acordão, which is a judicial decision, so it's part of jurisprudência. So mark as <span class="jurisprudencia">.
+
+- "20160020314727ADI" – This looks like a case number or some identifier. The example marked it as tempo. Wait, but tempo is for time/date. Maybe the number is a case number, but the example marked it as tempo. Maybe the user considers numbers with dates as tempo. Let me check the example again. In the example output, "20160020314727ADI" is marked as tempo. So I'll follow that.
+
+- "Relator : ROMEU GONZAGA NEIVA" – The relator is a person, so "ROMEU GONZAGA NEIVA" is a pessoa.
+
+- "CONSELHO ESPECIAL" – This is an organization, so mark as organizacao.
+
+- "Data de Julgamento : 06/12/2016" – The date is marked as tempo.
+
+- "Publicado no DJE : 19/12/2016" – The date is marked as tempo.
+
+So, the steps are:
+
+1. Identify each entity in the text.
+
+2. Wrap them with <span> tags with the appropriate class.
+
+3. Leave other text as is.
+
+Now, applying this to the input text.
+
+Original text:
+
+"Ação Direta de Inconstitucionalidade julgada procedente . Unânime . ( Acórdão n.987488 , 20160020314727ADI , Relator : ROMEU GONZAGA NEIVA CONSELHO ESPECIAL , Data de Julgamento : 06/12/2016 , Publicado no DJE : 19/12/2016 ."
+
+Breaking down:
+
+- "Ação Direta de Inconstitucionalidade" – no entity.
+
+- "julgada procedente" – no entity.
+
+- "Unânime" – no entity.
+
+- "( Acórdão n.987488" – "Acórdão n.987488" is jurisprudencia.
+
+- " , 20160020314727ADI" – "20160020314727ADI" is tempo.
+
+- " , Relator : ROMEU GONZAGA NEIVA" – "ROMEU GONZAGA NEIVA" is pessoa.
+
+- " CONSELHO ESPECIAL" – "CONSELHO ESPECIAL" is organizacao.
+
+- " , Data de Julgamento : 06/12/2016" – "06/12/2016" is tempo.
+
+- " , Publicado no DJE : 19/12/2016 ." – "19/12/2016" is tempo.
+
+So the HTML would be:
+
+"Ação Direta de Inconstitucionalidade julgada procedente . Unânime . ( <span class="jurisprudencia">Acórdão n.987488</span> , <span class="tempo">20160020314727ADI</span> , Relator : <span class="pessoa">ROMEU GONZAGA NEIVA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">06/12/2016</span> , Publicado no DJE : <span class="tempo">19/12/2016</span> ."
+
+Wait, but in the example output, the "Relator : ROMEU GONZAGA NEIVA CONSELHO ESPECIAL" is split into pessoa and organizacao. So "ROMEU GONZAGA NEIVA" is pessoa, and "CONSELHO ESPECIAL" is organizacao. So the space between them is part of the text. So in the HTML, it's "Relator : <span class="pessoa">ROMEU GONZAGA NEIVA</span> <span class="organizacao">CONSELHO ESPECIAL</span>".
+
+So that's how it's structured. The rest of the text remains as is. So the final HTML should have those spans with the correct classes.
+</think>
+
+Ação Direta de Inconstitucionalidade julgada procedente . Unânime . ( <span class="jurisprudencia">Acórdão n.987488</span> , <span class="tempo">20160020314727ADI</span> , Relator : <span class="pessoa">ROMEU GONZAGA NEIVA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">06/12/2016</span> , Publicado no DJE : <span class="tempo">19/12/2016</span> .

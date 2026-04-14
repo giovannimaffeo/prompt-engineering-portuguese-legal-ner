@@ -1,0 +1,31 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me look at the example provided. The input is: "AGRAVO DE INSTRUMENTO-CV Nº 1.0540.17.000834-1/001 - COMARCA DE RAUL SOARES - AGRAVANTE ( S ) : GENDIRE CARVALHO DA SILVA - AGRAVADO ( A ) ( S ) : CEMIG DISTRIBUIÇÃO S/A A C Ó R D Ã O Vistos etc."
+
+I need to identify each entity. Let's break it down:
+
+1. "AGRAVO DE INSTRUMENTO-CV Nº 1.0540.17.000834-1/001" – This looks like a case number. The "Nº" is a number, but it's part of the case reference. The "COMARCA DE RAUL SOARES" – "COMARCA" is a legal term referring to a judicial district, so "RAUL SOARES" is a local entity. Wait, "COMARCA" itself is a local entity? Or is "RAUL SOARES" the local? Maybe "COMARCA DE RAUL SOARES" is the local, so "RAUL SOARES" is part of the local. But the user's guide says to mark local. So "RAUL SOARES" is a local? Or maybe "COMARCA DE RAUL SOARES" is the local. Hmm, need to check.
+
+Next, "AGRAVANTE ( S ) : GENDIRE CARVALHO DA SILVA" – "AGRAVANTE" is the appellant, so "GENDIRE CARVALHO DA SILVA" is a pessoa. Then "AGRAVADO ( A ) ( S ) : CEMIG DISTRIBUIÇÃO S/A" – "AGRAVADO" is the respondent, so "CEMIG DISTRIBUIÇÃO S/A" is an organizacao. 
+
+The rest is "A C Ó R D Ã O Vistos etc." – "A CÓRDO" is part of the court's decision, maybe "CÓRDO" is part of the jurisprudencia? Or maybe "CÓRDO" is part of the local? Wait, "CÓRDO" might be part of the court's name. But the user's example output shows "COMARCA DE RAUL SOARES" as local. So "RAUL SOARES" is the local. 
+
+Wait, the example output from the user's sample input is:
+
+AGRAVO DE INSTRUMENTO-CV Nº 1.0540.17.000834-1/001 - <span class="local">COMARCA DE RAUL SOARES</span> - <span class="pessoa">GENDIRE CARVALHO DA SILVA</span> - <span class="organizacao">CEMIG DISTRIBUIÇÃO S/A</span> A C Ó R D Ã O Vistos etc.
+
+So in the example, "COMARCA DE RAUL SOARES" is marked as local. Therefore, "RAUL SOARES" is part of the local entity. So the entire "COMARCA DE RAUL SOARES" is the local. 
+
+So in the input text, "COMARCA DE RAUL SOARES" is the local. Then "GENDIRE CARVALHO DA SILVA" is a pessoa. "CEMIG DISTRIBUIÇÃO S/A" is an organizacao. 
+
+The rest of the text doesn't have any other entities. The "A C Ó R D Ã O" might be part of the court's name, but since there's no specific entity type for that, it's left as is. 
+
+So the HTML should have the local marked as "COMARCA DE RAUL SOARES", pessoa as "GENDIRE CARVALHO DA SILVA", and organizacao as "CEMIG DISTRIBUIÇÃO S/A". The rest remains unchanged. 
+
+I need to make sure that the tags are correctly placed. Also, check for any other possible entities. For example, "Nº 1.0540.17.000834-1/001" is a case number, but the user's guide doesn't mention case numbers as an entity type. So it's left as is. 
+
+So the final HTML should have the three entities marked as specified.
+</think>
+
+AGRAVO DE INSTRUMENTO-CV Nº 1.0540.17.000834-1/001 - <span class="local">COMARCA DE RAUL SOARES</span> - <span class="pessoa">GENDIRE CARVALHO DA SILVA</span> - <span class="organizacao">CEMIG DISTRIBUIÇÃO S/A</span> A C Ó R D Ã O Vistos etc.

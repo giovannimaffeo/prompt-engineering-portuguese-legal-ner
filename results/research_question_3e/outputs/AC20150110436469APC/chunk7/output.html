@@ -1,0 +1,45 @@
+<think>
+Okay, I need to process this legal text and highlight the entities as specified. Let me start by reading through the input text carefully.
+
+First, the text mentions "Súmula nº 503 do colendo Superior Tribunal de Justiça". Here, "Súmula 503" is a jurisprudential reference, so that should be marked as jurisprudencia. "Superior Tribunal de Justiça" is an organization, so that's an organizacao. The "colendo" might be part of the name, but I'm not sure. Wait, the example in the guidelines mentions "Súmula 331 do TST" as jurisprudencia. So "Súmula nº 503" is definitely jurisprudencia. The "colendo" might be an adjective, but since the entire name is the organization, maybe "Superior Tribunal de Justiça" is the organization. Let me check the example again. In the example, "REsp n . 1694984/MS" and "Súmula 331 do TST" are marked as jurisprudencia. So "Súmula nº 503 do colendo Superior Tribunal de Justiça" would have "Súmula nº 503" as jurisprudencia and "Superior Tribunal de Justiça" as organizacao. Wait, but the "colendo" is part of the name? Or is it a modifier? The example shows "Súmula 331 do TST" as jurisprudencia, so maybe "colendo" here is part of the name. But I'm not certain. Maybe "colendo" is an adjective, so it's not an entity. So "Superior Tribunal de Justiça" is the organization. So I'll mark that as organizacao.
+
+Next, the text has "artigo 202 , inciso I , do Código Civil". "Código Civil" is a legislative act, so that's legislacao. The "artigo 202" is part of the legislation, so it's included in the legislacao tag. Similarly, "artigo 240 , §§ 1º e 2º , do Código de Processo Civil" would be part of legislacao. The "Código de Processo Civil" is also a legislation. 
+
+Now, looking for other entities. The text mentions "juiz" but that's a generic term, not a specific person, so no pessoa tag. There's "réu" which is a generic term, not a specific person. The dates: "10 ( dez ) dias" – "dez" is the word for ten, but the example says that numbers in dates are marked. However, here it's "dez" as a word, not a number. The example says "10 ( dez ) dias" – the date is not explicit, so maybe it's not a tempo entity. The example mentions that only explicit dates like "DD/MM/YYYY" or "3 de abril de 2017" are marked. Here, "dez" is a month, but it's not in a date format. So no tempo here. 
+
+Other parts: "data de emissão estampada na cártula" – "data" is part of a phrase, not an explicit date. So no tempo. 
+
+Are there any local entities? "Cártula" might refer to a document, but not a specific place. No local here. 
+
+Organizations: "Superior Tribunal de Justiça" is already marked. 
+
+So the entities are:
+
+- "Súmula nº 503" as jurisprudencia
+- "Superior Tribunal de Justiça" as organizacao
+- "Código Civil" as legislacao
+- "Código de Processo Civil" as legislacao
+- "artigo 202 , inciso I , do Código Civil" as legislacao
+- "artigo 240 , §§ 1º e 2º , do Código de Processo Civil" as legislacao
+
+Wait, the example shows that the entire legislative reference is marked. So "artigo 202 , inciso I , do Código Civil" is part of the legislacao. Similarly for the others. 
+
+So in the text, the first part is "Súmula nº 503 do colendo Superior Tribunal de Justiça" – "Súmula nº 503" is jurisprudencia, "Superior Tribunal de Justiça" is organizacao. The rest of the text has "artigo 202", "Código Civil", "artigo 240", "Código de Processo Civil". 
+
+Let me check the example again. In the example, "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So the entire reference is included. So in the input text, "artigo 202 , inciso I , do Código Civil" becomes <span class="legislacao">artigo 202 , inciso I , do Código Civil</span>. Similarly for "artigo 240 , §§ 1º e 2º , do Código de Processo Civil".
+
+Now, the text also mentions "Código Civil" and "Código de Processo Civil" as legislacao. 
+
+So putting it all together, the output should have:
+
+- "Súmula nº 503" as jurisprudencia
+- "Superior Tribunal de Justiça" as organizacao
+- "Código Civil" and "Código de Processo Civil" as legislacao
+- The entire legislative references as legislacao
+
+Also, the "colendo" in "colendo Superior Tribunal de Justiça" – is that part of the organization name? The example mentions "TST" as an organization. Here, "Superior Tribunal de Justiça" is the organization. The "colendo" might be an adjective, so it's not an entity. So only "Superior Tribunal de Justiça" is marked as organizacao.
+
+So the final HTML should have the appropriate spans with the classes. Let me make sure I'm not missing any other entities. No people, no dates, no places. All the entities are covered.
+</think>
+
+Nos termos da <span class="jurisprudencia">Súmula nº 503 do colendo Superior Tribunal de Justiça</span>, `` O prazo para ajuizamento de ação monitória em face do emitente de cheque sem força executiva é quinquenal , a contar do dia seguinte à data de emissão estampada na cártula '' . Cabe ressaltar que , segundo o <span class="legislacao">artigo 202 , inciso I , do Código Civil</span>, a interrupção da prescrição , que somente poderá ocorrer uma vez , dar-se-á `` por despacho do juiz , mesmo incompetente , que ordenar a citação , se o interessado a promover no prazo e na forma da lei processual . '' Ressalte-se que , de acordo com o <span class="legislacao">artigo 240 , §§ 1º e 2º , do Código de Processo Civil</span>, incumbe ao autor da ação , no prazo de 10 ( dez ) dias , viabilizar a citação do réu , sob pena de não ver interrompida a prescrição no momento do ajuizamento , mas apenas na data em que efetivamente for realizado o ato citatório .

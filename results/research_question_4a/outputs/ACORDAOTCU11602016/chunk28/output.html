@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text sentence by sentence.
+
+The first sentence: "Em sessão de 10/9/1999 , a Corte aprovou o início da construção ."
+
+Here, "10/9/1999" is a date, so that's tempo. "Corte" might be an organization, but I need to check if it's a specific entity. Wait, "Corte" in Portuguese can refer to a court, but without more context, maybe it's a generic term. However, if it's a specific court, like "Corte de Apelação" or similar, it would be an organization. But here it's just "Corte," which might be a generic term. So maybe not an organization. Wait, the example given in the guidelines includes "Corte" as part of an organization. Wait, the example in the guidelines for organizacao includes "Tribunal de Contas" and "Câmara Legislativa." So "Corte" might be an organization if it's a specific court. But in this case, the text says "a Corte," which could be a specific court. However, without more context, maybe it's safer to not mark it unless it's a known specific entity. Hmm, maybe I should check if "Corte" is a known organization. Since the example includes "Corte" as part of an organization, perhaps in this case, "Corte" is an organization. Wait, the example given in the guidelines for organizacao includes "Corte" as part of an organization? Wait, the example in the guidelines for organizacao includes "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", etc. So "Corte" might be an organization if it's a specific court. But in this text, it's just "Corte" without any qualification. Maybe it's a generic term, so not an organization. So I'll mark "10/9/1999" as tempo.
+
+Next sentence: "Como os restos a pagar deveriam ser gastos até 31/12/1999 , já não havia mais tempo ( peça 66 , p. 5 ) ;"
+
+Here, "31/12/1999" is a date, so tempo. The "( peça 66 , p. 5 )" – "peça" is a reference to a document, but it's not an entity. The numbers and page references are not entities unless they are specific to a legal document. Since the example includes "REsp n . 1694984/MS" as jurisprudencia, but here "peça 66" is a reference to a document, but not a specific entity. So maybe not marked.
+
+Next: "j ) O recorrente tomou o cuidado de contratar a Comissão Regional de Obras da 1ª Região do Exército , como fiscalizadora da obra ;"
+
+"Comissão Regional de Obras da 1ª Região do Exército" is an organization. The example includes "Comissão Regional de Obras" as an organization. So that's organizacao.
+
+Next: "e o Diretor-Geral anterior , Raul Lopes Biangolino , conhecedor do imbróglio , para fiscalizar o contrato ( peça 66 , p. 13 ) ;"
+
+"Raul Lopes Biangolino" is a person, so pessoa.
+
+Next: "l ) O ex-gestor obteve autorização da Aeronáutica para usar o Depósito Central de Intendência , para guarda de materiais adquiridos por antecipação , experiências bem-sucedidas com diversos itens , tais como divisórias e poltronas . Os casos de sucesso não foram relatados pelos auditores . Os problemas questionados decorreram de ação criminosa e não poderiam ter sido previstos pelo recorrente ."
+
+"Aeronáutica" is an organization. "Depósito Central de Intendência" is a local, as it's a specific place. So "Depósito Central de Intendência" is local. The rest of the text doesn't have any other entities.
+
+Now, compiling all the entities:
+
+- "10/9/1999" → tempo
+- "31/12/1999" → tempo
+- "Comissão Regional de Obras da 1ª Região do Exército" → organizacao
+- "Raul Lopes Biangolino" → pessoa
+- "Aeronáutica" → organizacao
+- "Depósito Central de Intendência" → local
+
+Wait, "Aeronáutica" is an organization. The example includes "MINISTÉRIO PÚBLICO FEDERAL" as an organization. So "Aeronáutica" is an organization. Also, "Depósito Central de Intendência" is a specific place, so local.
+
+Now, I need to make sure that all these are correctly marked. Let me check again.
+
+In the first sentence, "Corte" – if it's a specific court, it's an organization. But without more context, maybe it's a generic term. However, in the example, "Corte" is part of an organization. Wait, the example given in the guidelines for organizacao includes "Tribunal de Contas", which is a specific court. So "Corte" might be an organization if it's a specific court. But in this case, the text says "a Corte", which could be a specific court. However, without more context, maybe it's safer to not mark it unless it's a known specific entity. But the user's example includes "Corte" as part of an organization. Wait, looking back at the example given in the guidelines, the example input includes "MINISTÉRIO PÚBLICO FEDERAL" as an organization. So "Corte" might be an organization if it's a specific court. However, in the input text, "Corte" is used without any qualification. Maybe it's a generic term, so not an organization. Therefore, I'll not mark "Corte" as an organization.
+
+So the entities are:
+
+- 10/9/1999 → tempo
+- 31/12/1999 → tempo
+- Comissão Regional de Obras da 1ª Região do Exército → organizacao
+- Raul Lopes Biangolino → pessoa
+- Aeronáutica → organizacao
+- Depósito Central de Intendência → local
+
+Now, I need to apply the HTML tags accordingly. Let me structure the output with these entities marked.
+</think>
+
+Em sessão de <span class="tempo">10/9/1999</span> , a <span class="organizacao">Corte</span> aprovou o início da construção . Como os restos a pagar deveriam ser gastos até <span class="tempo">31/12/1999</span> , já não havia mais tempo ( <span class="jurisprudencia">peça 66</span> , p. 5 ) ; j ) O recorrente tomou o cuidado de contratar a <span class="organizacao">Comissão Regional de Obras da 1ª Região do Exército</span> , como fiscalizadora da obra ; e o <span class="pessoa">Diretor-Geral anterior</span> , <span class="pessoa">Raul Lopes Biangolino</span> , conhecedor do imbróglio , para fiscalizar o contrato ( <span class="jurisprudencia">peça 66</span> , p. 13 ) ; l ) O ex-gestor obteve autorização da <span class="organizacao">Aeronáutica</span> para usar o <span class="local">Depósito Central de Intendência</span> , para guarda de materiais adquiridos por antecipação , experiências bem-sucedidas com diversos itens , tais como divisórias e poltronas . Os casos de sucesso não foram relatados pelos auditores . Os problemas questionados decorreram de ação criminosa e não poderiam ter sido previstos pelo recorrente .

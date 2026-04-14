@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about a legal document, an acordão, with details like the URL, number, date, and various legal terms.
+
+Starting with the first part: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536376 . Inteiro Teor do Acórdão - Página 2 de 17 Relatório 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+I need to identify each entity. Let's go step by step.
+
+1. "16/03/2018" is a date, so that's tempo. I'll mark it as <span class="tempo">16/03/2018</span>.
+
+2. "PLENÁRIO" – this is a part of the court, maybe an organization? Wait, the definition says "organizacao" includes courts. So "PLENÁRIO" is part of the STF (Superior Court of Justice), which is an organization. But the text doesn't mention the full name. However, "PLENÁRIO" here refers to the Plenary Session of the STF, which is an organization. So I should mark it as organizacao? Wait, the example output in the user's message shows "PLENÁRIO" as <span class="organizacao">PLENÁRIO</span>. Let me check the example output they provided. Oh, the user's example output has "PLENÁRIO" as organizacao. So I'll follow that.
+
+3. "MATO GROSSO" is a state in Brazil, so that's local. So <span class="local">MATO GROSSO</span>.
+
+4. "MIN . RICARDO LEWANDOWSKI" – "RICARDO LEWANDOWSKI" is a person, so <span class="pessoa">RICARDO LEWANDOWSKI</span>.
+
+5. "UNIÃO" – this is a legal entity, the Union, which is an organization. So <span class="organizacao">UNIÃO</span>.
+
+6. "ADVOGADO -GERAL DA UNIÃO" – "ADVOGADO GERAL DA UNIÃO" is the title, but the actual entity is the organization. Wait, the term "ADVOGADO GERAL DA UNIÃO" refers to the Office of the Attorney General of the Union, which is an organization. But the user's example output shows "ADVOGADO -GERAL DA UNIÃO" as organizacao. Wait, the example output in the user's message has "ADVOGADO -GERAL DA UNIÃO" as <span class="organizacao">ADVOGADO -GERAL DA UNIÃO</span>. So I'll follow that.
+
+7. "ESTADO DE MATO GROSSO" – "ESTADO" is the state, so "ESTADO DE MATO GROSSO" is an organization (the state government), so <span class="organizacao">ESTADO DE MATO GROSSO</span>.
+
+8. "AGTE . ( S ) : UNIÃO" – "AGTE" is short for "Agente", but the entity here is "UNIÃO", which is an organization. So "UNIÃO" is already marked as organizacao.
+
+9. "ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO" – "ADVOGADO -GERAL DA UNIÃO" is an organization, already marked.
+
+10. "AGDO . ( A / S ) : ESTADO DE MATO GROSSO" – "ESTADO DE MATO GROSSO" is an organization, already marked.
+
+11. "PROC ." – This might be an abbreviation for "Processo", but it's not a specific entity. So no tag.
+
+Also, "14536376" is a number, but it's not a date or a specific entity. The URL is part of the text but not an entity. The "Relatório 16/03/2018" has the date, which is already marked.
+
+Wait, the example output from the user shows "16/03/2018" as tempo. So I need to make sure all dates are marked as tempo.
+
+Also, "MATO GROSSO" is a local, so that's marked as local.
+
+"PLENÁRIO" is part of the STF, which is an organization, so marked as organizacao.
+
+"RICARDO LEWANDOWSKI" is a person, so pessoa.
+
+"UNIÃO" is an organization.
+
+"ADVOGADO -GERAL DA UNIÃO" is an organization.
+
+"ESTADO DE MATO GROSSO" is an organization.
+
+So putting it all together, the HTML should have these tags. Let me check if there are any other entities. The URL is part of the text but not an entity. The number 14536376 is a process number, but it's not a specific entity type. The rest are already covered.
+
+Now, I need to structure the HTML with the correct tags. Let me make sure that all the entities are correctly identified and tagged. Also, ensure that the rest of the text remains unchanged.
+</think>
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536376 . Inteiro Teor do Acórdão - Página 2 de 17 Relatório <span class="tempo">16/03/2018</span> <span class="organizacao">PLENÁRIO</span> A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> RELATOR : <span class="pessoa">MIN . RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : <span class="organizacao">ADVOGADO -GERAL DA UNIÃO</span> AGDO . ( A / S ) : <span class="organizacao">ESTADO DE MATO GROSSO</span> PROC .

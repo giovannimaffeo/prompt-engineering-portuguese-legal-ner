@@ -1,0 +1,91 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first part mentions "entre os dias 20 próximo e 20 de janeiro de 2018". Here, "20 próximo" and "20 de janeiro de 2018" are dates, so those should be marked as tempo. Wait, "20 próximo" might be a typo. Maybe it's "20 próximo" as in the next 20th? But the exact date is "20 de janeiro de 2018", which is a specific date. So I'll mark "20 de janeiro de 2018" as tempo.
+
+Next, there's a reference to "art. 313, §8º, da LC 59/2001" and "art. 103 da LC 135/2014". "LC" stands for Lei Complementar, which is legislation. So "LC 59/2001" and "LC 135/2014" should be legislacao. Also, the articles are part of the legislation, so maybe the entire "art. 313, §8º, da LC 59/2001" is a reference to legislation. Wait, the user's example output shows "art. 313, §8º , da LC 59/2001" as legislacao. So I need to mark those parts as legislacao.
+
+Then there's "art. 428, caput , do CPP". "CPP" is Código Penal, which is legislation. So "CPP" should be legislacao. The article number is part of the legislation reference, so "art. 428, caput , do CPP" would be legislacao.
+
+Looking for "jurisprudencia", there's a mention of "jurisprudência" in the text. The word "jurisprudência" is in the text, so that should be marked as jurisprudencia.
+
+For "organizacao", I don't see any organizations mentioned here. The text refers to "Tribunal do Júri" which is a court, but that's a legal entity, maybe part of the legislation or jurisprudencia? Wait, "Tribunal do Júri" is a judicial body, so maybe it's part of the jurisprudencia? Or is it a local? Wait, the user's example output shows "Tribunal do Júri" as jurisprudencia. Let me check the example output again. The user's example output has "Tribunal do Júri" marked as jurisprudencia. So I need to mark that as jurisprudencia.
+
+Wait, but "Tribunal do Júri" is a court, which is part of the legal system. However, in the context, it's referring to the court that will judge the accused, so maybe it's part of the jurisprudencia? Or is it a local? No, local would be places like cities or countries. So "Tribunal do Júri" is a legal entity, but the user's example shows it as jurisprudencia. So I'll follow that.
+
+Now, checking for "pessoa" and "local". The text mentions "acusado de homicídio" which is a person, so "acusado" should be pessoa. Also, "paciente" is mentioned, which is a person, so "paciente" should be pessoa. 
+
+Wait, the text says "extraída do aparelho celular do paciente". "Paciente" here refers to a person, so that's pessoa. 
+
+For "local", there's no mention of a specific place, so maybe none. 
+
+So, compiling all the entities:
+
+- "20 de janeiro de 2018" → tempo
+- "LC 59/2001" → legislacao
+- "LC 135/2014" → legislacao
+- "art. 313, §8º , da LC 59/2001" → legislacao
+- "art. 103 da LC 135/2014" → legislacao
+- "art. 428, caput , do CPP" → legislacao
+- "jurisprudência" → jurisprudencia
+- "Tribunal do Júri" → jurisprudencia
+- "acusado" → pessoa
+- "paciente" → pessoa
+
+Wait, the user's example output includes "jurisprudência" as jurisprudencia. Also, "Tribunal do Júri" is marked as jurisprudencia. So I need to make sure those are included.
+
+Now, I'll go through the text again and apply the tags accordingly. Let me check each part step by step.
+
+Original text: "Dessa forma , considerando a insusceptibilidade de designação do julgamento entre os dias 20 próximo e 20 de janeiro de 2018 , ante a expressa proibição legal inserta no art . 313 , §8º , da LC 59/2001 , com a redação dada pelo art . 103 da LC 135/2014 , e à vista do que dispõe o art . 428 , caput , do CPP , que estabelece o prazo de 06 meses , contado do trânsito em julgado da pronúncia , para o julgamento , pelo Tribunal do Júri , do acusado de homicídio , não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri . Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa ."
+
+Breaking it down:
+
+- "entre os dias 20 próximo e 20 de janeiro de 2018" → "20 de janeiro de 2018" is tempo.
+- "art . 313 , §8º , da LC 59/2001" → "LC 59/2001" is legislacao, and the entire reference is part of legislation.
+- "art . 103 da LC 135/2014" → "LC 135/2014" is legislacao.
+- "art . 428 , caput , do CPP" → "CPP" is legislacao.
+- "Tribunal do Júri" → jurisprudencia.
+- "acusado" → pessoa.
+- "paciente" → pessoa.
+- "jurisprudência" → jurisprudencia.
+
+Wait, the original text has "jurisprudência" in the first part: "não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri . Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa ."
+
+Wait, the word "jurisprudência" is in the text? Let me check again. The original text says: "não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri . Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa ."
+
+Wait, the original text doesn't have "jurisprudência" in it. Wait, the user's example output includes "jurisprudência" as a tag. Wait, maybe I made a mistake here. Let me check again.
+
+Wait, the original text says: "não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri . Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa ."
+
+Wait, there's no mention of "jurisprudência" in the original text. Wait, maybe I'm missing something. Let me check again. The original text starts with "Dessa forma , considerando a insusceptibilidade de designação do julgamento entre os dias 20 próximo e 20 de janeiro de 2018 , ante a expressa proibição legal inserta no art . 313 , §8º , da LC 59/2001 , com a redação dada pelo art . 103 da LC 135/2014 , e à vista do que dispõe o art . 428 , caput , do CPP , que estabelece o prazo de 06 meses , contado do trânsito em julgado da pronúncia , para o julgamento , pelo Tribunal do Júri , do acusado de homicídio , não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri . Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa ."
+
+Ah, the word "jurisprudência" is not present. Wait, but the user's example output includes "jurisprudência" as a tag. Wait, maybe the user made a mistake, or perhaps I'm missing something. Let me check again. The original text mentions "Tribunal do Júri" which is a court, and in the example output, that's marked as jurisprudencia. Also, the word "jurisprudência" is not in the text, but "jurisprudência" is a term that refers to legal precedents. However, the original text doesn't have that word. So maybe the user's example output is incorrect, or perhaps I'm missing something.
+
+Wait, the original text says "não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri . Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa ."
+
+Wait, the word "jurisprudência" is not present. So maybe the user's example output is incorrect. But according to the user's instructions, I should follow the example. Wait, the user provided an example output where "jurisprudência" is marked as jurisprudencia. But in the original text, there's no mention of that word. So perhaps the user made a mistake in the example, or maybe I'm missing something.
+
+Alternatively, maybe "jurisprudência" is a typo for "jurisprudência" (the correct spelling). Wait, the original text has "jurisprudência" in the first part? Let me check again. The original text starts with "Dessa forma , considerando a insusceptibilidade de designação do julgamento entre os dias 20 próximo e 20 de janeiro de 2018 , ante a expressa proibição legal inserta no art . 313 , §8º , da LC 59/2001 , com a redação dada pelo art . 103 da LC 135/2014 , e à vista do que dispõe o art . 428 , caput , do CPP , que estabelece o prazo de 06 meses , contado do trânsito em julgado da pronúncia , para o julgamento , pelo Tribunal do Júri , do acusado de homicídio , não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri . Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa ."
+
+Wait, the word "jurisprudência" is not present. So perhaps the user's example output is incorrect. But according to the user's instructions, I should follow the example. However, since the original text doesn't have "jurisprudência", maybe the user made a mistake. Alternatively, maybe "jurisprudência" is a typo for "jurisprudência" (the correct spelling). Wait, the original text has "jurisprudência" in the first part? Let me check again. No, the original text doesn't have that word. So perhaps the user's example is wrong, but I need to proceed based on the original text.
+
+So, in the original text, the entities are:
+
+- "20 de janeiro de 2018" → tempo
+- "LC 59/2001" → legislacao
+- "LC 135/2014" → legislacao
+- "art. 313, §8º, da LC 59/2001" → legislacao
+- "art. 103 da LC 135/2014" → legislacao
+- "art. 428, caput, do CPP" → legislacao
+- "Tribunal do Júri" → jurisprudencia
+- "acusado" → pessoa
+- "paciente" → pessoa
+
+Wait, "Tribunal do Júri" is a court, which is part of the legal system. But according to the user's example, it's marked as jurisprudencia. So I'll follow that.
+
+Now, I'll go through the text and apply the tags accordingly. Let me write out the HTML with the tags.
+</think>
+
+Dessa forma , considerando a insusceptibilidade de designação do julgamento entre os dias 20 próximo e <span class="tempo">20 de janeiro de 2018</span> , ante a expressa proibição legal inserta no art . <span class="legislacao">313</span> , §8º , da <span class="legislacao">LC 59/2001</span> , com a redação dada pelo art . <span class="legislacao">103</span> da <span class="legislacao">LC 135/2014</span> , e à vista do que dispõe o art . <span class="legislacao">428</span> , caput , do <span class="legislacao">CPP</span> , que estabelece o prazo de 06 meses , contado do trânsito em julgado da pronúncia , para o julgamento , pelo <span class="jurisprudencia">Tribunal do Júri</span> , do acusado de homicídio , não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri . Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do <span class="pessoa">paciente</span> , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa .

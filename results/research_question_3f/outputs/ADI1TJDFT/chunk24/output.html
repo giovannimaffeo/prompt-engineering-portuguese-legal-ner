@@ -1,0 +1,49 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "Confira-se a literalidade da norma constitucional distrital , inclusive com vedação expressa à delegação de atribuições entre os Poderes : TÍTULO III DA ORGANIZAÇÃO DOS PODERES CAPÍTULO I DAS DISPOSIÇÕES GERAIS Art . 53 . São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes . ( grifo nosso ) Observa-se , outrossim , que a norma questionada ostenta , ainda , vício formal de iniciativa , pois invade a competência privativa do Governador do Distrito Federal de exercer a direção superior da administração pública distrital e , neste contexto , iniciar processo legislativo pertinente . Vejamos o que dispõe a Lei Orgânica do Distrito Federal : SEÇÃO II DAS ATRIBUIÇÕES DO GOVERNADOR Art . 100 ."
+
+Looking for entities:
+
+1. "Distrito Federal" – This is a local entity. It's a specific place, so I should mark it as local.
+2. "Poderes" – This is a general term, not a specific entity. So no tag.
+3. "Executivo" and "Legislativo" – These are parts of the government structure, not specific entities. No tags.
+4. "Art . 53" – This is a legislative reference. The "Art" stands for Article, so this is part of a legal text. Mark as legislacao.
+5. "Legislativo" – Again, a general term, not a specific entity. No tag.
+6. "Governador do Distrito Federal" – "Governador" is a title, not a specific person. But "Distrito Federal" is a local entity. Wait, the user's guidelines say that only proper names of people should be marked as pessoa. "Governador" is a title, so not a person. However, "Distrito Federal" is a local entity. So "Governador" is part of the title, but since it's a title, not a name, it's not marked. But "Distrito Federal" is already marked as local.
+7. "Lei Orgânica do Distrito Federal" – "Lei Orgânica" is a type of legislation. The full name is "Lei Orgânica do Distrito Federal", so this should be marked as legislacao.
+8. "Art . 100" – Another article reference, so legislacao.
+
+Now, checking for other entities:
+
+- "TÍTULO III DA ORGANIZAÇÃO DOS PODERES" – "TÍTULO III" is a section title, not an entity. "ORGANIZAÇÃO DOS PODERES" is a general term. No tags.
+- "SEÇÃO II DAS ATRIBUIÇÕES DO GOVERNADOR" – "SEÇÃO II" is a section, not an entity. "ATRIBUIÇÕES" is general. No tags.
+
+So the entities to mark are:
+
+- "Distrito Federal" (local)
+- "Art . 53" (legislacao)
+- "Lei Orgânica do Distrito Federal" (legislacao)
+- "Art . 100" (legislacao)
+
+Wait, "Lei Orgânica do Distrito Federal" – the user's guidelines say that legislation includes laws, codes, etc. So "Lei Orgânica" is a law, so it's legislacao. The full name includes "Distrito Federal", which is a local entity, but the entire phrase is a legislation reference. Wait, the guidelines say that legislation should be marked as a whole. So "Lei Orgânica do Distrito Federal" is a legislation reference. So the entire phrase should be marked as legislacao.
+
+Similarly, "Art . 53" and "Art . 100" are articles, so they are part of legislation.
+
+So the final HTML should have:
+
+- <span class="local">Distrito Federal</span>
+- <span class="legislacao">Art . 53</span>
+- <span class="legislacao">Lei Orgânica do Distrito Federal</span>
+- <span class="legislacao">Art . 100</span>
+
+Other parts of the text don't have entities. Let me check again for any missed entities.
+
+"grifo nosso" – this is a note, not an entity. "vício formal de iniciativa" – general terms. "processo legislativo" – general term. "Lei Orgânica" is part of the legislation. 
+
+Yes, that's all. So the output should have those spans.
+</think>
+
+Confira-se a literalidade da norma constitucional distrital , inclusive com vedação expressa à delegação de atribuições entre os Poderes : TÍTULO III DA ORGANIZAÇÃO DOS PODERES CAPÍTULO I DAS DISPOSIÇÕES GERAIS <span class="legislacao">Art . 53</span> . São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes . ( grifo nosso ) Observa-se , outrossim , que a norma questionada ostenta , ainda , vício formal de iniciativa , pois invade a competência privativa do Governador do <span class="local">Distrito Federal</span> de exercer a direção superior da administração pública distrital e , neste contexto , iniciar processo legislativo pertinente . Vejamos o que dispõe a <span class="legislacao">Lei Orgânica do Distrito Federal</span> : SEÇÃO II DAS ATRIBUIÇÕES DO GOVERNADOR <span class="legislacao">Art . 100</span> .

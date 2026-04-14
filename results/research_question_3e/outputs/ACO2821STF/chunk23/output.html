@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The first part is "RICARDO LEWANDOWSKI ACO 2821 A GR / MT Financeiro e Atuarial". Here, "RICARDO LEWANDOWSKI" is clearly a person's name, so that's a pessoa. Then "ACO 2821 A GR / MT" might be a legal reference. Wait, "ACO" could be an acronym, but I need to check if it's a known legal entity. However, the examples given in the guidelines mention things like "REsp" or "Súmula", so maybe "ACO" is part of a jurisprudência reference. But the example given in the task includes "REsp n . 1694984/MS" as jurisprudência. The input here has "ACO 2821 A GR / MT" which might be a case number or something similar. However, the user's example didn't include such a case, so maybe I should check if "ACO" is a known legal term. Alternatively, maybe "ACO" is part of the case name, but without more context, it's hard to say. Since the user's example didn't have such a case, perhaps I should not mark it as jurisprudência unless it's a known identifier. Wait, the guidelines say that identifiers like "REsp" or "Súmula" are jurisprudência. But "ACO" might not be. Maybe it's a typo or a different identifier. For now, I'll note that "RICARDO LEWANDOWSKI" is a pessoa.
+
+Next, "Financeiro e Atuarial" – these are descriptors, not entities. So no tags here.
+
+Moving on: "Requereu a improcedência." – no entities here.
+
+"O feito foi saneado (documento eletrônico 53)" – "documento eletrônico 53" is a document reference, but not an entity. The guidelines say that only specific references like jurisprudência or legislação are marked. Since "documento eletrônico" is a generic term, it's not an entity.
+
+"a seguir , as partes apresentaram alegações finais (documentos eletrônicos 55 e 57)" – similar to above, "documentos eletrônicos" are generic, so no tags.
+
+"Ao final , a Procuradoria-Geral da República apresentou parecer pela parcial procedência do pedido (documento eletrônico 59)" – "Procuradoria-Geral da República" is an organization. So that should be <span class="organizacao">Procuradoria-Geral da República</span>.
+
+"É o relatório . Decido . Bem examinados os autos , pondero inicialmente que compete à União , aos Estados e ao Distrito Federal legislar , concorrentemente , sobre previdência social , nos termos do disposto no art . 24 da Constituição Federal . Com efeito , no campo da legislação concorrente , a competência da União limitar-se-á a estabelecer normas gerais , de acordo com o disposto no art . 24 , § 1º , da CF ."
+
+Here, "União" is a legal entity, but according to the definitions, "União" is a generic term for the federal government, not a specific name. Wait, the guidelines say that only specific names like "MINISTÉRIO PÚBLICO FEDERAL" are marked as organizacao. "União" is a generic term, so it's not an organization. Similarly, "Distrito Federal" is a specific location, so that's a local. Wait, the example in the guidelines includes "Distrito Federal" as a local. So "Distrito Federal" should be <span class="local">Distrito Federal</span>.
+
+"Constituição Federal" is a legislation, so that's <span class="legislacao">Constituição Federal</span>.
+
+"art . 24 da Constituição Federal" – the "art" is part of the legislation reference, so "art . 24" is part of the legislation. Wait, the guidelines say that the entire legislation reference should be marked. So "art. 24 da Constituição Federal" is part of the legislation. But the example in the task includes "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So here, "art. 24 da Constituição Federal" should be marked as legislacao. Similarly, "art . 24 , § 1º , da CF" – "CF" is the abbreviation for Constituição Federal, so the entire reference is part of the legislation. So I should mark "art. 24 da Constituição Federal" and "art. 24 , § 1º , da CF" as legislacao.
+
+Putting it all together:
+
+- "RICARDO LEWANDOWSKI" is pessoa.
+- "Procuradoria-Geral da República" is organizacao.
+- "Distrito Federal" is local.
+- "Constituição Federal" and "CF" (as part of the reference) are legislacao.
+
+Wait, the input text has "art . 24 da Constituição Federal" and "art . 24 , § 1º , da CF". The "CF" is an abbreviation for Constituição Federal, so the entire reference should be marked as legislacao. So both parts should be included.
+
+Now, checking the rest of the text for any other entities. The term "União" is not a specific organization, so it's not marked. "Estados" is a generic term, not an organization. "Distrito Federal" is a local. "Constituição Federal" and "CF" are legislacao.
+
+So the final HTML should have:
+
+- RICARDO LEWANDOWSKI as pessoa.
+- Procuradoria-Geral da República as organizacao.
+- Distrito Federal as local.
+- Constituição Federal and CF as legislacao.
+
+I need to make sure that all the parts of the legislation references are included. For example, "art . 24 da Constituição Federal" becomes <span class="legislacao">art . 24 da Constituição Federal</span>, and "art . 24 , § 1º , da CF" becomes <span class="legislacao">art . 24 , § 1º , da CF</span>.
+
+Also, "CF" is an abbreviation, but since it's part of the legislation reference, it's included.
+
+Now, let's check if there are any other entities. The term "ACO 2821 A GR / MT" – the user might have meant something like a case number, but without knowing the specific context, it's safer not to mark it unless it's a known jurisprudência reference. Since the example given in the task includes "REsp" and "Súmula", but "ACO" is not mentioned, I think it's better to leave it as is.
+
+So the final output should have the marked entities as discussed.
+</think>
+
+RICARDO LEWANDOWSKI <span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A GR / MT Financeiro e Atuarial '' . Requereu a improcedência . O feito foi saneado ( documento eletrônico 53 ) e , a seguir , as partes apresentaram alegações finais ( documentos eletrônicos 55 e 57 ) . Ao final , a <span class="organizacao">Procuradoria-Geral da República</span> apresentou parecer pela parcial procedência do pedido ( documento eletrônico 59 ) . É o relatório . Decido . Bem examinados os autos , pondero inicialmente que compete à União , aos Estados e ao <span class="local">Distrito Federal</span> legislar , concorrentemente , sobre previdência social , nos termos do disposto no <span class="legislacao">art . 24 da Constituição Federal</span> . Com efeito , no campo da legislação concorrente , a competência da União limitar-se-á a estabelecer normas gerais , de acordo com o disposto no <span class="legislacao">art . 24 , § 1º , da CF</span> .

@@ -1,0 +1,43 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "Nesse contexto , na ótica da Defesa Pública , atuando nos interesses do Sr. Nelson Barroso Ferreira , caso não ocorra a retratação , quer que a recursal aclaratória seja apreciada e julgada pelo pleno deste Tribunal Militar . DOS PEDIDOS Em assim sendo , argumentos apresentados à exaustão , fundamentos jurídicos , legais explicitados ( ... ) requer 01 . - de Vossa Excelência , Ministro Relator , a reconsideração da Decisão de fls . 79-83 , de 09/11/2017 , que negou seguimento aos Embargos de Declaração com Efeitos Infringentes ; e 02 . - caso não reconsidere , que seja o presente Agravo Regimental submetido à apreciação do plenário de Ministros , com fundamento no art . 118 , § 2º , do Regimento Interno desta egrégia Corte Militar , com a finalidade de seja provido os presentes Embargos de Declaração com Efeitos Infringentes.. É o Relatório ."
+
+Looking for pessoas: "Sr. Nelson Barroso Ferreira" – that's a full name, so it's a pessoa. The "Sr." is a title, so it shouldn't be marked. So only "Nelson Barroso Ferreira" is marked as pessoa.
+
+Organizacoes: "Defesa Pública" – that's an organization, maybe? Wait, the definition says organizations include public organs, courts, etc. "Defesa Pública" is a public defense organization, so yes, it's an organizacao. "Tribunal Militar" is a court, so organizacao. "Corte Militar" is another court, so also organizacao. "Regimento Interno" is a regulation, not an organization. "Ministro Relator" is a title, not a person's name, so not marked. "Pleno" is a body within an organization, so maybe part of the organizacao, but the text refers to "pleno deste Tribunal Militar" – the Tribunal Militar is the organization, so the "pleno" is part of it, but the main entity is the Tribunal Militar, which is already marked. "Ministério Relator" is a title, not a person's name. "Vossa Excelência" is a title, not a person. So the organizacoes are "Defesa Pública", "Tribunal Militar", "Corte Militar".
+
+Tempo: "09/11/2017" is a date, so that's tempo. Also, "fls . 79-83" – "fls" is "folhas", which refers to pages, but the user's guidelines say only explicit dates should be marked. So "09/11/2017" is tempo.
+
+Legislacao: "art . 118 , § 2º , do Regimento Interno" – "Regimento Interno" is part of the organization's internal rules, but the user's definition says legislation includes regulations. Wait, the definition says "normas jurídicas, como leis, códigos, constituições, decretos, medidas provisórias, regimentos ou equivalentes". So "Regimento Interno" is a regulation, so it's legislacao. But the user's example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. In the input text, "art . 118 , § 2º , do Regimento Interno" – here, "Regimento Interno" is a regulation, so it's part of the legislacao. But wait, the user's guidelines say that "legislação" includes "regimentos" or equivalents. So "Regimento Interno" is a regulation, so it's legislacao. However, the example given in the guidelines has "art. 61 da Lei nº 9.430/96" as legislacao. So in the input, "art . 118 , § 2º , do Regimento Interno" – "Regimento Interno" is part of the legislacao. So I need to mark "Regimento Interno" as legislacao. But the user's guidelines also say that only references to norms should be marked. So "Regimento Interno" is a regulation, so it's legislacao. Therefore, the entire "art . 118 , § 2º , do Regimento Interno" should be marked as legislacao. Wait, but the user's example in the guidelines has "art. 61 , §1º , da Lei nº 9.430/96" as legislacao. So in the input text, "art . 118 , § 2º , do Regimento Interno" – the "Regimento Interno" is part of the legislacao. So the entire phrase is legislacao.
+
+Jurisprudencia: The text mentions "Embargos de Declaração com Efeitos Infringentes" – but that's a type of legal proceeding, not a specific jurisprudential reference. The example in the guidelines has "REsp n . 1694984/MS" and "Súmula 331 do TST" as jurisprudencia. In the input text, there's "Decisão de fls . 79-83 , de 09/11/2017" – "Decisão" is a decision, but it's not a specific jurisprudential reference. The user's guidelines say that only specific decisions (like "Acórdão n. 999404") should be marked. Since "Decisão de fls . 79-83" is a reference to a decision, but it's not a specific identifier like a number, it might not be marked. However, the example in the guidelines includes "Decisão" when it's part of a specific reference. Wait, in the example, the output marks "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So "Decisão" here is part of the text, but not a specific jurisprudential reference. So maybe it's not marked. Similarly, "Embargos de Declaração com Efeitos Infringentes" is a type of legal action, not a specific reference. So no jurisprudencia here.
+
+Locais: The text mentions "Tribunal Militar" and "Corte Militar" which are organizations, not local. "Pleno" is part of an organization. "fls . 79-83" refers to pages, not a local. So no local entities.
+
+Now, putting it all together:
+
+- "Sr. Nelson Barroso Ferreira" → pessoa: "Nelson Barroso Ferreira"
+- "Defesa Pública" → organizacao
+- "Tribunal Militar" → organizacao
+- "Corte Militar" → organizacao
+- "09/11/2017" → tempo
+- "art . 118 , § 2º , do Regimento Interno" → legislacao (since "Regimento Interno" is a regulation)
+- "fls . 79-83" → not marked as tempo (since it's pages, not a date)
+- "Decisão de fls . 79-83" → not jurisprudencia as it's not a specific reference
+
+Wait, the user's guidelines say that "Decisão" when it's part of a specific reference (like "Decisão n. 123") should be marked. But in the input text, it's "Decisão de fls . 79-83" – "fls" refers to pages, so it's not a specific reference. Therefore, it's not marked.
+
+So the final HTML would have the marked entities as follows:
+
+- "Nelson Barroso Ferreira" as pessoa
+- "Defesa Pública", "Tribunal Militar", "Corte Militar" as organizacao
+- "09/11/2017" as tempo
+- "art . 118 , § 2º , do Regimento Interno" as legislacao
+
+Now, let's structure the HTML with these spans.
+</think>
+
+Nesse contexto , na ótica da <span class="organizacao">Defesa Pública</span> , atuando nos interesses do <span class="pessoa">Nelson Barroso Ferreira</span> , caso não ocorra a retratação , quer que a recursal aclaratória seja apreciada e julgada pelo pleno deste <span class="organizacao">Tribunal Militar</span> . DOS PEDIDOS Em assim sendo , argumentos apresentados à exaustão , fundamentos jurídicos , legais explicitados ( ... ) requer 01 . - de Vossa Excelência , Ministro Relator , a reconsideração da <span class="jurisprudencia">Decisão de fls . 79-83</span> , de <span class="tempo">09/11/2017</span> , que negou seguimento aos Embargos de Declaração com Efeitos Infringentes ; e 02 . - caso não reconsidere , que seja o presente <span class="jurisprudencia">Agravo Regimental</span> submetido à apreciação do plenário de Ministros , com fundamento no <span class="legislacao">art . 118 , § 2º , do Regimento Interno</span> desta egrégia <span class="organizacao">Corte Militar</span> , com a finalidade de seja provido os presentes Embargos de Declaração com Efeitos Infringentes.. É o Relatório .

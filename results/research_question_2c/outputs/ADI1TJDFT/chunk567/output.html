@@ -1,0 +1,23 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. The input is: "Declarada , com efeitos ex-tunc e erga omnes , a inconstitucionalidade da Lei n.º 2.404/1999 e dos artigos 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 e 146 , da Lei n.º 4.317/2009 ."
+
+Looking for entities, I should check each part. The text mentions "Lei n.º 2.404/1999" and "Lei n.º 4.317/2009". These are laws, so they fall under 'legislacao'. The numbers and years here are part of the law's identification, so I should wrap the entire "Lei n.º..." parts with <span class="legislacao">.
+
+Next, the term "ex-tunc" and "erga omnes" are legal terms, but they don't seem to be entities like pessoa, organizacao, tempo, local, etc. So they stay as is. The word "inconstitucionalidade" refers to a legal concept, but it's not an entity type here. Similarly, "artigos" (articles) are parts of the legislation, so the numbers following them (like 64, 65, etc.) are part of the legislation references. However, the user's example output might have marked the entire "artigos 64..." as part of the legislation, but I need to check if the numbers are considered part of the legislation or if they are separate. Since the main entity here is the law itself, the numbers are part of the legislation's reference, so they should be included in the 'legislacao' class.
+
+Wait, the example output provided by the user in the problem statement might have marked the entire "Lei n.º..." as 'legislacao'. Let me check the sample input and output. The user's example input has "Lei n.º 2.404/1999" and "Lei n.º 4.317/2009", and the output should have those parts wrapped in <span class="legislacao">. So I need to make sure that each occurrence of "Lei n.º..." is marked correctly.
+
+Also, the numbers like 2.404/1999 and 4.317/2009 are part of the law's identification, so they are part of the legislation. The years (1999 and 2009) are part of the date, which is 'tempo', but in the context of the law, the entire "Lei n.º..." is the legislation, so the date is part of that. Therefore, the entire "Lei n.º..." should be in 'legislacao'.
+
+So, the steps are:
+
+1. Identify all instances of "Lei n.º..." in the text.
+2. Wrap each of those with <span class="legislacao">.
+3. Check if there are any other entities like pessoa, organizacao, tempo, local, or jurisprudencia. In this text, there are none. The terms like "ex-tunc" and "erga omnes" are legal terms but not entities as per the given types. The years (1999, 2009) are part of the legislation's date, so they are included in the 'legislacao' class.
+
+Therefore, the final HTML should have the two "Lei n.º..." parts marked as 'legislacao', and the rest of the text remains unchanged.
+</think>
+
+Declarada , com efeitos ex-tunc e erga omnes , a inconstitucionalidade da <span class="legislacao">Lei n.º 2.404/1999</span> e dos artigos 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 e 146 , da <span class="legislacao">Lei n.º 4.317/2009</span> .

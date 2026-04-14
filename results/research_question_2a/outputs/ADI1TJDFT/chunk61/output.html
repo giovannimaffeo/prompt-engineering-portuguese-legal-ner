@@ -1,0 +1,27 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. The input is: "São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes ."
+
+Let me break it down. The first part mentions "Poderes do Distrito Federal". "Distrito Federal" is a local entity, so I should mark that as local. The "Poderes" here refer to the branches of government, which might be considered as organizations or maybe not. Wait, the user's guide says to use 'organizacao' for organizations. But "Poderes" in this context are the branches (Executive, Legislative), which are parts of the government structure. However, the text mentions "Executivo" and "Legislativo" as separate entities. So "Executivo" and "Legislativo" are parts of the government, but are they organizations? Maybe they are considered as organizations here. Alternatively, maybe they are not entities to be marked. Wait, the user's example might have "Legislativo" as an organization. Let me check the example output.
+
+Looking at the sample output provided by the user, the text "São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes ." becomes:
+
+"São <span class="organizacao">Poderes</span> do <span class="local">Distrito Federal</span> , independentes e harmônicos entre si , o <span class="organizacao">Executivo</span> e o <span class="organizacao">Legislativo</span> . § 1º É vedada a delegação de atribuições entre os <span class="organizacao">Poderes</span> ."
+
+Wait, in the sample output, "Poderes" is marked as organizacao, "Distrito Federal" as local, and "Executivo" and "Legislativo" as organizacao. So the user's example treats "Poderes" as an organization, even though they are branches of government. Maybe in this context, they are considered as organizations. So I need to follow that example.
+
+So, in the input text, "Poderes" is marked as organizacao. "Distrito Federal" is local. "Executivo" and "Legislativo" are also marked as organizacao. The "§ 1º" is a section reference, which might not be an entity. The word "Poderes" again is marked as organizacao. 
+
+So applying that to the input text, I need to replace each occurrence of these terms with the appropriate span tags. Let me check each part:
+
+- "São Poderes do Distrito Federal" → "São <span class="organizacao">Poderes</span> do <span class="local">Distrito Federal</span>"
+- "independentes e harmônicos entre si , o Executivo e o Legislativo" → "independentes e harmônicos entre si , o <span class="organizacao">Executivo</span> e o <span class="organizacao">Legislativo</span>"
+- "§ 1º É vedada a delegação de atribuições entre os Poderes ." → "§ 1º É vedada a delegação de atribuições entre os <span class="organizacao">Poderes</span> ."
+
+So the final HTML would have those spans. I need to make sure that the tags are correctly placed and that the classes are as specified. Also, check for any other entities that might be present. The text doesn't mention any dates, people, legislation, or jurisprudence, so those aren't marked. 
+
+Therefore, the output should be the text with the specified spans. Let me put it all together.
+</think>
+
+São <span class="organizacao">Poderes</span> do <span class="local">Distrito Federal</span> , independentes e harmônicos entre si , o <span class="organizacao">Executivo</span> e o <span class="organizacao">Legislativo</span> . § 1º É vedada a delegação de atribuições entre os <span class="organizacao">Poderes</span> .

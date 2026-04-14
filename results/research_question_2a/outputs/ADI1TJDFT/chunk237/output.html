@@ -1,0 +1,77 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again: "COMPETÊNCIA PRIVATIVA DO GOVERNADOR DO DISTRITO FEDERAL PARA A PROPOSITURA DE LEIS QUE IMPONHAM OBRIGAÇÕES A SEREM OBSERVADAS PELAS SECRETARIAS DE GOVERNO E SEUS AGENTES . INTELIGÊNCIA DO ART . 71 , § 1º , II E IV E ART . 100 , VI e X DA LEI ORGÂNICA DO DISTRITO FEDERAL . PROCEDÊNCIA DO PEDIDO ."
+
+Looking for entities. Let's break it down:
+
+1. "GOVERNADOR DO DISTRITO FEDERAL" – here, "GOVERNADOR" is a person (pessoa), but since it's a title, maybe it's an organization? Wait, the user's guide says "pessoa" for people. But "GOVERNADOR" is a title, so maybe it's an organization? Wait, the example might have "GOVERNADOR" as a person. Wait, the user's example in the output might have "GOVERNADOR" as a pessoa. Let me check the sample output provided. Wait, the user hasn't provided a sample output yet. Wait, the user's instruction says to return the text with the entities marked. Let me think again.
+
+In the input text, "GOVERNADOR DO DISTRITO FEDERAL" – "GOVERNADOR" is a person (the governor), but in the context, it's a title. However, according to the guidelines, "pessoa" is for people. So maybe "GOVERNADOR" is a pessoa. But sometimes, titles might be considered as organizations. Wait, the user's example might have "GOVERNADOR" as a pessoa. Let me check the sample output. Wait, the user hasn't provided a sample output. Let me proceed.
+
+Next, "LEI ORGÂNICA DO DISTRITO FEDERAL" – "LEI ORGÂNICA" is legislation (legislacao), and "DISTRITO FEDERAL" is a local (local). So "LEI ORGÂNICA" would be legislacao, and "DISTRITO FEDERAL" is local. Also, "ART. 71" and "ART. 100" are references to articles in legislation, so those would be legislacao. The "ART" is part of the legislation reference. So "ART. 71" would be legislacao. Similarly, "§ 1º" is part of the legislation. So those parts should be marked as legislacao.
+
+"PROCEDÊNCIA DO PEDIDO" – this seems like a legal term, but it's not an entity. So no tag needed.
+
+So, let's go through each part:
+
+- "GOVERNADOR" – pessoa
+- "DISTRITO FEDERAL" – local
+- "LEI ORGÂNICA" – legislacao
+- "ART. 71" – legislacao
+- "§ 1º" – legislacao
+- "ART. 100" – legislacao
+- "VI e X" – these are parts of the legislation, so legislacao
+- "DISTRITO FEDERAL" again – local
+
+Wait, the text mentions "DISTRITO FEDERAL" twice. The first occurrence is in "GOVERNADOR DO DISTRITO FEDERAL" and the second in "LEI ORGÂNICA DO DISTRITO FEDERAL". Both instances should be marked as local.
+
+So, putting it all together:
+
+- "GOVERNADOR" is pessoa
+- "DISTRITO FEDERAL" is local
+- "LEI ORGÂNICA" is legislacao
+- "ART. 71" is legislacao
+- "§ 1º" is legislacao
+- "ART. 100" is legislacao
+- "VI e X" is legislacao
+- "DISTRITO FEDERAL" again is local
+
+Wait, "VI e X" are parts of the legislation, so they should be part of the legislacao. So the entire text would have the following entities:
+
+- GOVERNADOR (pessoa)
+- DISTRITO FEDERAL (local)
+- LEI ORGÂNICA (legislacao)
+- ART. 71 (legislacao)
+- § 1º (legislacao)
+- ART. 100 (legislacao)
+- VI e X (legislacao)
+- DISTRITO FEDERAL (local)
+
+So the HTML would have each of these parts wrapped in <span> tags with the appropriate classes.
+
+Now, let me structure the HTML accordingly. The original text is:
+
+"COMPETÊNCIA PRIVATIVA DO GOVERNADOR DO DISTRITO FEDERAL PARA A PROPOSITURA DE LEIS QUE IMPONHAM OBRIGAÇÕES A SEREM OBSERVADAS PELAS SECRETARIAS DE GOVERNO E SEUS AGENTES . INTELIGÊNCIA DO ART . 71 , § 1º , II E IV E ART . 100 , VI e X DA LEI ORGÂNICA DO DISTRITO FEDERAL . PROCEDÊNCIA DO PEDIDO ."
+
+Breaking it down:
+
+- "GOVERNADOR" → pessoa
+- "DISTRITO FEDERAL" → local
+- "ART. 71" → legislacao
+- "§ 1º" → legislacao
+- "ART. 100" → legislacao
+- "VI e X" → legislacao
+- "LEI ORGÂNICA" → legislacao
+- "DISTRITO FEDERAL" → local
+
+So the HTML would be:
+
+<span class="pessoa">GOVERNADOR</span> DO <span class="local">DISTRITO FEDERAL</span> PARA A PROPOSITURA DE LEIS QUE IMPONHAM OBRIGAÇÕES A SEREM OBSERVADAS PELAS SECRETARIAS DE GOVERNO E SEUS AGENTES . INTELIGÊNCIA DO <span class="legislacao">ART . 71</span> , <span class="legislacao">§ 1º</span> , II E IV E <span class="legislacao">ART . 100</span> , <span class="legislacao">VI e X</span> DA <span class="legislacao">LEI ORGÂNICA</span> DO <span class="local">DISTRITO FEDERAL</span> . PROCEDÊNCIA DO PEDIDO .
+
+Wait, but "ART . 71" and "§ 1º" are part of the legislation, so they should be marked as legislacao. Similarly, "VI e X" are parts of the legislation. Also, "LEI ORGÂNICA" is legislation. The "DISTRITO FEDERAL" is local. The "GOVERNADOR" is pessoa.
+
+So the final HTML should have all these parts marked accordingly. Let me make sure I didn't miss any entities. The rest of the text doesn't have any other entities. So the output should be as above.
+</think>
+
+<span class="pessoa">GOVERNADOR</span> DO <span class="local">DISTRITO FEDERAL</span> PARA A PROPOSITURA DE LEIS QUE IMPONHAM OBRIGAÇÕES A SEREM OBSERVADAS PELAS SECRETARIAS DE GOVERNO E SEUS AGENTES . INTELIGÊNCIA DO <span class="legislacao">ART . 71</span> , <span class="legislacao">§ 1º</span> , II E IV E <span class="legislacao">ART . 100</span> , <span class="legislacao">VI e X</span> DA <span class="legislacao">LEI ORGÂNICA</span> DO <span class="local">DISTRITO FEDERAL</span> . PROCEDÊNCIA DO PEDIDO .

@@ -1,0 +1,76 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class indicating their type.
+
+First, I need to read through the input text carefully. Let me start by identifying each entity. 
+
+The text mentions "Supremo Tribunal Federal" which is a court, so that's an organization. Then "ACO 2821 A GR / MT" – ACO might stand for "Ação Cível Originária" which is a legal action, but I'm not sure if it's an organization. Wait, the user's example output shows "ACO 2821 A GR / MT" as part of the text without any tags. Maybe ACO here is an acronym for a specific case or action, but since it's not one of the specified types, I should leave it as is. 
+
+Next, "autonomia dos entes federados" – that's a concept, not an entity. "sua contenção nos parâmetros constitucionais" – again, not an entity. 
+
+"Ocorre que ao imiscuir-se nas atividades administrativas dos órgãos estaduais a União extravasa os limites constitucionais" – "União" refers to the federal government, which is an organization. 
+
+"utilizando o procedimento administrativo como sucedâneo de ação direta de inconstitucionalidade" – "ação direta de inconstitucionalidade" is a legal procedure, so maybe that's part of legislação? Or is it a jurisprudência? Hmm, not sure. The user's example output doesn't tag these, so maybe they are not entities here. 
+
+"É o que entendeu o Supremo Tribunal Federal" – "Supremo Tribunal Federal" is an organization again. 
+
+"ao julgar a ACO 1062/DF" – ACO 1062/DF is likely a case number, so maybe it's an organization? Or perhaps it's part of the case name. The example output shows "ACO 1062/DF" without tags, so maybe it's not an entity. 
+
+"AGRAVO REGIMENTAL NA AÇÃO CÍVEL ORIGINÁRIA" – these are legal terms, not entities. 
+
+"CONFLITO FEDERATIVO" – another legal term, not an entity. 
+
+"NEGATIVA DE EXPEDIÇÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA PARA ESTADO-MEMBRO" – again, terms, not entities. 
+
+"O EXAME DA COMPATIBILIZAÇÃO DAS NORMAS ESTADUAIS COM A CONSTITUIÇÃO FEDERAL É MATÉRIA COMPLEXA" – terms, not entities. 
+
+"UTILIZAÇÃO IRREGULAR DE PROCEDIMENTO ADMINISTRATIVO COMO SUCEDÂNEO DE AÇÃO DIRETA DE INCONSTITUCIONALIDADE PARA NEGAR-SE A CONCESSÃO DO REFERIDO CERTIFICADO" – all legal terms, no entities. 
+
+"PRECEDENTES" – that's a legal term, not an entity. 
+
+So, the entities I found are:
+
+- "Supremo Tribunal Federal" (organization)
+- "União" (organization)
+- "ACO 2821 A GR / MT" (maybe not an entity, as per example)
+- "ACO 1062/DF" (maybe not an entity)
+- "Constituição Federal" (legislacao)
+- "ação direta de inconstitucionalidade" (maybe jurisprudencia? Or legislação? Not sure. The example output doesn't tag these, so perhaps they are not entities here.)
+
+Wait, the user's example output shows "Supremo Tribunal Federal" as an organization, "União" as an organization, and "Constituição Federal" as legislacao. Let me check the example output again. 
+
+In the example, the user's output has:
+
+<span class="organizacao">Supremo Tribunal Federal</span>
+<span class="organizacao">União</span>
+<span class="legislacao">Constituição Federal</span>
+
+So, "Constituição Federal" is legislacao. 
+
+Other parts like "ACO 2821 A GR / MT" and "ACO 1062/DF" are left as is. 
+
+So, I need to make sure to tag "Supremo Tribunal Federal" and "União" as organizacao, and "Constituição Federal" as legislacao. 
+
+Let me go through the text again:
+
+Original text:
+
+"Supremo Tribunal Federal ACO 2821 A GR / MT autonomia dos entes federados sua contenção nos parâmetros constitucionais . Ocorre que ao imiscuir-se nas atividades administrativas dos órgãos estaduais a União extravasa os limites constitucionais , utilizando o procedimento administrativo como sucedâneo de ação direta de inconstitucionalidade . É o que entendeu o Supremo Tribunal Federal ao julgar a ACO 1062/DF : ‘ AGRAVO REGIMENTAL NA AÇÃO CÍVEL ORIGINÁRIA . CONFLITO FEDERATIVO . NEGATIVA DE EXPEDIÇÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA PARA ESTADO-MEMBRO . O EXAME DA COMPATIBILIZAÇÃO DAS NORMAS ESTADUAIS COM A CONSTITUIÇÃO FEDERAL É MATÉRIA COMPLEXA . UTILIZAÇÃO IRREGULAR DE PROCEDIMENTO ADMINISTRATIVO COMO SUCEDÂNEO DE AÇÃO DIRETA DE INCONSTITUCIONALIDADE PARA NEGAR-SE A CONCESSÃO DO REFERIDO CERTIFICADO . PRECEDENTES ."
+
+So, "Supremo Tribunal Federal" appears twice. The first occurrence is at the start, and then again after "É o que entendeu o..." So both instances should be tagged as organizacao.
+
+"União" is mentioned once, so that's organizacao.
+
+"Constituição Federal" is mentioned once, so that's legislacao.
+
+Other parts like "ACO 2821 A GR / MT" and "ACO 1062/DF" are case numbers, but since they are not in the specified entity types, they remain as is.
+
+So, the HTML should have:
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT autonomia dos entes federados sua contenção nos parâmetros constitucionais . Ocorre que ao imiscuir-se nas atividades administrativas dos órgãos estaduais <span class="organizacao">União</span> extravasa os limites constitucionais , utilizando o procedimento administrativo como sucedâneo de ação direta de inconstitucionalidade . É o que entendeu o <span class="organizacao">Supremo Tribunal Federal</span> ao julgar a ACO 1062/DF : ‘ AGRAVO REGIMENTAL NA AÇÃO CÍVEL ORIGINÁRIA . CONFLITO FEDERATIVO . NEGATIVA DE EXPEDIÇÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA PARA ESTADO-MEMBRO . O EXAME DA COMPATIBILIZAÇÃO DAS NORMAS ESTADUAIS COM A <span class="legislacao">Constituição Federal</span> É MATÉRIA COMPLEXA . UTILIZAÇÃO IRREGULAR DE PROCEDIMENTO ADMINISTRATIVO COMO SUCEDÂNEO DE AÇÃO DIRETA DE INCONSTITUCIONALIDADE PARA NEGAR-SE A CONCESSÃO DO REFERIDO CERTIFICADO . PRECEDENTES .
+
+Wait, but in the original text, "Constituição Federal" is part of the sentence: "O EXAME DA COMPATIBILIZAÇÃO DAS NORMAS ESTADUAIS COM A CONSTITUIÇÃO FEDERAL É MATÉRIA COMPLEXA." So the "Constituição Federal" is the legislacao.
+
+So, the final HTML should have those three entities tagged. The rest remains as is.
+</think>
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT autonomia dos entes federados sua contenção nos parâmetros constitucionais . Ocorre que ao imiscuir-se nas atividades administrativas dos órgãos estaduais <span class="organizacao">União</span> extravasa os limites constitucionais , utilizando o procedimento administrativo como sucedâneo de ação direta de inconstitucionalidade . É o que entendeu o <span class="organizacao">Supremo Tribunal Federal</span> ao julgar a ACO 1062/DF : ‘ AGRAVO REGIMENTAL NA AÇÃO CÍVEL ORIGINÁRIA . CONFLITO FEDERATIVO . NEGATIVA DE EXPEDIÇÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA PARA ESTADO-MEMBRO . O EXAME DA COMPATIBILIZAÇÃO DAS NORMAS ESTADUAIS COM A <span class="legislacao">Constituição Federal</span> É MATÉRIA COMPLEXA . UTILIZAÇÃO IRREGULAR DE PROCEDIMENTO ADMINISTRATIVO COMO SUCEDÂNEO DE AÇÃO DIRETA DE INCONSTITUCIONALIDADE PARA NEGAR-SE A CONCESSÃO DO REFERIDO CERTIFICADO . PRECEDENTES .

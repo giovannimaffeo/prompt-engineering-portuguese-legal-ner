@@ -1,0 +1,61 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute.
+
+First, I'll need to parse the input text and identify each entity based on the definitions provided. Let me go through the text step by step.
+
+Starting with the first sentence: "Dessa feita , possibilitar que entes com objeto social delimitado legal e constitucionalmente à fiscalização do exercício profissional possam exercer análise necessária , nos termos da Lei 1.172/96 , para a concessão de Alvará de Construção ou Carta de Habite-se de empreendimentos no Distrito Federal , implica em chancelar violaão severa às normas constitucionais ... '' ( fl . 09/10 )"
+
+Looking for "Lei 1.172/96" – that's a legislation reference. So I'll mark that as legislação. "Distrito Federal" is a local entity, so that's local. "fl. 09/10" – the "fl." might be an abbreviation for "folha" (page), but the user mentioned that only explicit dates should be marked as tempo. Since "fl." is a page reference, not a date, I'll leave it as is. The "fl." might be part of a citation, but the user's guidelines say to leave it unless it's a date. So no mark here.
+
+Next sentence: "Pede , assim , a procedência do pedido para declarar , com efeitos ex tunc e eficácia erga omnes , a inconstitucionalidade da norma . A Mesa Diretora da Câmara Legislativa prestou informações e defendeu a constitucionalidade da norma , ao argumento de que não há delegação ou transferência de atribuições e que há necessidade de regulamentação da norma , a ser promovida pelo Poder Executivo ."
+
+Here, "Câmara Legislativa" is an organization. "Poder Executivo" is also an organization. "Câmara Legislativa" is already marked as organizacao. The "Poder Executivo" is another organization. So those should be marked.
+
+Next part: "O Governador do Distrito Federal , defende a constitucionalidade da Fls ."
+
+"Governador" is a person? Wait, the user said that only names (proper nouns) should be marked as pessoa. "Governador" is a title, not a name. So it shouldn't be marked. "Distrito Federal" is already marked as local. "Fls." – again, this is an abbreviation for "fls." (plural of "fl." – folhas), which refers to pages. Not a date, so no mark.
+
+Now, checking all entities again:
+
+- "Lei 1.172/96" → legislação
+- "Distrito Federal" → local
+- "Câmara Legislativa" → organizacao
+- "Poder Executivo" → organizacao
+- "Mesa Diretora da Câmara Legislativa" → "Mesa Diretora" is part of the organization, so the whole phrase is an organization? Wait, the user's guidelines say to include all modifiers when they are part of the same phrase. So "Mesa Diretora da Câmara Legislativa" is part of the organization. So the entire phrase should be marked as organizacao. But the original text has "A Mesa Diretora da Câmara Legislativa prestou informações..." So "Mesa Diretora da Câmara Legislativa" is the organization. So I need to mark that as organizacao. Similarly, "Câmara Legislativa" is already covered. Wait, but in the text, it's "Câmara Legislativa" as an organization, so that's already marked. The "Mesa Diretora" is part of the organization? Or is it a separate entity? The user's definition says that organizations include "casas legislativas", so "Câmara Legislativa" is an organization. The "Mesa Diretora" is part of that organization. So in the text, "A Mesa Diretora da Câmara Legislativa" – the entire phrase refers to the organization, so maybe the entire phrase should be marked as organizacao. But the user's guidelines say that when concepts are mentioned in a phrase, they should be included. So perhaps the full name "Mesa Diretora da Câmara Legislativa" is an organization. But maybe the user expects only "Câmara Legislativa" to be marked as organizacao. Wait, the example given for organizacao includes "Câmara Legislativa". So maybe "Mesa Diretora da Câmara Legislativa" is part of the same organization? Or is it a separate entity? The user's example says that "expressões que identificam entidades coletivas formalmente constituídas" – so "Mesa Diretora" might be a part of the Câmara Legislativa, but the user's example includes "Câmara Legislativa" as an example. So perhaps "Câmara Legislativa" is the main organization, and "Mesa Diretora" is a part of it. But in the text, the phrase is "A Mesa Diretora da Câmara Legislativa" – which is the organization. So maybe the entire phrase should be marked as organizacao. However, the user's guidelines say to include all modifiers when they are part of the same phrase. So perhaps "Mesa Diretora da Câmara Legislativa" should be marked as organizacao. Wait, but the user's example for organizacao includes "Câmara Legislativa", so maybe "Mesa Diretora" is part of that. Alternatively, maybe "Mesa Diretora" is an organization itself. But the user's example says that "expressões que identificam entidades coletivas" – so "Câmara Legislativa" is an organization, and "Mesa Diretora" is part of it. So perhaps "Mesa Diretora da Câmara Legislativa" is the organization. Therefore, I should mark that as organizacao. So in the text, "A Mesa Diretora da Câmara Legislativa" should be marked as organizacao. Similarly, "Poder Executivo" is an organization.
+
+Now, checking for any other entities. "Fls." is an abbreviation for pages, so no mark. "fl . 09/10" – the "fl." is part of a citation, but the "09/10" is a date? Wait, the user said that dates in formats like "DD/MM/YYYY" or "3 de abril de 2017" should be marked as tempo. But "09/10" could be a date (September 10th) or a page number. The context here is "fl. 09/10" which is likely referring to pages. So "fl." is an abbreviation, and "09/10" is a page number. Since the user said that only dates in explicit formats should be marked as tempo, and "09/10" is not a full date, it's not marked. So no mark here.
+
+Other parts: "Alvará de Construção" – that's a legal term, but not an entity. "Carta de Habite-se" – same, not an entity. "Distrito Federal" is already marked as local. "Câmara Legislativa" is organizacao. "Poder Executivo" is organizacao. "Governador do Distrito Federal" – "Governador" is a title, not a name, so not pessoa. "Distrito Federal" is already marked as local.
+
+So the entities to mark are:
+
+- Lei 1.172/96 → legislação
+- Distrito Federal → local
+- Câmara Legislativa → organizacao
+- Mesa Diretora da Câmara Legislativa → organizacao (if the entire phrase is considered an organization)
+- Poder Executivo → organizacao
+- fl. 09/10 → no mark (as it's a page reference)
+- fls. → no mark
+
+Wait, the original text has "fl . 09/10" – the "fl." is a page reference, and "09/10" is a date? Or is it a page number? The user's guidelines say that only explicit dates should be marked. "09/10" is not a full date, so it's not marked. So no span for that.
+
+So putting it all together:
+
+- "Lei 1.172/96" → <span class="legislacao">Lei 1.172/96</span>
+- "Distrito Federal" → <span class="local">Distrito Federal</span>
+- "Câmara Legislativa" → <span class="organizacao">Câmara Legislativa</span>
+- "Mesa Diretora da Câmara Legislativa" → <span class="organizacao">Mesa Diretora da Câmara Legislativa</span>
+- "Poder Executivo" → <span class="organizacao">Poder Executivo</span>
+
+Wait, but the original text says "A Mesa Diretora da Câmara Legislativa prestou informações..." So the entire phrase "Mesa Diretora da Câmara Legislativa" is the organization. So that should be marked as organizacao. Similarly, "Câmara Legislativa" is already marked. But the user's example includes "Câmara Legislativa" as an example. So perhaps "Mesa Diretora da Câmara Legislativa" is a part of the organization, but the user's guidelines say to include all modifiers when they are part of the same phrase. So the entire phrase should be marked. Therefore, in the text, "Mesa Diretora da Câmara Legislativa" is an organization. So I need to mark that as organizacao.
+
+So in the text, "A Mesa Diretora da Câmara Legislativa prestou informações..." becomes "<span class="organizacao">Mesa Diretora da Câmara Legislativa</span> prestou informações...".
+
+Similarly, "Poder Executivo" is an organization, so that's marked as organizacao.
+
+Now, checking for any other entities. "Governador" is a title, not a name, so no pessoa. "Fls." is not a date, so no mark.
+
+So the final HTML should have those spans. Let me reconstruct the text with the appropriate tags.
+</think>
+
+Dessa feita , possibilitar que entes com objeto social delimitado legal e constitucionalmente à fiscalização do exercício profissional possam exercer análise necessária , nos termos da <span class="legislacao">Lei 1.172/96</span> , para a concessão de Alvará de Construção ou Carta de Habite-se de empreendimentos no <span class="local">Distrito Federal</span> , implica em chancelar violaão severa às normas constitucionais ... '' ( fl . 09/10 ) Pede , assim , a procedência do pedido para declarar , com efeitos ex tunc e eficácia erga omnes , a inconstitucionalidade da norma . A <span class="organizacao">Mesa Diretora da Câmara Legislativa</span> prestou informações e defendeu a constitucionalidade da norma , ao argumento de que não há delegação ou transferência de atribuições e que há necessidade de regulamentação da norma , a ser promovida pelo <span class="organizacao">Poder Executivo</span> . O <span class="organizacao">Governador</span> do <span class="local">Distrito Federal</span> , defende a constitucionalidade da Fls .

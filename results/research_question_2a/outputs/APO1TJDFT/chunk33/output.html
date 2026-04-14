@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to look at the input text: "311 ) . Ao final , requer a reforma da r. sentença e a improcedência do pedido formulado na exordial . Dispensado o preparo por se tratar da Fazenda Pública . Contrarrazões apresentadas pelo SINPRO/DF ( fls ."
+
+I should go through each part of the text and identify which entities are present. Let's break it down:
+
+1. "311 ) ." – This looks like a case number or a reference. The number 311 might be a case number, but it's not one of the specified entities. The parentheses and period are just punctuation, so no tags needed here.
+
+2. "Ao final , requer a reforma da r. sentença e a improcedência do pedido formulado na exordial ." – The word "reforma" and "improcedência" are legal terms, but they don't correspond to any of the entity types. "exordial" refers to the initial pleading, which is a legal term but not an entity. So no tags here.
+
+3. "Dispensado o preparo por se tratar da Fazenda Pública ." – "Fazenda Pública" is a public entity, which in legal terms refers to the public treasury or public administration. This should be marked as "organizacao" since it's an organization or public entity.
+
+4. "Contrarrazões apresentadas pelo SINPRO/DF ( fls ." – "SINPRO/DF" is likely an organization, possibly a union or association. The abbreviation "DF" could stand for Distrito Federal (Federal District) in Brazil, which is a local entity. So "SINPRO/DF" should be "organizacao" and "DF" as "local". The "( fls ." part seems like a reference to pages, so no entity here.
+
+Now, applying the tags:
+
+- "Fazenda Pública" → <span class="organizacao">Fazenda Pública</span>
+- "SINPRO/DF" → <span class="organizacao">SINPRO/DF</span>
+- "DF" → <span class="local">DF</span>
+
+Wait, but "DF" is part of "SINPRO/DF". Should I split it? The user might consider "SINPRO/DF" as a single organization, and "DF" as a local entity. However, since "DF" is part of the organization's name, maybe it's better to mark the entire "SINPRO/DF" as an organization. Alternatively, if "DF" is a separate local entity, then split. But the instruction says to mark entities as they appear. Since "DF" is part of the organization's name, perhaps it's better to leave it as part of the organization. However, the user might expect "DF" as a local entity. Let me check the original text again: "Contrarrazões apresentadas pelo SINPRO/DF ( fls ." So "SINPRO/DF" is the organization, and "DF" is the local part. So I should mark "SINPRO/DF" as organizacao and "DF" as local.
+
+So the final HTML would have:
+
+- "Fazenda Pública" as organizacao
+- "SINPRO/DF" as organizacao
+- "DF" as local
+
+Other parts of the text don't have any of the specified entities. So the output should have those three spans.
+</think>
+
+311 ) . Ao final , requer a reforma da r. sentença e a improcedência do pedido formulado na exordial . Dispensado o preparo por se tratar da <span class="organizacao">Fazenda Pública</span> . Contrarrazões apresentadas pelo <span class="organizacao">SINPRO/DF</span> (<span class="local">DF</span> ) .

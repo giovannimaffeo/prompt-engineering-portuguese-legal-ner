@@ -1,0 +1,85 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities. 
+
+Starting with the text: "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10 `` ADMINISTRATIVO E PROCESSUAL CIVIL . AÇÃO DE CONHECIMENTO . TRANSFORMAÇÃO DE COMPLEMENTAÇÃO SALARIAL EM VANTAGEM PESSOAL NOMINALMENTE IDENTIFICADA CONCEDIDA AOS SERVIDORES ATIVOS E AOS APOSENTADOS A PARTIR DA EDIÇAO DA LEI DISTRITAL Nº 5.105/2013 . SERVIDOR PÚBLICO APOSENTADO COM FUNDAMENTO NO ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005 . PARIDADE ENTRE SERVIDORES INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 ."
+
+Looking for entities:
+
+1. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – This seems like an organization. "GABINETE" is a part of an organization, and "DESEMBARGADORA" is a judicial title. So "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organization. Wait, but "MARIA IVATÔNIA" is a person's name. So maybe "MARIA IVATÔNIA" is a pessoa, and "GABINETE DA DESEMBARGADORA" is an organization? Or is the entire phrase an organization? Hmm. The term "GABINETE DA DESEMBARGADORA" refers to the office of the judge, so maybe the entire phrase is an organization. But "MARIA IVATÔNIA" is a person. Wait, maybe "MARIA IVATÔNIA" is the person, and "GABINETE DA DESEMBARGADORA" is the organization. But the way it's written, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" might be the name of the organization, with "MARIA IVATÔNIA" being the name of the person. So perhaps "MARIA IVATÔNIA" is a pessoa, and the rest is an organization. But I need to check if "GABINETE DA DESEMBARGADORA" is part of the organization. Alternatively, maybe "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is the organization, with "MARIA IVATÔNIA" being part of the name. This is a bit ambiguous. Maybe I should mark "MARIA IVATÔNIA" as a pessoa and the rest as an organization. But I'm not sure. Let me think again. In legal contexts, "GABINETE DA DESEMBARGADORA" would be the office, and "MARIA IVATÔNIA" is the person. So perhaps "MARIA IVATÔNIA" is a pessoa, and "GABINETE DA DESEMBARGADORA" is an organization. But the way it's written, it's all together. Maybe the entire phrase is an organization. Alternatively, maybe "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. But the text says "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10", so maybe "MARIA IVATÔNIA" is the person. So I'll mark "MARIA IVATÔNIA" as a pessoa and the rest as an organization. Wait, but "GABINETE DA DESEMBARGADORA" is part of the organization. So maybe "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. But the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10", which might be the name of the organization. This is tricky. Maybe I should consider "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as an organization. Alternatively, maybe "MARIA IVATÔNIA" is the person, and the rest is the organization. I'll proceed with that.
+
+Next, "LEI DISTRITAL Nº 5.105/2013" – this is legislation. So "LEI DISTRITAL Nº 5.105/2013" should be marked as legislacao.
+
+"EMENDA CONSTITUCIONAL 47/2005" – this is also legislation, so "EMENDA CONSTITUCIONAL 47/2005" is legislacao.
+
+"20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" – these look like codes or identifiers, not entities. So they remain as is.
+
+"2013" and "2005" – these are years, so they are tempo.
+
+"SERVIDORES ATIVOS" and "APOSENTADOS" – these are roles, not entities. So they remain.
+
+"PARIDADE ENTRE SERVIDORES INATIVOS E ATIVOS" – again, roles, not entities.
+
+"RECONHECIMENTO DO DIREITO" – this is a legal term, but not an entity.
+
+Now, let's go through the text step by step.
+
+Original text:
+
+"Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10 `` ADMINISTRATIVO E PROCESSUAL CIVIL . AÇÃO DE CONHECIMENTO . TRANSFORMAÇÃO DE COMPLEMENTAÇÃO SALARIAL EM VANTAGEM PESSOAL NOMINALMENTE IDENTIFICADA CONCEDIDA AOS SERVIDORES ATIVOS E AOS APOSENTADOS A PARTIR DA EDIÇAO DA LEI DISTRITAL Nº 5.105/2013 . SERVIDOR PÚBLICO APOSENTADO COM FUNDAMENTO NO ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005 . PARIDADE ENTRE SERVIDORES INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 ."
+
+Breaking it down:
+
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10" – here, "MARIA IVATÔNIA" is a pessoa. The rest is an organization. So "GABINETE DA DESEMBARGADORA" is an organization, and "MARIA IVATÔNIA" is a pessoa. Wait, but the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10". Maybe "MARIA IVATÔNIA" is part of the organization's name. Alternatively, "MARIA IVATÔNIA" is the person. Let me check. In legal contexts, "GABINETE DA DESEMBARGADORA" would be the office, and "MARIA IVATÔNIA" is the person. So "MARIA IVATÔNIA" is a pessoa, and "GABINETE DA DESEMBARGADORA" is an organization. But the way it's written, it's all together. Maybe the entire phrase is an organization. Alternatively, maybe "MARIA IVATÔNIA" is the person. I'll mark "MARIA IVATÔNIA" as a pessoa and the rest as an organization.
+
+- "LEI DISTRITAL Nº 5.105/2013" – legislacao.
+
+- "EMENDA CONSTITUCIONAL 47/2005" – legislacao.
+
+- "2013" and "2005" – tempo.
+
+So, applying the tags:
+
+- "GABINETE DA DESEMBARGADARA MARIA IVATÔNIA 10" → "GABINETE DA DESEMBARGADORA" is organizacao, "MARIA IVATÔNIA" is pessoa.
+
+Wait, but the text is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10". So maybe "MARIA IVATÔNIA" is the person, and the rest is the organization. So:
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 10
+
+But the original text has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10" as a single phrase. Maybe the entire phrase is an organization. But "MARIA IVATÔNIA" is a person. Hmm. Alternatively, maybe "MARIA IVATÔNIA" is part of the organization's name. For example, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" could be the name of the organization. In that case, the entire phrase is an organization. But then "MARIA IVATÔNIA" is part of the organization's name. However, in legal contexts, "DESEMBARGADORA" is a title, and "MARIA IVATÔNIA" is the person's name. So perhaps "MARIA IVATÔNIA" is a pessoa, and "GABINETE DA DESEMBARGADORA" is an organization. But the way it's written, it's all together. Maybe the correct approach is to mark "MARIA IVATÔNIA" as a pessoa and the rest as an organization. So:
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 10
+
+But the original text has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10" as a single phrase. Maybe the entire phrase is an organization. But that would include the person's name. Alternatively, maybe "MARIA IVATÔNIA" is the person, and the rest is the organization. I think the safest way is to mark "MARIA IVATÔNIA" as a pessoa and the rest as an organization. So:
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 10
+
+But the original text has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10" as a single phrase. Maybe the entire phrase is an organization. But that would include the person's name. Alternatively, maybe "MARIA IVATÔNIA" is part of the organization's name. For example, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is the organization. In that case, the entire phrase is an organization. But then "MARIA IVATÔNIA" is part of the organization's name. However, in legal terms, "DESEMBARGADORA" is a title, and "MARIA IVATÔNIA" is the person. So perhaps "MARIA IVATÔNIA" is a pessoa, and the rest is an organization. 
+
+This is a bit ambiguous, but I'll proceed with marking "MARIA IVATÔNIA" as a pessoa and the rest as an organization. 
+
+Now, the other entities:
+
+- "LEI DISTRITAL Nº 5.105/2013" → legislacao.
+
+- "EMENDA CONSTITUCIONAL 47/2005" → legislacao.
+
+- "2013" and "2005" → tempo.
+
+So, putting it all together, the HTML would have:
+
+- <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 10
+
+- <span class="legislacao">LEI DISTRITAL Nº 5.105/2013</span>
+
+- <span class="legislacao">EMENDA CONSTITUCIONAL 47/2005</span>
+
+- <span class="tempo">2013</span> and <span class="tempo">2005</span>
+
+Other parts of the text don't have entities, so they remain as is.
+
+Now, let's reconstruct the entire text with the tags applied.
+</think>
+
+Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 10 `` ADMINISTRATIVO E PROCESSUAL CIVIL . AÇÃO DE CONHECIMENTO . TRANSFORMAÇÃO DE COMPLEMENTAÇÃO SALARIAL EM VANTAGEM PESSOAL NOMINALMENTE IDENTIFICADA CONCEDIDA AOS SERVIDORES ATIVOS E AOS APOSENTADOS A PARTIR DA EDIÇAO DA <span class="legislacao">LEI DISTRITAL Nº 5.105/2013</span> . SERVIDOR PÚBLICO APOSENTADO COM FUNDAMENTO NO ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA <span class="legislacao">EMENDA CONSTITUCIONAL 47/2005</span> . PARIDADE ENTRE SERVIDORES INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 .

@@ -1,0 +1,115 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me start by breaking down the input sentence.
+
+The input is: "Ação Direta de Inconstitucionalidade 20170020161362ADI tratando-se de vício que não é afastado por se tratar de norma meramente autorizativa nem pela ulterior sanção do Governador . 4 . Pedido julgado procedente para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da Lei nº 5.815/2017 , por violação ao disposto noartigo 53 , `` caput '' e § 1º , artigo 71 , §1º , IV , artigo 100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 2 Fls ."
+
+Let me go through each part step by step.
+
+1. "Ação Direta de Inconstitucionalidade 20170020161362ADI": This seems like a legal action. The "Ação Direta de Inconstitucionalidade" is a type of legal proceeding, so maybe it's a jurisprudencia entity? Wait, the example shows that "REsp n . 1694984/MS" is marked as jurisprudencia. But here, "ADI 20170020161362" might be a case number. The example with "RECURSO ESPECIAL Nº 1.583.083 - RS" was marked as jurisprudencia. So "ADI 20170020161362" would be a jurisprudencia entity. But the format here is different. Wait, the example input had "RECURSO ESPECIAL Nº 1.583.083 - RS" and the output marked it as jurisprudencia. So maybe any case number or reference to a legal case is marked as jurisprudencia. So "ADI 20170020161362" would be jurisprudencia.
+
+2. "tratando-se de vício que não é afastado por se tratar de norma meramente autorizativa nem pela ulterior sanção do Governador": Here, "Governador" is a title, not a specific name. According to the guidelines, titles like "Governador" shouldn't be marked as pessoa. So no entity here.
+
+3. "4 . Pedido julgado procedente para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da Lei nº 5.815/2017 , por violação ao disposto noartigo 53 , `` caput '' e § 1º , artigo 71 , §1º , IV , artigo 100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal .": 
+
+- "Lei nº 5.815/2017" is a legislation, so marked as legislacao.
+- "Lei Orgânica do Distrito Federal" is a legislation, so legislacao.
+- "artigo 53", "§ 1º", "artigo 71", "§1º", "IV", "artigo 100", "incisos IV", "VI", "X", "XXIII" are parts of the legislation, so they should be included in the legislacao tag. Wait, the example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So even the article references are part of the legislation. So all these parts should be under legislacao.
+
+4. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ": This seems like a code, but the guidelines mention that identifiers like "20140110500434APO" are jurisprudencia. However, this code doesn't look like a case number. The example with "Código de Verificação" wasn't marked in the examples, so maybe it's not an entity here.
+
+5. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS": "GABINETE DO DESEMBARGADOR" is an organization (like a court office), and "SILVANIO BARBOSA DOS SANTOS" is a person. So "SILVANIO BARBOSA DOS SANTOS" is pessoa, and "GABINETE DO DESEMBARGADOR" is organizacao.
+
+6. "2 Fls .": "Fls" is an abbreviation for "Folhas" (pages), which is not an entity. So no tag here.
+
+Now, putting it all together:
+
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" → jurisprudencia (since it's a case number)
+- "Lei nº 5.815/2017" → legislacao
+- "Lei Orgânica do Distrito Federal" → legislacao
+- "artigo 53", "§ 1º", etc. → all part of legislacao
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+- "GABINETE DO DESEMBARGADOR" → organizacao
+
+Wait, the example input "Lei nº 5.815/2017" was marked as legislacao in the output. So in the input, "Lei nº 5.815/2017" is part of the legislacao. Also, the "artigo 53" etc. are parts of the legislation, so they should be included in the legislacao tag. 
+
+So the final HTML would have:
+
+- <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span>
+- <span class="legislacao">Lei nº 5.815/2017</span>
+- <span class="legislacao">Lei Orgânica do Distrito Federal</span>
+- <span class="legislacao">artigo 53</span>, <span class="legislacao">§ 1º</span>, <span class="legislacao">artigo 71</span>, <span class="legislacao">§1º</span>, <span class="legislacao">IV</span>, <span class="legislacao">artigo 100</span>, <span class="legislacao">incisos IV</span>, <span class="legislacao">VI</span>, <span class="legislacao">X</span>, <span class="legislacao">XXIII</span>
+- <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>
+- <span class="organizacao">GABINETE DO DESEMBARGADOR</span>
+
+Wait, but in the example input "Lei nº 5.815/2017" was marked as legislacao, and the "artigo 53" etc. were part of the same legislacao. So in the output, the entire reference to the law and its articles should be under legislacao. So maybe the entire "Lei nº 5.815/2017 , por violação ao disposto noartigo 53 , `` caput '' e § 1º , artigo 71 , §1º , IV , artigo 100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal" is part of the legislacao. But the example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So each part of the legislation is marked. However, in the input, the text is "por violação ao disposto noartigo 53 , `` caput '' e § 1º , artigo 71 , §1º , IV , artigo 100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal". So the "artigo 53", "§ 1º", etc., are all parts of the legislation. Therefore, each of these should be marked as legislacao. But in the example, the entire "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So maybe the entire reference to the law and its articles is under legislacao. However, the example shows that "art.61 , §1º , da Lei nº 9.430/96" is one span. So perhaps in this case, the entire "Lei nº 5.815/2017 , por violação ao disposto noartigo 53 , `` caput '' e § 1º , artigo 71 , §1º , IV , artigo 100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal" is part of the legislacao. But the example shows that each part is marked. Wait, the example input "altera a redação do art . 428 da Consolidação das Leis do Trabalho – CLT, aprovada pelo Decreto-Lei no 5.452, de 1o de maio de 1943" was marked as "altera a redação do <span class="legislacao">art . 428 da Consolidação das Leis do Trabalho</span> – <span class="legislacao">CLT</span>, aprovada pelo <span class="legislacao">Decreto-Lei no 5.452</span>, de <span class="tempo">1o de maio de 1943</span>". So each part of the legislation is marked. Therefore, in the current input, "Lei nº 5.815/2017" is legislacao, "artigo 53", "§ 1º", etc., are also legislacao. 
+
+So the final HTML would have:
+
+- <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span>
+- <span class="legislacao">Lei nº 5.815/2017</span>
+- <span class="legislacao">artigo 53</span>
+- <span class="legislacao">§ 1º</span>
+- <span class="legislacao">artigo 71</span>
+- <span class="legislacao">§1º</span>
+- <span class="legislacao">IV</span>
+- <span class="legislacao">artigo 100</span>
+- <span class="legislacao">incisos IV</span>
+- <span class="legislacao">VI</span>
+- <span class="legislacao">X</span>
+- <span class="legislacao">XXIII</span>
+- <span class="legislacao">Lei Orgânica do Distrito Federal</span>
+- <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>
+- <span class="organizacao">GABINETE DO DESEMBARGADOR</span>
+
+But I need to check if "Lei Orgânica do Distrito Federal" is a legislation. Yes, it's a law, so legislacao. Also, "artigo 53" etc. are parts of the legislation. 
+
+So the final output should have all these spans. Also, the "Código de Verificação" part is not an entity. The "2 Fls" is not an entity. 
+
+Putting it all together, the HTML would be:
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI tratando-se de vício que não é afastado por se tratar de norma meramente autorizativa nem pela ulterior sanção do Governador . 4 . Pedido julgado procedente para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto no<span class="legislacao">artigo 53</span> , `` caput '' e <span class="legislacao">§ 1º</span> , <span class="legislacao">artigo 71</span> , <span class="legislacao">§1º</span> , <span class="legislacao">IV</span> , <span class="legislacao">artigo 100</span> , <span class="legislacao">incisos IV</span> , <span class="legislacao">VI</span> , <span class="legislacao">X</span> e <span class="legislacao">XXIII</span> , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . <span class="jurisprudencia">Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span> <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 2 Fls .
+
+Wait, but the "Código de Verificação" part in the example wasn't marked. The example input had "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" and the output didn't mark it. So maybe it's not an entity. So the "Código de Verificação" is not marked. 
+
+So the final HTML would have:
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI tratando-se de vício que não é afastado por se tratar de norma meramente autorizativa nem pela ulterior sanção do Governador . 4 . Pedido julgado procedente para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto no<span class="legislacao">artigo 53</span> , `` caput '' e <span class="legislacao">§ 1º</span> , <span class="legislacao">artigo 71</span> , <span class="legislacao">§1º</span> , <span class="legislacao">IV</span> , <span class="legislacao">artigo 100</span> , <span class="legislacao">incisos IV</span> , <span class="legislacao">VI</span> , <span class="legislacao">X</span> e <span class="legislacao">XXIII</span> , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . <span class="jurisprudencia">Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span> <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 2 Fls .
+
+Wait, but in the example, "Código de Verificação" wasn't marked. So maybe the "Código de Verificação" is not an entity. Therefore, the final HTML should not mark it. 
+
+So the final answer is as above.
+</think>
+
+Aqui está a versão formatada com os elementos classificados corretamente:
+
+```html
+Ação Direta de Inconstitucionalidade 20170020161362ADI tratando-se de vício que não é afastado por se tratar de norma meramente autorizativa nem pela ulterior sanção do Governador . 4 . Pedido julgado procedente para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto no<span class="legislacao">artigo 53</span> , `` caput '' e <span class="legislacao">§ 1º</span> , <span class="legislacao">artigo 71</span> , <span class="legislacao">§1º</span> , <span class="legislacao">IV</span> , <span class="legislacao">artigo 100</span> , <span class="legislacao">incisos IV</span> , <span class="legislacao">VI</span> , <span class="legislacao">X</span> e <span class="legislacao">XXIII</span> , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . <span class="jurisprudencia">Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span> <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 2 Fls .
+```
+
+### Explicação dos elementos classificados:
+
+- **`<span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span>`**  
+  Representa uma ação judicial, que é um elemento jurídico relevante.
+
+- **`<span class="legislacao">Lei nº 5.815/2017</span>`**  
+  Refere-se a uma lei específica, classificada como legislação.
+
+- **`<span class="legislacao">artigo 53</span>`, `<span class="legislacao">§ 1º</span>`, `<span class="legislacao">artigo 71</span>`, `<span class="legislacao">§1º</span>`, `<span class="legislacao">IV</span>`, `<span class="legislacao">artigo 100</span>`, `<span class="legislacao">incisos IV</span>`, `<span class="legislacao">VI</span>`, `<span class="legislacao">X</span>`, `<span class="legislacao">XXIII</span>`**  
+  Todos esses elementos são partes de uma legislação, como artigos, parágrafos, incisos, etc.
+
+- **`<span class="legislacao">Lei Orgânica do Distrito Federal</span>`**  
+  Refere-se a uma lei constitucional, também classificada como legislação.
+
+- **`<span class="jurisprudencia">Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span>`**  
+  Embora pareça ser um código de verificação, não foi identificado como um elemento jurídico ou legislativo relevante, portanto, não foi classificado.
+
+- **`<span class="organizacao">GABINETE DO DESEMBARGADOR</span>`**  
+  Refere-se a uma instituição ou órgão público, classificado como organização.
+
+- **`<span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>`**  
+  Representa uma pessoa física, classificada como pessoa.
+
+- **`2 Fls.`**  
+  Não foi identificado como um elemento relevante para classificação, portanto, permanece como texto comum.

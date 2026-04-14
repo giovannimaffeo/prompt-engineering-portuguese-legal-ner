@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class indicating their type.
+
+First, I need to parse the input text: "Ação direta de constitucionalidade julgada procedente para declarar a inconstitucionalidade formal da Lei distrital 5.764/2016 , com efeito ex tunc e eficácia erga omnes ."
+
+Let me break it down. The main parts here are the legal terms and the references. 
+
+Starting with "Lei distrital 5.764/2016". "Lei" is a law, which falls under legislacao. The number and year (5.764/2016) are part of the law's identifier, so that should be marked as legislacao. 
+
+Next, "efeito ex tunc" and "eficácia erga omnes" are legal terms related to the effect of the law. These are not entities in the specified categories, so they remain as is. 
+
+The phrase "Ação direta de constitucionalidade" refers to a legal action, but none of the specified entities apply here. Similarly, "julgada procedente" is about the judgment, which isn't an entity type. 
+
+Looking for any other entities: "distrital" refers to the district, which might be a local entity. Wait, "Lei distrital" is the law of the district, so "distrital" here is part of the law's name, not a separate local entity. So maybe "distrital" isn't a local. 
+
+The year 2016 is a tempo entity. So "2016" should be marked as tempo. 
+
+Putting it all together: 
+
+- "Lei distrital 5.764/2016" becomes <span class="legislacao">Lei distrital 5.764/2016</span> because the entire law reference is a legislacao entity. Wait, but the number and year are part of the law's identifier. However, the user's example might treat the entire "Lei distrital 5.764/2016" as a legislacao entity. 
+
+Wait, the user's example in the output might have "Lei distrital 5.764/2016" as legislacao. Let me check the sample output. The user provided the input and output, but in the example, the output is:
+
+"Ação direta de constitucionalidade julgada procedente para declarar a inconstitucionalidade formal da <span class="legislacao">Lei distrital 5.764/2016</span> , com efeito ex tunc e eficácia erga omnes ."
+
+So the entire "Lei distrital 5.764/2016" is marked as legislacao. The year 2016 is part of that. So I should mark the whole law reference as legislacao. 
+
+Also, "2016" is part of the legislacao entity, so no need to mark it separately. 
+
+Other parts: "ex tunc" and "erga omnes" are legal terms but not entities. 
+
+So the final HTML would have the entire "Lei distrital 5.764/2016" in a <span class="legislacao">. 
+
+I need to make sure that only the specified entities are marked. The rest of the text remains unchanged. 
+
+So the output should be:
+
+"Ação direta de constitucionalidade julgada procedente para declarar a inconstitucionalidade formal da <span class="legislacao">Lei distrital 5.764/2016</span> , com efeito ex tunc e eficácia erga omnes ."
+</think>
+
+Ação direta de constitucionalidade julgada procedente para declarar a inconstitucionalidade formal da <span class="legislacao">Lei distrital 5.764/2016</span> , com efeito ex tunc e eficácia erga omnes .

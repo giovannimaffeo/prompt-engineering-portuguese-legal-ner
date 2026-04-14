@@ -1,0 +1,30 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "A Procuradoria-Geral da Justiça Militar , em Parecer da lavra da Subprocuradora-Geral Dra .". Let me break it down.
+
+Starting with "Procuradoria-Geral da Justiça Militar". That sounds like an organization. The term "Procuradoria-Geral" is a common name for a legal office, so I'll mark that as organizacao. Then "Justiça Militar" is part of the same organization, so maybe the entire phrase is an organization. Wait, but "da" is a preposition, so maybe "Procuradoria-Geral da Justiça Militar" is the full name of the organization. So I'll wrap that entire phrase in <span class="organizacao">.
+
+Next, "Parecer da lavra da Subprocuradora-Geral Dra". "Parecer" is a legal term for an opinion or report. "Subprocuradora-Geral" is a title, so that's a pessoa. "Dra." is an abbreviation for "Doutora", which is a title for a woman, so that's also a pessoa. 
+
+Wait, the text has "Subprocuradora-Geral Dra ." – the "Dra." is likely part of the title, so "Subprocuradora-Geral Dra." would be the person's title. But the user's example output shows "Subprocuradora-Geral Dra." as a pessoa. So I need to check if "Dra." is part of the name or just the title. Since "Dra." is an abbreviation for "Doutora", it's part of the title, so the entire "Subprocuradora-Geral Dra." would be a pessoa. Wait, but maybe "Dra." is a separate entity? Or is it part of the title? Let me think. The person's name might be "Dra. [Name]", but in the input text, it's just "Dra." without a name. So perhaps "Subprocuradora-Geral" is the title, and "Dra." is the honorific. But the user's example output shows "Subprocuradora-Geral Dra." as a pessoa. So maybe the entire phrase is considered a pessoa. Alternatively, maybe "Subprocuradora-Geral" is the position, and "Dra." is the title. But the user's example output includes "Subprocuradora-Geral Dra." as a pessoa. So I'll mark that as a pessoa.
+
+Putting it all together:
+
+- "Procuradoria-Geral da Justiça Militar" is an organization.
+- "Subprocuradora-Geral Dra." is a pessoa.
+
+So the HTML would be:
+
+A <span class="organizacao">Procuradoria-Geral da Justiça Militar</span> , em <span class="pessoa">Subprocuradora-Geral Dra.</span> .
+
+Wait, but the original text has "Parecer da lavra da Subprocuradora-Geral Dra." – the "Parecer" is part of the sentence. The user's example output shows "Parecer da lavra da Subprocuradora-Geral Dra." as part of the text. Wait, the original input is "A Procuradoria-Geral da Justiça Militar , em Parecer da lavra da Subprocuradora-Geral Dra .". So the "Parecer da lavra da Subprocuradora-Geral Dra." is part of the sentence. But the user's example output shows that "Subprocuradora-Geral Dra." is marked as pessoa. So the rest of the text is left as is. So the final HTML would have the organization and the pessoa marked, and the rest remains unchanged.
+
+So the output should be:
+
+A <span class="organizacao">Procuradoria-Geral da Justiça Militar</span> , em Parecer da lavra da <span class="pessoa">Subprocuradora-Geral Dra.</span> .
+
+I need to make sure that only the specified entities are marked. The rest of the text, like "Parecer da lavra da", remains as is. Also, check for any other entities. Are there any dates, locations, legislation, or jurisprudence mentioned? The input text doesn't seem to have any of those. So the final output should have the two spans as above.
+</think>
+
+A <span class="organizacao">Procuradoria-Geral da Justiça Militar</span> , em Parecer da lavra da <span class="pessoa">Subprocuradora-Geral Dra.</span> .

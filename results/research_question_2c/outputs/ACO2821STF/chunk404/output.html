@@ -1,0 +1,52 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class indicating their type.
+
+First, I need to read through the input text carefully. The text is a legal judgment, so there are likely several entities to identify. Let me break it down sentence by sentence.
+
+The first part is "Isso posto , confirmo a tutela de urgência anteriormente deferida e julgo procedente a presente ação para determinar à ré que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CAUC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS nº 204/2008 e de suas posteriores alterações ".
+
+Looking for entities:
+
+1. "Estado de Mato Grosso" – this is a local entity. Mato Grosso is a state in Brazil, so I should mark "Estado de Mato Grosso" as local.
+
+2. "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" – these look like acronyms for different registries or systems. Since they are names of organizations or systems, maybe they should be marked as organizacao. But the user's guide says to use organizacao for organizations. However, these might be specific registries, which could be considered as organizations or maybe even legislation? Wait, the user's guide specifies that legislacao is for legislation, so these acronyms are likely names of systems or registries, which are organizations. So I'll mark them as organizacao.
+
+3. "Decreto 3.788/2001" – this is a legislative decree, so it's legislacao. Similarly, "Portaria MPS nº 204/2008" is a decree (portaria) from the Ministry of Public Prosecution (MPS), so that's also legislacao. The "posteriores alterações" refers to subsequent amendments, which are part of the legislation, so they should be included as legislacao.
+
+4. "ré" – this is the defendant in a legal case, so that's a pessoa. The term "ré" is used in legal contexts to refer to the defendant, so I should mark it as pessoa.
+
+5. "Mato Grosso" – already covered as part of the local entity.
+
+Wait, the user's example output in the previous message had "Estado de Mato Grosso" as local. So I need to make sure that "Estado de Mato Grosso" is marked as local. Also, "CADPREV", "CADIN", etc., are acronyms for systems, so they are organizacao.
+
+Now, checking the text again for any other entities. The term "jurisprudencia" is mentioned in the output example as "incidenter tantum , a inconstitucionalidade do Decreto..." but in the input text, the user mentions "declarando-se ainda , incidenter tantum , a inconstitucionalidade..." So "incidenter tantum" is a legal term, but it's not an entity. The inconstitucionalidade refers to the unconstitutionality of the decree, which is part of the legislation. So the Decreto and Portaria are legislacao.
+
+So the entities to mark are:
+
+- "ré" as pessoa
+- "Estado de Mato Grosso" as local
+- "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" as organizacao
+- "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" as legislacao
+
+Wait, the user's example output had "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" as legislacao. So I need to make sure those are marked as legislacao.
+
+Also, the term "CADPREV" is part of the list in parentheses, so all those acronyms should be marked as organizacao.
+
+Now, putting it all together. Let me go through the text again and replace each entity with the appropriate span tags.
+
+Original text: "Isso posto , confirmo a tutela de urgência anteriormente deferida e julgo procedente a presente ação para determinar à ré que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CAUC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS nº 204/2008 e de suas posteriores alterações ".
+
+Breaking it down:
+
+- "ré" → pessoa
+- "Estado de Mato Grosso" → local
+- "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" → organizacao
+- "Decreto 3.788/2001" → legislacao
+- "Portaria MPS nº 204/2008" → legislacao
+
+So the HTML should have these spans. Let me make sure I didn't miss any other entities. The rest of the text doesn't seem to have any other entities. The "incidenter tantum" is a legal term but not an entity. The "inconstitucionalidade" refers to the unconstitutionality, which is part of the legislation, but the actual entities are the decreto and portaria.
+
+So the final HTML should have the spans for those entities. Now, I'll format the text accordingly.
+</think>
+
+<span class="pessoa">ré</span> que renove o Certificado de Regularidade Previdenciária do <span class="local">Estado de Mato Grosso</span> , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social <span class="organizacao">CADPREV</span> ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( <span class="organizacao">CADIN</span> , <span class="organizacao">CAUC</span> , <span class="organizacao">SIAFI</span> , <span class="organizacao">SICONV</span> ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS nº 204/2008</span> e de suas posteriores alterações

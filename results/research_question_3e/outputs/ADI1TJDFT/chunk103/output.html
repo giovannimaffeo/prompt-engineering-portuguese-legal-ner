@@ -1,0 +1,73 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each span needs a class indicating the type.
+
+First, I need to parse the input text carefully. Let me read through the example input and output to understand the pattern. The example shows that "MINISTÉRIO PÚBLICO FEDERAL" is marked as organizacao, "CARLOS HENRIQUE ALVES" as pessoa, "art.61 , §1º , da Lei nº 9.430/96" as legislacao, and "REsp n . 1694984/MS" and "Súmula 331 do TST" as jurisprudencia.
+
+Now, looking at the input text provided:
+
+"( Acórdão n.1078980 , 20170020135916ADI , Relator : JOSÉ DIVINO CONSELHO ESPECIAL , Data de Julgamento : 20/02/2018 , Publicado no DJE : 05/03/2018 . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da Lei 5.815/2017 . É o voto . Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls ."
+
+Let me break this down step by step.
+
+1. **Acórdão n.1078980** – This is a judicial decision, so it's jurisprudencia. The number "n.1078980" is the identifier, so it should be marked as jurisprudencia.
+
+2. **20170020135916ADI** – This seems like a case number or an identifier. The "ADI" might stand for Ação Direta de Inconstitucionalidade. Since it's a specific case number, it's jurisprudencia.
+
+3. **Relator : JOSÉ DIVINO CONSELHO ESPECIAL** – "Relator" is the judge, but the name "JOSÉ DIVINO CONSELHO ESPECIAL" is a person, so pessoa.
+
+4. **Data de Julgamento : 20/02/2018** – The date "20/02/2018" is tempo.
+
+5. **Publicado no DJE : 05/03/2018** – The date "05/03/2018" is also tempo.
+
+6. **Pág. : 61/63** – Page numbers aren't entities, so leave as is.
+
+7. **Lei 5.815/2017** – This is a law, so legislacao.
+
+8. **Ação Direta de Inconstitucionalidade 20170020161362ADI** – The case number "20170020161362ADI" is jurisprudencia.
+
+9. **Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ** – This seems like a code, but it's not a specific entity. The example didn't mention codes, so maybe leave it as is.
+
+10. **GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41** – "GABINETE DO DESEMBARGADOR" is an organization (since it's a judicial office). "SILVANIO BARBOSA DOS SANTOS" is a person. The "41" is a number, not an entity.
+
+Wait, the example in the guidelines mentions that "expressões que identifiquem turmas cíveis, como '4ª Turma Cível', ... devem sempre ser anotadas como organização." So "41" might be a part of a court number, but in this case, it's just a number. However, the text says "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41" – the "41" might be a page number or a reference. Since it's not a specific entity, maybe not mark it.
+
+So, putting it all together:
+
+- "Acórdão n.1078980" → jurisprudencia
+- "20170020135916ADI" → jurisprudencia
+- "JOSÉ DIVINO CONSELHO ESPECIAL" → pessoa
+- "20/02/2018" → tempo
+- "05/03/2018" → tempo
+- "Lei 5.815/2017" → legislacao
+- "20170020161362ADI" → jurisprudencia
+- "GABINETE DO DESEMBARGADOR" → organizacao (since it's the office)
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+
+Wait, the "GABINETE DO DESEMBARGADOR" is an organization. The person is "SILVANIO BARBOSA DOS SANTOS".
+
+So in the text, the part "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41" – the "GABINETE DO DESEMBARGADOR" is the organization, and "SILVANIO BARBOSA DOS SANTOS" is the person. The "41" is not an entity.
+
+So the HTML would have:
+
+<span class="jurisprudencia">Acórdão n.1078980</span>, <span class="jurisprudencia">20170020135916ADI</span>, Relator : <span class="pessoa">JOSÉ DIVINO CONSELHO ESPECIAL</span>, Data de Julgamento : <span class="tempo">20/02/2018</span>, Publicado no DJE : <span class="tempo">05/03/2018</span>. Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da <span class="legislacao">Lei 5.815/2017</span> . É o voto . Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 41 Fls .
+
+Wait, the "Ação Direta de Inconstitucionalidade 20170020161362ADI" is a case number, so it's jurisprudencia. The "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. The "41" is not an entity.
+
+I need to make sure all these are correctly marked. Let me check again:
+
+- "Acórdão n.1078980" → jurisprudencia
+- "20170020135916ADI" → jurisprudencia
+- "JOSÉ DIVINO CONSELHO ESPECIAL" → pessoa
+- "20/02/2018" → tempo
+- "05/03/2018" → tempo
+- "Lei 5.815/2017" → legislacao
+- "20170020161362ADI" → jurisprudencia
+- "GABINETE DO DESEMBARGADOR" → organizacao
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+
+Yes, that's all. The rest of the text doesn't have any other entities. The "41" is just a number, so it's left as is. The "Código de Verificação" is a code but not a specific entity. The "Fls." is an abbreviation for "Folhas" and not an entity.
+
+So the final HTML should have all these spans correctly marked with their respective classes.
+</think>
+
+<span class="jurisprudencia">Acórdão n.1078980</span>, <span class="jurisprudencia">20170020135916ADI</span>, Relator : <span class="pessoa">JOSÉ DIVINO CONSELHO ESPECIAL</span>, Data de Julgamento : <span class="tempo">20/02/2018</span>, Publicado no DJE : <span class="tempo">05/03/2018</span>. Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da <span class="legislacao">Lei 5.815/2017</span> . É o voto . Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 41 Fls .

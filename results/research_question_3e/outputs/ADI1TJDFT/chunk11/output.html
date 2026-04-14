@@ -1,0 +1,54 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a given legal text, marking specific entities with their respective classes. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me start by breaking down the text.
+
+The input text is: "84 , IV , ao Tribunal de Contas do Distrito Federal , assim como aos cidadãos , na forma e nos casos previstos nesta Lei Orgânica . § 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Estado do Distrito Federal , Órgãos e entidades da administração pública ; Art . 100 . Compete privativamente ao Governador do Distrito Federal : ( ... ) VI iniciar o processo legislativo , na forma e nos casos previstos nesta Lei Orgânica ; ( ... ) X - dispor sobre a organização e o funcionamento da Fls ."
+
+Looking for entities:
+
+1. "Tribunal de Contas do Distrito Federal" – This is an organization. The "Tribunal de Contas" is a judicial body, and "Distrito Federal" is a local. But since the whole phrase is the name of the organization, it should be marked as organizacao. Wait, according to the definitions, "organizacao" includes "tribunais" and "unidades do sistema de justiça". So "Tribunal de Contas do Distrito Federal" is an organization. So I should mark that as organizacao.
+
+2. "Distrito Federal" – This is a local, as per the definition. So it's a local entity. But in the text, it's part of "Tribunal de Contas do Distrito Federal". However, the entire organization name is "Tribunal de Contas do Distrito Federal", so the "Distrito Federal" here is part of the organization's name, not a standalone local. Wait, the definition says "expressões que identificam entidades coletivas... incluindo órgãos públicos, tribunais..." So "Tribunal de Contas do Distrito Federal" is an organization. Therefore, the entire phrase is an organization. But if "Distrito Federal" is a local, but here it's part of the organization's name. So I need to check if "Distrito Federal" is a local or part of the organization. Since "Distrito Federal" is a region, it's a local. But in the context of the organization name, it's part of the name. However, according to the guidelines, when part of a longer name, the entire name is considered as the organization. So "Tribunal de Contas do Distrito Federal" is an organization, so I should mark the entire phrase as organizacao.
+
+3. "Lei Orgânica" – This is legislation. Because "Lei" is a law, so "Lei Orgânica" is a legislative text. So it should be marked as legislação.
+
+4. "Art. 100" – This is a legislative article. So "Art. 100" is part of the legislation, so it should be marked as legislação.
+
+5. "Governador do Distrito Federal" – "Governador" is a title, not a person's name. The definition says that only names of individuals should be marked as pessoa. Since "Governador" is a title, it's not a pessoa. However, the "Distrito Federal" here is a local. But the entire phrase is "Governador do Distrito Federal", which is a position. Since there's no specific name, it's not a pessoa. So no marking here.
+
+6. "Secretarias de Estado do Distrito Federal" – "Secretarias" are part of the organization, but the "Distrito Federal" is a local. However, the entire phrase is part of the organization's name. Wait, the definition for organizacao includes "organizações" like "Secretarias de Estado". So "Secretarias de Estado do Distrito Federal" is an organization. So this should be marked as organizacao.
+
+7. "Órgãos e entidades da administração pública" – "Órgãos" and "entidades" are organizations. But the text is a general term, not specific names. According to the guidelines, only specific names should be marked. Since this is a general term, it's not an entity. So no marking.
+
+8. "Fls." – This is an abbreviation for "Fls." (Folha) in legal contexts, which might refer to a document or a specific reference. However, the guidelines say that only specific references like "REsp n. 1694984/MS" are jurisprudencia. "Fls." is not a specific reference, so it's not marked.
+
+Now, let's go through the text again and apply these markings.
+
+Original text: "84 , IV , ao Tribunal de Contas do Distrito Federal , assim como aos cidadãos , na forma e nos casos previstos nesta Lei Orgânica . § 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Estado do Distrito Federal , Órgãos e entidades da administração pública ; Art . 100 . Compete privativamente ao Governador do Distrito Federal : ( ... ) VI iniciar o processo legislativo , na forma e nos casos previstos nesta Lei Orgânica ; ( ... ) X - dispor sobre a organização e o funcionamento da Fls ."
+
+Marking:
+
+- "Tribunal de Contas do Distrito Federal" → organizacao
+- "Lei Orgânica" → legislação
+- "Art. 100" → legislação
+- "Secretarias de Estado do Distrito Federal" → organizacao
+- "Distrito Federal" is part of the organization name, so no separate marking as local. However, if "Distrito Federal" is a local, but in the context of the organization, it's part of the name. The guidelines say to mark the entire syntagma, so the entire "Tribunal de Contas do Distrito Federal" is an organization. So "Distrito Federal" is part of that organization's name, not a standalone local. Therefore, no separate marking for "Distrito Federal" as local.
+
+Wait, but the user's example in the guidelines shows that "COMARCA DE BELO HORIZONTE" is marked as local. So if the text had "Distrito Federal" as a standalone, it would be local. But here, it's part of an organization's name. So the entire "Tribunal de Contas do Distrito Federal" is an organization, so the "Distrito Federal" is part of that organization's name. So I should not mark "Distrito Federal" as a separate local. Therefore, only "Tribunal de Contas do Distrito Federal" is marked as organizacao.
+
+Similarly, "Secretarias de Estado do Distrito Federal" is an organization, so the entire phrase is marked as organizacao.
+
+So the final HTML should have:
+
+- "Tribunal de Contas do Distrito Federal" as organizacao
+- "Lei Orgânica" as legislação
+- "Art. 100" as legislação
+- "Secretarias de Estado do Distrito Federal" as organizacao
+
+Other parts like "Distrito Federal" in "Governador do Distrito Federal" are part of the position, not a local, so not marked.
+
+Now, building the HTML with these tags.
+</think>
+
+O <span class="organizacao">Tribunal de Contas do Distrito Federal</span>, assim como aos cidadãos, na forma e nos casos previstos nesta <span class="legislacao">Lei Orgânica</span>. § 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre: ( ... ) IV criação, estruturação, reestruturação, desmembramento, extinção, incorporação, fusão e atribuições das <span class="organizacao">Secretarias de Estado do Distrito Federal</span>, Órgãos e entidades da administração pública; <span class="legislacao">Art. 100</span>. Compete privativamente ao Governador do Distrito Federal: ( ... ) VI iniciar o processo legislativo, na forma e nos casos previstos nesta <span class="legislacao">Lei Orgânica</span>; ( ... ) X - dispor sobre a organização e o funcionamento da Fls.

@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities with appropriate tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal paragraph discussing a case where a monitory action was dismissed due to prescription. 
+
+Looking for entities:
+
+1. **Pessoa**: Names like "ALISSON SILVA BATISTA DE MORAES" are clearly individuals. I should mark that as pessoa. Also, "d. Magistrado" – wait, "d." might be a title (Dona), but the user's guidelines say not to mark titles. So "d. Magistrado" is a title, not a name. So only the name "ALISSON SILVA BATISTA DE MORAES" is a pessoa.
+
+2. **Organizacao**: The text mentions "Código de Processo Civil" which is a legal code, so that's legislacao, not organizacao. "Ministério Público" would be organizacao, but there's no mention here. "Turma Cível" would be organizacao, but again, not present here. So maybe no organizacao here.
+
+3. **Tempo**: The text has "artigo 487" which is a legislative reference, not a time. "prescrição" refers to legal prescription, which is a time period, but the user's guidelines say to mark explicit dates. Since there's no specific date, maybe no tempo here.
+
+4. **Local**: The text mentions "localização do apelado" but "localização" is a verb, not a specific place. So no local entity here.
+
+5. **Legislacao**: "Código de Processo Civil" is a legal code, so that's legislacao. Also, "artigo 487" refers to a specific article in that code, so that should be marked as legislacao as well.
+
+6. **Jurisprudencia**: The text doesn't mention any specific judicial decisions, precedents, or súmulas. So no jurisprudencia here.
+
+Now, applying the tags:
+
+- "ALISSON SILVA BATISTA DE MORAES" → pessoa
+- "Código de Processo Civil" → legislacao
+- "artigo 487" → legislacao (since it's part of the legislation reference)
+
+Check for other entities. "d. Magistrado" – "d." is a title, not a name, so not pessoa. "Ministério Público" isn't mentioned. No dates or specific places. 
+
+Wait, the user's example output had "Código de Processo Civil" as legislacao. Also, "artigo 487" is part of that code, so it should be included. 
+
+So the HTML should have spans for those entities. Let me reconstruct the text with these tags.
+</think>
+
+<span class="legislacao">Código de Processo Civil</span> , pela qual o d. Magistrado de primeiro grau , com fundamento no <span class="legislacao">artigo 487</span> , inciso II , do <span class="legislacao">Código de Processo Civil</span> , julgou extinta a Ação Monitória proposta em desfavor de <span class="pessoa">ALISSON SILVA BATISTA DE MORAES</span> , ante o reconhecimento da prescrição da pretensão deduzida na inicial . Em suas razões de apelo , a autora afirmou que não poderia ter sido reconhecida aprescrição da pretensão monitória , uma vez que a não localização do apelado no prazo estipulado em lei não lhe pode ser imputada , porquanto adotou diversas medidas com a finalidade de promover a citação do réu . É a suma dos fatos . Da análise dos autos , tenho que o inconformismo manifestado pela autora não merece prosperar .

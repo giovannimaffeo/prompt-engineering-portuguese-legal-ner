@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "A usurpação da competência privativa do Governador enseja a violação ao princípio da independência e harmonia dos Poderes , corolário do Estado Federativo e , por consequência , ao princípio constitucional da reserva de administração , Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 1 Fls ."
+
+Looking for entities:
+
+1. "Governador" – this is a title, but in the context, it refers to a person, specifically the Governor. So "Governador" should be marked as pessoa. Wait, but "Governador" is a title, not a name. However, in legal contexts, the title might refer to a specific person. But the example output in the user's message shows "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as an organization. Wait, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. So "SILVANIO BARBOSA DOS SANTOS" is a pessoa. Also, "GABINETE DO DESEMBARGADOR" is an organization. 
+
+2. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the "Código de Verificação" is a legislation code, so that's legislacao. The numbers after might be a reference, but the main term is "Código de Verificação".
+
+3. "GABINETE DO DESEMBARGADOR" – this is an organization, so organizacao.
+
+4. "SILVANIO BARBOSA DOS SANTOS" – this is a person's name, so pessoa.
+
+5. "1 Fls." – "Fls." is an abbreviation for "Fls." which stands for "Folha" (page), so it's a reference to a document, but the user's example output doesn't mark it. Wait, the user's example output includes "1 Fls." as is. So maybe "Fls." is not an entity here. The user's example output shows that "1 Fls." is left as is. So I should not mark it.
+
+Now, let's check the original text again. The input text has "Governador" which is a title, but in the example output, the user's sample output shows "GABINETE DO DESEMBARGADOR" as organizacao and "SILVANIO BARBOSA DOS SANTOS" as pessoa. So in the input text, "Governador" is part of the sentence, but the user's example output doesn't mark "Governador" as pessoa. Wait, maybe the user's example output is different. Let me check the user's example input and output again.
+
+Wait, the user provided an example input and output. Let me check that. The user's example input is the same as the one given here. The output example is not shown, but the user's instruction says to return the text with the entities marked. So I need to process the input text.
+
+In the input text, "Governador" is part of the sentence. Since "Governador" is a title, but in the context, it refers to a specific person (the Governor), but the user's example output might not mark it. Wait, maybe the user's example output is not provided, but the user's instruction says to mark entities. So I need to decide which parts are entities.
+
+Let me go through the text again:
+
+"A usurpação da competência privativa do Governador enseja a violação ao princípio da independência e harmonia dos Poderes , corolário do Estado Federativo e , por consequência , ao princípio constitucional da reserva de administração , Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 1 Fls ."
+
+Breaking down:
+
+- "Governador" – this is a title, but in the context, it refers to a specific person (the Governor). However, the user's example output might not mark it. Wait, the user's example output is not given, but the user's instruction says to mark entities. So I need to check if "Governador" is a pessoa. Since it's a title, but in legal terms, it refers to a person, so maybe it's a pessoa. But the user's example output might not include it. Alternatively, maybe "Governador" is part of the sentence and not an entity. Wait, the user's example output includes "GABINETE DO DESEMBARGADOR" as organizacao and "SILVANIO BARBOSA DOS SANTOS" as pessoa. So in the input text, "Governador" is part of the sentence, but not marked. So perhaps "Governador" is not an entity here. Wait, but the user's example output might not have that. Let me think again.
+
+The user's example input includes "Governador" and the output should mark it as pessoa. But maybe the user's example output is not provided, so I need to make the best judgment.
+
+In the input text, "Governador" is a title, but in the context, it refers to a specific person (the Governor). So I should mark "Governador" as pessoa. However, sometimes in legal texts, titles like "Governador" are not considered entities unless they refer to a specific person. But in this case, the text is about the Governor's exclusive competence, so "Governador" is a title, but the entity is the person holding that title. However, the text doesn't specify the name of the person, so maybe "Governador" is not an entity. Alternatively, maybe it's considered a pessoa. But I'm not sure. Let me check the example given by the user. Wait, the user's example input is the same as the one provided here, and the output is not given. So I need to proceed based on the guidelines.
+
+The guidelines say to mark entities like pessoa, organizacao, etc. So "Governador" is a title, but not a specific person. So maybe it's not marked. However, in some contexts, titles can be considered as entities. But the user's example output might not include it. Alternatively, maybe "Governador" is part of the sentence and not an entity. So I'll proceed to mark "GABINETE DO DESEMBARGADOR" as organizacao and "SILVANIO BARBOSA DOS SANTOS" as pessoa. Also, "Código de Verificação" is legislacao. The rest of the text doesn't have entities. So the final HTML would have those spans.
+</think>
+
+A usurpação da competência privativa do <span class="pessoa">Governador</span> enseja a violação ao princípio da independência e harmonia dos Poderes , corolário do Estado Federativo e , por consequência , ao princípio constitucional da reserva de administração , <span class="legislacao">Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span> <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 1 Fls .

@@ -1,0 +1,58 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text line by line.
+
+Starting with the first sentence: "Alega haver provas nos autos do dano sofrido e acrescenta que a mera ausência de anotação já é suficiente para ter direito ao reconhecimento do dano moral . Aponta divergência jurisprudencial . Sem razão ."
+
+Here, "divergência jurisprudencial" refers to a legal principle or precedent, so "jurisprudencial" might be part of a jurisprudencia entity. Wait, but the term "jurisprudencial" is an adjective. The example shows that terms like "REsp" or "Súmula" are marked. Since "divergência jurisprudencial" is a general term, not a specific reference, maybe it's not marked. But the example in the guidelines says that "jurisprudência" is marked when it's a specific reference. So "divergência jurisprudencial" might not be marked as jurisprudencia because it's a general term.
+
+Next sentence: "Os arestos trazidos a cotejo ( fls . 339/340 ) são formalmente inválidos , pois oriundos do mesmo Tribunal Regional prolator da decisão recorrida . Óbice da OJ nº 111 da SDI-1 do TST . Nego provimento ."
+
+Here, "Tribunal Regional" is an organization. Wait, the example mentions "Tribunal de Contas" as an organization. So "Tribunal Regional" would be an organization. Also, "OJ nº 111 da SDI-1 do TST" – OJ is "Orientação Jurisprudencial", and SDI-1 is a court of the TST (Tribunal Superior do Trabalho). So "OJ nº 111 da SDI-1 do TST" is a jurisprudencia entity. The "TST" is an organization.
+
+Next part: "3 . INDENIZAÇÃO DO TÍQUETE-REFEIÇÃO . NORMA COLETIVA . Às fls . 340/346 , o reclamante alega fazer jus ao recebimento de indenização referente ao tíquete refeição , ao argumento de que , durante todo o pacto laboral , a refeição fornecida limitou-se a pizzas . Segundo alega , a cláusula 55ª da norma coletiva é clara e indica a necessidade do fornecimento de refeição , e não lanches , prevendo a indenização quando não há o fornecimento . Aponta divergência jurisprudencial . Ao exame ."
+
+Here, "norma coletiva" refers to a collective agreement, which is a type of legislation. So "cláusula 55ª da norma coletiva" would be a legislacao entity. Also, "divergência jurisprudencial" again, which might not be marked as jurisprudencia. The "TST" is an organization again.
+
+Now, checking for each entity:
+
+- Pessoa: Are there any names? The input doesn't mention any specific names, so no pessoa tags.
+- Organizacao: "Tribunal Regional", "TST" (Tribunal Superior do Trabalho), "SDI-1" (which is part of TST). Wait, "SDI-1" is a court, so it's part of the organization. But the example shows "Tribunal de Contas" as an organization. So "Tribunal Regional" and "TST" are organizations. Also, "SDI-1" is part of the TST, so maybe it's part of the organization. But the example shows "SDI-1" as part of the TST. So "TST" is an organization, and "SDI-1" is a part of it, but maybe it's not marked as an organization. Wait, the example in the guidelines says that "expressões que identificam entidades coletivas formalmente constituídas" are organizations. So "Tribunal Regional" is an organization. "TST" is an organization. "SDI-1" is a division of TST, so maybe it's part of the organization. But the example shows "SDI-1" as part of the TST. So in the output, "TST" is marked as organizacao, and "SDI-1" is part of it, but maybe not marked as an organization. Wait, the example in the input shows "SDI-1 do TST" as part of the jurisprudencia. So "SDI-1" is part of the TST, which is an organization. So "TST" is an organization, and "SDI-1" is a part of it, but not marked as an organization. So in the text, "Tribunal Regional" is an organization, "TST" is an organization, and "SDI-1" is part of TST, so maybe not marked. Wait, the example in the guidelines says that "expressões que identificam entidades coletivas formalmente constituídas" are organizations. So "Tribunal Regional" is an organization. "TST" is an organization. "SDI-1" is a division of TST, so it's part of the organization, but maybe not marked as an organization. So in the text, "Tribunal Regional" and "TST" are marked as organizacao.
+
+- Tempo: The text has "fls . 339/340" which is a reference to pages, not a date. So no tempo tags.
+
+- Local: The text doesn't mention any specific locations, so no local tags.
+
+- Legislacao: "cláusula 55ª da norma coletiva" refers to a collective agreement, which is a type of legislation. So "norma coletiva" is a legislacao entity. Also, "cláusula 55ª" is part of the legislation. So the entire "cláusula 55ª da norma coletiva" would be marked as legislacao.
+
+- Jurisprudencia: "OJ nº 111 da SDI-1 do TST" refers to a jurisprudencial orientation, so it's a jurisprudencia entity. Also, "divergência jurisprudencial" is a general term, so not marked. "REsp" in the example was marked, but here there's no specific reference. So "OJ nº 111 da SDI-1 do TST" is marked as jurisprudencia.
+
+Putting it all together:
+
+- "Tribunal Regional" → organizacao
+- "TST" → organizacao
+- "OJ nº 111 da SDI-1 do TST" → jurisprudencia
+- "cláusula 55ª da norma coletiva" → legislacao
+
+Wait, the example in the guidelines says that "cláusula 55ª da norma coletiva" is part of the legislation. So "norma coletiva" is a legislacao entity. But the example in the input shows "cláusula 55ª da norma coletiva" as part of the legislacao. So in the output, "cláusula 55ª da norma coletiva" would be marked as legislacao.
+
+So the final HTML would have:
+
+- "Tribunal Regional" → organizacao
+- "TST" → organizacao
+- "OJ nº 111 da SDI-1 do TST" → jurisprudencia
+- "cláusula 55ª da norma coletiva" → legislacao
+
+Other parts like "divergência jurisprudencial" are not marked as jurisprudencia because they are general terms.
+
+Now, let me check the original text again to make sure I didn't miss any entities.
+
+Original text:
+
+"Alega haver provas nos autos do dano sofrido e acrescenta que a mera ausência de anotação já é suficiente para ter direito ao reconhecimento do dano moral . Aponta divergência jurisprudencial . Sem razão . Os arestos trazidos a cotejo ( fls . 339/340 ) são formalmente inválidos , pois oriundos do mesmo Tribunal Regional prolator da decisão recorrida . Óbice da OJ nº 111 da SDI-1 do TST . Nego provimento . 3 . INDENIZAÇÃO DO TÍQUETE-REFEIÇÃO . NORMA COLETIVA . Às fls . 340/346 , o reclamante alega fazer jus ao recebimento de indenização referente ao tíquete refeição , ao argumento de que , durante todo o pacto laboral , a refeição fornecida limitou-se a pizzas . Segundo alega , a cláusula 55ª da norma coletiva é clara e indica a necessidade do fornecimento de refeição , e não lanches , prevendo a indenização quando não há o fornecimento . Aponta divergência jurisprudencial . Ao exame ."
+
+So "Tribunal Regional" is an organization. "TST" is an organization. "OJ nº 111 da SDI-1 do TST" is a jurisprudencia entity. "cláusula 55ª da norma coletiva" is a legislacao entity. "norma coletiva" is part of the legislacao. Also, "fls . 339/340" is a reference to pages, not a date, so no tempo. "SDI-1" is part of TST, so not marked as an organization. "divergência jurisprudencial" is not marked. "TÍQUETE-REFEIÇÃO" is a term, not an entity. "NORMA COLETIVA" is part of the legislacao. So the final HTML should have those tags.
+</think>
+
+Alega haver provas nos autos do dano sofrido e acrescenta que a mera ausência de anotação já é suficiente para ter direito ao reconhecimento do dano moral . Aponta divergência jurisprudencial . Sem razão . Os arestos trazidos a cotejo ( fls . 339/340 ) são formalmente inválidos , pois oriundos do mesmo <span class="organizacao">Tribunal Regional</span> prolator da decisão recorrida . Óbice da <span class="jurisprudencia">OJ nº 111 da SDI-1 do TST</span> . Nego provimento . 3 . INDENIZAÇÃO DO TÍQUETE-REFEIÇÃO . <span class="legislacao">NORMA COLETIVA</span> . Às fls . 340/346 , o reclamante alega fazer jus ao recebimento de indenização referente ao tíquete refeição , ao argumento de que , durante todo o pacto laboral , a refeição fornecida limitou-se a pizzas . Segundo alega , a <span class="legislacao">cláusula 55ª da norma coletiva</span> é clara e indica a necessidade do fornecimento de refeição , e não lanches , prevendo a indenização quando não há o fornecimento . Aponta divergência jurisprudencial . Ao exame .

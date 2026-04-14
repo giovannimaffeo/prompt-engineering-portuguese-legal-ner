@@ -1,0 +1,48 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input is: "Ementa e Acórdão 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+I need to identify each entity. Let's go step by step.
+
+Starting with "16/03/2018" – that's a date, so it's a tempo entity. I'll wrap that in <span class="tempo">.
+
+"PLENÁRIO" – this is a term used in legal contexts, possibly referring to a court session. But I need to check if it's an organization or a local. Wait, "PLENÁRIO" is part of the court's name, maybe part of the organization. But the example output shows "PLENÁRIO" as part of the text without a tag. Wait, looking at the sample output provided by the user, maybe "PLENÁRIO" isn't tagged. Let me check the sample output again. The user's example output shows "PLENÁRIO" as is. Hmm, maybe "PLENÁRIO" isn't one of the entities here. So I should leave it as is.
+
+Next, "MATO GROSSO" – that's a location, so local. So I'll tag that as <span class="local">MATO GROSSO</span>.
+
+"RICARDO LEWANDOWSKI" – that's a person's name, so pessoa. So <span class="pessoa">RICARDO LEWANDOWSKI</span>.
+
+"UNIÃO" – that's an organization, like the Union, so organizacao. <span class="organizacao">UNIÃO</span>.
+
+"ADVOGADO -GERAL DA UNIÃO" – "ADVOGADO" is a title, but "GERAL DA UNIÃO" might be part of the organization. Wait, "ADVOGADO-GERAL DA UNIÃO" is the title of the lawyer, so maybe "ADVOGADO-GERAL DA UNIÃO" is an organization? Or is it part of the organization? Wait, the user's example output shows "ADVOGADO -GERAL DA UNIÃO" as is. Wait, maybe "ADVOGADO-GERAL DA UNIÃO" is part of the organization. Let me think. The term "ADVOGADO-GERAL DA UNIÃO" refers to the General Attorney of the Union, which is a position within the organization. So perhaps "ADVOGADO-GERAL DA UNIÃO" is an organization? Or maybe it's part of the organization's name. Alternatively, maybe "ADVOGADO-GERAL DA UNIÃO" is a title, so not an entity. Wait, the user's example output shows "ADVOGADO -GERAL DA UNIÃO" as is. So maybe I should leave it as is. But I need to check if any parts of it are entities. "UNIÃO" is already tagged as organizacao. So "ADVOGADO-GERAL DA UNIÃO" might be part of the organization's name. Wait, but the user's example output doesn't tag "ADVOGADO-GERAL DA UNIÃO". So perhaps I should leave it as is. Hmm, maybe I need to check each part.
+
+"ESTADO DE MATO GROSSO" – "ESTADO" is part of the location, but "MATO GROSSO" is already tagged as local. So "ESTADO DE MATO GROSSO" is a location, but since "MATO GROSSO" is already a local, maybe "ESTADO DE MATO GROSSO" is a local as well. Wait, "ESTADO DE MATO GROSSO" is the state of Mato Grosso, so it's a local. So I should tag "ESTADO DE MATO GROSSO" as local. Wait, but in the input text, it's written as "ESTADO DE MATO GROSSO" – so the entire phrase is a local. So I need to wrap that in <span class="local">.
+
+Now, looking at the sample output provided by the user, the output is:
+
+"Ementa e Acórdão <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> RELATOR : MIN . <span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : <span class="organizacao">ADVOGADO -GERAL DA UNIÃO</span> AGDO . ( A / S ) : <span class="local">ESTADO DE MATO GROSSO</span> PROC ."
+
+Wait, in the sample output, "ADVOGADO -GERAL DA UNIÃO" is tagged as organizacao. So maybe "ADVOGADO -GERAL DA UNIÃO" is considered an organization. But "ADVOGADO" is a title, and "GERAL DA UNIÃO" is part of the organization. So perhaps the entire phrase is an organization. So I should tag "ADVOGADO -GERAL DA UNIÃO" as organizacao.
+
+Similarly, "UNIÃO" is an organization, so that's already tagged.
+
+So, putting it all together:
+
+- "16/03/2018" → tempo
+- "MATO GROSSO" → local
+- "RICARDO LEWANDOWSKI" → pessoa
+- "UNIÃO" → organizacao
+- "ADVOGADO -GERAL DA UNIÃO" → organizacao
+- "ESTADO DE MATO GROSSO" → local
+
+Wait, but in the sample output, "ESTADO DE MATO GROSSO" is tagged as local. So that's correct.
+
+Now, checking the rest of the text. The rest of the text like "PLENÁRIO", "A G .REG .", "NA AÇÃO CÍVEL ORIGINÁRIA 2.821", "RELATOR : MIN .", "AGTE . ( S ) :", "ADV . ( A / S ) :", "AGDO . ( A / S ) :", "PROC ." – these don't seem to be any of the entities. So they remain as is.
+
+So the final HTML should have the tags for the identified entities. Let me make sure I didn't miss any. For example, "2.821" – that's a case number, but the user didn't mention it as an entity. So it's left as is.
+
+So the final output should be the original text with the specified entities tagged.
+</think>
+
+Ementa e Acórdão <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> RELATOR : MIN . <span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : <span class="organizacao">ADVOGADO -GERAL DA UNIÃO</span> AGDO . ( A / S ) : <span class="local">ESTADO DE MATO GROSSO</span> PROC .

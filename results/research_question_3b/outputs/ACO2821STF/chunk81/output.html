@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities.
+
+Starting with the first part: "( A/S ) ( ES ) : PROCURADOR-GERAL DO ESTADO DE MATO GROSSO". Here, "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization. The title "PROCURADOR-GERAL" is a position, but the full name includes "ESTADO DE MATO GROSSO", which is a state, so that's a local. Wait, but "ESTADO DE MATO GROSSO" is the name of the state, so "MATO GROSSO" is the local. The "PROCURADOR-GERAL" is a title, not a person's name, so maybe it's part of the organization. Wait, the organization is the Procurador-Geral, which is a position within the state. But the user's definition says "organizacao" includes public organs, so maybe "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization. Wait, but the full name might be the organization. Let me check the definitions again. The organization is defined as entities like public organs, courts, etc. So "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is the name of the organization, which is the Public Prosecutor's Office of the State of Mato Grosso. So that should be marked as organizacao.
+
+Next, "Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator . Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018 .". Here, "Tribunal" is a court, so that's an organizacao. "Plenário" is part of the court, so also organizacao. The dates "9.3.2018 a 15.3.2018" are tempo. "Sessão Virtual" is a session, which might be part of the organization, but maybe not. Wait, "Sessão Virtual" is a term, but it's part of the description of the session, so maybe not an entity. The dates are definitely tempo.
+
+Then, "Composição : Ministros Cármen Lúcia ( Presidente ) , Celso de Mello , Marco Aurélio , Gilmar Mendes , Ricardo Lewandowski , Dias Toffoli , Luiz Fux , Rosa Weber , Roberto Barroso , Edson Fachin e Alexandre de Moraes .". These are all names of ministers, so they are pessoas. Each name should be marked as pessoa.
+
+Next, "p/ Doralúcia das Neves Santos Assessora-Chefe do Plenário". "Doralúcia das Neves Santos" is a person, so pessoa. "Assessora-Chefe do Plenário" is a title, not an entity, so no tag.
+
+"Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil .". Here, "MP n° 2.200-2/2001" is a legislative act, so legislacao. The date "24/08/2001" is tempo. "Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil" is a name of a system, which might be an organizacao, but the user's definition says legislacao includes decrees, etc. Wait, the MP is a decree, so "MP n° 2.200-2/2001" is legislacao. The ICP-Brasil is a system, but maybe not an entity here. Wait, the user's definition for legislacao includes decrees, so the MP is legislacao. The date is tempo.
+
+"O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp sob o número 14532100 Inteiro Teor do Acórdão - Página 17 de 17". The URL is not an entity. The number "14532100" is a document number, which might be part of a jurisprudencia reference, but the user's definition says jurisprudencia includes numbers, so maybe that's a jurisprudencia. Wait, the "Inteiro Teor do Acórdão" refers to the full text of the decision, which is a jurisprudencia. The number "14532100" is part of the document reference, so maybe that's a jurisprudencia. But the user's example might not include that. Alternatively, the "Acórdão" is a judicial decision, so that's jurisprudencia. The number might be part of the reference, so it's included in the jurisprudencia.
+
+Putting it all together:
+
+- "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is organizacao.
+- "Tribunal" and "Plenário" are organizacao.
+- "9.3.2018 a 15.3.2018" is tempo.
+- "Cármen Lúcia", "Celso de Mello", etc., are pessoas.
+- "Doralúcia das Neves Santos" is pessoa.
+- "MP n° 2.200-2/2001" is legislacao.
+- "24/08/2001" is tempo.
+- "Inteiro Teor do Acórdão" is jurisprudencia.
+- "14532100" is part of the jurisprudencia reference.
+
+Wait, the "Inteiro Teor do Acórdão" is the full text of the decision, which is a jurisprudencia. The number "14532100" is the document number, which might be part of the reference. So the entire "Inteiro Teor do Acórdão - Página 17 de 17" is part of the jurisprudencia. But the user's example might not include the page numbers. Alternatively, the "Acórdão" is the key term. So "Inteiro Teor do Acórdão" is jurisprudencia. The number "14532100" is part of the reference, so maybe it's included in the jurisprudencia.
+
+Also, "Sessão Virtual" is part of the session, which is part of the organization's activity, but not an entity itself. So no tag.
+
+Now, applying the tags accordingly. Let me check each part again to ensure I didn't miss any entities.
+</think>
+
+<span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> Decisão : O <span class="organizacao">Tribunal</span> , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator . <span class="organizacao">Plenário</span> , <span class="tempo">Sessão Virtual de 9.3.2018 a 15.3.2018</span> . Composição : <span class="pessoa">Ministros Cármen Lúcia</span> ( Presidente ) , <span class="pessoa">Celso de Mello</span> , <span class="pessoa">Marco Aurélio</span> , <span class="pessoa">Gilmar Mendes</span> , <span class="pessoa">Ricardo Lewandowski</span> , <span class="pessoa">Dias Toffoli</span> , <span class="pessoa">Luiz Fux</span> , <span class="pessoa">Rosa Weber</span> , <span class="pessoa">Roberto Barroso</span> , <span class="pessoa">Edson Fachin</span> e <span class="pessoa">Alexandre de Moraes</span> . p/ <span class="pessoa">Doralúcia das Neves Santos</span> Assessora-Chefe do Plenário Documento assinado digitalmente conforme <span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp sob o número <span class="jurisprudencia">14532100</span> <span class="jurisprudencia">Inteiro Teor do Acórdão</span> - <span class="jurisprudencia">Página 17 de 17</span>

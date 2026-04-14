@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is in Portuguese, so I need to be careful with the terms. The output example shows that certain parts are highlighted. Let me check the example again.
+
+The input text mentions "Lei nº 5.815 , de 3 de abril de 2017" which is a law number and date. So "Lei nº 5.815" is legislation, and "3 de abril de 2017" is a date (tempo). The "artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII" refers to articles and sections of the law, so those are part of the legislation. The "Legislação" is mentioned, so that's another entity. 
+
+Wait, the original text says "Legislação" in the input? Let me check again. The input text is: "ISTO POSTO , julgo procedente o pedido para declarar , com efeitos '' ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da Lei nº 5.815 , de 3 de abril de 2017 , por violação ao disposto no artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal ."
+
+Wait, the input text doesn't mention "Legislação" as a standalone term. It refers to "Lei nº 5.815" and "Lei Orgânica do Distrito Federal" which are laws, so those are legislation. The date "3 de abril de 2017" is tempo. The "artigo53" etc. are parts of the legislation. The "Lei Orgânica do Distrito Federal" is another legislation. 
+
+So, in the output example, the user has marked "Lei nº 5.815" as legislacao, "3 de abril de 2017" as tempo, and "Lei Orgânica do Distrito Federal" as legislacao. The articles and sections are part of the legislation as well. 
+
+Wait, the example output shows that "Lei nº 5.815" is marked as legislacao, "3 de abril de 2017" as tempo, and "Lei Orgânica do Distrito Federal" as legislacao. The articles like "artigo53" are part of the legislation. So I need to make sure that all references to laws, articles, sections, etc., are marked as legislacao. 
+
+Also, the term "ex tunc" and "erga omnes" are legal terms but not entities in the specified categories. So they remain as is. 
+
+So, the steps are: 
+
+1. Identify all instances of the entities in the text.
+2. Wrap them with <span> tags and assign the appropriate class.
+3. Leave the rest of the text unchanged.
+
+Let me go through the input text again:
+
+"ISTO POSTO , julgo procedente o pedido para declarar , com efeitos '' ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da Lei nº 5.815 , de 3 de abril de 2017 , por violação ao disposto no artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal ."
+
+Breaking it down:
+
+- "Lei nº 5.815" is legislation.
+- "3 de abril de 2017" is tempo.
+- "artigo53", "§ 1º", "artigo 71", "§ 1º", "IVe artigo100", "incisos IV , VI , X e XXIII" are parts of the legislation (since they refer to articles and sections of the law).
+- "Lei Orgânica do Distrito Federal" is another legislation.
+
+So, all these parts should be marked as legislacao. The date is tempo. The rest of the text doesn't have any of the other entities (pessoa, organizacao, local, jurisprudencia). 
+
+Wait, "Distrito Federal" is a local? Or is it part of the legislation? The "Lei Orgânica do Distrito Federal" is a law, so "Distrito Federal" is part of the name of the law, so it's part of the legislation. But maybe "Distrito Federal" is a local entity? Wait, the user's guide says to mark "local" for locations. However, "Distrito Federal" is a political entity, so maybe it's considered a local. But in the example output, the user marked "Lei Orgânica do Distrito Federal" as legislacao. So perhaps "Distrito Federal" is part of the legislation's name, so it's included in the legislacao tag. 
+
+Therefore, the correct approach is to mark all law references and their articles as legislacao, the date as tempo, and leave the rest as is. 
+
+So the final HTML should have:
+
+- "Lei nº 5.815" as <span class="legislacao">Lei nº 5.815</span>
+- "3 de abril de 2017" as <span class="tempo">3 de abril de 2017</span>
+- "artigo53", "§ 1º", "artigo 71", "§ 1º", "IVe artigo100", "incisos IV , VI , X e XXIII" as part of the legislacao (since they are parts of the law)
+- "Lei Orgânica do Distrito Federal" as <span class="legislacao">Lei Orgânica do Distrito Federal</span>
+
+Wait, but in the example output provided by the user, the "Lei Orgânica do Distrito Federal" is marked as legislacao. So I need to make sure that all law names are marked as legislacao. 
+
+Therefore, the final HTML should have all those parts marked accordingly. The rest of the text remains unchanged.
+</think>
+
+ISTO POSTO , julgo procedente o pedido para declarar , com efeitos '' ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da <span class="legislacao">Lei nº 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , por violação ao disposto no <span class="legislacao">artigo53</span> , `` caput '' e <span class="legislacao">§ 1º</span> , <span class="legislacao">artigo 71</span> , <span class="legislacao">§ 1º</span> , IVe <span class="legislacao">artigo100</span> , <span class="legislacao">incisos IV</span> , <span class="legislacao">VI</span> , <span class="legislacao">X</span> e <span class="legislacao">XXIII</span> , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> .

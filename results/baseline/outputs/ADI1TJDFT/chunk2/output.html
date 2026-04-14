@@ -1,0 +1,54 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by identifying each entity. 
+
+The text mentions "Lei Distrital n.º 5.815/2017". "Lei" is legislation, so that's a legislacao entity. The number and year are part of the law's identifier, so maybe the year is a tempo entity. Wait, the year is part of the law's name, so maybe it's part of the legislacao. But the user's example might treat the year as tempo. Hmm, need to check the guidelines again. The guide says to use tempo for time/date. So "2017" would be tempo. But the law's number is part of the legislacao. So "Lei Distrital n.º 5.815/2017" would have "Lei Distrital" as legislacao, and "2017" as tempo. Wait, but the entire law name is a single entity. Maybe the entire "Lei Distrital n.º 5.815/2017" is considered legislacao. Let me check the example given in the output. The user provided an example where "Lei Distrital n.º 5.815/2017" is marked as legislacao. So I should treat the entire law name as legislacao. The year 2017 is part of it, so it's included in the legislacao span. 
+
+Next, "iniciativa parlamentar" – "parlamentar" refers to a legislative body, which is an organization. Wait, "iniciativa parlamentar" is the initiative by the legislative body. So "parlamentar" here is part of the organization. But maybe "iniciativa parlamentar" is an organization? Or is "parlamentar" a person? Wait, "parlamentar" refers to a member of the legislative body, which is an organization. But the term "iniciativa parlamentar" is the initiative by the legislative body, so maybe the entire phrase is part of the organization. Wait, the user's example might have "iniciativa parlamentar" as part of the text without any entity. Let me check the example output. The user's example output shows "iniciativa parlamentar" as plain text. So maybe "parlamentar" is part of the organization. Wait, but "parlamentar" is a person? Or is it an organization? Hmm, maybe "parlamentar" here refers to the legislative body, which is an organization. But the term "iniciativa parlamentar" is the initiative by the legislative body, so perhaps "parlamentar" is part of the organization. But I'm not sure. Maybe the user's example doesn't mark it, so I should leave it as is unless there's a clear entity. 
+
+Then, "Distrito Federal" is a local entity. So that should be marked as local. 
+
+"Administrações Regionais de concessão de Alvarás de Construção e Cartas de Habite-se" – "Administrações Regionais" is an organization. Wait, "Administrações Regionais" is a plural noun, so it's an organization. 
+
+"Chefe do Poder Executivo" – "Chefe" is a person, but in this context, it refers to the Governor, so maybe it's a pessoa. But the user's example might have "Chefe do Poder Executivo" as a pessoa. 
+
+"art . 100 , inciso IV , e art . 71 , §1º , IV , LODF" – "LODF" is the Lei Orgânica do Distrito Federal, which is legislation. So "LODF" should be legislacao. 
+
+"2018ACONT2JYXTK52JCSL251NVQ" – this looks like a code or reference, but it's not a standard entity. The user's example might not mark it. 
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE" is an organization, "DESEMBARGADOR" is a person (a judge), and "SILVANIO BARBOSA DOS SANTOS" is a person. 
+
+"Fls." – this is an abbreviation for "Fls." which is "Fls." in legal terms, but it's not an entity. 
+
+Putting it all together, I need to mark each entity with the appropriate class. Let me go through the text step by step.
+
+Original text: "A Lei Distrital n.º 5.815/2017 , de iniciativa parlamentar , ostenta vício formal de iniciativa , ao autorizar o Distrito Federal a celebrar convênios acerca de processos sob responsabilidade das Administrações Regionais de concessão de Alvarás de Construção e Cartas de Habite-se , pois é competência privativa do Chefe do Poder Executivo exercer a direção superior da administração pública distrital ( art . 100 , inciso IV , e art . 71 , §1º , IV , LODF ) . 3 . A usurpação da competência privativa do Governador enseja a violação ao princípio da independência e harmonia dos Poderes , corolário do Estado Federativo e , por consequência , ao princípio constitucional da reserva de administração , Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 1 Fls ."
+
+Breaking it down:
+
+- "Lei Distrital n.º 5.815/2017" → legislacao
+- "Distrito Federal" → local
+- "Administrações Regionais" → organizacao
+- "Chefe do Poder Executivo" → pessoa (assuming "Chefe" refers to the Governor, a person)
+- "art . 100 , inciso IV , e art . 71 , §1º , IV , LODF" → "LODF" is legislacao
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" → "GABINETE" is organizacao, "DESEMBARGADOR" is pessoa, "SILVANIO BARBOSA DOS SANTOS" is pessoa
+- "Código de Verificação" → maybe not an entity, but "Código" could be part of a legislação, but the user's example might not mark it. The text has "Código de Verificação :2018..." which might be a code, but not an entity. So leave as is.
+
+Now, applying the tags:
+
+- "Lei Distrital n.º 5.815/2017" → <span class="legislacao">Lei Distrital n.º 5.815/2017</span>
+- "Distrito Federal" → <span class="local">Distrito Federal</span>
+- "Administrações Regionais" → <span class="organizacao">Administrações Regionais</span>
+- "Chefe do Poder Executivo" → <span class="pessoa">Chefe do Poder Executivo</span>
+- "LODF" → <span class="legislacao">LODF</span>
+- "GABINETE" → <span class="organizacao">GABINETE</span>
+- "DESEMBARGADOR" → <span class="pessoa">DESEMBARGADOR</span>
+- "SILVANIO BARBOSA DOS SANTOS" → <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>
+
+Other parts like "iniciativa parlamentar" are left as is. The year 2017 is part of the legislacao, so no need to mark it separately. The code "2018..." is not an entity. "Fls." is left as is.
+
+So the final HTML should have all these spans with the correct classes.
+</think>
+
+A <span class="legislacao">Lei Distrital n.º 5.815/2017</span> , de iniciativa parlamentar , ostenta vício formal de iniciativa , ao autorizar o <span class="local">Distrito Federal</span> a celebrar convênios acerca de processos sob responsabilidade das <span class="organizacao">Administrações Regionais</span> de concessão de Alvarás de Construção e Cartas de Habite-se , pois é competência privativa do <span class="pessoa">Chefe do Poder Executivo</span> exercer a direção superior da administração pública distrital ( art . 100 , inciso IV , e art . 71 , §1º , IV , <span class="legislacao">LODF</span> ) . 3 . A usurpação da competência privativa do <span class="pessoa">Governador</span> enseja a violação ao princípio da independência e harmonia dos Poderes , corolário do Estado Federativo e , por consequência , ao princípio constitucional da reserva de administração , Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE</span> DO <span class="pessoa">DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 1 Fls .

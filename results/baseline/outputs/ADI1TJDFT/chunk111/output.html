@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities. 
+
+Starting with the first part: "Acórdão n.940649 , 20150020201038ADI , Relator : SIMONE LUCINDO CONSELHO ESPECIAL , Data de Julgamento : 26/04/2016 , Publicado no DJE : 17/05/2016 . Pág. : 20/22 ) AÇÃO DIRETA DE INCONSTITUCIONALIDADE . LEI N.º 2.404/1999 E DOS ARTIGOS 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 E 146 , DA LEI N.º 4.317/2009 . INCONSTITUCIONALIDADE . OFENSA AOS PRINCÍPIOS DA SEPARAÇÃO DOS PODERES E RESERVA LEGAL . PROCEDÊNCIA DA AÇÃO . É inconstitucional disposição legal que versa sobre organização , funcionamento da administração do Distrito Federal e seus servidores públicos . Competência privativa do Chefe do Executivo . Vulneração aos artigos 53 , 71 , § 1º , incisos II e IV , e 100 , incisos VI e X , todos Lei Orgânica do Distrito Federal ."
+
+Looking for entities:
+
+1. "SIMONE LUCINDO CONSELHO ESPECIAL" – this seems like a person's name. The "Relator" is a person, so "SIMONE LUCINDO" is a pessoa. Wait, but "CONSELHO ESPECIAL" might be an organization. Wait, the structure is "Relator: SIMONE LUCINDO CONSELHO ESPECIAL". Maybe "CONSELHO ESPECIAL" is the organization, and "SIMONE LUCINDO" is the person. But the way it's written, maybe "SIMONE LUCINDO CONSELHO ESPECIAL" is the full name of the person. Hmm, need to check. In legal contexts, sometimes the relator is a person, so maybe "SIMONE LUCINDO" is the person, and "CONSELHO ESPECIAL" is an organization. But the way it's written, maybe it's a single name. Alternatively, maybe "CONSELHO ESPECIAL" is the organization, and "SIMONE LUCINDO" is the person. But the structure is "Relator: [name]". So perhaps "SIMONE LUCINDO" is the person, and "CONSELHO ESPECIAL" is the organization. Wait, but the name is written as "SIMONE LUCINDO CONSELHO ESPECIAL" as one entity. Maybe it's a person's name with a title. Alternatively, maybe "CONSELHO ESPECIAL" is the organization, and "SIMONE LUCINDO" is the person. But I'm not sure. Maybe I should mark "SIMONE LUCINDO" as pessoa and "CONSELHO ESPECIAL" as organizacao. But the way it's written, maybe it's a single name. Alternatively, maybe "CONSELHO ESPECIAL" is the organization, and "SIMONE LUCINDO" is the person. Let me think. In legal documents, the relator is usually a person, so "SIMONE LUCINDO" is the pessoa, and "CONSELHO ESPECIAL" is the organization. But the way it's written, maybe it's a single name. Hmm, this is a bit ambiguous. Maybe I should split them. Let me check the rest of the text for other entities.
+
+Next, "Data de Julgamento : 26/04/2016" – that's a date, so tempo. "Publicado no DJE : 17/05/2016" – another date, tempo. "Pág. : 20/22" – page numbers, not an entity. 
+
+Then "LEI N.º 2.404/1999" – that's legislation, so legislacao. Similarly, "DA LEI N.º 4.317/2009" – also legislacao. 
+
+"Distrito Federal" – that's a local, so local. 
+
+"Chefe do Executivo" – that's a position, but not sure if it's an organization or a person. Maybe it's a title, so not an entity. 
+
+"Lei Orgânica do Distrito Federal" – that's legislation, so legislacao. 
+
+"artigos 53 , 71 , § 1º , incisos II e IV , e 100 , incisos VI e X , todos Lei Orgânica do Distrito Federal" – the "Lei Orgânica" is part of the legislation, so legislacao. 
+
+So, putting it all together:
+
+- "SIMONE LUCINDO" as pessoa.
+- "CONSELHO ESPECIAL" as organizacao.
+- "26/04/2016" and "17/05/2016" as tempo.
+- "Distrito Federal" as local.
+- "LEI N.º 2.404/1999", "LEI N.º 4.317/2009", and "Lei Orgânica do Distrito Federal" as legislacao.
+
+Wait, the "Lei Orgânica do Distrito Federal" is part of the legislation, so it's legislacao. Also, "artigos 53..." refers to articles in the legislation, so those are part of the legislacao. 
+
+So, the HTML should have spans for each of these entities. Let me make sure I didn't miss any. 
+
+Also, "Ação Direta de Inconstitucionalidade" is a legal action, but not an entity. "Inconstitucionalidade" is a concept, not an entity. 
+
+So, the final HTML should have the spans for the identified entities. Let me structure the text accordingly.
+</think>
+
+<span class="tempo">26/04/2016</span> , <span class="tempo">17/05/2016</span> . Pág. : 20/22 ) <span class="jurisprudencia">A&Ccedil;O DIRETA DE INCONSTITUCIONALIDADE</span> . <span class="legislacao">LEI N.º 2.404/1999</span> E DOS <span class="legislacao">ARTIGOS 64</span> , <span class="legislacao">65</span> , <span class="legislacao">66</span> , <span class="legislacao">66-A</span> , <span class="legislacao">138</span> , <span class="legislacao">§1º</span> , <span class="legislacao">140</span> , <span class="legislacao">143</span> , <span class="legislacao">144</span> , <span class="legislacao">145</span> E <span class="legislacao">146</span> , DA <span class="legislacao">LEI N.º 4.317/2009</span> . INCONSTITUCIONALIDADE . OFENSA AOS PRINCÍPIOS DA SEPARAÇÃO DOS PODERES E RESERVA LEGAL . PROCEDÊNCIA DA AÇÃO . É inconstitucional disposição legal que versa sobre <span class="organizacao">organização</span> , funcionamento da administração do <span class="local">Distrito Federal</span> e seus servidores públicos . Competência privativa do <span class="pessoa">Chefe do Executivo</span> . Vulneração aos <span class="legislacao">artigos 53</span> , <span class="legislacao">71</span> , <span class="legislacao">§ 1º</span> , incisos II e IV , e <span class="legislacao">100</span> , incisos VI e X , todos <span class="legislacao">Lei Orgânica do Distrito Federal</span> .

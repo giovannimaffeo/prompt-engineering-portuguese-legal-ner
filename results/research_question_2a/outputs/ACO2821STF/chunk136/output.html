@@ -1,0 +1,19 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "RICARDO LEWANDOWSKI ACO 2821 A GR / MT servidores ativos e inativos e dos pensionistas , observados critérios que preservem o equilíbrio financeiro e atuarial e o disposto neste artigo."
+
+Let me go through each part. "RICARDO LEWANDOWSKI" is a name, so that's a pessoa. Then "ACO 2821 A GR / MT" – ACO might be an organization, but I'm not sure. Maybe ACO is an acronym for something. "GR" and "MT" could be locations, like states or regions. "servidores ativos e inativos e dos pensionistas" are terms, not entities. "observados critérios que preservem o equilíbrio financeiro e atuarial e o disposto neste artigo" – "disposto neste artigo" refers to legislation, so that's legislacao.
+
+Wait, "ACO 2821" might be an organization code. "GR" and "MT" could be locations, like "Grande Rio" or "Mato Grosso", but without more context, it's safer to mark them as local. The "disposto neste artigo" refers to a legal article, so that's legislacao.
+
+So, the HTML should have spans for RICARDO LEWANDOWSKI (pessoa), ACO 2821 (organizacao?), GR and MT (local), and "disposto neste artigo" (legislacao). Wait, the user's example output might have different markings. Let me check the example again.
+
+In the sample input, the output was: <span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A <span class="local">GR</span> / <span class="local">MT</span> servidores ativos e inativos e dos pensionistas , observados critérios que preservem o equilíbrio financeiro e atuarial e o <span class="legislacao">disposto neste artigo</span>.
+
+So, ACO 2821 is left as is, but maybe it's an organization. Wait, the user's example output didn't mark ACO 2821. Maybe the user considers ACO 2821 as part of a code or not an entity. Alternatively, maybe "ACO" is an organization. But the example output didn't mark it. So perhaps the user's example didn't mark ACO 2821 as an organization. So I should follow that.
+
+So, the correct approach is to mark RICARDO LEWANDOWSKI as pessoa, GR and MT as local, and "disposto neste artigo" as legislacao. The rest remains as is. So the final HTML would have those spans.
+</think>
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A <span class="local">GR</span> / <span class="local">MT</span> servidores ativos e inativos e dos pensionistas , observados critérios que preservem o equilíbrio financeiro e atuarial e o <span class="legislacao">disposto neste artigo</span>.

@@ -1,0 +1,94 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "246 da Constituição Federal O autor alega que a Lei 9.717/1998 , por ser decorrente de conversão de medida provisória editada no ano de 1998 , viola a vedação constante do art . 246 da Constituição , com redação alterada pela EC 32/2001 , que assim dispõe : Art . 246 ."
+
+Looking for entities:
+
+1. "Constituição Federal" – This is a legal document, so it's legislation. So I should mark "Constituição Federal" as legislacao.
+2. "Lei 9.717/1998" – This is a law, so legislacao.
+3. "EC 32/2001" – EC stands for Emenda Constitucional, which is a constitutional amendment, so legislacao.
+4. "art. 246" – This refers to an article in a legal text. Since it's part of the legislation (Constituição), it's part of legislacao.
+5. "ano de 1998" – This is a year, so tempo.
+6. "art. 246 da Constituição" – Again, part of the legislation, so legislacao.
+
+Wait, the user mentioned that "art. 246 da Constituição" is part of the legislation. So I need to mark "art. 246" and "Constituição" as legislacao. Also, "EC 32/2001" is a constitutional amendment, so legislacao.
+
+Now, checking for other entities. Are there any pessoas, organizacoes, locais, or jurisprudências? The text mentions "O autor alega" – "autor" is a person, so "autor" should be pessoa. But wait, the original text says "O autor alega que..." – "autor" is the author, so that's a pessoa. But in legal terms, "autor" can be a party in a lawsuit, so it's a pessoa.
+
+So, the steps are:
+
+- "Constituição Federal" → legislacao
+- "Lei 9.717/1998" → legislacao
+- "EC 32/2001" → legislacao
+- "art. 246" → legislacao (since it's part of the Constitution)
+- "ano de 1998" → tempo
+- "autor" → pessoa
+
+Wait, the original text has "art. 246 da Constituição" – the "art. 246" is part of the legislation, so it's legislacao. Also, "Constituição" is part of the legislacao. So in the text, "art. 246 da Constituição" would have both "art. 246" and "Constituição" marked as legislacao.
+
+But in the input text, the user wrote "art . 246 da Constituição" – the space between "art" and "246" might be a typo, but I should treat it as "art. 246" as a reference to the article. So "art. 246" is part of the legislation.
+
+Also, "EC 32/2001" is an amendment, so legislacao.
+
+So putting it all together:
+
+- "Constituição Federal" → legislacao
+- "Lei 9.717/1998" → legislacao
+- "EC 32/2001" → legislacao
+- "art. 246" → legislacao
+- "ano de 1998" → tempo
+- "autor" → pessoa
+
+Now, I need to make sure that the HTML tags are correctly placed. Let me reconstruct the text with the spans.
+
+Original text: "246 da Constituição Federal O autor alega que a Lei 9.717/1998 , por ser decorrente de conversão de medida provisória editada no ano de 1998 , viola a vedação constante do art . 246 da Constituição , com redação alterada pela EC 32/2001 , que assim dispõe : Art . 246 ."
+
+Breaking it down:
+
+- "246 da Constituição Federal" → "Constituição Federal" is legislacao. The "246" here is part of the article reference, so maybe it's part of legislacao? Wait, the original text says "246 da Constituição Federal" – the "246" is the article number, so it's part of the legislation. So "246" should be legislacao? Or is it part of the article reference? Hmm, the user's example output might clarify. Let me check the example given in the problem statement.
+
+Wait, the user provided an example input and output. Wait, no, the user hasn't provided an example output. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML. Não inclua explicações ou blocos de código." So I need to process the input text as per the guidelines.
+
+In the input text, "246 da Constituição Federal" – "Constituição Federal" is a legislation, so that's legislacao. The "246" here is the article number, so it's part of the legislation. So "246" should be marked as legislacao? Or is it part of the article reference? Maybe the "246" is part of the article, so it's part of the legislation. So "246" would be legislacao.
+
+But in the original text, the user wrote "246 da Constituição Federal" – the "246" is the article number, so it's part of the legislation. So "246" is part of the legislacao. So I need to mark "246" as legislacao.
+
+Wait, but in the input text, the user wrote "246 da Constituição Federal" – the "246" is the article number, so it's part of the legislation. So "246" is part of the legislacao. So the entire "246 da Constituição Federal" would have "246" and "Constituição Federal" as legislacao.
+
+But the user's example output might have different handling. Let me think again.
+
+In the input text, the user wrote "246 da Constituição Federal" – the "246" is the article number, so it's part of the legislation. So "246" is part of the legislacao. The "Constituição Federal" is also legislacao. So both "246" and "Constituição Federal" are marked as legislacao.
+
+But in the original text, the user wrote "246 da Constituição Federal" – the "246" is the article number, so it's part of the legislation. So "246" is legislacao. The "Constituição Federal" is also legislacao.
+
+So the first part would be: <span class="legislacao">246</span> da <span class="legislacao">Constituição Federal</span>.
+
+Then, "O autor alega que a Lei 9.717/1998 , por ser decorrente de conversão de medida provisória editada no ano de 1998 , viola a vedação constante do art . 246 da Constituição , com redação alterada pela EC 32/2001 , que assim dispõe : Art . 246 ."
+
+In this part:
+
+- "Lei 9.717/1998" → legislacao
+- "ano de 1998" → tempo
+- "art. 246" → legislacao (since it's part of the Constitution)
+- "EC 32/2001" → legislacao
+- "Art. 246" → legislacao (assuming it's part of the legislation)
+
+Also, "autor" → pessoa.
+
+So putting it all together:
+
+The HTML would be:
+
+<span class="legislacao">246</span> da <span class="legislacao">Constituição Federal</span> <span class="pessoa">O autor</span> alega que a <span class="legislacao">Lei 9.717/1998</span> , por ser decorrente de conversão de medida provisória editada no <span class="tempo">ano de 1998</span> , viola a vedação constante do <span class="legislacao">art. 246</span> da <span class="legislacao">Constituição</span> , com redação alterada pela <span class="legislacao">EC 32/2001</span> , que assim dispõe : <span class="legislacao">Art. 246</span> .
+
+Wait, but the original text has "art . 246" with a space. Should I include the space? The user's input has "art . 246" – maybe it's a typo, but I should keep the original spacing. So "art . 246" would be "art. 246" with a space, but in the HTML, it's better to keep the original text. So "art . 246" would be part of the legislacao.
+
+But the user's example output might have different handling. However, since the user hasn't provided an example, I need to proceed based on the guidelines.
+
+So, the final HTML would have all the entities marked as per the classes. Let me make sure I didn't miss any entities. The "EC 32/2001" is a constitutional amendment, so legislacao. The "ano de 1998" is tempo. The "autor" is pessoa. The rest are legislacao.
+
+I think that's all. Now, I'll format the text accordingly.
+</think>
+
+<span class="legislacao">246</span> da <span class="legislacao">Constituição Federal</span> <span class="pessoa">O autor</span> alega que a <span class="legislacao">Lei 9.717/1998</span> , por ser decorrente de conversão de medida provisória editada no <span class="tempo">ano de 1998</span> , viola a vedação constante do <span class="legislacao">art. 246</span> da <span class="legislacao">Constituição</span> , com redação alterada pela <span class="legislacao">EC 32/2001</span> , que assim dispõe : <span class="legislacao">Art. 246</span> .

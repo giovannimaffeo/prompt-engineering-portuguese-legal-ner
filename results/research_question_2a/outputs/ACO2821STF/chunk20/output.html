@@ -1,0 +1,49 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The text starts with "( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO". Here, "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" seems like an organization. The title "PROCURADOR-GERAL" is a position, so maybe it's an organization. Wait, but "PROCURADOR-GERAL" is a person's title. Wait, but the full name might be an organization. Hmm, maybe "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is the name of the organization. So I should mark that as organizacao.
+
+Next, "Senhor Ministro Ricardo Lewandowski ( Relator )". "Senhor Ministro" is a title, so "Ricardo Lewandowski" is a person. So "Ricardo Lewandowski" should be a <span class="pessoa">.
+
+Then, "União" is a legal entity, which is an organization. So "União" is organizacao.
+
+"Estado do Mato Grosso" is a state, so that's a local. Wait, but "Estado do Mato Grosso" is a place, so local. But sometimes states can be considered as organizations, but in this context, it's a geographical location. So local.
+
+"Certificado de Regularidade Previdenciária do Estado de Mato Grosso" – the "Estado de Mato Grosso" again is a local. Wait, but the entire phrase is part of the text, but the key entities are the ones mentioned. Wait, the "Estado do Mato Grosso" is a local, so I should mark that part.
+
+Then, "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" – these are acronyms for different registries or systems. Are these considered legislação or jurisprudencia? Probably not. They are names of systems, so maybe they are local or organizacao? Wait, the user's guide doesn't mention systems, so maybe they are not entities. Unless they are part of legislation. But the user's example might not include them. So perhaps leave them as is.
+
+"Decreto 3.788/2001" and "Portaria MPS n° 204/2008" – these are legislative acts, so they should be marked as legislacao. The numbers and dates are part of the legislation, so the entire name would be legislacao.
+
+"Relator" is a title, so the person's name is already marked as pessoa.
+
+Now, let me go through the text again step by step.
+
+Original text:
+
+"( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO R E L A T Ó R I O O Senhor Ministro Ricardo Lewandowski ( Relator ) : Trata-se de agravo regimental interposto pela União contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo Estado do Mato Grosso , determinando-se à União `` que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS n° 204/2008 e de suas posteriores alterações '' ."
+
+Breaking it down:
+
+- "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" – this is an organization, so <span class="organizacao">PROCURADOR -GERAL DO ESTADO DE MATO GROSSO</span>
+
+- "Senhor Ministro Ricardo Lewandowski" – "Ricardo Lewandowski" is a pessoa: <span class="pessoa">Ricardo Lewandowski</span>
+
+- "União" – organization: <span class="organizacao">União</span>
+
+- "Estado do Mato Grosso" – local: <span class="local">Estado do Mato Grosso</span>
+
+- "Decreto 3.788/2001" – legislacao: <span class="legislacao">Decreto 3.788/2001</span>
+
+- "Portaria MPS n° 204/2008" – legislacao: <span class="legislacao">Portaria MPS n° 204/2008</span>
+
+Other parts like "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" – these are acronyms for systems, but since they are not in the specified categories, they remain as is.
+
+"incidenter tantum" – this is a legal term, but not an entity, so left as is.
+
+So putting it all together, the HTML should have the appropriate spans for each identified entity.
+</think>
+
+<span class="organizacao">PROCURADOR -GERAL DO ESTADO DE MATO GROSSO</span> R E L A T Ó R I O O Senhor Ministro <span class="pessoa">Ricardo Lewandowski</span> ( Relator ) : Trata-se de agravo regimental interposto pela <span class="organizacao">União</span> contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo <span class="local">Estado do Mato Grosso</span> , determinando-se à <span class="organizacao">União</span> `` que renove o Certificado de Regularidade Previdenciária do <span class="local">Estado de Mato Grosso</span> , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS n° 204/2008</span> e de suas posteriores alterações '' .

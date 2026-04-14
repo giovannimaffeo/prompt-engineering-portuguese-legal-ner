@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about an Action Direta de Inconstitucionalidade (ADI) with a number, and mentions a judge, some legal arguments, and references to administrative needs.
+
+Looking for entities:
+
+1. "ADI 20170020161362ADI" – This seems like a legal case number. The ADI is a type of legal action in Brazil, so maybe it's part of the legislation or jurisprudence? Wait, the ADI is a specific type of action, so maybe it's part of the legislation or jurisprudence? Or perhaps it's a case number, which might not be any of the specified types. The user's guide doesn't mention case numbers, so maybe it's left as is.
+
+2. "Senhora Desembargadora ANA MARIA DUARTE AMARANTE - Vogal Senhor Presidente" – Here, "ANA MARIA DUARTE AMARANTE" is a person, so that's a pessoa. "Desembargadora" is a title, so the name is the entity.
+
+3. "20170020161362" – This looks like a date or number. The user's guide mentions tempo for time/date. So I should mark this as tempo.
+
+4. "habite-se" and "alvará" – These are legal terms, but are they part of legislation or jurisprudence? The user's guide doesn't specify, so maybe they are left as is unless they are part of a specific entity. Since they are terms, not entities, they might not be marked.
+
+5. "Administração" – This is a general term, not an entity. So no tag.
+
+6. "vício de iniciativa" – This is a legal term, but again, not an entity type specified. So leave as is.
+
+Now, applying the tags:
+
+- "ANA MARIA DUARTE AMARANTE" is a pessoa.
+- "20170020161362" is tempo.
+- The ADI number might be part of the legislation or jurisprudence, but since the user's example doesn't mark it, maybe it's left as is. Wait, the example output in the user's message shows that the ADI number is not marked. Let me check the sample output provided.
+
+Wait, the user provided a sample input and output. Let me check that. The input is: "Ação Direta de Inconstitucionalidade 20170020161362ADI A Senhora Desembargadora ANA MARIA DUARTE AMARANTE - Vogal Senhor Presidente , não obstante o conteúdo da norma impugnada seja mais do que atualizado e coerente com as necessidades atuais da Administração - que o diga quem precisa obter um habite-se ou um alvará com as delongas terríveis , falta de orientação existente - o fato é que realmente o vício de iniciativa é incontornável ."
+
+The sample output is: 
+
+"Ação Direta de Inconstitucionalidade <span class="tempo">20170020161362</span>ADI A <span class="pessoa">Senhora Desembargadora ANA MARIA DUARTE AMARANTE</span> - Vogal Senhor Presidente , não obstante o conteúdo da norma impugnada seja mais do que atualizado e coerente com as necessidades atuais da Administração - que o diga quem precisa obter um habite-se ou um alvará com as delongas terríveis , falta de orientação existente - o fato é que realmente o vício de iniciativa é incontornável ."
+
+So in the sample output, the number "20170020161362" is marked as tempo, and the person's name is marked as pessoa. The ADI number is left as is. So I need to follow that example.
+
+So, in the input text, the number "20170020161362" is marked as tempo. The person's name is "ANA MARIA DUARTE AMARANTE" with the title "Senhora Desembargadora" included in the span. Wait, in the sample output, the entire "Senhora Desembargadora ANA MARIA DUARTE AMARANTE" is marked as pessoa. So even the title is part of the pessoa entity.
+
+So, applying that, the person's name is "Senhora Desembargadora ANA MARIA DUARTE AMARANTE" as a pessoa. The number "20170020161362" is tempo. The rest of the text is left as is.
+
+Therefore, the HTML output should have those two spans. The rest of the text remains unchanged.
+</think>
+
+Ação Direta de Inconstitucionalidade <span class="tempo">20170020161362</span>ADI A <span class="pessoa">Senhora Desembargadora ANA MARIA DUARTE AMARANTE</span> - Vogal Senhor Presidente , não obstante o conteúdo da norma impugnada seja mais do que atualizado e coerente com as necessidades atuais da Administração - que o diga quem precisa obter um habite-se ou um alvará com as delongas terríveis , falta de orientação existente - o fato é que realmente o vício de iniciativa é incontornável .

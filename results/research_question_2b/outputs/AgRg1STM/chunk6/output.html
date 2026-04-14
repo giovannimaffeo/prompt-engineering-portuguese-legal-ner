@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first sentence: "Para melhor descortino da quaestio pelos Eminentes Ministros desta Corte , faz-se necessária uma breve retrospectiva dos fatos ." Here, "Eminentes Ministros desta Corte" seems like an organization or maybe a legal body. "Corte" in Portuguese usually refers to a court, so maybe "organizacao" or "local"? Wait, "Corte" here is part of the court's name, so perhaps it's an organization. But the user's example might have "organizacao" for such terms. Let me check the example output they provided. Wait, the user hasn't given an example yet, but the task says to use the classes as specified.
+
+Next, "O Recorrente foi condenado à pena de 6 ( seis ) meses de detenção , como incurso no art . 302 do CPM , com o benefício do sursis pelo prazo de 2 ( dois ) anos ." Here, "Recorrente" is a person, so that's "pessoa". "CPM" is likely a legal code, so "legislacao". The dates "6 de julho de 2016" and "9 de março de 2017" are "tempo". The "sursis" is a legal term, but it's not one of the specified entities. The "Audiência Admonitória" is a legal term, but again, not one of the entities. The "Decisão lavrada" might refer to a legal decision, but again, not an entity type here.
+
+Looking at the text again, "CPM" is probably the Código Penal Militar, which is a legislation, so "legislacao". The dates are "tempo". The "Corte" is part of the court's name, so maybe "organizacao" or "local". Wait, "Corte" is a court, which is an organization. So "Corte" would be "organizacao".
+
+So, let's go through each part:
+
+- "Eminentes Ministros desta Corte" → "Corte" is an organization. So "Corte" becomes <span class="organizacao">Corte</span>.
+- "art . 302 do CPM" → "CPM" is legislation, so <span class="legislacao">CPM</span>.
+- "6 de julho de 2016" → date, so <span class="tempo">6 de julho de 2016</span>.
+- "9 de março de 2017" → another date, same class.
+- "Recorrente" → pessoa.
+- "Audiência Admonitória" → not an entity type, so left as is.
+- "Decisão lavrada" → not an entity, so left as is.
+
+Wait, the user's example output might have "Corte" as "organizacao". Let me confirm. The user's example output isn't provided, but according to the guidelines, "organizacao" is for organizations. So "Corte" is an organization. Also, "CPM" is a legal code, so "legislacao".
+
+So, applying these:
+
+- "Eminentes Ministros desta Corte" → "Corte" is "organizacao".
+- "art . 302 do CPM" → "CPM" is "legislacao".
+- Dates are "tempo".
+- "Recorrente" is "pessoa".
+
+Other parts like "Audiência Admonitória" and "Decisão lavrada" are not entities, so they remain as is.
+
+Now, let's reconstruct the text with the tags:
+
+Original text: "Para melhor descortino da quaestio pelos Eminentes Ministros desta Corte , faz-se necessária uma breve retrospectiva dos fatos . O Recorrente foi condenado à pena de 6 ( seis ) meses de detenção , como incurso no art . 302 do CPM , com o benefício do sursis pelo prazo de 2 ( dois ) anos . A Audiência Admonitória foi realizada , em 6 de julho de 2016 , tendo o Sentenciado aceitado as condições estabelecidas e passado ao cumprimento da suspensão condicional da execução da pena ( sursis ) . Consoante a Decisão lavrada em 9 de março de 2017 ( fl ."
+
+Marking:
+
+- "Corte" → <span class="organizacao">Corte</span>
+- "CPM" → <span class="legislacao">CPM</span>
+- "6 de julho de 2016" → <span class="tempo">6 de julho de 2016</span>
+- "9 de março de 2017" → <span class="tempo">9 de março de 2017</span>
+- "Recorrente" → <span class="pessoa">Recorrente</span>
+- "Sentenciado" → is this a person? "Sentenciado" refers to the person who was sentenced, so it's a person. So "Sentenciado" should be <span class="pessoa">Sentenciado</span>.
+
+Wait, the original text has "Sentenciado" in the sentence: "tendo o Sentenciado aceitado..." So "Sentenciado" is a person, so "pessoa".
+
+So, adding that.
+
+Now, putting it all together:
+
+"Para melhor descortino da quaestio pelos Eminentes Ministros desta <span class="organizacao">Corte</span> , faz-se necessária uma breve retrospectiva dos fatos . <span class="pessoa">Recorrente</span> foi condenado à pena de <span class="tempo">6 de julho de 2016</span> , como incurso no art . 302 do <span class="legislacao">CPM</span> , com o benefício do sursis pelo prazo de <span class="tempo">2 ( dois ) anos</span> . A Audiência Admonitória foi realizada , em <span class="tempo">6 de julho de 2016</span> , tendo o <span class="pessoa">Sentenciado</span> aceitado as condições estabelecidas e passado ao cumprimento da suspensão condicional da execução da pena ( sursis ) . Consoante a Decisão lavrada em <span class="tempo">9 de março de 2017</span> ( fl ."
+
+Wait, the date "6 de julho de 2016" appears twice. The first occurrence is in "Audiência Admonitória foi realizada , em 6 de julho de 2016" and the second is in "com o benefício do sursis pelo prazo de 2 ( dois ) anos". Wait, no, the original text says "com o benefício do sursis pelo prazo de 2 ( dois ) anos." So the date "6 de julho de 2016" is in the sentence about the hearing, and "9 de março de 2017" is another date. Also, the "2 ( dois ) anos" is a duration, not a date, so it's not "tempo". Wait, the user's guidelines say "tempo" for time/data. So "6 de julho de 2016" and "9 de março de 2017" are "tempo". The "2 ( dois ) anos" is a duration, but not a date, so it's not marked. So the "2 ( dois ) anos" remains as is.
+
+So the corrected version would have:
+
+- "6 de julho de 2016" → tempo
+- "9 de março de 2017" → tempo
+- "Recorrente" → pessoa
+- "Sentenciado" → pessoa
+- "CPM" → legislação
+
+So the final HTML would have those tags. Let me check again for any other entities. "Eminentes Ministros" is part of the court's name, but "Corte" is the organization. The rest seems okay. I think that's all.
+</think>
+
+Para melhor descortino da quaestio pelos Eminentes Ministros desta Corte , faz-se necessária uma breve retrospectiva dos fatos . <span class="pessoa">Recorrente</span> foi condenado à pena de <span class="tempo">6 de julho de 2016</span> , como incurso no art . 302 do <span class="legislacao">CPM</span> , com o benefício do sursis pelo prazo de 2 ( dois ) anos . A Audiência Admonitória foi realizada , em <span class="tempo">6 de julho de 2016</span> , tendo o <span class="pessoa">Sentenciado</span> aceitado as condições estabelecidas e passado ao cumprimento da suspensão condicional da execução da pena ( sursis ) . Consoante a Decisão lavrada em <span class="tempo">9 de março de 2017</span> ( fl .

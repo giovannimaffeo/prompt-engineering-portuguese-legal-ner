@@ -1,0 +1,46 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read the input text carefully. The input is: "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 9 § 1º , inciso III , alínea `` a '' , da Constituição Federal , de um ano de idade para cada ano de contribuição que exceder a condição prevista no inciso I do caput deste artigo ."
+
+Let me break it down. The first part is "Apelação / Reexame Necessário" – these are legal terms, but they don't match any of the entity types. Then there's a code "20140110500434APO" and "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P". The code might be a document number, but it's not one of the specified entities. 
+
+Next, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is an organization, and "DESEMBARGADORA" is a person (a judge). So "GABINETE" should be <span class="organizacao">, and "MARIA IVATÔNIA" is a person, so <span class="pessoa">. 
+
+Then there's "9 § 1º , inciso III , alínea `` a '' , da Constituição Federal". "Constituição Federal" is a legal document, so that's <span class="legislacao">. The "inciso III" and "alínea a" are parts of the legislation, so they should be part of the legislacao span. 
+
+The rest of the text mentions "um ano de idade para cada ano de contribuição" – these are time-related terms, but "ano" is a time entity. However, the exact phrase might not be a specific time, so maybe "ano" is the time entity. Wait, the user's example in the output might have "ano" as tempo. Let me check the example again. 
+
+In the sample output provided, "ano" is marked as tempo. So in this case, "ano de idade" and "ano de contribuição" would be tempo. So I need to wrap "ano" instances with <span class="tempo">. 
+
+Also, "Constituição Federal" is legislacao. The rest of the text doesn't have any other entities. 
+
+So putting it all together:
+
+- "GABINETE" → organizacao
+- "MARIA IVATÔNIA" → pessoa
+- "Constituição Federal" → legislacao
+- "ano" instances → tempo
+
+I need to make sure that each occurrence of these terms is marked correctly. Let me go through the text again step by step.
+
+Original text segments:
+
+1. "Apelação / Reexame Necessário" – no entity.
+2. "20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – codes, no entity.
+3. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is organizacao, "MARIA IVATÔNIA" is pessoa.
+4. "9 § 1º , inciso III , alínea `` a '' , da Constituição Federal" – "Constituição Federal" is legislacao.
+5. "de um ano de idade para cada ano de contribuição que exceder a condição prevista no inciso I do caput deste artigo ." – "ano" is tempo.
+
+So the HTML should have:
+
+- <span class="organizacao">GABINETE</span> DA DESEMBARGADORA <span class="pessoa">MARIA IVATÔNIA</span>
+- <span class="legislacao">Constituição Federal</span>
+- "ano" instances as <span class="tempo">ano</span>
+
+I need to make sure that each "ano" is marked. Let me check the exact text: "de um ano de idade para cada ano de contribuição". So there are two "ano" instances. Both should be marked as tempo.
+
+Putting it all together, the final HTML should have those spans correctly placed.
+</think>
+
+Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE</span> DA DESEMBARGADORA <span class="pessoa">MARIA IVATÔNIA</span> 9 § 1º , inciso III , alínea `` a '' , da <span class="legislacao">Constituição Federal</span> , de um <span class="tempo">ano</span> de idade para cada <span class="tempo">ano</span> de contribuição que exceder a condição prevista no inciso I do caput deste artigo .

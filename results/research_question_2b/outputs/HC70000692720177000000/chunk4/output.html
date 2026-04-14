@@ -1,0 +1,50 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read through the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me break it down sentence by sentence.
+
+The first part is "Além disso , a Certidão expedida por servidor do Cartório do Juízo apontado coator goza de fé pública , tornando a alegação da Impetrante de que não teria sido intimada para a Audiência de inquirição de testemunhas incipiente , haja vista não ter sido apresentada prova em sentido contrário , inexistindo , pois , causa de nulidade que justifique a concessão da ordem . Habeas corpus denegado . Unanimidade ."
+
+Looking for entities:
+
+- "Certidão" – This might be a legal document, but the user's entities don't include documents. Wait, the entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "Certidão" isn't one of them. Maybe "Cartório" is an organization? "Cartório do Juízo apontado coator" – "Cartório" is an organization, so I should mark that. "Juízo" could be a local or part of an organization? Maybe "Juízo" is part of the organization name. Wait, "Cartório do Juízo" – "Cartório" is the organization, and "Juízo" might be a local or part of the organization. Hmm, not sure. Maybe "Cartório" is the organization, and "Juízo" is a local? Or maybe "Juízo" is part of the organization's name. Need to check.
+
+- "Impetrante" – This is a legal term, referring to a person who files a petition. So that's a "pessoa".
+
+- "Audiência" – This is a legal term, but not an entity type. Unless it's part of a local or something else. Probably not an entity here.
+
+- "Habeas corpus" – This is a legal term, but it's a type of legal remedy. The user's entities include "legislacao" and "jurisprudencia". "Habeas corpus" might be part of jurisprudencia, but I'm not sure. Alternatively, it's a legal concept, but not one of the specified entities. So maybe not marked.
+
+- "Unanimidade" – This is a term indicating agreement, but not an entity type. So no marking.
+
+Now, looking for "organizacao": "Cartório" is an organization. So I'll mark "Cartório" as organizacao. "Juízo" might be part of the organization's name, but maybe not. Let me check the original text again: "Cartório do Juízo apontado coator". The phrase "Cartório do Juízo" could be the name of the organization. So "Cartório do Juízo" as organizacao? But the user's example might have split it. Wait, the original text says "Cartório do Juízo apontado coator". Maybe "Cartório" is the organization, and "Juízo" is a local? Or maybe "Juízo" is part of the organization's name. It's a bit ambiguous. Since the user's example might have "Cartório" as the organization, I'll mark "Cartório" as organizacao.
+
+"Pessoa": "Impetrante" is a person, so mark that as pessoa.
+
+"Tempo": Are there any dates or time references? The text mentions "incipiente" which might refer to the beginning of a process, but not a specific time. No explicit dates, so no tempo entities.
+
+"Local": Any locations? "Juízo" could be a local, but it's more likely part of the organization's name. Alternatively, "Cartório" is a local? Not sure. Maybe "Juízo" is a local. But I'm not certain. Since the user's example might not have local entities, maybe there are none here.
+
+"Legislacao" and "jurisprudencia": The text mentions "fé pública" which is a legal concept, but not one of the entities. "Habeas corpus denegado" – Habeas corpus is a legal remedy, but not an entity. So no legislation or jurisprudence entities here.
+
+So the entities to mark are:
+
+- "Cartório" as organizacao
+- "Impetrante" as pessoa
+
+Wait, "apontado coator" – maybe "coator" is a typo for "coator" (coator is a term in Brazilian law for a judicial officer). But the user's entities don't include that. So maybe "coator" is part of the organization's name? Not sure. But the main entities are "Cartório" and "Impetrante".
+
+So the HTML would have:
+
+<span class="organizacao">Cartório</span> do Juízo apontado coator goza de fé pública , tornando a alegação da <span class="pessoa">Impetrante</span> de que não teria sido intimada para a Audiência de inquirição de testemunhas incipiente , haja vista não ter sido apresentada prova em sentido contrário , inexistindo , pois , causa de nulidade que justifique a concessão da ordem . Habeas corpus denegado . Unanimidade .
+
+Wait, but "Cartório do Juízo" might be the full name of the organization. So maybe "Cartório do Juízo" as organizacao. But the original text has "Cartório do Juízo apontado coator". Maybe "Cartório do Juízo" is the organization, and "apontado coator" is part of the description. So I should mark "Cartório do Juízo" as organizacao. But the user's example might split it. Let me check the original text again.
+
+Original text: "Certidão expedida por servidor do Cartório do Juízo apontado coator goza de fé pública"
+
+So "Cartório do Juízo apontado coator" – perhaps "Cartório do Juízo" is the organization, and "apontado coator" is part of the description. So "Cartório do Juízo" as organizacao. But the user's example might have "Cartório" as the organization. Alternatively, maybe "Juízo" is the local. But I'm not sure. Since the user's example might not have local entities, maybe it's safer to mark "Cartório" as organizacao.
+
+So the final HTML would have "Cartório" as organizacao and "Impetrante" as pessoa. The rest remains as is.
+</think>
+
+<span class="organizacao">Cartório</span> do Juízo apontado coator goza de fé pública , tornando a alegação da <span class="pessoa">Impetrante</span> de que não teria sido intimada para a Audiência de inquirição de testemunhas incipiente , haja vista não ter sido apresentada prova em sentido contrário , inexistindo , pois , causa de nulidade que justifique a concessão da ordem . Habeas corpus denegado . Unanimidade .

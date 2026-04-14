@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read the input text carefully. The text is in Portuguese and seems to be a legal document. Let me parse through it sentence by sentence.
+
+The first part is "Compulsando os autos , verifica-se que não há notícia de que o pleito de nulidade da prova documental anexada , por cópia , em fl . 48-63 , tenha sido requerida na oportunidade prevista no §3º , do art . 406 , do CPP . Aliás , a regra geral de processo contida no art ."
+
+Looking for entities here. The term "CPP" stands for Código de Processo Penal, which is a legal code. So "CPP" should be marked as legislacao. Also, "art. 406" refers to an article in the CPP, so that's part of the legislation. Similarly, "art." in "art. 406" and "art." in "art. geral" would be part of the legislation. 
+
+Wait, the user mentioned that "legislacao" is for legislation. So any mention of articles in legal codes should be marked. The "§3º" is a section in the CPP, so that's part of the legislation as well. 
+
+Now, checking for other entities. There's "fl. 48-63" which refers to folhas (pages) in a document. "Fl." is an abbreviation for "folha", so that's a local? Wait, no. "Fl." here refers to pages in a legal document, so maybe it's a local? Or maybe it's part of the document's structure, not a location. The user's guide says "local" is for locations. Since "fl." is about pages, maybe it's not a local. The user might consider "fl." as part of the document's structure, so perhaps not an entity. 
+
+The term "CPP" is definitely legislation. The articles mentioned (art. 406, art. geral) are parts of the legislation. The "§3º" is a section within the legislation. So those should be marked as legislacao. 
+
+Are there any other entities? The text mentions "pleito de nulidade da prova documental anexada" which is a legal term but not an entity type. "Compulsando os autos" refers to the case file, which might be a local? Or maybe not. The user's guide doesn't mention case files as a local. 
+
+So the main entities here are the references to the CPP (legislacao), the articles (legislacao), and the section (legislacao). The "fl." might not be an entity. 
+
+So the HTML should have <span class="legislacao"> around "CPP", "art. 406", "art.", and "§3º". Let me check the original text again. 
+
+Original text: "na oportunidade prevista no §3º , do art . 406 , do CPP . Aliás , a regra geral de processo contida no art ."
+
+Breaking it down:
+- "§3º" is part of the CPP, so "§3º" should be legislacao.
+- "art. 406" is an article in the CPP, so "art. 406" is legislacao.
+- "art." in "art. geral" is part of the legislation, so "art." should be legislacao.
+- "CPP" is the legislation code, so "CPP" is legislacao.
+
+So the HTML would have those parts wrapped in <span class="legislacao">. 
+
+Other parts of the text don't seem to have any of the specified entities. So the final output should have those spans. Let me make sure I didn't miss any other entities. 
+
+No, I think that's all. So the output will have the text with the mentioned parts marked as legislacao.
+</think>
+
+Compulsando os autos , verifica-se que não há notícia de que o pleito de nulidade da prova documental anexada , por cópia , em fl . 48-63 , tenha sido requerida na oportunidade prevista no <span class="legislacao">§3º</span> , do <span class="legislacao">art</span> . 406 , do <span class="legislacao">CPP</span> . Aliás , a regra geral de processo contida no <span class="legislacao">art</span> .

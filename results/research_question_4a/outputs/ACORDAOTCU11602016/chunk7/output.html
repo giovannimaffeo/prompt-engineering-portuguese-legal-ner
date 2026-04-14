@@ -1,0 +1,61 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify which parts correspond to each entity type. Let me start by breaking down the input:
+
+"1º , inciso I ; 16 , inciso III , alínea `` c '' ; 19 , caput ; e 23 , inciso III , da Lei 8.443/1992 , e condená-lo , solidariamente com o Grupo OK Construções e Empreendimentos Ltda. , ao pagamento das quantias a seguir relacionadas , e fixar o prazo de 15 ( quinze ) dias , a contar da notificação , para que comprovem , perante o Tribunal ( art ."
+
+Looking for entities:
+
+1. "Lei 8.443/1992" – This is a law, so it's legislacao. The full name of the law is mentioned, so I should mark that.
+
+2. "Grupo OK Construções e Empreendimentos Ltda." – This looks like an organization's name. The "Ltda." is a common suffix for limited liability companies in Brazil, so this should be organizacao.
+
+3. "15 ( quinze ) dias" – The number "15" is a time reference, but according to the guidelines, only explicit dates should be marked as tempo. Since "15 dias" is a duration, not a specific date, it might not qualify. Wait, the guidelines say "tempo" includes intervals of time. Wait, the example in the guidelines includes "período de maio a novembro de 2014" as tempo. But here, "15 dias" is a duration, not a specific date. The user's example for tempo includes "31 de dezembro de 2016" and "2016", but "15 dias" is a period. However, the guidelines mention that "Horários isolados (como "17:26:32") não devem ser anotados como tempo; apenas datas explícitas devem ser anotadas." So "15 dias" is a duration, not a specific date. Therefore, it might not be marked as tempo. Wait, but the user's example includes "15 ( quinze ) dias" in the input. Wait, the input has "15 ( quinze ) dias , a contar da notificação" – the "15 dias" is a time interval. The guidelines say "intervalos de tempo" are tempo. So "15 dias" is an interval, so it should be marked as tempo. Wait, but the example in the guidelines for tempo includes "período de maio a novembro de 2014" as tempo. So "15 dias" is a duration, which is an interval. Therefore, it should be marked as tempo. But the user's example in the guidelines for tempo includes "2016" as tempo. Wait, the user's example for tempo includes "2016" as a year, which is a time reference. So "15 dias" is a time interval, so it should be marked as tempo. But the user's example in the guidelines for tempo includes "período de maio a novembro de 2014" as tempo. So "15 dias" is a time interval, so it should be marked as tempo. Therefore, "15 ( quinze ) dias" should be marked as tempo.
+
+Wait, but the user's example in the guidelines for tempo includes "2016" as tempo. So "15 dias" is a time interval, which is part of the tempo category. Therefore, I should mark "15 ( quinze ) dias" as tempo.
+
+Wait, but the user's example in the guidelines for tempo includes "período de maio a novembro de 2014" as tempo. So "15 dias" is a duration, which is an interval. Therefore, it should be marked as tempo. So "15 ( quinze ) dias" is tempo.
+
+Now, checking for other entities:
+
+- "art." – This is part of a legal reference, but the user's example shows that "art. 61 , §1º , da Lei nº 9.430/96" is marked as legislacao. However, in the input, the text ends with "( art .", which is incomplete. So "art." is not a full reference, so it's not marked.
+
+- "Tribunal" – This is a generic term for a court, not a specific name. So it's not marked as organizacao or local.
+
+- "Grupo OK Construções e Empreendimentos Ltda." – This is an organization's name, so it's organizacao.
+
+- "Lei 8.443/1992" – This is a law, so legislacao.
+
+So the entities to mark are:
+
+- "Lei 8.443/1992" → legislacao
+- "Grupo OK Construções e Empreendimentos Ltda." → organizacao
+- "15 ( quinze ) dias" → tempo
+
+Wait, but the user's example in the guidelines for tempo includes "15 ( quinze ) dias" as tempo. Let me check the user's example again. The input in the example was "15 ( quinze ) dias , a contar da notificação" and the output marked "15 ( quinze ) dias" as tempo. So yes, that's correct.
+
+So the final HTML should have those three entities marked. Let me structure the input text with the appropriate spans.
+
+Original text:
+
+"1º , inciso I ; 16 , inciso III , alínea `` c '' ; 19 , caput ; e 23 , inciso III , da Lei 8.443/1992 , e condená-lo , solidariamente com o Grupo OK Construções e Empreendimentos Ltda. , ao pagamento das quantias a seguir relacionadas , e fixar o prazo de 15 ( quinze ) dias , a contar da notificação , para que comprovem , perante o Tribunal ( art ."
+
+Breaking it down:
+
+- "1º , inciso I ; 16 , inciso III , alínea `` c '' ; 19 , caput ; e 23 , inciso III , da Lei 8.443/1992" → "Lei 8.443/1992" is legislacao.
+
+- "Grupo OK Construções e Empreendimentos Ltda." → organizacao.
+
+- "15 ( quinze ) dias" → tempo.
+
+So the HTML should be:
+
+"1º , inciso I ; 16 , inciso III , alínea `` c '' ; 19 , caput ; e 23 , inciso III , da <span class="legislacao">Lei 8.443/1992</span> , e condená-lo , solidariamente com o <span class="organizacao">Grupo OK Construções e Empreendimentos Ltda.</span> , ao pagamento das quantias a seguir relacionadas , e fixar o prazo de <span class="tempo">15 ( quinze ) dias</span> , a contar da notificação , para que comprovem , perante o Tribunal ( art ."
+
+Wait, but the original text has "15 ( quinze ) dias" as part of the sentence. So the span should cover that exact phrase. Also, the "art ." at the end is not a full reference, so it's not marked.
+
+I think that's all. Let me double-check if there are any other entities. The rest of the text doesn't have any other entities. So the final output should have those three spans.
+</think>
+
+1º , inciso I ; 16 , inciso III , alínea `` c '' ; 19 , caput ; e 23 , inciso III , da <span class="legislacao">Lei 8.443/1992</span> , e condená-lo , solidariamente com o <span class="organizacao">Grupo OK Construções e Empreendimentos Ltda.</span> , ao pagamento das quantias a seguir relacionadas , e fixar o prazo de <span class="tempo">15 ( quinze ) dias</span> , a contar da notificação , para que comprovem , perante o Tribunal ( art .

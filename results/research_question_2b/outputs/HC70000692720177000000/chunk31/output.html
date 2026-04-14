@@ -1,0 +1,108 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is: "Por outro lado , o alegado não recebimento de ligação ou de e-mail sobre a realização das Audiências contrapõe-se à certificação contida nos autos , expedida pela Oficiala de Justiça Elvira Maria de Queiroz Rodrigues , nos seguintes termos :"
+
+Here, "Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" seems like an organization. The title "Oficiala de Justiça" is a position, so maybe that's part of the organization. But the name "Elvira Maria de Queiroz Rodrigues" is a person. Wait, but the title might be part of the organization. Wait, in Brazil, "Oficial de Justiça" is a judicial officer, so maybe the entire name is a person. Wait, but the text says "expedida pela Oficiala de Justiça Elvira Maria de Queiroz Rodrigues". So "Oficiala de Justiça" is the title, and the name is the person. So "Elvira Maria de Queiroz Rodrigues" is a pessoa. The "Oficiala de Justiça" might be part of the organization, but since it's part of the title, maybe it's part of the person's name. Hmm, maybe the entire phrase is the person's name. Wait, but "Oficiala de Justiça" is a title, so the person is Elvira Maria de Queiroz Rodrigues, and the title is part of her position. So I should mark "Elvira Maria de Queiroz Rodrigues" as pessoa. The "Oficiala de Justiça" might be part of the organization, but since it's part of the title, maybe it's not an entity here. Wait, the user's example might have similar cases. Let me check the example output.
+
+Looking at the example output, the user provided a sample input and output. Wait, the user hasn't provided an example, but the task says to return the text with the entities marked. So I need to proceed.
+
+Next, "Audiências" is a term, but not sure if it's an entity. Maybe not. "Certificação" is a term, but not an entity. "Auto" is part of "nos autos", which refers to the case, so maybe not an entity. 
+
+Moving on: "CERTIFICO que , nesta data , telefonei para o número 92-98171-6151 e a ligação não foi atendida . Deixei recado na caixa postal sobre o envio da Notificação Judicial por meio de correio eletrônico fornecido pelo senhor a este cartório . O referido é verdade e dou fé ."
+
+Here, "número 92-98171-6151" is a phone number, which is a tempo or local? Wait, the phone number is a contact info, but the user's entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So phone number isn't one of them. So maybe not marked. 
+
+"caixa postal" is a local? Maybe, but the user's example might not include that. "Notificação Judicial" is a legal term, but not sure if it's legislacao or jurisprudencia. "Notificação Judicial" is a legal document, so maybe it's part of legislação? Or maybe not. The user's example might have "Notificação Judicial" as part of the text, but not an entity. 
+
+Wait, the user's example output might have "Oficiala de Justiça" as an organization? Or maybe the entire name is a pessoa. Let me think again. 
+
+In the input text, "expedida pela Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" – the "Oficiala de Justiça" is the title, and the name is the person. So "Elvira Maria de Queiroz Rodrigues" is a pessoa. The "Oficiala de Justiça" is part of the title, so maybe not an entity. 
+
+"número 92-98171-6151" is a phone number, which isn't one of the entities. 
+
+"caixa postal" is a local? Maybe, but the user's entities don't include that. 
+
+"correio eletrônico" is a method, not an entity. 
+
+"cartório" is a local, but again, the user's entities don't include local as a type. Wait, the user's entities include "local", so "cartório" is a local. Wait, "cartório" is a place, so it's a local. So I should mark "cartório" as local. 
+
+Wait, the user's instruction says to mark "local" as a local. So "cartório" is a local. 
+
+So, in the text, "cartório" should be marked as local. 
+
+Also, "Notificação Judicial" – is that part of legislação? Or is it a legal term, but not an entity. 
+
+So, putting it all together:
+
+- "Elvira Maria de Queiroz Rodrigues" is a pessoa.
+- "cartório" is a local.
+- "Oficiala de Justiça" – maybe part of the organization? Or is it part of the person's title? Since the person is Elvira Maria de Queiroz Rodrigues, and "Oficiala de Justiça" is her title, maybe the entire phrase is part of the person's name. Wait, but the text says "expedida pela Oficiala de Justiça Elvira Maria de Queiroz Rodrigues". So "Oficiala de Justiça" is the title, and the name is the person. So "Elvira Maria de Queiroz Rodrigues" is the pessoa. The "Oficiala de Justiça" is part of the title, so maybe not an entity. 
+
+So, the entities are:
+
+- pessoa: Elvira Maria de Queiroz Rodrigues
+- local: cartório
+- tempo: "nesta data" (since "nesta data" refers to a time)
+- legislacao: "Notificação Judicial" – wait, "Notificação Judicial" is a legal document, but is it part of legislação? Or is it part of jurisprudencia? Or maybe not. The user's example might not have that. 
+
+Wait, the user's instruction says to mark "legislacao" for legislation. "Notificação Judicial" is a legal document, but not sure if it's legislation. Maybe it's part of the text but not an entity. 
+
+So, "nesta data" is a tempo. 
+
+So, the HTML would have:
+
+- <span class="pessoa">Elvira Maria de Queiroz Rodrigues</span>
+- <span class="local">cartório</span>
+- <span class="tempo">nesta data</span>
+
+Other parts like "Oficiala de Justiça" – maybe it's part of the organization? But the user's example might not include that. 
+
+Wait, the user's example might have "Oficiala de Justiça" as an organization. Let me think again. 
+
+In Brazil, "Oficial de Justiça" is a judicial officer, so the title is part of the organization. But in the text, it's part of the name of the person. So "Oficiala de Justiça" is part of the person's title. So the person is Elvira Maria de Queiroz Rodrigues, and "Oficiala de Justiça" is her title. So the entity is the person. 
+
+So, the only entities are:
+
+- pessoa: Elvira Maria de Queiroz Rodrigues
+- tempo: nesta data
+- local: cartório
+
+Wait, but "Notificação Judicial" – is that part of legislação? Or is it a legal term but not an entity. 
+
+The user's instruction says to mark "legislacao" for legislation. "Notificação Judicial" is a legal document, but not sure if it's legislation. Maybe not. 
+
+So, the final HTML would have those three entities marked. 
+
+Let me check the original text again:
+
+"expedida pela Oficiala de Justiça Elvira Maria de Queiroz Rodrigues , nos seguintes termos : CERTIFICO que , nesta data , telefonei para o número 92-98171-6151 e a ligação não foi atendida . Deixei recado na caixa postal sobre o envio da Notificação Judicial por meio de correio eletrônico fornecido pelo senhor a este cartório . O referido é verdade e dou fé ."
+
+So, "Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" – the person is Elvira Maria de Queiroz Rodrigues. The "Oficiala de Justiça" is part of her title, so the person is marked. 
+
+"nesta data" is tempo. 
+
+"cartório" is local. 
+
+"caixa postal" – maybe local, but the user's entities don't include that. 
+
+"correio eletrônico" – not an entity. 
+
+"senhor" – not an entity. 
+
+"Oficiala de Justiça" – maybe part of the organization? But the text says "expedida pela Oficiala de Justiça..." which is the person's title. So the person is the entity. 
+
+So, the final HTML would have:
+
+- <span class="pessoa">Elvira Maria de Queiroz Rodrigues</span>
+- <span class="tempo">nesta data</span>
+- <span class="local">cartório</span>
+
+Other parts are left as is. 
+
+So the output would be the text with those spans.
+</think>
+
+<span class="pessoa">Elvira Maria de Queiroz Rodrigues</span> , nos seguintes termos : <span class="tempo">nesta data</span> , telefonei para o número 92-98171-6151 e a ligação não foi atendida . Deixei recado na caixa postal sobre o envio da Notificação Judicial por meio de correio eletrônico fornecido pelo senhor a este <span class="local">cartório</span> . O referido é verdade e dou fé .

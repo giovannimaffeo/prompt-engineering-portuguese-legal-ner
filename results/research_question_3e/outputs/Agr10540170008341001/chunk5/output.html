@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this HTML annotation task. The user provided a text and wants me to mark specific legal entities with HTML tags. First, I need to carefully read the guidelines to make sure I understand each entity's definition.
+
+Starting with the input text: "57/57v-TJ , opinando pelo desprovimento do recurso . Relatados . Decido . Presentes os pressupostos de admissibilidade , conheço do recurso . Trata-se de controvérsia buscando modificar a decisão que indeferiu a concessão da antecipação de tutela para determinar o imediato fornecimento de energia elétrica na propriedade do agravante , por parte da agravada Cemig Distribuição S/A . Em sede liminar , a antecipação de tutela foi indeferida , conforme se extrai das Resoluções nº 414/2012 e Despacho nº 3.296/2012 , da Agência Nacional de Energia Elétrica - ANEEL bem como a peça recursal da agravada , verifica-se que não houve negativa da concessionária em fornecer energia elétrica à propriedade rural do agravante , tão somente foi informado ao agravante que sua propriedade rural seria atendida em até o dia 31/12/2018 , prazo este que ainda não se encerrou . Apesar de a Resolução da ANEEL n ."
+
+First, I'll look for each entity type:
+
+1. **Pessoa**: The text mentions "agravante" and "agravada", but these are generic terms, not specific names. So no pessoa entities here.
+
+2. **Organização**: "Cemig Distribuição S/A" is a company name, so that's an organization. Also, "Agência Nacional de Energia Elétrica - ANEEL" is an organization. The "TJ" might refer to a court, but in the input, it's written as "57/57v-TJ", which could be a case number. The "TJ" itself might be an abbreviation for Tribunal de Justiça, which is an organization. But the example in the guidelines shows "Tribunal de Contas" as an organization. Since "TJ" is a common abbreviation for Tribunal de Justiça, I should mark it as an organization. Also, "ANEEL" is an acronym for Agência Nacional de Energia Elétrica, which is an organization.
+
+3. **Tempo**: The date "31/12/2018" is a date, so that's a tempo entity. Also, "Resolução da ANEEL n." might be part of a resolution, but the date is already marked.
+
+4. **Local**: The text mentions "propriedade rural" and "propriedade do agravante", but these are generic terms. No specific locations are named, so no local entities.
+
+5. **Legislação**: The text refers to "Resoluções nº 414/2012" and "Despacho nº 3.296/2012" from ANEEL. These are legal documents, so they should be marked as legislação. Also, "Resolução da ANEEL n." is part of a resolution, so that's another legislação entity.
+
+6. **Jurisprudência**: The text mentions "REsp" in the example, but in this input, there's no specific jurisprudência references like "REsp 1694984/MS" or "Súmula 331 do TST". So no jurisprudência here.
+
+Now, applying the tags:
+
+- "Cemig Distribuição S/A" → <span class="organizacao">Cemig Distribuição S/A</span>
+- "Agência Nacional de Energia Elétrica - ANEEL" → <span class="organizacao">Agência Nacional de Energia Elétrica - ANEEL</span>
+- "TJ" → <span class="organizacao">TJ</span>
+- "Resoluções nº 414/2012" → <span class="legislacao">Resoluções nº 414/2012</span>
+- "Despacho nº 3.296/2012" → <span class="legislacao">Despacho nº 3.296/2012</span>
+- "31/12/2018" → <span class="tempo">31/12/2018</span>
+- "Resolução da ANEEL n." → <span class="legislacao">Resolução da ANEEL n.</span>
+
+Wait, "Resolução da ANEEL n." is part of a resolution, so it's part of legislação. Also, "TJ" is part of the case number "57/57v-TJ", but since "TJ" is an organization, I should mark it as such. The case number itself isn't an entity, but the "TJ" part is an organization.
+
+Putting it all together, the output should have these tags. Let me check again to ensure no other entities are missed. The date is correctly marked, the organizations are there, and the legislation parts. No jurisprudência or local entities. Looks good.
+</think>
+
+57/57v-<span class="organizacao">TJ</span> , opinando pelo desprovimento do recurso . Relatados . Decido . Presentes os pressupostos de admissibilidade , conheço do recurso . Trata-se de controvérsia buscando modificar a decisão que indeferiu a concessão da antecipação de tutela para determinar o imediato fornecimento de energia elétrica na propriedade do agravante , por parte da agravada <span class="organizacao">Cemig Distribuição S/A</span> . Em sede liminar , a antecipação de tutela foi indeferida , conforme se extrai das <span class="legislacao">Resoluções nº 414/2012</span> e <span class="legislacao">Despacho nº 3.296/2012</span> , da <span class="organizacao">Agência Nacional de Energia Elétrica - ANEEL</span> bem como a peça recursal da agravada , verifica-se que não houve negativa da concessionária em fornecer energia elétrica à propriedade rural do agravante , tão somente foi informado ao agravante que sua propriedade rural seria atendida em até o dia <span class="tempo">31/12/2018</span> , prazo este que ainda não se encerrou . Apesar de a <span class="legislacao">Resolução da ANEEL n.</span> .

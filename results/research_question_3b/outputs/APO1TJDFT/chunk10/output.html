@@ -1,0 +1,70 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The first sentence: "Condene o réu ao pagamento de honorários advocatícios , os quais fixo em R $ 1.000,00 ( mil reais ) , nos termos do art . 20 , § 4º , do CPC . Sentença sujeita a revisão necessária . Transitada em julgado , arquivem-se . P.R.I. ” ( fls . 299-v/300 ) . Irresignado , apela o DISTRITO FEDERAL ( fls . 305/313 ) . No seu apelo , o DF tece considerações sobre a evolução da remuneração dos professores vinculados à SEE/DF e a incorporação de quintos/décimos ."
+
+Starting with "réu" – that's a person, but it's a legal term for the defendant. Wait, the definition says pessoa is names of individuals. "Réu" is a generic term for defendant, not a specific person. So maybe it's not a pessoa. But the user's example in the output might have marked "réu" as pessoa? Wait, no, looking at the example output provided by the user, maybe not. Let me check the example output again. Wait, the user hasn't provided an example output yet. Wait, the user's instruction says to return only the annotated text. So I need to process the input text.
+
+Looking for "pessoa": any specific names? The text mentions "DISTRITO FEDERAL" which is an organization. "DF" is an abbreviation for Distrito Federal, which is an organization. "SEE/DF" – SEE is a common abbreviation for Secretaria de Estado da Educação, so that's an organization. "CPC" is Código de Processo Civil, which is legislation. "art. 20, § 4º" refers to a legal article, so that's legislation. "P.R.I." might be a reference to a judicial decision or a process, but I'm not sure. "fls. 299-v/300" refers to pages in a legal document, so that's a reference to a document, but not an entity. "Irresignado" is an adjective, not an entity. "apela o DISTRITO FEDERAL" – DISTRITO FEDERAL is an organization. "DF" is the same as DISTRITO FEDERAL. "SEE/DF" is an organization. "quintos/décimos" are fractions, not entities. 
+
+So, the entities to mark are:
+
+- "DISTRITO FEDERAL" as organizacao
+- "DF" as organizacao (since it's an abbreviation for the same)
+- "SEE/DF" as organizacao
+- "CPC" as legislacao (Código de Processo Civil)
+- "art. 20, § 4º" as legislacao (since it refers to a legal article)
+- "P.R.I." – not sure, but maybe it's a reference to a judicial decision or a process. If it's a jurisprudencia, but the example might not have it. Alternatively, it could be a reference to a process, but without more context, maybe it's not marked. The user's example output might have marked it as jurisprudencia. Wait, the original text has "P.R.I. ” ( fls . 299-v/300 )". P.R.I. could be a reference to a process, but not sure. Maybe it's a jurisprudencia. Alternatively, it's a reference to a document, but not an entity. So maybe not marked. 
+
+Also, "fls." is an abbreviation for "folhas" (pages), which is a reference to a document, but not an entity. 
+
+So, the marked entities would be:
+
+- DISTRITO FEDERAL (organizacao)
+- DF (organizacao)
+- SEE/DF (organizacao)
+- CPC (legislacao)
+- art. 20, § 4º (legislacao)
+
+Wait, "art. 20, § 4º" is part of the legislation, so it's legislacao. 
+
+So, in the text, I need to wrap those parts with the appropriate <span> tags. 
+
+Let me go through the text again:
+
+"Condene o réu ao pagamento de honorários advocatícios , os quais fixo em R $ 1.000,00 ( mil reais ) , nos termos do art . 20 , § 4º , do CPC . Sentença sujeita a revisão necessária . Transitada em julgado , arquivem-se . P.R.I. ” ( fls . 299-v/300 ) . Irresignado , apela o DISTRITO FEDERAL ( fls . 305/313 ) . No seu apelo , o DF tece considerações sobre a evolução da remuneração dos professores vinculados à SEE/DF e a incorporação de quintos/décimos ."
+
+Breaking down:
+
+- "art . 20 , § 4º , do CPC" → "art. 20, § 4º" is legislation (CPC is Código de Processo Civil), so "art. 20, § 4º" and "CPC" should be marked as legislacao.
+
+- "DISTRITO FEDERAL" → organizacao
+
+- "DF" → organizacao
+
+- "SEE/DF" → organizacao
+
+- "P.R.I." → not sure, but maybe it's a reference to a process, but since it's not a known entity, maybe not marked. The user's example might not have it. 
+
+So, the HTML would have:
+
+<span class="legislacao">art. 20, § 4º</span> do <span class="legislacao">CPC</span> 
+
+Wait, the original text has "do CPC" which is "do Código de Processo Civil", so "CPC" is the legislation. 
+
+Also, "DISTRITO FEDERAL" is an organization, so <span class="organizacao">DISTRITO FEDERAL</span>
+
+"DF" is an abbreviation for the same, so <span class="organizacao">DF</span>
+
+"SEE/DF" is an organization, so <span class="organizacao">SEE/DF</span>
+
+So putting it all together, the HTML would have those spans. 
+
+I need to make sure that all the entities are correctly marked. Also, check for any other possible entities. For example, "fls." is a reference to pages, but not an entity. "réu" is a legal term but not a specific person, so not marked. 
+
+So the final HTML should have the spans for the identified entities.
+</think>
+
+<span class="legislacao">art. 20, § 4º</span> do <span class="legislacao">CPC</span>. Sentença sujeita a revisão necessária. Transitada em julgado, arquivem-se. <span class="jurisprudencia">P.R.I.</span> ” (fls. 299-v/300). Irresignado, apela o <span class="organizacao">DISTRITO FEDERAL</span> (fls. 305/313). No seu apelo, o <span class="organizacao">DF</span> tece considerações sobre a evolução da remuneração dos professores vinculados à <span class="organizacao">SEE/DF</span> e a incorporação de quintos/décimos.

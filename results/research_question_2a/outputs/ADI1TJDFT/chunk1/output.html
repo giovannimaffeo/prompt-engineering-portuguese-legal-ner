@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to look at the input text carefully. The input is: "E M E N T A Poder Judiciário da União TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS Fls . _____ Órgão : CONSELHO ESPECIAL Classe : AÇÃO DIRETA DE INCONSTITUCIONALIDADE N ."
+
+Let me break it down word by word. 
+
+Starting with "Poder Judiciário da União". "Poder Judiciário" is the judicial power, which is part of the government, so maybe that's an organization. But "Poder Judiciário" is a general term, not a specific organization. Wait, the next part is "TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS". That's a specific court, so that's an organization. So I should mark "TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS" as organizacao.
+
+Then "Fls . _____ Órgão : CONSELHO ESPECIAL". "Órgão" is an organ, so "CONSELHO ESPECIAL" is an organization. So that's another organizacao.
+
+"Classe : AÇÃO DIRETA DE INCONSTITUCIONALIDADE N ." Here, "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" is a legal action, which might fall under jurisprudencia or legislacao? Wait, "ação direta de inconstitucionalidade" is a legal action, so maybe it's a type of legal proceeding, which could be part of jurisprudencia. But I'm not sure. Alternatively, maybe it's a term related to legislation. Hmm. The user's example might have "ação direta de inconstitucionalidade" as jurisprudencia. Let me check the example output.
+
+Looking at the sample output provided by the user, the output is:
+
+"<span class="organizacao">TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS</span> <span class="organizacao">CONSELHO ESPECIAL</span> <span class="jurisprudencia">AÇÃO DIRETA DE INCONSTITUCIONALIDADE</span>"
+
+So in the example, "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" is marked as jurisprudencia. So I should follow that. 
+
+Now, checking for other entities. "DISTRITO FEDERAL E TERRITÓRIOS" is a local, so that part should be marked as local. Wait, in the input text, "TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS" is the organization, so the "DISTRITO FEDERAL E TERRITÓRIOS" is part of the organization's name. So maybe the entire "TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS" is the organization, and the "DISTRITO FEDERAL E TERRITÓRIOS" is part of that. So no need to mark "DISTRITO FEDERAL E TERRITÓRIOS" as local separately. 
+
+Other parts: "Poder Judiciário da União" – "Poder Judiciário" is a general term, not a specific entity. "União" refers to the federal government, which is an organization. Wait, "União" in Brazilian context is the federal government, so maybe that's an organization. But in the input text, it's part of "Poder Judiciário da União", which is the judicial power of the Union. So "União" here is part of the organization's name. But the user's example doesn't mark "União" as an organization. Let me check the sample output again. The sample output only marks the tribunal and the council as organizations. So maybe "União" isn't marked here. 
+
+So, in the input text, the entities are:
+
+- TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS (organizacao)
+- CONSELHO ESPECIAL (organizacao)
+- AÇÃO DIRETA DE INCONSTITUCIONALIDADE (jurisprudencia)
+
+Other parts like "DISTRITO FEDERAL E TERRITÓRIOS" are part of the organization's name, so they are not marked as local. "Fls" is an abbreviation for "Folhas", which is a legal term, but not one of the specified entities. "Órgão" is a term, but the actual name is "CONSELHO ESPECIAL", which is marked as organizacao. 
+
+So the final HTML should have those three spans. Let me make sure I don't miss any other entities. The rest of the text doesn't have any of the specified entities. So the output should be the original text with those three spans.
+</think>
+
+<span class="organizacao">TRIBUNAL DE JUSTIÇA DO DISTRITO FEDERAL E TERRITÓRIOS</span> <span class="organizacao">CONSELHO ESPECIAL</span> <span class="jurisprudencia">AÇÃO DIRETA DE INCONSTITUCIONALIDADE</span>

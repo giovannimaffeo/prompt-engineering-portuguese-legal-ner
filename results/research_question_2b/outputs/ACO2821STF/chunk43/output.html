@@ -1,0 +1,47 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read the input text carefully. Let me look at the example provided. The input text is: 
+
+"4 Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . Supremo Tribunal Federal ACO 2821 A GR / MT expressamente a inconstitucionalidade delas ."
+
+Now, I need to identify each entity. Let's go step by step.
+
+1. "MP n° 2.200-2/2001" – MP stands for Medida Provisória, which is a provisional measure in Brazil. This is a legislative act, so it should be marked as legislacao. The number and date are part of it, so the entire MP reference is legislacao.
+
+2. "24/08/2001" – This is a date, so it's tempo.
+
+3. "Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil" – This is the name of a system or framework, likely a legal regulation. So, legislacao.
+
+4. "http : //www.stf.jus.br/portal/autenticacao/" – This is a URL, which is a local (website), but the user's guide says to use local for locations. However, URLs are more about locations, so maybe local. But sometimes URLs might not be marked unless specified. Wait, the example in the output shows "http://www.stf.jus.br/portal/autenticacao/" as local. So I'll mark that as local.
+
+5. "Supremo Tribunal Federal" – This is the name of a federal court, which is an organization. So organizacao.
+
+6. "ACO 2821 A GR / MT" – ACO might stand for "Ação Criminal Ordinária" or another legal term. The numbers might be case numbers. Since it's a legal case reference, maybe jurisprudencia? Or perhaps it's part of a case number. But the user's example shows "ACO 2821 A GR / MT" as part of the text without any entity. Wait, looking at the sample output provided by the user, in the example, "Supremo Tribunal Federal" is marked as organizacao, and "ACO 2821 A GR / MT" is not marked. Wait, the user's sample output shows that "Supremo Tribunal Federal" is marked as organizacao, and the rest are marked as legislacao, tempo, local, etc. Let me check the sample output again.
+
+Wait, the user provided a sample input and output. Let me check that. The sample input is the same as the one given here. The sample output is:
+
+"4 Documento assinado digitalmente conforme <span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a <span class="legislacao">Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil</span> . O documento pode ser acessado no endereço eletrônico <span class="local">http://www.stf.jus.br/portal/autenticacao/</span> sob o número 14536378 . <span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT expressamente a inconstitucionalidade delas ."
+
+So, in the sample output, "MP n° 2.200-2/2001" is legislacao, "24/08/2001" is tempo, "Infraestrutura..." is legislacao, the URL is local, "Supremo Tribunal Federal" is organizacao. The rest like "ACO 2821 A GR / MT" are not marked. So I need to follow that pattern.
+
+So, applying that to the current text:
+
+- "MP n° 2.200-2/2001" is legislacao.
+- "24/08/2001" is tempo.
+- "Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil" is legislacao.
+- "http://www.stf.jus.br/portal/autenticacao/" is local.
+- "Supremo Tribunal Federal" is organizacao.
+
+The rest of the text doesn't have any entities. So I need to wrap those parts with the appropriate spans.
+
+Now, I need to make sure that the HTML is correctly formatted. Also, note that in the sample output, the URL is written as "http://www.stf.jus.br/portal/autenticacao/" without the space between http and ://. The original input has a space, but in the sample output, it's removed. Wait, the input text says "http : //www.stf.jus.br/portal/autenticacao/", but in the sample output, it's "http://www.stf.jus.br/portal/autenticacao/". So the space is removed. So I should remove the space in the URL.
+
+So, the final HTML should have the spans for the identified entities, and the rest of the text remains as is. Let me check each part again to ensure I didn't miss any entities.
+
+Another thing: "ACO 2821 A GR / MT" – in the sample output, this is not marked. So I should leave it as is. Similarly, "14536378" is a number, but it's part of the document number, not an entity. So no marking.
+
+So, putting it all together, the HTML should have the spans for legislacao, tempo, legislacao, local, and organizacao. The rest remains unchanged.
+</think>
+
+4 Documento assinado digitalmente conforme <span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a <span class="legislacao">Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil</span> . O documento pode ser acessado no endereço eletrônico <span class="local">http://www.stf.jus.br/portal/autenticacao/</span> sob o número 14536378 . <span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT expressamente a inconstitucionalidade delas .

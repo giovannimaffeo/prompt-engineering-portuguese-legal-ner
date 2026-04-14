@@ -1,0 +1,64 @@
+<think>
+Okay, let me tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities to look for are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to go through the text and identify each entity. Let's start with the first part: "Compete privativamente ao Governador do Distrito Federal". Here, "Governador" is a title, not a name, so it's not a pessoa. "Distrito Federal" is a local, so I should mark that as local. 
+
+Next, "Secretários de Governo" – "Secretários" is a title, so not a pessoa. Then, "Ação Direta de Inconstitucionalidade 20170020161362ADI" – that looks like a jurisprudencia reference. The number at the end is part of the identifier, so it should be marked as jurisprudencia. 
+
+The "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – this seems like a code, but the user mentioned not to mark codes like ICP or similar. The example says not to mark "ICP" or "ICP-Brasil" as legislação, so maybe this code isn't a legislation. I'll skip it.
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 11 Orgânica" – "DESEMBARGADOR" is a title, not a pessoa. "SILVANIO BARBOSA DOS SANTOS" is a full name, so that's a pessoa. The "GABINETE" is part of an organization, so maybe "GABINETE DO DESEMBARGADOR" is an organization. Wait, the guidelines say that expressions like "4ª Turma Cível" are organizations. So "GABINETE DO DESEMBARGADOR" could be an organization. But the user might want it as "GABINETE" as a part of the organization. Hmm, need to check. Also, "Orgânica" is part of the text, maybe referring to the Organic Law, so that's a legislacao? Or is it a typo? The text mentions "Lei Orgânica" in the original, so maybe "Orgânica" here is part of that. Wait, the original text has "Lei Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 11 Orgânica ; ( ... ) XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da legislação em vigor ; ( Grifos nossos ) Art . 71 ."
+
+So "GABINETE DO DESEMBARGADOR" is an organization. "SILVANIO BARBOSA DOS SANTOS" is a pessoa. "Orgânica" might be part of "Lei Orgânica" which is a legislação, but here it's written as "Orgânica" without the "Lei". Maybe it's a typo or abbreviation. Since the user's example includes "Lei Orgânica" as legislação, but here it's just "Orgânica", I need to check if that's a legislação. If it's part of a law, maybe it's a legislação. But without more context, it's safer to mark "Orgânica" as part of the organization? Wait, the original text has "Orgânica ; ( ... )" which might be a typo for "Lei Orgânica". So maybe "Orgânica" here is part of the legislation. Alternatively, if it's a typo, maybe it's a law. But since the user's example includes "Lei Orgânica" as a legislação, I should check if "Orgânica" here refers to that. If it's part of a law, then it's legislação. Otherwise, maybe it's not. Since the user hasn't provided more context, I'll mark "Orgânica" as legislação, assuming it's part of the legislation.
+
+Then, "Art . 71 ." – "Art" is short for "Artigo", which is part of a legislation. So "Art. 71" should be marked as legislação.
+
+Now, checking for other entities. "Distrito Federal" is a local. "GABINETE DO DESEMBARGADOR" is an organization. "SILVANIO BARBOSA DOS SANTOS" is a pessoa. "Ação Direta de Inconstitucionalidade 20170020161362ADI" is a jurisprudencia. "Legislação em vigor" refers to legislation, so "legislação" should be marked. "Art. 71" is part of a legislation.
+
+Wait, the original text has "XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da legislação em vigor ;" – here, "legislação em vigor" is a reference to legislation, so "legislação" should be marked.
+
+Putting it all together, I need to replace each entity with the appropriate <span> tags. Let me go through the text again step by step.
+
+Original text:
+
+"Compete privativamente ao Governador do Distrito Federal : ( ... ) IV - exercer , com auxílio dos Secretários de Governo , a direção superior da administração do Distrito Federal ; ( ... ) VI - iniciar o processo legislativo , na forma e nos casos previstos nesta Lei Orgânica ; ( ... ) X - dispor sobre a organização e o funcionamento da administração do Distrito Federal , na forma desta Lei Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 11 Orgânica ; ( ... ) XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da legislação em vigor ; ( Grifos nossos ) Art . 71 ."
+
+Now, let's process each part:
+
+- "Distrito Federal" → local
+- "Secretários de Governo" → not a pessoa
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" → jurisprudencia
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" → not marked
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" → "GABINETE DO DESEMBARGADOR" is an organization, "SILVANIO BARBOSA DOS SANTOS" is a pessoa
+- "Orgânica" → possibly legislação (assuming it refers to "Lei Orgânica")
+- "Lei Orgânica" → legislação
+- "Lei Fls . _____" → "Lei" is part of legislation, so "Lei" should be marked as legislação
+- "legislação em vigor" → "legislação" is the entity
+- "Art . 71" → part of legislation, so "Art. 71" as legislação
+
+Wait, in the text, "Lei Orgânica" is mentioned, so that's a legislação. Also, "Lei Fls . _____" → "Lei" is part of legislation. "legislação em vigor" → "legislação" is the entity. "Art. 71" is part of a legislation, so "Art. 71" should be marked as legislação.
+
+Now, putting all these into HTML tags:
+
+- "Distrito Federal" → <span class="local">Distrito Federal</span>
+- "SILVANIO BARBOSA DOS SANTOS" → <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" → <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span>
+- "GABINETE DO DESEMBARGADOR" → <span class="organizacao">GABINETE DO DESEMBARGADOR</span>
+- "Orgânica" → <span class="legislacao">Orgânica</span>
+- "Lei Orgânica" → <span class="legislacao">Lei Orgânica</span>
+- "Lei" in "Lei Fls ." → <span class="legislacao">Lei</span>
+- "legislação" in "na forma da legislação em vigor" → <span class="legislacao">legislação</span>
+- "Art. 71" → <span class="legislacao">Art. 71</span>
+
+Wait, the original text has "XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da legislação em vigor ;" – here, "legislação" is part of the text, so it should be marked as legislação.
+
+Also, "GABINETE DO DESEMBARGADOR" is an organization. The "DESEMBARGADOR" is a title, but the entire phrase "GABINETE DO DESEMBARGADOR" refers to an organization, so it's marked as organizacao.
+
+Putting all together, the HTML would have the appropriate spans for each entity. Let me check again for any missed entities.
+
+Another part: "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 11" – "SILVANIO BARBOSA DOS SANTOS" is the pessoa, "GABINETE DO DESEMBARGADOR" is organizacao, and "11" is a number, not an entity.
+
+So, the final HTML should have all these spans correctly placed.
+</think>
+
+Compete privativamente ao Governador do <span class="local">Distrito Federal</span> : ( ... ) IV - exercer , com auxílio dos Secretários de Governo , a direção superior da administração do <span class="local">Distrito Federal</span> ; ( ... ) VI - iniciar o processo legislativo , na forma e nos casos previstos nesta <span class="legislacao">Lei Orgânica</span> ; ( ... ) X - dispor sobre a organização e o funcionamento da administração do <span class="local">Distrito Federal</span> , na forma desta <span class="legislacao">Lei</span> Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 11 <span class="legislacao">Orgânica</span> ; ( ... ) XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da <span class="legislacao">legislação</span> em vigor ; ( Grifos nossos ) <span class="legislacao">Art</span> . 71 .

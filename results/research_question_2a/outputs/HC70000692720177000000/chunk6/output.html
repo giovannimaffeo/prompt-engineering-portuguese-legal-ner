@@ -1,0 +1,72 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "288 do CPPM deve ser interpretado à luz dos tempos atuais , sendo certo que o email consubstancia-se em meio de comunicação por via eletrônica utilizado no âmbito desta Justiça Castrense e , em especial , no caso em análise , na conformidade do Provimento nº 3/2016 , que regula as atividades dos Oficiais de Justiça no âmbito da Justiça Militar da União ."
+
+Now, I need to identify each entity. Let's go step by step.
+
+1. "288 do CPPM": Here, "CPPM" is likely an acronym for a legal code. Since it's a legal text, "CPPM" could be a legislation. So, I should mark "CPPM" as legislacao. Wait, but the user mentioned "legislacao" as a category. So, "CPPM" is a legislation. Also, "288" is a article number, which might be part of the legislation. But the user's example output shows "CPPM" as legislacao. Let me check the example output given. The user provided the input and output, but in the example, the output is not shown. Wait, the user's instruction says "Texto de Saída:" but there's no example. Wait, looking back, the user provided the input and the output is to be generated. So I need to process the input text.
+
+Wait, the user's input text is: "288 do CPPM deve ser interpretado à luz dos tempos atuais , sendo certo que o email consubstancia-se em meio de comunicação por via eletrônica utilizado no âmbito desta Justiça Castrense e , em especial , no caso em análise , na conformidade do Provimento nº 3/2016 , que regula as atividades dos Oficiais de Justiça no âmbito da Justiça Militar da União ."
+
+So, let's break down each part.
+
+- "288 do CPPM": "288" is an article number, which might be part of a legislation. "CPPM" is likely a legislation (like Código Penal Militar, for example). So "CPPM" should be marked as legislacao. The "288" is part of the legislation, but maybe it's not an entity. Wait, the user's example might have "CPPM" as legislacao. Let me check the example output. Wait, the user hasn't provided an example output, but the task is to generate it. So I need to proceed.
+
+Next, "tempos atuais" – "tempos atuais" refers to current times, so "tempo" would be "atual" or "tempos atuais"? Wait, "tempo" is a category. The phrase "à luz dos tempos atuais" – "tempos atuais" is a time reference, so "tempo" would be marked. So "tempos atuais" should be marked as tempo.
+
+Then, "email" – that's a medium, but not an entity type. The user's categories are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "email" is not an entity here.
+
+"comunicação por via eletrônica" – again, not an entity.
+
+"esta Justiça Castrense" – "Justiça Castrense" is a legal term, referring to a specific court. So "Justiça Castrense" is a local? Wait, "local" is a category. But "Justiça Castrense" is a type of court, which might be considered a local entity. Wait, but "local" refers to places like cities, countries, etc. Maybe "Justiça Castrense" is a local entity. Alternatively, maybe it's part of the legislation. Wait, "Justiça Castrense" is a specific court, so perhaps it's a local. But I'm not sure. Alternatively, maybe it's part of the legislation. Hmm. Need to check.
+
+Then, "Provimento nº 3/2016" – "Provimento" is a type of legal document, so that's legislacao. The number 3/2016 is part of the legislation, but the user's example might mark "Provimento" as legislacao. Wait, "Provimento" is a type of legal regulation, so it's part of legislacao. So "Provimento nº 3/2016" would be marked as legislacao.
+
+"Oficiais de Justiça" – that's a title, but not an entity type. Unless "Oficiais de Justiça" is an organization, but the user's categories include "organizacao". Wait, "Oficiais de Justiça" is a role, not an organization. So maybe not.
+
+"Juácia Militar da União" – that's a specific court, so "local" or "organizacao"? Since it's a court, maybe it's a local. But "local" refers to places. Alternatively, maybe it's part of the legislation. Wait, "Justiça Militar da União" is a specific court, so perhaps it's a local entity. But I'm not certain. Alternatively, maybe it's part of the legislation. Hmm.
+
+So, putting it all together:
+
+- "CPPM" is legislacao.
+- "tempos atuais" is tempo.
+- "Provimento nº 3/2016" is legislacao.
+- "Justiça Castrense" and "Justiça Militar da União" are local entities.
+
+Wait, but "Justiça Castrense" is a specific court, so maybe it's a local. Similarly, "Justiça Militar da União" is a local. So those would be marked as local.
+
+So the HTML would have:
+
+<span class="legislacao">CPPM</span>
+<span class="tempo">tempos atuais</span>
+<span class="legislacao">Provimento nº 3/2016</span>
+<span class="local">Justiça Castrense</span>
+<span class="local">Justiça Militar da União</span>
+
+Wait, but the original text has "esta Justiça Castrense" and "da Justiça Militar da União". So "Justiça Castrense" and "Justiça Militar da União" are the entities. So those parts should be marked as local.
+
+So the final HTML would have those spans. Let me check again.
+
+Original text:
+
+"288 do CPPM deve ser interpretado à luz dos tempos atuais , sendo certo que o email consubstancia-se em meio de comunicação por via eletrônica utilizado no âmbito desta Justiça Castrense e , em especial , no caso em análise , na conformidade do Provimento nº 3/2016 , que regula as atividades dos Oficiais de Justiça no âmbito da Justiça Militar da União ."
+
+Breaking down:
+
+- "CPPM" → legislacao
+- "tempos atuais" → tempo
+- "Provimento nº 3/2016" → legislacao
+- "Justiça Castrense" → local
+- "Justiça Militar da União" → local
+
+So the HTML would be:
+
+288 do <span class="legislacao">CPPM</span> deve ser interpretado à luz dos <span class="tempo">tempos atuais</span> , sendo certo que o email consubstancia-se em meio de comunicação por via eletrônica utilizado no âmbito desta <span class="local">Justiça Castrense</span> e , em especial , no caso em análise , na conformidade do <span class="legislacao">Provimento nº 3/2016</span> , que regula as atividades dos Oficiais de Justiça no âmbito da <span class="local">Justiça Militar da União</span> .
+
+Wait, but "Justiça Castrense" is part of "esta Justiça Castrense", so the entire phrase "Justiça Castrense" is the local. Similarly, "Justiça Militar da União" is the local. So those parts are marked as local.
+
+I think that's all. Let me make sure there are no other entities. "Oficiais de Justiça" is a role, not an entity. "email" is not an entity. "288" is part of the legislation (CPPM), but the user's example might not mark numbers. Wait, the user's example might not mark numbers unless they are part of an entity. Since "288" is an article number, but the user's categories don't include "artigo", so it's not marked. So only the words that are entities are marked. So the final HTML should have the spans as above.
+</think>
+
+288 do <span class="legislacao">CPPM</span> deve ser interpretado à luz dos <span class="tempo">tempos atuais</span> , sendo certo que o email consubstancia-se em meio de comunicação por via eletrônica utilizado no âmbito desta <span class="local">Justiça Castrense</span> e , em especial , no caso em análise , na conformidade do <span class="legislacao">Provimento nº 3/2016</span> , que regula as atividades dos Oficiais de Justiça no âmbito da <span class="local">Justiça Militar da União</span> .

@@ -1,0 +1,44 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by identifying each entity. 
+
+Looking at the text: "Apelação / Reexame Necessário 20140110500434APO" – the numbers here might be a case number, but I don't think it's any of the specified entities. Then "CÓRDO" – that's part of the court's name, maybe an organization. Wait, "CÓRDO" is part of "CÓRDO AO" which is "CÓRDO AO" – maybe "CÓRDO" is part of the court's name. Wait, the full text says "CÓRDO AO" which is "CÓRDO AO" – perhaps "CÓRDO" is part of the court's name. Wait, maybe "CÓRDO" is part of the court's name. Wait, the text is in Portuguese. Let me check again.
+
+The text starts with "Apelação / Reexame Necessário 20140110500434APO A C Ó R D Ã O Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios..." 
+
+So "Tribunal de Justiça do Distrito Federal e Territórios" is an organization. That's a legal entity, so I should mark that as organizacao. 
+
+Then there are names like "MARIA IVATÔNIA - Relatora", "ANGELO PASSARELI - 1º Vogal", etc. These are people, so they should be marked as pessoa. 
+
+"Brasilia ( DF )" is a local, so that's local. 
+
+"21 de Março de 2018" is a date, so that's tempo. 
+
+The term "jurisprudencia" might be in the text. Let me check. The text mentions "VOTO-VISTA" and "VENCIDO O 1º VOGAL" – these are parts of the judicial process, but not sure if they are jurisprudencia. Wait, the user's example output includes "jurisprudencia" for "VOTO-VISTA" and "VENCIDO O 1º VOGAL"? Wait, no. Let me check the example output again. 
+
+Wait, the user provided an example output where "VOTO-VISTA" is marked as jurisprudencia. Wait, maybe the user's example is different. Let me check the original input again. 
+
+The input text has "EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR." So "VOTO-VISTA" is part of the legal process, but is it a jurisprudencia? Or is it part of the court's decision? Maybe "jurisprudencia" refers to legal precedents or court decisions. However, in this text, it's part of the court's proceedings, not a specific legal precedent. So maybe it's not marked. 
+
+Wait, the user's example output includes "VOTO-VISTA" as jurisprudencia. Let me check the example output again. The user's example output shows that "VOTO-VISTA" is marked as jurisprudencia. So perhaps any mention of court decisions or votes is considered jurisprudencia. 
+
+So, in the input text, "VOTO-VISTA" and "VENCIDO O 1º VOGAL" are parts of the judicial process, so they might be marked as jurisprudencia. 
+
+Also, "legislacao" would be any mention of laws or legislation. The text mentions "Tribunal de Justiça" which is an organization, but not legislation. 
+
+So, let's go through each part:
+
+- "Tribunal de Justiça do Distrito Federal e Territórios" → organizacao
+- "MARIA IVATÔNIA", "ANGELO PASSARELI", etc. → pessoa
+- "Brasilia ( DF )" → local
+- "21 de Março de 2018" → tempo
+- "VOTO-VISTA", "VENCIDO O 1º VOGAL" → jurisprudencia
+- "Reexame Necessário" might be a legal term, but not sure if it's a specific entity. The user's example output doesn't mark it, so maybe not. 
+
+Wait, the user's example output includes "VOTO-VISTA" as jurisprudencia. So I need to mark those parts. 
+
+So, the final HTML should have all these entities marked with the appropriate classes. Let me structure the HTML accordingly.
+</think>
+
+<span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span>, <span class="pessoa">MARIA IVATÔNIA</span> - Relatora , <span class="pessoa">ANGELO PASSARELI</span> - 1º Vogal , <span class="pessoa">SEBASTIÃO COELHO</span> - 2º Vogal , <span class="pessoa">SILVA LEMOS</span> - 3º Vogal , <span class="pessoa">JOSAPHA FRANCISCO DOS SANTOS</span> - 4º Vogal , sob a presidência do Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span> , em proferir a seguinte decisão : <span class="jurisprudencia">EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR</span> . INSTAURADA A DIVERGÊNCIA PROSSEGUI-SE O JULGAMENTO INTEGRANDO O QUÓRUM O DES . <span class="pessoa">SILVA LEMOS</span> E O DES . <span class="pessoa">JOSAPHÁ FRANCISCO</span> . CONHECER DO RECURSO . RECEBER REMESSA DE OFÍCIO . NEGAR PROVIMENTO A AMBOS . MAIORIA . <span class="jurisprudencia">VENCIDO O 1º VOGAL</span>. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia ( DF )</span> , <span class="tempo">21 de Março de 2018</span> .

@@ -1,0 +1,49 @@
+<think>
+Okay, let me tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. First, I need to understand the guidelines thoroughly.
+
+The entities to identify are pessoa, organização, tempo, local, legislação, and jurisprudência. Each should be wrapped in a <span> with the corresponding class. Let me go through the input text step by step.
+
+Starting with the first line: "EMENTA : HABEAS CORPUS - HOMICÍDIO QUALIFICADO TENTADO - SENTENÇA DE PRONÚNCIA PROLATADA - EXCESSO DE PRAZO PARA O JULGAMENTO PELO TRIBUNAL DO JÚRI - INOCORRÊNCIA - NULIDADE DA PROVA DOCUMENTAL POR INVIOLABILIDADE DAS COMUNICAÇÕES TELEFÔNICAS - PRECLUSÃO - DECISÃO DENEGATÓRIA DO DIREITO DE RECORRER EM LIBERDADE - JUÍZO DE CAUTELARIDADE DEVIDAMENTE FUNDAMENTADO NA SENTENÇA - PERICULOSIDADE CONCRETA - CONSTRANGIMENTO ILEGAL NÃO EVIDENCIADO . 01 . Transitada em julgado a pronúncia deverá o réu ser julgado , em até seis meses , pelo Tribunal do Júri , nos termos do que dispõe o art . 428 , caput , da lei de ritos , levando-se em consideração a insusceptibilidade de designação do julgamento entre os dias 20 de dezembro de 2017 e 20 de janeiro de 2018 , ante a expressa proibição legal inserta no art . 313 , §8º , da LC 59/2001 , com a redação dada pelo art . 103 da LC 135/2014 . 02 ."
+
+Looking for entities:
+
+1. "TRIBUNAL DO JÚRI" – This is an organization (organizacao) because it's a judicial body.
+2. "art . 428" – This is legislation (legislacao) as it refers to a legal article.
+3. "leis de ritos" – Wait, "leis de ritos" might be a legal term, but I need to check if it's a specific law. The example mentions "Lei nº 9.430/96" so maybe "leis de ritos" is a generic term. However, in the context, it's referring to the "law of procedures" (leis de ritos), which might be a specific law. But the example in the guidelines says to mark only specific references. Since "leis de ritos" is a general term, perhaps it's not a specific legislation. Wait, the example in the guidelines includes "art. 428 , caput , da lei de ritos" as part of the legislation. Wait, but in the example output, they marked "art. 61 , §1º , da Lei nº 9.430/96" as legislação. So "leis de ritos" might be a general term, but in this case, the text says "da lei de ritos" – which is a specific law. However, the user's example didn't mark "leis de ritos" as legislation. Wait, maybe "leis de ritos" here refers to the "Law of Criminal Procedure" (Lei de Processo Penal), which is a specific law. But the text here is written in Portuguese, and "leis de ritos" might be a translation of "laws of procedure" which could refer to a specific law. However, the example input in the guidelines had "art. 61 , §1º , da Lei nº 9.430/96" which was marked as legislação. So in the current text, "da lei de ritos" might be a specific law. But since the text doesn't have a specific number, maybe it's not marked. Wait, the guidelines say "Apenas referências a normas devem ser marcadas." So if "leis de ritos" is a specific law, even without a number, it should be marked. However, if it's a general term, it shouldn't. But the example in the user's input didn't mark "leis de ritos" as legislation. Wait, in the example given by the user, the input was "art.61 , §1º , da Lei nº 9.430/96" and it was marked as legislação. So in this case, "da lei de ritos" might be referring to a specific law, but without the number, maybe it's not marked. Hmm, this is a bit ambiguous. Maybe it's better to not mark it unless there's a specific reference.
+
+Next, looking for dates: "20 de dezembro de 2017" and "20 de janeiro de 2018" – these are time (tempo) entities. So those should be marked as <span class="tempo">.
+
+Then, "LC 59/2001" and "LC 135/2014" – these are Lei Complementar numbers, which are legislation (legislacao). So they should be marked as <span class="legislacao">.
+
+"art . 313 , §8º , da LC 59/2001" – the "LC" refers to Lei Complementar, so that's part of the legislation. Similarly, "art . 103 da LC 135/2014" is also legislation.
+
+Now, checking for other entities. "TRIBUNAL DO JÚRI" is an organization. "HABEAS CORPUS" is a legal term, but not a specific entity. "Réu" is a generic term for defendant, so it's not a person. "JUÍZO DE CAUTELARIDADE" is a judicial term, but not an entity. 
+
+So putting it all together:
+
+- "TRIBUNAL DO JÚRI" → organizacao
+- "20 de dezembro de 2017" → tempo
+- "20 de janeiro de 2018" → tempo
+- "LC 59/2001" → legislação
+- "LC 135/2014" → legislação
+- "art . 428 , caput , da lei de ritos" → maybe legislação? But since it's "leis de ritos" without a specific number, perhaps not. Wait, in the example, "art. 61 , §1º , da Lei nº 9.430/96" was marked. Here, "da lei de ritos" is a general term, so it's not marked. So only the parts with specific numbers are marked. Therefore, "art . 428 , caput , da lei de ritos" is not marked as legislação. 
+
+Wait, but the user's example included "art. 428 , caput , da lei de ritos" in the input, and in the output, it was marked as legislação? Wait, no. Wait in the example provided by the user:
+
+Input: "art.61 , §1º , da Lei nº 9.430/96"
+Output: "art.61 , §1º , da Lei nº 9.430/96" marked as legislação.
+
+So in the current text, "art . 428 , caput , da lei de ritos" – the "leis de ritos" might be a specific law, but without a number, it's not marked. Therefore, the only parts marked as legislação are the ones with "LC 59/2001" and "LC 135/2014".
+
+So the final HTML would have:
+
+- TRIBUNAL DO JÚRI as organizacao
+- 20 de dezembro de 2017 as tempo
+- 20 de janeiro de 2018 as tempo
+- LC 59/2001 as legislação
+- LC 135/2014 as legislação
+
+Other parts are left as is.
+</think>
+
+EMENTA : HABEAS CORPUS - HOMICÍDIO QUALIFICADO TENTADO - SENTENÇA DE PRONÚNCIA PROLATADA - EXCESSO DE PRAZO PARA O JULGAMENTO PELO <span class="organizacao">TRIBUNAL DO JÚRI</span> - INOCORRÊNCIA - NULIDADE DA PROVA DOCUMENTAL POR INVIOLABILIDADE DAS COMUNICAÇÕES TELEFÔNICAS - PRECLUSÃO - DECISÃO DENEGATÓRIA DO DIREITO DE RECORRER EM LIBERDADE - JUÍZO DE CAUTELARIDADE DEVIDAMENTE FUNDAMENTADO NA SENTENÇA - PERICULOSIDADE CONCRETA - CONSTRANGIMENTO ILEGAL NÃO EVIDENCIADO . 01 . Transitada em julgado a pronúncia deverá o réu ser julgado , em até seis meses , pelo <span class="organizacao">TRIBUNAL DO JÚRI</span> , nos termos do que dispõe o <span class="legislacao">art . 428 , caput , da lei de ritos</span> , levando-se em consideração a insusceptibilidade de designação do julgamento entre os dias <span class="tempo">20 de dezembro de 2017</span> e <span class="tempo">20 de janeiro de 2018</span> , ante a expressa proibição legal inserta no <span class="legislacao">art . 313 , §8º , da LC 59/2001</span> , com a redação dada pelo <span class="legislacao">art . 103 da LC 135/2014</span> . 02 .

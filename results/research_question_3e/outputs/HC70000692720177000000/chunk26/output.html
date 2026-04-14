@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a given text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each span should have a class indicating the entity type.
+
+First, I need to carefully read the input text and identify which parts fit each category. Let me start by breaking down the text sentence by sentence.
+
+The first part is "370 , § 1º , do Código de Processo Penal , a comunicação , tal como feita , alcançou a finalidade pretendida , qual seja , cientificar os causídicos da sessão de julgamento do recurso de apelação , de modo que o simples inconformismo com o procedimento utilizado , desprovido de prova inequívoca da mácula ocasionada , não se presta para o reconhecimento de nulidade , especialmente na atual sistemática processual , em que a formalidade há de ceder à substância , havendo esta de prevalecer se e quando em confronto com aquela ."
+
+Looking for entities here. "Código de Processo Penal" is a law, so that's legislação. The rest seems to be general text without specific entities. 
+
+Next sentence: "Ora , as formas processuais representam tão somente um instrumento para a correta aplicação do Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 ."
+
+Here, "Cleonilson Nicácio Silva" is a person, so pessoa. "Matricula 8553" might be a reference, but it's not a legal entity. The "Documento assinado eletronicamente" is a document but not a specific entity. 
+
+Next part: "Em 22/02/2018 18:56:14 ."
+
+This is a date and time. According to the guidelines, only explicit dates should be marked as tempo. The date "22/02/2018" is a full date, so that's tempo. The time "18:56:14" is a time, but the note says only dates should be marked. So I'll mark the date part as tempo.
+
+Now, checking for any other entities. "Código de Processo Penal" is definitely legislação. The rest of the text doesn't have any other entities. 
+
+Wait, the user's example included "art.61 , §1º , da Lei nº 9.430/96" as legislação. So in the input, "Código de Processo Penal" is a code, which is a legislation. So that should be marked as legislação.
+
+So, the entities are:
+- Código de Processo Penal (legislação)
+- Cleonilson Nicácio Silva (pessoa)
+- 22/02/2018 (tempo)
+
+I need to make sure that the rest of the text isn't marked. For example, "Matricula 8553" is a number, not an entity. "Documento assinado eletronicamente" is a description but not a specific entity. 
+
+Also, the date format is "22/02/2018" which is a full date, so it's tempo. The time "18:56:14" is not marked because the guidelines say only dates. 
+
+So the final HTML should have:
+- <span class="legislacao">Código de Processo Penal</span>
+- <span class="pessoa">Cleonilson Nicácio Silva</span>
+- <span class="tempo">22/02/2018</span>
+
+I need to make sure the rest of the text is left as is. Let me reconstruct the text with these spans.
+</think>
+
+Ora , as formas processuais representam tão somente um instrumento para a correta aplicação do Documento assinado eletronicamente por <span class="pessoa">Cleonilson Nicácio Silva</span> , Matricula 8553 . Em <span class="tempo">22/02/2018</span> .

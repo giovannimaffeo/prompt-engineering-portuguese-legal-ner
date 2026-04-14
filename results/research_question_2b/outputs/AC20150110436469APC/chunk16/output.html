@@ -1,0 +1,25 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify all instances of these entities. Let me start by breaking down the text.
+
+The first part mentions "mais de oito ( 08 ) anos do início do curso do prazo prescricional". Here, "08" is a number, but it's part of a time reference. So "08" should be marked as tempo. Also, "22/02/2017" and "08/03/2017" are dates, so those are tempo as well. 
+
+Next, "Acórdão n.999404" – "Acórdão" is a legal term, but I need to check if it's part of an organization or legislation. Since it's a court decision, maybe it's jurisprudencia? Wait, the user's guide says jurisprudencia is for jurisprudence. So "Acórdão" might be part of jurisprudencia. But the number "n.999404" is likely a case number, which might be part of an organization or a specific case. Hmm, maybe "n.999404" is part of the organization or a specific case reference. Wait, the example in the output shows "Acórdão n.999404" as part of jurisprudencia. Let me check the example output provided by the user. Oh, the user's example output has "Acórdão n.999404" as <span class="jurisprudencia">. So I should mark that as jurisprudencia.
+
+Then there's "Relator : ARNOLDO CAMANHO 4ª TURMA CÍVEL". "Relator" is a person, so "ARNOLDO CAMANHO" is a pessoa. "4ª TURMA CÍVEL" is an organization, so that's organizacao.
+
+"Data de Julgamento : 22/02/2017" – the date is already marked as tempo. "Publicado no DJE : 08/03/2017" – DJE is a legal publication, so that's a local? Wait, DJE is the Diário da Justiça Eletrônico, which is a publication, so maybe local? Or is it an organization? The user's guide says local is for places. Since DJE is a publication, maybe it's a local. Wait, the example output shows "DJE" as <span class="local">. So I should mark "DJE" as local.
+
+"Recurso não provido" – that's a legal term, but not an entity. "Sentença mantida" – same here. "grifo nosso" – that's a note, not an entity.
+
+Putting it all together, I need to go through each part of the text and apply the appropriate tags. Let me check each part again to make sure I didn't miss any entities.
+
+The date "20160610082800APC" – that looks like a timestamp, so tempo. The numbers "08" and "22/02/2017" and "08/03/2017" are all tempo. The "4ª TURMA CÍVEL" is an organization. The "Relator" is a pessoa. The "Acórdão" is jurisprudencia. The "DJE" is local. The "n.999404" is part of the jurisprudencia as well. 
+
+Wait, the example output from the user shows "Acórdão n.999404" as <span class="jurisprudencia">. So I should mark the entire "Acórdão n.999404" as jurisprudencia. Also, "20160610082800APC" is a date, so tempo. 
+
+I think that's all. Now, I'll structure the HTML with the appropriate spans for each entity.
+</think>
+
+Feita a citação editalícia quando passados mais de oito ( <span class="tempo">08</span> ) anos do início do curso do prazo prescricional , sem que se verifique , em data anterior , a ocorrência de qualquer outra causa interruptiva ou suspensiva do prazo prescricional , impõe-se o reconhecimento da prescrição . 5 . Recurso não provido . Sentença mantida . ( <span class="jurisprudencia">Acórdão n.999404</span> , <span class="tempo">20160610082800APC</span> , <span class="pessoa">Relator : ARNOLDO CAMANHO</span> <span class="organizacao">4ª TURMA CÍVEL</span> , <span class="tempo">Data de Julgamento : 22/02/2017</span> , <span class="local">Publicado no DJE : 08/03/2017</span> . Pág. : 283/300 ) - <span class="local">grifo nosso</span> .

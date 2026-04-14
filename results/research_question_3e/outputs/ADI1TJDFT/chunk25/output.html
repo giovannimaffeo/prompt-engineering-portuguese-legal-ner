@@ -1,0 +1,33 @@
+<think>
+Okay, I need to process the given text and mark the entities according to the specified categories. Let me go through the text step by step.
+
+First, the text starts with "Compete privativamente ao Governador do Distrito Federal". Here, "Governador" is a title, not a name, so it shouldn't be marked as pessoa. "Distrito Federal" is a specific location, so that's a local. I'll mark "Distrito Federal" with the local class.
+
+Next, looking at "Secretários de Governo" – "Secretários" is a title, not a name, so no mark. "Governo" is a generic term, not a specific organization. Then "exercer , com auxilio dos Secretários de Governo , a direção superior da administração do Distrito Federal". The "Direção superior da administração" is a generic term, not an organization. So no marks here.
+
+Moving on: "exercer , com auxilio dos Secretários de Governo , a direção superior da administração do Distrito Federal ; ( ... ) VI - iniciar o processo legislativo , na forma e nos casos previstos nesta Lei Orgânica ; ( ... ) X - dispor sobre a organização e o funcionamento da administração do Distrito Federal , na forma desta Lei Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 11 Orgânica ; ( ... ) XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da legislação em vigor ; ( Grifos nossos ) Art . 71 ."
+
+Looking for entities here. "Lei Orgânica" is a legislation, so mark that. "Lei Fls." – "Fls." might be an abbreviation for "Fls." which is a common abbreviation for "Fls. (Folha)" in legal documents, but it's not a full legislation. So maybe not mark it. However, "Lei Fls." could be part of a law name, but the example shows that only full expressions are marked. Since "Lei Fls." is incomplete, maybe not. Wait, the text says "na forma desta Lei Fls." – "Lei Fls." might be a specific law, but without the full name, it's unclear. Maybe not mark it. 
+
+Then "Ação Direta de Inconstitucionalidade 20170020161362ADI" – this looks like a judicial case, so it's jurisprudencia. The number "20170020161362ADI" is a case identifier, so mark that as jurisprudencia. 
+
+"Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – this seems like a code or verification number, not an entity. 
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 11 Orgânica" – "GABINETE" is an organization, so mark that. "DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is a person, so mark the full name as pessoa. "11 Orgânica" – "Orgânica" is part of the law name, so "Lei Orgânica" was already marked. 
+
+"XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da legislação em vigor ; ( Grifos nossos ) Art . 71 ." – "Art. 71" refers to an article in a law, so "Art. 71" should be part of the legislation. Wait, the example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislação. So "Art. 71" is part of a law, so it should be marked as legislação. But the text here is "Art . 71 ." – maybe it's part of a law, so mark "Art. 71" as legislação.
+
+Wait, in the example, they marked "art.61 , §1º , da Lei nº 9.430/96" as legislação. So if "Art. 71" is part of a law, like "Art. 71 da Lei X", then it's part of the legislation. But in the given text, it's just "Art . 71 ." without the law name. Maybe it's part of a law, so it's better to mark it. However, the guidelines say to mark only full expressions. Since "Art. 71" alone isn't a full legislation, maybe not. But the example includes "Art. 71" as part of the legislation. Wait, the example input had "art.61 , §1º , da Lei nº 9.430/96" and it was marked. So if "Art. 71" is part of a law, then it's part of the legislation. But in the text, it's just "Art . 71 ." – maybe it's a reference to a law's article, so it's part of the legislation. Therefore, mark it as legislação.
+
+Putting it all together:
+
+- "Distrito Federal" → local
+- "Lei Orgânica" → legislação
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" → jurisprudencia
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" → "GABINETE" is an organization, "DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is a pessoa
+- "Art. 71" → legislação
+
+So the final text would have these entities marked accordingly.
+</think>
+
+Compete privativamente ao Governador do <span class="local">Distrito Federal</span> : ( ... ) IV - exercer , com auxilio dos Secretários de Governo , a direção superior da administração do <span class="local">Distrito Federal</span> ; ( ... ) VI - iniciar o processo legislativo , na forma e nos casos previstos nesta <span class="legislacao">Lei Orgânica</span> ; ( ... ) X - dispor sobre a organização e o funcionamento da administração do <span class="local">Distrito Federal</span> , na forma desta <span class="legislacao">Lei Fls</span> . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 11 <span class="legislacao">Orgânica</span> ; ( ... ) XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da <span class="legislacao">legislação</span> em vigor ; ( Grifos nossos ) <span class="legislacao">Art</span> . 71 .

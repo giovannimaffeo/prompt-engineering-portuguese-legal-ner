@@ -1,0 +1,34 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities. 
+
+Starting with the first part: "Ação direta de constitucionalidade julgada procedente para declarar a inconstitucionalidade formal da Lei distrital 5.764/2016 , com efeito ex tunc e eficácia erga omnes '' . ( ADI n° 49775-8 . Rel . Des . : WALDIR LEÔNCIO LOPES JÚNIOR . CONSELHO ESPECIAL . Acórdão n° 1014463 . DJe : 08/05/2017 . Pág. : 407 ) . `` AÇÃO DIRETA DE INCONSTITUCIONALIDADE . LEI 3.220 , DE 05 DE NOVEMBRO DE 2003 . INCONSTITUCIONALIDADE . PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL . COLIDÊNCIA COM A LEI ORGÂNICA DO DISTRITO FEDERAL . RESERVA DE INICIATIVA . VÍCIO FORMAL DE INCONSTITUCIONALIDADE . COMPETÊNCIA PRIVATIVA DO GOVERNADOR DO DISTRITO FEDERAL PARA A PROPOSITURA DE LEIS QUE IMPONHAM OBRIGAÇÕES A SEREM OBSERVADAS PELAS SECRETARIAS DE GOVERNO E SEUS AGENTES . INTELIGÊNCIA DO ART . 71 , § 1º , II E IV E ART . 100 , VI e X DA LEI ORGÂNICA DO DISTRITO FEDERAL . PROCEDÊNCIA DO PEDIDO ."
+
+Looking for entities:
+
+1. "Lei distrital 5.764/2016" – this is a law, so "legislacao".
+2. "ADI n° 49775-8" – ADI is an Ação Direta de Inconstitucionalidade, which is a legal action, so "jurisprudencia".
+3. "WALDIR LEÔNCIO LOPES JÚNIOR" – a person's name, so "pessoa".
+4. "CONSELHO ESPECIAL" – an organization, so "organizacao".
+5. "Acórdão n° 1014463" – an acordão is a judicial decision, so "jurisprudencia".
+6. "DJe : 08/05/2017" – date, so "tempo".
+7. "LEI 3.220" – law, "legislacao".
+8. "DE 05 DE NOVEMBRO DE 2003" – date, "tempo".
+9. "PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL" – "PROJETO DE LEI" is a law project, so "legislacao".
+10. "LEI ORGÂNICA DO DISTRITO FEDERAL" – law, "legislacao".
+11. "GOVERNADOR DO DISTRITO FEDERAL" – "GOVERNADOR" is a person, but the full name isn't given. Wait, the user's definition says "pessoa" is names of individuals. Since "GOVERNADOR" is a title, not a specific name, maybe it's not a pessoa. But the text mentions "GOVERNADOR DO DISTRITO FEDERAL" as a role. However, the user's guidelines say to mark only names, not titles. So maybe not a pessoa here.
+12. "ART . 71 , § 1º , II E IV E ART . 100 , VI e X DA LEI ORGÂNICA DO DISTRITO FEDERAL" – references to articles in the law, so "legislacao".
+
+Now, checking each part again to ensure I didn't miss any. Also, need to make sure that only full NPs are marked. For example, "DEPUTADO DISTRITAL" is a title, not a specific name, so not a pessoa. "LEI ORGÂNICA DO DISTRITO FEDERAL" is a law, so "legislacao".
+
+Also, "DJe : 08/05/2017" is a date, so "tempo". "Pág. : 407" is a page number, but the user's guidelines don't mention pages as entities, so leave as is.
+
+Putting it all together, I'll wrap each identified entity with the appropriate <span> tags. Let me make sure I didn't miss any other entities. For example, "COMARCA DE BELO HORIZONTE" is a local, but that's not in the text. The text has "DISTRITO FEDERAL" which is a local, so "local".
+
+Wait, "DISTRITO FEDERAL" is a local, so that should be marked as "local". Also, "LEI ORGÂNICA DO DISTRITO FEDERAL" is a law, so "legislacao".
+
+So, the final HTML should have all these entities marked with their respective classes. Let me structure the HTML accordingly.
+</think>
+
+<span class="legislacao">Lei distrital 5.764/2016</span> , com efeito ex tunc e eficácia erga omnes '' . ( <span class="jurisprudencia">ADI n° 49775-8</span> . Rel . <span class="pessoa">Des . : WALDIR LEÔNCIO LOPES JÚNIOR</span> . <span class="organizacao">CONSELHO ESPECIAL</span> . <span class="jurisprudencia">Acórdão n° 1014463</span> . <span class="tempo">DJe : 08/05/2017</span> . Pág. : 407 ) . `` <span class="jurisprudencia">AÇÃO DIRETA DE INCONSTITUCIONALIDADE</span> . <span class="legislacao">LEI 3.220</span> , DE <span class="tempo">05 DE NOVEMBRO DE 2003</span> . <span class="legislacao">INCONSTITUCIONALIDADE</span> . <span class="legislacao">PROJETO DE LEI APRESENTADO POR DEPUTADO DISTRITAL</span> . COLIDÊNCIA COM A <span class="legislacao">LEI ORGÂNICA DO DISTRITO FEDERAL</span> . RESERVA DE INICIATIVA . <span class="jurisprudencia">VÍCIO FORMAL DE INCONSTITUCIONALIDADE</span> . <span class="jurisprudencia">COMPETÊNCIA PRIVATIVA DO GOVERNADOR DO DISTRITO FEDERAL</span> PARA A PROPOSITURA DE LEIS QUE IMPONHAM OBRIGAÇÕES A SEREM OBSERVADAS PELAS SECRETARIAS DE GOVERNO E SEUS AGENTES . INTELIGÊNCIA DO <span class="legislacao">ART . 71</span> , <span class="legislacao">§ 1º</span> , II E IV E <span class="legislacao">ART . 100</span> , VI e X DA <span class="legislacao">LEI ORGÂNICA DO DISTRITO FEDERAL</span> . PROCEDÊNCIA DO PEDIDO .

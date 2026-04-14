@@ -1,0 +1,64 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first part is "CONDIÇÕES DE VALIDADE ( conversão das Orientações Jurisprudenciais nºs 108 , 312 , 313 e 330 da SBDI-1 ) - Res . 129/2005 , DJ 20 , 22 e 25.04.2005 I - Válido é o instrumento de mandato com prazo determinado que contém cláusula estabelecendo a prevalência dos poderes para atuar até o final da demanda . ( ex-OJ nº 312 da SBDI-1 - DJ 11.08.2003 ) II - Diante da existência de previsão , no mandato , fixando termo para sua juntada , o instrumento de mandato só tem validade se anexado ao processo dentro do aludido prazo . ( ex-OJ nº 313 da SBDI-1 - DJ 11.08.2003 ) III - São válidos os atos praticados pelo substabelecido , ainda que não haja , no mandato , poderes expressos para substabelecer ( art . 667 , e parágrafos , do Código Civil de 2002 ) ."
+
+Looking for entities:
+
+1. "Orientações Jurisprudenciais nºs 108 , 312 , 313 e 330 da SBDI-1" – Here, "SBDI-1" is an organization (since it's a judicial body). The numbers 108, 312, 313, 330 are part of the jurisprudencia references. The "Orientações Jurisprudenciais" is a generic term, so not marked. "SBDI-1" should be marked as organizacao.
+
+2. "Res . 129/2005" – "Res" is an abbreviation for "Resolução", which is a legal document. The number 129/2005 is a legislative reference. Wait, but "Res" is part of the resolution number. So "Res 129/2005" would be a legislative reference. Wait, but the user's examples show that "Res 129/2005" is marked as legislação. Wait, in the example given, "Res 129/2005" is part of the output as legislação. Wait, looking back at the example, the input had "Res . 129/2005 , DJ 20 , 22 e 25.04.2005" and the output marked "Res 129/2005" as legislação. So I need to check if "Res" is part of the legislation. But according to the definitions, "legislacao" includes resolutions. So "Res 129/2005" is a legislative reference. So I should mark that as legislação.
+
+3. "DJ 20 , 22 e 25.04.2005" – "DJ" is the abbreviation for "Diário da Justiça", which is a publication, but not an entity. The dates "20", "22", and "25.04.2005" are temporal references. Wait, "20" is a day, but without a month and year, it's ambiguous. However, the example in the guidelines says that dates like "20.04.2005" are marked as tempo. But here, "20" is just a day. Wait, the user's example had "DJ 20 , 22 e 25.04.2005" and the output marked "25.04.2005" as tempo. So "20" and "22" are days, but without a month and year, they might not be marked. Wait, the guidelines say that dates in formats like "DD/MM/YYYY" or "3 de abril de 2017" should be marked. So "25.04.2005" is a date in DD/MM/YYYY format, so it's tempo. "20" and "22" are just days, but without a month and year, they might not be marked. However, the example in the user's input had "DJ 20 , 22 e 25.04.2005" and the output marked "25.04.2005" as tempo. So maybe "20" and "22" are not marked. Wait, but the user's example input had "DJ 20 , 22 e 25.04.2005" and the output marked "25.04.2005" as tempo. So the other dates like "20" and "22" are not marked. So in this case, "25.04.2005" is tempo.
+
+4. "ex-OJ nº 312 da SBDI-1 - DJ 11.08.2003" – "OJ" is an abbreviation for "Orientação Jurisprudencial", which is a jurisprudencia reference. The number "312" is part of the jurisprudencia reference. "SBDI-1" is an organization. "DJ 11.08.2003" is a date, so tempo.
+
+5. "art . 667 , e parágrafos , do Código Civil de 2002" – "Código Civil de 2002" is a legislation reference. The "art. 667" is part of the legislation, so the entire "art. 667, e parágrafos, do Código Civil de 2002" should be marked as legislação.
+
+Now, let's go through the text step by step.
+
+First sentence: "CONDIÇÕES DE VALIDADE ( conversão das Orientações Jurisprudenciais nºs 108 , 312 , 313 e 330 da SBDI-1 ) - Res . 129/2005 , DJ 20 , 22 e 25.04.2005 I - Válido é o instrumento de mandato com prazo determinado que contém cláusula estabelecendo a prevalência dos poderes para atuar até o final da demanda . ( ex-OJ nº 312 da SBDI-1 - DJ 11.08.2003 ) II - Diante da existência de previsão , no mandato , fixando termo para sua juntada , o instrumento de mandato só tem validade se anexado ao processo dentro do aludido prazo . ( ex-OJ nº 313 da SBDI-1 - DJ 11.08.2003 ) III - São válidos os atos praticados pelo substabelecido , ainda que não haja , no mandato , poderes expressos para substabelecer ( art . 667 , e parágrafos , do Código Civil de 2002 ) ."
+
+Breaking down:
+
+- "Orientações Jurisprudenciais nºs 108 , 312 , 313 e 330 da SBDI-1" – "SBDI-1" is an organization. The numbers 108, 312, 313, 330 are part of the jurisprudencia references. "Orientações Jurisprudenciais" is a generic term, so not marked.
+
+- "Res . 129/2005" – "Res" is part of the resolution number, so "Res 129/2005" is a legislative reference. Wait, but the example in the user's input had "Res . 129/2005" and the output marked it as legislação. So I should mark "Res 129/2005" as legislação.
+
+- "DJ 20 , 22 e 25.04.2005" – "25.04.2005" is a date, so tempo. "20" and "22" are days, but without a month and year, they might not be marked. However, the example in the user's input had "DJ 20 , 22 e 25.04.2005" and the output marked "25.04.2005" as tempo. So "20" and "22" are not marked.
+
+- "ex-OJ nº 312 da SBDI-1 - DJ 11.08.2003" – "OJ nº 312" is a jurisprudencia reference. "SBDI-1" is an organization. "DJ 11.08.2003" is a date, so tempo.
+
+- "ex-OJ nº 313 da SBDI-1 - DJ 11.08.2003" – Same as above.
+
+- "art . 667 , e parágrafos , do Código Civil de 2002" – "Código Civil de 2002" is a legislation reference. The "art. 667" is part of it, so the entire phrase is marked as legislação.
+
+Now, let's apply these to the text.
+
+First, the "SBDI-1" is an organization. So in the first part, "SBDI-1" should be marked as organizacao.
+
+The "Res 129/2005" is a legislative reference, so marked as legislação.
+
+The "25.04.2005" is a date, so tempo.
+
+In the ex-OJ parts, "OJ nº 312" and "OJ nº 313" are jurisprudencia references. "SBDI-1" is again organizacao. "DJ 11.08.2003" is tempo.
+
+The "Código Civil de 2002" is legislation, so marked as legislação.
+
+Putting it all together:
+
+- "SBDI-1" → organizacao
+- "Res 129/2005" → legislação
+- "25.04.2005" → tempo
+- "OJ nº 312" → jurisprudencia
+- "SBDI-1" → organizacao
+- "DJ 11.08.2003" → tempo
+- "OJ nº 313" → jurisprudencia
+- "Código Civil de 2002" → legislação
+
+Now, let's check for any other entities. The rest of the text doesn't have any other entities. So the final HTML should have these marked accordingly.
+</think>
+
+CONDIÇÕES DE VALIDADE ( conversão das Orientações Jurisprudenciais nºs 108 , 312 , 313 e 330 da SBDI-1 ) - <span class="legislacao">Res . 129/2005</span> , <span class="tempo">25.04.2005</span> I - Válido é o instrumento de mandato com prazo determinado que contém cláusula estabelecendo a prevalência dos poderes para atuar até o final da demanda . ( <span class="jurisprudencia">ex-OJ nº 312 da SBDI-1</span> - <span class="tempo">DJ 11.08.2003</span> ) II - Diante da existência de previsão , no mandato , fixando termo para sua juntada , o instrumento de mandato só tem validade se anexado ao processo dentro do aludido prazo . ( <span class="jurisprudencia">ex-OJ nº 313 da SBDI-1</span> - <span class="tempo">DJ 11.08.2003</span> ) III - São válidos os atos praticados pelo substabelecido , ainda que não haja , no mandato , poderes expressos para substabelecer ( <span class="legislacao">art . 667 , e parágrafos , do Código Civil de 2002</span> ) .

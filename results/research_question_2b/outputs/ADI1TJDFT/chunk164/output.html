@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about a legal decision regarding the unconstitutionality of a law. 
+
+Looking for entities:
+
+1. "Lei Complementar Distrital nº 34/1997" – this is a law, so "legislacao".
+2. "Acórdão n.1078980 , 20170020135916ADI" – this seems like a judicial decision, so "jurisprudencia".
+3. "Relator : JOSÉ DIVINO CONSELHO ESPECIAL" – the relator is a person, so "pessoa".
+4. "Data de Julgamento : 20/02/2018" – date, so "tempo".
+5. "Publicado no DJE : 05/03/2018" – another date, "tempo".
+6. "Lei 5.815/2017" – another law, "legislacao".
+7. "ADI" – maybe an acronym for "Ação Direta de Inconstitucionalidade", which is a legal term, but the user hasn't specified it as a category. Since it's part of the case reference, maybe it's part of "jurisprudencia" or not. But the example output includes "ADI" as part of the jurisprudencia. Wait, in the sample output, "ADI" is inside the jurisprudencia span. So I should check that.
+
+Wait, the sample output provided by the user includes "ADI" within the jurisprudencia span. Let me check the example again. The user's sample output shows "ADI" inside the jurisprudencia tag. So I need to make sure that any legal case references like ADI are marked as jurisprudencia.
+
+Also, "DJE" is a publication, but the user hasn't specified it as a category. Since it's part of the publication date, maybe it's not an entity. The user's example includes "DJE" as part of the text without a tag. Wait, looking at the sample output, the user's example shows "DJE" as part of the text without any tag. So I should not tag "DJE" unless it's part of a specific entity type. Since the user hasn't mentioned it, I'll leave it as is.
+
+Now, let's go through the text step by step.
+
+Original text: "IV - Ação julgada procedente para declarar a inconstitucionalidade formal da Lei Complementar Distrital nº 34/1997 , com eficácia erga omnes , mantendo a sua vigência por mais 01 ( um ) ano , contado do trânsito em julgado do acórdão . ( Acórdão n.1078980 , 20170020135916ADI , Relator : JOSÉ DIVINO CONSELHO ESPECIAL , Data de Julgamento : 20/02/2018 , Publicado no DJE : 05/03/2018 . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da Lei 5.815/2017 . É o voto . Fls ."
+
+Breaking it down:
+
+- "Lei Complementar Distrital nº 34/1997" → legislacao
+- "Acórdão n.1078980 , 20170020135916ADI" → jurisprudencia (since it's a judicial decision reference)
+- "Relator : JOSÉ DIVINO CONSELHO ESPECIAL" → pessoa (the relator is a person)
+- "Data de Julgamento : 20/02/2018" → tempo
+- "Publicado no DJE : 05/03/2018" → tempo
+- "Lei 5.815/2017" → legislacao
+
+Other parts like "ADI" are part of the jurisprudencia reference. The "DJE" is part of the publication, but since it's not one of the specified entities, it remains as is.
+
+Now, I need to wrap each entity with the appropriate <span> tags. Let me make sure I don't miss any. Also, check for any other possible entities. For example, "Fls." is an abbreviation for "Folhas" (pages), but it's not one of the specified types, so it stays.
+
+Putting it all together, the HTML should have the spans for each entity. Let me verify each part again to ensure accuracy.
+</think>
+
+IV - Ação julgada procedente para declarar a inconstitucionalidade formal da <span class="legislacao">Lei Complementar Distrital nº 34/1997</span> , com eficácia erga omnes , mantendo a sua vigência por mais 01 ( um ) ano , contado do trânsito em julgado do acórdão . ( <span class="jurisprudencia">Acórdão n.1078980 , 20170020135916ADI</span> , <span class="pessoa">Relator : JOSÉ DIVINO CONSELHO ESPECIAL</span> , <span class="tempo">Data de Julgamento : 20/02/2018</span> , <span class="tempo">Publicado no DJE : 05/03/2018</span> . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da <span class="legislacao">Lei 5.815/2017</span> . É o voto . Fls .

@@ -1,0 +1,80 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each span needs a class attribute indicating the type.
+
+First, I need to go through the input text carefully. Let me read the example input and output again to understand the pattern. The example input had "MINISTÉRIO PÚBLICO FEDERAL" marked as organizacao, "CARLOS HENRIQUE ALVES" as pessoa, "art.61 , §1º , da Lei nº 9.430/96" as legislação, and "REsp n . 1694984/MS" and "Súmula 331 do TST" as jurisprudência. 
+
+Now, looking at the given input text. Let me parse it step by step.
+
+The text starts with "Inteiro Teor do Acórdão - Página 3 de 17 Relatório ACO 2821 A GR / MT postulou a inadmissão do recurso de agravo interno interposto pela União . Subsidiariamente , requereu o seu desprovimento . É o relatório . 2 Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536377 . Supremo Tribunal Federal ACO 2821 A GR / MT postulou a inadmissão do recurso de agravo interno interposto pela União . Subsidiariamente , requereu o seu desprovimento . É o relatório . 2 Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil ."
+
+Let me check each part:
+
+1. "ACO 2821 A GR / MT" – This seems like a case number or reference. The example in the guidelines mentions that complete identifiers like "REsp 1694984/MS" should be marked as jurisprudência. However, "ACO 2821 A GR / MT" might be a case identifier. But the user's example didn't mark similar phrases. Wait, the example had "ACO 2821 A GR / MT" in the input and in the output, it was not marked. Wait, in the example input, the output didn't mark "ACO 2821 A GR / MT" as jurisprudência. Wait, the example input had "ACO 2821 A GR / MT" and the output didn't mark it. So maybe that's not a jurisprudência entity. But the user's instructions say that if it's a specific reference, like a case number, it should be marked as jurisprudência. However, in the example, the output didn't mark "ACO 2821 A GR / MT". Wait, the example input was "ACO 2821 A GR / MT postulou..." and the output was "ACO 2821 A GR / MT postulou...". So maybe in this case, it's not a specific jurisprudência entity. Hmm.
+
+Next, "União" – that's the Portuguese word for "Union", which is a legal entity. In the example, "União" was not marked, but in the example input, the output didn't mark "União" as organizacao. Wait, the example input had "pela União" and the output didn't mark it. Wait, the example input's output had "pela União" as part of the text. Wait, the user's example input had "pela União" and the output didn't mark it. But according to the guidelines, "organização" includes entities like "UNIMED RIO COOPERATIVA...". So "União" might be an organization. But in the example, it wasn't marked. Wait, maybe the user's example didn't mark "União" because it's a generic term. Let me check the definitions again. The definition for organizacao says "expressões que identificam entidades coletivas formalmente constituídas...". The "União" here refers to the Brazilian Union, which is a legal entity. So maybe "União" should be marked as organizacao. But in the example, it wasn't. Wait, the example input had "pela União" and the output didn't mark it. So perhaps "União" is not marked because it's a generic term. Wait, the definition says "expressões que identificam entidades coletivas...". The Brazilian Union is a legal entity, so "União" should be marked as organizacao. But in the example, the output didn't mark it. Hmm. Maybe the example was different. Let me check the example again.
+
+The example input was: "O MINISTÉRIO PÚBLICO FEDERAL, por meio do Procurador CARLOS HENRIQUE ALVES, propôs ação com base no art.61 , §1º , da Lei nº 9.430/96, conforme entendimento do REsp n . 1694984/MS e da Súmula 331 do TST."
+
+The output marked "MINISTÉRIO PÚBLICO FEDERAL" as organizacao, "CARLOS HENRIQUE ALVES" as pessoa, "art.61..." as legislação, "REsp..." as jurisprudência, and "Súmula 331..." as jurisprudência. So "União" in the input text might not be marked because it's a generic term. Wait, but in Portuguese, "União" can refer to the Brazilian Union, which is a legal entity. However, in the example, "União" wasn't marked. So maybe the user's examples are not marking "União" as an organization. Therefore, perhaps "União" is not considered an organization here. Maybe the user's instruction says that only specific names should be marked. So "União" might be a generic term, not a specific entity. So perhaps it's not marked.
+
+Next, "MP n° 2.200-2/2001" – MP is "Medida Provisória" (Provisional Measure), which is a type of legislation. The example in the guidelines says that "MP n° 2.200-2/2001" should be marked as legislação. Wait, in the example, the user's input had "MP n° 2.200-2/2001" and in the output, it was marked as legislação. Wait, in the example input, "MP n° 2.200-2/2001 de 24/08/2001" was part of the text. The example output didn't mark it. Wait, the example input had "conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil .". The example output didn't mark "MP n° 2.200-2/2001" as legislação. Wait, but the guidelines say that "legislação" includes "medidas provisórias". So "MP n° 2.200-2/2001" should be marked as legislação. However, in the example, the output didn't mark it. So maybe the example is different. Wait, the example output had "conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil ." and the output didn't mark "MP n° 2.200-2/2001" as legislação. Wait, but according to the guidelines, "MP" is a type of legislation. So perhaps the example didn't mark it because the user's example had a different context. Wait, maybe the user's example didn't mark it because it's part of a larger phrase. Let me check the guidelines again. The guidelines say that "legislação" includes "medidas provisórias". So "MP n° 2.200-2/2001" should be marked as legislação. However, in the example, it wasn't. Hmm. Maybe the example is different. Let me check the example again. The example input had "MP n° 2.200-2/2001 de 24/08/2001" and the output didn't mark it. Wait, the example output had "conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil .". The output didn't mark that part. But according to the guidelines, "MP" is a legislative measure. So perhaps in the example, the user didn't mark it because it's part of a larger phrase, but according to the guidelines, it should be marked. Maybe the example is not following the guidelines. Alternatively, perhaps the example is different. 
+
+Wait, the user's example input had "MP n° 2.200-2/2001 de 24/08/2001" and the output didn't mark it. But according to the guidelines, "MP" is a type of legislation. So maybe the example is incorrect. However, the user's example shows that "MP n° 2.200-2/2001" was not marked. Therefore, perhaps the user's example is not following the guidelines, and I need to follow the guidelines strictly. 
+
+So, in the current input text, "MP n° 2.200-2/2001" should be marked as legislação. But according to the example, it wasn't. Hmm. This is a bit confusing. Let me check the guidelines again. The guidelines state that "legislação" includes "medidas provisórias" and "decretos", etc. So "MP n° 2.200-2/2001" is a medida provisória, so it should be marked as legislação. Therefore, in the current input, "MP n° 2.200-2/2001" should be marked as legislação. 
+
+Then, "de 24/08/2001" is a date, so that's tempo. 
+
+Next, "Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil" – the guidelines say that "ICP-Brasil" is not to be marked as legislação. So that part is not marked. 
+
+The URL "http : //www.stf.jus.br/portal/autenticacao/" is an endereço eletrônico, which according to the guidelines should not be marked as local. 
+
+The number "14536377" is a document number. According to the guidelines, "identificadores completos de decisões ou processos" should be marked as jurisprudência. So "14536377" would be marked as jurisprudência. 
+
+Then, "Supremo Tribunal Federal" is an organization. According to the guidelines, "organizações" include "tribunais", so "Supremo Tribunal Federal" should be marked as organizacao. 
+
+Now, let's go through the input again and mark each entity:
+
+1. "ACO 2821 A GR / MT" – this seems like a case identifier. According to the guidelines, if it's a specific reference, it should be marked as jurisprudência. But the example didn't mark similar phrases. However, the example input had "ACO 2821 A GR / MT" and it wasn't marked. Maybe in the user's example, it's not considered a jurisprudência. But according to the guidelines, if it's a specific identifier, it should be marked. However, in the example, the user's output didn't mark it. So perhaps the user's example is an exception. Alternatively, maybe "ACO" refers to a court or a specific term. But without more context, it's hard to tell. However, according to the guidelines, if it's a specific identifier, it should be marked. So perhaps "ACO 2821 A GR / MT" should be marked as jurisprudência. But the example didn't. Hmm. 
+
+Alternatively, maybe "ACO" is an acronym for a court or something else. If it's part of a legal document, it might be a case number. But the example didn't mark it. So perhaps the user's example is the correct approach here. Maybe the user's example indicates that such terms are not marked. Therefore, perhaps in this case, "ACO 2821 A GR / MT" is not marked. 
+
+2. "União" – as discussed, it's a legal entity. But according to the example, it's not marked. So maybe it's not marked here. 
+
+3. "MP n° 2.200-2/2001" – this is a medida provisória, so it's legislação. 
+
+4. "24/08/2001" – date, so tempo. 
+
+5. "Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil" – the guidelines say not to mark ICP-Brasil as legislação. 
+
+6. "http : //www.stf.jus.br/portal/autenticacao/" – not marked as local. 
+
+7. "14536377" – document number, so jurisprudência. 
+
+8. "Supremo Tribunal Federal" – organization. 
+
+So putting it all together:
+
+The text would have:
+
+- "Supremo Tribunal Federal" as organizacao.
+- "MP n° 2.200-2/2001" as legislação.
+- "24/08/2001" as tempo.
+- "14536377" as jurisprudência.
+- "ACO 2821 A GR / MT" – not marked, unless it's a specific identifier.
+
+But the example didn't mark "ACO" as jurisprudência. So perhaps in this case, it's not marked. 
+
+So the final HTML would have:
+
+- "Supremo Tribunal Federal" marked as organizacao.
+- "MP n° 2.200-2/2001" marked as legislação.
+- "24/08/2001" marked as tempo.
+- "14536377" marked as jurisprudência.
+
+Other parts not marked as per the guidelines.
+
+Now, let me write the HTML code with these tags.
+</think>
+
+O <span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT postulou a inadmissão do recurso de agravo interno interposto pela <span class="organizacao">União</span> . Subsidiariamente , requereu o seu desprovimento . É o relatório . 2 Documento assinado digitalmente conforme <span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número <span class="jurisprudencia">14536377</span> . <span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT postulou a inadmissão do recurso de agravo interno interposto pela <span class="organizacao">União</span> . Subsidiariamente , requereu o seu desprovimento . É o relatório . 2 Documento assinado digitalmente conforme <span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil .

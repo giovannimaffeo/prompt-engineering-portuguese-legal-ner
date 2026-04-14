@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 15 previsão constitucional distrital de que compete privativamente ao Governador '' celebrar ou autorizar convênios '' ( art ."
+
+Looking for entities:
+
+1. "Ação Direta de Inconstitucionalidade" – This seems like a legal action, maybe a type of case, but not one of the specified entities. The user mentioned entities like pessoa, organizacao, etc. So maybe not.
+
+2. "20170020161362ADI" – This looks like a case number or code. Not sure if it's a jurisprudencia or legislation. Maybe not, since it's a code.
+
+3. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – "Código de Verificação" could be a type of legislation or maybe a code. But "Código" in Portuguese usually refers to a law or regulation, so maybe "legislacao". However, the rest is a code, which might not be an entity. The colon and numbers might be part of a code, so maybe not.
+
+4. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE DO DESEMBARGADOR" is an organization (the office of the judge). "SILVANIO BARBOSA DOS SANTOS" is a person's name. So "GABINETE DO DESEMBARGADOR" is an organization, and the name is a pessoa.
+
+5. "15 previsão constitucional distrital de que compete privativamente ao Governador '' celebrar ou autorizar convênios '' ( art ." – "previsão constitucional distrital" refers to a constitutional provision, which is part of legislation. "art" might be short for "artigo" (article), so maybe part of legislation. The phrase "celebrar ou autorizar convênios" is a legal term, but not an entity. The "Governador" is a person, but the text says "ao Governador" which is a title, so maybe not a pessoa unless it's a specific person's name. Wait, the text mentions "Governador" as a title, so maybe not a pessoa here. The "art" at the end might be part of a legislation reference.
+
+So, breaking down:
+
+- "GABINETE DO DESEMBARGADOR" is an organization.
+- "SILVANIO BARBOSA DOS SANTOS" is a pessoa.
+- "Código de Verificação" might be legislation, but the rest is code. Alternatively, "Código" could be legislation.
+- "previsão constitucional distrital" is part of legislation.
+- "art" could be part of legislation (article reference).
+
+Wait, the user's example output in the problem statement shows that "GABINETE DO DESEMBARGADOR" is marked as organizacao, and "SILVANIO BARBOSA DOS SANTOS" as pessoa. Also, "Código de Verificação" is marked as legislacao. The "art" is part of a legislation reference. Let me check the example output again.
+
+In the example, the output is:
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI <span class="legislacao">Código de Verificação</span> :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 15 <span class="legislacao">previsão constitucional distrital</span> de que compete privativamente ao Governador '' celebrar ou autorizar convênios '' ( <span class="legislacao">art</span> ."
+
+So, "Código de Verificação" is legislacao, "previsão constitucional distrital" is legislacao, and "art" is legislacao. The rest are marked as per the example.
+
+So, applying that to the input text:
+
+- "Código de Verificação" is legislacao.
+- "previsão constitucional distrital" is legislacao.
+- "art" is legislacao.
+
+So, the HTML would have those parts wrapped in <span class="legislacao">.
+
+Also, "GABINETE DO DESEMBARGADOR" is organizacao, and "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+
+The rest of the text doesn't have any entities, so it remains as is.
+
+So the final HTML would be:
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI <span class="legislacao">Código de Verificação</span> :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 15 <span class="legislacao">previsão constitucional distrital</span> de que compete privativamente ao Governador '' celebrar ou autorizar convênios '' ( <span class="legislacao">art</span> ."
+
+I need to make sure that all the entities are correctly marked. The "art" is part of a legislation reference, so it's legislacao. The "Código de Verificação" is a code, which might be legislation. The "previsão constitucional distrital" is a constitutional provision, so legislation. The rest of the text doesn't have any other entities.
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI <span class="legislacao">Código de Verificação</span> :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 15 <span class="legislacao">previsão constitucional distrital</span> de que compete privativamente ao Governador '' celebrar ou autorizar convênios '' ( <span class="legislacao">art</span> .

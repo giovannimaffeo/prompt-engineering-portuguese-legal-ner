@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to parse the input text carefully. Let me read through the example input again:
+
+"Requer , ainda , a antecipação da sessão de julgamento designada para o dia 25.01.18 . Pleito liminar indeferido pela em . Des.º Maria Luíza de Marilac em fl . 105-105v.º . Prestadas as informações pela autoridade indigitada coatora , os autos foram remetidos à douta Procuradoria-Geral de Justiça que , no parecer de fl . 128-131v.º , opinou pela denegação da ordem . É , no essencial , o relatório . Decido ."
+
+Now, I need to identify each entity. Let's go step by step.
+
+1. "25.01.18" – This looks like a date, so it's a tempo entity. I'll mark it with <span class="tempo">.
+
+2. "Des.º Maria Luíza de Marilac" – "Des.º" is likely "Desembargadora" (a judicial title), so the name "Maria Luíza de Marilac" is a pessoa. So, wrap that in <span class="pessoa">.
+
+3. "Procuradoria-Geral de Justiça" – This is an organization, so <span class="organizacao">.
+
+4. "fl . 105-105v.º" and "fl . 128-131v.º" – "fl" stands for "fls" (folios), which are legal document references. These might be considered as part of the text, but since they don't fit any of the specified categories (pessoa, organizacao, tempo, local, legislacao, jurisprudencia), they should remain as is. Wait, but the user's guide says to leave the text as is if none of the entities are found. So these parts don't need any tags.
+
+5. "Pleito liminar indeferido" – This is a legal term, but it's part of the text and not an entity. So no tag.
+
+6. "relatório" – Again, a legal term but not an entity. No tag.
+
+7. "Decido" – This is a legal term, but not an entity. No tag.
+
+Now, checking for any other entities. "Pleito liminar" is part of the legal process, but not an entity. "Des.º" is a title, so the person's name is marked. "Procuradoria-Geral de Justiça" is an organization. The date is marked as tempo. The rest are just text.
+
+So the final HTML should have:
+
+- "25.01.18" as tempo
+- "Maria Luíza de Marilac" as pessoa
+- "Procuradoria-Geral de Justiça" as organizacao
+
+Other parts remain unchanged. Let me make sure I didn't miss any other entities. For example, "douta" might refer to a title, but it's part of the text. "Auto" is a legal term but not an entity. So I think that's all.
+</think>
+
+Requer , ainda , a antecipação da sessão de julgamento designada para o dia <span class="tempo">25.01.18</span> . Pleito liminar indeferido pela em . <span class="pessoa">Des.º Maria Luíza de Marilac</span> em fl . 105-105v.º . Prestadas as informações pela autoridade indigitada coatora , os autos foram remetidos à douta <span class="organizacao">Procuradoria-Geral de Justiça</span> que , no parecer de fl . 128-131v.º , opinou pela denegação da ordem . É , no essencial , o relatório . Decido .

@@ -1,0 +1,76 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X , todos da Lei Orgânica do Distrito Federal . A Mesa da Câmara Legislativa do Distrito Federal defende a constitucionalidade da lei , ao argumento de que o Poder Legislativo é competente para tratar do tema ."
+
+Looking for the entities:
+
+1. "Lei Orgânica do Distrito Federal" – this is a law, so "legislacao".
+2. "Câmara Legislativa do Distrito Federal" – this is an organization, so "organizacao".
+3. "Mesa da Câmara Legislativa do Distrito Federal" – "Mesa" here refers to the body or assembly, which is part of the organization, so maybe "organizacao" again.
+4. "Poder Legislativo" – this is a legislative power, which might be considered part of the organization or a legal term. Since it's a power, maybe it's part of the organization or a legal entity. But the user's example might treat it as part of the organization. Wait, the example in the output shows "Câmara Legislativa" as organizacao. So "Poder Legislativo" might be part of the organization or a legal term. But the user's example might not mark it. Let me check the sample output.
+
+Wait, the sample output provided by the user is not given, but the user's example input and output. Wait, the user provided the input and the output. Let me check again.
+
+Wait, the user's input is the text, and the output is the HTML version. Let me look at the sample output they provided. Wait, the user hasn't provided a sample output, but the task says to return the text with the entities marked. So I need to process the input text.
+
+Looking at the input text:
+
+- "Lei Orgânica do Distrito Federal" is a law, so "legislacao".
+- "Câmara Legislativa do Distrito Federal" is an organization, so "organizacao".
+- "Mesa da Câmara Legislativa do Distrito Federal" – "Mesa" here refers to the legislative body, which is part of the organization. So "organizacao" again.
+- "Poder Legislativo" – this is a legislative power, which might be considered part of the organization or a legal term. But since it's a power, maybe it's not an organization. However, in the context, it's part of the legislative body, so perhaps it's part of the organization. But the user's example might not mark it. Wait, the user's example input includes "Poder Legislativo" and the output should mark it as "organizacao" or "jurisprudencia"? Wait, the user's example input is the text provided, and the output is the HTML with entities marked. Let me check the input again.
+
+The input text includes "Poder Legislativo" which is part of the legislative body. Since "organizacao" refers to an organization, and "Poder Legislativo" is a power, maybe it's not an organization. However, in some contexts, it might be considered part of the organization. Alternatively, maybe it's not marked. Let me check the input again.
+
+The input text is: "A Mesa da Câmara Legislativa do Distrito Federal defende a constitucionalidade da lei , ao argumento de que o Poder Legislativo é competente para tratar do tema ."
+
+So "Câmara Legislativa do Distrito Federal" is an organization. "Mesa" is part of that organization. "Poder Legislativo" is a power, which might be part of the organization. But since the user's example might not mark it, perhaps it's not. Alternatively, maybe "Poder Legislativo" is a legal term, but the user's entities include "jurisprudencia" and "legislacao". Wait, "Poder Legislativo" is part of the legislative power, which is a legal term. But the user's entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So "Poder Legislativo" is not one of those. Therefore, it's not marked. 
+
+So the entities to mark are:
+
+- "Lei Orgânica do Distrito Federal" → legislacao
+- "Câmara Legislativa do Distrito Federal" → organizacao
+- "Mesa da Câmara Legislativa do Distrito Federal" → organizacao (since Mesa is part of the organization)
+- "Distrito Federal" → local (since it's a place)
+- "Poder Legislativo" → not marked as none of the entities
+
+Wait, "Distrito Federal" is a local entity. So "Distrito Federal" should be marked as local.
+
+So the steps are:
+
+1. Split the text into parts and identify each entity.
+
+Let me go through the text step by step.
+
+Original text: "15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X , todos da Lei Orgânica do Distrito Federal . A Mesa da Câmara Legislativa do Distrito Federal defende a constitucionalidade da lei , ao argumento de que o Poder Legislativo é competente para tratar do tema ."
+
+Breaking it down:
+
+- "15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X , todos da Lei Orgânica do Distrito Federal ."
+
+Here, "Lei Orgânica do Distrito Federal" is a law, so "legislacao". "Distrito Federal" is a local entity, so "local".
+
+Then, "A Mesa da Câmara Legislativa do Distrito Federal defende a constitucionalidade da lei , ao argumento de que o Poder Legislativo é competente para tratar do tema ."
+
+"Mesa da Câmara Legislativa do Distrito Federal" – "Câmara Legislativa" is an organization, "Mesa" is part of it, so "organizacao". "Distrito Federal" again is local.
+
+"Poder Legislativo" – not an entity in the list, so left as is.
+
+So the HTML should have:
+
+- "Lei Orgânica do Distrito Federal" → <span class="legislacao">Lei Orgânica do Distrito Federal</span>
+- "Distrito Federal" → <span class="local">Distrito Federal</span>
+- "Câmara Legislativa do Distrito Federal" → <span class="organizacao">Câmara Legislativa do Distrito Federal</span>
+- "Mesa da Câmara Legislativa do Distrito Federal" → <span class="organizacao">Mesa da Câmara Legislativa do Distrito Federal</span>
+
+Wait, but "Mesa da Câmara Legislativa do Distrito Federal" is part of the organization. So the entire phrase is an organization. So the entire phrase should be marked as "organizacao".
+
+Similarly, "Câmara Legislativa do Distrito Federal" is an organization.
+
+So the final HTML would have those parts marked accordingly.
+
+Now, putting it all together, replacing the entities with the appropriate spans.
+</think>
+
+<span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> . <span class="organizacao">Mesa da Câmara Legislativa do <span class="local">Distrito Federal</span></span> defende a constitucionalidade da lei , ao argumento de que o Poder Legislativo é competente para tratar do tema .

@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by identifying each entity according to the definitions provided.
+
+The input text mentions "decreto 3.788/2001". A decreto is a legislative act, so that's legislacao. The number 3.788/2001 is part of the decree's identifier, so I should mark the entire "decreto 3.788/2001" as legislacao.
+
+Next, "Administração Pública direta e indireta da União" – "Administração Pública" is an organization, and "União" refers to the federal government, which is an organization. So both should be marked as organizacao.
+
+"Estado-autor" and "União" are mentioned as entities in a dispute. "Estado-autor" is a person, but wait, "Estado" here might refer to the state as an entity, but the user's definition says pessoa is for individual names. However, "Estado-autor" could be a person's name if it's a specific individual. But since it's part of a legal context, maybe it's an organization. Wait, the user's definition for pessoa is names of individuals. "Estado-autor" might be a person's name, but I'm not sure. Let me check again. The text says "ponto de discórdia entre o Estado-autor e a União". "Estado-autor" could be a person's name, but it's more likely referring to the state as an entity. However, the user's definition for pessoa is names of individuals. So maybe "Estado-autor" isn't a pessoa. Wait, maybe "Estado-autor" is a person's name. But without more context, it's safer to assume it's an organization. Wait, the user's definition for organizacao includes órgãos públicos, etc. So "Estado-autor" might be an organization. Hmm, this is tricky. Let me check the example output. In the sample, "Estado-autor" is marked as pessoa. Wait, the user's example output shows "Estado-autor" as pessoa. So I should follow that. So "Estado-autor" is a pessoa.
+
+Then "MP n° 2.200-2/2001" – MP is a medida provisória, which is a legislative act, so that's legislacao. The number 2.200-2/2001 is part of the MP's identifier, so the entire "MP n° 2.200-2/2001" is legislacao.
+
+"Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil" is a legal term, but it's a name of a system, so maybe it's an organization. Wait, the user's definition for organizacao includes "organizações privadas" and "órgãos públicos". The ICP-Brasil is a system, but it's part of the legal framework. However, the user's example might not have this. Alternatively, maybe it's a legislation. Wait, the MP n° 2.200-2/2001 is the legislation that created it. So "Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil" is a term referring to a system, not a legislation. So maybe it's not marked. Wait, the user's example might not have this. Let me check the sample output again. The sample output includes "MP n° 2.200-2/2001" as legislacao. So "Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil" is not marked as legislacao. So maybe it's not an entity here.
+
+The URL "http : //www.stf.jus.br/portal/autenticacao/" – the URL is a local, but the user's definition for local is specific places. The URL is a website, which is a local? Or maybe not. The user's definition for local is cities, states, etc. So the URL is not a local. The number "14536378" is a document number, which might be part of a jurisprudencia or legislacao. But the user's example might not have that. Wait, the sample output includes "14536378" as a number, but the user's example might not have it. Let me check the sample output again. The sample output includes "14536378" as part of the URL, but since it's a number, maybe it's not marked. Wait, the user's example output shows "14536378" as part of the URL, but the URL is not marked. So perhaps the number is not marked as any entity.
+
+Now, the date "24/08/2001" is a tempo. The user's definition for tempo includes dates. So "24/08/2001" should be marked as tempo.
+
+The URL "http : //www.stf.jus.br/portal/autenticacao/" – the domain "www.stf.jus.br" is a local? Or is it a website, which is not a local. The user's definition for local is specific places. So the URL is not a local. The "stf" is the Superior Court of Justice, which is an organization. Wait, "stf" is the acronym for Superior Tribunal Federal, which is an organization. So "stf.jus.br" is part of the URL, but the user's example might not mark it. Wait, the user's example output includes "stf.jus.br" as part of the URL, but since it's a website, maybe it's not marked. However, "stf" is an organization. So "stf" should be marked as organizacao. But in the URL, it's part of the domain. The user's example might not mark it. Let me check the sample output again. The sample output includes "stf.jus.br" as part of the URL, but since it's a website, maybe it's not marked. However, "stf" is an organization. So perhaps "stf" should be marked as organizacao. But the URL is not marked. So maybe the user's example doesn't mark it. Therefore, I should not mark "stf" as an organization here.
+
+Putting it all together:
+
+- "decreto 3.788/2001" → legislacao
+- "Administração Pública direta e indireta da União" → "Administração Pública" and "União" are organizacao
+- "Estado-autor" → pessoa
+- "MP n° 2.200-2/2001" → legislacao
+- "24/08/2001" → tempo
+- "14536378" → not marked
+- "stf.jus.br" → not marked as local or organizacao
+
+Wait, the URL "http : //www.stf.jus.br/portal/autenticacao/" – the "stf" is part of the domain. Since "stf" is an organization (Superior Tribunal Federal), maybe it should be marked as organizacao. But the user's example might not have that. However, according to the guidelines, if it's part of the URL, maybe it's not marked. Alternatively, the entire URL is not marked. So I'll proceed with the entities I identified.
+
+Now, let's structure the HTML with the appropriate <span> tags.
+</think>
+
+Por sua vez , o <span class="legislacao">decreto 3.788/2001</span> , ao prever o Certificado de Regularidade Previdenciária , possibilita que a <span class="organizacao">Administração Pública direta e indireta da União</span> exerça controle administrativo sobre os regimes próprios de previdência social dos demais entes federativos . Esse é o ponto de discórdia entre o <span class="pessoa">Estado-autor</span> e a <span class="organizacao">União</span> . Não se está a discutir se a autonomia do <span class="pessoa">Estado</span> para organizar o regime próprio é absoluta . É própria à9 <span class="legislacao">Documento assinado digitalmente conforme MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a <span class="legislacao">Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil</span> . O documento pode ser acessado no endereço eletrônico <span class="local">http : //www.stf.jus.br/portal/autenticacao/</span> sob o número <span class="jurisprudencia">14536378</span> .

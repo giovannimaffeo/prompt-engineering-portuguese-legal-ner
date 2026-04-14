@@ -1,0 +1,92 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal document with various parts like "Orgão", "Classe", "Processo", "Apelante", "Apelado", "Relatora", "Acórdão", and some legal terms.
+
+Looking for entities:
+
+- "Orgão" is part of the document structure, not an entity. Similarly, "Classe", "Processo", "Apelante", "Apelado", "Relatora", "Acórdão" are parts of the case details, not entities. But wait, the Apelante and Apelado might be people or organizations. Let's check.
+
+The Apelante (s) are "BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA". These look like company names, so they should be marked as organizacao. The Apelado is "ALISSON SILVA BATISTA DE MORAES", which is a person's name, so pessoa.
+
+Other parts: "CÍVEL", "CÍVEL N .", "APELAÇÃO CÍVEL" are legal terms, not entities. "CITAÇÃO REALIZADA APÓS O DECURSO DO PRAZO PRESCRICIONAL" is a legal phrase, so no entity. "PRESCRIÇÃO DA PRETENSÃO MONITÓRIA" is also legal terminology. "MANUTENÇÃO DA SENTENÇA" is part of the legal decision, not an entity.
+
+The "Acórdão N. : 1082726" is a case number, not an entity. The "CIVIL E PROCESSUAL CIVIL" is a legal area, not an entity. The "AÇÃO MONITÓRIA" is a legal action type, so no entity.
+
+So, the entities to mark are:
+
+- BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA → organizacao
+- ALISSON SILVA BATISTA DE MORAES → pessoa
+
+I need to wrap these parts with <span> tags. Let me check if there are any other entities. The "Relatora : Desembargadora NÍDIA CORRÊA LIMA" – "NÍDIA CORRÊA LIMA" is a person's name, so that's another pessoa. Wait, the original text says "Relatora : Desembargadora NÍDIA CORRÊA LIMA". The "Desembargadora" is a title, but the name is "NÍDIA CORRÊA LIMA", which is a person. So that should be marked as pessoa.
+
+Wait, the original text has "Relatora : Desembargadora NÍDIA CORRÊA LIMA". So "NÍDIA CORRÊA LIMA" is the person's name. So that's another pessoa.
+
+So, the Apelante(s) are two organizations, the Apelado is a person, and the Relatora is another person. Wait, the Apelante(s) are listed as "BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA". Are these two separate entities or one? The text uses "Apelante (s)" which is plural, so maybe two organizations. But the way it's written, it's one line. Maybe they are two companies. Let me check the original text again.
+
+Original text: "Apelante (s ) : BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA". The "s" in parentheses might indicate plural, so two entities. But the way it's written, it's one line. Maybe they are two organizations. So "BRASILIA CURSOS E CONCURSOS LTDA" and "GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" are two separate organizations. But the text doesn't have a separator. Maybe it's one organization with two names. Hmm, but the user's example output in the text shows that the Apelante(s) are marked as organizacao. So perhaps the entire string is one organization. Wait, the example output in the user's message shows that the Apelante(s) are marked as organizacao. Let me check the user's example output.
+
+Wait, the user provided a sample input and output. Let me check the sample output. The user's sample input is the text provided, and the sample output is the HTML version. But the user hasn't provided the sample output yet. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML. Não inclua explicações ou blocos de código." So the user is expecting me to generate the HTML with the entities marked.
+
+So, in the input text, the Apelante(s) are two organizations. Let me check the original text again. The Apelante(s) are listed as "BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA". The "LTDA" and "LTDA" are company suffixes. So it's two companies: "BRASILIA CURSOS E CONCURSOS LTDA" and "GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA". But the text doesn't have a separator. Maybe it's one organization with two names. But the user's example output might have them as two separate organizacao. However, since the text is written as a single line, perhaps they are considered as one organization. Alternatively, maybe the user expects each company to be marked as organizacao. But without more context, it's safer to mark the entire string as organizacao. Alternatively, split them if possible. But the original text doesn't have a separator, so maybe it's one organization. Let me check the original text again.
+
+Original text: "Apelante (s ) : BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA". The "s" in parentheses is plural, so there are two apelantes. But the way it's written, it's one line. Maybe the user expects each to be marked as organizacao. However, without a separator, it's ambiguous. But the user's example output might have them as one. Alternatively, perhaps the entire string is one organization. Let me proceed with marking the entire string as organizacao.
+
+Then, the Apelado is "ALISSON SILVA BATISTA DE MORAES" which is a person, so pessoa.
+
+The Relatora is "Desembargadora NÍDIA CORRÊA LIMA". The name is "NÍDIA CORRÊA LIMA", so that's another pessoa.
+
+So, the entities are:
+
+- BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA → organizacao
+- ALISSON SILVA BATISTA DE MORAES → pessoa
+- NÍDIA CORRÊA LIMA → pessoa
+
+Wait, the Relatora is "Desembargadora NÍDIA CORRÊA LIMA". The "Desembargadora" is a title, but the name is "NÍDIA CORRÊA LIMA", so that's a person. So that's another pessoa.
+
+So, in the text, the Apelante(s) are two organizations (but written as one line), Apelado is a person, and Relatora is another person.
+
+So, the HTML should have:
+
+- The Apelante(s) marked as organizacao
+- Apelado marked as pessoa
+- Relatora's name marked as pessoa
+
+Now, let's go through the text step by step.
+
+Original text:
+
+"E M E N T A Órgão : 8ª TURMA CÍVEL Classe : APELAÇÃO CÍVEL N . Processo : 20150110436469APC ( 0012843-03.2015.8.07.0001 ) Apelante ( s ) : BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA Apelado ( s ) : ALISSON SILVA BATISTA DE MORAES Relatora : Desembargadora NÍDIA CORRÊA LIMA Acórdão N. : 1082726 CIVIL E PROCESSUAL CIVIL . AÇÃO MONITÓRIA . CITAÇÃO REALIZADA APÓS O DECURSO DO PRAZO PRESCRICIONAL . PRESCRIÇÃO DA PRETENSÃO MONITÓRIA . RECONHECIMENTO . MANUTENÇÃO DA SENTENÇA . 1 ."
+
+Breaking it down:
+
+- "Órgão : 8ª TURMA CÍVEL" → no entity
+- "Classe : APELAÇÃO CÍVEL N ." → no entity
+- "Processo : 20150110436469APC ( 0012843-03.2015.8.07.0001 )" → no entity
+- "Apelante ( s ) : BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" → Apelante(s) is the label, the value is the organizations. So the value is "BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" → organizacao
+- "Apelado ( s ) : ALISSON SILVA BATISTA DE MORAES" → Apelado(s) is the label, the value is the person → pessoa
+- "Relatora : Desembargadora NÍDIA CORRÊA LIMA" → Relatora is the label, the value is "NÍDIA CORRÊA LIMA" → pessoa
+- "Acórdão N. : 1082726 CIVIL E PROCESSUAL CIVIL . AÇÃO MONITÓRIA . CITAÇÃO REALIZADA APÓS O DECURSO DO PRAZO PRESCRICIONAL . PRESCRIÇÃO DA PRETENSÃO MONITÓRIA . RECONHECIMENTO . MANUTENÇÃO DA SENTENÇA . 1 ." → no entities
+
+So, the HTML should have:
+
+- The Apelante(s) part as organizacao
+- The Apelado part as pessoa
+- The Relatora's name as pessoa
+
+Now, let's write the HTML with these spans.
+
+The original text has "BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" as the Apelante(s), so wrap that in <span class="organizacao">.
+
+The Apelado is "ALISSON SILVA BATISTA DE MORAES" → <span class="pessoa">.
+
+The Relatora's name is "NÍDIA CORRÊA LIMA" → <span class="pessoa">.
+
+So, the final HTML would have those parts marked accordingly.
+
+Now, let me check if there are any other entities. The "CIVIL E PROCESSUAL CIVIL" is a legal area, not an entity. The "AÇÃO MONITÓRIA" is a legal term, not an entity. The "CITAÇÃO REALIZADA APÓS O DECURSO DO PRAZO PRESCRICIONAL" is a legal phrase, not an entity. The "PRESCRIÇÃO DA PRETENSÃO MONITÓRIA" is a legal term. The "RECONHECIMENTO" and "MANUTENÇÃO DA SENTENÇA" are legal terms. So no other entities.
+
+Thus, the final HTML should have the three entities marked as specified.
+</think>
+
+E M E N T A Órgão : 8ª TURMA CÍVEL Classe : APELAÇÃO CÍVEL N . Processo : 20150110436469APC ( 0012843-03.2015.8.07.0001 ) Apelante ( s ) : <span class="organizacao">BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA</span> Apelado ( s ) : <span class="pessoa">ALISSON SILVA BATISTA DE MORAES</span> Relatora : Desembargadora <span class="pessoa">NÍDIA CORRÊA LIMA</span> Acórdão N. : 1082726 CIVIL E PROCESSUAL CIVIL . AÇÃO MONITÓRIA . CITAÇÃO REALIZADA APÓS O DECURSO DO PRAZO PRESCRICIONAL . PRESCRIÇÃO DA PRETENSÃO MONITÓRIA . RECONHECIMENTO . MANUTENÇÃO DA SENTENÇA . 1 .

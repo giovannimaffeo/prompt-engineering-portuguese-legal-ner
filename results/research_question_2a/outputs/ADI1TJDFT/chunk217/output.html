@@ -1,0 +1,52 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is "Ação Direta de Inconstitucionalidade 20170020161362ADI". Here, "Ação Direta de Inconstitucionalidade" seems like a legal term, maybe a type of action, so probably not an entity. The number "20170020161362ADI" might be a case number. Since it's a number, maybe it's part of the case reference, but none of the entity types are for numbers. So I'll leave that as is.
+
+Next, "O Senhor Desembargador HUMBERTO ULHÔA - Vogal". "Senhor Desembargador" is a title, so the name "HUMBERTO ULHÔA" is a person. So I should mark that as <span class="pessoa">.
+
+Then, "Cuida-se de ação direta de inconstitucionalidade , ajuizada pela Procuradoria-Geral de Justiça do Distrito Federal e Territórios , cujo objeto é a impugnação da Lei Distrital n° 5.815 , de 3 de abril de 2017 , em face dos arts ."
+
+Breaking this down: "Procuradoria-Geral de Justiça do Distrito Federal e Territórios" is an organization. So that should be <span class="organizacao">. The "Lei Distrital n° 5.815" is legislation, so <span class="legislacao">. The date "3 de abril de 2017" is a tempo (time) entity, so <span class="tempo">.
+
+Wait, the date is "3 de abril de 2017". The format is day, month, year. So that's a tempo entity. Also, "Distrito Federal e Territórios" is a local, so <span class="local">.
+
+Wait, "Distrito Federal e Territórios" refers to a location, so that's a local entity. So I need to mark that part as local.
+
+Putting it all together:
+
+- "HUMBERTO ULHÔA" is pessoa.
+- "Procuradoria-Geral de Justiça do Distrito Federal e Territórios" is organizacao.
+- "Lei Distrital n° 5.815" is legislacao.
+- "3 de abril de 2017" is tempo.
+- "Distrito Federal e Territórios" is local.
+
+Wait, but "Distrito Federal e Territórios" is part of the organization's name. Wait, the organization is "Procuradoria-Geral de Justiça do Distrito Federal e Territórios". So the entire phrase is the organization. But "Distrito Federal e Territórios" is a local. However, since it's part of the organization's name, maybe it's better to mark the entire organization as organizacao, and the local part as local. But the instruction says to mark each entity. So if "Distrito Federal e Territórios" is a local, then that part should be marked as local. But the organization is the Procuradoria-Geral... So maybe the entire organization name is one entity, and the local is part of it. Hmm, this might be a bit tricky. Let me check the original text again.
+
+Original text: "ajuizada pela Procuradoria-Geral de Justiça do Distrito Federal e Territórios". The "Distrito Federal e Territórios" is part of the organization's name, indicating the jurisdiction. So the entire "Procuradoria-Geral de Justiça do Distrito Federal e Territórios" is the organization. Therefore, the local part is part of the organization's name. But according to the guidelines, each entity should be marked. So maybe "Distrito Federal e Territórios" is a local, and the rest is organizacao. Wait, but the organization is the Procuradoria-Geral... So perhaps the entire phrase is the organization, and the local is part of it. But the user might expect that "Distrito Federal e Territórios" is a local. So I need to mark that as local. But how to split it?
+
+Alternatively, maybe the entire "Procuradoria-Geral de Justiça do Distrito Federal e Territórios" is the organization, and "Distrito Federal e Territórios" is a local. But that might not be accurate. The organization is the Procuradoria-Geral... and the local is Distrito Federal e Territórios. So perhaps the organization is "Procuradoria-Geral de Justiça" and the local is "Distrito Federal e Territórios". But the original text says "Procuradoria-Geral de Justiça do Distrito Federal e Territórios", which is the full name of the organization. So maybe the entire phrase is the organization. Therefore, I should mark the entire "Procuradoria-Geral de Justiça do Distrito Federal e Territórios" as organizacao. However, the "Distrito Federal e Territórios" is a local. But since it's part of the organization's name, maybe it's better to leave it as part of the organization. But the user's instruction says to mark each entity. So perhaps the local is part of the organization's name, but the user might expect that "Distrito Federal e Territórios" is a local. This is a bit ambiguous. Let me check the example again.
+
+In the sample input, the output has "Procuradoria-Geral de Justiça do Distrito Federal e Territórios" as organizacao. So maybe the entire phrase is the organization. Therefore, I should not split it. So the local part is part of the organization's name. Therefore, I should not mark "Distrito Federal e Territórios" as local. Wait, but the user's example might not be provided. Let me think again.
+
+The user's example input is the text provided, and the output is the HTML with entities marked. So in the input text, "Procuradoria-Geral de Justiça do Distrito Federal e Territórios" is the organization. So the entire phrase is the organization. Therefore, I should mark that as organizacao. The "Distrito Federal e Territórios" is part of the organization's name, so it's not a separate local. Therefore, I should not mark it as local. So the local entities would be any other parts. Wait, but the text mentions "Distrito Federal e Territórios" as part of the organization's name. So maybe the local is not marked here. Therefore, the only local in the text is "Distrito Federal e Territórios" as part of the organization's name. But according to the guidelines, if it's part of the organization's name, it's not a separate entity. Therefore, the local is not marked here. So the only entities are:
+
+- pessoa: HUMBERTO ULHÔA
+- organizacao: Procuradoria-Geral de Justiça do Distrito Federal e Territórios
+- legislacao: Lei Distrital n° 5.815
+- tempo: 3 de abril de 2017
+
+Wait, but "Lei Distrital n° 5.815" is legislation, so that's legislacao. The date is tempo. The "Distrito Federal e Territórios" is part of the organization's name, so not a separate entity. Therefore, the local is not marked here. So the final HTML would have those entities marked accordingly.
+
+Let me check again. The text says "ajuizada pela Procuradoria-Geral de Justiça do Distrito Federal e Territórios". The "Distrito Federal e Territórios" is part of the organization's name, so it's part of the organizacao. Therefore, the entire phrase is organizacao. The "Lei Distrital n° 5.815" is legislacao. The date "3 de abril de 2017" is tempo. The person is HUMBERTO ULHÔA. So the HTML should have those marked.
+
+So the final output would be:
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI O Senhor Desembargador <span class="pessoa">HUMBERTO ULHÔA</span> - Vogal Cuida-se de ação direta de inconstitucionalidade , ajuizada pela <span class="organizacao">Procuradoria-Geral de Justiça do Distrito Federal e Territórios</span> , cujo objeto é a impugnação da <span class="legislacao">Lei Distrital n° 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , em face dos arts .
+
+Wait, but the "Distrito Federal e Territórios" is part of the organization's name, so it's included in the organizacao span. Therefore, no need to mark it as local. So the local entities are not present here. Therefore, the final HTML should have the four entities marked as above.
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI O Senhor Desembargador <span class="pessoa">HUMBERTO ULHÔA</span> - Vogal Cuida-se de ação direta de inconstitucionalidade , ajuizada pela <span class="organizacao">Procuradoria-Geral de Justiça do Distrito Federal e Territórios</span> , cujo objeto é a impugnação da <span class="legislacao">Lei Distrital n° 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , em face dos arts .

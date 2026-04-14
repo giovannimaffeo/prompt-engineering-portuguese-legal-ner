@@ -1,0 +1,68 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is about a legal amendment, specifically the 3º Emenda. The main points are about revising remuneration for public servants, extending benefits to retirees and pensioners, and mentioning the law.
+
+Looking for entities:
+
+- "3º desta Emenda" – "Emenda" here refers to an amendment, which is a legislative act. So "Emenda" should be marked as legislacao. Wait, but the user specified "legislacao" as the class. So "Emenda" is part of the legislation, so maybe "3º desta Emenda" would be legislacao. But the exact term might be "Emenda" as the legislative act. Let me check the example given in the output. Wait, the user provided an example output where "Emenda" is marked as legislacao. So in the input text, "3º desta Emenda" would have "Emenda" as legislacao.
+
+Next, "na mesma data" – "data" is a time entity, so "data" should be tempo.
+
+"sempre que se modificar a remuneração dos servidores em atividade" – "servidores em atividade" refers to people, so "servidores" would be pessoa. Wait, but "servidores" is a general term for public servants. Are they individuals? Maybe "servidores" is a collective term, but in legal terms, they are people. So "servidores" would be pessoa.
+
+"aposentados e pensionistas" – these are people, so "aposentados" and "pensionistas" are pessoa.
+
+"benefícios ou vantagens" – these are not entities, so leave as is.
+
+"servidores em atividade" – again, "servidores" is pessoa.
+
+"transformação ou reclassificação do cargo ou função" – "cargo" and "função" are positions, but not entities. Unless "cargo" refers to an organization, but I think they are positions, so not marked.
+
+"aposentadoria ou que serviu de referência para a concessão da pensão" – "aposentadoria" is a status, not an entity. "pensão" is a benefit, not an entity.
+
+"na forma da lei" – "lei" is legislation, so "lei" is legislacao.
+
+So putting it all together:
+
+- "3º desta Emenda" → "Emenda" is legislacao.
+- "na mesma data" → "data" is tempo.
+- "servidores em atividade" → "servidores" is pessoa.
+- "aposentados e pensionistas" → both are pessoa.
+- "na forma da lei" → "lei" is legislacao.
+
+Wait, the original text has "na forma da lei" which is "in the form of the law", so "lei" is legislation. So "lei" should be marked as legislacao.
+
+Now, let me check the example output provided by the user. Wait, the user didn't provide an example output, but the task says to return only the HTML-annotated text. So I need to make sure all instances are covered.
+
+Let me go through the text again:
+
+Original text: "3º desta Emenda , serão revistos na mesma proporção e na mesma data , sempre que se modificar a remuneração dos servidores em atividade , sendo também estendidos aos aposentados e pensionistas quaisquer benefícios ou vantagens posteriormente concedidos aos servidores em atividade , inclusive quando decorrentes da transformação ou reclassificação do cargo ou função em que se deu a aposentadoria ou que serviu de referência para a concessão da pensão , na forma da lei '' ."
+
+Breaking down:
+
+- "3º desta Emenda" → "Emenda" is legislacao.
+- "na mesma data" → "data" is tempo.
+- "servidores em atividade" → "servidores" is pessoa.
+- "aposentados e pensionistas" → both are pessoa.
+- "na forma da lei" → "lei" is legislacao.
+
+Other parts like "benefícios ou vantagens" are not entities. "cargo" and "função" are positions, not entities. "aposentadoria" is a status, not an entity. "pensão" is a benefit, not an entity.
+
+So the HTML should have:
+
+- <span class="legislacao">Emenda</span>
+- <span class="tempo">data</span>
+- <span class="pessoa">servidores</span>
+- <span class="pessoa">aposentados</span>
+- <span class="pessoa">pensionistas</span>
+- <span class="legislacao">lei</span>
+
+Wait, but in the original text, "Emenda" is part of "3º desta Emenda", so the entire "Emenda" is marked. Also, "lei" is in "na forma da lei", so "lei" is marked.
+
+So the final HTML would have those spans. Let me make sure there are no other entities. For example, "transformação" or "reclassificação" are not entities. "cargo" and "função" are not entities. "aposentadoria" is not an entity. "pensão" is not an entity. "servidores" is pessoa. "aposentados" and "pensionistas" are pessoa. "data" is tempo. "Emenda" and "lei" are legislacao.
+
+So the output should have those spans. Now, I need to structure the HTML accordingly, replacing the words with the appropriate <span> tags.
+</think>
+
+<span class="legislacao">3º desta Emenda</span> , serão revistos na mesma proporção e na mesma <span class="tempo">data</span> , sempre que se modificar a remuneração dos <span class="pessoa">servidores</span> em atividade , sendo também estendidos aos <span class="pessoa">aposentados</span> e <span class="pessoa">pensionistas</span> quaisquer benefícios ou vantagens posteriormente concedidos aos <span class="pessoa">servidores</span> em atividade , inclusive quando decorrentes da transformação ou reclassificação do cargo ou função em que se deu a aposentadoria ou que serviu de referência para a concessão da pensão , na forma da <span class="legislacao">lei</span> '' .

@@ -1,0 +1,24 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me parse each sentence.
+
+The first part is "Para melhor descortino da quaestio pelos Eminentes Ministros desta Corte , faz-se necessária uma breve retrospectiva dos fatos ." Here, "Eminentes Ministros desta Corte" refers to the court's ministers, which are part of an organization. Wait, "Corte" is a court, which is an organization. So "Eminentes Ministros" might be part of the organization. But maybe "Corte" is the organization. Let me check. "Corte" in legal terms is a court, so that's an organization. So I should mark "Corte" as organizacao.
+
+Next, "O Recorrente foi condenado à pena de 6 ( seis ) meses de detenção , como incurso no art . 302 do CPM , com o benefício do sursis pelo prazo de 2 ( dois ) anos ."
+
+"Recorrente" is the defendant, so that's a pessoa. "CPM" is likely Código Penal Militar, which is a legislation. So "CPM" should be legislacao. The numbers "6 meses" and "2 anos" are time references, so those are tempo. The "sursis" is a legal term, but it's part of the sentence, not an entity. The "art. 302" refers to an article in the legislation, so "art. 302" is part of the legislacao. Wait, but the user said to mark the entities. So "CPM" is the legislation, and "art. 302" is part of that legislation. So I should mark "CPM" as legislacao. The numbers "6 meses" and "2 anos" are tempo. 
+
+Putting it all together:
+
+- "Corte" is organizacao.
+- "Recorrente" is pessoa.
+- "CPM" is legislacao.
+- "6 meses" and "2 anos" are tempo.
+
+Wait, the user's example output might have "CPM" as legislacao. Let me check the original text again. The input says "art. 302 do CPM". So "CPM" is the legislation. So in the output, "CPM" should be <span class="legislacao">CPM</span>. The numbers "6 meses" and "2 anos" are tempo, so they should be <span class="tempo">6 meses</span> and <span class="tempo">2 anos</span>.
+
+Also, "Eminentes Ministros" might be part of the organization, but since "Corte" is the organization, maybe "Corte" is the only one. The rest of the text doesn't have other entities. So the final HTML should have those tags.
+</think>
+
+Para melhor descortino da quaestio pelos <span class="organizacao">Eminentes Ministros desta Corte</span> , faz-se necessária uma breve retrospectiva dos fatos . O <span class="pessoa">Recorrente</span> foi condenado à pena de <span class="tempo">6 ( seis ) meses</span> de detenção , como incurso no art . <span class="legislacao">302 do CPM</span> , com o benefício do sursis pelo prazo de <span class="tempo">2 ( dois ) anos</span> .

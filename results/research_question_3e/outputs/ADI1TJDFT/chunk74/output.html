@@ -1,0 +1,81 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute.
+
+First, I need to read the input text carefully. The example given in the problem shows that certain terms are marked. Let me go through the input text step by step.
+
+The input text is: "Quanto ao vício material , embora prejudicada a sua análise , cabe apenas o registro de que a norma impugnada , ainda que por via transversa , delega poder de polícia a conselhos de classe , cuja atribuição é fiscalizar o exercício da profissão . O poder de polícia compete privativamente ao Distrito Federal , nos termos do art . 15 , incisos XIV , XV e XXV da Lei Orgânica , não podendo ser delegado a particulares . Sendo assim , padece também a norma de vício material . Com essas breves considerações , acompanho o em . Relator e JULGO PROCEDENTE o pedido , para declarar a inconstitucionalidade da Lei Distrital nº 5.815/2017 , com efeitos ex tunc e eficácia erga omnes . É como voto Fls ."
+
+Looking for entities:
+
+1. "Distrito Federal" – this is a local entity. The definition says to mark explicit places. So I should use <span class="local"> here.
+
+2. "Lei Orgânica" – this is legislation. The example mentions "Lei nº 9.430/96" as legislation. Here, "Lei Orgânica" is a law, so it should be <span class="legislacao">.
+
+3. "art . 15 , incisos XIV , XV e XXV da Lei Orgânica" – the "art" refers to an article in a law. The entire phrase is part of the legislation, so the entire reference should be marked. Wait, but the example in the guidelines says to mark the entire expression. So "art. 15" is part of the legislation. However, the input text has "art . 15" with a space. Maybe the period is a typo, but I should follow the input as is. So the full reference would be "art . 15 , incisos XIV , XV e XXV da Lei Orgânica". But according to the guidelines, the legislation should be marked as a whole. However, "art. 15" is part of the legislation. Wait, the example in the guidelines has "art.61 , §1º , da Lei nº 9.430/96" marked as legislação. So in this case, "art . 15 , incisos XIV , XV e XXV da Lei Orgânica" should be marked as legislação. But the user's example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked. So here, the entire phrase is part of the legislation. Therefore, the entire part "art . 15 , incisos XIV , XV e XXV da Lei Orgânica" should be in <span class="legislacao">.
+
+Wait, but the input text says "art . 15 , incisos XIV , XV e XXV da Lei Orgânica". The "Lei Orgânica" is a law, so the entire reference to the article and the law is part of the legislation. Therefore, I should mark that entire phrase.
+
+Next, "Lei Distrital nº 5.815/2017" – this is a law, so it's legislation. The number and year are part of the law's reference, so it should be marked as <span class="legislacao">.
+
+Also, "Distrito Federal" is a local entity. So that's marked as local.
+
+Other parts: "Relator e JULGO PROCEDENTE" – "Relator" is a title, not a person. "JULGO PROCEDENTE" is a legal term but not a specific entity. So no mark here.
+
+"voto Fls." – "Fls." is an abbreviation for "fls." (fólio), which is a legal term but not an entity. So no mark.
+
+So putting it all together:
+
+- "Distrito Federal" → local
+- "Lei Orgânica" → legislação
+- "art . 15 , incisos XIV , XV e XXV da Lei Orgânica" → legislação
+- "Lei Distrital nº 5.815/2017" → legislação
+
+Wait, the input text has "Lei Distrital nº 5.815/2017" – the "Lei" is the law, so the entire reference is legislation. So mark that as legislação.
+
+Also, check if there are any other entities. "vício material" – that's a legal term but not an entity. "poder de polícia" – general term, not an entity. "conselhos de classe" – not an entity. "incisos XIV , XV e XXV" – part of the legislation. "com efeitos ex tunc e eficácia erga omnes" – legal terms, not entities. "como voto Fls." – no.
+
+So the final HTML should have:
+
+- <span class="local">Distrito Federal</span>
+- <span class="legislacao">art . 15 , incisos XIV , XV e XXV da Lei Orgânica</span>
+- <span class="legislacao">Lei Distrital nº 5.815/2017</span>
+- <span class="legislacao">Lei Orgânica</span>
+
+Wait, but the "Lei Orgânica" is part of the "art . 15" reference. Wait, in the input text, the sentence is: "nos termos do art . 15 , incisos XIV , XV e XXV da Lei Orgânica". So the entire phrase "art . 15 , incisos XIV , XV e XXV da Lei Orgânica" is part of the legislation. So that should be marked as a single span. But the user's example in the guidelines shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislação. So here, the same applies: the entire reference to the article and the law is part of the legislation. Therefore, the entire phrase "art . 15 , incisos XIV , XV e XXV da Lei Orgânica" should be in a <span class="legislacao">.
+
+But wait, in the input text, the user wrote "art . 15" with a space, but in the example, it's "art.61". Maybe the space is a typo, but I need to follow the input exactly. So the entire phrase is part of the legislation.
+
+Also, "Lei Distrital nº 5.815/2017" is a law, so that's another legislação.
+
+Additionally, "Lei Orgânica" is a law, so that's also part of the legislation. Wait, but in the sentence, "da Lei Orgânica" is part of the reference to the article. So the "Lei Orgânica" is part of that reference. So perhaps the entire "art . 15 , incisos XIV , XV e XXV da Lei Orgânica" is one entity. But the "Lei Orgânica" is a separate law. However, in the context, it's part of the article reference. So the entire phrase should be marked as legislação.
+
+Wait, but the user's example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislação. So in this case, the entire reference to the article and the law is considered as legislation. Therefore, in the input text, the phrase "art . 15 , incisos XIV , XV e XXV da Lei Orgânica" should be marked as legislação. Similarly, "Lei Distrital nº 5.815/2017" is another legislation reference.
+
+So the final HTML should have those spans. Also, "Distrito Federal" is a local entity.
+
+Let me check again. The input text:
+
+"O poder de polícia compete privativamente ao Distrito Federal , nos termos do art . 15 , incisos XIV , XV e XXV da Lei Orgânica , não podendo ser delegado a particulares . Sendo assim , padece também a norma de vício material . Com essas breves considerações , acompanho o em . Relator e JULGO PROCEDENTE o pedido , para declarar a inconstitucionalidade da Lei Distrital nº 5.815/2017 , com efeitos ex tunc e eficácia erga omnes . É como voto Fls ."
+
+So the entities are:
+
+- Distrito Federal → local
+- art . 15 , incisos XIV , XV e XXV da Lei Orgânica → legislação
+- Lei Distrital nº 5.815/2017 → legislação
+
+Wait, but "Lei Orgânica" is part of the first legislation reference. So the entire "art . 15 , incisos XIV , XV e XXV da Lei Orgânica" is marked as legislação. Also, "Lei Distrital nº 5.815/2017" is another legislation.
+
+So the final HTML would have:
+
+- <span class="local">Distrito Federal</span>
+- <span class="legislacao">art . 15 , incisos XIV , XV e XXV da Lei Orgânica</span>
+- <span class="legislacao">Lei Distrital nº 5.815/2017</span>
+
+Wait, but in the first case, "Lei Orgânica" is part of the legislation reference. So the entire phrase "art . 15 , incisos XIV , XV e XXV da Lei Orgânica" is one entity. So that's correct.
+
+Also, the user's example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislação. So in this case, the entire reference is one entity.
+
+Therefore, the correct output should have those three entities marked.
+</think>
+
+Quanto ao vício material , embora prejudicada a sua análise , cabe apenas o registro de que a norma impugnada , ainda que por via transversa , delega poder de polícia a conselhos de classe , cuja atribuição é fiscalizar o exercício da profissão . O poder de polícia compete privativamente ao <span class="local">Distrito Federal</span> , nos termos do <span class="legislacao">art . 15 , incisos XIV , XV e XXV da Lei Orgânica</span> , não podendo ser delegado a particulares . Sendo assim , padece também a norma de vício material . Com essas breves considerações , acompanho o em . Relator e JULGO PROCEDENTE o pedido , para declarar a inconstitucionalidade da <span class="legislacao">Lei Distrital nº 5.815/2017</span> , com efeitos ex tunc e eficácia erga omnes . É como voto Fls .

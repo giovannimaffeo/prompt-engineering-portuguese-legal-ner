@@ -1,0 +1,51 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with the first sentence: "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 RELATÓRIO Trata-se de Habeas Corpus impetrado pela Defesa constituída do Cap Ex HENRIQUE DOS SANTOS BOTELHO contra ato do Juiz-Auditor da 2ª Auditoria da 11ª CJM nos autos da Ação Penal Militar nº 14- 06.2010.7.11.0011 ."
+
+Looking for pessoas: "HENRIQUE DOS SANTOS BOTELHO" is a full name, so that's a pessoa. The "Cap Ex" might be a title, but since it's not a name, it shouldn't be marked. The "Juiz-Auditor" is a title, not a name, so no tag there.
+
+Next, "Defesa constituída do Cap Ex HENRIQUE DOS SANTOS BOTELHO" – the "Defesa" is an organization? Wait, "Defesa" here is likely the legal defense, which is an organization. But the example shows that "Defesa" might not be marked unless it's a specific name. Wait, the example input 4 had "ESTADO DO ACRE" marked as local. So "Defesa" here is a generic term, not a specific name, so it's not marked. Wait, but in the example input 2, "Superior Tribunal de Justiça" was marked as organizacao. So "Defesa" might be part of an organization's name. Wait, the text says "Defesa constituída do Cap Ex..." – maybe "Defesa" is part of the organization's name. But the example input 4 had "Rua Tribunal de Justiça" marked as local. So maybe "Defesa" here is a generic term, not a specific name. So I should not mark "Defesa" as an organization. Wait, but the user's examples show that "Defesa" might not be marked unless it's a specific name. Let me check the examples again. In example 5, "CLT" was marked as legislacao. So "Defesa" is a generic term, not a specific name. So no tag for "Defesa".
+
+Now, "Juiz-Auditor da 2ª Auditoria da 11ª CJM" – "CJM" is an acronym for "Comarca Judicial Militar", which is an organization. So "CJM" should be marked as organizacao. Wait, the example input 4 had "COMARCA DE BELO HORIZONTE" marked as local. So "CJM" is an organization. So "CJM" is an organization. Also, "2ª Auditoria da 11ª CJM" – the "CJM" is part of the organization's name. So "CJM" should be marked as organizacao. The "2ª Auditoria" is part of the organization's name, but the example input 2 had "Superior Tribunal de Justiça" marked as organizacao. So "CJM" is the organization. So "CJM" is marked as organizacao.
+
+Next, "Ação Penal Militar nº 14- 06.2010.7.11.0011" – the number is a jurisprudencia? Wait, the example input 2 had "RECURSO ESPECIAL Nº 1.583.083 - RS" marked as jurisprudencia. So the number here is part of a process, so it's jurisprudencia. So "nº 14- 06.2010.7.11.0011" is marked as jurisprudencia.
+
+Moving on: "Narra a impetração , em síntese , que : '' ( ... ) O processo teve início com o recebimento da denúncia pelo Juiz-Auditor Substituto da 12ª CJM ( Manaus/AM ) , em 18 de fevereiro de 2008 , referente aos fatos apurados no curso do Inquérito Policial Militar ( IPM ) nº 15-97.2006.7.12.0012 ( 108/06 ) , instaurado em 11 de agosto de 2006 , por determinação do então Juiz Auditor da Auditoria da 12ª CJM , Dr. José Barroso Filho , atualmente ministro dessa egrégia Corte ."
+
+Looking for pessoas: "Dr. José Barroso Filho" is a full name, so that's a pessoa. "ministro dessa egrégia Corte" – "ministro" is a title, not a name, so no tag. "Corte" is a generic term, not a specific name, so no tag.
+
+"12ª CJM ( Manaus/AM )" – "CJM" is an organization, so "CJM" is marked as organizacao. "Manaus/AM" is a location, so "Manaus/AM" is marked as local. Wait, the example input 4 had "Rio BrancoAC" marked as local. So "Manaus/AM" is a local.
+
+"18 de fevereiro de 2008" – that's a tempo. "11 de agosto de 2006" – also tempo.
+
+"Inquérito Policial Militar ( IPM ) nº 15-97.2006.7.12.0012 ( 108/06 )" – the number "nº 15-97.2006.7.12.0012" is a jurisprudencia. The "( 108/06 )" is a number, but the example input 5 had "Decreto-Lei no 5.452" marked as legislacao. Wait, the example input 5 had "Decreto-Lei no 5.452" as legislacao. So "108/06" is a number, but is it a jurisprudencia or legislacao? The example input 2 had "RECURSO ESPECIAL Nº 1.583.083 - RS" as jurisprudencia. So the numbers in the process are jurisprudencia. So "nº 15-97.2006.7.12.0012" is jurisprudencia. The "( 108/06 )" is a number, but maybe it's part of the process, so also jurisprudencia. Wait, the example input 5 had "Decreto-Lei no 5.452" as legislacao. So "Decreto-Lei" is a type of legislation. So "108/06" is a number, but not sure. Maybe it's part of the process, so jurisprudencia. But the example input 5 had "Decreto-Lei no 5.452" as legislacao. So "Decreto-Lei" is a legislacao. So "108/06" is a number, but not sure. Maybe it's part of the process, so jurisprudencia. Alternatively, maybe it's a reference to another document. But since the example input 5 had "Decreto-Lei no 5.452" as legislacao, perhaps "108/06" is a number, but not sure. Maybe it's part of the process, so jurisprudencia. I'll mark "nº 15-97.2006.7.12.0012" as jurisprudencia and "( 108/06 )" as jurisprudencia.
+
+"por determinação do então Juiz Auditor da Auditoria da 12ª CJM , Dr. José Barroso Filho" – "Dr. José Barroso Filho" is a pessoa. "Juiz Auditor" is a title, not a name. "CJM" is an organizacao.
+
+"atualmente ministro dessa egrégia Corte" – "ministro" is a title, not a name. "Corte" is a generic term, not a specific name.
+
+Putting it all together, the HTML should have the following tags:
+
+- HENRIQUE DOS SANTOS BOTELHO as pessoa
+- CJM as organizacao
+- 18 de fevereiro de 2008 as tempo
+- 11 de agosto de 2006 as tempo
+- Manaus/AM as local
+- 14- 06.2010.7.11.0011 as jurisprudencia
+- 15-97.2006.7.12.0012 as jurisprudencia
+- 108/06 as jurisprudencia
+- Dr. José Barroso Filho as pessoa
+
+Wait, but the example input 5 had "Decreto-Lei no 5.452" as legislacao. So "Decreto-Lei" is a type of legislation. So "Decreto-Lei no 5.452" is legislacao. But in the input text, there's no "Decreto-Lei" mentioned. The input text has "Inquérito Policial Militar ( IPM ) nº 15-97.2006.7.12.0012 ( 108/06 )" – the "IPM" is an acronym for "Inquérito Policial Militar", which is an organization? Or is it a type of process? The example input 2 had "RECURSO ESPECIAL Nº 1.583.083 - RS" as jurisprudencia. So the numbers in the process are jurisprudencia. So "nº 15-97.2006.7.12.0012" is jurisprudencia. The "( 108/06 )" is a number, but maybe it's part of the process, so also jurisprudencia. 
+
+Also, "CJM" is an organization. "Manaus/AM" is a local. "18 de fevereiro de 2008" and "11 de agosto de 2006" are tempo. "Dr. José Barroso Filho" is pessoa. "HENRIQUE DOS SANTOS BOTELHO" is pessoa. "14- 06.2010.7.11.0011" is jurisprudencia. "15-97.2006.7.12.0012" is jurisprudencia. "108/06" is jurisprudencia. 
+
+Wait, but the example input 5 had "Decreto-Lei no 5.452" as legislacao. So if there's a "Decreto-Lei" in the text, it's legislacao. But in the input text, there's no "Decreto-Lei" mentioned. So I don't need to mark that. 
+
+So the final HTML should have all these tags. Let me structure the text with the appropriate spans.
+</think>
+
+Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 RELATÓRIO Trata-se de Habeas Corpus impetrado pela Defesa constituída do Cap Ex <span class="pessoa">HENRIQUE DOS SANTOS BOTELHO</span> contra ato do Juiz-Auditor da 2ª Auditoria da 11ª <span class="organizacao">CJM</span> nos autos da <span class="jurisprudencia">Ação Penal Militar nº 14- 06.2010.7.11.0011</span> . Narra a impetração , em síntese , que : '' ( ... ) O processo teve início com o recebimento da denúncia pelo Juiz-Auditor Substituto da 12ª <span class="organizacao">CJM</span> (<span class="local">Manaus/AM</span>) , em <span class="tempo">18 de fevereiro de 2008</span> , referente aos fatos apurados no curso do <span class="jurisprudencia">Inquérito Policial Militar ( IPM ) nº 15-97.2006.7.12.0012</span> (<span class="jurisprudencia">108/06</span>) , instaurado em <span class="tempo">11 de agosto de 2006</span> , por determinação do então Juiz Auditor da Auditoria da 12ª <span class="organizacao">CJM</span> , <span class="pessoa">Dr. José Barroso Filho</span> , atualmente ministro dessa egrégia Corte .

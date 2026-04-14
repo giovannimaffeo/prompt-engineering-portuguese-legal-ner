@@ -1,0 +1,47 @@
+<think>
+Okay, let me tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. I need to make sure I follow the guidelines provided.
+
+First, I'll read through the input text carefully. Let me go line by line.
+
+The first sentence starts with "MÉRITO O presente recurso é tempestivo , por ter sido interposto no prazo legal e preenche os demais requisitos para sua admissibilidade , merecendo ser conhecido ." Here, I don't see any entities. "MÉRITO" might be a keyword, but it's not an entity type specified. So no tags here.
+
+Next, "Quanto ao mérito , o presente Agravo deve ser rejeitado ." "Agravo" is a legal term, but the guidelines say to mark only specific entities. Agravo isn't one of the entity types listed. So no tag.
+
+Then, "Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 ." Here, "José Barroso Filho" is a person's name. That's a pessoa entity. I'll wrap that in <span class="pessoa">. The "Matricula 1117" is a number, not an entity type, so leave it as is.
+
+Next line: "Em 02/03/2018 17:26:32 ." The date "02/03/2018" is a tempo entity. But the guidelines mention that only explicit dates should be marked. The time "17:26:32" is a horário, which the guidelines say not to mark. So only the date part is marked as tempo. Wait, the user's instructions say to mark tempo for dates. So "02/03/2018" is tempo. The time part is not. So the date is in <span class="tempo">.
+
+Then, "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4" The URL is not a local, as per guidelines. Only explicit names of places. So no tag here. "Codigo Verificador" is a generic term, not an entity.
+
+Next part: "No tocante ao pedido de reconsideração , inexistem motivos ou fatos novos hábeis a provocar a modificação da Decisão recorrida ." "Decisão recorrida" is a legal term but not an entity. No tag.
+
+Then, "razão pela qual , ao ser mantido , submete-se o Agravo Interno ao julgamento de mérito do Plenário , ex vi do art . 118 , § 2° , do Regimento Interno do Superior Tribunal Militar ( RISTM ) ." Here, "Superior Tribunal Militar" is an organization. The acronym "RISTM" is also part of the name. So wrap that in <span class="organizacao">. Also, "Regimento Interno" is part of the legislation? Wait, "Regimento Interno" is a document, but the guidelines say to mark legislation. However, the example given for legislação includes "Regimento Interno do Superior Tribunal Militar ( RISTM )". So I need to check if "Regimento Interno" is considered legislation. Wait, the example for legislação includes "Regimento Interno", but the definition says "normas jurídicas, como leis, códigos, constituições, decretos...". A Regimento Interno might be an internal regulation, which could be considered legislação. Alternatively, maybe "Regimento Interno do Superior Tribunal Militar" is an organization's internal document, so maybe it's an organização? Hmm. Wait, the example for organizacao includes "Tribunal de Contas", so maybe "Superior Tribunal Militar" is an organization. The "Regimento Interno" is part of that organization. But the user's example for legislação includes "Regimento Interno do Superior Tribunal Militar ( RISTM )". Wait, the example given in the guidelines under legislação includes "Regimento Interno do Superior Tribunal Militar ( RISTM )". So that's a legislation entity. Therefore, "Regimento Interno do Superior Tribunal Militar ( RISTM )" should be marked as legislação. Wait, the example says "Legislação é definida como: expressões que identifiquem normas jurídicas, como leis, códigos, constituições, decretos, medidas provisórias, regimentos ou equivalentes..." So "Regimento Interno" is part of the legislation. Therefore, the entire phrase "Regimento Interno do Superior Tribunal Militar ( RISTM )" is a legislação entity. So I need to mark that part as <span class="legislacao">.
+
+Wait, but in the text, it's "Regimento Interno do Superior Tribunal Militar ( RISTM )". The "Regimento Interno" is the name of a regulation, so that's legislation. So the entire phrase should be marked as legislação. So I'll wrap that in <span class="legislacao">.
+
+So putting it all together:
+
+- "José Barroso Filho" is pessoa.
+- "02/03/2018" is tempo.
+- "Superior Tribunal Militar ( RISTM )" is organizacao? Or legislação? Wait, the example under organizacao includes "Tribunal de Contas", which is an organization. The "Superior Tribunal Militar" is an organization. The "Regimento Interno" is a regulation (legislação). So "Regimento Interno do Superior Tribunal Militar ( RISTM )" is a legislation entity, as per the example. So the entire phrase "Regimento Interno do Superior Tribunal Militar ( RISTM )" should be marked as legislação.
+
+Wait, but the text says "Regimento Interno do Superior Tribunal Militar ( RISTM )". The "Regimento Interno" is a type of regulation, so it's a legislação. Therefore, the entire phrase is marked as legislação. So I need to wrap that part.
+
+So the final HTML would have:
+
+- <span class="pessoa">José Barroso Filho</span>
+- <span class="tempo">02/03/2018</span>
+- <span class="legislacao">Regimento Interno do Superior Tribunal Militar ( RISTM )</span>
+
+Wait, but "Superior Tribunal Militar" is an organization. So maybe "Superior Tribunal Militar" is an organizacao, and "Regimento Interno" is a legislação. But the example given in the guidelines for legislação includes "Regimento Interno do Superior Tribunal Militar ( RISTM )". So the entire phrase is considered as legislation. Therefore, I should mark the entire phrase as legislação.
+
+But I need to check if "Superior Tribunal Militar" is an organization. Since it's a court, it's an organization. But the example in the guidelines under legislação includes "Regimento Interno do Superior Tribunal Militar ( RISTM )", so that's a legislation entity. Therefore, the entire phrase is marked as legislação.
+
+So in the text, the part "Regimento Interno do Superior Tribunal Militar ( RISTM )" is a legislação. Therefore, wrap that in <span class="legislacao">.
+
+Another point: "RISTM" is an acronym for "Regimento Interno do Superior Tribunal Militar". So the acronym is part of the legislation entity. So the entire phrase is marked.
+
+So the final output would have those three entities marked.
+</think>
+
+MÉRITO O presente recurso é tempestivo , por ter sido interposto no prazo legal e preenche os demais requisitos para sua admissibilidade , merecendo ser conhecido . Quanto ao mérito , o presente Agravo deve ser rejeitado . Documento assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , Matricula 1117 . Em <span class="tempo">02/03/2018</span> 17:26:32 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 No tocante ao pedido de reconsideração , inexistem motivos ou fatos novos hábeis a provocar a modificação da Decisão recorrida . razão pela qual , ao ser mantido , submete-se o Agravo Interno ao julgamento de mérito do Plenário , ex vi do art . 118 , § 2° , do <span class="legislacao">Regimento Interno do Superior Tribunal Militar ( RISTM )</span> .

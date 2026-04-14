@@ -1,0 +1,61 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about a legal amendment regarding public servants' retirement benefits. 
+
+Looking for entities:
+
+1. "2º desta Emenda" – "Emenda" here refers to an amendment, which is a legislative act. So "Emenda" should be marked as legislacao. But wait, the exact term might be "Emenda Constitucional" or similar. However, the text just says "Emenda", so maybe it's part of a larger legislative text. But according to the guidelines, only references to norms should be marked. Since "Emenda" here is part of a legal text, maybe it's part of a law or amendment. But the exact term might need to be checked. However, the example output shows "2º desta Emenda" as "2º desta <span class="legislacao">Emenda</span>". So I'll follow that.
+
+2. "servidor da União , dos Estados , do Distrito Federal e dos Municípios" – "União", "Estados", "Distrito Federal", "Municípios" are all organizations or entities. "União" refers to the federal government, "Distrito Federal" is a specific location, but here it's part of the organization. Wait, "Distrito Federal" is a local entity, but in the context of the text, it's part of the organizations (like the federal government, states, etc.). So "União", "Distrito Federal", and "Municípios" might be organizations. Wait, "Municípios" is plural for municipalities, which are local entities. But according to the definitions, "organizacao" includes public organs, so maybe these are considered organizations. However, "Distrito Federal" is a local entity, but in the context of the text, it's part of the list of entities. Hmm, need to check the definitions again. The "organizacao" includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas." So "União" is a public entity, "Distrito Federal" is a federal district, which is a local entity but also part of the government structure. Maybe "União", "Distrito Federal", and "Municípios" are all organizations here. Wait, but "Municípios" are local entities, but in the context of the text, they are part of the list of entities that are part of the public service. So perhaps they are considered as organizations. Alternatively, maybe "Distrito Federal" is a local entity. Wait, the definition for "local" is explicit places like cities, states, countries. So "Distrito Federal" is a specific location, so it should be marked as local. But in the example output, "Distrito Federal" is marked as organizacao. Wait, looking at the example output provided by the user, the output for the input text is:
+
+"2º desta <span class="legislacao">Emenda</span> , o servidor da <span class="organizacao">União</span> , dos <span class="organizacao">Estados</span> , do <span class="local">Distrito Federal</span> e dos <span class="organizacao">Municípios</span> , incluídas suas <span class="organizacao">autarquias</span> e <span class="organizacao">fundações</span> , que tenha ingressado no serviço público até a data de publicação desta <span class="legislacao">Emenda</span> poderá aposentar-se com proventos integrais , que corresponderão à totalidade da remuneração do servidor no cargo efetivo em que se der a aposentadoria , na forma da <span class="legislacao">lei</span> , quando , observadas as reduções de idade e tempo de contribuição contidas no § 5º do art ."
+
+Wait, in the example output, "Distrito Federal" is marked as local. So according to that, "Distrito Federal" is a local entity. But in the original text, "Distrito Federal" is part of the list of entities (União, Estados, Distrito Federal, Municípios). So "União" is an organization, "Estados" (plural of Estado, which is a state, so maybe "Estados" is a local entity? Wait, but "Estados" here refers to the states of the federation, which are part of the federal structure. So maybe "Estados" is an organization? Or is it a local entity? Hmm, this is a bit confusing. Let me check the definitions again.
+
+"Organização" includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas." So "União" is a public entity, which is an organization. "Estados" refers to the states, which are part of the federation, so they are local entities. Wait, but "Estados" here is part of the list of entities that are part of the public service. So maybe "Estados" is considered as an organization? Or is it a local entity? The example output shows "Estados" as organizacao. So perhaps in this context, "Estados" is considered an organization. Similarly, "Municípios" are local entities, but in the example output, they are marked as organizacao. Wait, the example output shows "Municípios" as organizacao. So maybe in this context, all these are considered as organizations. But "Distrito Federal" is marked as local. So perhaps "Distrito Federal" is a local entity, while the others are organizations. 
+
+So, "União" is an organization, "Estados" is an organization, "Distrito Federal" is a local, "Municípios" is an organization. Wait, but "Municípios" are local entities. Maybe the example output is correct, and I should follow that. 
+
+Next, "autarquias" and "fundações" are types of organizations. So they should be marked as organizacao. 
+
+Then, "data de publicação desta Emenda" – "data" is a time entity, so "data de publicação" would be marked as tempo. But the example output shows "data de publicação desta <span class="legislacao">Emenda</span>" – so "data" is not marked. Wait, the example output has "data de publicação desta <span class="legislacao">Emenda</span>". So "data" is not marked as tempo. Wait, but according to the guidelines, "tempo" includes dates. So "data" is a time entity. But in the example output, "data" is not marked. Wait, maybe the example output is different. Let me check again. The user provided the example output as:
+
+"2º desta <span class="legislacao">Emenda</span> , o servidor da <span class="organizacao">União</span> , dos <span class="organizacao">Estados</span> , do <span class="local">Distrito Federal</span> e dos <span class="organizacao">Municípios</span> , incluídas suas <span class="organizacao">autarquias</span> e <span class="organizacao">fundações</span> , que tenha ingressado no serviço público até a data de publicação desta <span class="legislacao">Emenda</span> poderá aposentar-se com proventos integrais , que corresponderão à totalidade da remuneração do servidor no cargo efetivo em que se der a aposentadoria , na forma da <span class="legislacao">lei</span> , quando , observadas as reduções de idade e tempo de contribuição contidas no § 5º do art ."
+
+In this example, "data de publicação" is not marked. Wait, but "data" is a time entity. However, in the example, "data" is not marked. So maybe the example output is correct, and I should follow that. So perhaps "data" is not marked as tempo. Wait, but according to the guidelines, "tempo" includes dates. So "data" should be marked as tempo. But in the example, "data" is not marked. Hmm, maybe the example is incorrect, but I need to follow the user's example. Alternatively, maybe "data" is part of a phrase that's not marked. Let me check the example again. The example output has "até a data de publicação desta <span class="legislacao">Emenda</span>". So "data" is not marked. So perhaps in this case, "data" is not considered an entity. Wait, but according to the guidelines, "tempo" includes dates. So "data" should be marked. But the example output does not mark it. Maybe the example is wrong, but I need to follow the user's example. Alternatively, maybe the user's example is correct, and I should not mark "data" as tempo. 
+
+This is a bit confusing. Let me proceed step by step. 
+
+Looking at the input text again: "até a data de publicação desta Emenda". The "data" here is a temporal reference, so it should be marked as tempo. But in the example output, it's not. Wait, the example output shows "até a data de publicação desta <span class="legislacao">Emenda</span>". So "data" is not marked. So perhaps the user's example is correct, and "data" is not marked. But according to the guidelines, "tempo" includes dates. So maybe the example is wrong, but I need to follow the user's example. 
+
+Alternatively, maybe "data" is part of a phrase that's not marked. For example, "data de publicação" is a phrase, but "data" is a noun, so it's a time entity. But the example output does not mark it. So perhaps the user's example is correct, and I should not mark "data" as tempo. 
+
+This is a bit conflicting. Maybe the user's example is correct, and I should follow that. So in the example, "data" is not marked. Therefore, I should not mark "data" as tempo. 
+
+Another part: "na forma da lei" – "lei" is a legislative entity, so it should be marked as legislacao. 
+
+So, putting it all together, the entities in the input text are:
+
+- "Emenda" (legislacao)
+- "União" (organizacao)
+- "Estados" (organizacao)
+- "Distrito Federal" (local)
+- "Municípios" (organizacao)
+- "autarquias" (organizacao)
+- "fundações" (organizacao)
+- "Emenda" (legislacao again)
+- "lei" (legislacao)
+
+So the HTML should have these marked accordingly. 
+
+Now, I need to make sure that all the entities are correctly marked. Also, check for any other entities. 
+
+The text also mentions "§ 5º do art" – "art" is short for "artigo", which is part of a legal text, but "art" is not a specific entity. So it's not marked. 
+
+So the final HTML should have the entities marked as per the example. 
+
+Therefore, the output should be as the example shows, with the entities marked accordingly.
+</think>
+
+2º desta <span class="legislacao">Emenda</span> , o servidor da <span class="organizacao">União</span> , dos <span class="organizacao">Estados</span> , do <span class="local">Distrito Federal</span> e dos <span class="organizacao">Municípios</span> , incluídas suas <span class="organizacao">autarquias</span> e <span class="organizacao">fundações</span> , que tenha ingressado no serviço público até a data de publicação desta <span class="legislacao">Emenda</span> poderá aposentar-se com proventos integrais , que corresponderão à totalidade da remuneração do servidor no cargo efetivo em que se der a aposentadoria , na forma da <span class="legislacao">lei</span> , quando , observadas as reduções de idade e tempo de contribuição contidas no § 5º do art .

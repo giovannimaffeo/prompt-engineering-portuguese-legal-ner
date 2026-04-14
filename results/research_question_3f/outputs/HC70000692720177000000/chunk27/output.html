@@ -1,0 +1,58 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 direito ; sendo assim , a eventual desobediência às formalidades estabelecidas pelo legislador não deve conduzir ao reconhecimento da invalidade do ato quando atingido seu objetivo . 3 . Habeas corpus denegado . '' ( Habeas Corpus nº 237.388/SP , Relator : Ministro Marco Aurélio Bellizze , DJe : 16/9/2013 ) . Evidencia-se , portanto , a não ocorrência de nulidade procedimental apta a ensejar a concessão da ordem pretendida ."
+
+Looking for entities:
+
+1. "Habeas Corpus nº 237.388/SP" – This looks like a jurisprudencia reference. The number and the "Habeas Corpus" are specific to a legal case. So I'll mark that as jurisprudencia.
+
+2. "Ministro Marco Aurélio Bellizze" – This is a person's name. The title "Ministro" is a title, not a name, but the full name "Marco Aurélio Bellizze" is a person. So the name should be marked as pessoa.
+
+3. "DJe : 16/9/2013" – The date "16/9/2013" is a tempo entity. The "DJe" is an abbreviation for Diário da Justiça Eletrônico, which is a legal publication, but the date itself is the tempo.
+
+4. "Habeas Corpus nº 237.388/SP" – Already mentioned, so same as above.
+
+5. "legislador" – This is a generic term referring to the legislator, not a specific entity. So no tag needed.
+
+6. "Codigo Verificador 21030663f7" – The code "21030663f7" might be a jurisprudencia reference, but the example shows that numbers like "237.388/SP" are marked. However, "21030663f7" is a code, not a specific legal case. The examples don't mention codes like this, so maybe it's not an entity. Wait, the user's examples include "REsp n . 1694984/MS" as jurisprudencia. The code here is "21030663f7" – perhaps it's a code for a case, but the examples don't have such a format. Maybe it's not an entity. The user's guidelines say to mark only specific references. Since "Codigo Verificador" is a generic term, the code itself might not be an entity unless it's a specific identifier. But the examples don't include such codes, so I'll leave it as is.
+
+7. "SP" – This is an abbreviation for São Paulo, a state. According to the guidelines, local should be specific names. "SP" is an abbreviation for a state, which is a local entity. So "SP" should be marked as local.
+
+8. "DJe" – This is an abbreviation for Diário da Justiça Eletrônico, which is a legal publication. But the guidelines don't mention abbreviations as entities unless they are part of a specific reference. Since "DJe" is an abbreviation, not a specific entity, it's not marked.
+
+Now, putting it all together:
+
+- "Habeas Corpus nº 237.388/SP" → jurisprudencia
+- "Ministro Marco Aurélio Bellizze" → pessoa (only the name, not the title)
+- "16/9/2013" → tempo
+- "SP" → local
+
+Wait, the "SP" is part of the "Habeas Corpus nº 237.388/SP". The "SP" is the state abbreviation, so it's a local entity. So the entire "Habeas Corpus nº 237.388/SP" is jurisprudencia, and "SP" is part of that. But according to the guidelines, the entire reference should be marked as jurisprudencia. So "Habeas Corpus nº 237.388/SP" is the jurisprudencia, and "SP" is part of that. Wait, but the example shows that "Habeas Corpus nº 237.388/SP" is marked as jurisprudencia. So the entire phrase is marked as jurisprudencia, including "SP".
+
+Wait, the example input 2: "Superior Tribunal de Justiça RECURSO ESPECIAL Nº 1.583.083 - RS" becomes "Superior Tribunal de Justiça" (organizacao) and "RECURSO ESPECIAL Nº 1.583.083 - RS" (jurisprudencia). So the entire reference is marked as jurisprudencia. Similarly, in the input text, "Habeas Corpus nº 237.388/SP" is a jurisprudencia reference. So the entire phrase is marked as jurisprudencia, including "SP" as part of the reference. Therefore, "SP" is part of the jurisprudencia entity, not a separate local.
+
+Wait, but the example input 4: "ESTADO DO ACRE Rua Tribunal de Justiça, Via Verde, Rio BrancoAC" becomes all local. So "ESTADO DO ACRE" is local, "Rua Tribunal de Justiça" is local, etc. So in that case, each part is a local. But in the case of "Habeas Corpus nº 237.388/SP", the "SP" is part of the jurisprudencia reference. So the entire "Habeas Corpus nº 237.388/SP" is marked as jurisprudencia, and "SP" is part of that. Therefore, "SP" is not a separate local entity here.
+
+So the entities to mark are:
+
+- "Ministro Marco Aurélio Bellizze" → pessoa
+- "16/9/2013" → tempo
+- "Habeas Corpus nº 237.388/SP" → jurisprudencia
+
+Wait, but the "Habeas Corpus nº 237.388/SP" is a jurisprudencia reference. The "SP" is part of that reference, so it's included in the jurisprudencia tag. Therefore, the entire phrase is marked as jurisprudencia.
+
+So the final HTML would have:
+
+- "Ministro Marco Aurélio Bellizze" as pessoa
+- "16/9/2013" as tempo
+- "Habeas Corpus nº 237.388/SP" as jurisprudencia
+
+Other parts like "Codigo Verificador 21030663f7" are not entities. The "SP" is part of the jurisprudencia reference. The "DJe" is not an entity. The "legislador" is a generic term. The "Habeas corpus denegado" is a general term. The rest of the text doesn't have any entities.
+
+So the final output should have those three entities marked.
+</think>
+
+Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 direito ; sendo assim , a eventual desobediência às formalidades estabelecidas pelo legislador não deve conduzir ao reconhecimento da invalidade do ato quando atingido seu objetivo . 3 . <span class="jurisprudencia">Habeas corpus denegado</span> . '' ( <span class="jurisprudencia">Habeas Corpus nº 237.388/SP</span> , <span class="pessoa">Relator : Ministro Marco Aurélio Bellizze</span> , <span class="tempo">DJe : 16/9/2013</span> ) . Evidencia-se , portanto , a não ocorrência de nulidade procedimental apta a ensejar a concessão da ordem pretendida .

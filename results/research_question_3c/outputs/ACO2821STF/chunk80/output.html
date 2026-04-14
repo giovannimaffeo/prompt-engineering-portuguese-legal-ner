@@ -1,0 +1,29 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with the first part: "Composição : Ministros Cármen Lúcia ( Presidente ) , Celso de Mello , Marco Aurélio , Gilmar Mendes , Ricardo Lewandowski , Dias Toffoli , Luiz Fux , Rosa Weber , Roberto Barroso , Edson Fachin e Alexandre de Moraes ."
+
+Here, the names like "Cármen Lúcia", "Celso de Mello", etc., are all people. So each of these should be marked as <span class="pessoa">. The "( Presidente )" part is a title, not a name, so it's not an entity. The "Ministros" is a title, so not an entity either.
+
+Next, "p/ Doralúcia das Neves Santos Assessora-Chefe do Plenário" – "Doralúcia das Neves Santos" is a person, so that's another <span class="pessoa">. "Assessora-Chefe do Plenário" is a title, not an entity.
+
+Then, "Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil ."
+
+Here, "MP n° 2.200-2/2001" is a legislative act, so that's <span class="legislacao">. The date "24/08/2001" is a tempo entity, so <span class="tempo">. "ICP-Brasil" is part of the legislation, so maybe part of the legislacao? Wait, the MP is the legislative act, and ICP-Brasil is the name of the infrastructure, which might be part of the legislation. But the user's example includes "MP n° 2.200-2/2001" as legislacao. So I'll mark that as legislacao. The date is tempo.
+
+Next, "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp sob o número 14532100 Supremo Tribunal Federal PLENÁRIO EXTRATO DE ATA AG.REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 PROCED . : MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A/S ) : ADVOGADO-GERAL DA UNIÃO AGDO . ( A/S ) : ESTADO DE MATO GROSSO PROC ."
+
+"Supremo Tribunal Federal" is an organization, so <span class="organizacao">. "Mato Grosso" is a local, so <span class="local">. "RICARDO LEWANDOWSKI" is a pessoa. "UNIÃO" is an organization, so <span class="organizacao">. "ADVOGADO-GERAL DA UNIÃO" is a title, not an entity. "ESTADO DE MATO GROSSO" is an organization, so <span class="organizacao">. "PROCED . : MATO GROSSO" – "Mato Grosso" again is local. Wait, but "Mato Grosso" is a state, so local. But in the context, it's part of the case details, so maybe it's a local. Also, "ESTADO DE MATO GROSSO" is an organization, as it refers to the state as an entity.
+
+Wait, need to check the definitions again. For "local", it's explicit places. "Mato Grosso" is a state, so it's a local. "ESTADO DE MATO GROSSO" is an organization, as it refers to the state as an entity. So "ESTADO DE MATO GROSSO" is an organization. "Mato Grosso" is a local. 
+
+Also, "Supremo Tribunal Federal" is an organization. "UNIÃO" is an organization. "ADVOGADO-GERAL DA UNIÃO" is a title, not an entity. "ESTADO DE MATO GROSSO" is an organization. 
+
+So putting it all together, I need to mark each of these entities with the appropriate classes. Let me make sure I didn't miss any. Also, check for any other entities like jurisprudencia or tempo. The date "24/08/2001" is tempo. The MP number is legislacao. The rest are people, organizations, locals, etc. 
+
+I think that's all. Now, I'll structure the HTML with the spans accordingly.
+</think>
+
+<span class="organizacao">Supremo Tribunal Federal</span> PLENÁRIO EXTRATO DE ATA AG.REG . NA AÇÃO CÍVEL ORIGINÁRIA <span class="tempo">2.821</span> PROCED . : <span class="local">MATO GROSSO</span> RELATOR : MIN . <span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A/S ) : <span class="organizacao">ADVOGADO-GERAL DA UNIÃO</span> AGDO . ( A/S ) : <span class="organizacao">ESTADO DE MATO GROSSO</span> PROC .

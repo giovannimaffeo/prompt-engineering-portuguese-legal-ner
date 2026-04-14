@@ -1,0 +1,134 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to go through the text carefully and identify each entity according to the definitions provided. Let me start by reading the text again.
+
+The text starts with "O Senhor Desembargador ROBERVAL CASEMIRO BELINATI - Vogal Acompanho o eminente Relator , pedindo vênia ."
+
+Here, "ROBERVAL CASEMIRO BELINATI" is a full name, so that's a pessoa. The title "Desembargador" is a position, not a name, so it shouldn't be marked. The next part is "Senhor Desembargador ARNOLDO CAMANHO DE ASSIS - Vogal" – similarly, "ARNOLDO CAMANHO DE ASSIS" is another pessoa.
+
+Next, "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the code here doesn't seem to fit any entity type, so leave it as is.
+
+Then "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 42" – "SILVANIO BARBOSA DOS SANTOS" is another pessoa. The "GABINETE DO DESEMBARGADOR" is an organization, but "GABINETE" might be part of the title. Wait, the definition says organizations include "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas..." So "GABINETE DO DESEMBARGADOR" is part of the organization's name. However, the exact name might be "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". But the text says "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 42". The "42" might be a room number or something, but not an entity. So the organization here is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS".
+
+Next part: "Esta Corte já decidiu reiteradamente pela inconstitucionalidade , por vício de iniciativa , de normas propostas por parlamentar distrital que versem sobre organização e funcionamento da Administração Pública , nos termos dos artigos 53 , 71 , § 1º , inc. IV , e 100 , inc . VI e X , todos da Lei Orgânica do Distrito Federal ."
+
+Here, "Lei Orgânica do Distrito Federal" is a legislation. So that's a legislacao. The "Distrito Federal" is a local, but according to the guidelines, only specific names should be marked. Since "Distrito Federal" is a specific administrative region, it's a local. Wait, the definition says "nomes próprios de locais" like cities, states, etc. "Distrito Federal" is a specific administrative entity, so it's a local.
+
+Then, "Constituição Federal" in the next sentence is also a legislacao. The articles mentioned like "artigos 53, 71, § 1º, inc. IV, e 100, inc. VI e X" are parts of the legislation, so they should be included as part of the legislacao entity. But the user's example shows that the entire legislation reference is marked. So "Lei Orgânica do Distrito Federal" and "Constituição Federal" are both legislacao. The articles and sections are part of the legislation, so they should be included in the span as well.
+
+Then, "A matéria encontra-se regulamentada pela Constituição Federal em seus artigos 48 , inciso X , e 61 , II , alínea `` a '' , que são normas de repetição obrigatórias ." – again, "Constituição Federal" is legislacao, and the articles are part of it.
+
+So putting it all together, I need to mark each occurrence of the entities. Let me go through each part again step by step.
+
+1. "ROBERVAL CASEMIRO BELINATI" – pessoa.
+2. "ARNOLDO CAMANHO DE ASSIS" – pessoa.
+3. "SILVANIO BARBOSA DOS SANTOS" – pessoa.
+4. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – organizacao.
+5. "Lei Orgânica do Distrito Federal" – legislacao.
+6. "Distrito Federal" – local.
+7. "Constituição Federal" – legislacao.
+8. "artigos 53 , 71 , § 1º , inc. IV , e 100 , inc . VI e X" – these are part of the legislation, so they should be included in the legislacao span. But the user's example in the guidelines says that the entire legislation reference should be marked. So the entire "Lei Orgânica do Distrito Federal" is marked, and "Constituição Federal" as well. The articles are part of the legislation, so they are included in the same span as the legislation.
+
+Wait, the user's example in the guidelines says: "Lei nº 8.666/93", "art. 71 da Lei 8.666/93" – so the articles are part of the legislation. Therefore, in this case, the "artigos 53, 71..." are part of the legislation reference. So when marking "Lei Orgânica do Distrito Federal", the articles mentioned are part of that legislation, so they should be included in the same span. But the text says "todos da Lei Orgânica do Distrito Federal" – so the entire legislation is marked. Similarly, "Constituição Federal" is marked, and the articles are part of it.
+
+So in the text, "Lei Orgânica do Distrito Federal" is a legislacao, and "Constituição Federal" is another legislacao. The articles mentioned are part of those legislations. So the entire phrase "Lei Orgânica do Distrito Federal" is marked as legislacao, and "Constituição Federal" as well. The articles are included in the spans as part of the legislation.
+
+Now, checking for other entities: "tempo" – there are no dates or time references in the text. "Local" – "Distrito Federal" is marked. "Jurisprudencia" – there's no mention of specific judicial decisions, precedents, or súmulas. The "Código de Verificação" is a code, not an entity. The "42" is a number, but not an entity. The "GABINETE DO DESEMBARGADOR..." is an organization. So all entities are covered.
+
+Now, structuring the HTML. Each entity should be wrapped in a <span> with the respective class. For example:
+
+<span class="pessoa">ROBERVAL CASEMIRO BELINATI</span>
+<span class="pessoa">ARNOLDO CAMANHO DE ASSIS</span>
+<span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>
+<span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span>
+<span class="legislacao">Lei Orgânica do Distrito Federal</span>
+<span class="local">Distrito Federal</span>
+<span class="legislacao">Constituição Federal</span>
+
+Wait, but the "artigos 53..." are part of the legislation. However, the guidelines say that only the references to the legislation should be marked. So "artigos 53..." are part of the legislation reference, so they should be included in the same span as the legislation. But in the text, the legislation is mentioned as "Lei Orgânica do Distrito Federal" and "Constituição Federal". The articles are part of the legislation, but the user's example in the guidelines includes "art. 71 da Lei 8.666/93" as part of the legislation. Therefore, in this case, the "artigos 53, 71..." should be included in the span for "Lei Orgânica do Distrito Federal".
+
+Wait, but the text says "nos termos dos artigos 53 , 71 , § 1º , inc. IV , e 100 , inc . VI e X , todos da Lei Orgânica do Distrito Federal". So the articles are part of the legislation. Therefore, the entire phrase "Lei Orgânica do Distrito Federal" and the articles mentioned are part of the same legislation. However, the user's guidelines state that the entire legislation reference should be marked, not just the articles. So perhaps only the name of the legislation is marked, and the articles are not. Wait, the example in the guidelines includes "art. 71 da Lei 8.666/93" as part of the legislation. So in that case, the entire reference, including the articles, is part of the legislation. Therefore, in this text, the "Lei Orgânica do Distrito Federal" is the legislation, and the articles mentioned are part of that reference. So the span should include "Lei Orgânica do Distrito Federal" and the articles. But the user's example shows that the entire legislation is marked, including the articles. So maybe the entire phrase "Lei Orgânica do Distrito Federal" and the articles are included in the same span. Wait, but the text is structured as "todos da Lei Orgânica do Distrito Federal". So the articles are part of that legislation. Therefore, the span for legislacao would include "Lei Orgânica do Distrito Federal" and the articles mentioned. However, the user's guidelines say to mark the entire legislation reference. So perhaps the articles are part of the legislation reference and should be included. But I need to check the exact guidelines.
+
+The guidelines say for legislação: "expressões que identifiquem normas jurídicas, como leis, códigos, constituições, decretos, medidas provisórias, regimentos ou equivalentes, bem como dispositivos internos claramente associados a essas normas e siglas reconhecidas que representem textos legislativos". So the articles and sections are part of the legislation. Therefore, when mentioning "artigos 53, 71..." in reference to the legislation, they should be included in the legislacao span. But how to structure that.
+
+In the example provided by the user, the input text is:
+
+"Lei nº 8.666/93", "art. 71 da Lei 8.666/93"
+
+So the entire "art. 71 da Lei 8.666/93" is marked as legislação. Therefore, in this case, the text has "Lei Orgânica do Distrito Federal" and "artigos 53, 71..." which are part of that legislation. Therefore, the entire phrase "Lei Orgânica do Distrito Federal" and the articles mentioned should be included in the legislacao span.
+
+But in the text, the "artigos 53..." are part of the same sentence as "Lei Orgânica do Distrito Federal". So the span should include "Lei Orgânica do Distrito Federal" and the articles mentioned. However, the user's example shows that the entire legislation reference is marked, including the articles. So perhaps the correct approach is to mark "Lei Orgânica do Distrito Federal" and the articles as part of the same legislacao span. But in the text, the articles are not part of the legislation name, but are references to it. Therefore, the legislation is "Lei Orgânica do Distrito Federal", and the articles are part of it, so they should be included in the same span.
+
+Alternatively, maybe the articles are not part of the legislation name but are just references. However, the guidelines say to include all parts of the legislation reference. Therefore, the entire reference, including the articles, should be marked. So in the text, "Lei Orgânica do Distrito Federal" and "artigos 53, 71..." are part of the same legislation reference. Therefore, the span should include both parts.
+
+But in the text, the structure is "nos termos dos artigos 53, 71..." which refers to the legislation. Therefore, the entire legislation reference is "Lei Orgânica do Distrito Federal" and the articles are part of it. Therefore, the span for legislacao would include "Lei Orgânica do Distrito Federal" and the articles. However, the user's example shows that the entire legislation is marked, including the articles. For example, "art. 71 da Lei 8.666/93" is marked as legislacao. Therefore, in this case, the entire reference to the legislation, including the articles, should be marked. So the span would include "Lei Orgânica do Distrito Federal" and the articles mentioned.
+
+But how to structure that in the text. The text says "todos da Lei Orgânica do Distrito Federal", which means all the articles mentioned are part of that legislation. Therefore, the entire legislation reference is "Lei Orgânica do Distrito Federal", and the articles are part of it. So the span should be "Lei Orgânica do Distrito Federal", and the articles are part of it. Wait, but the articles are not part of the name of the legislation; they are references to it. Therefore, the legislation is "Lei Orgânica do Distrito Federal", and the articles are part of the reference. So the span for the legislation is "Lei Orgânica do Distrito Federal", and the articles are not part of the legislation name but are part of the reference. Therefore, they should not be included in the span. But the user's example includes the articles in the span. For example, "art. 71 da Lei 8.666/93" is marked as legislacao. Therefore, in this case, the entire phrase "Lei Orgânica do Distrito Federal" and the articles are part of the same legislation reference. Therefore, the span should include "Lei Orgânica do Distrito Federal" and the articles mentioned.
+
+But how to represent that in HTML. The text mentions "artigos 53, 71..." as part of the reference to the legislation. Therefore, the entire phrase "Lei Orgânica do Distrito Federal" and the articles are part of the legislation reference. So the span would be "Lei Orgânica do Distrito Federal" and "artigos 53, 71..." are part of the same legislation, so they should be included in the same span. But the user's example shows that the entire reference is marked, including the articles. Therefore, in this case, the span should include "Lei Orgânica do Distrito Federal" and the articles mentioned.
+
+Wait, the user's example in the guidelines says: "art. 71 da Lei 8.666/93" is marked as legislacao. So the entire reference, including the articles, is marked. Therefore, in this text, the "artigos 53, 71..." are part of the legislation reference and should be included in the same span as "Lei Orgânica do Distrito Federal".
+
+But how to structure that. The text says "nos termos dos artigos 53, 71..." which refers to the legislation. Therefore, the legislation is "Lei Orgânica do Distrito Federal", and the articles are part of it. So the span should include "Lei Orgânica do Distrito Federal" and the articles. However, the articles are not part of the legislation name but are references to it. Therefore, the legislation is the law, and the articles are part of the reference. But according to the guidelines, the entire legislation reference should be marked. Therefore, the span should include "Lei Orgânica do Distrito Federal" and the articles mentioned. So the entire phrase "Lei Orgânica do Distrito Federal" and "artigos 53, 71..." are part of the same legislation reference, so they should be included in the same span.
+
+But in the text, the articles are not part of the legislation name, but are part of the reference. Therefore, the legislation is "Lei Orgânica do Distrito Federal", and the articles are part of the reference. So the span should be "Lei Orgânica do Distrito Federal", and the articles are not part of the legislation name but are part of the reference. Therefore, they should not be included in the span. However, the user's example includes the articles in the span. So perhaps I should mark the entire reference, including the articles.
+
+This is a bit confusing. Let me check the guidelines again. The guidelines say: "expressões que identifiquem normas jurídicas [...] bem como dispositivos internos claramente associados a essas normas e siglas reconhecidas que representem textos legislativos". So the articles are part of the legislation. Therefore, the entire reference to the legislation, including the articles, should be marked. Therefore, in this text, the "Lei Orgânica do Distrito Federal" and the "artigos 53, 71..." are part of the same legislation reference and should be included in the same span.
+
+But how to structure that. The text has "Lei Orgânica do Distrito Federal" and then "artigos 53, 71..." which are part of the same reference. Therefore, the span should include both. So the HTML would be:
+
+<span class="legislacao">Lei Orgânica do Distrito Federal artigos 53, 71, § 1º, inc. IV, e 100, inc. VI e X</span>
+
+But the original text has "nos termos dos artigos 53 , 71 , § 1º , inc. IV , e 100 , inc . VI e X , todos da Lei Orgânica do Distrito Federal". So the articles are part of the reference to the legislation. Therefore, the entire phrase should be marked as legislacao.
+
+Similarly, the "Constituição Federal" is marked as legislacao, and the articles mentioned are part of it. So the entire reference is marked.
+
+So, putting it all together:
+
+- "ROBERVAL CASEMIRO BELINATI" as pessoa.
+- "ARNOLDO CAMANHO DE ASSIS" as pessoa.
+- "SILVANIO BARBOSA DOS SANTOS" as pessoa.
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as organizacao.
+- "Lei Orgânica do Distrito Federal" and "artigos 53..." as legislacao.
+- "Distrito Federal" as local.
+- "Constituição Federal" as legislacao.
+- "artigos 48 , inciso X , e 61 , II , alínea `` a ``" as part of "Constituição Federal".
+
+Wait, the text has "A matéria encontra-se regulamentada pela Constituição Federal em seus artigos 48 , inciso X , e 61 , II , alínea `` a `` , que são normas de repetição obrigatórias ." So "Constituição Federal" is legislacao, and the articles are part of it. Therefore, the entire reference is "Constituição Federal" with the articles. So the span should include both.
+
+So the final HTML would have:
+
+- pessoa for the names.
+- organizacao for the cabinet.
+- legislacao for the laws and the articles.
+- local for "Distrito Federal".
+
+Now, checking if there are any other entities. The "Código de Verificação" is not an entity. "42" is a number, not an entity. "GABINETE DO DESEMBARGADOR" is part of the organization's name. The "42" might be a room number, but not an entity.
+
+So the final HTML would be:
+
+<O Senhor Desembargador <span class="pessoa">ROBERVAL CASEMIRO BELINATI</span> - Vogal Acompanho o eminente Relator , pedindo vênia . O Senhor Desembargador <span class="pessoa">ARNOLDO CAMANHO DE ASSIS</span> - Vogal Senhor Presidente , peço vênia à ilustrada divergência para acompanhar o eminente Relator . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 42 Esta Corte já decidiu reiteradamente pela inconstitucionalidade , por vício de iniciativa , de normas propostas por parlamentar distrital que versem sobre organização e funcionamento da Administração Pública , nos termos dos <span class="legislacao">Lei Orgânica do Distrito Federal artigos 53 , 71 , § 1º , inc. IV , e 100 , inc . VI e X</span> todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . A matéria encontra-se regulamentada pela <span class="legislacao">Constituição Federal</span> em seus <span class="legislacao">artigos 48 , inciso X , e 61 , II , alínea `` a ``</span> , que são normas de repetição obrigatórias .
+
+Wait, but the "Lei Orgânica do Distrito Federal" is mentioned twice: once with the articles and once without. However, the articles are part of the same legislation. So the first mention includes the articles, and the second is just the law. But according to the guidelines, the entire legislation reference should be marked. However, the text says "todos da Lei Orgânica do Distrito Federal", which is the same law. So the entire reference is "Lei Orgânica do Distrito Federal", and the articles are part of it. Therefore, the first span should include "Lei Orgânica do Distrito Federal artigos 53..." and the second span is "Lei Orgânica do Distrito Federal". But that's redundant. Wait, the text says "todos da Lei Orgânica do Distrito Federal", which means all the articles mentioned are part of that law. Therefore, the entire legislation reference is "Lei Orgânica do Distrito Federal", and the articles are part of the same reference. Therefore, the span should include "Lei Orgânica do Distrito Federal" and the articles. However, the text has "artigos 53..." mentioned as part of the reference. Therefore, the entire phrase should be marked as legislacao. So perhaps the first span includes "Lei Orgânica do Distrito Federal artigos 53..." and the second is "Constituição Federal".
+
+But this might be overlapping. Let me check the exact text again:
+
+"nos termos dos artigos 53 , 71 , § 1º , inc. IV , e 100 , inc . VI e X , todos da Lei Orgânica do Distrito Federal . A matéria encontra-se regulamentada pela Constituição Federal em seus artigos 48 , inciso X , e 61 , II , alínea `` a `` , que são normas de repetição obrigatórias ."
+
+So the first part refers to "Lei Orgânica do Distrito Federal" with the articles, and the second refers to "Constituição Federal" with its articles. Therefore, the spans should be:
+
+<span class="legislacao">Lei Orgânica do Distrito Federal</span> and the articles are part of it. Wait, but the articles are mentioned in the text as part of the reference. So the entire reference is "Lei Orgânica do Distrito Federal" and the articles are part of it. Therefore, the span should include "Lei Orgânica do Distrito Federal" and the articles. But how to represent that in the text. The text says "nos termos dos artigos 53..." which are part of the legislation. Therefore, the entire reference is "Lei Orgânica do Distrito Federal", and the articles are part of it. Therefore, the span should be "Lei Orgânica do Distrito Federal" with the articles included. But the user's example includes the articles in the span. For example, "art. 71 da Lei 8.666/93" is marked as legislacao. Therefore, in this case, the entire reference, including the articles, should be marked. So the span would be "Lei Orgânica do Distrito Federal artigos 53, 71..." etc.
+
+Therefore, the correct approach is to mark "Lei Orgânica do Distrito Federal" and the articles as part of the same legislacao span. Similarly for the "Constituição Federal" and its articles.
+
+So the final HTML would have:
+
+<span class="legislacao">Lei Orgânica do Distrito Federal artigos 53 , 71 , § 1º , inc. IV , e 100 , inc . VI e X</span> todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . A matéria encontra-se regulamentada pela <span class="legislacao">Constituição Federal</span> em seus <span class="legislacao">artigos 48 , inciso X , e 61 , II , alínea `` a ``</span> , que são normas de repetição obrigatórias .
+
+But this might be redundant. Wait, the text says "todos da Lei Orgânica do Distrito Federal" which is the same law. So the first span is "Lei Orgânica do Distrito Federal artigos 53...", and the second is "Lei Orgânica do Distrito Federal". However, this is redundant. Alternatively, perhaps the articles are part of the legislation reference, so the entire phrase "Lei Orgânica do Distrito Federal" with the articles is marked once. But the text has "todos da Lei Orgânica do Distrito Federal", which is the same as the law. So maybe the articles are part of the legislation reference, so the span should include "Lei Orgânica do Distrito Federal" and the articles. Therefore, the span would be "Lei Orgânica do Distrito Federal artigos 53, 71...".
+
+But I'm not sure if that's the correct approach. However, based on the user's example, including the articles in the span is correct. Therefore, I'll proceed with that.
+</think>
+
+<O Senhor Desembargador <span class="pessoa">ROBERVAL CASEMIRO BELINATI</span> - Vogal Acompanho o eminente Relator , pedindo vênia . O Senhor Desembargador <span class="pessoa">ARNOLDO CAMANHO DE ASSIS</span> - Vogal Senhor Presidente , peço vênia à ilustrada divergência para acompanhar o eminente Relator . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 42 Esta Corte já decidiu reiteradamente pela inconstitucionalidade , por vício de iniciativa , de normas propostas por parlamentar distrital que versem sobre organização e funcionamento da Administração Pública , nos termos dos <span class="legislacao">Lei Orgânica do Distrito Federal artigos 53 , 71 , § 1º , inc. IV , e 100 , inc . VI e X</span> todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . A matéria encontra-se regulamentada pela <span class="legislacao">Constituição Federal</span> em seus <span class="legislacao">artigos 48 , inciso X , e 61 , II , alínea `` a ``</span> , que são normas de repetição obrigatórias . <span class="local">Distrito Federal</span>

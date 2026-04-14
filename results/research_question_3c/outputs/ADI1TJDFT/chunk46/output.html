@@ -1,0 +1,64 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about a legal action, mentioning various entities. 
+
+Starting with the first part: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". Here, "Ação Direta de Inconstitucionalidade" is a legal term, but it's not one of the specified entities. The number "20170020161362ADI" might be a case number, but I need to check if it's a jurisprudencia. However, the example output shows "ADI" as a jurisprudencia, so maybe the case number is part of that. Wait, the example output has "ADI" marked as jurisprudencia. Let me check the example output again.
+
+Looking at the example output provided by the user, they have "ADI" marked as jurisprudencia. So in the input text, "ADI" is part of the case number, which is a legal reference. So I should mark "ADI" as jurisprudencia. Also, the code "2018ACONT2JYXTK52JCSL251NVQ" might be a code, but since it's not a known entity type, it's left as is.
+
+Next, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 18". Here, "SILVANIO BARBOSA DOS SANTOS" is a person's name, so that's a pessoa. The "GABINETE DO DESEMBARGADOR" is an organization, so that's organizacao. The number "18" is a tempo? Wait, no. The number 18 is a numeral, but according to the guidelines, tempo is for dates, times, etc. Since 18 is just a number without context, it's not marked. So "GABINETE DO DESEMBARGADOR" is organizacao, and "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+
+Then, "Supremo Tribunal Federal" is an organization, so that's organizacao. "Ministro Celso de Mello" is a pessoa. 
+
+Looking at the part: "LEI Nº 10.640/1998 DO ESTADO DE SANTA CATARINA". "LEI Nº 10.640/1998" is legislacao. "ESTADO DE SANTA CATARINA" is a local, so that's local. 
+
+The phrase "AÇÃO DIRETA JULGADA PROCEDENTE" is part of the jurisprudencia, but the example output shows "ADI" as the jurisprudencia. Wait, in the example output, "ADI" is marked as jurisprudencia. So maybe the entire case number "20170020161362ADI" is considered a jurisprudencia. But the example output shows "ADI" as the only part marked. Let me check the example output again.
+
+In the example output provided by the user, the text is:
+
+"Ação Direta de Inconstitucionalidade <span class="jurisprudencia">ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 18 Nesse sentido , confira-se o entendimento do colendo <span class="organizacao">Supremo Tribunal Federal</span> , em arestos de relatoria do <span class="pessoa">Ministro Celso de Mello</span> : <span class="jurisprudencia">E M E N T A : AÇÃO DIRETA DE INCONSTITUCIONALIDADE - LEI Nº 10.640/1998 DO ESTADO DE SANTA CATARINA - DIPLOMA LEGISLATIVO QUE RESULTOU DE INICIATIVA PARLAMENTAR - CONCESSÃO DE VALE-TRANSPORTE A SERVIDORES PÚBLICOS , INDEPENDENTEMENTE DA DISTÂNCIA DO DESLOCAMENTO - USURPAÇÃO DO PODER DE INICIATIVA DO PROCESSO LEGISLATIVO RESERVADO , NOTADAMENTE , AO GOVERNADOR DO ESTADO - OFENSA AO PRINCÍPIO CONSTITUCIONAL DA SEPARAÇÃO DE PODERES - INCONSTITUCIONALIDADE FORMAL - AÇÃO DIRETA JULGADA PROCEDENTE ."
+
+Wait, in the example output, "ADI" is marked as jurisprudencia. So the case number "20170020161362ADI" is split into the code and "ADI". The code part is not marked, but "ADI" is. So I need to check if "ADI" is a jurisprudencia. Since "ADI" stands for Ação Direta de Inconstitucionalidade, which is a type of legal action, but in the example, it's marked as jurisprudencia. Maybe the entire case number is considered a jurisprudencia, but the example shows only "ADI" as marked. So perhaps the user's example is using "ADI" as the jurisprudencia identifier. 
+
+In the input text, the case number is "20170020161362ADI". The example output marks "ADI" as jurisprudencia. So I should mark "ADI" as jurisprudencia. The rest of the code is not marked. 
+
+Also, "LEI Nº 10.640/1998" is legislacao. "ESTADO DE SANTA CATARINA" is local. 
+
+So putting it all together, I need to mark:
+
+- "ADI" as jurisprudencia
+- "GABINETE DO DESEMBARGADOR" as organizacao
+- "SILVANIO BARBOSA DOS SANTOS" as pessoa
+- "Supremo Tribunal Federal" as organizacao
+- "Ministro Celso de Mello" as pessoa
+- "LEI Nº 10.640/1998" as legislacao
+- "ESTADO DE SANTA CATARINA" as local
+
+Other parts like numbers, codes, and generic terms are left as is. 
+
+Now, I need to make sure that all the entities are correctly marked. Let me go through the input text again step by step.
+
+Original text:
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 18 Nesse sentido , confira-se o entendimento do colendo Supremo Tribunal Federal , em arestos de relatoria do Ministro Celso de Mello : E M E N T A : AÇÃO DIRETA DE INCONSTITUCIONALIDADE - LEI Nº 10.640/1998 DO ESTADO DE SANTA CATARINA - DIPLOMA LEGISLATIVO QUE RESULTOU DE INICIATIVA PARLAMENTAR - CONCESSÃO DE VALE-TRANSPORTE A SERVIDORES PÚBLICOS , INDEPENDENTEMENTE DA DISTÂNCIA DO DESLOCAMENTO - USURPAÇÃO DO PODER DE INICIATIVA DO PROCESSO LEGISLATIVO RESERVADO , NOTADAMENTE , AO GOVERNADOR DO ESTADO - OFENSA AO PRINCÍPIO CONSTITUCIONAL DA SEPARAÇÃO DE PODERES - INCONSTITUCIONALIDADE FORMAL - AÇÃO DIRETA JULGADA PROCEDENTE ."
+
+Breaking it down:
+
+1. "Ação Direta de Inconstitucionalidade" – not an entity.
+2. "20170020161362ADI" – the "ADI" is marked as jurisprudencia.
+3. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – no entities.
+4. "GABINETE DO DESEMBARGADOR" – organizacao.
+5. "SILVANIO BARBOSA DOS SANTOS" – pessoa.
+6. "18" – not marked.
+7. "Nesse sentido , confira-se o entendimento do colendo Supremo Tribunal Federal" – "Supremo Tribunal Federal" is organizacao.
+8. "em arestos de relatoria do Ministro Celso de Mello" – "Ministro Celso de Mello" is pessoa.
+9. "E M E N T A : AÇÃO DIRETA DE INCONSTITUCIONALIDADE" – "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" is not an entity, but "ADI" is part of the case number, which is marked as jurisprudencia.
+10. "LEI Nº 10.640/1998" – legislacao.
+11. "ESTADO DE SANTA CATARINA" – local.
+12. The rest of the text doesn't have any other entities.
+
+So the final HTML should have the marked entities as per the example. I need to ensure that all the correct spans are added with the right classes.
+</think>
+
+Ação Direta de Inconstitucionalidade <span class="jurisprudencia">ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 18 Nesse sentido , confira-se o entendimento do colendo <span class="organizacao">Supremo Tribunal Federal</span> , em arestos de relatoria do <span class="pessoa">Ministro Celso de Mello</span> : <span class="jurisprudencia">E M E N T A : AÇÃO DIRETA DE INCONSTITUCIONALIDADE - <span class="legislacao">LEI Nº 10.640/1998</span> DO <span class="local">ESTADO DE SANTA CATARINA</span> - DIPLOMA LEGISLATIVO QUE RESULTOU DE INICIATIVA PARLAMENTAR - CONCESSÃO DE VALE-TRANSPORTE A SERVIDORES PÚBLICOS , INDEPENDENTEMENTE DA DISTÂNCIA DO DESLOCAMENTO - USURPAÇÃO DO PODER DE INICIATIVA DO PROCESSO LEGISLATIVO RESERVADO , NOTADAMENTE , AO GOVERNADOR DO ESTADO - OFENSA AO PRINCÍPIO CONSTITUCIONAL DA SEPARAÇÃO DE PODERES - INCONSTITUCIONALIDADE FORMAL - AÇÃO DIRETA JULGADA PROCEDENTE .

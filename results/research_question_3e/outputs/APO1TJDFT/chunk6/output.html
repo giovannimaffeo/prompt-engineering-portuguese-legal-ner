@@ -1,0 +1,38 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to understand the definitions for each entity. Let me go through them again. 
+
+Pessoa is for names of individuals, like "Ana Silva" or "Carlos de Souza". So I need to look for any names in the text. The input text mentions "Réu" which is a generic term for the defendant, so that's not a person. There's "professores substituídos" which is a role, not a name. So maybe no pessoa entities here.
+
+Organizacao includes public bodies, courts, etc. The text mentions "Varas de Fazenda Pública" which is a court, so that should be an organizacao. Also, "Código do Processo civil" is a law, so that's legislacao. Wait, the example shows "Código do Processo Civil" as legislacao. So I need to check if "Varas de Fazenda Pública" is an organization. Yes, it's a court, so organizacao.
+
+Tempo is for dates or time references. The text has "12 ( doze ) meses" which is a period, but not a specific date. So maybe not. The example had "31 de dezembro de 2016" as tempo, but here it's just months. So no tempo entities.
+
+Local is for specific places. The text mentions "Varas de Fazenda Pública" which is a court, but that's already covered as organizacao. There's no specific city or country mentioned here, so no local.
+
+Legislacao includes laws, codes, etc. The text has "Código do Processo civil" which is a code, so that's legislacao. Also, "artigo 20 , §4º do Código do Processo civil" refers to a specific article, so that should be part of the legislacao entity.
+
+Jurisprudencia is for legal precedents, like "REsp" or "Súmula". The text doesn't mention any specific jurisprudencia references, so maybe none here.
+
+Now, let me go through the input text again. 
+
+"SEJAM JULGADOS PROCEDENTES OS PEDIDOS para condenar o Réu ao pagamento das diferenças existentes entre os valores que vêm sendo pagos a títulos de proventos de aposentadoria ( nos quais o Réu tem desconsiderado a paridade no que toca às gratificações de cargo comissionado/função gratificada incorporada - quintos/ décimos ) e os proventos efetivamente devidos ( isto é , com a observância da paridade aqui tratada ) ; c. seja o Réu condenado a pagar os valores referentes às parcelas imprescritas , acrescidas da projeção de 12 ( doze ) meses , além das parcelas que vencerem no curso do processo e que eventualmente não estejam aqui incluídas ; d. seja o Réu condenado ao pagamento de custas processuais e honorários advocatícios , a serem fixados nos moldes do artigo 20 , §4º do Código do Processo civil ; Para formular tais pedidos alegou sua legitimidade para propor a demanda , falou da competência das Varas de Fazenda Pública e disse que `` A presente ação tem por finalidade , assegurar o direito dos professores substituídos nesta demanda ao pagamento das diferenças existentes entre os valores que vêm sendo pagos a título de proventos de aposentadoria ... e os proventos efetivamente devidos . ''"
+
+Looking for organizacao: "Varas de Fazenda Pública" is an organization. So that should be marked as organizacao. 
+
+Legislacao: "Código do Processo civil" and "artigo 20 , §4º do Código do Processo civil". The entire phrase "artigo 20 , §4º do Código do Processo civil" is part of the legislacao. So both "Código do Processo civil" and the full article reference should be in legislacao.
+
+Other parts: "Réu" is a generic term, not a person. "professores substituídos" is a role, not a name. "Varas de Fazenda Pública" is the organization. 
+
+So the HTML should have:
+
+- "Varas de Fazenda Pública" as organizacao
+- "Código do Processo civil" and the full article reference as legislacao
+
+Check if there are any other entities. The text mentions "12 ( doze ) meses" which is a time period but not a specific date, so not tempo. 
+
+So the final output should mark those two entities. Let me structure the HTML accordingly.
+</think>
+
+SEJAM JULGADOS PROCEDENTES OS PEDIDOS para condenar o Réu ao pagamento das diferenças existentes entre os valores que vêm sendo pagos a títulos de proventos de aposentadoria ( nos quais o Réu tem desconsiderado a paridade no que toca às gratificações de cargo comissionado/função gratificada incorporada - quintos/ décimos ) e os proventos efetivamente devidos ( isto é , com a observância da paridade aqui tratada ) ; c. seja o Réu condenado a pagar os valores referentes às parcelas imprescritas , acrescidas da projeção de 12 ( doze ) meses , além das parcelas que vencerem no curso do processo e que eventualmente não estejam aqui incluídas ; d. seja o Réu condenado ao pagamento de custas processuais e honorários advocatícios , a serem fixados nos moldes do <span class="legislacao">artigo 20 , §4º do Código do Processo civil</span> ; Para formular tais pedidos alegou sua legitimidade para propor a demanda , falou da competência das <span class="organizacao">Varas de Fazenda Pública</span> e disse que `` A presente ação tem por finalidade , assegurar o direito dos professores substituídos nesta demanda ao pagamento das diferenças existentes entre os valores que vêm sendo pagos a título de proventos de aposentadoria ... e os proventos efetivamente devidos . ''

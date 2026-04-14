@@ -1,0 +1,54 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify which parts fit each entity category. Let me go through the text step by step.
+
+The input starts with "A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos nesta Lei Orgânica , cabe : ( ... ) § 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Governo , Órgãos e entidades da administração pública ; '' '' Art . 100 . Compete privativamente ao Governador do Distrito Federal : ( ... ) Fls ."
+
+Looking for entities:
+
+1. "Lei Orgânica" – this is a legal document, so it's legislacao. I should mark "Lei Orgânica" with class="legislacao".
+
+2. "Secretarias de Governo" – "Secretarias" is a part of an organization, but the full name might be an organization. However, the text mentions "Secretarias de Governo, Órgãos e entidades da administração pública". Here, "Secretarias de Governo" and "Órgãos" are organizations. So I need to mark "Secretarias de Governo" as organizacao and "Órgãos" as organizacao. Wait, but "Órgãos" is a generic term. Wait, the definition says "expressões que identificam entidades coletivas formalmente constituídas". "Órgãos" here might refer to specific organs, so maybe they should be marked. But the text says "Secretarias de Governo, Órgãos e entidades da administração pública". The "Secretarias de Governo" are specific, so they are organizations. "Órgãos" could be part of an organization, but maybe they are also organizations. However, the user's example might have "Órgãos" as part of the list. Wait, the original text has "Secretarias de Governo , Órgãos e entidades da administração pública". The "Secretarias de Governo" are specific, so they are organizations. "Órgãos" might be part of the same list, but the user's example might not mark them. Wait, the user's example in the output might have "Secretarias de Governo" as organizacao. Let me check the sample output provided by the user. Wait, the user hasn't provided a sample output, but the task says to return only the annotated text. So I need to decide based on the definitions.
+
+"Secretarias de Governo" is a specific organization, so mark as organizacao. "Órgãos" is a generic term, so not marked. "entidades da administração pública" – "entidades" is a generic term, so not marked. 
+
+Next, "Art. 100" – this is a reference to an article in a legal document, so it's part of legislacao. Wait, the article number is part of the legislation, so "Art. 100" should be marked as legislacao? Or is it part of the text? Wait, the user's example might have "Art. 100" as part of the legislation. But the definition of legislacao includes "dispositivos internos claramente associados a essas normas". So "Art. 100" is part of the legislation, so mark as legislacao.
+
+Also, "Lei Orgânica" is a law, so legislacao. 
+
+Now, "Governador do Distrito Federal" – "Governador" is a person, but the full title is "Governador do Distrito Federal". Wait, the definition of pessoa is names of individuals. "Governador" is a title, not a name. So it's not a pessoa. However, the text mentions "Governador do Distrito Federal" as an entity. Wait, the user's example might have "Governador" as a person? Wait, no. The definition says "nomes próprios usados para identificar indivíduos específicos". "Governador" is a title, not a name. So it's not a pessoa. So "Governador do Distrito Federal" is not a pessoa. 
+
+"Distrito Federal" is a local, so mark as local. 
+
+"Fls." – this is an abbreviation for "Folhas" (pages), which is a reference to a document, but not sure if it's a local, legislacao, etc. The user's example might not mark it. Since it's not a specific entity, leave it as is.
+
+Putting it all together:
+
+- "Lei Orgânica" → legislacao
+- "Secretarias de Governo" → organizacao
+- "Órgãos" → maybe not, since it's a generic term
+- "Art. 100" → legislacao
+- "Distrito Federal" → local
+
+Wait, the text has "Secretarias de Governo , Órgãos e entidades da administração pública". The "Secretarias de Governo" are specific, so organizacao. "Órgãos" is a generic term, so not marked. "entidades da administração pública" is also generic. 
+
+So the final HTML would have:
+
+<span class="legislacao">Lei Orgânica</span>
+<span class="organizacao">Secretarias de Governo</span>
+<span class="legislacao">Art. 100</span>
+<span class="local">Distrito Federal</span>
+
+Other parts like "Governador" are not marked as pessoa, since it's a title. "Fls." is not marked. 
+
+So the annotated text would have those spans. Let me check again for any other entities. 
+
+The text mentions "leis complementares e ordinárias" – these are types of laws, but the user's definition of legislacao is about specific norms. "Leis complementares e ordinárias" are types, not specific laws, so not marked. 
+
+"§ 1º" is a section, but not an entity. 
+
+So the final output should have the spans for the identified entities.
+</think>
+
+A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos nesta <span class="legislacao">Lei Orgânica</span> , cabe : ( ... ) <span class="jurisprudencia">§ 1º</span> Compete privativamente ao <span class="pessoa">Governador</span> do <span class="local">Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class="organizacao">Secretarias de Governo</span> , <span class="organizacao">Órgãos</span> e entidades da administração pública ; '' '' <span class="legislacao">Art</span>. 100 . Compete privativamente ao <span class="pessoa">Governador</span> do <span class="local">Distrito Federal</span> : ( ... ) <span class="tempo">Fls</span> .

@@ -1,0 +1,173 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have the appropriate class.
+
+First, I need to go through the text carefully and identify each entity based on the definitions provided. Let me start by reading through the text again.
+
+The text mentions "Lei nº 5.815 , de 3 de abril de 2017". "Lei" is legislation, so that's a legislacao entity. The date "3 de abril de 2017" is a tempo entity. The "Lei Orgânica do Distrito Federal" is another legislacao. 
+
+Next, "Chefe do Poder Executivo" refers to a person, but wait, the definition says that only names should be marked. "Chefe do Poder Executivo" is a title, not a name, so it's not a pessoa. Similarly, "Procuradoria-Geral" is an organization. 
+
+"Distrito Federal" is a local entity. "Governador" is a title, not a name, so not pessoa. "Conselhos Profissionais" is an organization. 
+
+Looking for other entities: "artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII" are parts of the legislation, so they should be part of the legislacao entity. 
+
+"voto" is a jurisprudencia? Wait, no. The term "voto" here is part of a legal argument, not a specific jurisprudência reference. So it's not marked. 
+
+"REsp" or similar numbers would be jurisprudencia, but there's no such mention here. 
+
+Check for any other dates or times. "3 de abril de 2017" is already marked as tempo. 
+
+"Distrito Federal" is a local. 
+
+"Procuradoria-Geral" is an organization. 
+
+"Conselhos Profissionais" is an organization. 
+
+So, putting it all together, I need to mark:
+
+- "Lei nº 5.815" as legislacao
+- "3 de abril de 2017" as tempo
+- "Lei Orgânica do Distrito Federal" as legislacao
+- "Distrito Federal" as local
+- "Procuradoria-Geral" as organizacao
+- "Conselhos Profissionais" as organizacao
+
+Wait, the text says "Chefe do Poder Executivo" – but that's not a name. "Governador" is a title, not a name. So no pessoa here. 
+
+"artigo53" etc. are parts of the legislation, so they should be included in the legislacao span. 
+
+Make sure that the entire "Lei nº 5.815 , de 3 de abril de 2017" is marked as legislacao, including the date. Wait, no. The date is a tempo, but the entire "Lei nº 5.815 , de 3 de abril de 2017" is a legislation reference. So the entire phrase should be a legislacao entity. Similarly, "Lei Orgânica do Distrito Federal" is another legislacao. 
+
+Wait, the user's instructions say that "Legislação é definida como: expressões que identifiquem normas jurídicas... Apenas referências a normas devem ser marcadas." So the entire "Lei nº 5.815 , de 3 de abril de 2017" is a legislacao. The date is part of that reference, so it's included in the legislacao span. Similarly, "Lei Orgânica do Distrito Federal" is a legislacao. 
+
+So the HTML would have:
+
+<span class="legislacao">Lei nº 5.815 , de 3 de abril de 2017</span>
+<span class="tempo">3 de abril de 2017</span> – but wait, the date is part of the legislacao span. Wait, the date is part of the legislation reference. So the entire "Lei nº 5.815 , de 3 de abril de 2017" is a legislacao, so the date is included in that span. 
+
+Wait, the user's guidelines say that "Apenas expressões que indiquem diretamente um ponto ou período no tempo devem ser marcadas." So the date "3 de abril de 2017" is a tempo entity. But in the legislation reference, it's part of the legislation. So how to handle that? 
+
+The example in the guidelines for legislação says "Lei nº 8.666/93" and "art. 71 da Lei 8.666/93". So the entire legislation reference is marked as legislacao, including the date. So in this case, "Lei nº 5.815 , de 3 de abril de 2017" is a legislacao, so the date is part of that span. Therefore, the date is not a separate tempo entity. 
+
+Wait, but the date is part of the legislation reference. So the entire phrase "Lei nº 5.815 , de 3 de abril de 2017" is a legislacao. So the date is included in the legislacao span, not as a separate tempo. 
+
+Similarly, "Lei Orgânica do Distrito Federal" is a legislacao. 
+
+So, the date "3 de abril de 2017" is part of the legislacao entity. Therefore, it's not a separate tempo. 
+
+But the user's guidelines for tempo say that dates in explicit formats like "3 de abril de 2017" should be marked as tempo. However, if they are part of a legislation reference, they are part of the legislacao. So which takes precedence? 
+
+The guidelines for legislacao say that the entire reference to the norm should be marked. So even if the date is part of it, it's included in the legislacao. Therefore, the date is not marked as tempo. 
+
+So, in the text, the date is part of the legislacao entity. Therefore, the HTML would have:
+
+<span class="legislacao">Lei nº 5.815 , de 3 de abril de 2017</span>
+<span class="legislacao">Lei Orgânica do Distrito Federal</span>
+<span class="local">Distrito Federal</span>
+<span class="organizacao">Procuradoria-Geral</span>
+<span class="organizacao">Conselhos Profissionais</span>
+
+Wait, but the date is part of the legislacao, so the tempo is not marked separately. 
+
+So the final HTML would have those spans. Let me check again:
+
+Original text:
+
+"julgo procedente o pedido para declarar , com efeitos '' ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da Lei nº 5.815 , de 3 de abril de 2017 , por violação ao disposto no artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal . É o voto . Argumenta que a matéria é competência privativa do Chefe do Poder Executivo e que o poder de polícia é atividade típica da administração pública e exclusiva de Estado , que não pode ser transferida aos Conselhos Profissionais , incorrendo a norma também em vício material de inconstitucionalidade . Ao contrário do que argumenta a Procuradoria-Geral , a lei apenas autorizou o Governador , segundo sua conveniência , a celebrar convênios com os Conselhos Profissionais que menciona , para a elaboração de parecer opinativo não Fls ."
+
+So:
+
+- "Lei nº 5.815 , de 3 de abril de 2017" → legislacao
+- "Lei Orgânica do Distrito Federal" → legislacao
+- "Distrito Federal" → local
+- "Procuradoria-Geral" → organizacao
+- "Conselhos Profissionais" → organizacao
+
+Therefore, the HTML would have those spans. Also, the date "3 de abril de 2017" is part of the legislacao, so it's included in that span. 
+
+So the final output would have:
+
+<span class="legislacao">Lei nº 5.815 , de 3 de abril de 2017</span>, por violação ao disposto no artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . É o voto . Argumenta que a matéria é competência privativa do Chefe do Poder Executivo e que o poder de polícia é atividade típica da administração pública e exclusiva de Estado , que não pode ser transferida aos <span class="organizacao">Conselhos Profissionais</span> , incorrendo a norma também em vício material de inconstitucionalidade . Ao contrário do que argumenta a <span class="organizacao">Procuradoria-Geral</span> , a lei apenas autorizou o Governador , segundo sua conveniência , a celebrar convênios com os <span class="organizacao">Conselhos Profissionais</span> que menciona , para a elaboração de parecer opinativo não Fls .
+
+Wait, but "Distrito Federal" is a local, so it should be marked as local. In the text, "Lei Orgânica do Distrito Federal" is part of the legislacao, so "Distrito Federal" is part of that legislacao entity. Therefore, the entire "Lei Orgânica do Distrito Federal" is a legislacao, and "Distrito Federal" is part of it, so it's already included. 
+
+So the local entity is "Distrito Federal" as part of the legislacao. But the user's guidelines say that local entities should be marked even if they are part of another entity. Wait, no. The guidelines say that local entities are explicit names of places. So in the phrase "Lei Orgânica do Distrito Federal", "Distrito Federal" is a local, so it should be marked as local. However, the entire "Lei Orgânica do Distrito Federal" is a legislacao. So how to handle that? 
+
+The guidelines for legislacao say that the entire reference should be marked. So even if "Distrito Federal" is a local, it's part of the legislacao. Therefore, the local entity is not marked separately. Wait, but the user's guidelines for local say that "expressões que correspondem a lugares explicitamente identificáveis" should be marked. So "Distrito Federal" is a local, but it's part of the legislacao. So should it be marked as both? Or is it part of the legislacao and thus not marked as local? 
+
+The user's instructions say to use the tags for the entities. So if a local is part of a legislacao, should it be marked as both? But the example in the guidelines for legislacao includes "Lei nº 8.666/93" and "art. 71 da Lei 8.666/93". So the entire reference is marked as legislacao. Therefore, in this case, "Lei Orgânica do Distrito Federal" is a legislacao, and "Distrito Federal" is part of that. So the local is not marked separately. 
+
+Wait, but the user's guidelines for local say that "Apenas nomes próprios de locais devem ser marcados". So "Distrito Federal" is a local and should be marked as local. However, since it's part of the legislacao, do we mark it as both? 
+
+The user's instructions say to mark each entity. So even if a local is part of a legislacao, it should be marked as local. But the example in the guidelines for legislacao includes "Lei Orgânica do Distrito Federal" as a legislacao. Therefore, the entire phrase is marked as legislacao, and the local is part of it. But the user's guidelines for local say that local entities should be marked. So perhaps the local is marked as well. 
+
+This is a bit conflicting. Let me check the user's guidelines again. 
+
+Under "Legislação" definition: "expressões que identifiquem normas jurídicas... Apenas referências a normas devem ser marcadas." So the entire reference to the law is marked as legislacao. 
+
+Under "Local": "expressões que correspondem a lugares explicitamente identificáveis... Apenas nomes próprios de locais devem ser marcados". 
+
+So in the phrase "Lei Orgânica do Distrito Federal", "Distrito Federal" is a local. But since it's part of the legislacao reference, should it be marked as both? 
+
+The user's example for legislacao includes "Lei Orgânica do Distrito Federal" as a legislacao. Therefore, the entire phrase is marked as legislacao. The "Distrito Federal" is part of that, so it's not marked separately. 
+
+Therefore, in the HTML, "Lei Orgânica do Distrito Federal" is a legislacao, and "Distrito Federal" is part of that. So the local is not marked separately. 
+
+But the user's instructions say to mark all entities. So if "Distrito Federal" is a local, it should be marked. However, if it's part of a legislacao, which is a higher-level entity, should it be marked as both? 
+
+This requires careful judgment. The user's example for legislacao includes "Lei Orgânica do Distrito Federal" as a legislacao. So the entire phrase is marked as legislacao. Therefore, the local "Distrito Federal" is part of that, and thus not marked separately. 
+
+Therefore, in the HTML, "Lei Orgânica do Distrito Federal" is a legislacao, and "Distrito Federal" is not marked separately. 
+
+So the final HTML would have:
+
+<span class="legislacao">Lei nº 5.815 , de 3 de abril de 2017</span> , por violação ao disposto no artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . É o voto . Argumenta que a matéria é competência privativa do Chefe do Poder Executivo e que o poder de polícia é atividade típica da administração pública e exclusiva de Estado , que não pode ser transferida aos <span class="organizacao">Conselhos Profissionais</span> , incorrendo a norma também em vício material de inconstitucionalidade . Ao contrário do que argumenta a <span class="organizacao">Procuradoria-Geral</span> , a lei apenas autorizou o Governador , segundo sua conveniência , a celebrar convênios com os <span class="organizacao">Conselhos Profissionais</span> que menciona , para a elaboração de parecer opinativo não Fls .
+
+But wait, the date "3 de abril de 2017" is part of the legislacao, so it's included in that span. 
+
+The user's example for tempo says that "3 de abril de 2017" should be marked as tempo. However, in the legislation reference, it's part of the legislacao. So which takes precedence? 
+
+The user's guidelines for legislacao say that the entire reference to the norm should be marked. Therefore, the date is part of the legislacao, and thus not marked as tempo. 
+
+Therefore, the final answer should have the legislacao spans as described, and the other entities as organizacao and local. 
+
+Wait, "Distrito Federal" is a local, but since it's part of the legislacao, should it be marked as local? According to the guidelines, local entities should be marked even if they are part of another entity. For example, if a local is part of a legislation reference, it should still be marked as local. 
+
+But the example given in the guidelines for legislacao includes "Lei Orgânica do Distrito Federal" as a legislacao. So the entire phrase is marked as legislacao. The "Distrito Federal" is part of that. But according to the local definition, it should be marked. 
+
+This is a conflict. To resolve this, perhaps the user expects that when a local is part of a legislacao, it's not marked separately. Alternatively, it should be marked as both. 
+
+But the user's instructions say to mark all entities. So if "Distrito Federal" is a local, it should be marked as local, even if it's part of a legislacao. 
+
+In that case, the HTML would have:
+
+<span class="legislacao">Lei nº 5.815 , de 3 de abril de 2017</span> , por violação ao disposto no artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII , todos da <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> . 
+
+But that would mark "Distrito Federal" as local within the legislacao. 
+
+Alternatively, the entire "Lei Orgânica do Distrito Federal" is a legislacao, and "Distrito Federal" is part of that, so it's not marked separately. 
+
+This is a bit ambiguous. To follow the user's example, where "Lei Orgânica do Distrito Federal" is marked as legislacao, it's likely that "Distrito Federal" is part of that and not marked separately. 
+
+Therefore, the final HTML would have the spans as previously mentioned. 
+
+So, the answer is the text with the following entities marked:
+
+- "Lei nº 5.815 , de 3 de abril de 2017" → legislacao
+- "Lei Orgânica do Distrito Federal" → legislacao
+- "Procuradoria-Geral" → organizacao
+- "Conselhos Profissionais" → organizacao
+- "Distrito Federal" → local (if it's not part of the legislacao, but according to the example, it's part of the legislacao, so maybe not)
+
+Wait, the user's example for local includes "Distrito Federal" as a local. So if "Distrito Federal" is a local, it should be marked as such. But if it's part of a legislacao, should it be marked as both? 
+
+The user's guidelines for local say that "expressões que correspondem a lugares explicitamente identificáveis... Apenas nomes próprios de locais devem ser marcados". So "Distrito Federal" is a local and should be marked. However, in the context of the legislacao, it's part of the legislation reference. 
+
+But the user's example for legislacao includes "Lei Orgânica do Distrito Federal" as a legislacao. So the entire phrase is marked as legislacao, and the local is part of that. 
+
+Therefore, the local "Distrito Federal" is not marked separately. 
+
+Thus, the final answer is as previously outlined.
+</think>
+
+<span class="legislacao">Lei nº 5.815 , de 3 de abril de 2017</span> , por violação ao disposto no artigo53 , `` caput '' e § 1º , artigo 71 , § 1º , IVe artigo100 , incisos IV , VI , X e XXIII , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . É o voto . Argumenta que a matéria é competência privativa do Chefe do Poder Executivo e que o poder de polícia é atividade típica da administração pública e exclusiva de Estado , que não pode ser transferida aos <span class="organizacao">Conselhos Profissionais</span> , incorrendo a norma também em vício material de inconstitucionalidade . Ao contrário do que argumenta a <span class="organizacao">Procuradoria-Geral</span> , a lei apenas autorizou o Governador , segundo sua conveniência , a celebrar convênios com os <span class="organizacao">Conselhos Profissionais</span> que menciona , para a elaboração de parecer opinativo não Fls .

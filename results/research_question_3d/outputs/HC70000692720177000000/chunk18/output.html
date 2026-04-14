@@ -1,0 +1,48 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to carefully read the input text and look for any mentions that fit the definitions provided. Let's go through the text step by step.
+
+The text starts with "288 do CPPM". CPPM is likely an acronym for a legal document. According to the guidelines, legislação includes laws, codes, etc. So "CPPM" might be a law or regulation. But wait, the example given for legislação includes things like "Lei nº 8.666/93" or "Constituição Federal". Here, "288 do CPPM" seems like an article from a law. So "CPPM" should be marked as legislação. But wait, the user's example mentions "CPPM" as a possible legislation. However, I need to check if "CPPM" is a known legal code. If I'm unsure, maybe it's safer to mark it as legislação since it's part of a legal reference.
+
+Next, there's a mention of "e-mail". The guidelines say that "e-mail" is not a local, but it's part of a communication method. However, the text says "meio de comunicação por via eletrônica", which is a description, not a specific entity. So "e-mail" isn't an entity here.
+
+Looking for "tempo" (time). The text mentions "os tempos atuais" which is a general reference to current times. But according to the guidelines, "tempo" should be explicit dates or time references. "Tempos atuais" is a general term, not an explicit date, so it shouldn't be marked as tempo.
+
+"Juiz" is mentioned, but according to the definitions, "juiz" is a generic term, not a specific person. So it shouldn't be marked as pessoa.
+
+"Escrivães" refers to court clerks, which are part of an organization. But the guidelines say that organizations are formal entities like courts or tribunals. "Escrivães" might be part of an organization, but the text doesn't mention a specific organization name. So maybe not.
+
+"Juíza Castrense" refers to the Military Justice. "Castrense" is related to the Military Justice system, which is an organization. Wait, the guidelines mention that expressions like "Tribunal de Contas" are organizations. "Juíza Castrense" is part of the Military Justice, which is an organization. So "Juíza Castrense" might be an organization. Wait, but the term "Juíza" is a generic term for a judge, not a specific person. However, "Castrense" refers to the Military Justice system. So maybe "Juíza Castrense" is part of an organization. Wait, the text says "no âmbito desta Justiça Castrense", which refers to the Military Justice. So "Justiça Castrense" is an organization. Therefore, "Justiça Castrense" should be marked as organizacao.
+
+Wait, the original text says "esta Justiça Castrense". So "Justiça Castrense" is the organization. So I should mark "Justiça Castrense" as organizacao.
+
+Other parts: "súmula" is mentioned, but it's used generically. The guidelines say that generic terms like "súmula" shouldn't be marked unless they refer to a specific one. Since the text doesn't mention a specific súmula, it's not marked.
+
+"Grifo nosso" refers to the author's emphasis, which is not an entity.
+
+So putting it all together:
+
+- "288 do CPPM" is legislation (CPPM is the code, so "CPPM" is marked as legislação).
+- "Justiça Castrense" is an organization.
+- "e-mail" is not an entity.
+- "tempos atuais" is not a specific time, so no mark.
+
+Wait, the user's example in the guidelines has "CPPM" as legislation. So in the input text, "288 do CPPM" is an article of a legal code, so "CPPM" should be marked as legislação.
+
+So the HTML should have:
+
+<span class="legislacao">CPPM</span>
+
+And "Justiça Castrense" as <span class="organizacao">Justiça Castrense</span>.
+
+Other parts: "e-mail" is not an entity. "Juiz" is a generic term. "Escrivães" is part of the organization, but the text doesn't mention a specific organization name. So only "Justiça Castrense" is marked as organizacao.
+
+So the final HTML would have those two tags. Let me check again.
+
+Original text: "o referido dispositivo deve ser interpretado à luz dos tempos atuais , sendo certo que o e-mail consubstancia-se em meio de comunicação por via eletrônica utilizado no âmbito desta Justiça Castrense e , em especial , no caso em análise ."
+
+Here, "Justiça Castrense" is the organization. So mark that. "CPPM" is the legislation. The rest doesn't have any other entities. So the output should have those two spans.
+</think>
+
+<span class="legislacao">CPPM</span> estabeleça que as `` ( ... ) intimações e notificações , para a prática de atos ou seu conhecimento no curso do processo , poderão , salvo determinação especial do juiz , ser feitas pelos escrivães às partes , testemunhas e peritos , por meio de carta , telegrama ou comunicação telefônica ( ... ) '' ( Grifo nosso ) , o referido dispositivo deve ser interpretado à luz dos tempos atuais , sendo certo que o e-mail consubstancia-se em meio de comunicação por via eletrônica utilizado no âmbito desta <span class="organizacao">Justiça Castrense</span> e , em especial , no caso em análise .

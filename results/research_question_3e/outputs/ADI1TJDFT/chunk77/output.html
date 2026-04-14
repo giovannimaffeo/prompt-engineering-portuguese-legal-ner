@@ -1,0 +1,42 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a given legal text, marking specific entities with appropriate tags. First, I need to understand the entities to identify: pessoa, organização, tempo, local, legislação, and jurisprudência. Each should be wrapped in a <span> with the correct class.
+
+Looking at the input text: 
+
+"O Governador do Distrito Federal e a Procuradora-Geral do Distrito Federal , esta última atuando na qualidade de curadora do ato normativo impugnado , manifestam-se pela improcedência do pedido , destacando que a delegação do exercício do poder de polícia dar-se-á sob a supervisão dos órgãos públicos encarregados da fiscalização . O Procurador-Geral de Justiça , na qualidade de custus legis , manifesta-se pelo conhecimento e pela procedência do pedido . É a síntese do que interessa . Para a análise da questão , transcrevo a Lei n° 5.815/2017 , verbis : LEI Nº 5.815 , DE 3 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) Fls ."
+
+First, I'll go through each part. 
+
+"Governador do Distrito Federal" – "Governador" is a title, not a name, so not a pessoa. "Distrito Federal" is a local entity. Wait, according to the guidelines, local is defined as explicit places like cities, states, etc. "Distrito Federal" is a specific region, so it should be marked as local. But the user's example had "COMARCA DE BELO HORIZONTE" as local. So "Distrito Federal" is a local.
+
+Then "Procuradora-Geral do Distrito Federal" – "Procuradora-Geral" is a title, not a name. The "Distrito Federal" again is local. The "Procuradora-Geral" is a position, not a pessoa. 
+
+"esta última" refers to the Procuradora-Geral, which is a title. 
+
+"manifestam-se pela improcedência do pedido" – no entities here.
+
+"destacando que a delegação do exercício do poder de polícia dar-se-á sob a supervisão dos órgãos públicos encarregados da fiscalização." – "órgãos públicos" is a general term, not a specific organization, so not marked.
+
+Next sentence: "O Procurador-Geral de Justiça , na qualidade de custus legis , manifesta-se pelo conhecimento e pela procedência do pedido ." – "Procurador-Geral de Justiça" is a title, not a name. "custus legis" is a legal term, not an entity.
+
+Then "Para a análise da questão , transcrevo a Lei n° 5.815/2017 , verbis : LEI Nº 5.815 , DE 3 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) Fls ."
+
+Here, "Lei n° 5.815/2017" is legislation. The full "LEI Nº 5.815 , DE 3 DE ABRIL DE 2017" should be marked as legislação. "3 DE ABRIL DE 2017" is a date, so tempo. "Deputado Rafael Prudente" is a person, so pessoa.
+
+Now, checking the guidelines again. For local, "Distrito Federal" is a specific location. For legislação, the full law reference. For tempo, the date. For pessoa, "Rafael Prudente" is a name. 
+
+Wait, in the input, the law is mentioned as "Lei n° 5.815/2017" and then "LEI Nº 5.815 , DE 3 DE ABRIL DE 2017". The user example had "art.61 , §1º , da Lei nº 9.430/96" as legislação. So the full law reference should be marked. Also, the date "3 DE ABRIL DE 2017" is a tempo.
+
+So putting it all together:
+
+- "Distrito Federal" as local.
+- "Lei n° 5.815/2017" as legislação.
+- "3 DE ABRIL DE 2017" as tempo.
+- "Rafael Prudente" as pessoa.
+
+The rest are titles or generic terms. The "Deputado" is a title, so not a pessoa. Only the name "Rafael Prudente" is marked as pessoa.
+
+So the output should have those entities marked with the correct classes.
+</think>
+
+O <span class="local">Distrito Federal</span> e a <span class="organizacao">Procuradora-Geral do Distrito Federal</span>, esta última atuando na qualidade de curadora do ato normativo impugnado, manifestam-se pela improcedência do pedido, destacando que a delegação do exercício do poder de polícia dar-se-á sob a supervisão dos órgãos públicos encarregados da fiscalização. O <span class="organizacao">Procurador-Geral de Justiça</span>, na qualidade de custus legis, manifesta-se pelo conhecimento e pela procedência do pedido. É a síntese do que interessa. Para a análise da questão, transcrevo a <span class="legislacao">Lei n° 5.815/2017</span>, verbis: <span class="legislacao">LEI Nº 5.815, DE 3 DE ABRIL DE 2017</span> (Autoria do Projeto: <span class="pessoa">Deputado Rafael Prudente</span>) <span class="tempo">3 DE ABRIL DE 2017</span> Fls.

@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. The input is: "SERVIDOR PÚBLICO APOSENTADO COM FUNDAMENTO NO ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005 . PARIDADE ENTRE SERVIDORES INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 ."
+
+Let me break it down. The first part mentions "SERVIDOR PÚBLICO APOSENTADO" – that's a public servant retired. "SERVIDOR" here is a person, so I should mark "SERVIDOR PÚBLICO APOSENTADO" as pessoa? Wait, but "SERVIDOR" is a title, maybe. Wait, the user's example output might have "SERVIDOR PÚBLICO APOSENTADO" as pessoa. Let me check the example output they provided. Wait, the user hasn't given an example output yet. Wait, the user provided the input and the output. Wait, looking back, the user's example output is the one they want. Wait, no, the user provided the input and the output is what they want. Wait, the user's instruction says to return the text with HTML tags. Let me focus on the input.
+
+So, the text starts with "SERVIDOR PÚBLICO APOSENTADO COM FUNDAMENTO NO ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005 . PARIDADE ENTRE SERVIDORES INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 ."
+
+Looking for entities:
+
+- "SERVIDOR PÚBLICO APOSENTADO" – this refers to a retired public servant. So "SERVIDOR" is a person? Or is it an organization? Wait, "SERVIDOR PÚBLICO" is a title, but the individual is a person. So maybe "SERVIDOR PÚBLICO APOSENTADO" is a person. But the exact term might be a title. However, the user's example might have "SERVIDOR" as pessoa. Let me check the example output. Wait, the user hasn't provided an example output yet. Wait, the user's instruction says to return the text with the HTML tags. So I need to process the input.
+
+Next, "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" – this is legislation. "EMENDA CONSTITUCIONAL 47/2005" is a constitutional amendment, so that's legislacao. The "ARTIGO 3º" is part of the legislation. So "ARTIGO 3º" and "EMENDA CONSTITUCIONAL 47/2005" should be marked as legislacao.
+
+"PARIDADE ENTRE SERVIDORES INATIVOS E ATIVOS" – "PARIDADE" is a legal term, but not an entity. "SERVIDORES INATIVOS E ATIVOS" refers to people, so "SERVIDORES" would be pessoa.
+
+"RECONHECIMENTO DO DIREITO" – "DIREITO" is a legal term, but not an entity. "RECONHECIMENTO" is a verb, not an entity.
+
+"1 ." – this is a numeral, maybe a point or a reference, but not an entity.
+
+So, the entities to mark:
+
+- "SERVIDOR PÚBLICO APOSENTADO" as pessoa (assuming it refers to a person)
+- "ARTIGO 3º" as legislacao
+- "EMENDA CONSTITUCIONAL 47/2005" as legislacao
+- "SERVIDORES" as pessoa (since they refer to people)
+
+Wait, but "SERVIDORES" is plural. The original text has "SERVIDORES INATIVOS E ATIVOS" – so "SERVIDORES" is part of the term, so maybe "SERVIDORES" should be marked as pessoa.
+
+So, putting it all together:
+
+- "SERVIDOR PÚBLICO APOSENTADO" → pessoa
+- "ARTIGO 3º" → legislacao
+- "EMENDA CONSTITUCIONAL 47/2005" → legislacao
+- "SERVIDORES" → pessoa
+
+Wait, but the original text has "SERVIDOR PÚBLICO APOSENTADO" and later "SERVIDORES INATIVOS E ATIVOS". So "SERVIDOR" and "SERVIDORES" are both referring to people. So in the first part, "SERVIDOR PÚBLICO APOSENTADO" is a person, and in the second part, "SERVIDORES" is also a person. So both should be marked as pessoa.
+
+So the HTML would be:
+
+<span class="pessoa">SERVIDOR PÚBLICO APOSENTADO</span> COM FUNDAMENTO NO <span class="legislacao">ARTIGO 3º</span> , <span class="legislacao">CAPUT</span> E <span class="legislacao">PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005</span> . PARIDADE ENTRE <span class="pessoa">SERVIDORES</span> INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 .
+
+Wait, but "CAPUT" and "PARÁGRAFO ÚNICO" are parts of the legislation. So maybe "CAPUT" and "PARÁGRAFO ÚNICO" should also be marked as legislacao. But the original text says "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005". So the entire phrase "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" is part of the legislation. So maybe the entire phrase should be marked as legislacao. But the user's instruction says to mark each entity. So perhaps each part is a separate entity. Wait, but the user's example might have different handling. Alternatively, maybe the entire "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" is a single legislacao entity. But the user's instruction says to mark each entity. So perhaps "ARTIGO 3º" is a part of the legislation, and "EMENDA CONSTITUCIONAL 47/2005" is another part. But the way it's written, it's all part of the same legislation. So maybe the entire phrase is a single legislacao entity. However, the user's example might have split them. Alternatively, maybe "EMENDA CONSTITUCIONAL 47/2005" is the legislation, and "ARTIGO 3º" is part of it. So perhaps "ARTIGO 3º" is part of the legislation, and "EMENDA CONSTITUCIONAL 47/2005" is the legislation. So both should be marked as legislacao.
+
+So the final HTML would have:
+
+<span class="pessoa">SERVIDOR PÚBLICO APOSENTADO</span> COM FUNDAMENTO NO <span class="legislacao">ARTIGO 3º</span> , <span class="legislacao">CAPUT</span> E <span class="legislacao">PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005</span> . PARIDADE ENTRE <span class="pessoa">SERVIDORES</span> INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 .
+
+Wait, but "CAPUT" and "PARÁGRAFO ÚNICO" are parts of the article, so they are part of the legislation. So maybe they should be marked as legislacao. But the user's instruction says to mark each entity. So perhaps each part is a separate entity. However, the user's example might have different handling. Alternatively, maybe the entire phrase is considered as a single legislacao entity. But the user's instruction says to mark each entity. So perhaps each part is a separate entity. But I'm not sure. Let me check the original text again.
+
+Original text: "SERVIDOR PÚBLICO APOSENTADO COM FUNDAMENTO NO ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005 . PARIDADE ENTRE SERVIDORES INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 ."
+
+So the part "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" is referring to the article 3, caput, and paragraph unique of the constitutional amendment 47/2005. So "ARTIGO 3º" is part of the legislation, "CAPUT" is part of the article, "PARÁGRAFO ÚNICO" is part of the article, and "EMENDA CONSTITUCIONAL 47/2005" is the legislation. So perhaps "ARTIGO 3º" is part of the legislation, and "EMENDA CONSTITUCIONAL 47/2005" is the legislation. So both should be marked as legislacao. The "CAPUT" and "PARÁGRAFO ÚNICO" are parts of the article, so they are part of the legislation. So maybe all of them are part of the legislacao. But the user's instruction says to mark each entity. So perhaps the entire phrase is considered as a single legislacao entity. But the user's example might have split them. Alternatively, maybe each part is a separate entity. However, without more examples, I'll proceed with marking "ARTIGO 3º" and "EMENDA CONSTITUCIONAL 47/2005" as legislacao. The "CAPUT" and "PARÁGRAFO ÚNICO" are parts of the article, so they might be part of the legislacao as well. But I'm not sure. Alternatively, maybe the entire phrase is a single legislacao entity. Let me check the user's example output. Wait, the user hasn't provided an example output. So I need to make a judgment call.
+
+In the absence of specific examples, I'll proceed to mark "ARTIGO 3º" and "EMENDA CONSTITUCIONAL 47/2005" as legislacao. The "CAPUT" and "PARÁGRAFO ÚNICO" are parts of the article, so they might be part of the legislacao. But perhaps they are not entities. Alternatively, maybe they are part of the legislation. So I'll mark all of them as legislacao. So the HTML would be:
+
+<span class="pessoa">SERVIDOR PÚBLICO APOSENTADO</span> COM FUNDAMENTO NO <span class="legislacao">ARTIGO 3º</span> , <span class="legislacao">CAPUT</span> E <span class="legislacao">PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005</span> . PARIDADE ENTRE <span class="pessoa">SERVIDORES</span> INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 .
+
+But wait, "PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" is part of the legislation. So maybe the entire phrase "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" is a single legislacao entity. But the user's instruction says to mark each entity. So perhaps each part is a separate entity. However, the way it's written, it's all part of the same legislation. So maybe the entire phrase is a single legislacao entity. But the user's instruction says to mark each entity. So perhaps the entire phrase is considered as a single entity. But I'm not sure. Alternatively, maybe "EMENDA CONSTITUCIONAL 47/2005" is the legislation, and the rest are parts of it. So I'll mark "EMENDA CONSTITUCIONAL 47/2005" as legislacao, and "ARTIGO 3º" as part of it. But the user's instruction says to mark each entity. So perhaps "ARTIGO 3º" is a part of the legislation, and "EMENDA CONSTITUCIONAL 47/2005" is the legislation. So both are marked as legislacao. The "CAPUT" and "PARÁGRAFO ÚNICO" are parts of the article, so they might be part of the legislacao. But again, without examples, it's hard to tell. I'll proceed with marking "ARTIGO 3º" and "EMENDA CONSTITUCIONAL 47/2005" as legislacao. The "CAPUT" and "PARÁGRAFO ÚNICO" are parts of the article, so they might be part of the legislacao. But perhaps they are not entities. So I'll mark "ARTIGO 3º" and "EMENDA CONSTITUCIONAL 47/2005" as legislacao. The rest of the text has "SERVIDOR PÚBLICO APOSENTADO" and "SERVIDORES" as pessoa. So the final HTML would be:
+
+<span class="pessoa">SERVIDOR PÚBLICO APOSENTADO</span> COM FUNDAMENTO NO <span class="legislacao">ARTIGO 3º</span> , <span class="legislacao">CAPUT</span> E <span class="legislacao">PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005</span> . PARIDADE ENTRE <span class="pessoa">SERVIDORES</span> INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 .
+
+But I'm not entirely sure about the "CAPUT" and "PARÁGRAFO ÚNICO" parts. However, given the user's instruction, I'll proceed with this.
+</think>
+
+<span class="pessoa">SERVIDOR PÚBLICO APOSENTADO</span> COM FUNDAMENTO NO <span class="legislacao">ARTIGO 3º</span> , <span class="legislacao">CAPUT</span> E <span class="legislacao">PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005</span> . PARIDADE ENTRE <span class="pessoa">SERVIDORES</span> INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 .

@@ -1,0 +1,69 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify which entities are present.
+
+The text mentions "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO". Here, "PROCURADOR-GERAL" is a title, so maybe that's a pessoa? Wait, but the name isn't given. Wait, the text says "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO R E L A T Ó R I O O Senhor Ministro Ricardo Lewandowski ( Relator )". So "Senhor Ministro Ricardo Lewandowski" is a person, so that's a pessoa. The "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization, maybe? Because it's a title of a position. So "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" would be an organizacao. Wait, but the user's example output might have different handling. Let me check the example output provided.
+
+Wait, the user provided a sample input and output. Let me look at that. The sample input is the text given, and the sample output is the HTML version. Wait, the user hasn't provided the sample output yet. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML. Não inclua explicações ou blocos de código." So the user is expecting me to generate the HTML with the entities marked.
+
+So, going back. Let's parse the text again.
+
+The text starts with "( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO R E L A T Ó R I O O Senhor Ministro Ricardo Lewandowski ( Relator ) : Trata-se de agravo regimental interposto pela União contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo Estado do Mato Grosso , determinando-se à União `` que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS n° 204/2008 e de suas posteriores alterações '' .
+
+First, let's identify the entities:
+
+1. "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" – this is an organization, as it's a title of a position. So organizacao.
+
+2. "Senhor Ministro Ricardo Lewandowski" – this is a person, so pessoa.
+
+3. "União" – this is an organization, as it's a legal entity (the Union in Brazil). So organizacao.
+
+4. "Estado do Mato Grosso" – this is a local entity, as it's a state. So local.
+
+5. "Decreto 3.788/2001" – this is legislation, so legislacao.
+
+6. "Portaria MPS n° 204/2008" – this is also legislation, so legislacao.
+
+7. "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" – these are acronyms for different registries or systems, which might be considered as local or organizacao? Wait, but they are names of systems, so maybe they are organizacao? Or perhaps they are local? Hmm. Alternatively, maybe they are part of the legislation or jurisprudencia? Not sure. The user's example might clarify, but since I don't have that, I'll have to make a judgment. Since they are names of systems, perhaps they are organizacao. But maybe they are part of the legislation. Alternatively, maybe they are local. Wait, the user's example might have them as local. Alternatively, maybe they are not entities. Wait, the user's instruction says to mark entities related to the legal domain. So CADPREV is a system, which is part of the previdenciária (social security) system. So perhaps they are organizacao? Or maybe they are part of the legislation. Alternatively, maybe they are not entities. The user's example might have them as local. Alternatively, maybe they are not marked. Let me check the original text again.
+
+The text mentions "retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV )". So CADPREV, CADIN, CA UC, SIAFI, SICONV are names of systems. These are acronyms for specific registries. In legal terms, these might be considered as local or organizacao? Since they are systems, perhaps they are organizacao. But maybe they are not entities. Alternatively, maybe they are part of the legislation. But the user's example might have them as local. Alternatively, maybe they are not marked. Since the user's example isn't provided, I'll have to make a decision. Let me check the original text again. The user's example output might have them as local. Alternatively, maybe they are not marked. Let me think. The user's instruction says to mark entities related to the legal domain. These are systems, which are part of the legal framework, so perhaps they are considered as organizacao. But I'm not sure. Alternatively, maybe they are not entities. Since the user's example isn't given, I'll proceed with the assumption that these are not entities. Wait, but the user's example might have them as local. Alternatively, maybe they are part of the legislation. Hmm. Let me check the original text again. The text mentions "CADPREV" and others as part of the cadastro (registry), so perhaps they are local. But I'm not certain. Maybe they are not marked. Alternatively, maybe they are considered as local. Let me proceed with marking them as local. Wait, but the user's example might have them as local. Alternatively, maybe they are not marked. Since the user's example isn't provided, I'll have to make a judgment. Let me proceed with the following:
+
+- "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" → organizacao
+- "Senhor Ministro Ricardo Lewandowski" → pessoa
+- "União" → organizacao
+- "Estado do Mato Grosso" → local
+- "Decreto 3.788/2001" → legislacao
+- "Portaria MPS n° 204/2008" → legislacao
+- "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" → maybe local or organizacao. Since they are systems, perhaps organizacao. But I'm not sure. Alternatively, they might not be marked. Let me check the original text again. The text says "retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV )". So these are names of systems, which are part of the legal framework. So perhaps they are considered as organizacao. But I'm not certain. Alternatively, maybe they are not marked. Since the user's example isn't provided, I'll proceed with marking them as local. Wait, but "CADPREV" is a system, which is part of the previdenciária, so maybe it's a local. Alternatively, maybe they are not marked. Let me think again. The user's instruction says to mark entities related to the legal domain. These are systems, which are part of the legal framework, so perhaps they are considered as organizacao. But I'm not sure. Alternatively, maybe they are not marked. Since the user's example isn't provided, I'll proceed with the following:
+
+- "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" → maybe they are not marked. Alternatively, they could be considered as local. But I'm not sure. Let me check the original text again. The text mentions "CADPREV" as a system, so perhaps they are not entities. Alternatively, maybe they are considered as local. Since I'm not certain, I'll proceed with not marking them. Alternatively, maybe they are considered as organizacao. Let me check the original text again. The user's example might have them as local. Alternatively, maybe they are not marked. Since the user's example isn't provided, I'll proceed with the following:
+
+Now, let's proceed to mark the entities:
+
+1. "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" → organizacao
+2. "Senhor Ministro Ricardo Lewandowski" → pessoa
+3. "União" → organizacao
+4. "Estado do Mato Grosso" → local
+5. "Decreto 3.788/2001" → legislacao
+6. "Portaria MPS n° 204/2008" → legislacao
+
+The other parts like "CADPREV", "CADIN", etc., are acronyms for systems, which might be considered as organizacao or local. Since the user's example isn't provided, I'll assume they are not marked. Alternatively, maybe they are considered as local. But I'm not sure. Let me check the original text again. The text says "retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV )". So these are names of systems, which are part of the legal framework. So perhaps they are considered as organizacao. But I'm not certain. Since the user's example isn't provided, I'll proceed with marking them as local. Alternatively, maybe they are not marked. Let me proceed with not marking them. 
+
+So, the final HTML would have the following spans:
+
+- <span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span>
+- <span class="pessoa">Senhor Ministro Ricardo Lewandowski</span>
+- <span class="organizacao">União</span>
+- <span class="local">Estado do Mato Grosso</span>
+- <span class="legislacao">Decreto 3.788/2001</span>
+- <span class="legislacao">Portaria MPS n° 204/2008</span>
+
+Other parts like "CADPREV", etc., are not marked. 
+
+Now, I need to make sure that the rest of the text is left as is. Also, check for any other entities. For example, "Agravo Regimental" is a legal term, but it's not an entity. "Ação Cível Originária" is a legal term, but not an entity. "CADPREV" is part of the text, but as discussed, maybe not marked. 
+
+So, the final HTML would have the entities marked as above. Now, I'll write the HTML code accordingly.
+</think>
+
+<span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> ( A / S ) ( ES ) : <span class="pessoa">Senhor Ministro Ricardo Lewandowski</span> ( Relator ) : Trata-se de agravo regimental interposto pela <span class="organizacao">União</span> contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo <span class="local">Estado do Mato Grosso</span> , determinando-se à <span class="organizacao">União</span> `` que renove o Certificado de Regularidade Previdenciária do <span class="local">Estado de Mato Grosso</span> , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS n° 204/2008</span> e de suas posteriores alterações '' .

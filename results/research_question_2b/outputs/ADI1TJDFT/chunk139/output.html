@@ -1,0 +1,61 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Des . : NATANAEL CAETANO . CONSELHO ESPECIAL . Acórdão n.267633 . DJe : 31/07/2007 . Pág. : 81 ) Além do mais , como bem destaca o Parquet em sua manifestação , a expedição de alvarás de construção e cartas de habite-se é fruto do exercício do poder de polícia , atividade típica do Estado e , portanto , indelegável , nos termos do art . 15 , incisos XIV e XV da Lei Orgânica do Distrito Federal , verbis : '' Art . 15 ."
+
+Looking for entities:
+
+1. "NATANAEL CAETANO" – this looks like a person's name. So, I should mark this as <span class="pessoa">NATANAEL CAETANO</span>.
+
+2. "CONSELHO ESPECIAL" – this is likely an organization, maybe a legal body. So, <span class="organizacao">CONSELHO ESPECIAL</span>.
+
+3. "Acórdão n.267633" – Acórdão is a legal term, possibly a judicial decision. But the number might be part of the jurisprudencia. Wait, the example output shows "Acórdão n.267633" as <span class="jurisprudencia">Acórdão n.267633</span>. So I'll mark that as jurisprudencia.
+
+4. "DJe : 31/07/2007" – DJe is a legal abbreviation for Diário da Justiça Eletrônico, and the date is 31/07/2007. The date is a tempo entity. So, "DJe : <span class="tempo">31/07/2007</span>".
+
+5. "Pág. : 81" – Pág. is página, so page number. Not an entity here, so leave as is.
+
+6. "Parquet" – this is a legal term referring to the public prosecutor's office. In Brazil, Parquet is an organization, so <span class="organizacao">Parquet</span>.
+
+7. "Lei Orgânica do Distrito Federal" – this is a law, so <span class="legislacao">Lei Orgânica do Distrito Federal</span>.
+
+8. "Art . 15" – Art. refers to article, so this is part of legislation. So, <span class="legislacao">Art . 15</span>.
+
+Wait, the example output in the user's message shows "Art . 15" as part of the legislacao. Let me check the example output again. The user's example output has "Art . 15" as part of the legislacao. So I need to make sure that any mention of articles in laws are marked as legislacao.
+
+Also, "Distrito Federal" is a local entity, so <span class="local">Distrito Federal</span>.
+
+Putting it all together:
+
+- NATANAEL CAETANO → pessoa
+- CONSELHO ESPECIAL → organizacao
+- Acórdão n.267633 → jurisprudencia
+- 31/07/2007 → tempo
+- Parquet → organizacao
+- Lei Orgânica do Distrito Federal → legislacao
+- Distrito Federal → local
+- Art . 15 → legislacao
+
+Now, I need to make sure that all these are correctly placed in the text. Let me reconstruct the text with these tags.
+
+Original text segments:
+
+"Des . : NATANAEL CAETANO . CONSELHO ESPECIAL . Acórdão n.267633 . DJe : 31/07/2007 . Pág. : 81 ) Além do mais , como bem destaca o Parquet em sua manifestação , a expedição de alvarás de construção e cartas de habite-se é fruto do exercício do poder de polícia , atividade típica do Estado e , portanto , indelegável , nos termos do art . 15 , incisos XIV e XV da Lei Orgânica do Distrito Federal , verbis : '' Art . 15 ."
+
+Applying the tags:
+
+- NATANAEL CAETANO → pessoa
+- CONSELHO ESPECIAL → organizacao
+- Acórdão n.267633 → jurisprudencia
+- 31/07/2007 → tempo
+- Parquet → organizacao
+- Lei Orgânica do Distrito Federal → legislacao
+- Distrito Federal → local
+- Art . 15 → legislacao
+
+So the final HTML should have these spans. Let me check if there are any other entities. The rest of the text doesn't seem to have any other entities. The "DJe" is part of the date, so the date is marked as tempo. The "Pág. : 81" is just a page number, not an entity. The "art . 15" is part of the legislation. The "incisos XIV e XV" are parts of the article, so they might be part of the legislacao as well, but the example output only marks "Art . 15" as legislacao. So I'll follow the example and only mark "Art . 15" as legislacao.
+
+Putting it all together, the HTML should look like the example provided by the user. Let me make sure I didn't miss any other entities. I think that's all.
+</think>
+
+Des . : <span class="pessoa">NATANAEL CAETANO</span> . <span class="organizacao">CONSELHO ESPECIAL</span> . <span class="jurisprudencia">Acórdão n.267633</span> . DJe : <span class="tempo">31/07/2007</span> . Pág. : 81 ) Além do mais , como bem destaca o <span class="organizacao">Parquet</span> em sua manifestação , a expedição de alvarás de construção e cartas de habite-se é fruto do exercício do poder de polícia , atividade típica do Estado e , portanto , indelegável , nos termos do <span class="legislacao">art . 15</span> , incisos XIV e XV da <span class="legislacao">Lei Orgânica do Distrito Federal</span> , verbis : '' <span class="legislacao">Art . 15</span> .

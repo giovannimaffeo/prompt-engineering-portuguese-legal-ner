@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text has several parts. Let me break it down step by step.
+
+Starting with "Acórdão n.1078980 , 20170020135916ADI , Relator : JOSÉ DIVINO CONSELHO ESPECIAL , Data de Julgamento : 20/02/2018 , Publicado no DJE : 05/03/2018 . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da Lei 5.815/2017 . É o voto . Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls ."
+
+Looking for entities:
+
+1. "Acórdão n.1078980" – Acórdão is a legal term, but the number might be a jurisprudencia reference. Wait, the example output shows "Acórdão n.1078980" as <span class="jurisprudencia">Acórdão n.1078980</span>. So the number here is part of the jurisprudência entity.
+
+2. "20170020135916ADI" – This looks like a case number, which might be part of a jurisprudência reference. The example output marks it as <span class="jurisprudencia">20170020135916ADI</span>.
+
+3. "Relator : JOSÉ DIVINO CONSELHO ESPECIAL" – "Relator" is a title, and "JOSÉ DIVINO CONSELHO ESPECIAL" is a person's name. So "JOSÉ DIVINO CONSELHO ESPECIAL" should be <span class="pessoa">JOSÉ DIVINO CONSELHO ESPECIAL</span>.
+
+4. "Data de Julgamento : 20/02/2018" – The date "20/02/2018" is a tempo entity. So <span class="tempo">20/02/2018</span>.
+
+5. "Publicado no DJE : 05/03/2018" – The date "05/03/2018" is another tempo entity. <span class="tempo">05/03/2018</span>.
+
+6. "Lei 5.815/2017" – "Lei" is legislation, so <span class="legislacao">Lei 5.815/2017</span>.
+
+7. "Ação Direta de Inconstitucionalidade 20170020161362ADI" – This seems like a legal action, so the number part might be jurisprudência. The example output marks "Ação Direta de Inconstitucionalidade 20170020161362ADI" as <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span>.
+
+8. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – This might be a code, but not sure if it's an entity. The example doesn't mark it, so leave as is.
+
+9. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41" – "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. Wait, the example output has "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41" as <span class="organizacao">GABINETE DO DESEMBARGADOR</span> and <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>. So the organization is "GABINETE DO DESEMBARGADOR", and the person is the name.
+
+Wait, but the full phrase is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41". The example output splits it into "GABINETE DO DESEMBARGADOR" as organizacao and "SILVANIO BARBOSA DOS SANTOS" as pessoa. The "41" might be a page number, which isn't an entity. So I need to check each part.
+
+Also, "Fls . _____" – "Fls" is an abbreviation for "Folhas", which is a legal term, but not an entity. So leave as is.
+
+Putting it all together, I need to mark each entity with the correct class. Let me go through each part again to ensure I don't miss any.
+
+Another thing: the example output includes "Relator : JOSÉ DIVINO CONSELHO ESPECIAL" as <span class="pessoa">JOSÉ DIVINO CONSELHO ESPECIAL</span>, so the "Relator" is part of the person's name? Wait, no. The "Relator" is the title, and the name is the person. So the name is marked as pessoa.
+
+Similarly, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person.
+
+So, the final HTML should have all these entities marked with their respective classes. I need to make sure that each entity is correctly identified and that the tags are properly placed without affecting the rest of the text.
+</think>
+
+<span class="jurisprudencia">Acórdão n.1078980</span> , <span class="jurisprudencia">20170020135916ADI</span> , Relator : <span class="pessoa">JOSÉ DIVINO CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">20/02/2018</span> , Publicado no DJE : <span class="tempo">05/03/2018</span> . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da <span class="legislacao">Lei 5.815/2017</span> . É o voto . Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 41 Fls .

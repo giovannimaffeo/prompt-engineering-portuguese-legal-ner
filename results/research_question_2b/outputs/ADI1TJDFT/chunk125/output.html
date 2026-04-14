@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify any entities. The input starts with numbers like 15, 19, 53, 71, etc. These might be articles or sections of a law, so they could be part of the legislation. Then there's "Lei Orgânica do Distrito Federal" which is definitely a legislation entity. 
+
+Next, "Código de Verificação" might be a code, but I'm not sure if it's a legal entity. The user's example output includes "Código de Verificação" as a span with class "legislacao", so I should follow that. 
+
+Then there are names like "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" which is an organization. "Câmara Legislativa do Distrito Federal" is also an organization. "GOVERNADOR DO DISTRITO FEDERAL" is a person, but since it's a title, maybe it's an organization? Wait, the user's example output marks "GOVERNADOR DO DISTRITO FEDERAL" as a pessoa. Hmm, maybe in this context, the title is considered a person. 
+
+"Distrito Federal" is a local entity. "CREA-DF" and "CAU-DF" are organizations. The date "2018ACONT2JYXTK52JCSL251NVQ" might be a code, but the example output doesn't mark it. Wait, the example output includes "Código de Verificação" as legislacao, but the actual text has "Código de Verificação :2018..." which might be a code. However, the user's example output includes "Código de Verificação" as a legislacao. So I should mark that part as legislacao. 
+
+Also, "Art." is part of the article, so maybe it's part of the legislation. But the example output doesn't mark "Art." as anything. Wait, the example output provided by the user includes "Art." as part of the text without any tags. So I should leave it as is unless it's part of an entity. 
+
+Let me go through each part step by step. 
+
+1. "15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X , todos da Lei Orgânica do Distrito Federal ." Here, "Lei Orgânica do Distrito Federal" is a legislation entity. The numbers and terms like "incisos", "caput", "§" are part of legal references, but they might not be entities. The example output marks "Lei Orgânica do Distrito Federal" as legislacao. 
+
+2. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the "Código de Verificação" is marked as legislacao in the example. 
+
+3. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – this is an organization. 
+
+4. "31 Dispõe sobre convênio do Distrito Federal com o CREA-DF e o CAU-DF e dá outras providências ." – "Distrito Federal" is a local, "CREA-DF" and "CAU-DF" are organizations. 
+
+5. "O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal decreta e eu sanciono a seguinte Lei : Art ." – "GOVERNADOR DO DISTRITO FEDERAL" is a pessoa, "Câmara Legislativa do Distrito Federal" is an organization, "Distrito Federal" is a local, "Lei" is part of legislation. 
+
+Putting it all together, I need to wrap each identified entity with the correct span tags. Let me check the example output again to ensure I'm following the same pattern. The example output includes "Lei Orgânica do Distrito Federal" as legislacao, "Código de Verificação" as legislacao, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as organizacao, "Câmara Legislativa do Distrito Federal" as organizacao, "Distrito Federal" as local, "CREA-DF" and "CAU-DF" as organizacao, "GOVERNADOR DO DISTRITO FEDERAL" as pessoa. 
+
+So, I'll apply these tags accordingly. The numbers and other terms like "incisos", "caput", etc., are not entities, so they remain as is. The date "2018..." is not marked, so it stays. 
+
+Now, I'll construct the HTML by replacing each entity with the appropriate span tags. Let me make sure I don't miss any entities and that the classes are correctly assigned. Once done, I'll present the final HTML text as the output.
+</think>
+
+<span class="legislacao">15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . <span class="legislacao">Código de Verificação</span> :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 31 Dispõe sobre convênio do <span class="local">Distrito Federal</span> com o <span class="organizacao">CREA-DF</span> e o <span class="organizacao">CAU-DF</span> e dá outras providências . O <span class="pessoa">GOVERNADOR DO DISTRITO FEDERAL</span> , Faço saber que a <span class="organizacao">Câmara Legislativa do Distrito Federal</span> decreta e eu sanciono a seguinte <span class="legislacao">Lei</span> : <span class="legislacao">Art</span> .

@@ -1,0 +1,51 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+Starting with the first part: "80/81 ) , mas deixou transcorrer `` in albis '' o prazo para defesa , conforme fl . 84 .". Here, "80/81" might be a reference to a case number or something similar. But according to the guidelines, only specific entities like jurisprudencia should be marked. Since "80/81" isn't a known legal reference, maybe it's part of a case number. Wait, the example shows that numbers like "REsp n . 1694984/MS" are marked as jurisprudencia. So "80/81" could be a case number. But the example also mentions that identifiers with numbers and letters like "20140110500434APO" are marked. However, "80/81" is just numbers. Maybe it's part of a case number, but the user might not have specified. Since the example doesn't have such a case, I might not mark it. Alternatively, maybe "fl . 84" refers to a page number, which isn't an entity. 
+
+Next, "A Curadoria Especial ofertou embargos à ação monitória , por negativa geral ( fl . 85 ) .". "Curadoria Especial" is an organization, so that should be marked as organizacao. "fl . 85" is a page reference, not an entity. 
+
+"Manifestação do autor/embargado as fls . 89/90 . Intimadas as partes a respeito de eventual prescrição , manifestaram-se as fls . 98/103 e 104-verso .". Here, "fls" is an abbreviation for "fls" (plural of "fl"), which refers to pages. Not an entity. 
+
+"Acrescento que o d Magistrado sentenciante reconheceu a prescrição da pretensão monitória e , com fundamento no artigo 487 , inciso II , do Código de Processo Civil , extinguiu o processo , com resolução do mérito , condenando a parte autora ao pagamento das custas judiciais e dos honorários advocatícios , estes fixados em 10 % ( dez por cento ) do valor da causa .". The "Código de Processo Civil" is a legislation, so that should be marked as legislacao. "artigo 487" is part of the legislation, so it should be included in the legislacao tag. 
+
+"R E L A T Ó R I O Cuida-se de Apelação Cível interposta por BRASÍLIA CURSOS E CONCURSOS LTDA em face da r. sentença de fls .". "BRASÍLIA CURSOS E CONCURSOS LTDA" is an organization, so that's organizacao. 
+
+Now, checking for any other entities. "Código de Processo Civil" is definitely legislacao. "artigo 487" is part of that legislation. "BRASÍLIA CURSOS E CONCURSOS LTDA" is an organization. 
+
+Wait, the user's example shows that "Superior Tribunal de Justiça" is an organization. So "BRASÍLIA CURSOS E CONCURSOS LTDA" is an organization. 
+
+Also, "Código de Processo Civil" is a legislation. 
+
+So putting it all together, the entities are:
+
+- "Curadoria Especial" → organizacao
+- "Código de Processo Civil" → legislacao
+- "artigo 487" → part of legislacao
+- "BRASÍLIA CURSOS E CONCURSOS LTDA" → organizacao
+
+Wait, but "artigo 487" is part of the legislation, so the entire reference should be marked. The example shows "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So in this case, "artigo 487 , inciso II , do Código de Processo Civil" should be marked as legislacao. 
+
+Also, "R E L A T Ó R I O" is part of the text, but it's not an entity. 
+
+So the final HTML should have:
+
+- <span class="organizacao">Curadoria Especial</span>
+- <span class="legislacao">Código de Processo Civil</span>
+- <span class="legislacao">artigo 487 , inciso II , do Código de Processo Civil</span>
+- <span class="organizacao">BRASÍLIA CURSOS E CONCURSOS LTDA</span>
+
+Wait, but the "artigo 487" is part of the legislation, so the entire phrase "artigo 487 , inciso II , do Código de Processo Civil" should be marked as legislacao. 
+
+Also, "Código de Processo Civil" is a legislation, so that's already covered. 
+
+So the final output should have those tags. Let me check again for any other entities. 
+
+No other names or dates. The rest are just text. 
+
+So the HTML should be the original text with those spans.
+</think>
+
+80/81 ) , mas deixou transcorrer `` in albis '' o prazo para defesa , conforme fl . 84 . <span class="organizacao">Curadoria Especial</span> ofertou embargos à ação monitória , por negativa geral ( fl . 85 ) . Manifestação do autor/embargado as fls . 89/90 . Intimadas as partes a respeito de eventual prescrição , manifestaram-se as fls . 98/103 e 104-verso . Acrescento que o d Magistrado sentenciante reconheceu a prescrição da pretensão monitória e , com fundamento no <span class="legislacao">artigo 487 , inciso II , do Código de Processo Civil</span> , extinguiu o processo , com resolução do mérito , condenando a parte autora ao pagamento das custas judiciais e dos honorários advocatícios , estes fixados em 10 % ( dez por cento ) do valor da causa . R E L A T Ó R I O Cuida-se de Apelação Cível interposta por <span class="organizacao">BRASÍLIA CURSOS E CONCURSOS LTDA</span> em face da r. sentença de fls .

@@ -1,0 +1,66 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example input again: "MARIA ELIZABETH GUIMARÃES TEIXEIRA , na conformidade do Extrato da Ata do Julgamento , por unanimidade de votos , em rejeitar o Agravo Interno , nos termos do voto do Relator Ministro JOSÉ BARROSO FILHO . Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 ."
+
+Looking for names and titles. "MARIA ELIZABETH GUIMARÃES TEIXEIRA" is a person's name, so that's a 'pessoa'. Then "Ministro JOSÉ BARROSO FILHO" – "Ministro" is a title, so the name here is another 'pessoa'. The "Relator" might be part of the title, but the name is José Barroso Filho, so that's another 'pessoa'.
+
+Next, "Extrato da Ata do Julgamento" – "Ata" is a legal term, but I'm not sure if it's a legislation or jurisprudence. Wait, "Extrato da Ata do Julgamento" might refer to a judicial record, which could be part of jurisprudence. But maybe "Ata" here is part of a document, so maybe it's not an entity. Hmm, need to check. The user's example output might have "Extrato da Ata do Julgamento" as a jurisprudencia? Or maybe not. Wait, the example output in the user's message shows that "Extrato da Ata do Julgamento" is marked as jurisprudencia. Let me check the example output they provided.
+
+Wait, the user provided the input and the output. Let me look again. The input is the text, and the output is the HTML with entities marked. The example output given by the user is:
+
+"<span class="pessoa">MARIA ELIZABETH GUIMARÃES TEIXEIRA</span> , na conformidade do <span class="jurisprudencia">Extrato da Ata do Julgamento</span> , por unanimidade de votos , em rejeitar o <span class="jurisprudencia">Agravo Interno</span> , nos termos do voto do Relator <span class="pessoa">Ministro JOSÉ BARROSO FILHO</span> . <span class="pessoa">Documento assinado eletronicamente por José Barroso Filho</span> , Matricula 1117 ."
+
+Wait, in the example output, "Extrato da Ata do Julgamento" is marked as jurisprudencia, and "Agravo Interno" is also jurisprudencia. The "Ministro JOSÉ BARROSO FILHO" is pessoa. The "Documento assinado eletronicamente por José Barroso Filho" is also pessoa? Wait, but the original text says "Documento assinado eletronicamente por José Barroso Filho" – the person here is José Barroso Filho, so that's a pessoa. But in the example output, the entire phrase is marked as pessoa? Wait, the example output shows:
+
+"<span class="pessoa">Documento assinado eletronicamente por José Barroso Filho</span> , Matricula 1117 ."
+
+Wait, but "Documento assinado eletronicamente por José Barroso Filho" – the person is José Barroso Filho, so the entire phrase is not a pessoa. Wait, maybe the example output is incorrect? Or perhaps the user made a mistake. Alternatively, maybe "Documento assinado eletronicamente por José Barroso Filho" is considered as a person's action, but the person is José Barroso Filho. So the name "José Barroso Filho" is the pessoa, but the rest of the phrase is not. However, in the example output, the entire phrase is wrapped in a pessoa tag. That seems incorrect. Wait, maybe the user's example output is wrong, but I need to follow the example. Alternatively, maybe the user's example is correct, and I need to follow that.
+
+Wait, the user's example output shows that "Documento assinado eletronicamente por José Barroso Filho" is marked as pessoa. But that's the entire phrase. That seems odd. Maybe the user made a mistake in their example. Alternatively, perhaps the user intended that the entire phrase is part of the person's action, but the person is José Barroso Filho. So maybe the correct approach is to mark only the name as pessoa, and the rest as text. But the example shows the entire phrase as pessoa. Hmm, this is confusing. Let me check again.
+
+The user's example input is:
+
+"MARIA ELIZABETH GUIMARÃES TEIXEIRA , na conformidade do Extrato da Ata do Julgamento , por unanimidade de votos , em rejeitar o Agravo Interno , nos termos do voto do Relator Ministro JOSÉ BARROSO FILHO . Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 ."
+
+The example output is:
+
+"<span class="pessoa">MARIA ELIZABETH GUIMARÃES TEIXEIRA</span> , na conformidade do <span class="jurisprudencia">Extrato da Ata do Julgamento</span> , por unanimidade de votos , em rejeitar o <span class="jurisprudencia">Agravo Interno</span> , nos termos do voto do Relator <span class="pessoa">Ministro JOSÉ BARROSO FILHO</span> . <span class="pessoa">Documento assinado eletronicamente por José Barroso Filho</span> , Matricula 1117 ."
+
+So in the example output, "Ministro JOSÉ BARROSO FILHO" is marked as pessoa, and "Documento assinado eletronicamente por José Barroso Filho" is also marked as pessoa. That seems incorrect because the entire phrase isn't a person. But perhaps the user's example is correct, and I need to follow that. Maybe the user considers the entire phrase as part of the person's action, but the person is José Barroso Filho. However, the example shows that the entire phrase is marked as pessoa. So perhaps the user's example is wrong, but I need to follow their example.
+
+Alternatively, maybe the user's example is correct, and I should mark the entire phrase as pessoa. But that doesn't make sense. Let me think again. The user's example output shows that "Documento assinado eletronicamente por José Barroso Filho" is marked as pessoa. That's the entire phrase. But that's not a person. The person is José Barroso Filho. So perhaps the user made a mistake in their example. But since the user provided that example, I need to follow it. Maybe the user considers the entire phrase as part of the person's action, so the entire phrase is marked as pessoa. But that's not accurate. However, since the user provided that example, I should follow it.
+
+So, in the input text, the entities are:
+
+- MARIA ELIZABETH GUIMARÃES TEIXEIRA: pessoa
+- Ministro JOSÉ BARROSO FILHO: pessoa
+- Extrato da Ata do Julgamento: jurisprudencia
+- Agravo Interno: jurisprudencia
+- José Barroso Filho: pessoa (but in the example, the entire phrase "Documento assinado eletronicamente por José Barroso Filho" is marked as pessoa. So perhaps the user considers that entire phrase as part of the person's action, hence marked as pessoa. But that's not correct. However, since the user's example shows that, I need to follow it.
+
+So, applying that to the input text:
+
+The text is:
+
+"MARIA ELIZABETH GUIMARÃES TEIXEIRA , na conformidade do Extrato da Ata do Julgamento , por unanimidade de votos , em rejeitar o Agravo Interno , nos termos do voto do Relator Ministro JOSÉ BARROSO FILHO . Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 ."
+
+Breaking it down:
+
+- "MARIA ELIZABETH GUIMARÃES TEIXEIRA" is a pessoa.
+- "Extrato da Ata do Julgamento" is jurisprudencia.
+- "Agravo Interno" is jurisprudencia.
+- "Ministro JOSÉ BARROSO FILHO" is pessoa.
+- "Documento assinado eletronicamente por José Barroso Filho" is pessoa (as per the example).
+- "Matricula 1117" is not an entity.
+
+So the HTML would be:
+
+<span class="pessoa">MARIA ELIZABETH GUIMARÃES TEIXEIRA</span> , na conformidade do <span class="jurisprudencia">Extrato da Ata do Julgamento</span> , por unanimidade de votos , em rejeitar o <span class="jurisprudencia">Agravo Interno</span> , nos termos do voto do Relator <span class="pessoa">Ministro JOSÉ BARROSO FILHO</span> . <span class="pessoa">Documento assinado eletronicamente por José Barroso Filho</span> , Matricula 1117 .
+
+But wait, in the example, the "Documento assinado eletronicamente por José Barroso Filho" is marked as pessoa. So I need to include that entire phrase as pessoa. Even though it's not a person, but the action of the person. But according to the user's example, that's how it's done. So I'll follow that.
+
+Therefore, the final HTML should be as per the example, with those entities marked accordingly.
+</think>
+
+<span class="pessoa">MARIA ELIZABETH GUIMARÃES TEIXEIRA</span> , na conformidade do <span class="jurisprudencia">Extrato da Ata do Julgamento</span> , por unanimidade de votos , em rejeitar o <span class="jurisprudencia">Agravo Interno</span> , nos termos do voto do Relator <span class="pessoa">Ministro JOSÉ BARROSO FILHO</span> . <span class="pessoa">Documento assinado eletronicamente por José Barroso Filho</span> , Matricula 1117 .

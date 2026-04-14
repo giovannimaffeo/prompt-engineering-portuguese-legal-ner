@@ -1,0 +1,44 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text sentence by sentence.
+
+Starting with "Nesse sentido , verifica-se que a divergência jurisprudencial indicada desserve ao fim colimado ." The word "jurisprudencial" here is used in a generic sense, so according to the guidelines, it shouldn't be marked. The term "divergência jurisprudencial" refers to a legal concept but not a specific entity. So no tags here.
+
+Next, "Os arestos às fls . 336 e 337 revelam-se inespecíficos , à luz da Súmula 296 do TST , pois partem da premissa da existência de evidenciado desequilíbrio entre as funções inicialmente ajustadas entre empregado e empregador , sendo exigidas atividades alheias ao contrato de trabalho , concomitantemente com as funções contratadas ."
+
+Here, "Súmula 296 do TST" is a specific jurisprudential reference. The TST is the Tribunal Superior do Trabalho, which is an organization. So "Súmula 296 do TST" should be marked as jurisprudencia. The "TST" itself is an organization, so "TST" should be marked as organizacao. Wait, but the example shows that "Súmula 331 do TST" is marked as jurisprudencia. So the entire "Súmula 296 do TST" is a jurisprudencia entity. Also, "TST" is an organization, so that part should be marked as organizacao.
+
+Then, "Já o aresto às fls . 335/336 e o segundo à fl . 337 são oriundos do mesmo Tribunal Regional prolator da decisão recorrida . Óbice da OJ nº 111 da SDI-1 do TST . Nego provimento ."
+
+"OJ nº 111 da SDI-1 do TST" refers to an official jurisprudential reference. "OJ" is "Observação Jurisprudencial", so "OJ nº 111 da SDI-1 do TST" should be marked as jurisprudencia. "SDI-1" is a court, so that's an organization. "TST" again is an organization. So "SDI-1" and "TST" should be marked as organizacao.
+
+Next part: "2 . DANO MORAL . AUSÊNCIA DE ANOTAÇÃO DA CTPS . Às fls . 338/340 , o reclamante alega fazer jus ao recebimento de indenização por dano moral em razão da não anotação de sua CTPS ."
+
+"CTPS" stands for Carteira de Trabalho e Previdência Social, which is a document, not an entity. So no tag here. The "fls" refers to folhas (pages) of a document, which is a generic term, so no tag. The rest of the text doesn't have any entities. 
+
+Now, let me check if I missed any. The "TST" is an organization, so all instances of "TST" should be marked as organizacao. The "Súmula 296 do TST" is jurisprudencia. "OJ nº 111 da SDI-1 do TST" is jurisprudencia. "SDI-1" is an organization. 
+
+Wait, the example shows that "Súmula 331 do TST" is marked as jurisprudencia. So "Súmula 296 do TST" should be the same. Also, "SDI-1" is part of the TST, so it's an organization. 
+
+So the final HTML should have the following tags:
+
+- "Súmula 296 do TST" as jurisprudencia
+- "TST" as organizacao
+- "OJ nº 111 da SDI-1 do TST" as jurisprudencia
+- "SDI-1" as organizacao
+- "TST" again as organizacao
+
+Wait, but in the input text, "TST" appears in "Súmula 296 do TST" and "OJ nº 111 da SDI-1 do TST". So each occurrence of "TST" should be marked as organizacao. Similarly, "SDI-1" is an organization. 
+
+So the output should have:
+
+- <span class="jurisprudencia">Súmula 296 do <span class="organizacao">TST</span></span>
+- <span class="jurisprudencia">OJ nº 111 da <span class="organizacao">SDI-1</span> do <span class="organizacao">TST</span></span>
+
+Wait, but the example shows that "Súmula 331 do TST" is marked as jurisprudencia, and "TST" is marked as organizacao. So in the input text, "Súmula 296 do TST" should be marked as jurisprudencia, with "TST" as organizacao. Similarly, "OJ nº 111 da SDI-1 do TST" is jurisprudencia, with "SDI-1" and "TST" as organizacao.
+
+So the correct HTML would have those tags. Let me make sure I didn't miss any other entities. The rest of the text doesn't have any other entities. So the final output should have those tags.
+</think>
+
+Nesse sentido , verifica-se que a divergência jurisprudencial indicada desserve ao fim colimado . Os arestos às fls . 336 e 337 revelam-se inespecíficos , à luz da <span class="jurisprudencia">Súmula 296 do <span class="organizacao">TST</span></span> , pois partem da premissa da existência de evidenciado desequilíbrio entre as funções inicialmente ajustadas entre empregado e empregador , sendo exigidas atividades alheias ao contrato de trabalho , concomitantemente com as funções contratadas . Já o aresto às fls . 335/336 e o segundo à fl . 337 são oriundos do mesmo Tribunal Regional prolator da decisão recorrida . Óbice da <span class="jurisprudencia">OJ nº 111 da <span class="organizacao">SDI-1</span> do <span class="organizacao">TST</span></span> . Nego provimento . 2 . DANO MORAL . AUSÊNCIA DE ANOTAÇÃO DA CTPS . Às fls . 338/340 , o reclamante alega fazer jus ao recebimento de indenização por dano moral em razão da não anotação de sua CTPS .

@@ -1,0 +1,31 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input is a legal document excerpt with various elements. Let me go line by line.
+
+Starting with "Inst n° 0604337-81.2018.6.00.0000/DF 3 EXTRATO DA ATA Inst n° 0604337-81.2018.6.00.0000/DF ." Here, "Inst n° 0604337-81.2018.6.00.0000/DF" seems like a case number. Since it's a legal document reference, maybe it's part of the jurisprudencia? Wait, the definition says jurisprudencia includes decisions, precedents, etc., but case numbers might be part of that. However, the example output shows that "Inst n° 0604337-81.2018.6.00.0000/DF" is marked as jurisprudencia. So I'll follow that.
+
+Next, "Relator : Ministro Luiz Fux ." Here, "Ministro Luiz Fux" is a person, so "Luiz Fux" should be <span class="pessoa">. The title "Ministro" is part of the name, so it's included.
+
+"Interessado : Tribunal Superior Eleitoral ." "Tribunal Superior Eleitoral" is an organization, so <span class="organizacao">.
+
+"Decisão : O Tribunal , por unanimidade , aprovou a proposta de alteração da Resolução-TSE n° 23.549/2017 , nos termos do voto do relator ." Here, "Resolução-TSE n° 23.549/2017" is legislation, so <span class="legislacao">. The "TSE" might be an acronym for Tribunal Superior Eleitoral, which is already marked as an organization. But the Resolução-TSE is a resolution, so it's legislation.
+
+"Composição : Ministros Luiz Fux ( presidente ) , Rosa Weber , Luís Roberto Barroso , Napoleão Nunes Maia Filho , Jorge Mussi , Tarcísio Vieira de Carvalho Neto e Carlos Horbach ." All these names are people. "Ministros" is part of their titles, so each name should be in <span class="pessoa">.
+
+"Vice-Procurador-Geral Eleitoral em exercício : Luciano Mariz Maia ." "Luciano Mariz Maia" is a person, so <span class="pessoa">.
+
+"SESSÃO DE 8.3.2018 ." The date "8.3.2018" is a tempo, so <span class="tempo">.
+
+Now, checking the example output provided by the user. They have "Inst n° 0604337-81.2018.6.00.0000/DF" as jurisprudencia, "Ministro Luiz Fux" as pessoa, "Tribunal Superior Eleitoral" as organizacao, "Resolução-TSE n° 23.549/2017" as legislacao, and "8.3.2018" as tempo. The rest are names of people and the organization. So I need to make sure all these are correctly tagged.
+
+I should also check for any other entities. For example, "TSE" is part of "Resolução-TSE", which is legislation. But "TSE" itself is an acronym for Tribunal Superior Eleitoral, which is an organization. However, in the input text, "TSE" is part of the legislation reference, so it's included in the legislacao tag. The example output doesn't mark "TSE" as an organization, so maybe it's part of the legislation reference. So I'll follow that.
+
+Also, the date "8.3.2018" is marked as tempo. The example output does that. So I need to ensure that all dates are marked as tempo.
+
+Now, putting it all together. Each entity should be wrapped in <span> with the appropriate class. Let me go through each part again to make sure I didn't miss any.
+
+Yes, that seems to cover all the entities. Now, I'll format the HTML accordingly, making sure not to include any explanations or extra text, just the annotated HTML.
+</think>
+
+<span class="jurisprudencia">Inst n° 0604337-81.2018.6.00.0000/DF</span> 3 EXTRATO DA ATA <span class="jurisprudencia">Inst n° 0604337-81.2018.6.00.0000/DF</span> . Relator : <span class="pessoa">Ministro Luiz Fux</span> . Interessado : <span class="organizacao">Tribunal Superior Eleitoral</span> . Decisão : O Tribunal , por unanimidade , aprovou a proposta de alteração da <span class="legislacao">Resolução-TSE n° 23.549/2017</span> , nos termos do voto do relator . Composição : <span class="pessoa">Ministros Luiz Fux</span> ( presidente ) , <span class="pessoa">Rosa Weber</span> , <span class="pessoa">Luís Roberto Barroso</span> , <span class="pessoa">Napoleão Nunes Maia Filho</span> , <span class="pessoa">Jorge Mussi</span> , <span class="pessoa">Tarcísio Vieira de Carvalho Neto</span> e <span class="pessoa">Carlos Horbach</span> . Vice-Procurador-Geral Eleitoral em exercício : <span class="pessoa">Luciano Mariz Maia</span> . SESSÃO DE <span class="tempo">8.3.2018</span> .

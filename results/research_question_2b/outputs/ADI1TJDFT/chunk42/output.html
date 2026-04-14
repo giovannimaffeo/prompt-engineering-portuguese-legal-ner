@@ -1,0 +1,64 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. The text is about the exclusive initiative of the Governor of the Federal District regarding certain laws. Let me go line by line.
+
+Starting with "§ 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : I - criação de cargos , funções ou empregos públicos na administração direta , autárquica e fundacional , ou aumento de sua remuneração ; II - servidores públicos do Distrito Federal , seu regime jurídico , provimento de cargos , estabilidade e aposentadoria ; III - organização da Procuradoria-Geral do Distrito Federal ; IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Governo , Órgãos e entidades da administração pública ; ( Grifos nossos ) Registre-se que não há divergência quanto ao conteúdo da norma ter ingerência direta na administração pública e , portanto , ser de iniciativa privativa do Governador ."
+
+Looking for entities:
+
+- "Governador do Distrito Federal" – this is a person (pessoa) and a local (local)? Wait, "Governador" is a person, but "Distrito Federal" is a local. So "Governador" should be pessoa, and "Distrito Federal" is local. Also, "Procuradoria-Geral do Distrito Federal" – "Procuradoria-Geral" is an organization (organizacao), and "Distrito Federal" again is local.
+
+- "Secretarias de Governo , Órgãos e entidades da administração pública" – "Secretarias" and "Órgãos" are organizations (organizacao), "entidades" is also an organization. "administração pública" is a local? Or maybe not. Wait, "administração pública" is a general term, not a specific entity. So maybe not. "Secretarias de Governo" – "Secretarias" is an organization, "Governo" could be a local or organization. Hmm, "Governo" here refers to the government of the Distrito Federal, so maybe it's part of the local. But the exact term might need to be checked. Alternatively, "Secretarias de Governo" – "Secretarias" is an organization, "Governo" might be a local. But I'm not sure. Maybe "Governo" here is part of the local, but since it's part of the name of the organization, perhaps it's better to mark "Secretarias" as organizacao and "Governo" as local? Or maybe not. The user's example might have "Secretarias de Governo" as organizacao. Wait, the original text has "Secretarias de Governo , Órgãos e entidades da administração pública". So "Secretarias" is an organization, "Órgãos" is an organization, "entidades" is an organization. "administração pública" is a local? Or maybe not. Since "administração pública" is a general term, perhaps it's not an entity. So maybe only the specific names like "Secretarias", "Órgãos", "entidades" are organizations.
+
+Also, "legislacao" – the text mentions "leis" which are legislation, so "legislacao" would be the class. Wait, the user's example might have "legislacao" as the class. Let me check the example. The user provided an example where "legislacao" is marked. So in the input text, "leis" is part of the legislation, so "leis" would be legislacao. Wait, but the user's example might have "legislacao" as the class. Let me check the user's example again. The user's example input has "legislacao" as a class. So in the input text, "leis" would be marked as legislacao. Wait, the user's example might have "legislacao" as the class. Let me check the user's example. The user's example input is the same as the one provided, and the output would have "legislacao" marked. So in the input text, "leis" is part of the legislation, so "leis" would be marked as legislacao. Wait, but the user's example might have "legislacao" as the class. Let me think again. The user's instruction says to mark "legislacao" as the class. So any mention of legislation, like "leis", "legislacao", etc., should be marked as legislacao. So in the input text, "leis" is part of the legislation, so "leis" would be marked as legislacao. Also, "norma" in the text refers to a legal norm, so "norma" would be legislacao. Wait, but the user's example might have "norma" as legislacao. Let me check the input text again. The text says "Registre-se que não há divergência quanto ao conteúdo da norma ter ingerência direta na administração pública e , portanto , ser de iniciativa privativa do Governador." Here, "norma" refers to a legal norm, so "norma" would be legislacao. Also, "leis" is part of the legislation, so "leis" is legislacao. 
+
+Now, looking for other entities. "Grifos nossos" – this is a note about the user's own emphasis, so it's not an entity. "Registre-se" is a legal term, but not an entity. 
+
+So, the entities to mark:
+
+- "Governador" – pessoa
+- "Distrito Federal" – local
+- "Procuradoria-Geral do Distrito Federal" – organizacao (since it's an organization) and "Distrito Federal" again is local
+- "Secretarias de Governo" – "Secretarias" is organizacao, "Governo" is local? Or maybe "Secretarias de Governo" is an organization. Wait, "Secretarias de Governo" is part of the administration, so maybe it's an organization. Similarly, "Órgãos" and "entidades" are organizations. 
+
+So, in the text:
+
+- "Governador do Distrito Federal" → "Governador" is pessoa, "Distrito Federal" is local
+- "Procuradoria-Geral do Distrito Federal" → "Procuradoria-Geral" is organizacao, "Distrito Federal" is local
+- "Secretarias de Governo" → "Secretarias" is organizacao, "Governo" is local? Or maybe "Secretarias de Governo" is an organization. But "Secretarias" is the plural of "Secretaria", which is an organization. So "Secretarias" is organizacao. "Governo" here refers to the government, which is a local. But in the context, "Secretarias de Governo" might be part of the administration, so maybe "Secretarias" is organizacao, and "Governo" is local. But the exact marking depends on the user's example. Since the user's example might have "Secretarias" as organizacao, I'll mark "Secretarias" as organizacao. Similarly, "Órgãos" and "entidades" are organizations. 
+
+Also, "leis" is legislacao, "norma" is legislacao. 
+
+So, putting it all together:
+
+- "Governador" → pessoa
+- "Distrito Federal" → local
+- "Procuradoria-Geral" → organizacao
+- "Secretarias" → organizacao
+- "Órgãos" → organizacao
+- "entidades" → organizacao
+- "leis" → legislacao
+- "norma" → legislacao
+
+Now, I need to wrap each of these with <span> tags. Also, check for any other entities. 
+
+Wait, "servidores públicos do Distrito Federal" – "servidores" is a general term, not an entity. "Distrito Federal" is local. 
+
+So, the final HTML would have:
+
+- "Governador" as pessoa
+- "Distrito Federal" as local
+- "Procuradoria-Geral" as organizacao
+- "Secretarias" as organizacao
+- "Órgãos" as organizacao
+- "entidades" as organizacao
+- "leis" as legislacao
+- "norma" as legislacao
+
+Also, "Governo" in "Secretarias de Governo" – is that a local? If "Governo" refers to the government of the Distrito Federal, then it's part of the local. But in the text, it's part of the name of the organization, so maybe "Secretarias de Governo" is an organization. But the user's example might have "Secretarias" as organizacao. 
+
+I think I've covered all the entities. Now, I'll format the text accordingly.
+</think>
+
+§ 1º Compete privativamente ao <span class="pessoa">Governador</span> do <span class="local">Distrito Federal</span> a iniciativa das <span class="legislacao">leis</span> que disponham sobre : I - criação de cargos , funções ou empregos públicos na administração direta , autárquica e fundacional , ou aumento de sua remuneração ; II - <span class="pessoa">servidores</span> públicos do <span class="local">Distrito Federal</span> , seu regime jurídico , provimento de cargos , estabilidade e aposentadoria ; III - <span class="organizacao">organização da Procuradoria-Geral do Distrito Federal</span> ; IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class="organizacao">Secretarias de Governo</span> , <span class="organizacao">Órgãos</span> e <span class="organizacao">entidades</span> da administração pública ; ( Grifos nossos ) Registre-se que não há divergência quanto ao conteúdo da <span class="legislacao">norma</span> ter ingerência direta na administração pública e , portanto , ser de iniciativa privativa do <span class="pessoa">Governador</span> .

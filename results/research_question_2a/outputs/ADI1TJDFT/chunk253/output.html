@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "LEI Nº 5.815 , DE 3 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal Fls ."
+
+Alright, let's break it down. The first part is "LEI Nº 5.815 , DE 3 DE ABRIL DE 2017". Here, "LEI" is likely legislation, so that's a legislacao entity. The number 5.815 is part of the law's identifier, so maybe that's part of the legislacao. Then "DE 3 DE ABRIL DE 2017" is a date, so that's tempo. 
+
+Next, "( Autoria do Projeto : Deputado Rafael Prudente )". "Deputado Rafael Prudente" is a person, so that's pessoa. 
+
+Then "O GOVERNADOR DO DISTRITO FEDERAL" – "GOVERNADOR" is a title, but the actual entity here is the person, maybe? Wait, but the text says "GOVERNADOR DO DISTRITO FEDERAL" which is the Governor of the Federal District. But the actual person's name isn't mentioned here. So maybe "GOVERNADOR" is part of the title, but since there's no specific name, perhaps it's not a pessoa. Alternatively, maybe "GOVERNADOR" is part of the organization? Wait, the organization would be the entity, like a government body. But the text here is referring to the Governor, so maybe it's a pessoa? Hmm, but the text doesn't mention a specific person's name. So maybe "GOVERNADOR" is part of the title, but not an entity. Wait, the user's example output might clarify this. Let me check the sample output provided.
+
+Looking at the sample output, the user's example input is similar, and the output has "LEI Nº 5.815" as legislacao, "3 DE ABRIL DE 2017" as tempo, "Deputado Rafael Prudente" as pessoa, and "Câmara Legislativa do Distrito Federal" as organizacao. Wait, but in the input text, the user's example output includes "Câmara Legislativa do Distrito Federal" as organizacao. So in the original input, "Câmara Legislativa do Distrito Federal" is an organization. 
+
+So applying that to the current input: "O GOVERNADOR DO DISTRITO FEDERAL" – the Governor is a person, but the text doesn't mention a specific name. However, in the sample output, "GOVERNADOR" was not marked as pessoa. Wait, maybe the sample input had "GOVERNADOR" as part of the title, but the actual person's name wasn't present. So perhaps in this case, "GOVERNADOR" is not marked as pessoa. Wait, but in the sample output provided by the user, the input was "LEI Nº 5.815 , DE 3 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal Fls ." and the output was:
+
+"<span class="legislacao">LEI Nº 5.815</span> , <span class="tempo">3 DE ABRIL DE 2017</span> ( Autoria do Projeto : <span class="pessoa">Deputado Rafael Prudente</span> ) O <span class="organizacao">GOVERNADOR DO DISTRITO FEDERAL</span> , Faço saber que a <span class="organizacao">Câmara Legislativa do Distrito Federal</span> Fls ."
+
+Wait, in that sample, "GOVERNADOR DO DISTRITO FEDERAL" was marked as organizacao. But that seems odd because "GOVERNADOR" is a title, not an organization. Maybe the user's example is different. Wait, perhaps the user's example input had "GOVERNADOR DO DISTRITO FEDERAL" as an organization. Maybe the user considers the Governor's office as an organization. Alternatively, maybe the user made a mistake. But according to the sample output, "GOVERNADOR DO DISTRITO FEDERAL" is marked as organizacao. So I need to follow that.
+
+In the current input, the text is "O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal Fls .". So "GOVERNADOR DO DISTRITO FEDERAL" is part of the text. According to the sample, that's an organizacao. So I should mark that as organizacao. 
+
+Then "Câmara Legislativa do Distrito Federal" is an organization. 
+
+So in the current input, the entities would be:
+
+- "LEI Nº 5.815" → legislacao
+- "3 DE ABRIL DE 2017" → tempo
+- "Deputado Rafael Prudente" → pessoa
+- "GOVERNADOR DO DISTRITO FEDERAL" → organizacao
+- "Câmara Legislativa do Distrito Federal" → organizacao
+
+Wait, but in the original input, the text is "O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal Fls .". So "GOVERNADOR DO DISTRITO FEDERAL" is part of the text. So I need to check if that's an organization. Maybe the user considers the Governor's office as an organization. Alternatively, maybe it's a title. But according to the sample, it's marked as organizacao. So I'll follow that.
+
+So the HTML would be:
+
+<span class="legislacao">LEI Nº 5.815</span> , <span class="tempo">3 DE ABRIL DE 2017</span> ( Autoria do Projeto : <span class="pessoa">Deputado Rafael Prudente</span> ) O <span class="organizacao">GOVERNADOR DO DISTRITO FEDERAL</span> , Faço saber que a <span class="organizacao">Câmara Legislativa do Distrito Federal</span> Fls .
+
+Wait, but in the original input, the text is "O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal Fls .". So "GOVERNADOR DO DISTRITO FEDERAL" is part of the text. So I need to mark that as organizacao. Also, "Câmara Legislativa do Distrito Federal" is an organization. 
+
+So the final HTML would have those spans. Also, the "Fls ." at the end is probably an abbreviation for "Folha" or something, but since it's not any of the entities, it remains as is. 
+
+I need to make sure that all the entities are correctly marked. Let me check again:
+
+- "LEI Nº 5.815" → legislacao
+- "3 DE ABRIL DE 2017" → tempo
+- "Deputado Rafael Prudente" → pessoa
+- "GOVERNADOR DO DISTRITO FEDERAL" → organizacao
+- "Câmara Legislativa do Distrito Federal" → organizacao
+
+Yes, that seems correct. So the final HTML should have those spans with the appropriate classes.
+</think>
+
+<span class="legislacao">LEI Nº 5.815</span> , <span class="tempo">3 DE ABRIL DE 2017</span> ( Autoria do Projeto : <span class="pessoa">Deputado Rafael Prudente</span> ) O <span class="organizacao">GOVERNADOR DO DISTRITO FEDERAL</span> , Faço saber que a <span class="organizacao">Câmara Legislativa do Distrito Federal</span> Fls .

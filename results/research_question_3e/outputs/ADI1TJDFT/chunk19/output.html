@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. I need to follow the guidelines provided to ensure correct classification.
+
+First, I'll read the input text carefully. Let's break it down sentence by sentence.
+
+The first part is "Saliente-se , ademais , que o Conselho Especial deste Tribunal de Justiça ostenta precedente no sentido de ser admissível o ajuizamento de Ação Direta de Inconstitucionalidade em face de lei autorizativa , senão vejamos :". Here, "Conselho Especial" and "Tribunal de Justiça" seem like organizations. "Tribunal de Justiça" is a judicial body, so that's an organizacao. "Conselho Especial" might be part of the same organization, but I need to check if it's a specific name. Since it's part of the Tribunal, maybe it's a sub-organization. Wait, the guidelines say to mark complete NPs. "Conselho Especial" could be an organization if it's a formal entity. But the example given in the guidelines includes "Tribunal de Contas" as an organization. So I'll mark "Conselho Especial" as organizacao. 
+
+Next, "Ação Direta de Inconstitucionalidade" is a legal term, but it's not a specific entity. The example shows that generic terms like "ação" aren't marked unless they refer to specific cases. Since this is a general term, no tag here.
+
+Then, "LEI/DF Nº 2.872/2002 QUE DISPÕE SOBRE ALIENAÇÃO DE IMÓVEIS DESTINADOS A ESCOLAS" – this is a law, so legislacao. The full name includes "LEI/DF", which is a law, so that's a legislacao entity. The number and date are part of the legislation reference, so the whole phrase should be marked as legislacao.
+
+Next, "VÍCIO ( FORMAL E MATERIAL ) - CABIMENTO DA ADI - LIMINAR ACOLHIDA - PRELIMINAR DE INÉPCIA DA INICIAL REJEITADA ." These are legal terms but not specific entities. "VÍCIO" is a term but not an entity. "ADI" refers to Ação Direta de Inconstitucionalidade, which is a type of action, not a specific entity. So no tags here.
+
+Moving on, "1 ) O lapso de escrita , na petição inicial , não retira desta o alcance , objeto do pleito , se , na essência , os pontos cardeais são focados no exato da perspectiva postulatória . 2 ) A lei autorizativa , diante do normatizado , é passível de exame de constitucionalidade e assim , na hipótese , presentes os pressupostos processuais e as condições da ação , o feito há de residir em juízo ." These sentences are general legal discussion. No specific entities here. 
+
+Wait, the user's example includes "REsp n . 1694984/MS" as jurisprudencia. In the input text, there's no such case number. So no jurisprudencia tags here. 
+
+Check for any other entities. "Tribunal de Justiça" is an organization. "Conselho Especial" might be part of that. But in the example, "Tribunal de Contas" is marked as organizacao. So "Tribunal de Justiça" is an organizacao. "Conselho Especial" is part of the same organization? Or is it a separate entity? The text says "Conselho Especial deste Tribunal de Justiça", so it's a part of the Tribunal. But the guidelines say to mark complete NPs. Since "Conselho Especial" is a name, even if part of the Tribunal, it's an organization. Wait, but the example in the guidelines includes "MINISTÉRIO PÚBLICO FEDERAL" as organizacao. So in this case, "Conselho Especial" is an organization. 
+
+Also, "LEI/DF Nº 2.872/2002" is a law, so legislacao. 
+
+So the final HTML should have:
+
+- "Conselho Especial" as organizacao
+- "Tribunal de Justiça" as organizacao
+- "LEI/DF Nº 2.872/2002" as legislacao
+
+Wait, the input has "LEI/DF Nº 2.872/2002 QUE DISPÕE SOBRE ALIENAÇÃO DE IMÓVEIS DESTINADOS A ESCOLAS" – the entire phrase is the law, so the entire text should be marked as legislacao. Also, "ADI" is a legal term but not a specific entity. 
+
+So the output should have those three entities marked. Let me check again. 
+
+Yes, the "Conselho Especial" and "Tribunal de Justiça" are both organizations. "LEI/DF Nº 2.872/2002" is the legislation. 
+
+So the HTML would be:
+
+Saliente-se , ademais , que o <span class="organizacao">Conselho Especial</span> deste <span class="organizacao">Tribunal de Justiça</span> ostenta precedente no sentido de ser admissível o ajuizamento de Ação Direta de Inconstitucionalidade em face de lei autorizativa , senão vejamos : <span class="legislacao">LEI/DF Nº 2.872/2002 QUE DISPÕE SOBRE ALIENAÇÃO DE IMÓVEIS DESTINADOS A ESCOLAS</span> - VÍCIO ( FORMAL E MATERIAL ) - CABIMENTO DA ADI - LIMINAR ACOLHIDA - PRELIMINAR DE INÉPCIA DA INICIAL REJEITADA . 1 ) O lapso de escrita , na petição inicial , não retira desta o alcance , objeto do pleito , se , na essência , os pontos cardeais são focados no exato da perspectiva postulatória . 2 ) A lei autorizativa , diante do normatizado , é passível de exame de constitucionalidade e assim , na hipótese , presentes os pressupostos processuais e as condições da ação , o feito há de residir em juízo .
+
+I need to make sure that "Tribunal de Justiça" is marked as organizacao. Also, check if "Conselho Especial" is part of the organization. The text says "Conselho Especial deste Tribunal de Justiça", so "Conselho Especial" is a part of the Tribunal. But according to the guidelines, "expressões que identificam entidades coletivas formalmente constituídas" should be marked. Since "Conselho Especial" is a formal entity, even if it's part of the Tribunal, it's an organization. So both should be marked.
+</think>
+
+Saliente-se , ademais , que o <span class="organizacao">Conselho Especial</span> deste <span class="organizacao">Tribunal de Justiça</span> ostenta precedente no sentido de ser admissível o ajuizamento de Ação Direta de Inconstitucionalidade em face de lei autorizativa , senão vejamos : <span class="legislacao">LEI/DF Nº 2.872/2002 QUE DISPÕE SOBRE ALIENAÇÃO DE IMÓVEIS DESTINADOS A ESCOLAS</span> - VÍCIO ( FORMAL E MATERIAL ) - CABIMENTO DA ADI - LIMINAR ACOLHIDA - PRELIMINAR DE INÉPCIA DA INICIAL REJEITADA . 1 ) O lapso de escrita , na petição inicial , não retira desta o alcance , objeto do pleito , se , na essência , os pontos cardeais são focados no exato da perspectiva postulatória . 2 ) A lei autorizativa , diante do normatizado , é passível de exame de constitucionalidade e assim , na hipótese , presentes os pressupostos processuais e as condições da ação , o feito há de residir em juízo .

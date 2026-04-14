@@ -1,0 +1,81 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify which parts correspond to each entity type.
+
+The text mentions "Decreto 3.788/2001" and "Portaria MPS 204/2008" along with their alterations. These look like legislative acts, so they should be marked as 'legislacao'. The "Lei 9.717/1998" is also a law, so that's another 'legislacao' entity.
+
+Next, there's "MPS" in "Portaria MPS 204/2008". MPS could stand for a ministry or organization, so that's likely an 'organizacao'. I should check if there are other organizations mentioned. The text doesn't mention any others, so just MPS here.
+
+The year "2001" and "2008" are dates, so they fall under 'tempo'. The text also has "posteriores alterações" which refers to subsequent changes, but since it's part of the description, maybe not an entity. The date format is in the legislation names, so those numbers are part of the legislation references.
+
+Looking for 'local' entities, there's no mention of places or locations in the text. So no 'local' tags needed.
+
+'Jurisprudencia' refers to judicial precedents or court decisions. The text talks about "inconstitucionalidade" (unconstitutionality) and "declaração incidental", which are legal terms, but there's no specific reference to a court case or jurisprudence. So maybe no 'jurisprudencia' here.
+
+'Pessoa' would be names of people, but the text doesn't mention any individuals. So no 'pessoa' tags.
+
+Now, I need to wrap each identified entity with the appropriate <span> tags. Let me go through the text again and mark each instance.
+
+"Decreto 3.788/2001" → legislacao
+"Portaria MPS 204/2008" → legislacao (and "MPS" as organizacao)
+"posteriores alterações" → part of the description, not an entity
+"Lei 9.717/1998" → legislacao
+"2001" and "2008" → tempo
+
+Wait, the numbers in the legislation names are part of the legislation references, so they should be included in the 'legislacao' tags. Also, the "MPS" in the Portaria is an organization. So I need to split that.
+
+So, "Portaria MPS 204/2008" would be "Portaria <span class='organizacao'>MPS</span> 204/2008". The "2008" is part of the legislation, so it's part of the 'legislacao' tag. Wait, but the entire legislation name is the entity. So maybe the entire "Portaria MPS 204/2008" is 'legislacao', and "MPS" is part of it. But the user's example might have split them. Let me check the example given in the problem statement.
+
+Wait, the user provided an example where "Decreto 3.788/2001" is marked as legislacao, and "Portaria MPS 204/2008" is also legislacao. The "MPS" is part of the Portaria, so maybe it's part of the legislation name. However, the user's example might have split "MPS" as an organization. Let me think again.
+
+In the input text, "Portaria MPS 204/2008" is a legal document. The "MPS" here is likely the acronym for a ministry or organization, so it should be marked as 'organizacao'. The rest of the document name is part of the legislation, so the entire "Portaria MPS 204/2008" is 'legislacao', but the "MPS" is an 'organizacao'. Wait, but the user's example might have different handling. Let me check the sample output.
+
+Wait, the user hasn't provided a sample output, but the task says to return the text with the entities marked. So I need to decide whether "MPS" is part of the legislation or an organization. Since "Portaria" is a type of document, and "MPS" is the issuing authority, it's an organization. So "MPS" is 'organizacao', and the rest of the document name is part of the legislation. But the entire document name (Portaria MPS 204/2008) is a legislation, so maybe the entire string is 'legislacao', and "MPS" is part of it. But the user's instruction says to mark each entity. So perhaps "MPS" is an organization, and the rest is legislation. But that might not be accurate. Alternatively, the entire document name is a legislation, and "MPS" is part of it. So maybe the entire "Portaria MPS 204/2008" is 'legislacao', and "MPS" is part of that. But the user's example might have split them. Let me think again.
+
+In the input text, the user mentions "Decreto 3.788/2001" and "Portaria MPS 204/2008" as legislation. The "MPS" is part of the Portaria's name, so it's the issuing authority. Therefore, "MPS" is an organization. So the correct approach is to mark "MPS" as 'organizacao', and the entire "Portaria MPS 204/2008" as 'legislacao'. Wait, but the entire document name is the legislation, so the entire string is 'legislacao', and "MPS" is part of it. However, the user's instruction says to mark each entity. So perhaps "MPS" is an organization, and the rest is legislation. But that might not be correct. Alternatively, the entire document name is a legislation, and "MPS" is part of it. So the entire "Portaria MPS 204/2008" is 'legislacao', and "MPS" is part of that. But the user's example might have split them. Since the user hasn't provided a sample, I need to make a judgment call.
+
+In legal documents, the issuing authority (like MPS) is part of the document's name, so the entire document name is a legislation. Therefore, "Portaria MPS 204/2008" is 'legislacao', and "MPS" is part of that. However, if "MPS" is an organization, then it should be marked as 'organizacao'. But since it's part of the legislation's name, maybe it's not a separate entity. This is a bit ambiguous. To resolve, perhaps the user expects that "MPS" is an organization, so it should be marked as 'organizacao', and the rest of the document name is part of the legislation. So "Portaria <span class='organizacao'>MPS</span> 204/2008" would be the case. But the entire document name is a legislation, so maybe the entire string is 'legislacao', and "MPS" is part of it. However, the user's instruction says to mark each entity. So if "MPS" is an organization, it should be marked as such. Therefore, the correct approach is to mark "MPS" as 'organizacao' and the rest as 'legislacao'.
+
+Similarly, "Decreto 3.788/2001" is a legislation, so the entire string is 'legislacao'. The year "2001" is part of the legislation's date, so it's part of the 'legislacao' tag. The same applies to "Portaria MPS 204/2008" and "Lei 9.717/1998".
+
+So, putting it all together:
+
+- "Decreto 3.788/2001" → <span class="legislacao">Decreto 3.788/2001</span>
+- "Portaria MPS 204/2008" → <span class="organizacao">MPS</span> in the Portaria, but the entire document name is legislation. Wait, the entire "Portaria MPS 204/2008" is a legislation, so the entire string is 'legislacao', and "MPS" is part of it. But if "MPS" is an organization, then it should be marked as 'organizacao'. So the correct way is to split it: "Portaria <span class='organizacao'>MPS</span> 204/2008" as part of the legislation. But the entire document name is a legislation, so maybe the entire string is 'legislacao', and "MPS" is part of it. However, the user's instruction says to mark each entity. So if "MPS" is an organization, it should be marked as such. Therefore, the correct approach is to mark "MPS" as 'organizacao' and the rest as 'legislacao'.
+
+But this might not be accurate. Alternatively, the entire document name is a legislation, and "MPS" is part of it. So the entire "Portaria MPS 204/2008" is 'legislacao', and "MPS" is part of that. But the user's instruction says to mark each entity. So perhaps "MPS" is an organization, and the rest is legislation. Therefore, the correct HTML would be:
+
+<span class="legislacao">Portaria <span class="organizacao">MPS</span> 204/2008</span>
+
+But I'm not sure. Maybe the user expects that the entire document name is a legislation, and "MPS" is part of it. So the entire "Portaria MPS 204/2008" is 'legislacao', and "MPS" is part of that. Therefore, no separate 'organizacao' tag for "MPS". But the user's instruction says to mark each entity. So if "MPS" is an organization, it should be marked. But in the context of the legislation, it's part of the document's name. This is a bit tricky.
+
+Given the ambiguity, I'll proceed by marking "MPS" as 'organizacao' and the rest as 'legislacao'. Similarly, the years "2001" and "2008" are part of the legislation's date, so they are part of the 'legislacao' tags. The "Lei 9.717/1998" is also a legislation. So the final HTML would have:
+
+- Decreto 3.788/2001 → legislacao
+- Portaria MPS 204/2008 → legislacao (with MPS as organizacao)
+- Lei 9.717/1998 → legislacao
+- 2001 and 2008 → tempo (but they are part of the legislation, so maybe they are included in the legislacao tags)
+
+Wait, the user's instruction says to mark 'tempo' for dates. So the years "2001" and "2008" should be marked as 'tempo'. But they are part of the legislation's name. So the entire legislation name is 'legislacao', and the years are part of that. However, the user might expect that the years are marked as 'tempo'. So perhaps the years are separate entities. For example, "Decreto 3.788/<span class='tempo'>2001</span>".
+
+But the user's example might not have that. Since the user hasn't provided a sample, I need to make a judgment. The instruction says to mark 'tempo' for dates. So the years in the legislation names should be marked as 'tempo'. Therefore, the correct approach is to split the legislation names into their components, marking the years as 'tempo'.
+
+So, "Decreto 3.788/<span class='tempo'>2001</span>" and "Portaria MPS 204/<span class='tempo'>2008</span>". But the entire legislation name is a single entity, so maybe the entire string is 'legislacao', and the years are part of it. However, the user's instruction says to mark each entity. So if the year is a separate entity, it should be marked as 'tempo'.
+
+This is getting complicated. To ensure compliance with the user's instructions, I'll proceed as follows:
+
+- All legislation names (Decreto, Portaria, Lei) are marked as 'legislacao'.
+- The years in the legislation names are marked as 'tempo'.
+- The "MPS" in the Portaria is marked as 'organizacao'.
+
+So the final HTML would have:
+
+<span class="legislacao">Decreto 3.788/<span class="tempo">2001</span></span>, que institui o certificado impugnado, e da <span class="legislacao">Portaria <span class="organizacao">MPS</span> 204/<span class="tempo">2008</span></span> e suas posteriores alterações, mas não o pedido de declaração incidental da inconstitucionalidade da <span class="legislacao">Lei 9.717/<span class="tempo">1998</span></span>, que, formulado em termos genéricos e sem especificação das razões para a inconstitucionalidade de cada um de seus dispositivos, não pode prevalecer.
+
+But I need to check if the years are part of the legislation or separate. Since the user's instruction says to mark 'tempo' for dates, the years should be marked as 'tempo'. Therefore, the years in the legislation names are part of the 'tempo' entities. So the correct approach is to mark the years as 'tempo' and the legislation names as 'legislacao'.
+
+Thus, the final HTML would have the years marked as 'tempo' and the legislation names as 'legislacao', with "MPS" as 'organizacao'.
+</think>
+
+Procede , pelas razões expostas , o pedido de declaração incidental de inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> , que institui o certificado impugnado , e da <span class="legislacao">Portaria <span class="organizacao">MPS</span> 204/2008</span> e suas posteriores alterações , mas não o pedido de declaração incidental da inconstitucionalidade da <span class="legislacao">Lei 9.717/1998</span> , que , formulado em termos genéricos e sem especificação das razões para a inconstitucionalidade de cada um de seus dispositivos , não pode prevalecer .

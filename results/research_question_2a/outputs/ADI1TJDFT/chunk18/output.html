@@ -1,0 +1,103 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 4 supremacia do interesse público . Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art . 4º Esta Lei entra em vigor na data de sua publicação . Art ."
+
+Looking for entities:
+
+1. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – This seems like an organization. "GABINETE DO DESEMBARGADOR" is likely an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. Wait, but the full name might be part of the organization. Wait, "GABINETE DO DESEMBARGADOR" is the office, and "SILVANIO BARBOSA DOS SANTOS" is the person. So maybe "GABINETE DO DESEMBARGADOR" is the organization, and the person's name is part of it? Or is the entire phrase an organization? Hmm, maybe "GABINETE DO DESEMBARGADOR" is the organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. But the way it's written, maybe the entire phrase is the organization. Wait, the example output in the user's message shows that "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is marked as organizacao. Wait, looking at the sample output provided by the user, the output is:
+
+"<span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 4 supremacia do interesse público . Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art . 4º Esta Lei entra em vigor na data de sua publicação . Art ."
+
+Wait, but in the input text, the user wrote "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as part of the text. So maybe "GABINETE DO DESEMBARGADOR" is the organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. But in the sample output, the entire phrase is marked as organizacao. Wait, maybe the user's example output is different. Let me check again.
+
+Wait, the user provided the input text and the output text. Let me check the sample output. The user's example shows that the output is:
+
+"<span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 4 supremacia do interesse público . Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art . 4º Esta Lei entra em vigor na data de sua publicação . Art ."
+
+So in the sample output, the entire phrase "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is marked as organizacao. But that seems odd because "SILVANIO BARBOSA DOS SANTOS" is a person's name. However, maybe in this context, the entire phrase is considered an organization. Alternatively, perhaps "GABINETE DO DESEMBARGADOR" is the organization, and the rest is part of the name. But the sample output shows the entire phrase as organizacao. So I need to follow that.
+
+Next, looking for other entities. The text mentions "Art. 3º" and "Art. 4º" which are parts of the legislation. Wait, but the user's example output doesn't mark those. Wait, the user's sample output shows that "Art . 3º" is not marked. Wait, maybe the user's example output is different. Let me check again.
+
+Wait, the user's input text includes "Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art . 4º Esta Lei entra em vigor na data de sua publicação . Art .". The sample output provided by the user shows that these parts are not marked. So perhaps the user's example output is not including those as entities. So maybe the only entity marked is the organization.
+
+Wait, but the user's sample output shows that "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is marked as organizacao. So I need to follow that. Also, the text mentions "60 dias" which is a time entity. So "60 dias" should be marked as tempo. Also, "data de sua publicação" refers to a date, so that's tempo. Let me check.
+
+So, in the input text:
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is an organization.
+- "60 dias" is tempo.
+- "data de sua publicação" is tempo.
+- "Art. 3º" and "Art. 4º" are parts of the legislation, but the user's sample output doesn't mark them. Wait, but the user's sample output doesn't include any other entities. So maybe the user's example output is only marking the organization and the time.
+
+Wait, the user's sample output is:
+
+"<span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 4 supremacia do interesse público . Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art . 4º Esta Lei entra em vigor na data de sua publicação . Art ."
+
+So in this output, "60 dias" is marked as tempo? Wait, no. The sample output doesn't have any other spans. Wait, maybe the user's example output is incomplete. Let me check again.
+
+Wait, the user's input text is:
+
+"Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 4 supremacia do interesse público . Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art . 4º Esta Lei entra em vigor na data de sua publicação . Art ."
+
+The sample output provided by the user is:
+
+"<span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 4 supremacia do interesse público . Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art . 4º Esta Lei entra em vigor na data de sua publicação . Art ."
+
+So in the sample output, the only entity marked is the organization. But according to the guidelines, "tempo" should be marked for dates and times. So "60 dias" and "data de sua publicação" are tempo. Also, "Art. 3º" and "Art. 4º" are parts of the legislation, but the user's sample output doesn't mark them. Wait, maybe the user's example is not including those. So perhaps the user's example is incomplete, and I need to follow the guidelines.
+
+So, in the input text, the entities are:
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" → organizacao
+- "60 dias" → tempo
+- "data de sua publicação" → tempo
+- "Art. 3º" and "Art. 4º" → legislacao? Or maybe they are part of the legislation. Wait, the user's sample output doesn't mark them, but according to the guidelines, "legislacao" is for legislation. So "Art. 3º" and "Art. 4º" are parts of the legislation, so they should be marked as legislacao.
+
+Wait, but the user's sample output doesn't include that. Maybe the user's example is not correct. But the user's instruction says to follow the guidelines. So I need to mark all entities.
+
+So, let's go through the input text again:
+
+1. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – This seems like a code, not an entity. So no tag.
+
+2. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – This is an organization. So mark as organizacao.
+
+3. "4 supremacia do interesse público" – No entity here.
+
+4. "Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias ." – "Art" is part of the legislation. "60 dias" is tempo.
+
+5. "Art . 4º Esta Lei entra em vigor na data de sua publicação ." – "Art" is part of the legislation. "data de sua publicação" is tempo.
+
+So, the entities are:
+
+- organizacao: "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS"
+- tempo: "60 dias", "data de sua publicação"
+- legislacao: "Art . 3º", "Art . 4º"
+
+Wait, but "Art" is part of the legislation. So "Art . 3º" and "Art . 4º" should be marked as legislacao. Also, "Lei" is part of the legislation. So "esta Lei" would be legislacao. But the user's sample output doesn't mark those. Hmm, maybe the user's example is not including those. But according to the guidelines, I should mark them.
+
+So, the correct HTML would be:
+
+<span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 4 supremacia do interesse público . <span class="legislacao">Art . 3º</span> O Poder Executivo regulamentará esta <span class="legislacao">Lei</span> no prazo de <span class="tempo">60 dias</span> . <span class="legislacao">Art . 4º</span> Esta <span class="legislacao">Lei</span> entra em vigor na <span class="tempo">data de sua publicação</span> . <span class="legislacao">Art</span> .
+
+Wait, but the user's sample output doesn't include these. Maybe the user's example is not correct. But the user's instruction says to follow the guidelines. So I need to mark all entities.
+
+But the user's sample output only marks the organization. So perhaps the user's example is incomplete. But I need to follow the guidelines. So I should mark all entities.
+
+So, the final HTML would have:
+
+- organizacao for the organization
+- tempo for "60 dias" and "data de sua publicação"
+- legislacao for "Art . 3º", "Art . 4º", "Lei" (since "Lei" is part of legislation)
+
+But the user's sample output doesn't include these. Maybe the user's example is not correct. But I need to follow the guidelines.
+
+So, the correct output would be:
+
+<span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 4 supremacia do interesse público . <span class="legislacao">Art . 3º</span> O Poder Executivo regulamentará esta <span class="legislacao">Lei</span> no prazo de <span class="tempo">60 dias</span> . <span class="legislacao">Art . 4º</span> Esta <span class="legislacao">Lei</span> entra em vigor na <span class="tempo">data de sua publicação</span> . <span class="legislacao">Art</span> .
+
+But the user's sample output doesn't include these. Maybe the user's example is not correct. But the user's instruction says to follow the guidelines. So I need to proceed accordingly.
+
+Therefore, the final answer should include all the entities as per the guidelines.
+</think>
+
+<span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 4 supremacia do interesse público . <span class="legislacao">Art . 3º</span> O Poder Executivo regulamentará esta <span class="legislacao">Lei</span> no prazo de <span class="tempo">60 dias</span> . <span class="legislacao">Art . 4º</span> Esta <span class="legislacao">Lei</span> entra em vigor na <span class="tempo">data de sua publicação</span> . <span class="legislacao">Art</span> .

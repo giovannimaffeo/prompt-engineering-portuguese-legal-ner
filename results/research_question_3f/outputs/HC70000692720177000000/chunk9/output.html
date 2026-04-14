@@ -1,0 +1,38 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The first sentence: "Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 . Em 22/02/2018 18:56:14 ."
+
+Here, "Cleonilson Nicácio Silva" is a person's name, so that's a pessoa. The "Matricula 8553" might be a registration number, but since it's not a name, it's not marked. The date "22/02/2018" is a tempo, and the time "18:56:14" is also tempo. Wait, the guidelines say that only explicit temporal references should be marked. The example shows that "25 DE SETEMBRO DE 2008" is marked as tempo. So "22/02/2018" is a date, so it's tempo. The time "18:56:14" is a horário, but the guidelines say that isolated horários shouldn't be marked. So only the date is marked as tempo.
+
+Next part: "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7"
+
+The URL is not a local, so it's left as is. The "Codigo Verificador" is a code, not an entity. The "21030663f7" is a code, but not an entity type here.
+
+Next sentence: "A Defesa acostou aos autos a cópia da Certidão da Oficiala de Justiça , dando conta da tentativa de contato telefônico efetuada com a causídica com vistas à Notificação Judicial ."
+
+"Oficiala de Justiça" is an organization, so that's organizacao. "Causídica" is a term for a lawyer, but it's a generic term, not a specific name, so not marked. "Notificação Judicial" is a generic term, not an entity.
+
+Next: "Em Decisão de 5 de dezembro de 2017 , indeferi o pleito liminar e solicitei à Autoridade indigitada coatora que prestasse as informações necessárias ao julgamento do presente mandamus , bem como que se desse vista à Procuradoria-Geral da Justiça Militar , na forma do § 3º do artigo 472 do CPPM ."
+
+"Decisão de 5 de dezembro de 2017" – the date "5 de dezembro de 2017" is tempo. "Procuradoria-Geral da Justiça Militar" is an organization. "CPPM" is an acronym for a legal code, so that's legislacao. The "§ 3º do artigo 472" refers to a legislative article, so that's part of legislacao.
+
+Putting it all together, I need to mark each entity with the correct class. Let me check each part again to ensure I didn't miss any.
+
+Cleonilson Nicácio Silva – pessoa
+22/02/2018 – tempo
+5 de dezembro de 2017 – tempo
+Oficiala de Justiça – organizacao
+Procuradoria-Geral da Justiça Militar – organizacao
+CPPM – legislacao
+artigo 472 – legislacao (since it's part of the CPPM reference)
+Also, the "§ 3º" is part of the legislative reference, so it's included in the legislacao tag.
+
+Wait, the example shows that "art. 428 da Consolidação das Leis do Trabalho – CLT" is marked as legislacao. So in this case, "artigo 472 do CPPM" would be part of the legislacao. So the "§ 3º do artigo 472 do CPPM" should be marked as legislacao.
+
+So the final HTML should have all these entities marked accordingly.
+</think>
+
+Documento assinado eletronicamente por <span class="pessoa">Cleonilson Nicácio Silva</span> , Matricula 8553 . Em <span class="tempo">22/02/2018</span> 18:56:14 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 <span class="local">A Defesa acostou aos autos a cópia da Certidão da Oficiala de Justiça</span> , dando conta da tentativa de contato telefônico efetuada com a causídica com vistas à Notificação Judicial . Em <span class="tempo">5 de dezembro de 2017</span> , indeferi o pleito liminar e solicitei à <span class="organizacao">Autoridade indigitada coatora</span> que prestasse as informações necessárias ao julgamento do presente mandamus , bem como que se desse vista à <span class="organizacao">Procuradoria-Geral da Justiça Militar</span> , na forma do <span class="legislacao">§ 3º do artigo 472 do CPPM</span> .

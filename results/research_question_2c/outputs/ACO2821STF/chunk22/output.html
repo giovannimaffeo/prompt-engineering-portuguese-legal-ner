@@ -1,0 +1,32 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "Supremo Tribunal Federal Inteiro Teor do Acórdão - Página 1 de 17 Ementa e Acórdão ACO 2821 A GR / MT unanimidade , negar provimento ao agravo regimental , nos termos do voto do Relator ."
+
+Let me go through each part. "Supremo Tribunal Federal" is a legal entity. Since it's the Supreme Federal Court, that's an organization. So I'll mark that as <span class="organizacao">.
+
+Next, "Inteiro Teor do Acórdão" – "Acórdão" is a legal term, but I need to check if it's one of the entities. The entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. "Acórdão" refers to a court decision, which might fall under jurisprudencia, but I'm not sure. Wait, the user's guide says to use jurisprudencia for jurisprudence. Maybe "Acórdão" is part of the legal document, so perhaps it's not an entity here. Let me check the example output. The sample output from the user shows that "Supremo Tribunal Federal" is marked as organizacao, and "ACO 2821" is marked as legislação? Wait, no. Wait, the user's example output isn't provided, but the input text has "ACO 2821 A GR / MT". Maybe "ACO 2821" is a legislative act, so that's legislacao. "A GR / MT" might be a location, like the state of Mato Grosso (MT) and maybe a region (GR). Wait, "GR" could be a region or a code. But the user's example might have "GR" as local. Let me think again.
+
+Looking at the input text: "Supremo Tribunal Federal" is an organization. "Inteiro Teor do Acórdão" – "Acórdão" is a legal term, but not one of the entities. "Página 1 de 17" – that's a page number, which is a tempo? No, tempo is for time or dates. "Página" is a page, not a time. So maybe "Página 1 de 17" is not an entity. "Ementa e Acórdão" – "Ementa" is a summary, not an entity. "ACO 2821" – ACO might be an acronym for a legislative act, so that's legislacao. "A GR / MT" – "GR" could be a region (like Grande Rio) and "MT" is the state abbreviation for Mato Grosso. So "GR" and "MT" are local. "unanimidade" is a term, not an entity. "negar provimento ao agravo regimental" – these are legal terms, not entities. "nos termos do voto do Relator" – "Relator" is a person, but the text says "Relator" without a name, so maybe not. Wait, the user's example might have "Relator" as a person. But the input text here has "Relator" as part of the text. Wait, the original text is "voto do Relator" – "Relator" is a person, but since it's just the title, maybe it's not a specific person. So perhaps it's not marked. 
+
+Putting it all together:
+
+- "Supremo Tribunal Federal" → organizacao
+- "ACO 2821" → legislacao
+- "GR / MT" → local (GR and MT are locations)
+- "Relator" → pessoa? But the text doesn't specify a name, so maybe not. The user's guide says to mark if it's an entity. Since "Relator" is a role, not a specific person, maybe it's not marked. 
+
+So the final HTML would have:
+
+<span class="organizacao">Supremo Tribunal Federal</span> Inteiro Teor do Acórdão - Página 1 de 17 Ementa e Acórdão <span class="legislacao">ACO 2821</span> <span class="local">GR / MT</span> unanimidade , negar provimento ao agravo regimental , nos termos do voto do <span class="pessoa">Relator</span> .
+
+Wait, but "Relator" is a role, not a specific person. The user's guide says to mark 'pessoa' for people. If "Relator" is a person's title, but without a name, maybe it's not marked. However, the user's example might have it as pessoa. Alternatively, maybe "Relator" is a person's name. But in the input text, it's just "Relator", so perhaps it's not a specific person. Therefore, maybe it's not marked. 
+
+So the final output would be:
+
+Supremo Tribunal Federal Inteiro Teor do Acórdão - Página 1 de 17 Ementa e Acórdão <span class="legislacao">ACO 2821</span> <span class="local">GR / MT</span> unanimidade , negar provimento ao agravo regimental , nos termos do voto do Relator .
+
+Wait, but the original text has "ACO 2821 A GR / MT". So "ACO 2821" is legislacao, and "A GR / MT" is local. So the correct HTML would have those parts marked. Also, "Supremo Tribunal Federal" is organizacao. The rest is not entities. So the final HTML is as above.
+</think>
+
+Supremo Tribunal Federal Inteiro Teor do Acórdão - Página 1 de 17 Ementa e Acórdão <span class="legislacao">ACO 2821</span> <span class="local">GR / MT</span> unanimidade , negar provimento ao agravo regimental , nos termos do voto do Relator .

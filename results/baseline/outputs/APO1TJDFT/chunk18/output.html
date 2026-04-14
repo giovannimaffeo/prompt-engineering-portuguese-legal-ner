@@ -1,0 +1,79 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is about a legal amendment regarding public servants' retirement benefits. Let me break it down sentence by sentence.
+
+Starting with "2º desta Emenda" – "Emenda" here refers to an amendment, which is a legislative act. So "Emenda" should be marked as legislacao. Then "servidor da União, dos Estados, do Distrito Federal e dos Municípios" – "servidor" is a person, but in this context, it's referring to public servants in general, so maybe not a specific person. Wait, the task says to mark entities related to the legal domain. "servidor" here is a role, not a specific person, so maybe not a pessoa. But maybe "servidor" is a generic term, so perhaps not marked. Wait, the example in the output might have "servidor" as a pessoa? Wait, no, the example output in the user's message shows that "servidor" is not marked. Let me check the sample output provided by the user.
+
+Wait, the user provided a sample input and output. Let me check that. The input is: "2º desta Emenda , o servidor da União , dos Estados , do Distrito Federal e dos Municípios , incluídas suas autarquias e fundações , que tenha ingressado no serviço público até a data de publicação desta Emenda poderá aposentar-se com proventos integrais , que corresponderão à totalidade da remuneração do servidor no cargo efetivo em que se der a aposentadoria , na forma da lei , quando , observadas as reduções de idade e tempo de contribuição contidas no § 5º do art ."
+
+The output example is not given, but the user's instruction says to return the text with the entities marked. So I need to process the input text.
+
+Looking for entities:
+
+- "Emenda" is a legislative act, so legislacao.
+- "União" is a legal entity, which is an organization (organizacao).
+- "Estados" here refers to the states, which is a legal entity, so organizacao.
+- "Distrito Federal" is a federal district, which is a local (local).
+- "Municípios" refers to municipalities, which is a local (local).
+- "autarquias" and "fundações" are types of organizations, so organizacao.
+- "data de publicação desta Emenda" – "data" is tempo.
+- "servidor" – in this context, it's a role, not a specific person, so maybe not marked. But maybe "servidor" is considered a pessoa? Wait, the task says to mark entities related to the legal domain. "Servidor" here refers to public servants, which are people, so maybe pessoa. But the example might not mark it. Wait, the user's sample output might have "servidor" as pessoa. Let me think again.
+
+Wait, the user's example output is not provided, but the task says to mark entities. Let me check each term:
+
+- "2º desta Emenda" – "Emenda" is legislacao.
+- "servidor da União" – "servidor" is a person (pessoa), but in this context, it's a role. However, the task says to mark entities related to the legal domain. Maybe "servidor" is a generic term, so not marked. But the user's example might have it as pessoa. Alternatively, maybe "servidor" is not marked because it's a role, not a specific entity. Hmm.
+
+Wait, the user's instruction says to mark entities like pessoa, organizacao, etc. So "servidor" is a role, not a specific entity. So perhaps not marked. But maybe "servidor" is considered a pessoa. Wait, in legal terms, "servidor público" refers to a person employed by the public administration. So "servidor" here refers to a person. Therefore, "servidor" should be marked as pessoa.
+
+Similarly, "servidor no cargo efetivo em que se der a aposentadoria" – again, "servidor" is a person.
+
+So in the text, "servidor" appears twice. Both instances should be marked as pessoa.
+
+Next, "data de publicação desta Emenda" – "data" is tempo.
+
+"§ 5º do art" – "art" refers to article, which is part of legislation, so maybe "art" is part of legislacao. But the exact term is "§ 5º do art", which is a reference to an article in a law. So "art" here is part of the legislation, so maybe the entire "§ 5º do art" is part of legislacao. But the user's example might not mark it. Alternatively, "art" is part of the legislation, so "art" is part of legislacao. But the exact term is "§ 5º do art", which is a reference to an article. So "art" is part of the legislation, so the entire "§ 5º do art" would be part of legislacao. But maybe only "art" is marked. Wait, the user's example might not mark it. Alternatively, the "§ 5º" is part of the legislation, so "§ 5º" is part of legislacao. But the exact term is "§ 5º do art", which is a reference to an article. So "art" is part of the legislation. So "art" should be marked as legislacao. But the user's example might not have that. Alternatively, the entire "§ 5º do art" is part of the legislation. But the user's example might not mark it. Hmm.
+
+Alternatively, the "§ 5º" is part of the legislation, so "§ 5º" is part of legislacao. But the user's example might not mark it. Let me check the original text again.
+
+The original text has "§ 5º do art". So "art" is part of the legislation. So "art" should be marked as legislacao. But the user's example might not have that. Alternatively, the entire "§ 5º do art" is part of the legislation. But the user's example might not mark it. Maybe the user's example doesn't mark it, so I should not mark it. Wait, the user's instruction says to mark entities like legislacao. So "art" is part of the legislation, so "art" should be marked as legislacao. But the exact term is "§ 5º do art", which is a reference to an article. So "art" is part of the legislation. Therefore, "art" should be marked as legislacao.
+
+Putting it all together:
+
+- "Emenda" → legislacao
+- "União" → organizacao
+- "Estados" → organizacao
+- "Distrito Federal" → local
+- "Municípios" → local
+- "autarquias" → organizacao
+- "fundações" → organizacao
+- "data" → tempo
+- "servidor" → pessoa (twice)
+- "art" → legislacao (assuming "art" refers to article)
+
+Wait, but "art" is part of the legislation. So "art" should be marked as legislacao. But the user's example might not have that. Alternatively, the entire "§ 5º do art" is part of the legislation. But the user's example might not mark it. Let me check the original text again.
+
+The original text is: "observadas as reduções de idade e tempo de contribuição contidas no § 5º do art".
+
+So "§ 5º do art" refers to a section of an article in a law. Therefore, "§ 5º" is part of the legislation, and "art" is part of the legislation. So "art" should be marked as legislacao. But the user's example might not have that. However, according to the task, I need to mark all entities. So "art" is part of the legislation, so it should be marked as legislacao.
+
+So the final HTML would have:
+
+- "Emenda" → <span class="legislacao">Emenda</span>
+- "União" → <span class="organizacao">União</span>
+- "Estados" → <span class="organizacao">Estados</span>
+- "Distrito Federal" → <span class="local">Distrito Federal</span>
+- "Municípios" → <span class="local">Municípios</span>
+- "autarquias" → <span class="organizacao">autarquias</span>
+- "fundações" → <span class="organizacao">fundações</span>
+- "data" → <span class="tempo">data</span>
+- "servidor" → <span class="pessoa">servidor</span> (twice)
+- "art" → <span class="legislacao">art</span>
+
+Wait, but "art" is part of the legislation. So "art" should be marked as legislacao. But the user's example might not have that. However, according to the task, I need to mark all entities. So I'll proceed with that.
+
+Now, putting all together into the HTML text.
+</think>
+
+<span class="legislacao">2º desta <span class="legislacao">Emenda</span> , o <span class="pessoa">servidor</span> da <span class="organizacao">União</span> , dos <span class="organizacao">Estados</span> , do <span class="local">Distrito Federal</span> e dos <span class="local">Municípios</span> , incluídas suas <span class="organizacao">autarquias</span> e <span class="organizacao">fundações</span> , que tenha ingressado no serviço público até a <span class="tempo">data</span> de publicação desta <span class="legislacao">Emenda</span> poderá aposentar-se com proventos integrais , que corresponderão à totalidade da remuneração do <span class="pessoa">servidor</span> no cargo efetivo em que se der a aposentadoria , na forma da <span class="legislacao">lei</span> , quando , observadas as reduções de idade e <span class="tempo">tempo</span> de contribuição contidas no § 5º do <span class="legislacao">art</span> .

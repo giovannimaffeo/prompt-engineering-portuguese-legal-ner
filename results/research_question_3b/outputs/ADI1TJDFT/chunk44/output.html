@@ -1,0 +1,27 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+Starting with the first part: "71 , § 1º , inc. IV , e 100 , inc. X , da Lei Orgânica do Distrito Federal , estão maculadas por vício formal , eis que a competência é exclusiva do Chefe do Poder Executivo , por força da `` reserva de administração '' ."
+
+Here, "Lei Orgânica do Distrito Federal" is a law, so that's legislacao. "Distrito Federal" is a local entity. "Chefe do Poder Executivo" refers to a person, but since it's a title, maybe it's an organization? Wait, the definition for organizacao includes formal entities like public organs. But "Chefe do Poder Executivo" is a title, not a specific name. The user's guidelines say to mark only names, not titles. So maybe "Chefe do Poder Executivo" isn't a pessoa or organizacao. Wait, the definition for pessoa is names of individuals. Since it's a title, perhaps it's not marked. But the user's example might have different interpretations. Let me check the example output they provided. Wait, the user hasn't given an example, but the task says to return only the annotated text.
+
+Next, "reserva de administração" is a legal term, but not an entity. Then in the second part: "Conquanto as leis impugnadas tenham sido editadas com o salutar objetivo de incrementar o transporte público coletivo..." Here, "transporte público coletivo" is a generic term, not a specific location, so no mark. 
+
+Moving to the third part: "Ação direta de inconstitucionalidade julgada procedente . ( Acórdão n.1049279 , 20160020153586ADI , Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL , Data de Julgamento : 19/09/2017 , Publicado no DJE : 28/09/2017 . Pág. : 27-29 ) ( grifo nosso ) 5 ."
+
+"Acórdão n.1049279" is a jurisprudencia entity. "20160020153586ADI" might be a reference to a legal case, so also jurisprudencia. "Data de Julgamento" is a tempo entity. "19/09/2017" is tempo. "Publicado no DJE" is a reference to a publication, but not an entity. "28/09/2017" is tempo. "Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL" – "MARIOZAM BELMIRO" is a pessoa. "CONSELHO ESPECIAL" is an organizacao. 
+
+Wait, "CONSELHO ESPECIAL" is an organization, so that's organizacao. Also, "Relator" is a title, not a person. So "MARIOZAM BELMIRO" is a pessoa. 
+
+Putting it all together, I need to mark each entity with the correct class. Let me check each part again to ensure I didn't miss any. 
+
+In the first sentence, "Lei Orgânica do Distrito Federal" is legislacao. "Distrito Federal" is local. "Chefe do Poder Executivo" – since it's a title, not a specific name, maybe not marked. But the user's guidelines say to mark only names. So perhaps not. 
+
+In the third part, "Acórdão n.1049279" is jurisprudencia. "20160020153586ADI" is also jurisprudencia. "Data de Julgamento" is tempo. "19/09/2017" is tempo. "Publicado no DJE" is not an entity. "28/09/2017" is tempo. "MARIOZAM BELMIRO" is pessoa. "CONSELHO ESPECIAL" is organizacao. 
+
+So the final HTML should have all these spans with the correct classes. Let me structure the text accordingly, making sure to wrap each entity in the appropriate <span> tags.
+</think>
+
+<span class="legislacao">Lei Orgânica do Distrito Federal</span> , estão maculadas por vício formal , eis que a competência é exclusiva do <span class="pessoa">Chefe do Poder Executivo</span> , por força da `` reserva de administração '' . 2 . Conquanto as leis impugnadas tenham sido editadas com o salutar objetivo de incrementar o transporte público coletivo , acabou por promover ingerência indevida no funcionamento da <span class="organizacao">Administração</span> , com o inequívoco aumento de despesas . 3 . <span class="jurisprudencia">Ação direta de inconstitucionalidade</span> julgada procedente . ( <span class="jurisprudencia">Acórdão n.1049279</span> , <span class="jurisprudencia">20160020153586ADI</span> , <span class="pessoa">Relator</span> : <span class="pessoa">MARIOZAM BELMIRO</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">Data de Julgamento</span> : <span class="tempo">19/09/2017</span> , <span class="tempo">Publicado no DJE</span> : <span class="tempo">28/09/2017</span> . Pág. : 27-29 ) ( grifo nosso ) 5 .

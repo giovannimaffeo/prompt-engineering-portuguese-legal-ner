@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The first part is "12 Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil ."
+
+Here, "MP n° 2.200-2/2001" is a medida provisória, which is a type of legislation. So that should be marked as legislacao. The date "24/08/2001" is a tempo. "ICP-Brasil" is mentioned, but according to the guidelines, terms like "ICP" or "ICP-Brasil" shouldn't be marked as legislação. So ICP-Brasil is not a legislation here. Wait, the example input 3 had "LEI Nº 11.788, DE 25 DE SETEMBRO DE 2008." and the output marked "LEI Nº 11.788" as legislacao. So maybe "MP n° 2.200-2/2001" is legislation. Also, "MP" stands for medida provisória, which is a legislative act. So that's legislacao. The date "24/08/2001" is tempo. 
+
+Next, "Supremo Tribunal Federal" is an organization, so that's organizacao. "ACO 2821 A GR / MT 3" looks like a jurisprudencia reference. The example input 2 had "RECURSO ESPECIAL Nº 1.583.083 - RS" marked as jurisprudencia. So "ACO 2821 A GR / MT 3" should be jurisprudencia. 
+
+Then, "Conclusão Disso decorre que , superada a alegação de inconstitucionalidade por violação ao art . 246 da Constituição Federal , impõe-se que o pedido seja julgado parcialmente procedente para reconhecer a nulidade do ato administrativo que negou a renovação do Certificado de Regularidade Previdenciária , devendo se abster a União de aplicar ao autor as sanções previstas no art ."
+
+Here, "Constituição Federal" is a legislation, so that's legislacao. "art . 246" is part of the legislation, so it should be included in the legislacao tag. "art . 246 da Constituição Federal" would be marked as legislacao. Also, "Certificado de Regularidade Previdenciária" is a specific term, but it's not an entity type. "União" is a organization, but according to the guidelines, "União" is a legal entity, so it's an organizacao. Wait, the example input 4 had "ESTADO DO ACRE" as local, but "União" is a federal entity, so it's an organizacao. 
+
+Wait, the guidelines say that "organizacao" includes "orgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas". The "União" is the federal government, so it's an organizacao. 
+
+Also, "art . 246 da Constituição Federal" is part of the legislation, so the entire phrase should be marked as legislacao. 
+
+Now, checking for any other entities. The URL "http : //www.stf.jus.br/portal/autenticacao/" is an endereço eletrônico, which the guidelines say should not be marked as local. So it's left as is. 
+
+Putting it all together, I need to mark each entity with the appropriate class. Let me go through each part again to ensure I didn't miss anything.
+
+- "MP n° 2.200-2/2001" → legislacao
+- "24/08/2001" → tempo
+- "Supremo Tribunal Federal" → organizacao
+- "ACO 2821 A GR / MT 3" → jurisprudencia
+- "Constituição Federal" → legislacao
+- "art . 246 da Constituição Federal" → legislacao
+- "União" → organizacao
+
+Wait, the "art . 246 da Constituição Federal" is part of the legislation, so the entire phrase should be marked. Also, "art . 246" is part of the legislation. But in the example input 5, "art . 428 da Consolidação das Leis do Trabalho – CLT" was marked as legislacao. So in this case, "art . 246 da Constituição Federal" should be marked as legislacao. 
+
+Also, "Certificado de Regularidade Previdenciária" is a specific term, but it's not an entity type. 
+
+So the final HTML should have all these entities marked with their respective classes. Let me structure the output accordingly.
+</think>
+
+12 Documento assinado digitalmente conforme <span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . <span class="organizacao">Supremo Tribunal Federal</span> <span class="jurisprudencia">ACO 2821 A GR / MT 3</span> . Conclusão Disso decorre que , superada a alegação de inconstitucionalidade por violação ao <span class="legislacao">art . 246 da Constituição Federal</span> , impõe-se que o pedido seja julgado parcialmente procedente para reconhecer a nulidade do ato administrativo que negou a renovação do Certificado de Regularidade Previdenciária , devendo se abster a <span class="organizacao">União</span> de aplicar ao autor as sanções previstas no <span class="legislacao">art</span> .

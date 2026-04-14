@@ -1,0 +1,87 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first part mentions "lei meramente autorizativa" and "inconstitucionalidade por invasão de competência privativa do Governador." Here, "Governador" is likely a person, but since it's "Governador" without a name, maybe it's an organization? Wait, in Brazilian context, "Governador" refers to the governor, a public official, so maybe it's a pessoa. But the user's example might have different interpretations. Wait, the example given in the output might have "GABINETE DO DESEMBARGADOR" as an organization. Let me check the original text again.
+
+Looking at the text: "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – that's an organization, so I should mark "GABINETE DO DESEMBARGADOR" as organizacao. Then "SILVANIO BARBOSA DOS SANTOS" is a person, so pessoa.
+
+Next, "Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – "Ação Direta de Inconstitucionalidade" is a legal term, maybe part of the legislation? Or is it a jurisprudência? Wait, "Ação Direta de Inconstitucionalidade" is a type of legal action, so maybe it's part of the legislação? Or perhaps it's a jurisprudência reference. Hmm, not sure. Maybe it's part of the process, so not an entity. Let me check the example output provided by the user. Wait, the user hasn't provided an example output, but the task says to return only the annotated text.
+
+Moving on, "Segundo precedentes do STF" – STF is the Superior Court of Justice in Brazil, so that's an organization. So "STF" should be organizacao.
+
+"Processo : 100010012076 ES 100010012076" – the "ES" might be an abbreviation for "Estado" (state), but not sure. Maybe "ES" is part of the process number, so not an entity. "Órgão Julgador : TRIBUNAL PLENO" – TRIBUNAL PLENO is an organization, so organizacao.
+
+"Publicação : 30/10/2007" – that's a date, so tempo.
+
+"Julgamento : 4 de Outubro de 2001" – another date, so tempo.
+
+Now, let's go through each part step by step.
+
+1. "Registre-se , por pertinente , que o fato de se tratar de lei meramente autorizativa não suprime , elide ou elimina vício de inconstitucionalidade por invasão de competência privativa do Governador ."
+
+Here, "Governador" is a person (pessoa), but since it's "Governador" without a name, maybe it's an organization? Wait, in Brazil, "Governador" refers to the governor, a public official, so it's a pessoa. But sometimes, the title might be considered an organization. Hmm, need to check. The example in the user's output might have "GABINETE DO DESEMBARGADOR" as organizacao, so maybe "Governador" is a pessoa. So I'll mark "Governador" as pessoa.
+
+2. "Neste sentido têm decidido demais Tribunais Estaduais pátrios : Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 16 3 - Segundo precedentes do STF , o fato de a lei impugnada ser meramente autorizativa não lhe retira a característica de inconstitucionalidade , que a desqualifica pela raiz quando invade a esfera a administrativa alcançando atos ligados à atividade típica da Administração Pública . ( Processo : 100010012076 ES 100010012076 . Órgão Julgador : TRIBUNAL PLENO . Publicação : 30/10/2007 . Julgamento : 4 de Outubro de 2001 ."
+
+Breaking this down:
+
+- "Tribunais Estaduais pátrios" – "Tribunais Estaduais" is an organization (organizacao), "pátrios" might be a local? Or maybe not. "Pátrios" here refers to the national, so maybe not. So "Tribunais Estaduais" is organizacao.
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a pessoa.
+
+- "STF" is an organization (organizacao).
+
+- "TRIBUNAL PLENO" is an organization (organizacao).
+
+- "Publicação : 30/10/2007" – tempo.
+
+- "Julgamento : 4 de Outubro de 2001" – tempo.
+
+Now, checking for other entities:
+
+- "Ação Direta de Inconstitucionalidade" – this is a legal term, but not sure if it's legislação or jurisprudência. Since it's a type of legal action, maybe it's part of the legislação? Or perhaps it's a jurisprudência reference. But the example might not have it. Alternatively, maybe it's part of the process, so not an entity. Let me check the original text again. The user's example output might have "ADI" as a legislação? Or maybe not. Since the user hasn't provided an example, I'll proceed with what I can.
+
+Also, "Código de Verificação" – that's a code, not an entity. "Processo" is a legal process, but not an entity. "Órgão Julgador" is an organization.
+
+So, compiling all the entities:
+
+- "Governador" – pessoa.
+
+- "GABINETE DO DESEMBARGADOR" – organizacao.
+
+- "SILVANIO BARBOSA DOS SANTOS" – pessoa.
+
+- "STF" – organizacao.
+
+- "TRIBUNAL PLENO" – organizacao.
+
+- "30/10/2007" – tempo.
+
+- "4 de Outubro de 2001" – tempo.
+
+Now, applying the tags:
+
+For "Governador" – <span class="pessoa">Governador</span>.
+
+"GABINETE DO DESEMBARGADOR" – <span class="organizacao">GABINETE DO DESEMBARGADOR</span>.
+
+"SILVANIO BARBOSA DOS SANTOS" – <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>.
+
+"STF" – <span class="organizacao">STF</span>.
+
+"TRIBUNAL PLENO" – <span class="organizacao">TRIBUNAL PLENO</span>.
+
+"30/10/2007" – <span class="tempo">30/10/2007</span>.
+
+"4 de Outubro de 2001" – <span class="tempo">4 de Outubro de 2001</span>.
+
+Other parts like "Ação Direta de Inconstitucionalidade" might be part of the legislação, but since it's a legal term, maybe it's part of the legislação. However, the user's example might not include it. Alternatively, it's part of the process, so not an entity. Let me check again. The user's example output might not have it, so I'll leave it as is unless there's a clear entity.
+
+Wait, "Ação Direta de Inconstitucionalidade" is a type of legal action, which could be part of the legislação. But I'm not sure. Since the user hasn't provided an example, I'll proceed with the entities I identified.
+
+So, the final HTML would have the spans for the identified entities. Let me reconstruct the text with these tags.
+</think>
+
+Registre-se , por pertinente , que o fato de se tratar de lei meramente autorizativa não suprime , elide ou elimina vício de inconstitucionalidade por invasão de competência privativa do <span class="pessoa">Governador</span> . Neste sentido têm decidido demais <span class="organizacao">Tribunais Estaduais</span> pátrios : Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade</span> 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 16 3 - Segundo precedentes do <span class="organizacao">STF</span> , o fato de a lei impugnada ser meramente autorizativa não lhe retira a característica de inconstitucionalidade , que a desqualifica pela raiz quando invade a esfera a administrativa alcançando atos ligados à atividade típica da Administração Pública . ( <span class="tempo">Processo</span> : 100010012076 ES 100010012076 . <span class="organizacao">Órgão Julgador</span> : <span class="organizacao">TRIBUNAL PLENO</span> . <span class="tempo">Publicação</span> : <span class="tempo">30/10/2007</span> . <span class="tempo">Julgamento</span> : <span class="tempo">4 de Outubro de 2001</span> .

@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read through the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me parse each part.
+
+The text starts with "Diante do exposto , requer seja concedido , liminarmente , a tutela provisória , determinando que o agravado realize a obra necessária e a correta distribuição de energia elétrica na propriedade da família do agravante , sob pena de multa diária em razão do descumprimento de ordem judicial , e ao final , seja dado provimento ao presente recurso para reformar a decisão agravada ."
+
+Looking for entities:
+
+- "aggravado" and "agravante" are legal terms. In Brazilian law, "agravado" refers to the person being appealed against (the defendant), and "agravante" is the appellant. So these are likely people. So I should mark "agravado" as pessoa and "agravante" as pessoa.
+
+- "propriedade da família do agravante" – "família" here refers to the family, which is a group of people, but the term "família" itself isn't a person. However, the context might imply that the family is a collective, but since the task is to mark entities, maybe "família" isn't an entity here. Wait, the user's example might have "família" as a local? No, "família" is a group of people, not a local. So maybe not. Unless there's a specific term for a family as a local, but I don't think so. So perhaps "família" isn't marked here.
+
+- "multa diária" – "diária" refers to daily, which is a time entity. So "diária" would be tempo. Wait, but "diária" is an adjective here. The term "multa diária" is a daily fine. So "diária" is part of the term, but maybe the entire phrase isn't an entity. The user's example might have "diária" as tempo. Let me check the example again. The user's example output for "diária" is marked as tempo. So I should mark "diária" as tempo.
+
+- "ordem judicial" – "ordem judicial" refers to a judicial order, which is part of the legal process. But the entity here is "ordem judicial" as a legal term. However, the user's entities are "legislacao" (legislation) and "jurisprudencia" (jurisprudence). "Ordem judicial" might not be one of those. Wait, "ordem judicial" is a judicial order, which is part of the legal system but not one of the specified entities. So maybe it's not marked here.
+
+- "recurso" – "recurso" is a legal term, but it's not one of the specified entities. The entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "recurso" isn't an entity here.
+
+- "decisão agravada" – "decisão" is a decision, which is part of the legal process. Again, not one of the specified entities. So no marking here.
+
+So the entities to mark are:
+
+- "agravado" as pessoa
+- "agravante" as pessoa
+- "diária" as tempo
+
+Wait, but "diária" is part of "multa diária". The user's example might have "diária" as tempo. Let me check the example again. The user's example output for "diária" is marked as tempo. So I should do the same here.
+
+So the final HTML would have:
+
+<span class="pessoa">agravado</span>
+<span class="pessoa">agravante</span>
+<span class="tempo">diária</span>
+
+Other parts of the text don't have any of the specified entities. So the rest remains as is.
+
+Now, I need to make sure that the HTML is correctly formatted, with the spans properly placed. Let me reconstruct the text with these tags.
+
+Original text: "Diante do exposto , requer seja concedido , liminarmente , a tutela provisória , determinando que o agravado realize a obra necessária e a correta distribuição de energia elétrica na propriedade da família do agravante , sob pena de multa diária em razão do descumprimento de ordem judicial , e ao final , seja dado provimento ao presente recurso para reformar a decisão agravada ."
+
+Marking "agravado" and "agravante" as pessoa, and "diária" as tempo.
+
+So the HTML would be:
+
+Diante do exposto , requer seja concedido , liminarmente , a tutela provisória , determinando que o <span class="pessoa">agravado</span> realize a obra necessária e a correta distribuição de energia elétrica na propriedade da família do <span class="pessoa">agravante</span> , sob pena de multa <span class="tempo">diária</span> em razão do descumprimento de ordem judicial , e ao final , seja dado provimento ao presente recurso para reformar a decisão agravada .
+
+I need to check if there are any other entities. For example, "propriedade da família" – "família" is a group, but not an entity here. "Local" would be a place, but the text doesn't mention a specific location. "Legislacao" or "jurisprudencia" aren't present. So no other entities.
+
+Thus, the final output should have those three spans.
+</think>
+
+Diante do exposto , requer seja concedido , liminarmente , a tutela provisória , determinando que o <span class="pessoa">agravado</span> realize a obra necessária e a correta distribuição de energia elétrica na propriedade da família do <span class="pessoa">agravante</span> , sob pena de multa <span class="tempo">diária</span> em razão do descumprimento de ordem judicial , e ao final , seja dado provimento ao presente recurso para reformar a decisão agravada .

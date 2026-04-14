@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by looking for any obvious entities. The text mentions "ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". The "ADI" might stand for Ação Direta de Inconstitucionalidade, which is a legal term, but I'm not sure if it's one of the entities listed. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So "ADI" might not be an entity here.
+
+Next, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE" is a part of the organization's name, so maybe "GABINETE" is part of an organization. But the full name is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". Since "DESEMBARGADOR" is a judicial title, maybe the person's name is "SILVANIO BARBOSA DOS SANTOS". So that would be a pessoa. The "GABINETE" might be part of an organization, but I'm not sure. Maybe "GABINETE" is an organization, but the full name includes the person's name. Wait, the user's example output might have "GABINETE DO DESEMBARGADOR" as an organization? Or maybe "SILVANIO BARBOSA DOS SANTOS" is the pessoa.
+
+Looking at the example output provided by the user, in the sample input, the output has "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as "GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>". So the person's name is marked. So I need to identify the person's name here.
+
+Then there's "20170020161362ADI" – the number might be a case number, but it's not one of the entities. The "2018ACONT2JYXTK52JCSL251NVQ" is a code, maybe a verification code, but again, not an entity.
+
+Looking for "legislacao" – the text mentions "Código de Verificação" which is a code, not legislation. Then there's "Art." which is short for "Artigo", so maybe part of a legal article, but the user's example output doesn't mark "Art." as legisprudencia or anything else. Wait, the user's example output might have "Art." as part of the text without any tags. So maybe "Art." is not an entity here.
+
+The text also mentions "Secretarias de Estado do Distrito Federal , órgãos e entidades da administração pública". "Secretarias" and "órgãos" and "entidades" are organizations. So "Secretarias de Estado do Distrito Federal" would be an organizacao. "órgãos" and "entidades" are also organizations. But the user's example output might have "Secretarias de Estado do Distrito Federal" as an organizacao. Wait, in the sample input, the output has "Secretarias de Estado do Distrito Federal" as part of the text, but maybe the user's example output doesn't mark them. Wait, the user's example output is not provided, but the user's instruction says to return the text with the entities marked. So I need to check each part.
+
+Let me go through the text again:
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 32 ( ... ) § 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Estado do Distrito Federal , órgãos e entidades da administração pública ; ( ... ) Art ."
+
+Breaking it down:
+
+- "Ação Direta de Inconstitucionalidade" – this is a legal term, but not one of the entities. So no tag.
+
+- "20170020161362ADI" – a case number, not an entity.
+
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – code, not an entity.
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – here, "SILVANIO BARBOSA DOS SANTOS" is a person's name, so mark as pessoa. "GABINETE DO DESEMBARGADOR" might be part of an organization, but the example output shows that "SILVANIO BARBOSA DOS SANTOS" is marked as pessoa. So the rest is left as is.
+
+- "32 ( ... )" – numbers and parentheses, no entity.
+
+- "§ 1º Compete privativamente ao Governador do Distrito Federal" – "Governador" is a title, but the person's name is "Governador do Distrito Federal", but the user's example output might not mark "Governador" as a pessoa. Wait, the user's example output might have "Governador do Distrito Federal" as a pessoa? Or is "Governador" a title, not a person's name. So maybe not.
+
+- "a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Estado do Distrito Federal , órgãos e entidades da administração pública ; ( ... ) Art ."
+
+Here, "Secretarias de Estado do Distrito Federal" is an organization, so mark as organizacao. "órgãos" and "entidades" are also organizations, so mark as organizacao. "Distrito Federal" is a local, so mark as local. "Art." is part of the text, no tag.
+
+Putting it all together:
+
+- "SILVANIO BARBOSA DOS SANTOS" is a pessoa.
+
+- "Secretarias de Estado do Distrito Federal" is an organizacao.
+
+- "Distrito Federal" is a local.
+
+- "órgãos" and "entidades" are organizacao.
+
+Wait, but the user's example output might have "Secretarias de Estado do Distrito Federal" as an organizacao. Let me check the original text again. The text says "Secretarias de Estado do Distrito Federal , órgãos e entidades da administração pública". So "Secretarias de Estado do Distrito Federal" is an organization, "órgãos" and "entidades" are also organizations. So all of these should be marked as organizacao. "Distrito Federal" is a local.
+
+So the final HTML would have:
+
+- <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>
+
+- <span class="organizacao">Secretarias de Estado do Distrito Federal</span>, <span class="organizacao">órgãos</span> e <span class="organizacao">entidades</span> da administração pública
+
+- <span class="local">Distrito Federal</span>
+
+Also, "GABINETE DO DESEMBARGADOR" might be part of an organization, but the example output shows that only the person's name is marked. So maybe "GABINETE DO DESEMBARGADOR" is not marked as an organization. So the text remains as is.
+
+So the final HTML would be:
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 32 ( ... ) § 1º Compete privativamente ao Governador do <span class="local">Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class="organizacao">Secretarias de Estado do Distrito Federal</span> , <span class="organizacao">órgãos</span> e <span class="organizacao">entidades</span> da administração pública ; ( ... ) Art ."
+
+Wait, but "Distrito Federal" is a local, so it's marked as local. The rest of the text is left as is. Also, "GABINETE DO DESEMBARGADOR" is part of the text, but not marked. So that's the final version.
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 32 ( ... ) § 1º Compete privativamente ao Governador do <span class="local">Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class="organizacao">Secretarias de Estado do Distrito Federal</span> , <span class="organizacao">órgãos</span> e <span class="organizacao">entidades</span> da administração pública ; ( ... ) Art .

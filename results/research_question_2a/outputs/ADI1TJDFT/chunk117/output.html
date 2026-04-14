@@ -1,0 +1,48 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. The text is: "ALeि 1.271 , de 27 de novembro de 1996 , padece de inconstitucionalidade formal , pois fruto de emenda parlamentar que enseja inadmissível aumento de despesa , afrontando reserva à iniciativa do Governador do DF , em ofensa à LODF . 6 ."
+
+Wait, the input has some typos or maybe OCR errors. For example, "ALeि 1.271" might be "A Lei distrital 1.271" but the original text starts with "ALeि" which could be a typo. But the user provided the exact input, so I should work with that.
+
+Let me break down the text:
+
+1. "ALeि 1.271" – This seems like a law reference. The "ALeि" might be "A Lei" with a typo. The number 1.271 is likely a legislative act. So "ALeि 1.271" would be a legislation entity. The class should be "legislacao".
+
+2. "de 27 de novembro de 1996" – This is a date, so "tempo".
+
+3. "inconstitucionalidade formal" – This is a legal term, but not one of the specified entities. So no tag.
+
+4. "emenda parlamentar" – This refers to a parliamentary amendment, which is part of legislation, but maybe the "emenda" itself is part of the legislation. However, the main entity here is the law, so maybe the "emenda" is part of the legislation. But the user's example might have "LODF" as a legislation entity.
+
+5. "inadmissível aumento de despesa" – Not an entity.
+
+6. "reserva à iniciativa do Governador do DF" – "Governador do DF" is a person (the Governor of the Federal District). So "Governador" is a pessoa. "DF" is the local (Distrito Federal).
+
+7. "LODF" – This is likely the Lei Orgânica do Distrito Federal, which is legislation. So "LODF" should be "legislacao".
+
+Now, let's map each part:
+
+- "ALeि 1.271" → legislacao
+- "27 de novembro de 1996" → tempo
+- "LODF" → legislacao
+- "Governador do DF" → pessoa (Governador) and local (DF)
+
+Wait, the original text says "reserva à iniciativa do Governador do DF". So "Governador" is a person, and "DF" is the local. So "Governador" should be <span class="pessoa">Governador</span> and "DF" as <span class="local">DF</span>.
+
+Putting it all together:
+
+Original text: "ALeि 1.271 , de 27 de novembro de 1996 , padece de inconstitucionalidade formal , pois fruto de emenda parlamentar que enseja inadmissível aumento de despesa , afrontando reserva à iniciativa do Governador do DF , em ofensa à LODF . 6 ."
+
+Marking:
+
+- "ALeि 1.271" → <span class="legislacao">ALeि 1.271</span>
+- "27 de novembro de 1996" → <span class="tempo">27 de novembro de 1996</span>
+- "Governador" → <span class="pessoa">Governador</span>
+- "DF" → <span class="local">DF</span>
+- "LODF" → <span class="legislacao">LODF</span>
+
+So the final HTML would have these spans. Let me check if there are any other entities. The rest of the text doesn't have any of the specified entities. So the output should be the text with these spans.
+</think>
+
+<span class="legislacao">ALeि 1.271</span> , de <span class="tempo">27 de novembro de 1996</span> , padece de inconstitucionalidade formal , pois fruto de emenda parlamentar que enseja inadmissível aumento de despesa , afrontando reserva à iniciativa do <span class="pessoa">Governador</span> do <span class="local">DF</span> , em ofensa à <span class="legislacao">LODF</span> . 6 .

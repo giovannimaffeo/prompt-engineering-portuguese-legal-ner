@@ -1,0 +1,57 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to look at the input text: "Inteiro Teor do Acórdão - Página 3 de 17 Relatório ACO 2821 A GR / MT postulou a inadmissão do recurso de agravo interno interposto pela União ."
+
+Let me break it down word by word. 
+
+"Inteiro Teor do Acórdão" – these are probably parts of a legal document title. "Acórdão" is a legal term, but it's not one of the specified entities. So no tag here.
+
+"Página 3 de 17" – "Página" is a word, but "3 de 17" is a page number, which might be considered a tempo or local? Wait, the user's guide says "tempo" is for time/date. "3 de 17" is a page number, not a date, so maybe not. Maybe it's just part of the document reference, so no tag.
+
+"Relatório ACO 2821" – "Relatório" is a report, but not an entity. "ACO 2821" might be an acronym for an organization or a case number. Since it's not clear, maybe it's an organization? But the user's example might have "ACO" as an organization. Wait, the input text has "ACO 2821" – maybe "ACO" is an organization. So I should mark "ACO" as organizacao? Or maybe the entire "ACO 2821" is a case number, which isn't one of the entities. Hmm, the user's example might have "ACO" as an organization. Let me check the example output provided. Wait, the user didn't provide an example output, but the task says to return the text with the entities marked. 
+
+Next, "A GR / MT" – "GR" could be an abbreviation for "Grande" or "Grande Regional", but in legal contexts, "GR" might refer to a court or a regional office. "MT" is the abbreviation for Mato Grosso, a state in Brazil. So "MT" is a local. "GR" might be an organization or a local. Wait, "GR" could be an abbreviation for "Grande Regional" which is a court, so maybe "GR" is an organization. But the user's guide says to mark "organizacao" for organizations. So "GR" might be an organization. But I'm not sure. Alternatively, "GR" could be part of a case number. 
+
+Then "postulou a inadmissão do recurso de agravo interno interposto pela União." – "União" is a legal entity, referring to the Union, which is a government entity. So "União" should be marked as organizacao. 
+
+So putting it all together:
+
+- "ACO 2821" – maybe "ACO" is an organization. But the user's example might have "ACO" as an organization. Let me check the input again. The input is "Relatório ACO 2821 A GR / MT". So "ACO 2821" is part of the report title. Maybe "ACO" is an organization. So "ACO" would be organizacao. "2821" is a number, not an entity. 
+
+"GR" – if it's an abbreviation for a court, maybe it's an organization. "MT" is a state, so local. 
+
+So the entities would be:
+
+- "ACO" as organizacao
+- "MT" as local
+- "União" as organizacao
+
+Wait, the user's example output might have "ACO" as an organization. Let me check the input again. The input is "Relatório ACO 2821 A GR / MT". So "ACO 2821" is part of the report. Maybe "ACO" is an organization. "GR" could be an organization or a local. "MT" is a local. 
+
+So the final HTML would have:
+
+- "ACO" as organizacao
+- "MT" as local
+- "União" as organizacao
+
+So the output would be:
+
+Inteiro Teor do Acórdão - Página 3 de 17 Relatório <span class="organizacao">ACO</span> 2821 A <span class="local">MT</span> postulou a inadmissão do recurso de agravo interno interposto pela <span class="organizacao">União</span> .
+
+Wait, but "GR" is also present. The input has "A GR / MT". So "GR" is part of the text. Maybe "GR" is an abbreviation for "Grande Regional" which is a court, so it's an organization. So "GR" would be organizacao. But the user's guide says to mark "organizacao" for organizations. So "GR" would be organizacao. 
+
+But the input is "A GR / MT". So "GR" is part of the text. So maybe "GR" is an organization. 
+
+So the corrected output would include "GR" as organizacao and "MT" as local. 
+
+So the final HTML would be:
+
+Inteiro Teor do Acórdão - Página 3 de 17 Relatório <span class="organizacao">ACO</span> 2821 A <span class="organizacao">GR</span> / <span class="local">MT</span> postulou a inadmissão do recurso de agravo interno interposto pela <span class="organizacao">União</span> .
+
+But I'm not entirely sure about "GR". Alternatively, "GR" could be part of a case number, so not an entity. But since the user's example might have "GR" as an organization, I'll proceed with that. 
+
+So the final answer would have "ACO", "GR", "MT", and "União" marked as organizacao, organizacao, local, and organizacao respectively.
+</think>
+
+Inteiro Teor do Acórdão - Página 3 de 17 Relatório <span class="organizacao">ACO</span> 2821 A <span class="organizacao">GR</span> / <span class="local">MT</span> postulou a inadmissão do recurso de agravo interno interposto pela <span class="organizacao">União</span> .

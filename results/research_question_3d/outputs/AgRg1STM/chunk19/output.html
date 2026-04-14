@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The first sentence: "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4". There's a URL here, but the guidelines say not to mark URLs as local. So nothing here.
+
+Next: "Em suma , deve ser mantida a decisão de inadmissibilidade dos Embargos de Declaração opostos pela Defesa , por ser evidente e cristalino que a matéria foi analisada nesta Corte Castrense , inexistindo omissão .". The key terms here are "Corte Castrense". According to the guidelines, "Corte Castrense" is an organization, so I should mark that as organizacao. Also, "Embargos de Declaração" is a legal term but not a specific entity, so no mark. "Defesa" might be a person or organization, but "Defesa" here refers to the defense, which is an organization, so maybe mark it as organizacao. Wait, the definition says organizations include formal entities like courts, so "Corte Castrense" is definitely an organization. "Defesa" could be a legal entity, like a defense organization, so maybe mark that as organizacao. Need to check if "Defesa" is a known organization. If not, maybe it's a generic term. The guidelines say not to mark generic terms. Hmm, maybe "Defesa" here is a generic term, so not marked. So only "Corte Castrense" is marked as organizacao.
+
+Next part: "Por fim , considera-se a matéria prequestionada . Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a Decisão proferida em 9 de novembro de 2017 , que negou seguimento aos Embargos de Declaração opostos por Nelson Barroso Ferreira contra o Acórdão proferido por este Tribunal nos autos do Recurso em Sentido Estrito nº 109-80.2017.7.01.0201 , por seus próprios e jurídicos fundamentos . É o Voto ."
+
+Looking for entities here. The date "9 de novembro de 2017" is a tempo entity. So mark that as tempo. Then "Nelson Barroso Ferreira" is a person, so mark as pessoa. "Acórdão" is a generic term, so not marked. "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" – the number is a jurisprudência reference. The guidelines say that complete identifiers like "Recurso em Sentido Estrito nº ..." should be marked as jurisprudência. So the entire reference should be in a span with class jurisprudência. Also, "este Tribunal" refers to a court, which is an organization. So mark "este Tribunal" as organizacao. Wait, "este Tribunal" is a reference to the court, which is an organization. So that should be marked. Also, "Corte Castrense" was already marked earlier. 
+
+Wait, the text mentions "Corte Castrense" again in the first part. So need to make sure that's marked as organizacao. Also, "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" – the "Recurso em Sentido Estrito" is a legal term, but the number is the identifier. According to the jurisprudência definition, identifiers like "nº 109-80.2017.7.01.0201" should be marked. So the entire "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" should be marked as jurisprudência. Also, "Tribunal" in "este Tribunal" is an organization.
+
+So putting it all together:
+
+- "Corte Castrense" → organizacao
+- "9 de novembro de 2017" → tempo
+- "Nelson Barroso Ferreira" → pessoa
+- "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" → jurisprudência
+- "este Tribunal" → organizacao
+
+Wait, "este Tribunal" is a reference to the court, so it's an organization. So that should be marked as organizacao. Also, "Corte Castrense" is an organization. 
+
+Let me check each part again. The user's example output in the task shows that "Corte Castrense" was marked as organizacao. So I need to ensure that all instances are covered.
+
+Now, the final HTML should have all these entities marked. Let me structure the text with the appropriate spans.
+
+Also, the date "9 de novembro de 2017" is a tempo entity. The person "Nelson Barroso Ferreira" is a pessoa. The "Recurso em Sentido Estrito nº ..." is a jurisprudência. "este Tribunal" is an organization. "Corte Castrense" is an organization. 
+
+I think that's all. Let me make sure there are no other entities. The URL and Codigo Verificador are not entities. The other terms are either generic or not specific enough. 
+
+So the final HTML should have the spans for those entities.
+</think>
+
+Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 Em suma , deve ser mantida a decisão de inadmissibilidade dos Embargos de Declaração opostos pela Defesa , por ser evidente e cristalino que a matéria foi analisada nesta <span class="organizacao">Corte Castrense</span> , inexistindo omissão . Por fim , considera-se a matéria prequestionada . Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a Decisão proferida em <span class="tempo">9 de novembro de 2017</span> , que negou seguimento aos Embargos de Declaração opostos por <span class="pessoa">Nelson Barroso Ferreira</span> contra o Acórdão proferido por este <span class="organizacao">Tribunal</span> nos autos do <span class="jurisprudencia">Recurso em Sentido Estrito nº 109-80.2017.7.01.0201</span> , por seus próprios e jurídicos fundamentos . É o Voto .

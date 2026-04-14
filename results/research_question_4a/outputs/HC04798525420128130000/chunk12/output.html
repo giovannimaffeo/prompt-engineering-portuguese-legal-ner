@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "Autoridade Policial em desfavor de JULIANDERSON NONATO FERREIRA , ANTÔNIO SALMO PEREIRA e ALEXANDRE OLIVEIRA MARTINS DOS SANTOS , em razão da prática , em tese , dos delitos previstos nos arts . 155 , §4º , incs . II e IV , c/c 288 , ambos do Código Penal , com fundamento na garantia da aplicação da lei penal e na garantia da ordem pública . De fato , estão cumpridos os requisitos exigidos pelo Código de Processo Penal para a decretação da prisão preventiva . A prisão preventiva , enquanto modalidade de prisão provisória , somente passará pelo filtro axiológico da Constituição da República se ostentar natureza cautelar e revestir-se de razoabilidade . O Código de Processo Penal , que deverá sempre ser interpretado em consonância com a Carta Magna , estabelece os pressupostos e os requisitos da prisão preventiva ."
+
+Looking for pessoas: The names JULIANDERSON NONATO FERREIRA, ANTÔNIO SALMO PEREIRA, and ALEXANDRE OLIVEIRA MARTINS DOS SANTOS are all full names, so they should be marked as pessoa.
+
+Next, organizacao: The text mentions "Autoridade Policial" which is an organization, but wait, the definition says organizations are formal entities like public organs, courts, etc. "Autoridade Policial" might refer to a police authority, which is an organization. However, the example given in the guidelines includes "MINISTÉRIO PÚBLICO FEDERAL" as an organization. But "Autoridade Policial" is a bit generic. Wait, the user's example had "MINISTÉRIO PÚBLICO FEDERAL" as an organization. In the input text, "Autoridade Policial" might be a title, not a specific organization. But the user's example included "Autoridade Policial" as an organization? Wait, no, in the example given, the input was "MINISTÉRIO PÚBLICO FEDERAL" which was marked as organizacao. So maybe "Autoridade Policial" is a generic term, not a specific organization. So perhaps it's not marked. Wait, but the user's example had "Autoridade Policial" in the input, but in the example output, it wasn't marked. Wait, looking back at the example input and output: the example input had "MINISTÉRIO PÚBLICO FEDERAL" marked as organizacao. The input text here has "Autoridade Policial" which is a generic term, not a specific organization. So maybe it's not marked. Wait, but the user's example had "Autoridade Policial" in the input, but in the example output, it wasn't marked. Wait, no, the example input was "O MINISTÉRIO PÚBLICO FEDERAL, por meio do Procurador CARLOS HENRIQUE ALVES..." and the output marked "MINISTÉRIO PÚBLICO FEDERAL" as organizacao. So in the current input, "Autoridade Policial" is a generic term, not a specific organization. So it's not marked. So no organizacao here.
+
+Next, tempo: The text has "em razão da prática , em tese , dos delitos previstos nos arts . 155 , §4º , incs . II e IV , c/c 288 , ambos do Código Penal , com fundamento na garantia da aplicação da lei penal e na garantia da ordem pública . De fato , estão cumpridos os requisitos exigidos pelo Código de Processo Penal para a decretação da prisão preventiva . A prisão preventiva , enquanto modalidade de prisão provisória , somente passará pelo filtro axiológico da Constituição da República se ostentar natureza cautelar e revestir-se de razoabilidade . O Código de Processo Penal , que deverá sempre ser interpretado em consonância com a Carta Magna , estabelece os pressupostos e os requisitos da prisão preventiva ."
+
+No dates or time references here. So no tempo.
+
+Local: The text doesn't mention any specific locations. So no local.
+
+Legislacao: The text mentions "Código Penal" and "Código de Processo Penal" and "Carta Magna" (which refers to the Constitution). According to the definitions, "legislacao" includes laws, codes, constitutions, etc. So "Código Penal" and "Código de Processo Penal" are codes, so they should be marked as legislacao. "Carta Magna" refers to the Constitution, so that's also legislacao. Wait, the example had "Constituição Federal" marked as legislacao. So "Carta Magna" is the Constitution, so it's legislacao. So those parts should be marked.
+
+Jurisprudencia: The text doesn't mention any specific judicial decisions, precedents, or súmulas. So no jurisprudencia.
+
+So the entities to mark are:
+
+- JULIANDERSON NONATO FERREIRA (pessoa)
+- ANTÔNIO SALMO PEREIRA (pessoa)
+- ALEXANDRE OLIVEIRA MARTINS DOS SANTOS (pessoa)
+- Código Penal (legislacao)
+- Código de Processo Penal (legislacao)
+- Carta Magna (legislacao)
+
+Wait, "Código Penal" and "Código de Processo Penal" are both codes, so they are legislacao. "Carta Magna" is the Constitution, so also legislacao.
+
+Now, I need to wrap each of these in <span> tags with the appropriate class.
+
+Let me check the input text again to make sure I didn't miss any other entities. The names are all full names, so they are pessoas. The codes and Constitution are legislacao. No other entities.
+
+So the output should have those names marked as pessoa and the codes as legislacao.
+</think>
+
+Autoridade Policial em desfavor de <span class="pessoa">JULIANDERSON NONATO FERREIRA</span> , <span class="pessoa">ANTÔNIO SALMO PEREIRA</span> e <span class="pessoa">ALEXANDRE OLIVEIRA MARTINS DOS SANTOS</span> , em razão da prática , em tese , dos delitos previstos nos arts . 155 , §4º , incs . II e IV , c/c 288 , ambos do <span class="legislacao">Código Penal</span> , com fundamento na garantia da aplicação da lei penal e na garantia da ordem pública . De fato , estão cumpridos os requisitos exigidos pelo <span class="legislacao">Código de Processo Penal</span> para a decretação da prisão preventiva . A prisão preventiva , enquanto modalidade de prisão provisória , somente passará pelo filtro axiológico da <span class="legislacao">Carta Magna</span> se ostentar natureza cautelar e revestir-se de razoabilidade . O <span class="legislacao">Código de Processo Penal</span> , que deverá sempre ser interpretado em consonância com a <span class="legislacao">Carta Magna</span> , estabelece os pressupostos e os requisitos da prisão preventiva .

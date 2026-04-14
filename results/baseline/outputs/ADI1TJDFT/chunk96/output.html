@@ -1,0 +1,38 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. The text mentions several legal terms and entities. Let me go line by line.
+
+Starting with "A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos nesta Lei Orgânica , cabe : ( ... ) § 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Governo , Órgãos e entidades da administração pública ; '' '' Art . 100 . Compete privativamente ao Governador do Distrito Federal : ( ... ) Fls ."
+
+Looking for entities:
+
+1. "Lei Orgânica" – this is a type of legislation, so it should be marked as legislacao.
+2. "Governador do Distrito Federal" – "Governador" is a person, but here it's a title, so maybe it's an organization? Wait, the user's guide says "pessoa" for people and "organizacao" for organizations. The "Governador" is a person's title, but in the context, it's referring to the person holding the position. However, the text might be referring to the position itself as an organization? Hmm, maybe not. Let me check the example. The user's example output might clarify. Wait, the user hasn't provided an example, but the guidelines say to use "pessoa" for people. So "Governador" is a person's title, so the actual person's name would be marked as pessoa. But in the text, it's just "Governador", which is a title, not a specific person. So maybe it's not an entity here. Wait, the text says "Compete privativamente ao Governador do Distrito Federal" – the "Governador" here is a position, not a specific person. So maybe it's not an entity. But the user's guidelines might consider titles as organizations? Or maybe not. The user's example might have similar cases. Since the user hasn't provided examples, I need to rely on the guidelines. The guidelines say "pessoa" for people, "organizacao" for organizations. So "Governador" is a title, not a specific person or organization. So maybe it's not marked. Wait, but the text mentions "Secretarias de Governo , Órgãos e entidades da administração pública". Here, "Secretarias" are organizations, "Órgãos" are organizations, and "entidades" are organizations. So those should be marked as organizacao. Also, "Lei Orgânica" is a legislation, so legislacao. "Art. 100" is a legal article, so maybe it's part of the legislation? Or is it a jurisprudência? No, jurisprudência refers to court decisions. So "Art. 100" is part of the legislation, so legislacao. "Fls." is an abbreviation for "Fls." which is "Folhas" in Portuguese, referring to pages. That's a time or date? Maybe not. The user's guidelines say "tempo" for time/data. "Fls." might be a page reference, so maybe not. So perhaps it's not marked. 
+
+So, in the text, the entities would be:
+
+- "Lei Orgânica" → legislacao
+- "Secretarias de Governo" → organizacao
+- "Órgãos" → organizacao
+- "entidades da administração pública" → organizacao
+- "Art. 100" → legislacao (since it's part of the law)
+- "Distrito Federal" → local (since it's a place)
+
+Wait, "Distrito Federal" is a local entity. So that should be marked as local. Also, "Secretarias de Governo" – "Secretarias" are organizations. "Órgãos" are organizations. "entidades da administração pública" are also organizations. So those should be marked as organizacao. 
+
+So putting it all together:
+
+- "Lei Orgânica" → legislacao
+- "Distrito Federal" → local
+- "Secretarias de Governo" → organizacao
+- "Órgãos" → organizacao
+- "entidades da administração pública" → organizacao
+- "Art. 100" → legislacao
+
+Now, I need to wrap each of these with <span> tags. Let me check the original text again to ensure I'm not missing any other entities. The text also mentions "iniciativa das leis complementares e ordinárias" – "leis" are part of legislation, but the term "leis" itself is not an entity unless specified. The user's example might have similar cases, but since the user hasn't provided examples, I'll stick to the guidelines. 
+
+So the final HTML should have the marked entities as per the above. Let me write that out.
+</think>
+
+A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos nesta <span class="legislacao">Lei Orgânica</span> , cabe : ( ... ) § 1º Compete privativamente ao <span class="pessoa">Governador</span> do <span class="local">Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class="organizacao">Secretarias de Governo</span> , <span class="organizacao">Órgãos</span> e <span class="organizacao">entidades da administração pública</span> ; '' '' <span class="legislacao">Art</span> . 100 . Compete privativamente ao <span class="pessoa">Governador</span> do <span class="local">Distrito Federal</span> : ( ... ) <span class="tempo">Fls</span> .

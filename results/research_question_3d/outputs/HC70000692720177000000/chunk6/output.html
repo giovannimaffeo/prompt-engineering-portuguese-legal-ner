@@ -1,0 +1,41 @@
+<think>
+Okay, let me tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. First, I need to understand the definitions and guidelines provided for each entity type.
+
+Starting with the text: "Indignada com tal procedimento , esta Impetrante telefonou para a secretaria do cartório da 2ª Auditoria da 11ª CJM e fui informada que de fato , esta patrona não havia sido intimada , e que , existiria um `` acordo '' sobre realização de intimação por endereço eletrônico . Enfim , Ínclitos Julgadores , esta Impetrante não participou de qualquer acordo neste sentido , e o fornecimento de telefone celular ou de e-mail não substitui a intimação formal prevista no artigo 288 do CPPM , in verbis ( ... ) '' . A Defesa sustentou que `` ( ... ) como no caso em tela , a falta de intimação de defensor legalmente constituído e escolhido pelo Paciente , gera nulidade absoluta de todos os atos posteriores à nulidade apontada . `` ."
+
+First, I'll look for entities in each category. Let's go step by step.
+
+1. **Pessoa**: The text mentions "Impetrante" and "Paciente". However, "Impetrante" is a legal term referring to a petitioner, which is a role, not a specific person. Similarly, "Paciente" is a term for a patient, which is also a role. The user's guidelines state that only names of individuals (proper names) should be marked as 'pessoa'. Since these are titles or roles, not specific names, they shouldn't be marked. Wait, but the text also has "esta patrona" which might refer to a specific person, but "patrona" is a term for a lawyer, so again a role. So maybe no 'pessoa' entities here.
+
+2. **Organização**: The text mentions "cartório da 2ª Auditoria da 11ª CJM". "CJM" is likely an acronym for a judicial body, like "Corregedoria Geral de Justiça" or similar. The full name might be an organization. Also, "CPPM" is mentioned, which could be a law or code. Wait, "CPPM" is a legal code, so that would be legislation. Let me check the definitions again. "Organização" includes courts, tribunals, etc. So "cartório" is a public office, which is an organization. "2ª Auditoria da 11ª CJM" – "CJM" is part of the organization's name. So I should mark "cartório da 2ª Auditoria da 11ª CJM" as an organization. Also, "CPPM" as legislation. Wait, no, "CPPM" is a code, so that's legislation. So "CPPM" should be marked as 'legislacao'.
+
+3. **Tempo**: The text doesn't have any dates or time references. So no 'tempo' entities.
+
+4. **Local**: The text mentions "endereço eletrônico" which is an email, not a location. No specific places mentioned. So no 'local' entities.
+
+5. **Legislação**: The text refers to "artigo 288 do CPPM". "CPPM" is a code, so that's legislation. So "CPPM" should be marked as 'legislacao'. Also, "artigo 288 do CPPM" is part of the legislation reference. So the entire phrase "artigo 288 do CPPM" would be marked as legislation.
+
+6. **Jurisprudência**: The text doesn't mention any specific cases, precedents, or legal decisions. It refers to "nulidade absoluta" which is a legal concept, but not a specific jurisprudential reference. So no 'jurisprudencia' entities.
+
+Now, checking for any other possible entities. The term "CJM" might be an acronym for an organization, so "CJM" could be part of the organization name. The full name "cartório da 2ª Auditoria da 11ª CJM" would be an organization. Also, "CPPM" is a legislation code. So the HTML should have:
+
+- "cartório da 2ª Auditoria da 11ª CJM" as organization.
+- "CPPM" as legislation.
+- "artigo 288 do CPPM" as legislation (since it's part of the legislation reference).
+
+Wait, the user's guidelines say that legislation should be marked as a complete reference. So "CPPM" is the code, and "artigo 288 do CPPM" refers to a specific article in that code. So both "CPPM" and "artigo 288 do CPPM" should be marked as 'legislacao'.
+
+Also, "CJM" is part of the organization name, so the entire "2ª Auditoria da 11ª CJM" would be part of the organization. But the exact name might be "CJM" as an organization. However, the user's example for organizations includes "Tribunal de Contas", which is a full name. So maybe "CJM" is an organization, but the text refers to "cartório da 2ª Auditoria da 11ª CJM", which is a specific office. So the entire phrase "cartório da 2ª Auditoria da 11ª CJM" is an organization.
+
+Putting it all together, the HTML should have:
+
+- <span class="organizacao">cartório da 2ª Auditoria da 11ª CJM</span>
+- <span class="legislacao">CPPM</span>
+- <span class="legislacao">artigo 288 do CPPM</span>
+
+Other terms like "Impetrante" and "Paciente" are roles, not names, so they aren't marked. "Ínclitos Julgadores" is a title, not a specific person or organization. "Defesa" is a legal term for defense, not a specific entity. "endereço eletrônico" is not a location. "nulidade absoluta" is a legal term, not an entity.
+
+So the final HTML should have those three entities marked correctly.
+</think>
+
+Indignada com tal procedimento , esta Impetrante telefonou para a secretaria do cartório da 2ª Auditoria da 11ª <span class="organizacao">CJM</span> e fui informada que de fato , esta patrona não havia sido intimada , e que , existiria um `` acordo '' sobre realização de intimação por endereço eletrônico . Enfim , Ínclitos Julgadores , esta Impetrante não participou de qualquer acordo neste sentido , e o fornecimento de telefone celular ou de e-mail não substitui a intimação formal prevista no <span class="legislacao">artigo 288 do CPPM</span> , in verbis ( ... ) '' . A Defesa sustentou que `` ( ... ) como no caso em tela , a falta de intimação de defensor legalmente constituído e escolhido pelo Paciente , gera nulidade absoluta de todos os atos posteriores à nulidade apontada . `` .

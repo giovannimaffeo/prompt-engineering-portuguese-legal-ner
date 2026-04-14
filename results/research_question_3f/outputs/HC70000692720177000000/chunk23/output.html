@@ -1,0 +1,80 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The first sentence: "Com fundamento na Certidão expedida por servidora , que goza de fé pública , a alegação da Impetrante não incorpora a necessária verossimilhança , principalmente por não ter sido apresentada prova de que não teria sido notificada pelo Cartório do Juízo de primeira instância ."
+
+Looking for entities here. "Certidão" – that's a legal document, but according to the guidelines, only specific entities like legislation, jurisprudence, etc., should be marked. "Certidão" itself isn't one of the defined entities. "servidora" is a title, not a name, so not pessoa. "Impetrante" is a legal term but not a specific name. "Cartório do Juízo de primeira instância" – "Cartório" is an organization, but the full name might be an organization. Wait, the guidelines say to mark organizations like "MINISTÉRIO PÚBLICO FEDERAL" or "Tribunal de Contas". Here, "Cartório do Juízo de primeira instância" – maybe "Cartório" is part of an organization. But the example in the guidelines includes "Cartório do Juízo de primeira instância" as an organization? Wait, looking back at the examples, in Exemplo Entrada4, "ESTADO DO ACRE Rua Tribunal de Justiça, Via Verde, Rio BrancoAC" becomes "ESTADO DO ACRE" as local, "Rua Tribunal de Justiça" as local, etc. So maybe "Cartório do Juízo de primeira instância" is an organization. But the example doesn't have that. Hmm. Maybe "Cartório" is part of an organization. But the user's example for "organizacao" includes "Cartório do Juízo de primeira instância" as an example? Wait, no. The example for organizacao includes "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", etc. So "Cartório do Juízo de primeira instância" might be an organization. But I need to check if "Cartório" is considered an organization. Since the user's examples don't have that, maybe I should not mark it unless it's a specific name. Alternatively, maybe "Cartório" is part of an organization. But the text here is "Cartório do Juízo de primeira instância" – perhaps "Cartório" is the organization. But the guidelines say to mark organizations like "Tribunal de Contas", so maybe "Cartório" is an organization. However, the example in the guidelines for organizacao includes "Cartório do Juízo de primeira instância" as an example? Wait, looking back, the example for organizacao includes "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", etc. So maybe "Cartório do Juízo de primeira instância" is an organization. But I'm not sure. Maybe I should mark "Cartório" as an organization. Alternatively, maybe it's part of a larger organization. But since the user's examples don't have that, perhaps I should not mark it unless it's a specific name. Wait, the user's example for organizacao includes "Cartório do Juízo de primeira instância" as an example? No, looking back, the example for organizacao includes "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", etc. So maybe "Cartório" is not an organization here. Maybe it's a generic term. So I should not mark it. 
+
+Next, "Dra Gisele" – "Dra" is a title (Doutora), so not a pessoa. But "Gisele" is a name, so that's a pessoa. Wait, the user's example for pessoa includes "CARLOS HENRIQUE ALVES" as a pessoa. So "Dra Gisele" – "Dra" is a title, but "Gisele" is the name. So "Gisele" should be marked as pessoa. But the example in the user's input has "Dra Gisele" – the full name is "Gisele", so the span should be around "Gisele". Wait, the example in the user's input has "Dra Gisele" – the "Dra" is a title, but the name is "Gisele". So the span should be "Gisele" as pessoa. 
+
+Then, "outubro de 2016" – that's a tempo. So mark that as tempo. 
+
+"nº 088713" – that's a number, but not an entity. The example in the user's input has "nº 088713" as part of the document, but the guidelines say to mark only specific entities. So that's not an entity. 
+
+"nº 0888835 e 0888873" – same as above, numbers, not entities. 
+
+"número de telefone" – not an entity. 
+
+Now, looking at the rest of the text. 
+
+"consoante se constata dos anexos nº 0888835 e 0888873" – again, numbers, not entities. 
+
+So, the entities to mark are:
+
+- "Dra Gisele" → pessoa (only "Gisele" is the name, "Dra" is a title, so the span is "Gisele")
+- "outubro de 2016" → tempo
+- "Cartório do Juízo de primeira instância" → maybe organizacao? But the example doesn't have that. Wait, the user's example for organizacao includes "Tribunal de Contas", so "Cartório" might be an organization. But the text here is "Cartório do Juízo de primeira instância" – perhaps "Cartório" is the organization. But the example in the user's input for organizacao includes "Cartório do Juízo de primeira instância" as an example? Wait, looking back, the example for organizacao includes "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", etc. So maybe "Cartório" is not an organization here. Alternatively, maybe "Cartório do Juízo de primeira instância" is an organization. But the user's example for organizacao doesn't include that. So perhaps I should not mark it. 
+
+Wait, the user's example for organizacao includes "Cartório do Juízo de primeira instância" as an example? Let me check again. The user's example for organizacao is not given, but the example for local includes "ESTADO DO ACRE", "Rua Tribunal de Justiça", etc. So maybe "Cartório" is part of an organization. But since the user's examples don't have that, perhaps I should not mark it. 
+
+So, the only entities are "Gisele" as pessoa, "outubro de 2016" as tempo. 
+
+Wait, but the user's example for "tempo" includes "25 DE SETEMBRO DE 2008" as tempo. So "outubro de 2016" is tempo. 
+
+So the final HTML should have:
+
+- "Gisele" as pessoa
+- "outubro de 2016" as tempo
+
+Other parts like "Cartório" are not marked as organizacao unless specified. 
+
+So the output would be:
+
+Com fundamento na Certidão expedida por servidora , que goza de fé pública , a alegação da Impetrante não incorpora a necessária verossimilhança , principalmente por não ter sido apresentada prova de que não teria sido notificada pelo <span class="organizacao">Cartório do Juízo de primeira instância</span> . Além disso , impende destacar o seguinte trecho das informações prestadas pelo Juízo apontado coator : '' ( ... ) Acrescente-se que , conforme documentos anexos , a <span class="pessoa">Dra Gisele</span> já havia sido notificada diversas vezes no e-mail por ela informado , tendo o endereço eletrônico este sido confirmado pela causídica em <span class="tempo">outubro de 2016</span> ( vide documento anexado sob o nº 088713 ) . Ademais , consoante se constata dos anexos nº 0888835 e 0888873 , o número de telefone da advogada permaneceu o mesmo .
+
+Wait, but "Cartório do Juízo de primeira instância" – is that an organization? The user's example for organizacao includes "Tribunal de Contas", so maybe "Cartório" is part of an organization. But the example in the user's input for organizacao doesn't have that. However, the user's example for local includes "Rua Tribunal de Justiça" as local. So maybe "Cartório" is an organization. But the user's example for organizacao includes "Cartório do Juízo de primeira instância" as an example? No, the example for organizacao is not given. So perhaps I should not mark "Cartório do Juízo de primeira instância" as organizacao. 
+
+Alternatively, maybe "Cartório" is an organization. But the user's example for organizacao includes "Tribunal de Contas", so "Cartório" might be an organization. But the example in the user's input for organizacao is not given. So I'm a bit confused. 
+
+Wait, the user's example for organizacao includes "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", etc. So "Cartório" is not in that list. Therefore, perhaps "Cartório" is not an organization here. So I should not mark it. 
+
+Therefore, the only entities are "Gisele" as pessoa, "outubro de 2016" as tempo. 
+
+So the final HTML would have those two spans. 
+
+Wait, but in the user's example for "organizacao", the example includes "Cartório do Juízo de primeira instância" as an example? Let me check again. The user's example for organizacao is not given, but the example for local includes "ESTADO DO ACRE", "Rua Tribunal de Justiça", etc. So "Cartório" is not an organization here. 
+
+Therefore, the correct output is:
+
+Com fundamento na Certidão expedida por servidora , que goza de fé pública , a alegação da Impetrante não incorpora a necessária verossimilhança , principalmente por não ter sido apresentada prova de que não teria sido notificada pelo Cartório do Juízo de primeira instância . Além disso , impende destacar o seguinte trecho das informações prestadas pelo Juízo apontado coator : '' ( ... ) Acrescente-se que , conforme documentos anexos , a <span class="pessoa">Dra Gisele</span> já havia sido notificada diversas vezes no e-mail por ela informado , tendo o endereço eletrônico este sido confirmado pela causídica em <span class="tempo">outubro de 2016</span> ( vide documento anexado sob o nº 088713 ) . Ademais , consoante se constata dos anexos nº 0888835 e 0888873 , o número de telefone da advogada permaneceu o mesmo .
+
+Wait, but "Dra Gisele" – the "Dra" is a title, so the name is "Gisele". So the span should be around "Gisele", not "Dra Gisele". So the correct span is "Gisele" as pessoa. 
+
+So the final HTML would have:
+
+<span class="pessoa">Gisele</span> 
+
+But the original text has "Dra Gisele" – so the span should be "Gisele" only. 
+
+So the correct output is:
+
+Com fundamento na Certidão expedida por servidora , que goza de fé pública , a alegação da Impetrante não incorpora a necessária verossimilhança , principalmente por não ter sido apresentada prova de que não teria sido notificada pelo Cartório do Juízo de primeira instância . Além disso , impende destacar o seguinte trecho das informações prestadas pelo Juízo apontado coator : '' ( ... ) Acrescente-se que , conforme documentos anexos , a <span class="pessoa">Gisele</span> já havia sido notificada diversas vezes no e-mail por ela informado , tendo o endereço eletrônico este sido confirmado pela causídica em <span class="tempo">outubro de 2016</span> ( vide documento anexado sob o nº 088713 ) . Ademais , consoante se constata dos anexos nº 0888835 e 0888873 , o número de telefone da advogada permaneceu o mesmo .
+
+But wait, the original text has "Dra Gisele" – the "Dra" is a title, so the name is "Gisele". So the span should be "Gisele" only. 
+
+Therefore, the final answer should have "Gisele" as pessoa and "outubro de 2016" as tempo.
+</think>
+
+Com fundamento na Certidão expedida por servidora , que goza de fé pública , a alegação da Impetrante não incorpora a necessária verossimilhança , principalmente por não ter sido apresentada prova de que não teria sido notificada pelo Cartório do Juízo de primeira instância . Além disso , impende destacar o seguinte trecho das informações prestadas pelo Juízo apontado coator : '' ( ... ) Acrescente-se que , conforme documentos anexos , a <span class="pessoa">Gisele</span> já havia sido notificada diversas vezes no e-mail por ela informado , tendo o endereço eletrônico este sido confirmado pela causídica em <span class="tempo">outubro de 2016</span> ( vide documento anexado sob o nº 088713 ) . Ademais , consoante se constata dos anexos nº 0888835 e 0888873 , o número de telefone da advogada permaneceu o mesmo .

@@ -1,0 +1,95 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with the first part: "202 , inciso I , do CC , elencar como causa interruptiva da prescrição o despacho do juiz que determina a citação , esse preceito legal deve ser interpretado em conjunto com a exigência de que o autor promova o ato citatório no prazo e na forma da lei processual , isto é , em observância ao disposto no art . 240 , § 2º , do CPC . 3 . Nos termos do § 2º do art . 240 do CPC , incumbe à parte autora promover a citação do réu no prazo de dez ( 10 ) dias . Com efeito , embora referido prazo não seja peremptório , vale notar que a citação levada a efeito após o transcurso deste , não tem o condão de interromper a prescrição , retroagindo à data da propositura da ação ( § 1º do art . 240 , do CPC ) , salvo se a demora na citação se der por motivos inerentes ao mecanismo da Justiça , consoante o § 3º do mesmo artigo do CPC e o Enunciado nº 106 , do STJ , que não é o caso . 4 ."
+
+Looking for legal entities:
+
+1. "CC" – This is likely the abbreviation for "Código Civil" (Civil Code), which is a legal legislation. So, "CC" should be marked as legislacao.
+
+2. "CPC" – This stands for "Código de Processo Civil" (Civil Procedure Code), another legal legislation. So, "CPC" is legislacao.
+
+3. "art. 240, § 2º" – "art." is short for "artigo" (article), and "§ 2º" refers to a section. These are parts of legal legislation, so they should be marked as legislacao.
+
+4. "§ 1º do art. 240, do CPC" – Again, "art." and "§" refer to legal articles and sections, so these are legislacao.
+
+5. "Enunciado nº 106, do STJ" – "STJ" is the Superior Court of Justice (Superior Tribunal de Justiça), which is an organization. So "STJ" is organizacao.
+
+6. "inciso I" – "inciso" refers to a subsection, part of a legal text. Since it's part of a legal article, it's part of legislacao.
+
+7. "dez ( 10 ) dias" – "dez" is a number, but it's part of a time reference. However, the user's guidelines say to mark explicit temporal references. Here, "dez dias" is a time period, so "dez ( 10 ) dias" should be marked as tempo.
+
+Wait, but the user's definition for tempo includes dates, partial dates, years, etc. "dez dias" is a duration, which is a time reference. So yes, mark as tempo.
+
+8. "data da propositura da ação" – "data" is a temporal reference, but the phrase is "data da propositura da ação" which is "date of the filing of the action". The word "data" here is part of a phrase, not an explicit temporal reference. The user's guidelines say to mark explicit temporal expressions. Since "data" is a generic term here, not a specific date, it's not marked.
+
+9. "Enunciado nº 106" – "Enunciado" is a legal precedent or jurisprudential statement. The STJ is the organization, but "Enunciado" itself is part of jurisprudencia. However, the user's definition for jurisprudencia includes súmulas, enunciados, etc. So "Enunciado nº 106" should be marked as jurisprudencia.
+
+Wait, the user's example in the output shows "Enunciado nº 106 , do STJ" as "Enunciado nº 106 , do <span class="organizacao">STJ</span>". So "STJ" is the organization, and "Enunciado" is part of jurisprudencia. So "Enunciado nº 106" should be marked as jurisprudencia.
+
+Now, checking for other entities:
+
+- "juiz" – refers to a judge, which is a person. But the user's definition for pessoa is names, not titles. "Juiz" is a generic term, not a specific name, so it's not marked.
+
+- "parte autora" – refers to the plaintiff, but again, it's a generic term, not a specific person. So not marked.
+
+- "réu" – defendant, same as above, not a specific name.
+
+- "mechanismo da Justiça" – "Justiça" is the legal system, but it's a generic term. The user's definition for organizacao includes judicial organs, but "Justiça" here is not a specific organization. So not marked.
+
+So, the entities to mark are:
+
+- "CC" → legislacao
+- "CPC" → legislacao
+- "art. 240, § 2º" → legislacao
+- "§ 1º do art. 240, do CPC" → legislacao
+- "STJ" → organizacao
+- "dez ( 10 ) dias" → tempo
+- "Enunciado nº 106" → jurisprudencia
+
+Wait, the user's example in the output shows "Enunciado nº 106 , do STJ" as "Enunciado nº 106 , do <span class="organizacao">STJ</span>". So "STJ" is the organization. The "Enunciado" is part of jurisprudencia. So "Enunciado nº 106" should be marked as jurisprudencia.
+
+Now, applying these to the text:
+
+Original text: "202 , inciso I , do CC , elencar como causa interruptiva da prescrição o despacho do juiz que determina a citação , esse preceito legal deve ser interpretado em conjunto com a exigência de que o autor promova o ato citatório no prazo e na forma da lei processual , isto é , em observância ao disposto no art . 240 , § 2º , do CPC . 3 . Nos termos do § 2º do art . 240 do CPC , incumbe à parte autora promover a citação do réu no prazo de dez ( 10 ) dias . Com efeito , embora referido prazo não seja peremptório , vale notar que a citação levada a efeito após o transcurso deste , não tem o condão de interromper a prescrição , retroagindo à data da propositura da ação ( § 1º do art . 240 , do CPC ) , salvo se a demora na citação se der por motivos inerentes ao mecanismo da Justiça , consoante o § 3º do mesmo artigo do CPC e o Enunciado nº 106 , do STJ , que não é o caso . 4 ."
+
+Marking:
+
+- "CC" → <span class="legislacao">CC</span>
+- "CPC" → <span class="legislacao">CPC</span>
+- "art. 240, § 2º" → <span class="legislacao">art. 240, § 2º</span>
+- "§ 1º do art. 240, do CPC" → <span class="legislacao">§ 1º do art. 240, do CPC</span>
+- "dez ( 10 ) dias" → <span class="tempo">dez ( 10 ) dias</span>
+- "STJ" → <span class="organizacao">STJ</span>
+- "Enunciado nº 106" → <span class="jurisprudencia">Enunciado nº 106</span>
+
+Wait, the original text has "Enunciado nº 106 , do STJ" which becomes "Enunciado nº 106 , do <span class="organizacao">STJ</span>". So "Enunciado nº 106" is marked as jurisprudencia, and "STJ" as organizacao.
+
+So the final HTML should have these spans in place. Let me check again for any missed entities.
+
+Another check: "inciso I" – part of a legal article, so it's part of legislacao. But the user's example in the output shows "inciso I" as part of the legislacao. Wait, in the input text, "inciso I , do CC" – "inciso I" is part of the legal text, so it's part of legislacao. So "inciso I" should be marked as legislacao.
+
+Wait, the original text has "202 , inciso I , do CC , elencar..." So "inciso I" is part of the legal reference. So "inciso I" should be marked as legislacao.
+
+Similarly, "art. 240, § 2º" is part of the legislation, so marked as legislacao.
+
+So, adding "inciso I" as legislacao.
+
+So the entities are:
+
+- "CC" → legislacao
+- "inciso I" → legislacao
+- "art. 240, § 2º" → legislacao
+- "§ 1º do art. 240, do CPC" → legislacao
+- "dez ( 10 ) dias" → tempo
+- "STJ" → organizacao
+- "Enunciado nº 106" → jurisprudencia
+
+Wait, but "inciso I" is part of the legal text, so it's part of the legislation. So "inciso I" should be marked as legislacao.
+
+So the final HTML would have these spans. Let me reconstruct the text with these tags.
+</think>
+
+202 , <span class="legislacao">inciso I</span> , do <span class="legislacao">CC</span> , elencar como causa interruptiva da prescrição o despacho do juiz que determina a citação , esse preceito legal deve ser interpretado em conjunto com a exigência de que o autor promova o ato citatório no prazo e na forma da lei processual , isto é , em observância ao disposto no <span class="legislacao">art</span> . 240 , <span class="legislacao">§ 2º</span> , do <span class="legislacao">CPC</span> . 3 . Nos termos do <span class="legislacao">§ 2º</span> do <span class="legislacao">art</span> . 240 do <span class="legislacao">CPC</span> , incumbe à parte autora promover a citação do réu no prazo de <span class="tempo">dez ( 10 ) dias</span> . Com efeito , embora referido prazo não seja peremptório , vale notar que a citação levada a efeito após o transcurso deste , não tem o condão de interromper a prescrição , retroagindo à data da propositura da ação ( <span class="legislacao">§ 1º</span> do <span class="legislacao">art</span> . 240 , do <span class="legislacao">CPC</span> ) , salvo se a demora na citação se der por motivos inerentes ao mecanismo da Justiça , consoante o <span class="legislacao">§ 3º</span> do mesmo artigo do <span class="legislacao">CPC</span> e o <span class="jurisprudencia">Enunciado nº 106</span> , do <span class="organizacao">STJ</span> , que não é o caso . 4 .

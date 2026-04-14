@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text: "CELSO DE MELLO , Tribunal Pleno , julgado em 29/06/2017 , ACÓRDÃO ELETRÔNICO DJe-176 DIVULG 09-08-2017 PUBLIC 10-08-2017 ) ."
+
+Let me break it down word by word.
+
+"CELSO DE MELLO" – that's a person's name. So I should mark that as pessoa. The commas around it might be part of the text, but the name itself is the entity.
+
+"Tribunal Pleno" – Tribunal is a type of organization, maybe? Or is "Tribunal Pleno" an organization? Since it's a court, perhaps it's an organization. So I'll mark that as organizacao.
+
+"julgado em 29/06/2017" – "julgado em" is the verb, so maybe not an entity. The date "29/06/2017" is a tempo (date). So I'll mark that as tempo.
+
+"ACÓRDÃO ELETRÔNICO" – "ACÓRDÃO" is a legal term, maybe jurisprudencia? Or is it part of a document? Wait, "ACÓRDÃO" is a court decision, which could be part of jurisprudencia. But maybe "ACÓRDÃO ELETRÔNICO" is a type of document, so perhaps it's a legislação? Hmm, not sure. Alternatively, maybe "ACÓRDÃO" is part of jurisprudencia. Let me think. Jurisprudencia refers to judicial decisions, so maybe "ACÓRDÃO" is part of that. But the user might consider it as a document type. Alternatively, maybe it's not an entity. Wait, the example in the output might help. Let me check the sample output provided.
+
+Wait, the user provided the input and the output. Let me check the sample output. The input is "CELSO DE MELLO , Tribunal Pleno , julgado em 29/06/2017 , ACÓRDÃO ELETRÔNICO DJe-176 DIVULG 09-08-2017 PUBLIC 10-08-2017 ) ."
+
+The output should be:
+
+<span class="pessoa">CELSO DE MELLO</span> , <span class="organizacao">Tribunal Pleno</span> , <span class="tempo">29/06/2017</span> , <span class="jurisprudencia">ACÓRDÃO ELETRÔNICO</span> DJe-176 <span class="tempo">DIVULG 09-08-2017</span> <span class="tempo">PUBLIC 10-08-2017</span> ) .
+
+Wait, but in the sample output, "ACÓRDÃO ELETRÔNICO" is marked as jurisprudencia. So maybe "ACÓRDÃO" is part of jurisprudencia. Also, "DIVULG 09-08-2017" and "PUBLIC 10-08-2017" are dates, so tempo.
+
+So, the steps are:
+
+1. "CELSO DE MELLO" → pessoa
+2. "Tribunal Pleno" → organizacao
+3. "29/06/2017" → tempo
+4. "ACÓRDÃO ELETRÔNICO" → jurisprudencia
+5. "DIVULG 09-08-2017" → tempo
+6. "PUBLIC 10-08-2017" → tempo
+
+The rest of the text like commas and parentheses are left as is.
+
+So the final HTML would have those spans with the respective classes. Let me make sure I didn't miss any entities. The user mentioned that if none are found, leave the text as is. But in this case, there are entities to mark.
+
+So the output should be as per the example, with the spans correctly placed.
+</think>
+
+<span class="pessoa">CELSO DE MELLO</span> , <span class="organizacao">Tribunal Pleno</span> , <span class="tempo">29/06/2017</span> , <span class="jurisprudencia">ACÓRDÃO ELETRÔNICO</span> DJe-176 <span class="tempo">DIVULG 09-08-2017</span> <span class="tempo">PUBLIC 10-08-2017</span> ) .

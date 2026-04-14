@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Na lição de José Frederico Marques ( Elementos de Direito Processual Penal . Forense . São Paulo . 1965. v . 4 . p. 383 ) : '' ( ... ) incluindo a Constituição , o direito de ir e vir , entre um dos direitos concernentes à liberdade , que deve ser tutelado e assegurado , violá-lo ou pô-lo em perigo , por ilegalidade ou abuso de poder , será atentar contra a própria Constituição ."
+
+Looking for entities:
+
+1. "José Frederico Marques" is a person, so that's a pessoa.
+2. "Elementos de Direito Processual Penal" seems like a book title, so maybe an organizacao? Or is it a legislation? Wait, the user's example output shows "Elementos de Direito Processual Penal" as organizacao. Let me check the example output given. The user provided the output as:
+
+"<span class="pessoa">José Frederico Marques</span> ( <span class="organizacao">Elementos de Direito Processual Penal</span> . <span class="organizacao">Forense</span> . <span class="local">São Paulo</span> . <span class="tempo">1965</span>. v . 4 . p. 383 ) : '' ( ... ) incluindo a <span class="legislacao">Constituição</span> , o <span class="legislacao">direito de ir e vir</span> , entre um dos direitos concernentes à liberdade , que deve ser tutelado e assegurado , violá-lo ou pô-lo em perigo , por ilegalidade ou abuso de poder , será atentar contra a própria <span class="legislacao">Constituição</span> ."
+
+So, "Elementos de Direito Processual Penal" is marked as organizacao. "Forense" is also organizacao. "São Paulo" is local. "1965" is tempo. "Constituição" is legislacao. "direito de ir e vir" is also legislacao. 
+
+Wait, but "direito de ir e vir" is a constitutional right, so it's part of the legislacao. The user's example output includes that. So I need to follow that pattern.
+
+So, in the input text, the entities are:
+
+- José Frederico Marques: pessoa
+- Elementos de Direito Processual Penal: organizacao
+- Forense: organizacao
+- São Paulo: local
+- 1965: tempo
+- Constituição: legislacao
+- direito de ir e vir: legislacao (since it's a constitutional right)
+- Constituição again: legislacao
+
+I need to make sure that all these are correctly tagged. Also, check if "v. 4. p. 383" are part of the citation, but they don't seem to be entities here. The user's example output doesn't tag those, so I should leave them as is.
+
+So, the HTML should have the spans with the correct classes. Let me structure the text accordingly, replacing the entities with the appropriate tags. Also, ensure that the rest of the text remains unchanged. Let me double-check each part to make sure I didn't miss any entities. The example output seems to have all the necessary tags. I think that's it. Now, I'll format the text with the correct HTML tags.
+</think>
+
+<span class="pessoa">José Frederico Marques</span> ( <span class="organizacao">Elementos de Direito Processual Penal</span> . <span class="organizacao">Forense</span> . <span class="local">São Paulo</span> . <span class="tempo">1965</span>. v . 4 . p. 383 ) : '' ( ... ) incluindo a <span class="legislacao">Constituição</span> , o <span class="legislacao">direito de ir e vir</span> , entre um dos direitos concernentes à liberdade , que deve ser tutelado e assegurado , violá-lo ou pô-lo em perigo , por ilegalidade ou abuso de poder , será atentar contra a própria <span class="legislacao">Constituição</span> .

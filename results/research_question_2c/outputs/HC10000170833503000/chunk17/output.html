@@ -1,0 +1,143 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text carefully. The input is: ", acorda , em Turma , a 3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM ."
+
+Let me break it down word by word. 
+
+Starting with ", acorda , em Turma , a 3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM ."
+
+Looking for entities:
+
+- "Turma" could be a local? Or maybe part of an organization? Wait, "Turma" in a legal context might refer to a court chamber, so maybe it's part of an organization. But the example mentions "Turma" as part of the court structure. Wait, the input has "em Turma" which might be part of the court's name. But the main organization here is "Tribunal de Justiça do Estado de Minas Gerais". So "Tribunal de Justiça" is an organization, and "Estado de Minas Gerais" is a local (state). 
+
+Wait, "Estado de Minas Gerais" is a local entity, so that should be marked as local. 
+
+"3ª CÂMARA CRIMINAL" is part of the Tribunal de Justiça, so maybe that's part of the organization. But the main organization is "Tribunal de Justiça do Estado de Minas Gerais". So "Tribunal de Justiça" is the organization, and "Estado de Minas Gerais" is the local. 
+
+Also, "ata dos julgamentos" refers to a record of judgments, which might be part of jurisprudencia? Or maybe it's a document, but the user's guide doesn't mention documents. The jurisprudencia class is for legal precedents. "Ata" is a record, so maybe not. 
+
+"Denegar A ORDEM" – "ORDEM" could be an order, but maybe it's part of a legal term. However, the user's example might not have that. 
+
+So, let's go step by step:
+
+- "Turma" – maybe part of the court structure, but not sure. Maybe it's part of the organization. But the main organization is "Tribunal de Justiça do Estado de Minas Gerais". So "Tribunal de Justiça" is the organization, and "Estado de Minas Gerais" is the local. 
+
+- "3ª CÂMARA CRIMINAL" – part of the Tribunal de Justiça, so maybe part of the organization. But the main organization is the Tribunal itself. So perhaps "CÂMARA CRIMINAL" is part of the organization's name. 
+
+Wait, the input says "a 3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais". So "3ª CÂMARA CRIMINAL" is part of the Tribunal de Justiça. So the entire "Tribunal de Justiça do Estado de Minas Gerais" is the organization. 
+
+So, "Tribunal de Justiça do Estado de Minas Gerais" should be marked as organizacao. 
+
+"Estado de Minas Gerais" is a local, so that part should be marked as local. 
+
+"Turma" – maybe it's part of the court's name. But in the input, it's "em Turma", which might refer to the court chamber. But since the main organization is already marked, maybe "Turma" is part of the organization's name. However, the input has "em Turma" which might be a location or part of the court structure. But I'm not sure. Maybe "Turma" is a local? Or perhaps it's part of the organization. 
+
+Alternatively, maybe "Turma" is part of the organization's name. But the main organization is "Tribunal de Justiça do Estado de Minas Gerais". So "Turma" might not be an entity here. 
+
+Wait, the input is: "em Turma , a 3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais". So "em Turma" could be a location, like the chamber. But "Turma" in Portuguese can mean a court chamber, so maybe it's part of the organization. But the main organization is the Tribunal. 
+
+Alternatively, "Turma" might be a local. But I'm not certain. Maybe it's better to mark "Tribunal de Justiça do Estado de Minas Gerais" as organizacao, and "Estado de Minas Gerais" as local. 
+
+Other parts: "ata dos julgamentos" – "ata" is a record, but not sure if it's a jurisprudencia. The user's guide says jurisprudencia is for legal precedents. "Ata" is a record of proceedings, so maybe not. 
+
+"Denegar A ORDEM" – "ORDEM" could be an order, but not sure. Maybe it's part of a legal term. But the user's example might not have that. 
+
+So, the main entities are:
+
+- "Tribunal de Justiça do Estado de Minas Gerais" as organizacao.
+
+- "Estado de Minas Gerais" as local.
+
+Other parts: "3ª CÂMARA CRIMINAL" is part of the organization's name, so maybe included in the organizacao tag. 
+
+Wait, the entire phrase "Tribunal de Justiça do Estado de Minas Gerais" is the organization. So the "3ª CÂMARA CRIMINAL" is part of that organization. So the entire "Tribunal de Justiça do Estado de Minas Gerais" is the organizacao. 
+
+So, in the input text, the part "Tribunal de Justiça do Estado de Minas Gerais" should be marked as organizacao. 
+
+"Estado de Minas Gerais" is a local, so that part should be marked as local. 
+
+Other parts: "Turma" – maybe not an entity. 
+
+So, the HTML would have:
+
+<span class="organizacao">Tribunal de Justiça do Estado de Minas Gerais</span>
+
+and 
+
+<span class="local">Estado de Minas Gerais</span>
+
+But wait, the input has "em Turma , a 3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais". So "em Turma" – "Turma" could be a local? Or part of the organization. 
+
+Alternatively, "Turma" might be part of the organization's name. But the main organization is the Tribunal. 
+
+Hmm. Maybe "Turma" is not an entity here. 
+
+So, the final HTML would have:
+
+- "Tribunal de Justiça do Estado de Minas Gerais" as organizacao.
+
+- "Estado de Minas Gerais" as local.
+
+Other parts like "3ª CÂMARA CRIMINAL" are part of the organization's name, so included in the organizacao tag. 
+
+So the output would be:
+
+", acorda , em Turma , a <span class="organizacao">3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais</span> , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM ."
+
+Wait, but "Tribunal de Justiça do Estado de Minas Gerais" is the organization. So the entire phrase "Tribunal de Justiça do Estado de Minas Gerais" should be marked as organizacao. But in the input, it's part of the sentence: "a 3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais". So the "Tribunal de Justiça do Estado de Minas Gerais" is the organization. 
+
+So the correct HTML would be:
+
+", acorda , em Turma , a 3ª CÂMARA CRIMINAL do <span class="organizacao">Tribunal de Justiça do Estado de Minas Gerais</span> , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM ."
+
+But wait, the "3ª CÂMARA CRIMINAL" is part of the organization's name. So maybe the entire "3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais" is the organization. 
+
+But the user's example might have the entire organization name as "Tribunal de Justiça do Estado de Minas Gerais", and "3ª CÂMARA CRIMINAL" is part of that. 
+
+Alternatively, maybe "3ª CÂMARA CRIMINAL" is part of the organization. 
+
+This is a bit ambiguous. But according to the input, the main organization is "Tribunal de Justiça do Estado de Minas Gerais", and "3ª CÂMARA CRIMINAL" is part of that. So the entire phrase "Tribunal de Justiça do Estado de Minas Gerais" is the organization. 
+
+So the correct HTML would be:
+
+", acorda , em Turma , a 3ª CÂMARA CRIMINAL do <span class="organizacao">Tribunal de Justiça do Estado de Minas Gerais</span> , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM ."
+
+But also, "Estado de Minas Gerais" is a local, so that part should be marked as local. 
+
+So the final HTML would have:
+
+", acorda , em Turma , a 3ª CÂMARA CRIMINAL do <span class="organizacao">Tribunal de Justiça do <span class="local">Estado de Minas Gerais</span></span> , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM ."
+
+Wait, but "Estado de Minas Gerais" is part of the organization's name. So the entire "Tribunal de Justiça do Estado de Minas Gerais" is the organization. So "Estado de Minas Gerais" is part of the organization's name, but it's also a local. 
+
+Hmm, this is tricky. The user's guide says to mark local entities. So "Estado de Minas Gerais" is a local, so it should be marked as local. 
+
+Therefore, the correct HTML would be:
+
+", acorda , em Turma , a 3ª CÂMARA CRIMINAL do <span class="organizacao">Tribunal de Justiça do <span class="local">Estado de Minas Gerais</span></span> , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM ."
+
+But I'm not sure if "Estado de Minas Gerais" is part of the organization's name. Maybe the organization is "Tribunal de Justiça do Estado de Minas Gerais", so the entire phrase is the organization. Therefore, "Estado de Minas Gerais" is part of the organization's name, but it's also a local. 
+
+But according to the user's guide, each entity should be marked. So if "Estado de Minas Gerais" is a local, it should be marked as local. 
+
+So the final HTML would have:
+
+", acorda , em Turma , a 3ª CÂMARA CRIMINAL do <span class="organizacao">Tribunal de Justiça do <span class="local">Estado de Minas Gerais</span></span> , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM ."
+
+But I'm not entirely confident. Maybe the entire "Tribunal de Justiça do Estado de Minas Gerais" is the organization, and "Estado de Minas Gerais" is part of that. So the local is "Estado de Minas Gerais", which is part of the organization's name. 
+
+Alternatively, maybe "Estado de Minas Gerais" is a local, so it should be marked as local. 
+
+So the correct approach is to mark "Estado de Minas Gerais" as local, and the rest as organizacao. 
+
+Therefore, the final HTML would be:
+
+", acorda , em Turma , a 3ª CÂMARA CRIMINAL do <span class="organizacao">Tribunal de Justiça do <span class="local">Estado de Minas Gerais</span></span> , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM ."
+
+But I need to check if "Turma" is an entity. The input has "em Turma", which might refer to the court chamber. But since the main organization is already marked, maybe "Turma" is not an entity. 
+
+So the final answer should have the organization and local marked as described.
+</think>
+
+", acorda , em Turma , a 3ª CÂMARA CRIMINAL do <span class="organizacao">Tribunal de Justiça do <span class="local">Estado de Minas Gerais</span></span> , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM ."

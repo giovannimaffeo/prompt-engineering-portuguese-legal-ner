@@ -1,0 +1,43 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text sentence by sentence.
+
+The first part is: "Isso posto , confirmo a tutela de urgência anteriormente deferida e julgo procedente a presente ação para determinar à ré que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CAUC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS nº 204/2008 e de suas posteriores alterações ".
+
+Looking for entities here. "Mato Grosso" is a state in Brazil, so that's a local. "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" are acronyms for different registries, which fall under legislação since they are part of legal registries. "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" are legal documents, so those are legislacao. The term "ré" refers to the defendant, which is a pessoa. Wait, but "ré" is a legal term for the defendant, so maybe it's a person. But the user's definition says pessoa is names of individuals. However, in legal contexts, "ré" is a role, not a specific person. So maybe it's not a pessoa. Hmm, need to check the guidelines. The guidelines say to mark only names of individuals. Since "ré" is a role, not a specific person, it shouldn't be marked as pessoa. So maybe "ré" is not marked. 
+
+Next part: "Os argumentos lançados no regimental não são capazes de afastar os fundamentos da decisão combatida , que , por tal razão , deve ser mantida . Ante o exposto , nego provimento ao agravo regimental . É como voto ."
+
+Here, "regimento" refers to the internal rules of a court, which might be part of legislação? Wait, "regimento" is a term for internal regulations, but in this context, "regimento" is part of "regimento" as in the internal rules of the court. However, the user's definition for legislação includes "normas jurídicas" like leis, decretos, etc. "Regimento" might be considered part of the internal regulations, but I'm not sure. The term "regimento" here is part of "regimento" as in the internal rules, but the user's example might not include that. Alternatively, "agravo regimental" is a legal term, but it's a type of appeal, not a specific entity. So maybe no entities here except for the ones already marked.
+
+So, compiling the entities:
+
+- "Mato Grosso" is local.
+- "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" are legislação (as they are acronyms for legal registries).
+- "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" are legislacao.
+- "ré" is a role, not a specific person, so not marked.
+- "Estado de Mato Grosso" is a local (since "Estado" refers to the state, which is a local entity).
+
+Wait, "Estado de Mato Grosso" is the state, so "Mato Grosso" is the local. The full name "Estado de Mato Grosso" would be a local as well. So both "Mato Grosso" and "Estado de Mato Grosso" are local. But the user's definition says to mark only the specific names. So "Mato Grosso" is a local, and "Estado de Mato Grosso" is also a local. However, the user's example might have "Estado de Mato Grosso" as a local. So I need to check if "Estado de Mato Grosso" is a local. Since "Estado" is the name of the state, it's a local. So both "Mato Grosso" and "Estado de Mato Grosso" are local.
+
+Wait, but the user's definition for local says "nomes próprios de locais". So "Mato Grosso" is a state, which is a local. "Estado de Mato Grosso" is the full name, which is also a local. So both should be marked as local.
+
+Also, "CADPREV" etc. are acronyms for legal registries, so they are part of legislação. The "Decreto" and "Portaria" are legal documents, so they are legislacao.
+
+So the HTML should have:
+
+- <span class="local">Mato Grosso</span>
+- <span class="local">Estado de Mato Grosso</span>
+- <span class="legislacao">CADPREV</span>, <span class="legislacao">CADIN</span>, etc.
+- <span class="legislacao">Decreto 3.788/2001</span>
+- <span class="legislacao">Portaria MPS nº 204/2008</span>
+
+Wait, but the user's example in the output might have "CADPREV" as legislação. Also, "CADIN", "CAUC", "SIAFI", "SICONV" are all acronyms for legal registries, so they are part of legislação. The "Decreto" and "Portaria" are also part of legislação.
+
+So the final HTML would have those entities marked with their respective classes. Also, check if there are any other entities. The text mentions "jurisprudencia" but I don't see any references to judicial decisions or precedents. The term "inconstitucionalidade" refers to a legal concept, but it's not an entity. The "agravo regimental" is a legal term but not an entity. So no jurisprudencia here.
+
+So the final HTML should have the local entities and the legislação ones. Let me structure that.
+</think>
+
+<span class="local">Mato Grosso</span>, <span class="local">Estado de Mato Grosso</span>, <span class="legislacao">CADPREV</span>, <span class="legislacao">CADIN</span>, <span class="legislacao">CAUC</span>, <span class="legislacao">SIAFI</span>, <span class="legislacao">SICONV</span>, <span class="legislacao">Decreto 3.788/2001</span>, <span class="legislacao">Portaria MPS nº 204/2008</span>

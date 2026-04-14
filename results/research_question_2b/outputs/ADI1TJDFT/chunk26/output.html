@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first sentence mentions "Aduziu que a concessão de Alvarás de Construção e de Carta de Habite-se constitui expressão típica do exercício do poder de polícia administrativa , incorrendo em inconstitucionalidade material a delegação deste , nos termos do artigo 15 da Lei Orgânica do Distrito Federal ."
+
+Looking for entities here. "Aduziu" is a verb, so probably not an entity. "Alvarás de Construção" and "Carta de Habite-se" are legal terms, maybe part of legislation? Wait, "Lei Orgânica do Distrito Federal" is definitely a legislation. So "Lei Orgânica do Distrito Federal" should be marked as legislacao. Also, "Distrito Federal" is a local entity, so that's local. The article reference "artigo 15" is part of the legislation, so maybe part of the legislacao tag. Wait, the entire "Lei Orgânica do Distrito Federal" is the legislation, so the whole phrase should be in <span class="legislacao">. Also, "Distrito Federal" is a local, so that part should be in <span class="local">.
+
+Next sentence: "Salientou que o CREA-DF e o CAU-DF possuem poderes de fiscalização restritos ao exercício profissional de suas categorias , não podendo ter seu corpo técnico e profissional atuando em delegação de poderes estranhos àqueles para os quais foram criados . É o relatório do necessário . Fls ."
+
+Here, "CREA-DF" and "CAU-DF" are organizations. So those should be <span class="organizacao">. The "DF" in both might refer to Distrito Federal, which is local, but since they are part of the organization names, maybe they are part of the organization tags. Wait, the full names are CREA-DF and CAU-DF. The "DF" here is an abbreviation for Distrito Federal, which is a local. But since they are part of the organization names, perhaps the entire CREA-DF and CAU-DF are organizations. So I'll mark them as organizacao. The "Distrito Federal" in the previous sentence was already marked as local, but in this case, the DF is part of the organization names, so maybe it's part of the organization. Wait, the user's guide says to mark the entities as per their type. So "CREA-DF" is an organization, so the entire term is organizacao. Similarly for CAU-DF.
+
+Then, "É o relatório do necessário . Fls ." – "Fls" is an abbreviation for "Fls." which is "Fls." in legal documents, meaning "Fls." is a reference to the page number, but it's not one of the specified entities. So no tag needed there.
+
+Now, checking for other entities. The text mentions "inconstitucionalidade material" which is a legal term, but not one of the specified entities. "Poder de polícia administrativa" is a legal concept, but again, not an entity type. "Jurisprudência" is one of the entities, but the text doesn't mention it. The user's example output includes "Lei Orgânica do Distrito Federal" as legislacao, and "CREA-DF" and "CAU-DF" as organizacao. Also, "Distrito Federal" is local. So I need to make sure that all instances of these entities are tagged correctly.
+
+Let me go through the text again:
+
+1. "Lei Orgânica do Distrito Federal" – legislacao. "Distrito Federal" is local.
+2. "CREA-DF" and "CAU-DF" – organizacao.
+3. "Distrito Federal" in the first sentence is local.
+
+So the HTML should have:
+
+- "Lei Orgânica do <span class="local">Distrito Federal</span>" as legislacao, but wait, the entire "Lei Orgânica do Distrito Federal" is the legislation, so the entire phrase should be in legislacao, and "Distrito Federal" is part of that. Wait, the user's example output in the previous message shows that "Lei Orgânica do Distrito Federal" is marked as legislacao, and "Distrito Federal" is marked as local. Wait, but that might not be correct. Let me check the example given by the user.
+
+Wait, the user provided an example input and output. Let me check that. The input text is:
+
+"Aduziu que a concessão de Alvarás de Construção e de Carta de Habite-se constitui expressão típica do exercício do poder de polícia administrativa , incorrendo em inconstitucionalidade material a delegação deste , nos termos do artigo 15 da Lei Orgânica do Distrito Federal . Salientou que o CREA-DF e o CAU-DF possuem poderes de fiscalização restritos ao exercício profissional de suas categorias , não podendo ter seu corpo técnico e profissional atuando em delegação de poderes estranhos àqueles para os quais foram criados . É o relatório do necessário . Fls ."
+
+The output example is:
+
+"Aduziu que a concessão de Alvarás de Construção e de Carta de Habite-se constitui expressão típica do exercício do poder de polícia administrativa , incorrendo em inconstitucionalidade material a delegação deste , nos termos do artigo 15 da <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> . Salientou que o <span class="organizacao">CREA-DF</span> e o <span class="organizacao">CAU-DF</span> possuem poderes de fiscalização restritos ao exercício profissional de suas categorias , não podendo ter seu corpo técnico e profissional atuando em delegação de poderes estranhos àqueles para os quais foram criados . É o relatório do necessário . Fls ."
+
+So in the example, "Lei Orgânica do Distrito Federal" is marked as legislacao, and "Distrito Federal" is marked as local. Wait, but that's conflicting. Because "Lei Orgânica do Distrito Federal" is the entire legislation, so the entire phrase should be in legislacao. However, the example shows that "Distrito Federal" is marked as local. That suggests that the user wants to split the legislation into the name of the law and the local. So "Lei Orgânica" is part of the legislation, and "Distrito Federal" is the local. Wait, but the entire "Lei Orgânica do Distrito Federal" is the legislation. So maybe the user's example is incorrect, but I need to follow the example.
+
+Wait, the user's example output shows that "Lei Orgânica do Distrito Federal" is marked as legislacao, and "Distrito Federal" is marked as local. Wait, no, looking at the example output:
+
+The output is:
+
+"Aduziu que a concessão de Alvarás de Construção e de Carta de Habite-se constitui expressão típica do exercício do poder de polícia administrativa , incorrendo em inconstitucionalidade material a delegação deste , nos termos do artigo 15 da <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> . Salientou que o <span class="organizacao">CREA-DF</span> e o <span class="organizacao">CAU-DF</span> possuem poderes de fiscalização restritos ao exercício profissional de suas categorias , não podendo ter seu corpo técnico e profissional atuando em delegação de poderes estranhos àqueles para os quais foram criados . É o relatório do necessário . Fls ."
+
+So the "Lei Orgânica do Distrito Federal" is wrapped in <span class="legislacao">, and inside that, "Distrito Federal" is in <span class="local">. That seems to indicate that the entire legislation is marked as legislacao, and within that, the local is marked. But that's a bit confusing. However, the user's example shows that, so I need to follow that structure.
+
+So in the input text, "Lei Orgânica do Distrito Federal" is the legislation, so the entire phrase is in legislacao, and "Distrito Federal" is a local. Wait, but "Distrito Federal" is part of the legislation's name. So perhaps the user wants to mark the entire legislation as legislacao, and the local part as local. So the structure is:
+
+<span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span>
+
+That's how the example is structured. So I need to replicate that.
+
+Similarly, "CREA-DF" and "CAU-DF" are organizations, so they are marked as organizacao.
+
+So applying that to the input text:
+
+The first part: "Lei Orgânica do Distrito Federal" becomes <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span>.
+
+Then, "CREA-DF" and "CAU-DF" are organizations, so they are marked as <span class="organizacao">CREA-DF</span> and <span class="organizacao">CAU-DF</span>.
+
+Other parts: "Distrito Federal" in the first sentence is already covered in the legislacao tag. The rest of the text doesn't have any other entities. So the final HTML should have those tags.
+
+I need to make sure that all instances of the entities are marked. Let me check again.
+
+In the input text, "Lei Orgânica do Distrito Federal" is the legislation, so the entire phrase is in legislacao, and "Distrito Federal" is local. Then, "CREA-DF" and "CAU-DF" are organizations. The rest of the text doesn't have any other entities. So the output should be as per the example.
+</think>
+
+Aduziu que a concessão de Alvarás de Construção e de Carta de Habite-se constitui expressão típica do exercício do poder de polícia administrativa , incorrendo em inconstitucionalidade material a delegação deste , nos termos do artigo 15 da <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> . Salientou que o <span class="organizacao">CREA-DF</span> e o <span class="organizacao">CAU-DF</span> possuem poderes de fiscalização restritos ao exercício profissional de suas categorias , não podendo ter seu corpo técnico e profissional atuando em delegação de poderes estranhos àqueles para os quais foram criados . É o relatório do necessário . Fls .

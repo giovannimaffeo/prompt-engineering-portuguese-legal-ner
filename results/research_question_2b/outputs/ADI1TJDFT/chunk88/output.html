@@ -1,0 +1,34 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me parse through each part.
+
+The text starts with "Efeitos Saliente-se , por oportuno , que não se vislumbra qualquer razão de segurança jurídica ou de excepcional interesse social apta a justificar a modulação dos efeitos , razão pela qual a declaração de inconstitucionalidade da Lei nº 5.815/2017 deverá retroagir à data da sua promulgação ."
+
+Looking for entities:
+
+1. "Lei nº 5.815/2017" – This is a law, so it should be marked as legislacao. The number and year indicate it's a legislative act.
+
+2. "data da sua promulgação" – "data" is time, so "data" should be marked as tempo. The year 2017 is also a date, but in the text, it's part of the law's number. Wait, the law's number is 5.815/2017, so the year 2017 is part of the legislation. But in the text, "data da sua promulgação" refers to the date of promulgation. However, the actual date isn't specified here. The law's number includes the year, but the text mentions "data da sua promulgação" which is the date when the law was promulgated. Since the exact date isn't given, maybe "data" is the entity here. Wait, the user's example in the output might have "data" as tempo. Let me check the example.
+
+Wait, the user provided an example where "data da sua promulgação" is marked as tempo. So "data" is the entity here. So in the text, "data" is part of the phrase "data da sua promulgação", which refers to a date. So "data" should be marked as tempo. But the year 2017 in the law's number is part of the legislation, so "Lei nº 5.815/2017" is legislacao. The year 2017 is part of the law's number, so it's included in the legislacao tag.
+
+So, in the text, "Lei nº 5.815/2017" is legislacao. The word "data" in "data da sua promulgação" is tempo. The rest of the text doesn't have any other entities. Let me check again.
+
+Other parts: "segurança jurídica" – "segurança" is not an entity, "jurídica" is an adjective. "excepcional interesse social" – these are adjectives. "modulação dos efeitos" – no entity. "declaração de inconstitucionalidade" – "inconstitucionalidade" is a legal term but not an entity type. "razão pela qual" – no entity. "deverá retroagir à data da sua promulgação" – "data" is tempo.
+
+So the entities are:
+
+- "Lei nº 5.815/2017" → legislacao
+- "data" → tempo
+
+Wait, but in the original text, the law is mentioned as "Lei nº 5.815/2017", which is a legislation. The "data da sua promulgação" refers to the date when the law was promulgated, so "data" is a tempo entity. So in the HTML, those parts should be wrapped in <span> tags with the respective classes.
+
+So the output should have:
+
+<span class="legislacao">Lei nº 5.815/2017</span> and <span class="tempo">data</span>.
+
+Let me make sure there are no other entities. The rest of the text doesn't have any of the specified types. So the final HTML should have those two spans.
+</think>
+
+Efeitos Saliente-se , por oportuno , que não se vislumbra qualquer razão de segurança jurídica ou de excepcional interesse social apta a justificar a modulação dos efeitos , razão pela qual a declaração de inconstitucionalidade da <span class="legislacao">Lei nº 5.815/2017</span> deverá retroagir à <span class="tempo">data</span> da sua promulgação .

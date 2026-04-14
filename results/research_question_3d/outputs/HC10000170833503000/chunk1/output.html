@@ -1,0 +1,87 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. 
+
+First, I need to go through the text carefully and identify each entity according to the definitions provided. Let me start by reading the input text again.
+
+The text starts with "EMENTA : HABEAS CORPUS - HOMICÍDIO QUALIFICADO TENTADO - SENTENÇA DE PRONÚNCIA PROLATADA - EXCESSO DE PRAZO PARA O JULGAMENTO PELO TRIBUNAL DO JÚRI - INOCORRÊNCIA - NULIDADE DA PROVA DOCUMENTAL POR INVIOLABILIDADE DAS COMUNICAÇÕES TELEFÔNICAS - PRECLUSÃO - DECISÃO DENEGATÓRIA DO DIREITO DE RECORRER EM LIBERDADE - JUÍZO DE CAUTELARIDADE DEVIDAMENTE FUNDAMENTADO NA SENTENÇA - PERICULOSIDADE CONCRETA - CONSTRANGIMENTO ILEGAL NÃO EVIDENCIADO . 01 . Transitada em julgado a pronúncia deverá o réu ser julgado , em até seis meses , pelo Tribunal do Júri , nos termos do que dispõe o art . 428 , caput , da lei de ritos , levando-se em consideração a insusceptibilidade de designação do julgamento entre os dias 20 de dezembro de 2017 e 20 de janeiro de 2018 , ante a expressa proibição legal inserta no art . 313 , §8º , da LC 59/2001 , com a redação dada pelo art . 103 da LC 135/2014 . 02 ."
+
+Looking for entities:
+
+1. "Tribunal do Júri" – this is an organization. It's a formal entity, so I'll mark it as <span class="organizacao">Tribunal do Júri</span>.
+
+2. Dates: "20 de dezembro de 2017" and "20 de janeiro de 2018" – these are explicit dates, so they should be marked as tempo. So I'll wrap those in <span class="tempo">.
+
+3. "art . 428" – this refers to an article in a law, so it's part of legislação. But the full law name isn't given here. Wait, the text mentions "le i de ritos" which is likely "Lei de Ritos" (Law of Ritos). So "art. 428" would be part of the legislation. But since the full name isn't specified, maybe I should check if "le i de ritos" is a known law. If not, perhaps it's better to mark the article as part of legislação. However, the user's example shows that "art. 71 da Lei 8.666/93" is marked as legislação. So in this case, "art. 428" might be part of the legislation, but since the law isn't named, maybe it's not. Alternatively, maybe the "le i de ritos" is the full name. Wait, in Portuguese, "le i de ritos" could be "Lei de Ritos" (Law of Ritos). So "art. 428" is part of that law. Therefore, the entire reference "art. 428" would be part of legislação. But the user's guidelines say to mark the entire expression. However, the text here has "art . 428 , caput , da lei de ritos" – so "le i de ritos" is the law. Therefore, "art. 428" is part of that law. So I should mark "art. 428" as legislação. But the user's example includes the full law name. However, here, the law is referred to as "le i de ritos" which is likely "Lei de Ritos" (Law of Ritos). So the entire reference would be part of legislação. So I'll mark "art. 428" as legislação.
+
+Similarly, "art . 313 , §8º , da LC 59/2001" – "LC" stands for "Lei Complementar", so this is legislation. The full reference is "LC 59/2001" and "art. 313, §8º". So I need to mark those parts. Also, "LC 135/2014" is another legislation. So "LC 59/2001" and "LC 135/2014" should be marked as legislação. The "art. 313, §8º" is part of the legislation, so those should be in <span class="legislacao">.
+
+Now, checking for other entities. "Habeas Corpus" – that's a legal term, but not an entity. "Reu" is the defendant, which is a generic term (like "réu"), so it's not a person. "Tribunal do Júri" is an organization. "Lei de ritos" is a law, so that's legislation. 
+
+Wait, in the text, "le i de ritos" is mentioned. If "le i" is a typo for "Lei", then "Lei de Ritos" is the law. So "Lei de Ritos" would be the legislation. But in the text, it's written as "le i de ritos" – maybe it's a typo. However, the user's example uses "Lei nº 8.666/93", so I should check if "le i de ritos" is a known law. If not, perhaps it's part of the text and needs to be marked as legislation. Alternatively, maybe it's a reference to a specific law. But since the exact name isn't given, maybe the user expects to mark "le i de ritos" as legislação. However, the user's guidelines say that only references to norms should be marked. So if "le i de ritos" is a law, then it's part of legislação. But without knowing the exact name, maybe it's better to mark "art. 428" as part of the legislation, but the law's name isn't specified. Wait, the user's example includes "art. 71 da Lei 8.666/93" as legislation. So in this case, "art. 428" would be part of the legislation, but the law isn't named. However, the text mentions "da lei de ritos" which is likely the law. So "le i de ritos" is the law's name. So "le i de ritos" should be marked as legislação. But the user's example includes the full name. However, in this case, the text might have a typo. Alternatively, maybe it's a reference to a specific law. But since the exact name isn't given, perhaps the user expects to mark "art. 428" as part of the legislation, even if the law's name isn't fully specified. 
+
+This is a bit tricky. Let me recheck the user's guidelines. The guidelines say that "Apenas referências a normas devem ser marcadas." So if "le i de ritos" is a reference to a law, even if it's not fully specified, it should be marked. However, in the example given, "Lei nº 8.666/93" is marked as legislação. So here, "le i de ritos" would be the law's name, so it should be marked as legislação. But the text has "le i de ritos" – perhaps it's a typo for "Lei de Ritos" (Law of Ritos). So I should mark "le i de ritos" as legislação. Similarly, "LC 59/2001" and "LC 135/2014" are legislation. 
+
+So, in the text, the entities are:
+
+- "Tribunal do Júri" → organizacao
+- "20 de dezembro de 2017" → tempo
+- "20 de janeiro de 2018" → tempo
+- "art. 428" → legislação (assuming it's part of "Lei de Ritos")
+- "art. 313, §8º" → legislação
+- "LC 59/2001" → legislação
+- "LC 135/2014" → legislação
+
+Wait, but the user's example includes "art. 71 da Lei 8.666/93" as legislation. So in this case, "art. 428" is part of the law, but the law's name is "Lei de Ritos". So "Lei de Ritos" should be marked as legislação. However, in the text, it's written as "le i de ritos" – which might be a typo. But I have to work with the given text. So if the text says "le i de ritos", I'll assume it's the law's name and mark it as legislação. But the user's guidelines say to mark the entire expression. So "le i de ritos" would be the law's name. However, the user's example uses "Lei nº 8.666/93", which is a full reference. In this case, the text might have a typo, but I have to go with what's given. 
+
+So, the text says "da lei de ritos" – which is "of the law of Ritos". So "le i de ritos" is the law's name. Therefore, it should be marked as legislação. 
+
+Similarly, "art. 428" is part of that law, so it's part of the legislation. 
+
+So, putting it all together:
+
+- "Tribunal do Júri" → organizacao
+- "20 de dezembro de 2017" → tempo
+- "20 de janeiro de 2018" → tempo
+- "le i de ritos" → legislação
+- "art. 428" → legislação
+- "art. 313, §8º" → legislação
+- "LC 59/2001" → legislação
+- "LC 135/2014" → legislação
+
+Wait, but the user's example includes the full law name. In the text, "le i de ritos" is mentioned. If it's a typo for "Lei de Ritos", then that's the law's name. So I should mark that. 
+
+But the user's guidelines say to mark the entire expression. So "le i de ritos" would be the law's name. However, if it's a typo, maybe the user intended it as "Lei de Ritos", but I have to work with the given text. 
+
+So, the final HTML would have these spans. Let me check again for any other entities. 
+
+Are there any other entities? 
+
+- "Habeas Corpus" – legal term, not an entity.
+- "Réu" – generic term, not a person.
+- "Júri" – part of the organization "Tribunal do Júri".
+- "LC" – refers to Lei Complementar, which is legislation. So "LC 59/2001" and "LC 135/2014" are legislation.
+
+So the final HTML would have:
+
+- "Tribunal do Júri" as organizacao.
+- The two dates as tempo.
+- "le i de ritos" as legislação.
+- "art. 428" as legislação.
+- "art. 313, §8º" as legislação.
+- "LC 59/2001" as legislação.
+- "LC 135/2014" as legislação.
+
+Wait, but in the text, the "le i de ritos" is part of the sentence: "nos termos do que dispõe o art . 428 , caput , da lei de ritos , levando-se em consideração a insusceptibilidade...". So the full reference is "art. 428, caput, da lei de ritos". Therefore, "art. 428" is part of the legislation, and "le i de ritos" is the law's name. So both should be marked. 
+
+But the user's example includes "art. 71 da Lei 8.666/93" as legislação. So in this case, "art. 428" is part of the law, so the entire reference should be marked. However, the text here has "art. 428" and "le i de ritos" as separate parts. 
+
+So, in the text, "art. 428" is part of "le i de ritos", so the entire reference is "art. 428 da lei de ritos". Therefore, "art. 428" and "le i de ritos" should both be marked as legislação. 
+
+But the user's guidelines say to mark the entire expression. So if the law's name is "le i de ritos", then that's part of the legislation. So "le i de ritos" is a legislation entity. 
+
+So the final HTML would include those spans. 
+
+Now, let me write the HTML code accordingly, making sure to replace the entities with their respective tags.
+</think>
+
+EMENTA : HABEAS CORPUS - HOMICÍDIO QUALIFICADO TENTADO - SENTENÇA DE PRONÚNCIA PROLATADA - EXCESSO DE PRAZO PARA O JULGAMENTO PELO TRIBUNAL DO JÚRI - INOCORRÊNCIA - NULIDADE DA PROVA DOCUMENTAL POR INVIOLABILIDADE DAS COMUNICAÇÕES TELEFÔNICAS - PRECLUSÃO - DECISÃO DENEGATÓRIA DO DIREITO DE RECORRER EM LIBERDADE - JUÍZO DE CAUTELARIDADE DEVIDAMENTE FUNDAMENTADO NA SENTENÇA - PERICULOSIDADE CONCRETA - CONSTRANGIMENTO ILEGAL NÃO EVIDENCIADO . 01 . Transitada em julgado a pronúncia deverá o réu ser julgado , em até seis meses , pelo <span class="organizacao">TRIBUNAL DO JÚRI</span> , nos termos do que dispõe o <span class="legislacao">art. 428</span> , caput , da <span class="legislacao">le i de ritos</span> , levando-se em consideração a insusceptibilidade de designação do julgamento entre os dias <span class="tempo">20 de dezembro de 2017</span> e <span class="tempo">20 de janeiro de 2018</span> , ante a expressa proibição legal inserta no <span class="legislacao">art. 313</span> , §8º , da <span class="legislacao">LC 59/2001</span> , com a redação dada pelo <span class="legislacao">art. 103</span> da <span class="legislacao">LC 135/2014</span> . 02 .

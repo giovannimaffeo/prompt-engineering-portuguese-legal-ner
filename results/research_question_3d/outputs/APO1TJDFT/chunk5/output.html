@@ -1,0 +1,70 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with the appropriate tags. The entities to identify are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to go through the text carefully and identify each entity according to the definitions provided. Let me start by reading the input text again:
+
+"Documento Assinado Eletronicamente MARIA IVATÔNIA Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 3 O relatório é , em parte , o da sentença : “ RELATÓRIO ( ARTIGO 458 , I , CPC ) O SINPRO/DF - Sindicato dos Professores do Distrito Federal ajuizou ação contra o Distrito Federal formulando os seguintes pedidos : a . `` seja o Réu citado , na pessoa do seu representante legal , no endereço acima mencionado , para , querendo , responder aos termos da presente ação sob pena dos efeitos de revelia ; b ."
+
+Let me break this down sentence by sentence.
+
+Starting with "Documento Assinado Eletronicamente MARIA IVATÔNIA Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 3 O relatório é , em parte , o da sentença : “ RELATÓRIO ( ARTIGO 458 , I , CPC ) O SINPRO/DF - Sindicato dos Professores do Distrito Federal ajuizou ação contra o Distrito Federal formulando os seguintes pedidos : a . `` seja o Réu citado , na pessoa do seu representante legal , no endereço acima mencionado , para , querendo , responder aos termos da presente ação sob pena dos efeitos de revelia ; b ."
+
+First, "MARIA IVATÔNIA" is a person's name. So that should be <span class="pessoa">MARIA IVATÔNIA</span>. Then "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is part of the organization's name, but "DESEMBARGADORA" is a title, not a name. Wait, the organization definition includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas..." So "GABINETE DA DESEMBARGADORA" might be part of an organization. But the name here is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". Wait, the person is MARIA IVATÔNIA, so the Gabinete would be her office. So "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – the organization here is "GABINETE DA DESEMBARGADORA", but the person is MARIA IVATÔNIA. But the user's guidelines say that "organizações" include "órgãos públicos, tribunais..." So maybe "GABINETE DA DESEMBARGADORA" is an organization. However, the exact wording here is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – perhaps the entire phrase refers to the organization. But I'm not sure. Maybe "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. Wait, in the text, it's "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – perhaps the entire phrase is the organization's name, with MARIA IVATÔNIA being part of it. Alternatively, maybe it's the office of the Desembargadora Maria Ivatonia. Since the person is already marked as "pessoa", maybe "GABINETE DA DESEMBARGADORA" is an organization. But I need to check the guidelines again.
+
+The guidelines say that organizations include "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas..." So "GABINETE DA DESEMBARGADORA" could be an organization. However, the name here is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – which might be the office of the Desembargadora Maria Ivatonia. So "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. But since the person is already marked, I need to check if the entire phrase is an organization. Alternatively, maybe "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is the organization's name. But that's unclear. Maybe I should mark "GABINETE DA DESEMBARGADORA" as an organization, but the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", which might be the name of the organization. Alternatively, it's the office of the Desembargadora Maria Ivatonia. So perhaps "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. But the text has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – maybe the entire phrase is the organization. However, the user's example includes "MINISTÉRIO PÚBLICO FEDERAL" as an organization. So in this case, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" would be an organization. But I'm not certain. Alternatively, maybe the "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. However, in the text, it's written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", so maybe the entire phrase is the organization's name. But since "DESEMBARGADORA" is a title, not a name, perhaps only "MARIA IVATÔNIA" is the person. So I'll mark "MARIA IVATÔNIA" as pessoa, and "GABINETE DA DESEMBARGADORA" as organizacao. Wait, but the text says "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – maybe the entire phrase is the organization's name. Hmm. This is a bit ambiguous. Let me proceed step by step.
+
+Next, "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – this seems to be a code, not an entity. So no tag needed.
+
+Then "O SINPRO/DF - Sindicato dos Professores do Distrito Federal ajuizou ação contra o Distrito Federal" – "SINPRO/DF" is an organization, as it's a sindicato. "Sindicato dos Professores do Distrito Federal" is also an organization. "Distrito Federal" is a local, as it's a specific region. So I need to mark "SINPRO/DF" and "Sindicato dos Professores do Distrito Federal" as organizacao, and "Distrito Federal" as local.
+
+Continuing, "formulando os seguintes pedidos : a . `` seja o Réu citado , na pessoa do seu representante legal , no endereço acima mencionado , para , querendo , responder aos termos da presente ação sob pena dos efeitos de revelia ; b ." – "Réu" is a generic term, not a specific person, so no tag. "pessoa" is mentioned, but it's part of the phrase "na pessoa do seu representante legal" – here, "pessoa" is a generic term, so no tag. "endereço acima mencionado" – no specific local mentioned, so no tag. 
+
+Looking for other entities: "ARTIGO 458 , I , CPC" – "CPC" is Código de Processo Civil, which is legislação. So "ARTIGO 458" is part of the legislação, and "CPC" is also legislação. So I need to mark "ARTIGO 458" as legislação and "CPC" as legislação. Wait, but "ARTIGO 458" is part of a law, so the entire reference should be marked. The guidelines say that "Legislação é definida como: expressões que identifiquem normas jurídicas...". So "ARTIGO 458, I, CPC" refers to Article 458, Item I of the CPC. So the entire phrase "ARTIGO 458, I, CPC" should be marked as legislação. 
+
+Also, "SINPRO/DF" is an organization, as it's a sindicato. "Sindicato dos Professores do Distrito Federal" is also an organization. "Distrito Federal" is a local. 
+
+So putting this all together:
+
+- "MARIA IVATÔNIA" is pessoa.
+- "GABINETE DA DESEMBARGADORA" is organizacao (assuming it's the organization's name).
+- "SINPRO/DF" and "Sindicato dos Professores do Distrito Federal" are organizacao.
+- "Distrito Federal" is local.
+- "ARTIGO 458, I, CPC" is legislação.
+
+Now, checking for other entities:
+
+- "Código de Verificação" – not an entity.
+- "Relatora" – a title, not a person.
+- "Réu" – generic term, no tag.
+- "pessoa" – part of a phrase, not a specific name.
+- "endereço" – no specific local.
+- "CPC" – as part of the legislação.
+
+I need to make sure that all the entities are correctly identified and tagged. Let me go through each part again.
+
+Original text:
+
+"Documento Assinado Eletronicamente MARIA IVATÔNIA Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 3 O relatório é , em parte , o da sentença : “ RELATÓRIO ( ARTIGO 458 , I , CPC ) O SINPRO/DF - Sindicato dos Professores do Distrito Federal ajuizou ação contra o Distrito Federal formulando os seguintes pedidos : a . `` seja o Réu citado , na pessoa do seu representante legal , no endereço acima mencionado , para , querendo , responder aos termos da presente ação sob pena dos efeitos de revelia ; b ."
+
+Breaking down:
+
+1. "MARIA IVATÔNIA" – pessoa.
+2. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – here, "GABINETE DA DESEMBARGADORA" is an organization, and "MARIA IVATÔNIA" is already marked as pessoa. But the phrase is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – perhaps "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. However, the text might be referring to the Gabinete of the Desembargadora Maria Ivatonia, making the entire phrase an organization. But the guidelines say that "organizações" include "órgãos públicos, tribunais..." So if "GABINETE DA DESEMBARGADORA" is an organization, then it should be marked. However, the exact name might be "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", which is the office of the person. In that case, the organization is "GABINETE DA DESEMBARGADORA" and the person is "MARIA IVATÔNIA". But the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", which might be the name of the organization. This is a bit ambiguous. Given the example in the guidelines, "MINISTÉRIO PÚBLICO FEDERAL" is an organization. So if "GABINETE DA DESEMBARGADORA" is part of the organization's name, then it should be marked. Alternatively, if the entire phrase is the organization, then "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is the organization. However, the person is already marked, so maybe the organization is "GABINETE DA DESEMBARGADORA" and "MARIA IVATÔNIA" is the person. But the text has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – perhaps "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. So I'll mark "GABINETE DA DESEMBARGADORA" as organizacao and "MARIA IVATÔNIA" as pessoa. But the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA", so maybe the entire phrase is the organization. However, the user's guidelines say that "organizações" include "órgãos públicos, tribunais..." So "GABINETE DA DESEMBARGADORA" is an organization. Therefore, I'll mark "GABINETE DA DESEMBARGADORA" as organizacao and "MARIA IVATÔNIA" as pessoa.
+
+Next, "SINPRO/DF - Sindicato dos Professores do Distrito Federal" – "SINPRO/DF" and "Sindicato dos Professores do Distrito Federal" are both organizations. "Distrito Federal" is a local.
+
+"ARTIGO 458, I, CPC" – "ARTIGO 458" and "CPC" are parts of legislação. So the entire phrase should be marked as legislação.
+
+Putting it all together:
+
+- "MARIA IVATÔNIA" → pessoa
+- "GABINETE DA DESEMBARGADORA" → organizacao
+- "SINPRO/DF" → organizacao
+- "Sindicato dos Professores do Distrito Federal" → organizacao
+- "Distrito Federal" → local
+- "ARTIGO 458, I, CPC" → legislação
+
+Now, I need to make sure that all these entities are correctly tagged in the HTML. Let me write the HTML with these tags.
+</think>
+
+<span class="pessoa">MARIA IVATÔNIA</span> Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 3 O relatório é , em parte , o da sentença : “ RELATÓRIO ( <span class="legislacao">ARTIGO 458 , I , CPC</span> ) <span class="organizacao">SINPRO/DF</span> - <span class="organizacao">Sindicato dos Professores do Distrito Federal</span> ajuizou ação contra o <span class="local">Distrito Federal</span> formulando os seguintes pedidos : a . `` seja o Réu citado , na pessoa do seu representante legal , no endereço acima mencionado , para , querendo , responder aos termos da presente ação sob pena dos efeitos de revelia ; b .

@@ -1,0 +1,76 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to look at the input text: "71 , § 1º , I , da LODF ) - como a imposição de reserva de percentual de vagas de estagiários - ; sobre atribuições dos órgãos e entidades da administração pública ( art . 71 , § 1º , IV , da LODF ) - tal qual as dos arts ."
+
+I should scan through the text for any mentions of these entities. Let's break it down.
+
+Starting with "LODF" – that's likely an acronym for a legal document, so that's legislation. So "LODF" should be marked as <span class="legislacao">LODF</span>.
+
+Next, there are references to articles and sections like "art . 71 , § 1º , IV". The "art" here stands for "artigo" (article) in Portuguese. These are parts of legislation, so "art" and the numbers should be part of the legislation. Wait, but the user's example output shows "art" as part of the legislation. Wait, looking at the example output provided by the user, in their sample input, they have "art . 71" and in the output, it's marked as legislacao. Wait, but in the example given, the user's input is "art . 71 , § 1º , IV , da LODF" and the output is "art . <span class="legislacao">71</span> , § <span class="legislacao">1º</span> , IV , da <span class="legislacao">LODF</span>". So the numbers and sections are marked as legislacao. So in this case, "71", "1º", "IV", and "LODF" are all part of the legislation.
+
+So in the input text, "71" and "1º" are parts of the legislation. Also, "LODF" is legislation. The "art" is part of the legislation as well? Wait, in the example, "art" is not marked. Wait, looking at the user's example input and output:
+
+Input: "art . 71 , § 1º , IV , da LODF"
+Output: "art . <span class="legislacao">71</span> , § <span class="legislacao">1º</span> , IV , da <span class="legislacao">LODF</span>"
+
+So the "art" is not marked. Only the numbers and the acronym. So maybe the "art" is part of the text and not an entity. So in the current input, the numbers and the acronym are marked as legislacao.
+
+So in the given input text, the numbers "71", "1º", "IV", and "LODF" are all part of the legislation. So I need to wrap those in <span class="legislacao">.
+
+Looking at the input text again: "71 , § 1º , I , da LODF ) - como a imposição de reserva de percentual de vagas de estagiários - ; sobre atribuições dos órgãos e entidades da administração pública ( art . 71 , § 1º , IV , da LODF ) - tal qual as dos arts ."
+
+Breaking it down:
+
+- "71" is a number, part of legislation.
+- "§ 1º" – the section and subsection, so "1º" is part of legislation.
+- "I" and "IV" are parts of the article's items, so they are part of legislation.
+- "LODF" is legislation.
+- "art" is part of the text, not an entity.
+- "arts" is plural, but not an entity.
+
+So the entities to mark are:
+
+- "71" → legislacao
+- "1º" → legislacao
+- "I" → legislacao
+- "IV" → legislacao
+- "LODF" → legislacao
+
+Wait, but in the example, "I" and "IV" are part of the legislation. So in the input text, "I" and "IV" are part of the legislation. So they should be marked as legislacao.
+
+So the output should have those numbers and letters marked as legislacao.
+
+So the final HTML would have those parts wrapped in <span class="legislacao">.
+
+Let me check if there are any other entities. The text mentions "órgãos e entidades da administração pública" – "órgãos" and "entidades" are organizations? Wait, "órgãos" is plural for "órgão", which is an organization. "Entidades" is also an organization. So "órgãos" and "entidades" are organizations. So they should be marked as organizacao.
+
+Wait, but in the example input, the user had "órgãos e entidades da administração pública" and in the output, they were not marked. Wait, looking back at the user's example input and output:
+
+Input: "sobre atribuições dos órgãos e entidades da administração pública ( art . 71 , § 1º , IV , da LODF )"
+Output: "sobre atribuições dos <span class="organizacao">órgãos</span> e <span class="organizacao">entidades</span> da administração pública ( art . <span class="legislacao">71</span> , § <span class="legislacao">1º</span> , IV , da <span class="legislacao">LODF</span> )"
+
+Ah, so in the example, "órgãos" and "entidades" are marked as organizacao. So in the current input, "órgãos" and "entidades" should be marked as organizacao.
+
+So in the input text, "órgãos" and "entidades" are organizations. So they need to be wrapped in <span class="organizacao">.
+
+So putting it all together:
+
+Original text: "71 , § 1º , I , da LODF ) - como a imposição de reserva de percentual de vagas de estagiários - ; sobre atribuições dos órgãos e entidades da administração pública ( art . 71 , § 1º , IV , da LODF ) - tal qual as dos arts ."
+
+Marking:
+
+- "71" → legislacao
+- "1º" → legislacao
+- "I" → legislacao
+- "IV" → legislacao
+- "LODF" → legislacao
+- "órgãos" → organizacao
+- "entidades" → organizacao
+
+So the HTML would have those parts marked accordingly.
+
+Now, let's write the HTML with these tags.
+</think>
+
+71 , § <span class="legislacao">1º</span> , <span class="legislacao">I</span> , da <span class="legislacao">LODF</span> ) - como a imposição de reserva de percentual de vagas de estagiários - ; sobre atribuições dos <span class="organizacao">órgãos</span> e <span class="organizacao">entidades</span> da administração pública ( art . <span class="legislacao">71</span> , § <span class="legislacao">1º</span> , <span class="legislacao">IV</span> , da <span class="legislacao">LODF</span> ) - tal qual as dos arts .

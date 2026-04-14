@@ -1,0 +1,75 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me parse through each part.
+
+The text starts with "Como é cediço , nos termos do atual §3º do art . 413 do Código de Processo Penal , `` O juiz decidirá , motivadamente , no caso de manutenção , revogação ou substituição da prisão ou medida restritiva de liberdade anteriormente decretada e , tratando-se de acusado solto , sobre a necessidade da decretação da prisão ou imposição de quaisquer das medidas previstas no Título IX do Livro I deste Código . ''
+
+Looking for entities:
+
+1. "Código de Processo Penal" – This is a legal code, so it should be marked as legislacao. The term "Código" usually refers to a law or legislation, so that's a good candidate.
+
+2. "§3º do art . 413" – The article number 413, section 3. This is part of the legislation, so "artigo 413" would be under legislacao. But the text mentions "art . 413" which is part of the Código de Processo Penal, so the entire reference is part of the legislation.
+
+3. "Título IX do Livro I deste Código" – This refers to sections of the same legislation, so "Título IX" and "Livro I" are parts of the legislacao. However, the user might expect only the main legislation name to be marked. Wait, the instruction says to mark entities related to the domain. The "Código de Processo Penal" is the main legislation, so that's the one to mark. The sections (Título IX, Livro I) are parts of it, but maybe they are not separate entities. The user might want only the main legislation name. Let me check the example again.
+
+In the sample input, the output has "Código de Processo Penal" marked as legislacao. So I should follow that. The sections like Título IX and Livro I are parts of the code, but they are not separate entities. So only "Código de Processo Penal" is marked as legislacao.
+
+Other entities:
+
+- "juiz" – This is a person, so "juiz" should be pessoa. Wait, "juiz" is a title, but in legal terms, it refers to a person (the judge). So "juiz" is a pessoa.
+
+- "acusado" – This is a person, so "acusado" should be pessoa.
+
+- "prisão" and "medida restritiva de liberdade" – These are legal terms, but they are not entities. The user is looking for specific types like pessoa, organizacao, etc. So these are not entities to mark.
+
+- "tempo" – The text mentions "atual §3º" which refers to the current section. "Atual" is a temporal reference, so "atual" should be tempo. Wait, "atual" is an adjective here, but the user's example might have "atual" as tempo. Let me check the sample output again. The sample input has "atual §3º" and in the output, "atual" is marked as tempo. So I should mark "atual" as tempo.
+
+- "local" – There's no mention of a place, so no local entity.
+
+- "jurisprudencia" – The text doesn't mention any jurisprudência, so no need to mark that.
+
+So, the entities to mark are:
+
+- "atual" as tempo
+- "juiz" as pessoa
+- "acusado" as pessoa
+- "Código de Processo Penal" as legislacao
+
+Now, I need to replace these words with <span> tags. Let me go through the text step by step.
+
+Original text: "Como é cediço , nos termos do atual §3º do art . 413 do Código de Processo Penal , `` O juiz decidirá , motivadamente , no caso de manutenção , revogação ou substituição da prisão ou medida restritiva de liberdade anteriormente decretada e , tratando-se de acusado solto , sobre a necessidade da decretação da prisão ou imposição de quaisquer das medidas previstas no Título IX do Livro I deste Código . ''
+
+Breaking it down:
+
+- "atual" → <span class="tempo">atual</span>
+- "Código de Processo Penal" → <span class="legislacao">Código de Processo Penal</span>
+- "juiz" → <span class="pessoa">juiz</span>
+- "acusado" → <span class="pessoa">acusado</span>
+
+Other parts like "§3º", "art . 413", "Título IX", "Livro I" are parts of the legislation, but since the main legislation is already marked, the rest are not entities. The "art . 413" is part of the legislation, but the user's example only marks the main code name. So I'll leave those as is.
+
+Putting it all together:
+
+"Como é cediço , nos termos do <span class="tempo">atual</span> §3º do art . 413 do <span class="legislacao">Código de Processo Penal</span> , `` O <span class="pessoa">juiz</span> decidirá , motivadamente , no caso de manutenção , revogação ou substituição da prisão ou medida restritiva de liberdade anteriormente decretada e , tratando-se de <span class="pessoa">acusado</span> solto , sobre a necessidade da decretação da prisão ou imposição de quaisquer das medidas previstas no Título IX do Livro I deste <span class="legislacao">Código</span> . "
+
+Wait, the original text has "Código de Processo Penal" and later "Código" again. The second "Código" is part of the same legislation, so it should also be marked as legislacao. But in the original text, the second "Código" is part of "deste Código", which refers to the same code. So I should mark "Código" as legislacao as well.
+
+So the final HTML would have:
+
+- "atual" as tempo
+- "Código de Processo Penal" as legislacao
+- "juiz" as pessoa
+- "acusado" as pessoa
+- "Código" as legislacao
+
+But wait, the original text has "Código de Processo Penal" and then "deste Código". The second "Código" is a reference to the same code, so it's part of the legislation. Therefore, both instances should be marked as legislacao.
+
+So the corrected version would have:
+
+"Como é cediço , nos termos do <span class="tempo">atual</span> §3º do art . 413 do <span class="legislacao">Código de Processo Penal</span> , `` O <span class="pessoa">juiz</span> decidirá , motivadamente , no caso de manutenção , revogação ou substituição da prisão ou medida restritiva de liberdade anteriormente decretada e , tratando-se de <span class="pessoa">acusado</span> solto , sobre a necessidade da decretação da prisão ou imposição de quaisquer das medidas previstas no Título IX do Livro I deste <span class="legislacao">Código</span> . "
+
+That should cover all the entities. Let me double-check if there are any other entities. The text mentions "prisão" and "medida restritiva de liberdade", but those are legal terms, not entities. "Título IX" and "Livro I" are parts of the code, but they are not separate entities. The user's example only marks the main legislation name. So the final HTML should have the four marked entities as above.
+</think>
+
+Como é cediço , nos termos do <span class="tempo">atual</span> §3º do art . 413 do <span class="legislacao">Código de Processo Penal</span> , `` O <span class="pessoa">juiz</span> decidirá , motivadamente , no caso de manutenção , revogação ou substituição da prisão ou medida restritiva de liberdade anteriormente decretada e , tratando-se de <span class="pessoa">acusado</span> solto , sobre a necessidade da decretação da prisão ou imposição de quaisquer das medidas previstas no Título IX do Livro I deste <span class="legislacao">Código</span> .

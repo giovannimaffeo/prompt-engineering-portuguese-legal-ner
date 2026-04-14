@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to parse the input text carefully. Let me read through the example provided to understand the expected output. The example shows that "MINISTÉRIO PÚBLICO FEDERAL" is marked as organizacao, "CARLOS HENRIQUE ALVES" as pessoa, and so on.
+
+Looking at the input text: "In casu , urge salientar que a custódia preventiva do paciente é , atualmente , mantida em virtude de sentença de pronúncia exarada em 15.05.17 , pelo juiz sumariante . Como é cediço , nos termos do atual §3º do art . 413 do Código de Processo Penal , `` O juiz decidirá , motivadamente , no caso de manutenção , revogação ou substituição da prisão ou medida restritiva de liberdade anteriormente decretada e , tratando-se de acusado solto , sobre a necessidade da decretação da prisão ou imposição de quaisquer das medidas previstas no Título IX do Livro I deste Código . '' Observa-se que a decisão de pronúncia , que manteve a custódia provisória do paciente , ao contrário do que asseverou o impetrante , deixa clara a necessidade de manutenção do acusado no cárcere tendo em vista que os motivos fáticos e jurídicos que deram causa a decretação de sua segregação cautelar ainda perduram ."
+
+Now, I need to identify the entities. Let's go step by step.
+
+1. "15.05.17" – this is a date, so it's tempo. The format is DD.MM.YY, which fits the definition. So, wrap it in <span class="tempo">.
+
+2. "Código de Processo Penal" – this is a legal code, so legislacao. The full name of the code is mentioned, so it should be marked.
+
+3. "art . 413" – part of the legislation, so legislacao. The "art" refers to article, and the number is part of the legal text.
+
+4. "Título IX do Livro I" – part of the legislation, so legislacao. The title and book are part of the code's structure.
+
+5. "sentença de pronúncia" – this is a legal decision, but the example shows that "REsp n . 1694984/MS" is jurisprudencia. However, "sentença de pronúncia" is a court decision, which might be jurisprudencia. Wait, but the example didn't mark "sentença" as jurisprudencia. Let me check the guidelines. The jurisprudencia is for specific decisions like "REsp", "Súmula", etc. Here, "sentença de pronúncia" is a general term, not a specific identifier, so it shouldn't be marked. So, no tag here.
+
+6. "juiz sumariante" – "juiz" is a generic term, not a specific person, so not pessoa. "sumariante" refers to a role, not a name. So no tag here.
+
+7. "Código de Processo Penal" – already marked as legislacao.
+
+8. "Título IX do Livro I" – part of the code, so legislacao.
+
+9. "decisão de pronúncia" – again, this is a general term. The example didn't mark "decisão" as jurisprudencia unless it's a specific identifier. So no tag here.
+
+10. "impetrante" – this is a generic term (the petitioner), not a specific name, so no tag.
+
+Now, check if there are any other entities. The date "15.05.17" is tempo. "Código de Processo Penal" and "art. 413" are part of legislacao. "Título IX do Livro I" is also part of the legislacao. Are there any other mentions?
+
+Looking again: "Código de Processo Penal" is a law, so legislacao. "art . 413" is part of that code. "Título IX do Livro I" is part of the code's structure. So all these are part of the legislacao.
+
+Are there any organizations? The text mentions "juiz sumariante" but that's a role, not an organization. No other organizations mentioned.
+
+Pessoas? Only names like "CARLOS HENRIQUE ALVES" in the example, but in the input text, there are no specific names. So no pessoa tags.
+
+Local? The text mentions "cárcere" which is a general term for prison, not a specific location. So no local tags.
+
+Jurisprudencia? The example had "REsp" and "Súmula". In the input, there's "decisão de pronúncia" which is a general term. Unless there's a specific identifier like a number or acronym, it's not marked. So no jurisprudencia tags here.
+
+So the only entities are:
+
+- "15.05.17" as tempo
+- "Código de Processo Penal" as legislacao
+- "art . 413" as legislacao
+- "Título IX do Livro I" as legislacao
+
+Wait, but "art . 413" is part of the code, so it's part of legislacao. Similarly, "Título IX do Livro I" is part of the code's structure, so also legislacao.
+
+So the HTML should have those spans. Let me structure the output accordingly.
+
+Now, let me write the HTML with the appropriate tags. Also, note that the original text has "art . 413" with a space after "art" and a period. Need to keep the original formatting but wrap the relevant parts.
+
+So the final output would have:
+
+- "15.05.17" as tempo
+- "Código de Processo Penal" as legislacao
+- "art . 413" as legislacao
+- "Título IX do Livro I" as legislacao
+
+I need to make sure that all the parts are correctly wrapped. Let me check again.
+
+Yes, that's all. No other entities. So the final HTML should reflect those spans.
+</think>
+
+In casu , urge salientar que a custódia preventiva do paciente é , atualmente , mantida em virtude de sentença de pronúncia exarada em <span class="tempo">15.05.17</span> , pelo juiz sumariante . Como é cediço , nos termos do atual §3º do <span class="legislacao">art . 413</span> do <span class="legislacao">Código de Processo Penal</span> , `` O juiz decidirá , motivadamente , no caso de manutenção , revogação ou substituição da prisão ou medida restritiva de liberdade anteriormente decretada e , tratando-se de acusado solto , sobre a necessidade da decretação da prisão ou imposição de quaisquer das medidas previstas no <span class="legislacao">Título IX do Livro I</span> deste Código . '' Observa-se que a decisão de pronúncia , que manteve a custódia provisória do paciente , ao contrário do que asseverou o impetrante , deixa clara a necessidade de manutenção do acusado no cárcere tendo em vista que os motivos fáticos e jurídicos que deram causa a decretação de sua segregação cautelar ainda perduram .

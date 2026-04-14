@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text carefully. The input is: "Recurso não provido . Sentença mantida . ( Acórdão n.999404 , 20160610082800APC , Relator : ARNOLDO CAMANHO 4ª TURMA CÍVEL , Data de Julgamento : 22/02/2017 , Publicado no DJE : 08/03/2017 . Pág. : 283/300 ) - grifo nosso ."
+
+Let me go through each part step by step.
+
+Starting with "Recurso não provido . Sentença mantida ." – these seem like legal terms but not specific entities. No need to mark them.
+
+Next, the part in parentheses: "( Acórdão n.999404 , 20160610082800APC , Relator : ARNOLDO CAMANHO 4ª TURMA CÍVEL , Data de Julgamento : 22/02/2017 , Publicado no DJE : 08/03/2017 . Pág. : 283/300 )"
+
+Breaking this down:
+
+- "Acórdão n.999404" – "Acórdão" is a legal term, but the number 999404 might be a case number. However, the user hasn't specified marking case numbers, so maybe not. Wait, the entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. "Acórdão" could be part of jurisprudencia? Or maybe it's a legal document, but the user hasn't specified that. Maybe it's not an entity here. Let me check the example output.
+
+Looking at the example output provided by the user, the output is:
+
+"Recurso não provido . Sentença mantida . ( <span class="jurisprudencia">Acórdão n.999404</span> , <span class="tempo">20160610082800APC</span> , <span class="pessoa">ARNOLDO CAMANHO</span> <span class="organizacao">4ª TURMA CÍVEL</span> , <span class="tempo">22/02/2017</span> , <span class="tempo">08/03/2017</span> . <span class="tempo">283/300</span> ) - grifo nosso ."
+
+Wait, the example output shows "Acórdão n.999404" as jurisprudencia. So "Acórdão" is considered jurisprudencia. The number 999404 is part of the Acórdão, so maybe the entire phrase is marked as jurisprudencia. Then "20160610082800APC" is a tempo (date or time). "ARNOLDO CAMANHO" is a pessoa. "4ª TURMA CÍVEL" is an organizacao. The dates like 22/02/2017 and 08/03/2017 are tempo. "283/300" is a page number, which might be considered tempo? Or maybe not. The example output marks it as tempo. So I'll follow that.
+
+So, applying that to the input text:
+
+- "Acórdão n.999404" → jurisprudencia
+- "20160610082800APC" → tempo
+- "ARNOLDO CAMANHO" → pessoa
+- "4ª TURMA CÍVEL" → organizacao
+- "22/02/2017" → tempo
+- "08/03/2017" → tempo
+- "283/300" → tempo (as per example)
+
+The rest of the text doesn't have any entities. The "grifo nosso" is not an entity, so left as is.
+
+So the final HTML would have the spans with the appropriate classes. Let me make sure I didn't miss any other entities. The input doesn't mention any organizations, legislacao, or local. So the output should only have the marked parts as per the example.
+</think>
+
+Recurso não provido . Sentença mantida . ( <span class="jurisprudencia">Acórdão n.999404</span> , <span class="tempo">20160610082800APC</span> , <span class="pessoa">ARNOLDO CAMANHO</span> <span class="organizacao">4ª TURMA CÍVEL</span> , <span class="tempo">22/02/2017</span> , <span class="tempo">08/03/2017</span> . <span class="tempo">283/300</span> ) - grifo nosso .

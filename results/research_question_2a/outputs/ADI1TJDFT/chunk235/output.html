@@ -1,0 +1,60 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input is: "Ação direta de constitucionalidade julgada procedente para declarar a inconstitucionalidade formal da Lei distrital 5.764/2016 , com efeito ex tunc e eficácia erga omnes '' . ( ADI n° 49775-8 . Rel . Des . : WALDIR LEÔNCIO LOPES JÚNIOR . CONSELHO ESPECIAL . Acórdão n° 1014463 . DJe : 08/05/2017 ."
+
+Looking for entities:
+
+1. "Lei distrital 5.764/2016" – This seems like a legislative act, so "legislacao".
+2. "ADI n° 49775-8" – ADI is Ação Direta de Inconstitucionalidade, which is a type of legal action, so maybe "jurisprudencia" or "legislacao"? Wait, ADI is a legal proceeding, so perhaps "jurisprudencia" isn't right. Wait, the user's example output shows "ADI n° 49775-8" as "ADI n° <span class="jurisprudencia">49775-8</span>". Wait, maybe the ADI is considered a jurisprudencial entity? Or maybe it's part of the case number. Hmm, the example output in the user's message shows that "ADI n° 49775-8" is marked as jurisprudencia. So I'll follow that.
+
+3. "Rel . Des . : WALDIR LEÔNCIO LOPES JÚNIOR" – "Rel" is Relator, which is a person, so "pessoa".
+
+4. "CONSELHO ESPECIAL" – This is an organization, so "organizacao".
+
+5. "Acórdão n° 1014463" – Acórdão is a judicial decision, so maybe "jurisprudencia".
+
+6. "DJe : 08/05/2017" – DJe is Diário da Justiça Eletrônico, which is a publication, so maybe "tempo" for the date.
+
+Wait, the user's example output shows "DJe : <span class="tempo">08/05/2017</span>". So the date is marked as tempo.
+
+Now, let's go through each part step by step.
+
+Original text: "Ação direta de constitucionalidade julgada procedente para declarar a inconstitucionalidade formal da Lei distrital 5.764/2016 , com efeito ex tunc e eficácia erga omnes '' . ( ADI n° 49775-8 . Rel . Des . : WALDIR LEÔNCIO LOPES JÚNIOR . CONSELHO ESPECIAL . Acórdão n° 1014463 . DJe : 08/05/2017 ."
+
+Breaking it down:
+
+- "Lei distrital 5.764/2016" → "legislacao"
+- "ADI n° 49775-8" → "jurisprudencia"
+- "WALDIR LEÔNCIO LOPES JÚNIOR" → "pessoa"
+- "CONSELHO ESPECIAL" → "organizacao"
+- "Acórdão n° 1014463" → "jurisprudencia"
+- "DJe : 08/05/2017" → "tempo"
+
+Wait, the example output in the user's message shows that "ADI n° 49775-8" is marked as jurisprudencia. Similarly, "Acórdão n° 1014463" is also marked as jurisprudencia. The date "08/05/2017" is marked as tempo. The "CONSELHO ESPECIAL" is an organization. The person is "WALDIR LEÔNCIO LOPES JÚNIOR".
+
+So applying that to the text:
+
+Original text: "Ação direta de constitucionalidade julgada procedente para declarar a inconstitucionalidade formal da Lei distrital 5.764/2016 , com efeito ex tunc e eficácia erga omnes '' . ( ADI n° 49775-8 . Rel . Des . : WALDIR LEÔNCIO LOPES JÚNIOR . CONSELHO ESPECIAL . Acórdão n° 1014463 . DJe : 08/05/2017 ."
+
+Marking:
+
+- "Lei distrital 5.764/2016" → <span class="legislacao">Lei distrital 5.764/2016</span>
+- "ADI n° 49775-8" → <span class="jurisprudencia">ADI n° 49775-8</span>
+- "WALDIR LEÔNCIO LOPES JÚNIOR" → <span class="pessoa">WALDIR LEÔNCIO LOPES JÚNIOR</span>
+- "CONSELHO ESPECIAL" → <span class="organizacao">CONSELHO ESPECIAL</span>
+- "Acórdão n° 1014463" → <span class="jurisprudencia">Acórdão n° 1014463</span>
+- "DJe : 08/05/2017" → <span class="tempo">08/05/2017</span>
+
+Putting it all together, the HTML should have these spans in the correct places. Also, note that the original text has some punctuation and spaces that need to be preserved. For example, the "ADI n° 49775-8" is within parentheses, so the span should include the entire "ADI n° 49775-8" part. Similarly, the "Rel . Des . : " is part of the structure, so the person's name is after that.
+
+So the final HTML would be:
+
+"Ação direta de constitucionalidade julgada procedente para declarar a inconstitucionalidade formal da <span class="legislacao">Lei distrital 5.764/2016</span> , com efeito ex tunc e eficácia erga omnes '' . ( <span class="jurisprudencia">ADI n° 49775-8</span> . Rel . Des . : <span class="pessoa">WALDIR LEÔNCIO LOPES JÚNIOR</span> . <span class="organizacao">CONSELHO ESPECIAL</span> . <span class="jurisprudencia">Acórdão n° 1014463</span> . <span class="tempo">DJe : 08/05/2017</span> ."
+
+Wait, but the original text has "DJe : 08/05/2017" as part of the date. So the "DJe" is part of the date, so the entire "DJe : 08/05/2017" is marked as tempo. Wait, the user's example output shows "DJe : <span class="tempo">08/05/2017</span>". So the date is marked, but the "DJe" is not. Wait, the original text is "DJe : 08/05/2017", so the date is "08/05/2017", and the "DJe" is part of the publication, which might be a local or something else. But according to the user's example, the date is marked as tempo. So in the output, the "08/05/2017" is in a tempo span, and the "DJe : " is left as is. Wait, the user's example shows "DJe : <span class="tempo">08/05/2017</span>". So the date is marked, but the "DJe : " is not. So in the original text, the "DJe : 08/05/2017" becomes "DJe : <span class="tempo">08/05/2017</span>".
+
+Therefore, the correct HTML would have the date part in tempo, and the rest as is. So the final output should have all the spans correctly placed.
+</think>
+
+Ação direta de constitucionalidade julgada procedente para declarar a inconstitucionalidade formal da <span class="legislacao">Lei distrital 5.764/2016</span> , com efeito ex tunc e eficácia erga omnes '' . ( <span class="jurisprudencia">ADI n° 49775-8</span> . Rel . Des . : <span class="pessoa">WALDIR LEÔNCIO LOPES JÚNIOR</span> . <span class="organizacao">CONSELHO ESPECIAL</span> . <span class="jurisprudencia">Acórdão n° 1014463</span> . <span class="tempo">DJe : 08/05/2017</span> .

@@ -1,0 +1,69 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example again. The input is:
+
+"PACIENTE : HENRIQUE DOS SANTOS BOTELHO , Cap Ex . IMPETRANTE : Dra . Gisele Correia dos Santos Batista . IMPETRADO : Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM - JUSTIÇA MILITAR DA UNIÃO - Brasília HABEAS CORPUS . AUDIÊNCIA DE INQUIRIÇÃO DE TESTEMUNHAS ."
+
+So, breaking it down:
+
+1. "PACIENTE : HENRIQUE DOS SANTOS BOTELHO" – Here, "HENRIQUE DOS SANTOS BOTELHO" is a person. So that's a pessoa.
+
+2. "Cap Ex" – Not sure what that stands for. Maybe an abbreviation? Since it's not a clear entity, maybe leave it as is. Unless "Cap Ex" is an organization, but I don't think so. Probably not an entity here.
+
+3. "IMPETRANTE : Dra . Gisele Correia dos Santos Batista" – "Dra." is a title for a doctor, but the name "Gisele Correia dos Santos Batista" is a person. So that's another pessoa.
+
+4. "IMPETRADO : Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM - JUSTIÇA MILITAR DA UNIÃO - Brasília" – "Juiz-Auditor Substituto" is a title, but the entity here is the organization. "CJM" might be an acronym for a judicial body. "JUSTIÇA MILITAR DA UNIÃO" is an organization. "Brasília" is a local.
+
+5. "HABEAS CORPUS" – This is a legal term, so it's a legislação or jurisprudencia? Wait, Habeas Corpus is a legal remedy, so maybe it's a legislação. But sometimes it's considered a legal principle. Hmm. The user's example might have it as legislação. Let me check the example output.
+
+Looking at the sample output provided by the user, in their example, "HABEAS CORPUS" is marked as legislação. So I'll follow that.
+
+6. "AUDIÊNCIA DE INQUIRIÇÃO DE TESTEMUNHAS" – This is a legal procedure, so maybe jurisprudencia? Or is it a term related to a legal process? The user's example might have it as jurisprudencia. Wait, in the sample output, "AUDIÊNCIA DE INQUIRIÇÃO DE TESTEMUNHAS" is marked as jurisprudencia. So I'll follow that.
+
+Now, let's go through each part step by step.
+
+First, "HENRIQUE DOS SANTOS BOTELHO" is a person. So wrap that in <span class="pessoa">.
+
+Then "Dra. Gisele Correia dos Santos Batista" – "Dra." is a title, but the name is a person. So the entire name is a pessoa. Wait, the user's example might have "Dra." as part of the name. Wait, in the sample output, the user's example shows "Dra. Gisele Correia dos Santos Batista" as a pessoa. So I'll mark the entire name as pessoa.
+
+Next, "Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM - JUSTIÇA MILITAR DA UNIÃO - Brasília" – "CJM" is an acronym for a judicial body, so that's an organizacao. "JUSTIÇA MILITAR DA UNIÃO" is an organization. "Brasília" is a local. The rest is part of the title, so no entity.
+
+"HABEAS CORPUS" is a legal term, so legislação.
+
+"AUDIÊNCIA DE INQUIRIÇÃO DE TESTEMUNHAS" is a legal procedure, so jurisprudencia.
+
+Now, let's structure the HTML accordingly.
+
+Make sure to not include any explanations, just the HTML text.
+
+So the final output would be:
+
+PACIENTE : <span class="pessoa">HENRIQUE DOS SANTOS BOTELHO</span> , Cap Ex . IMPETRANTE : <span class="pessoa">Dra . Gisele Correia dos Santos Batista</span> . IMPETRADO : <span class="organizacao">Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM</span> - <span class="organizacao">JUSTIÇA MILITAR DA UNIÃO</span> - <span class="local">Brasília</span> <span class="legislacao">HABEAS CORPUS</span> . <span class="jurisprudencia">AUDIÊNCIA DE INQUIRIÇÃO DE TESTEMUNHAS</span> .
+
+Wait, but in the original text, "CJM" is part of the organization. Let me check again. The original text says "Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM - JUSTIÇA MILITAR DA UNIÃO - Brasília". So "CJM" is part of the organization. So "CJM" is an acronym for a judicial body, so it's an organizacao. Then "JUSTIÇA MILITAR DA UNIÃO" is another organization. "Brasília" is a local. So the parts are:
+
+- "Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM" – here, "CJM" is an organization. So the entire phrase up to "CJM" is part of the organization? Or is "CJM" the organization? Maybe the entire "Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM" is part of the organization? Wait, the structure is "IMPETRADO : Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM - JUSTIÇA MILITAR DA UNIÃO - Brasília". So the "Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM" is the position, and "JUSTIÇA MILITAR DA UNIÃO" is the organization. So "CJM" is part of the organization's name. So "CJM" is an organization. So the entire "CJM" should be marked as organizacao. Similarly, "JUSTIÇA MILITAR DA UNIÃO" is an organization. "Brasília" is a local.
+
+So the correct marking would be:
+
+IMPETRADO : <span class="organizacao">Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM</span> - <span class="organizacao">JUSTIÇA MILITAR DA UNIÃO</span> - <span class="local">Brasília</span>
+
+Wait, but "CJM" is part of the organization's name. So maybe "CJM" is the organization. But the full name is "JUSTIÇA MILITAR DA UNIÃO", which is the organization. So "CJM" is an acronym for that. So in the text, "CJM" is part of the organization's name. So the entire "CJM" should be marked as organizacao. But the original text has "Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM - JUSTIÇA MILITAR DA UNIÃO - Brasília". So "CJM" is part of the position, and "JUSTIÇA MILITAR DA UNIÃO" is the organization. Therefore, "CJM" is part of the organization's name. So "CJM" is an organization. So the entire "CJM" should be marked as organizacao. But the original text has "CJM" as part of the position. Hmm, this is a bit ambiguous. But according to the example, the user's sample output might have "CJM" as part of the organization. Let me check the sample output again.
+
+In the sample output provided by the user, the text is:
+
+PACIENTE : <span class="pessoa">HENRIQUE DOS SANTOS BOTELHO</span> , Cap Ex . IMPETRANTE : <span class="pessoa">Dra . Gisele Correia dos Santos Batista</span> . IMPETRADO : <span class="organizacao">Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM</span> - <span class="organizacao">JUSTIÇA MILITAR DA UNIÃO</span> - <span class="local">Brasília</span> <span class="legislacao">HABEAS CORPUS</span> . <span class="jurisprudencia">AUDIÊNCIA DE INQUIRIÇÃO DE TESTEMUNHAS</span> .
+
+So in the sample output, "CJM" is part of the organizacao. So the entire "Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM" is marked as organizacao. But that seems incorrect because "Juiz-Auditor Substituto" is a title, not an organization. Wait, maybe the user's example is different. Let me think again.
+
+Alternatively, maybe "CJM" is an organization, and "JUSTIÇA MILITAR DA UNIÃO" is another organization. So in the text, "CJM" is part of the organization's name. So "CJM" is an organization. Therefore, the correct marking would be:
+
+IMPETRADO : <span class="organizacao">Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM</span> - <span class="organizacao">JUSTIÇA MILITAR DA UNIÃO</span> - <span class="local">Brasília</span>
+
+But I'm not entirely sure. However, based on the user's example, it seems that "CJM" is part of the organizacao. So I'll proceed with that.
+
+So the final HTML would be as follows, with all the entities marked accordingly.
+</think>
+
+PACIENTE : <span class="pessoa">HENRIQUE DOS SANTOS BOTELHO</span> , Cap Ex . IMPETRANTE : <span class="pessoa">Dra . Gisele Correia dos Santos Batista</span> . IMPETRADO : <span class="organizacao">Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM</span> - <span class="organizacao">JUSTIÇA MILITAR DA UNIÃO</span> - <span class="local">Brasília</span> <span class="legislacao">HABEAS CORPUS</span> . <span class="jurisprudencia">AUDIÊNCIA DE INQUIRIÇÃO DE TESTEMUNHAS</span> .

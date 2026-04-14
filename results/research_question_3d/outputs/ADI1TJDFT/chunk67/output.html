@@ -1,0 +1,60 @@
+<think>
+Okay, let me tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. 
+
+First, I need to go through the text carefully and identify each entity according to the definitions provided. Let me start by reading the input text again.
+
+The text starts with "Ação Direta de Inconstitucionalidade 20170020161362ADI". The "ADI" here is likely an acronym for "Ação Direta de Inconstitucionalidade", which is a legal term. But according to the guidelines, only specific references like process numbers should be marked as jurisprudência. However, "ADI" itself is a type of legal action, not a specific case number. Wait, the example given for jurisprudência includes "REsp 1694984/MS", which is a specific case number. The text here has "20170020161362ADI", which looks like a case number. So that should be marked as jurisprudência. Let me check the example again. The user's example output shows "ADI" being marked as jurisprudência. So I'll mark that part.
+
+Next, "O Senhor Desembargador CRUZ MACEDO - Vogal". "Desembargador" is a title, so not a person. "CRUZ MACEDO" is a name, so that's a pessoa. The "Vogal" is a title, so not marked.
+
+"Presentes os pressupostos processuais e as condições da ação , admito o seu processamento . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". The "Código de Verificação" is a code, but not a specific entity. The code "2018ACONT2JYXTK52JCSL251NVQ" might be a legal code, but it's not clear. Since it's a code without a specific reference to a law or regulation, I'll leave it as is.
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". "GABINETE" is an organization, but here it's part of the title. "DESEMBARGADOR" is a title, so not marked. "SILVANIO BARBOSA DOS SANTOS" is a person's name, so that's a pessoa.
+
+"27 Art . 5º Revogam-se as disposições em contrário ." "Art. 5º" refers to an article in a law, so that's legislação. The "27" might be a part of the article, but the example shows "art. 71 da Lei 8.666/93" as legislação. Here, "Art. 5º" is part of a legal text, so it should be marked as legislação.
+
+"Brasília , 3 de abril de 2017". "Brasília" is a local. "3 de abril de 2017" is a date, so tempo.
+
+"129º da República e 57º de Brasília". "129º da República" might refer to a specific reference, but it's unclear. "57º de Brasília" could be a number, but since it's not a specific entity, I'll leave it as is.
+
+"RODRIGO ROLLEMBERG". This is a person's name, so pessoa.
+
+"A Requerente defende a inconstitucionalidade formal da referida lei , porque , oriunda de projeto de iniciativa parlamentar , a norma , ao possibilitar a delegação de atribuições próprias do poder de polícia , e exclusivas do Estado , interfere em matéria afeta à administração e ao funcionamento de órgãos da Administração Pública , cuja competência legislativa é privativa do Chefe do Poder Executivo .". "Chefe do Poder Executivo" is a title, not a specific person. "Administração Pública" is a generic term, not a specific organization. "Poder de polícia" is a legal term but not an entity. 
+
+Now, putting all these together. Let me check each part again to ensure I'm not missing any entities. 
+
+The "ADI" is marked as jurisprudência. "CRUZ MACEDO" is pessoa. "SILVANIO BARBOSA DOS SANTOS" is pessoa. "Art. 5º" is legislação. "Brasília" is local. "3 de abril de 2017" is tempo. "RODRIGO ROLLEMBERG" is pessoa. 
+
+Wait, the "GABINETE DO DESEMBARGADOR" – is "GABINETE" an organization? The definition says "organização" includes organs of the judiciary. So "GABINETE DO DESEMBARGADOR" is part of the organization. But in the example, "Tribunal de Contas" is an organization. Here, "GABINETE" might be part of the organization. However, the text says "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – the entire phrase might be an organization. But the user's example for organization includes "MINISTÉRIO PÚBLICO FEDERAL". So "GABINETE" here might be an organization. But the user's guidelines say to mark only if it's a specific entity. However, "GABINETE" is a part of the organization. Maybe the entire phrase is an organization. But the example doesn't have such a case. Alternatively, maybe only the name of the organization is marked. Wait, the text says "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – that's the name of the office. So "GABINETE" is the organization. But the user's example for organization includes "Tribunal de Contas", which is a specific name. So "GABINETE" here is an organization. Therefore, I should mark "GABINETE DO DESEMBARGADOR" as organizacao. Wait, but the text says "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – the entire phrase is the name of the organization. So I should mark the entire phrase as organizacao. But the user's example for organization includes "Tribunal de Contas", which is a specific name. So in this case, "GABINETE DO DESEMBARGADOR" is an organization. Wait, but "GABINETE" is part of the organization's name. So the full name is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS", which is an organization. Therefore, I need to mark that as organizacao. However, the user's guidelines say to include all modifiers when they appear in the same phrase. So the entire phrase is an organization. Therefore, I should wrap that in <span class="organizacao">.
+
+Similarly, "Brasília" is a local. "3 de abril de 2017" is tempo. "Art. 5º" is legislação. "ADI" is jurisprudência. "CRUZ MACEDO" and "RODRIGO ROLLEMBERG" are pessoas. 
+
+Wait, the "20170020161362ADI" – the user's example output shows "ADI" as jurisprudência. So that entire code should be marked as jurisprudência. Let me check the example again. The user's example input includes "REsp 1694984/MS" as jurisprudência. So the code "20170020161362ADI" is a case number, which should be marked as jurisprudência. 
+
+So putting it all together, the HTML should have:
+
+- "ADI" as jurisprudência
+- "CRUZ MACEDO" as pessoa
+- "SILVANIO BARBOSA DOS SANTOS" as pessoa
+- "Art. 5º" as legislação
+- "Brasília" as local
+- "3 de abril de 2017" as tempo
+- "RODRIGO ROLLEMBERG" as pessoa
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as organizacao
+
+Wait, the "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – is that an organization? The text says "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – the entire phrase is the name of the organization. So I should mark that as organizacao. 
+
+So I'll need to wrap that entire phrase in <span class="organizacao">.
+
+Now, let me check each part again to ensure I'm not missing any entities. 
+
+Another thing: "27 Art . 5º" – the "27" might be part of the article number, but the example shows "art. 71 da Lei 8.666/93" as legislação. Here, "Art. 5º" is part of a legal text, so it's legislação. The "27" is unclear, but since it's not a specific law or article, I'll leave it as is. 
+
+Also, "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the code is not a specific entity, so no marking. 
+
+So the final HTML should have the marked entities as discussed. Now, I'll write the HTML code with these spans.
+</think>
+
+<div>
+  <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> O Senhor <span class="pessoa">Desembargador CRUZ MACEDO</span> - Vogal Presentes os pressupostos processuais e as condições da ação , admito o seu processamento . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 27 <span class="legislacao">Art . 5º</span> Revogam-se as disposições em contrário . <span class="local">Brasília</span> , <span class="tempo">3 de abril de 2017</span> 129º da República e 57º de Brasília <span class="pessoa">RODRIGO ROLLEMBERG</span> A Requerente defende a inconstitucionalidade formal da referida lei , porque , oriunda de projeto de iniciativa parlamentar , a norma , ao possibilitar a delegação de atribuições próprias do poder de polícia , e exclusivas do Estado , interfere em matéria afeta à administração e ao funcionamento de órgãos da Administração Pública , cuja competência legislativa é privativa do <span class="pessoa">Chefe do Poder Executivo</span> .
+</div>

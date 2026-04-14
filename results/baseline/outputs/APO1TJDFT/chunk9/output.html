@@ -1,0 +1,84 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The first sentence: "Intimada as partes sobre as provas a produzir `` fls.291 '' . Disse a parte autora não ter outras provas à fls . 293 não havendo manifestação do requerido à fls.294 . Vieram os autos conclusos para sentença ” ( fl . 298/298-v ) ."
+
+Looking for entities here. "partes" could be "pessoa" if they are individuals, but since it's "partes" plural, maybe it's referring to parties in a legal case, which might be organizations or just people. However, the term "partes" in legal context usually refers to the parties involved, which could be individuals or entities. But since the text mentions "parte autora" (author party) and "requerido" (the one being sued), these are likely people. So "partes" might be "pessoa". But I need to check if there are specific names. The text doesn't have names, so maybe "partes" is not an entity here. Wait, the user's example output might have some clues. Let me check the example output provided.
+
+Wait, the user provided the input and the output. Let me look at the example output. Wait, no, the user hasn't provided an example output yet. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML. Não inclua explicações ou blocos de código." So I need to process the input text and mark the entities.
+
+Let me go back. The input text has "fls." which is an abbreviation for "fls" (fólio) in legal documents, referring to page numbers. So "fls.291" is a page reference, which is a "tempo" or "local"? Wait, "tempo" is time, but "fls" is a page number, which is more of a reference. However, the user's guide says "tempo" for time/data. Maybe "fls" is not a time, but a page number. However, the user's guide doesn't mention page numbers as entities. So perhaps "fls" is not an entity here. Wait, the user's guide says "tempo" for time/data. So if there's a date, that's "tempo". But "fls" is a page reference, which is not a time or date. So maybe "fls" is not an entity. However, the user's example output might have some clues. Wait, the user hasn't provided an example output yet. Let me proceed.
+
+Looking for "legislacao" (legislation). The text mentions "DISPOSITIVO 458 , III , CPC". CPC is Código de Processo Civil, which is a legal code. So "CPC" is legislation. So I should mark "CPC" as "legislacao".
+
+"Jurisprudencia" refers to judicial precedents. The text mentions "DISPOSITIVO 458 , III , CPC" which is a legal article, so that's legislation. There's no mention of a judicial decision or precedent, so maybe no "jurisprudencia" here.
+
+"Organizacao" would be organizations. The text mentions "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" which is an organization (the office of the judge). So that should be "organizacao".
+
+"Local" would be places. The text doesn't mention any specific locations, so maybe none.
+
+"Tempo" is time. The text has "5 Julgo procedente..." which is a date. So "5 Julgo" would be "tempo".
+
+"Pessoa" would be people. The text mentions "parte autora" (author party) and "requerido" (the one being sued), which are people. So those should be "pessoa".
+
+Now, let's go through the text step by step.
+
+First sentence: "Intimada as partes sobre as provas a produzir `` fls.291 '' . Disse a parte autora não ter outras provas à fls . 293 não havendo manifestação do requerido à fls.294 . Vieram os autos conclusos para sentença ” ( fl . 298/298-v ) ."
+
+- "partes" could be "pessoa" if they are individuals, but since it's plural, maybe it's not a specific entity. However, in legal terms, "partes" refers to the parties involved, which are people. So "partes" should be "pessoa".
+- "parte autora" is the author party, so "pessoa".
+- "requerido" is the one being sued, so "pessoa".
+- "fls.291", "fls.293", "fls.294", "fls.298/298-v" are page references. Since the user's guide doesn't mention page numbers as entities, maybe they are not marked. But the user's guide says "tempo" for time/data. However, "fls" is not a time. So perhaps these are not entities. Unless "fls" is considered as a reference, but the user's guide doesn't specify that. So maybe they are left as is.
+
+Next part: "O Juízo de origem apreciou a questão nos seguintes termos : “ O pedido deve ser julgado procedente . ( DISPOSITIVO 458 , III , CPC ) Fls . _____ Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 5 Julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença . A parte demandada goza de isenção legal , mas deve ressarcir as custas adiantadas pela parte autora ."
+
+- "Juízo de origem" refers to the original court, which is an organization. So "Juízo de origem" is "organizacao".
+- "DISPOSITIVO 458 , III , CPC" refers to a legal article in the Civil Procedure Code (CPC), so "CPC" is "legislacao".
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organization (the office of the judge), so "organizacao".
+- "5 Julgo" is a date, so "tempo".
+- "parte demandada" is the party being sued, so "pessoa".
+- "parte autora" again is "pessoa".
+- "isenção legal" refers to a legal exemption, but the term itself is not an entity. The actual legislation might be marked, but the text doesn't mention a specific law name. So maybe not.
+
+Putting it all together:
+
+- "partes" → "pessoa"
+- "parte autora" → "pessoa"
+- "requerido" → "pessoa"
+- "Juízo de origem" → "organizacao"
+- "CPC" → "legislacao"
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" → "organizacao"
+- "5 Julgo" → "tempo"
+- "parte demandada" → "pessoa"
+- "parte autora" → "pessoa"
+
+Now, I need to replace these words with <span> tags. Let me check each occurrence.
+
+Original text:
+
+"Intimada as partes sobre as provas a produzir `` fls.291 '' . Disse a parte autora não ter outras provas à fls . 293 não havendo manifestação do requerido à fls.294 . Vieram os autos conclusos para sentença ” ( fl . 298/298-v ) . O Juízo de origem apreciou a questão nos seguintes termos : “ O pedido deve ser julgado procedente . ( DISPOSITIVO 458 , III , CPC ) Fls . _____ Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 5 Julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença . A parte demandada goza de isenção legal , mas deve ressarcir as custas adiantadas pela parte autora ."
+
+Now, applying the tags:
+
+- "partes" → <span class="pessoa">partes</span>
+- "parte autora" → <span class="pessoa">parte autora</span>
+- "requerido" → <span class="pessoa">requerido</span>
+- "Juízo de origem" → <span class="organizacao">Juízo de origem</span>
+- "CPC" → <span class="legislacao">CPC</span>
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" → <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span>
+- "5 Julgo" → <span class="tempo">5 Julgo</span>
+- "parte demandada" → <span class="pessoa">parte demandada</span>
+- "parte autora" → <span class="pessoa">parte autora</span>
+
+Wait, "parte autora" appears twice. The first occurrence is in "parte autora" and the last part has "parte autora" again. So both should be marked as "pessoa".
+
+Also, "DISPOSITIVO 458 , III , CPC" has "CPC" which is legislation. So "CPC" is marked as "legislacao".
+
+Now, the rest of the text doesn't have any other entities. So the final HTML should have these spans.
+
+Let me write the HTML version accordingly.
+</think>
+
+<Intimada as <span class="pessoa">partes</span> sobre as provas a produzir `` fls.291 '' . Disse a <span class="pessoa">parte autora</span> não ter outras provas à fls . 293 não havendo manifestação do <span class="pessoa">requerido</span> à fls.294 . Vieram os autos conclusos para sentença ” ( fl . 298/298-v ) . O <span class="organizacao">Juízo de origem</span> apreciou a questão nos seguintes termos : “ O pedido deve ser julgado procedente . ( <span class="legislacao">DISPOSITIVO 458 , III , CPC</span> ) Fls . _____ Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> <span class="tempo">5 Julgo</span> procedente o pedido para condenar o <span class="pessoa">requerido</span> a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença . A <span class="pessoa">parte demandada</span> goza de isenção legal , mas deve ressarcir as custas adiantadas pela <span class="pessoa">parte autora</span> .

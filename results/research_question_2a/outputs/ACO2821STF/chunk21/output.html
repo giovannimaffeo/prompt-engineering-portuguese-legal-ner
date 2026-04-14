@@ -1,0 +1,26 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read the input text carefully. The text is: "Neste recurso , a agravante sustenta não haver fundamento para o afastamento das regras previstas no Decreto 3.788/2001 e da Portaria MPS 20412008 e suas posteriores alterações , editados com fundamento no art ."
+
+Looking for entities. Let's break it down. 
+
+"Decreto 3.788/2001" – that's a decree, so "legislacao" (legislation). The format is common for legal decrees, so that's a clear case.
+
+"Portaria MPS 20412008" – "Portaria" is a type of official document, so that's also legislation. The "MPS" might be an acronym for a ministry or organization, but since it's part of the document name, it's likely part of the legislation. Wait, the user's guide says to mark "organizacao" for organizations. But "MPS" here is part of the Portaria's name, which is a legislative document. So maybe "Portaria MPS 20412008" is the legislation. Wait, but "Portaria" is a type of legal document, so it's part of "legislacao". So both Decreto and Portaria are legislation.
+
+Then "art" – that's short for "artigo" (article), which is part of legislation. But the user's example output shows "art" as part of "legislacao". Wait, the input text ends with "no art .", which might be "artigo" (article) from a law. So "art" here refers to an article in legislation, so it's part of "legislacao".
+
+Now, checking for other entities. Are there any people, organizations, time, or locations? The text mentions "agravante" which is a legal term for the appellant, but it's a role, not a person's name. So no "pessoa" here. "MPS" could be an organization, but in the context of the Portaria, it's part of the document's name, so it's part of the legislation. Unless "MPS" is an acronym for an organization, but without more context, it's safer to treat it as part of the legislation. 
+
+So the entities are:
+- Decreto 3.788/2001 → legislacao
+- Portaria MPS 20412008 → legislacao
+- art → legislacao (assuming it refers to an article in legislation)
+
+Wait, the user's example output might have "art" as part of "legislacao". Let me check the example. The user provided an example where "Decreto 3.788/2001" and "Portaria MPS 20412008" are marked as legislacao. The "art" at the end is part of "legislacao" as well. So I should mark all those parts.
+
+So the final HTML would have those three parts marked as legislacao. No other entities are present. So the output should have those three spans with class "legislacao".
+</think>
+
+Neste recurso , a agravante sustenta não haver fundamento para o afastamento das regras previstas no <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS 20412008</span> e suas posteriores alterações , editados com fundamento no <span class="legislacao">art</span> .

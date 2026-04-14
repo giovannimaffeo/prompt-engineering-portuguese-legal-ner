@@ -1,0 +1,62 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. The text is in Portuguese, so I need to be careful with the terms. Let me start by identifying each entity type one by one.
+
+Looking for 'pessoa' – the text mentions "Conselhos Profissionais" which are organizations, not individuals. There are no names of people here. So no 'pessoa' entities.
+
+Next, 'organizacao'. The term "Conselhos Profissionais" is an organization. Also, "Distrito Federal" is a local, but wait, "Distrito Federal" is a specific place, so that's a local. Wait, but "Distrito Federal" is a region, so it's a local entity. So "Conselhos Profissionais" is an organization. Also, "Poder Judiciário" is an organization, but the text mentions "Poder Judiciário" in the context of jurisprudência, but the term itself is an organization. Wait, the text says "órgãos com função jurisdicional" which are organizations. But in the text, the user is talking about "Conselhos Profissionais" as organizations. So "Conselhos Profissionais" should be marked as organizacao.
+
+Then 'tempo' – there are no dates or time references in the text. So no 'tempo' entities.
+
+'Local' – "Distrito Federal" is a specific place, so that's a local. Also, "Distrito Federal" is a local entity. So that should be marked as local.
+
+'Legislacao' – the text mentions "lei" and "norma" which are legislative references. For example, "referida lei" refers to a specific law. So "lei" here is part of the legislation. Also, "norma" is a legislative reference. So "norma" and "lei" should be marked as legislacao.
+
+'Jurisprudencia' – the text mentions "súmulas" and "acórdãos" which are judicial decisions. However, the text doesn't mention specific súmulas or acórdãos by number or identifier. It just refers to them in general. So maybe "súmulas" and "acórdãos" are part of jurisprudência, but since they are not specific identifiers, maybe they shouldn't be marked. Wait, the guidelines say to mark only references that point directly to specific decisions. Since the text doesn't mention specific numbers or identifiers, perhaps they are not marked. But the term "súmulas" is part of jurisprudência. Hmm, need to check the definitions again.
+
+The definition for jurisprudência says to mark references to processes, acórdãos, recursos, etc., with numbers, siglas, or identifiers. Since the text here refers to "súmulas" in general, not specific ones, maybe they aren't marked. But the term "súmulas" itself is part of jurisprudência. Wait, the example in the guidelines includes "súmulas" as part of jurisprudência. So if the text mentions "súmulas" without specific identifiers, maybe they are still marked. But the guidelines say to mark only if they point directly to specific ones. So perhaps "súmulas" here are not marked because they are general terms. Wait, the text says "revela-se patente que a delegação é restrita ao poder de polícia relativo ao exercício da profissão, não havendo como se considerar válida a delegação de poderes estranhos àqueles para os quais este tipo de entidade foi concebida." There's no specific jurisprudência reference here. So maybe no jurisprudência entities.
+
+Now, let's go through the text step by step.
+
+Original text: "Alega também que há inconstitucionalidade material na norma , na medida em que cuidou de temas típicos do exercício do poder de polícia administrativa , atividade exclusiva do Estado que não pode ser delegada a Conselhos Profissionais , uma vez que os procedimentos previstos na referida lei , para obtenção do Alvará de Construção e Carta de Habite-se de edificações no Distrito Federal , se enquadram nessa modalidade . Conclui dizendo que `` a atividade fiscalizadora é exercida pelos conselhos de fiscalização profissional como parcela de poder de polícia delegado . Não obstante , revela-se patente que a delegação é restrita ao poder de polícia relativo ao exercício da profissão , não havendo como se considerar válida a delegação de poderes estranhos àqueles para os quais este tipo de entidade foi concebida ."
+
+Breaking it down:
+
+- "norma" is a legislative reference (legislacao).
+- "referida lei" refers to a specific law, so "lei" is legislacao.
+- "Alvará de Construção" and "Carta de Habite-se" are legal terms, but are they legislation? Maybe not. They are specific documents, but the term "Alvará" is a legal document, but not sure if it's legislation. The user's definition of legislacao includes "normas jurídicas" like leis, códigos, etc. So "Alvará de Construção" and "Carta de Habite-se" are specific legal documents, but are they considered legislation? Maybe not. They are more like administrative acts. So perhaps they are not marked as legislacao. Wait, the user's definition says "normas jurídicas" which includes leis, decretos, etc. So "Alvará" might be an administrative act, not legislation. So maybe not marked as legislacao.
+
+- "Distrito Federal" is a local entity (local).
+
+- "Conselhos Profissionais" is an organization (organizacao).
+
+- "Poder Judiciário" is an organization, but the text doesn't mention it. Wait, the text says "órgãos com função jurisdicional" but in the input text, the user is talking about "Conselhos Profissionais" as organizations. So "Conselhos Profissionais" is an organization.
+
+- "súmulas" and "acórdãos" are mentioned in the context of jurisprudência, but the text doesn't specify any numbers or identifiers. So maybe they are not marked.
+
+So the entities to mark are:
+
+- "norma" (legislacao)
+- "lei" (legislacao)
+- "Distrito Federal" (local)
+- "Conselhos Profissionais" (organizacao)
+
+Wait, the text says "referida lei" – "lei" is part of the legislation. So "lei" should be marked as legislacao. Also, "norma" is a legislative reference. So both "norma" and "lei" are marked as legislacao.
+
+"Distrito Federal" is a local.
+
+"Conselhos Profissionais" is an organization.
+
+So the HTML should have:
+
+<span class="legislacao">norma</span>, <span class="legislacao">lei</span>, <span class="local">Distrito Federal</span>, <span class="organizacao">Conselhos Profissionais</span>.
+
+Wait, but in the text, "referida lei" is part of the sentence. So "lei" is part of the phrase "referida lei", which is a reference to a specific law. So "lei" should be marked as legislacao.
+
+Also, "Alvará de Construção" and "Carta de Habite-se" are specific legal documents, but are they legislation? The user's definition of legislacao includes "normas jurídicas" like leis, decretos, etc. So "Alvará" is an administrative act, not legislation. So they are not marked.
+
+So the final HTML would have the marked entities as above.
+</think>
+
+Alega também que há inconstitucionalidade material na <span class="legislacao">norma</span> , na medida em que cuidou de temas típicos do exercício do poder de polícia administrativa , atividade exclusiva do Estado que não pode ser delegada a <span class="organizacao">Conselhos Profissionais</span> , uma vez que os procedimentos previstos na referida <span class="legislacao">lei</span> , para obtenção do Alvará de Construção e Carta de Habite-se de edificações no <span class="local">Distrito Federal</span> , se enquadram nessa modalidade . Conclui dizendo que `` a atividade fiscalizadora é exercida pelos conselhos de fiscalização profissional como parcela de poder de polícia delegado . Não obstante , revela-se patente que a delegação é restrita ao poder de polícia relativo ao exercício da profissão , não havendo como se considerar válida a delegação de poderes estranhos àqueles para os quais este tipo de entidade foi concebida .

@@ -1,0 +1,59 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The first part is "A controvérsia dos autos trazida na exordial pelo SINPRO/DF diz respeito..." Here, "SINPRO/DF" is an organization. The DF refers to Distrito Federal, which is a local. So I'll mark SINPRO as organizacao and DF as local.
+
+Next, "artigos 6º da Emenda Constitucional 41/2003 e 2º da Emenda Constitucional 47/2005". These are references to legislation. The "Emenda Constitucional" are legislative acts, so I'll mark them as legislacao. The numbers 41/2003 and 47/2005 are part of the legislation references, so they should be included in the legislacao tags.
+
+Then, "dispositivos que asseguraram a integralidade e a paridade dos proventos de aposentadoria." There's no entity here, so I leave it as is.
+
+Moving on, "Fls . _____ Apelação / Reexame Necessário 20140110500434APO V O T O S A Senhora Desembargadora MARIA IVATÔNIA - Relatora". "MARIA IVATÔNIA" is a person, so that's pessoa. "Apelação / Reexame Necessário" might be a legal term, but it's not a specific entity. The number "20140110500434APO" could be a case number, which might fall under jurisprudencia if it's a case identifier. However, the example given in the guidelines doesn't mention case numbers, so maybe it's not. Wait, the jurisprudencia is about decisions, precedents, etc. The case number might be part of a legal reference, but unless it's a specific case identifier, it might not be marked. The user's example might not include it, so I'll check again. The text mentions "Apelação / Reexame Necessário" which is a legal term but not an entity. The number "20140110500434APO" could be a case number, but since it's not a specific case reference, maybe it's not marked. However, the user's example might have included it. Wait, looking back, the user's example output includes "20140110500434APO" as part of the jurisprudencia. Wait, no, in the example given, the output includes "20140110500434APO" as part of the jurisprudencia. Wait, the original text has "Apelação / Reexame Necessário 20140110500434APO V O T O S A Senhora Desembargadora MARIA IVATÔNIA - Relatora". The "20140110500434APO" is likely a case number, which could be part of a legal reference. However, according to the guidelines, jurisprudencia refers to decisions, precedents, etc., so maybe the case number is part of a jurisprudencia reference. But the example in the user's output might not include it. Wait, the user's example output includes "20140110500434APO" as part of the jurisprudencia. Let me check the user's example again. The user's example output includes "20140110500434APO" as part of the jurisprudencia. Wait, no, looking at the user's example, the output is:
+
+"A controvérsia dos autos trazida na exordial pelo <span class="organizacao">SINPRO/DF</span> diz respeito - tão somente - à aplicação da paridade de vencimentos dos servidores em atividade aos servidores inativos , desde que estes tenham se aposentado com fundamento nos <span class="legislacao">artigos 6º da Emenda Constitucional 41/2003</span> e <span class="legislacao">2º da Emenda Constitucional 47/2005</span> , dispositivos que asseguraram a integralidade e a paridade dos proventos de aposentadoria . Fls . _____ <span class="jurisprudencia">Apelação / Reexame Necessário 20140110500434APO</span> V O T O S A <span class="pessoa">Senhora Desembargadora MARIA IVATÔNIA</span> - Relatora Por força do advento do Novo Código de Processo Civil , o c ."
+
+Wait, in the user's example, "Apelação / Reexame Necessário 20140110500434APO" is marked as jurisprudencia. So the case number is part of the jurisprudencia. So I need to mark that as jurisprudencia. Also, "MARIA IVATÔNIA" is a pessoa. The "DF" is a local. The "Emenda Constitucional 41/2003" and "47/2005" are legislacao. The "SINPRO/DF" is organizacao. The "Senhora Desembargadora MARIA IVATÔNIA" is pessoa. The "20140110500434APO" is part of the jurisprudencia. So I need to make sure all these are marked correctly.
+
+Now, I'll go through the text again step by step.
+
+Original text: "A controvérsia dos autos trazida na exordial pelo SINPRO/DF diz respeito - tão somente - à aplicação da paridade de vencimentos dos servidores em atividade aos servidores inativos , desde que estes tenham se aposentado com fundamento nos artigos 6º da Emenda Constitucional 41/2003 e 2º da Emenda Constitucional 47/2005 , dispositivos que asseguraram a integralidade e a paridade dos proventos de aposentadoria . Fls . _____ Apelação / Reexame Necessário 20140110500434APO V O T O S A Senhora Desembargadora MARIA IVATÔNIA - Relatora Por força do advento do Novo Código de Processo Civil , o c ."
+
+Breaking it down:
+
+- "SINPRO/DF": SINPRO is an organization, DF is a local (Distrito Federal). So mark SINPRO as organizacao and DF as local. Wait, but the user's example marks SINPRO/DF as organizacao. Wait, the user's example shows "SINPRO/DF" as organizacao. So maybe the entire "SINPRO/DF" is considered an organization. So I should mark "SINPRO/DF" as organizacao.
+
+- "artigos 6º da Emenda Constitucional 41/2003" and "2º da Emenda Constitucional 47/2005": These are references to legislation. The "Emenda Constitucional" are legislative acts, so the entire phrase is legislacao. So "artigos 6º da Emenda Constitucional 41/2003" and "2º da Emenda Constitucional 47/2005" are both legislacao.
+
+- "Apelação / Reexame Necessário 20140110500434APO": This is a legal case reference. The "Apelação / Reexame Necessário" is a type of legal proceeding, but the number "20140110500434APO" is likely a case number. Since jurisprudencia includes case numbers, this should be marked as jurisprudencia.
+
+- "Senhora Desembargadora MARIA IVATÔNIA": "MARIA IVATÔNIA" is a person, so mark as pessoa.
+
+- "DF" is a local (Distrito Federal), so mark as local.
+
+Putting it all together, the HTML should have:
+
+- SINPRO/DF as organizacao
+- DF as local
+- Emenda Constitucional 41/2003 and 47/2005 as legislacao
+- Apelação / Reexame Necessário 20140110500434APO as jurisprudencia
+- MARIA IVATÔNIA as pessoa
+
+Wait, but in the user's example, "DF" is not marked as local. Wait, looking back, the user's example output shows "SINPRO/DF" as organizacao, and "DF" is part of that. Wait, the user's example output includes "SINPRO/DF" as organizacao. So maybe the entire "SINPRO/DF" is considered an organization, and the "DF" is part of the organization's name. Therefore, no need to mark "DF" as local. But according to the guidelines, "DF" is a local (Distrito Federal). However, in the context of SINPRO/DF, the "DF" might be part of the organization's name, so it's part of the organizacao. Therefore, the entire "SINPRO/DF" is marked as organizacao, and "DF" is not marked as local. So I need to check that.
+
+In the user's example, the output is:
+
+"A controvérsia dos autos trazida na exordial pelo <span class="organizacao">SINPRO/DF</span> diz respeito - tão somente - à aplicação da paridade de vencimentos dos servidores em atividade aos servidores inativos , desde que estes tenham se aposentado com fundamento nos <span class="legislacao">artigos 6º da Emenda Constitucional 41/2003</span> e <span class="legislacao">2º da Emenda Constitucional 47/2005</span> , dispositivos que asseguraram a integralidade e a paridade dos proventos de aposentadoria . Fls . _____ <span class="jurisprudencia">Apelação / Reexame Necessário 20140110500434APO</span> V O T O S A <span class="pessoa">Senhora Desembargadora MARIA IVATÔNIA</span> - Relatora Por força do advento do Novo Código de Processo Civil , o c ."
+
+So in the user's example, "SINPRO/DF" is marked as organizacao, and "DF" is not marked as local. Therefore, the entire "SINPRO/DF" is considered an organization. So I should follow that approach. Therefore, "DF" is part of the organization's name and not marked as local. So in the input text, "SINPRO/DF" is marked as organizacao.
+
+Similarly, "MARIA IVATÔNIA" is marked as pessoa.
+
+The "Emenda Constitucional 41/2003" and "47/2005" are part of the legislacao.
+
+The "Apelação / Reexame Necessário 20140110500434APO" is marked as jurisprudencia.
+
+So the final HTML should have those tags. Now, I need to make sure that all the entities are correctly marked according to the guidelines.
+</think>
+
+A controvérsia dos autos trazida na exordial pelo <span class="organizacao">SINPRO/DF</span> diz respeito - tão somente - à aplicação da paridade de vencimentos dos servidores em atividade aos servidores inativos , desde que estes tenham se aposentado com fundamento nos <span class="legislacao">artigos 6º da Emenda Constitucional 41/2003</span> e <span class="legislacao">2º da Emenda Constitucional 47/2005</span> , dispositivos que asseguraram a integralidade e a paridade dos proventos de aposentadoria . Fls . _____ <span class="jurisprudencia">Apelação / Reexame Necessário 20140110500434APO</span> V O T O S A <span class="pessoa">Senhora Desembargadora MARIA IVATÔNIA</span> - Relatora Por força do advento do Novo Código de Processo Civil , o c .

@@ -1,0 +1,98 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organização, tempo, local, legislação, and jurisprudência. Each should have a class attribute.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is: "Além disso , entende que a concessão de Alvará de Construção e de Carta de Habite-se é expressão típica do exercício do poder de polícia administrativa , que não pode ser delegada a entidade que possui poder de fiscalização restrito ao exercício de profissão , de modo que há também inconstitucionalidade material na norma . Eis o relatório . De sua simples leitura , extrai-se que a lei impugnada , de iniciativa parlamentar , autoriza o Poder Executivo a firmar convênios com Conselhos de classe para analisar processos de responsabilidade das Administrações Regionais do Distrito Federal , proferindo parecer por concessão ou negativa de alvarás de construção e carta de habite-se , ou seja , o Poder Legislativo autorizou o Poder Executivo a adotar medidas relacionadas à gestão da administração pública ."
+
+Looking for entities:
+
+1. "Alvará de Construção" – this is a legal term, but I need to check if it's a legislation. Wait, the definition for legislação includes norms like laws, decrees, etc. But "Alvará" is a type of administrative authorization, not a law. So maybe not legislação. Similarly, "Carta de Habite-se" is another administrative document. These are specific terms but not legislation or jurisprudence. So maybe they aren't entities here.
+
+2. "Poder Executivo" – this is a government branch, but according to the guidelines, only organizations are marked. The definition says organizations include government bodies. So "Poder Executivo" is part of the government structure. Wait, but the user's example marked "MINISTÉRIO PÚBLICO FEDERAL" as organização. So maybe "Poder Executivo" is part of the government, but is it an organization? The example mentions "organização" includes órgãos públicos, tribunais, etc. So "Poder Executivo" is part of the government, but maybe not an organization. Wait, the example marked "MINISTÉRIO PÚBLICO FEDERAL" as organização. So perhaps "Poder Executivo" is considered an organization here. But I need to check the guidelines again.
+
+Looking at the definitions: "Organização é definido como: expressões que identificam entidades coletivas formalmente constituídas, incluindo órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas (ex.: "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", "Câmara Legislativa", "UNIMED RIO COOPERATIVA DE TRABALHO MÉDICO DO RIO DE JANEIRO LTDA")."
+
+So "Poder Executivo" is a branch of government, but the example included "MINISTÉRIO PÚBLICO FEDERAL" as organização. So perhaps "Poder Executivo" is considered an organization here. But maybe not. Wait, maybe "Poder Executivo" is a government branch, but not an organization. The example shows that "MINISTÉRIO PÚBLICO FEDERAL" is an organization. So maybe "Poder Executivo" is part of the government, but not an organization. Hmm, this is a bit ambiguous. The user might expect that "Poder Executivo" is part of the government and thus an organization. Alternatively, maybe it's not. Let me check the example again. In the example input, "Poder Executivo" wasn't marked, but in the output, "Poder Executivo" was not marked. Wait, in the example given, the input had "Poder Executivo" and the output didn't mark it. Wait, the example input was: "O MINISTÉRIO PÚBLICO FEDERAL, por meio do Procurador CARLOS HENRIQUE ALVES, propôs ação com base no art.61 , §1º , da Lei nº 9.430/96, conforme entendimento do REsp n . 1694984/MS e da Súmula 331 do TST." The output marked "MINISTÉRIO PÚBLICO FEDERAL" as organização. So in that case, "Poder Executivo" isn't marked. So maybe "Poder Executivo" is not considered an organization here. Wait, perhaps "Poder Executivo" is a government branch, but not an organization. Maybe the user considers only specific organizations like "MINISTÉRIO PÚBLICO FEDERAL" as organização. So in the current text, "Poder Executivo" is part of the government structure but not an organization. Therefore, it's not marked.
+
+Next, "Distrito Federal" – this is a local entity. According to the guidelines, "local" includes states, countries, etc. So "Distrito Federal" is a local entity. So I need to mark "Distrito Federal" as local.
+
+"Conselhos de classe" – this is an organization? Wait, "Conselhos de classe" might refer to professional councils. For example, in Brazil, "Conselho Regional" can be an organization. So "Conselhos de classe" would be an organization. So I should mark that as organização.
+
+"Administrações Regionais do Distrito Federal" – "Administrações Regionais" is a plural, but "Distrito Federal" is a local entity. So "Distrito Federal" is marked as local. The rest is part of the name, but "Administrações Regionais" is a generic term. So only "Distrito Federal" is marked as local.
+
+"Lei impugnada" – this refers to a law, which is legislation. So "Lei impugnada" would be legislation. But the example shows that "Lei nº 9.430/96" is marked as legislação. So "Lei impugnada" is a reference to a law, so it should be marked as legislação. However, the example didn't mark "Lei" as legislação unless it's followed by a number. Wait, in the example input, "art.61 , §1º , da Lei nº 9.430/96" is marked as legislação. So "Lei" is part of the legislation reference when followed by a number. In the current text, "Lei impugnada" is a reference to a law, but it's not a specific law. So maybe it's not marked. Wait, the guidelines say that "Legislação é definida como: expressões que identifiquem normas jurídicas..." So if the text mentions "Lei impugnada", which is a specific law, but without the number, perhaps it's not marked. However, in the example, "Lei nº 9.430/96" is marked. So in the current text, "Lei impugnada" is a reference to a law, but without the specific name, it's not marked. So I think it's not marked here.
+
+"Poder Legislativo" – this is a branch of government, but not an organization. So it's not marked. "Poder Executivo" same as above.
+
+"Conselhos de classe" – as mentioned earlier, this is an organization. So I should mark "Conselhos de classe" as organização. Wait, but the example didn't mark "Conselhos de classe" in the input. Let me check. The example input had "Conselhos de classe" in the output. Wait, the example input was "Poder Executivo a firmar convênios com Conselhos de classe..." and the output didn't mark "Conselhos de classe". Wait, maybe in the example, "Conselhos de classe" is not an organization. Wait, the example's output didn't mark "Conselhos de classe" as organização. So perhaps "Conselhos de classe" is not considered an organization here. Hmm, perhaps I need to be careful. The guidelines say that organizations include "casas legislativas" and other entities. "Conselhos de classe" could be considered as organizations if they are formal entities. For example, in Brazil, "Conselho Regional" is an organization. So "Conselhos de classe" might be an organization. So I should mark "Conselhos de classe" as organização.
+
+Wait, but in the example given, the input had "Conselhos de classe" and the output didn't mark them. So maybe the user considers that "Conselhos de classe" is not an organization. Hmm, this is conflicting. Let me check the example again. The example input was: "O MINISTÉRIO PÚBLICO FEDERAL, por meio do Procurador CARLOS HENRIQUE ALVES, propôs ação com base no art.61 , §1º , da Lei nº 9.430/96, conforme entendimento do REsp n . 1694984/MS e da Súmula 331 do TST." The output marked "MINISTÉRIO PÚBLICO FEDERAL" as organização, but "Conselhos de classe" wasn't in that example. So in the current text, "Conselhos de classe" is mentioned. But the example shows that "Conselhos de classe" is not marked. So perhaps the user considers that "Conselhos de classe" is a generic term, not an organization. Therefore, it's not marked. So I need to be cautious here.
+
+Another point: "Distrito Federal" is a local entity. So that's marked as local.
+
+Also, "Alvará de Construção" and "Carta de Habite-se" are specific terms, but not legislation or jurisprudence. So they are not marked.
+
+Now, checking for other entities:
+
+- "Além disso" – no entity.
+- "entende" – no entity.
+- "concessão" – no entity.
+- "Alvará de Construção" – not an entity.
+- "Carta de Habite-se" – not an entity.
+- "poder de polícia administrativa" – not an entity.
+- "entidade que possui poder de fiscalização restrito ao exercício de profissão" – "entidade" is a generic term, not a specific entity. So not marked.
+- "inconstitucionalidade material na norma" – "norma" is a general term, not an entity.
+- "relatório" – not an entity.
+- "sua simples leitura" – no entity.
+- "leia impugnada" – as discussed, not marked.
+- "iniciativa parlamentar" – no entity.
+- "Poder Executivo" – not marked.
+- "Conselhos de classe" – maybe not marked.
+- "Administrações Regionais do Distrito Federal" – "Distrito Federal" is marked as local.
+- "Poder Legislativo" – not marked.
+- "Poder Executivo" – not marked.
+- "medidas relacionadas à gestão da administração pública" – no entity.
+
+So the only entities I can find are "Distrito Federal" as local and possibly "Conselhos de classe" as organização. Wait, but earlier I thought "Conselhos de classe" might be an organization, but the example didn't mark similar terms. So perhaps the user's guidelines consider "Conselhos de classe" as not an organization. Alternatively, maybe "Conselhos de classe" is an organization. To be safe, perhaps I should check the guidelines again. The example shows that "MINISTÉRIO PÚBLICO FEDERAL" is an organization. "Conselhos de classe" could be considered as an organization if they are formal entities. For example, in Brazil, "Conselho Regional" is an organization. So "Conselhos de classe" would be an organization. Therefore, I should mark "Conselhos de classe" as organização.
+
+Wait, the example input had "Conselhos de classe" in the text, but in the output example, it wasn't marked. But in the example, the output didn't have "Conselhos de classe" marked. So perhaps the user's example is different. Let me check the example again. The example input was: "O MINISTÉRIO PÚBLICO FEDERAL, por meio do Procurador CARLOS HENRIQUE ALVES, propôs ação com base no art.61 , §1º , da Lei nº 9.430/96, conforme entendimento do REsp n . 1694984/MS e da Súmula 331 do TST." The output was: "O <span class="organizacao">MINISTÉRIO PÚBLICO FEDERAL</span>, por meio do Procurador <span class="pessoa">CARLOS HENRIQUE ALVES</span>, propôs ação com base no <span class="legislacao">art.61 , §1º , da Lei nº 9.430/96</span>, conforme entendimento do <span class="jurisprudencia">REsp n . 1694984/MS</span> e da <span class="jurisprudencia">Súmula 331 do TST</span>." So "Conselhos de classe" wasn't in that example. Therefore, perhaps in the current text, "Conselhos de classe" is not marked. But according to the guidelines, if it's an organization, it should be marked. However, maybe the user considers "Conselhos de classe" as a generic term, not an organization. So I'm a bit confused here.
+
+Alternatively, maybe "Conselhos de classe" is a generic term, not a specific organization. Therefore, it's not marked. So the only entity marked is "Distrito Federal" as local.
+
+Wait, but "Conselhos de classe" could be an organization. For example, in Brazil, "Conselho de Classe" is a professional council. So "Conselhos de classe" would be an organization. Therefore, I should mark them as organização.
+
+So, the text would have:
+
+- "Distrito Federal" as local.
+- "Conselhos de classe" as organização.
+
+Wait, but the example input didn't mark similar terms. However, the example was different. Maybe the user's example is not comprehensive. So I need to follow the guidelines strictly.
+
+Another check: the example input had "Conselhos de classe" in the text, but in the output example, it wasn't marked. Wait, no, the example input didn't have "Conselhos de classe". The example input had "Poder Executivo" and "MINISTÉRIO PÚBLICO FEDERAL". So maybe "Conselhos de classe" is an organization. Therefore, in the current text, "Conselhos de classe" should be marked as organização.
+
+So, the final HTML would have "Distrito Federal" as local and "Conselhos de classe" as organização.
+
+Wait, but in the current text, the "Conselhos de classe" is part of "firmar convênios com Conselhos de classe", so the full term is "Conselhos de classe". So I should mark "Conselhos de classe" as organização.
+
+So, the output would be:
+
+"Além disso , entende que a concessão de Alvará de Construção e de Carta de Habite-se é expressão típica do exercício do poder de polícia administrativa , que não pode ser delegada a entidade que possui poder de fiscalização restrito ao exercício de profissão , de modo que há também inconstitucionalidade material na norma . Eis o relatório . De sua simples leitura , extrai-se que a lei impugnada , de iniciativa parlamentar , autoriza o Poder Executivo a firmar convênios com <span class="organizacao">Conselhos de classe</span> para analisar processos de responsabilidade das Administrações Regionais do <span class="local">Distrito Federal</span> , proferindo parecer por concessão ou negativa de alvarás de construção e carta de habite-se , ou seja , o Poder Legislativo autorizou o Poder Executivo a adotar medidas relacionadas à gestão da administração pública ."
+
+Wait, but the user's example had "Conselhos de classe" not marked. But according to the guidelines, if they are an organization, they should be marked. So I think it's safe to mark them.
+
+Another check: "Administrações Regionais do Distrito Federal" – "Distrito Federal" is the local entity. The rest is part of the name but not an entity.
+
+So, the final HTML would have "Conselhos de classe" as organização and "Distrito Federal" as local.
+
+Let me check again for any other entities. "Lei impugnada" – not marked. "Poder Executivo" – not an organization. "Poder Legislativo" – not an organization. "Administrações Regionais" – not an entity. "Alvará de Construção" – not an entity. "Carta de Habite-se" – not an entity.
+
+So the final output would have:
+
+- "Conselhos de classe" as organização.
+- "Distrito Federal" as local.
+
+Thus, the HTML would have those two spans.
+</think>
+
+Além disso , entende que a concessão de Alvará de Construção e de Carta de Habite-se é expressão típica do exercício do poder de polícia administrativa , que não pode ser delegada a entidade que possui poder de fiscalização restrito ao exercício de profissão , de modo que há também inconstitucionalidade material na norma . Eis o relatório . De sua simples leitura , extrai-se que a lei impugnada , de iniciativa parlamentar , autoriza o Poder Executivo a firmar convênios com <span class="organizacao">Conselhos de classe</span> para analisar processos de responsabilidade das Administrações Regionais do <span class="local">Distrito Federal</span> , proferindo parecer por concessão ou negativa de alvarás de construção e carta de habite-se , ou seja , o Poder Legislativo autorizou o Poder Executivo a adotar medidas relacionadas à gestão da administração pública .

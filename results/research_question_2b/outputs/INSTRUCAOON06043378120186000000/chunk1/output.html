@@ -1,0 +1,55 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal resolution from the Tribunal Superior Eleitoral (TSE). 
+
+Looking for entities:
+
+- "TRIBUNAL SUPERIOR ELEITORAL" is an organization. So I should wrap that with <span class="organizacao">.
+- "RESOLUÇÃO N° 23.561" and "INSTRUÇÃO N° 0604337-81.2018.6.00.0000" are likely legal documents, so they might fall under legislação. Wait, but "RESOLUÇÃO" is a type of legislation, so maybe "RESOLUÇÃO N° 23.561" is a legislation. Similarly, "INSTRUÇÃO N° 0604337-81.2018.6.00.0000" could be another legislative document. But I need to check if "INSTRUÇÃO" is part of the legislation. Maybe both are part of legislação.
+- "CLASSE 19" might be a classification, not sure if it's an entity here. Maybe not.
+- "BRASÍLIA - DISTRITO FEDERAL" is a local. So "BRASÍLIA" and "DISTRITO FEDERAL" should be <span class="local">.
+- "Ministro Luiz Fux" is a person, so "Ministro Luiz Fux" should be <span class="pessoa">.
+- "Tribunal Superior Eleitoral" is already covered as an organization.
+- "art. 23, inciso IX" refers to a legislative article, so "art. 23" and "inciso IX" might be part of legislação. Wait, the article mentions "Código Eleitoral", which is a law, so "Código Eleitoral" should be <span class="legislacao">.
+- "Art. 1o" is part of the legislation, so "Art. 1o" would be under legislação.
+- "§§ 10 e 11" are parts of the legislation, so those should be marked as legislação.
+- "Resolução-TSE n° 23.549" is a resolution, so "Resolução-TSE" is part of legislação, and the number is part of the legislation as well.
+- "18 de dezembro de 2017" is a date, so that's <span class="tempo">.
+- "eleições de 2018" refers to a time period, so "2018" is <span class="tempo">.
+
+Now, I need to make sure I'm not missing any entities. Let me go through the text again:
+
+Original text: "TRIBUNAL SUPERIOR ELEITORAL RESOLUÇÃO N° 23.561 INSTRUÇÃO N° 0604337-81.2018.6.00.0000 - CLASSE 19 - BRASÍLIA - DISTRITO FEDERAL Relator : Ministro Luiz Fux Interessado : Tribunal Superior Eleitoral Altera a Resolução-TSE n° 23.549 , de 18 de dezembro de 2017 , que dispõe sobre pesquisas eleitorais para as eleições de 2018 . O TRIBUNAL SUPERIOR ELEITORAL , no uso das atribuições que lhe confere o art . 23 , inciso IX , do Código Eleitoral , resolve : Art . 1o Ficam revogados os §§ 10 e 11 do art . 2o da Resolução-TSE n° 23.549 , de 18.12.2017 . Art ."
+
+Breaking it down:
+
+- "TRIBUNAL SUPERIOR ELEITORAL" → organizacao
+- "RESOLUÇÃO N° 23.561" → legislação
+- "INSTRUÇÃO N° 0604337-81.2018.6.00.0000" → legislação
+- "CLASSE 19" → maybe not an entity
+- "BRASÍLIA" → local
+- "DISTRITO FEDERAL" → local
+- "Ministro Luiz Fux" → pessoa
+- "Tribunal Superior Eleitoral" → organizacao (already marked)
+- "Resolução-TSE n° 23.549" → legislação
+- "18 de dezembro de 2017" → tempo
+- "eleições de 2018" → tempo (2018)
+- "art. 23" → legislação
+- "inciso IX" → part of legislation, maybe under legislação
+- "Código Eleitoral" → legislação
+- "Art. 1o" → legislação
+- "§§ 10 e 11" → legislação
+- "art. 2o" → legislação
+- "18.12.2017" → tempo
+
+I need to make sure that all these are correctly tagged. Also, check if "Resolução-TSE" is part of the legislation. Since it's a resolution, it's part of legislação. The numbers and dates are part of the legislation or tempo. 
+
+Now, construct the HTML with these tags. Let me write it out step by step, ensuring each entity is properly marked. Also, make sure not to miss any parts. For example, "18 de dezembro de 2017" should be split into "18 de dezembro" as tempo, but the entire date is a single entity. Wait, the user's example might have "18 de dezembro de 2017" as a tempo. Similarly, "2018" is part of "eleições de 2018", so "2018" is tempo. 
+
+Also, "Código Eleitoral" is a law, so it's legislação. 
+
+Putting it all together, the HTML should have all these spans correctly placed. Let me make sure I didn't miss any entities. Once done, return the HTML text as specified.
+</think>
+
+<trabalho><span class="organizacao">TRIBUNAL SUPERIOR ELEITORAL</span> <span class="legislacao">RESOLUÇÃO N° 23.561</span> <span class="legislacao">INSTRUÇÃO N° 0604337-81.2018.6.00.0000</span> - CLASSE 19 - <span class="local">BRASÍLIA</span> - <span class="local">DISTRITO FEDERAL</span> Relator : <span class="pessoa">Ministro Luiz Fux</span> Interessado : <span class="organizacao">Tribunal Superior Eleitoral</span> Altera a <span class="legislacao">Resolução-TSE n° 23.549</span> , de <span class="tempo">18 de dezembro de 2017</span> , que dispõe sobre pesquisas eleitorais para as eleições de <span class="tempo">2018</span> . O <span class="organizacao">TRIBUNAL SUPERIOR ELEITORAL</span> , no uso das atribuições que lhe confere o <span class="legislacao">art</span> . 23 , <span class="legislacao">inciso IX</span> , do <span class="legislacao">Código Eleitoral</span> , resolve : <span class="legislacao">Art</span> . 1o Ficam revogados os <span class="legislacao">§§ 10 e 11</span> do <span class="legislacao">art</span> . 2o da <span class="legislacao">Resolução-TSE n° 23.549</span> , de <span class="tempo">18.12.2017</span> . <span class="legislacao">Art</span> .</trabalho>

@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify which entities are present.
+
+The text mentions "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO". Here, "PROCURADOR-GERAL" is a title, so maybe that's a pessoa? Wait, but the name isn't specified. Wait, the text says "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO R E L A T Ó R I O O Senhor Ministro Ricardo Lewandowski ( Relator )". So "Senhor Ministro Ricardo Lewandowski" is a person, so that's a pessoa. The "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization, maybe? Because it's a title of a position. But the user's example output might have "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" as an organization. Wait, looking at the example output provided by the user, they have "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" as an organization. So I should mark that as organizacao.
+
+Then there's "União" which is an organization. "Estado do Mato Grosso" is a local, but wait, "Estado do Mato Grosso" is a state, so that's a local. Wait, but the user's example output has "Estado do Mato Grosso" as a local. So I need to check that.
+
+Next, "Decreto 3.788/2001" and "Portaria MPS n° 204/2008" are legislative acts, so those would be legislacao. The "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" are probably acronyms for different registries or systems, which might be considered as legislação or maybe local? Wait, the user's example output has "CADPREV" as legislacao. So I should mark those as legislacao.
+
+Also, "Ricardo Lewandowski" is a pessoa. "Ministro" is part of his title, so the full name is a pessoa. "União" is an organization. "Estado do Mato Grosso" is a local. "Decreto 3.788/2001" and "Portaria MPS n° 204/2008" are legislacao. The "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" are also legislacao. 
+
+Wait, the user's example output shows "Decreto 3.788/2001" and "Portaria MPS n° 204/2008" as legislacao. The other acronyms like CADPREV, CADIN, etc., are also marked as legislacao. So I need to make sure all those are covered.
+
+Now, I need to go through the text and replace each entity with the appropriate <span> tags. Let me check each part again.
+
+Original text: "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO R E L A T Ó R I O O Senhor Ministro Ricardo Lewandowski ( Relator ) : Trata-se de agravo regimental interposto pela União contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo Estado do Mato Grosso , determinando-se à União `` que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS n° 204/2008 e de suas posteriores alterações '' ."
+
+Breaking it down:
+
+- "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" → organizacao
+- "Senhor Ministro Ricardo Lewandowski" → pessoa
+- "União" → organizacao
+- "Estado do Mato Grosso" → local
+- "Certificado de Regularidade Previdenciária do Estado de Mato Grosso" → here, "Estado de Mato Grosso" is local again, but already marked. The rest is part of the certificate name, which might not be an entity.
+- "Cadastro de Regime Próprio de Previdência Social-CADPREV" → CADPREV is legislacao
+- "CADIN", "CA UC", "SIAFI", "SICONV" → these are acronyms, likely legislacao
+- "Decreto 3.788/2001" → legislacao
+- "Portaria MPS n° 204/2008" → legislacao
+
+So, I need to wrap each of these with the appropriate span tags. Also, note that "Ricardo Lewandowski" is a pessoa, and "Ministro" is part of his title, so the full name is a pessoa. The "União" is an organization. "Estado do Mato Grosso" is a local. The acronyms and decreto/portaria are legislacao.
+
+Now, I'll go through the text and apply the tags accordingly. Let me make sure not to miss any entities. Also, check for any other possible entities. For example, "agravo regimental" is a legal term but not an entity. "Ação Cível Originária" is a legal term but not an entity. "CADPREV" is part of the text, so it's legislacao. The same for the others.
+
+So the final HTML should have all these entities marked with the correct classes. Let me write that out.
+</think>
+
+<span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> R E L A T Ó R I O O <span class="pessoa">Senhor Ministro Ricardo Lewandowski</span> ( Relator ) : Trata-se de agravo regimental interposto pela <span class="organizacao">União</span> contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo <span class="local">Estado do Mato Grosso</span> , determinando-se à <span class="organizacao">União</span> `` que renove o Certificado de Regularidade Previdenciária do <span class="local">Estado de Mato Grosso</span> , retirando-o do conceito de irregular do <span class="legislacao">Cadastro de Regime Próprio de Previdência Social-CADPREV</span> ou retirando-o de qualquer outro <span class="legislacao">cadastro</span> de inadimplentes pelo mesmo motivo ( <span class="legislacao">CADIN</span> , <span class="legislacao">CA UC</span> , <span class="legislacao">SIAFI</span> , <span class="legislacao">SICONV</span> ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS n° 204/2008</span> e de suas posteriores alterações '' .

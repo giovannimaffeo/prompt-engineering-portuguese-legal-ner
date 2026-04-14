@@ -1,0 +1,55 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "Intimada as partes sobre as provas a produzir `` fls.291 '' . Disse a parte autora não ter outras provas à fls . 293 não havendo manifestação do requerido à fls.294 . Vieram os autos conclusos para sentença ” ( fl . 298/298-v ) . O Juízo de origem apreciou a questão nos seguintes termos : “ O pedido deve ser julgado procedente . ( DISPOSITIVO 458 , III , CPC ) Fls . _____ Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 5 Julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença . A parte demandada goza de isenção legal , mas deve ressarcir as custas adiantadas pela parte autora ."
+
+Looking for entities:
+
+1. "fls.291", "fls.293", "fls.294", "fl . 298/298-v" – these are page references. The user's guidelines mention that only explicit temporal references (dates) should be marked as tempo. However, these are page numbers, not dates. So they shouldn't be marked as tempo. The example given in the guidelines includes "3 de abril de 2017" as tempo, but page numbers are not dates, so they are not entities here.
+
+2. "DISPOSITIVO 458 , III , CPC" – this refers to a legal article. The "CPC" is the Código de Processo Civil, which is a legislation. So "DISPOSITIVO 458 , III , CPC" should be marked as legislação.
+
+3. "20140110500434APO" – this looks like a process identifier. The guidelines say that complete identifiers of decisions or processes (like numbers with suffixes) should be marked as jurisprudência. So this should be a jurisprudência.
+
+4. "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – this seems like a code, but it's not a specific legal entity. The user's example doesn't mention codes like this, so maybe not an entity here.
+
+5. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is part of an organization. The full name "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" refers to an organization (the office of the judge). So this should be an organizacao.
+
+6. "MARIA IVATÔNIA" – this is a person's name. So "MARIA IVATÔNIA" should be a pessoa.
+
+Now, checking the rest of the text. There's "Juízo de origem" which is a judicial body, so that's an organizacao. But in the input, it's "O Juízo de origem apreciou..." – "Juízo" is a judicial body, so "Juízo de origem" would be an organizacao. However, the user's guidelines say that only full names of organizations should be marked. "Juízo" is a generic term, but "Juízo de origem" might refer to a specific court. Wait, the example in the guidelines includes "Tribunal de Contas" as an organization. So "Juízo de origem" is a court, so it's an organizacao. But the text says "O Juízo de origem apreciou..." – the full name is "Juízo de origem", which is an organization. So that should be marked as organizacao.
+
+Wait, but in the example given by the user, "MINISTÉRIO PÚBLICO FEDERAL" is an organization. Similarly, "Juízo de origem" would be an organization. So I should mark "Juízo de origem" as organizacao.
+
+Other parts: "parte autora", "requerido" – these are generic terms (plaintiff, defendant), not specific names, so they shouldn't be marked. "parte demandada" is also generic. "Custas adiantadas" – no entity here.
+
+So compiling all the entities:
+
+- "DISPOSITIVO 458 , III , CPC" → legislação
+- "20140110500434APO" → jurisprudência
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" → organizacao
+- "MARIA IVATÔNIA" → pessoa
+- "Juízo de origem" → organizacao
+
+Wait, the user's example includes "REsp n . 1694984/MS" as jurisprudência. Similarly, "20140110500434APO" is a process identifier, so it's jurisprudência.
+
+Now, the text mentions "Juízo de origem" – is that an organization? Yes, because it's a court. So it should be marked as organizacao.
+
+Also, "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – not sure, but the user says to avoid marking codes unless they are specific. Since it's a code, not a specific entity, maybe not.
+
+Putting it all together:
+
+- "DISPOSITIVO 458 , III , CPC" → legislação
+- "20140110500434APO" → jurisprudência
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" → organizacao
+- "MARIA IVATÔNIA" → pessoa
+- "Juízo de origem" → organizacao
+
+Now, check for any other entities. The text has "fls." which is an abbreviation for "fólio" (page), but not an entity. "CPC" is the Código de Processo Civil, which is a legislation, so "DISPOSITIVO 458 , III , CPC" is legislation.
+
+So the final HTML should have these spans marked accordingly.
+</think>
+
+Intimada as partes sobre as provas a produzir `` fls.291 '' . Disse a parte autora não ter outras provas à fls . 293 não havendo manifestação do requerido à fls.294 . Vieram os autos conclusos para sentença ” ( fl . 298/298-v ) . O <span class="organizacao">Juízo de origem</span> apreciou a questão nos seguintes termos : “ O pedido deve ser julgado procedente . ( <span class="legislacao">DISPOSITIVO 458 , III , CPC</span> ) Fls . _____ Apelação / Reexame Necessário <span class="jurisprudencia">20140110500434APO</span> Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 5 Julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença . A parte demandada goza de isenção legal , mas deve ressarcir as custas adiantadas pela parte autora .

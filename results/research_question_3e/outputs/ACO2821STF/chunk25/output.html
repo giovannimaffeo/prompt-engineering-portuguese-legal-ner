@@ -1,0 +1,42 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with the first sentence: "Como é de conhecimento geral , os mecanismos judiciais de controle de constitucionalidade foram concebidos de maneira a preservar o Pacto Federativo e a própria autonomia do Estado-membro , presumindo-se constitucionais e legais as normas editadas pelo Legislativo local , até que reconhecida3 Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil ."
+
+Looking for entities here. "Pacto Federativo" – that's a specific term, but is it an organization? Wait, the definition says organizations are formal entities like government bodies. "Pacto Federativo" might be a legal concept, but not an organization. So maybe not. "Estado-membro" is a generic term, not a specific place. "Legislativo local" refers to a legislative body, but again, it's a generic term. "MP n° 2.200-2/2001" – MP is Medida Provisória, which is a type of legislation. The number and date here would be part of the legislation. Also, "ICP-Brasil" is mentioned, but the guidelines say not to mark terms like ICP or ICP-Brasil as legislation. So that's excluded.
+
+Next sentence: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 ."
+
+The URL is an electronic address, which the guidelines say not to mark as local. The number 14536378 might be a jurisprudencia reference? But the example shows numbers like "REsp n . 1694984/MS" as jurisprudencia. Here, the number is "14536378" without any identifier, so maybe not. Wait, the example also mentions "documento eletrônico 53" which is marked as jurisprudencia. So perhaps numbers like 53 or 14536378 are part of a document reference. But the text here says "sob o número 14536378" – maybe that's a document number. However, the guidelines mention that only specific identifiers like "REsp" or "Súmula" are marked. Since this is just a number, maybe it's not. So perhaps not marked here.
+
+Next part: "Supremo Tribunal Federal ACO 2821 A GR / MT Financeiro e Atuarial '' . Requereu a improcedência . O feito foi saneado ( documento eletrônico 53 ) e , a seguir , as partes apresentaram alegações finais ( documentos eletrônicos 55 e 57 ) ."
+
+"Supremo Tribunal Federal" is a court, so that's an organizacao. "ACO 2821 A GR / MT Financeiro e Atuarial" – this seems like a document reference. The "ACO" might be an acronym, but the example uses "REsp" as jurisprudencia. However, "ACO" is not a standard identifier. The numbers 2821, 53, 55, 57 – these are document numbers. In the example, "documento eletrônico 53" is marked as jurisprudencia. So maybe these numbers are part of jurisprudencia references. But the example shows "documento eletrônico 53" as jurisprudencia. So in this case, the numbers 53, 55, 57 would be marked as jurisprudencia. However, the text here is "documento eletrônico 53" – the example has "documento eletrônico 53" as jurisprudencia, so I should mark those numbers as jurisprudencia.
+
+Wait, the example input had "documento eletrônico 53" and the output marked it as jurisprudencia. So in this text, "documento eletrônico 53" and "documentos eletrônicos 55 e 57" would be marked as jurisprudencia. Also, "Supremo Tribunal Federal" is an organizacao.
+
+Now, checking the date: "24/08/2001" – that's a date, so it should be marked as tempo.
+
+Also, "MP n° 2.200-2/2001" – MP is a provisional measure, which is a type of legislation. The full name would be "Medida Provisória n° 2.200-2/2001", but here it's abbreviated as "MP n° 2.200-2/2001". The guidelines say that legislation should be marked in full, but if it's abbreviated, maybe it's still considered legislation. However, the example mentions "art.61 , §1º , da Lei nº 9.430/96" as legislation. So "MP n° 2.200-2/2001" would be legislation. But the user's example also had "MP n° 2.200-2/2001" as legislation. Wait, in the example provided by the user, the input had "MP n° 2.200-2/2001" and the output marked it as legislacao. So I should mark that as legislacao.
+
+Wait, the user's example input was: "Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil ."
+
+In the example output, the MP n° 2.200-2/2001 was marked as legislacao. So I should do the same here. Also, "24/08/2001" is a date, so tempo. "ICP-Brasil" is excluded as per guidelines.
+
+Now, the text "Supremo Tribunal Federal" is an organization. The "ACO 2821 A GR / MT Financeiro e Atuarial" – the "ACO" might be a specific reference, but the example uses "REsp" as jurisprudencia. However, the text here has "ACO 2821 A GR / MT Financeiro e Atuarial" which might be a document or case reference. But the example didn't have this, so maybe it's not a recognized jurisprudencia identifier. However, the example had "documento eletrônico 53" as jurisprudencia. So the numbers 53, 55, 57 are part of the jurisprudencia.
+
+Putting it all together:
+
+- "Supremo Tribunal Federal" → organizacao
+- "MP n° 2.200-2/2001" → legislacao
+- "24/08/2001" → tempo
+- "documento eletrônico 53", "documentos eletrônicos 55 e 57" → jurisprudencia
+
+Other parts like "Estado-membro" are generic, so not marked. "Pacto Federativo" is a legal concept, not an entity. "ICP-Brasil" is excluded. The URL is not marked as local. The numbers 14536378 might be a document number, but since it's not in the format of a jurisprudencia reference (like "REsp" or "Súmula"), it's not marked. The "ACO 2821..." is unclear, but since the example doesn't have similar, maybe it's not marked.
+
+So the final HTML should have the appropriate spans for each entity found.
+</think>
+
+Como é de conhecimento geral , os mecanismos judiciais de controle de constitucionalidade foram concebidos de maneira a preservar o Pacto Federativo e a própria autonomia do Estado-membro , presumindo-se constitucionais e legais as normas editadas pelo Legislativo local , até que reconhecida3 <span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico <span class="local">http : //www.stf.jus.br/portal/autenticacao/</span> sob o número <span class="jurisprudencia">14536378</span> . <span class="organizacao">Supremo Tribunal Federal</span> <span class="jurisprudencia">ACO 2821 A GR / MT Financeiro e Atuarial</span> . Requereu a improcedência . O feito foi saneado (<span class="jurisprudencia">documento eletrônico 53</span>) e , a seguir , as partes apresentaram alegações finais (<span class="jurisprudencia">documentos eletrônicos 55 e 57</span>) .

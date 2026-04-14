@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. The input is: "O Senhor Desembargador DIAULAS COSTA RIBEIRO - Vogal Com o relator O Senhor Desembargador EUSTÁQUIO DE CASTRO - Vogal Com o relator D E C I S Ã O Recurso de Apelação conhecido e não provido . Unânime ."
+
+Let me break it down. The first part mentions "Senhor Desembargador DIAULAS COSTA RIBEIRO". Here, "Desembargador" is a title, not a name, so it shouldn't be marked. The actual name is "DIAULAS COSTA RIBEIRO", which is a person's full name. So that should be a <span class="pessoa">.
+
+Next, there's "Senhor Desembargador EUSTÁQUIO DE CASTRO" – same pattern. "EUSTÁQUIO DE CASTRO" is another person's name. So another <span class="pessoa">.
+
+Then "Vogal Com o relator" – "Vogal" is a title, "relator" is a role, so no entities here.
+
+"D E C I S Ã O" – This looks like an acronym, maybe "DECISÃO" in uppercase. Since it's an acronym for a decision, but the user's guidelines say to mark only specific references. However, "DECISÃO" isn't a jurisprudência, legislação, etc. It's a noun, but not a specific entity. So maybe not marked.
+
+"Recurso de Apelação" – This is a legal term but not an entity. "Recurso" is a type of legal action, but not a specific entity. So no tag here.
+
+"conhecido e não provido" – These are verbs, not entities.
+
+"Unânime" – An adjective, not an entity.
+
+Now, checking the guidelines again. The user mentioned that only full names (like "Ana Silva") should be marked as pessoa. Titles like "Senhor Desembargador" are not names, so they are excluded. The names "DIAULAS COSTA RIBEIRO" and "EUSTÁQUIO DE CASTRO" are full names, so they should be marked as pessoa.
+
+Looking for other entities. Are there any organizations? The text mentions "Vogal Com o relator" – "Vogal" is a role, not an organization. No other organizations mentioned.
+
+Tempo: No dates or time references. The text doesn't have any temporal expressions.
+
+Local: No specific places mentioned. Just "Vogal" which isn't a location.
+
+Legislação: No laws or codes mentioned.
+
+Jurisprudência: The text has "Recurso de Apelação" which is a legal term but not a specific jurisprudência reference. The "D E C I S Ã O" might be an acronym for a decision, but the guidelines say to mark only specific references like acordões, súmulas, etc. Since "D E C I S Ã O" is just the word "DECISÃO" in uppercase, it's not a specific jurisprudência entity. So no tag here.
+
+So the only entities are the two full names. Let me make sure I didn't miss any. The "Vogal" part is a role, not an entity. The rest are verbs or adjectives. So the final HTML should have the two names marked as pessoa.
+</think>
+
+O <span class="pessoa">Senhor Desembargador DIAULAS COSTA RIBEIRO</span> - Vogal Com o relator <span class="pessoa">Senhor Desembargador EUSTÁQUIO DE CASTRO</span> - Vogal Com o relator D E C I S Ã O Recurso de Apelação conhecido e não provido . Unânime .

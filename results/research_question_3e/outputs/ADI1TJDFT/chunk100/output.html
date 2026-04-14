@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The first part is "Em hipóteses semelhantes , este Tribunal já se pronunciou em conformidade com a orientação que ora se adota , no sentido de que padecem de vício de inconstitucionalidade formal as leis que criam atribuições e despesas não previstas no orçamento para os órgãos do Poder Executivo , senão vejamos :". 
+
+Here, "este Tribunal" refers to a court, so "Tribunal" is an organization. But wait, the example shows "Tribunal de Contas" as an organization. However, in the input, it's just "este Tribunal", which is a general term. The guidelines mention that only specific names should be marked. Since "Tribunal" here is a generic term, maybe it's not an organization. Wait, but the example includes "Tribunal" as part of an organization name. Wait, the example input had "MINISTÉRIO PÚBLICO FEDERAL" as an organization. So "Tribunal" by itself might not be marked unless it's a specific name. The input uses "este Tribunal" which is a general reference, so maybe not. So no entity here.
+
+Next, "AÇÕES DIRETA DE INCONSTITUCIONALIDADE . LEIS DISTRITAIS 5.641/2016 e 5.645/2016 . SERVIÇO PÚBLICO . TRANSPORTE COLETIVO . ALTERAÇÕES SISTEMÁTICAS . INICIATIVA PARLAMENTAR . VÍCIO FORMAL . INCONSTITUCIONALIDADE . 1 . Projetos de lei de iniciativa parlamentar que versam sobre criação de normas a respeito da organização e funcionamento da Administração , nos termos dos arts . 71 , § 1º , inc. IV , e 100 , inc. X , da Lei Orgânica do Distrito Federal , estão maculadas por vício formal , eis que a competência é exclusiva do Chefe do Poder Executivo , por força da `` reserva de administração '' . 2 ."
+
+Looking for legislacao: "Lei Orgânica do Distrito Federal" is a law, so that's legislacao. Also, the numbers like 5.641/2016 and 5.645/2016 are leis distritais, so those are legislacao. The "arts. 71, § 1º, inc. IV, e 100, inc. X" refer to articles in the law, so they should be part of the legislacao. 
+
+Next, "Chefe do Poder Executivo" – this is a title, not a specific name, so not pessoa. "Distrito Federal" is a local entity, so that's local. 
+
+Now, checking for other entities. "AÇÕES DIRETA DE INCONSTITUCIONALIDADE" – this is a legal action, but the guidelines say to mark only specific references. Since "Ação Direta de Inconstitucionalidade" is a specific type of legal action, but the example includes "REsp n . 1694984/MS" as jurisprudencia. However, in this case, "Ação Direta de Inconstitucionalidade" is a procedural term, not a specific case or reference, so it's not marked. 
+
+"SERVIÇO PÚBLICO" – this is a generic term, not a specific entity. "TRANSPORTE COLETIVO" – same here. "ALTERAÇÕES SISTEMÁTICAS" – generic. "INICIATIVA PARLAMENTAR" – generic. "VÍCIO FORMAL" – generic. "INCONSTITUCIONALIDADE" – generic. 
+
+In the sentence "nos termos dos arts . 71 , § 1º , inc. IV , e 100 , inc. X , da Lei Orgânica do Distrito Federal", "Lei Orgânica do Distrito Federal" is a specific law, so that's legislacao. The "arts. 71, § 1º, inc. IV, e 100, inc. X" are parts of the law, so they should be included in the legislacao tag. 
+
+"Chefe do Poder Executivo" – again, a title, not a specific name. 
+
+"Distrito Federal" is a local entity, so that's local. 
+
+Now, checking for jurisprudencia. The input mentions "AÇÕES DIRETA DE INCONSTITUCIONALIDADE" but that's not a specific case. The example includes "REsp n . 1694984/MS" as jurisprudencia. In this text, there's no specific case number or reference, so no jurisprudencia here. 
+
+Looking for organizacao: "Poder Executivo" is a branch of government, but the guidelines say to mark specific organizations. The example includes "Tribunal de Contas" as an organization. In the input, "Poder Executivo" is a general term, so not marked. However, "Chefe do Poder Executivo" refers to a specific person (the head), but it's a title, not a name. 
+
+So, the entities to mark are:
+
+- "Lei Orgânica do Distrito Federal" as legislacao
+- "Distrito Federal" as local
+- The numbers 5.641/2016 and 5.645/2016 as legislacao (since they are laws)
+- "arts. 71, § 1º, inc. IV, e 100, inc. X" as part of the legislacao (since they reference the law)
+
+Wait, the example in the guidelines includes "art.61 , §1º , da Lei nº 9.430/93" as legislacao. So the articles and sections should be included in the legislacao tag. Therefore, in this text, "arts. 71, § 1º, inc. IV, e 100, inc. X" are part of the legislacao, so they should be included in the span.
+
+So the final HTML should have:
+
+- "Lei Orgânica do Distrito Federal" as <span class="legislacao">Lei Orgânica do Distrito Federal</span>
+- "Distrito Federal" as <span class="local">Distrito Federal</span>
+- "5.641/2016" and "5.645/2016" as <span class="legislacao">5.641/2016</span> and <span class="legislacao">5.645/2016</span>
+- "arts. 71, § 1º, inc. IV, e 100, inc. X" as part of the legislacao, so they should be included in the span with legislacao class.
+
+Wait, but the example in the guidelines includes the entire reference to the law. So the entire phrase "da Lei Orgânica do Distrito Federal" is part of the legislacao. Therefore, the span should include "Lei Orgânica do Distrito Federal".
+
+Also, the numbers 5.641/2016 and 5.645/2016 are leis distritais, so they should be marked as legislacao.
+
+Putting it all together, the HTML should have those entities marked accordingly.
+</think>
+
+Em hipóteses semelhantes , este Tribunal já se pronunciou em conformidade com a orientação que ora se adota , no sentido de que padecem de vício de inconstitucionalidade formal as leis que criam atribuições e despesas não previstas no orçamento para os órgãos do Poder Executivo , senão vejamos : <span class="jurisprudencia">AÇÃO DIRETA DE INCONSTITUCIONALIDADE</span> . <span class="legislacao">LEIS DISTRITAIS 5.641/2016</span> e <span class="legislacao">5.645/2016</span> . SERVIÇO PÚBLICO . TRANSPORTE COLETIVO . ALTERAÇÕES SISTEMÁTICAS . INICIATIVA PARLAMENTAR . VÍCIO FORMAL . INCONSTITUCIONALIDADE . 1 . Projetos de lei de iniciativa parlamentar que versam sobre criação de normas a respeito da organização e funcionamento da Administração , nos termos dos <span class="legislacao">arts . 71 , § 1º , inc. IV , e 100 , inc. X , da Lei Orgânica do <span class="local">Distrito Federal</span></span> , estão maculadas por vício formal , eis que a competência é exclusiva do Chefe do Poder Executivo , por força da `` reserva de administração '' . 2 .

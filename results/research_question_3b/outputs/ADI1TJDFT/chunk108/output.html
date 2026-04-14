@@ -1,0 +1,58 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+Starting with the first sentence: "Como se vê , a norma interfere , nitidamente , na atividade de direção superior da Administração Pública do Distrito Federal , tema cuja iniciativa de lei é exclusiva do Chefe do Poder Executivo , nos termos dos artigos 53 , 71 , § 1º , incisos II e IV , e 100 , incisos VI e X da Lei Orgânica do Distrito Federal ."
+
+Here, "Distrito Federal" is a local entity. So I'll mark that with <span class="local">. "Lei Orgânica do Distrito Federal" is a legislative entity, so that's <span class="legislacao">. The articles mentioned (53, 71, § 1º, etc.) are parts of the legislation, so they should be part of the legislacao tag. Also, "Chefe do Poder Executivo" refers to a person, so that's <span class="pessoa">. Wait, but "Chefe do Poder Executivo" is a title, not a specific person's name. The guidelines say to mark only names of individuals. Since it's a title, maybe it's not a pessoa. Hmm, need to check the definitions again. The pessoa is names of individuals, so titles like "Chefe do Poder Executivo" might not be marked unless it's a specific person's name. So maybe that's not a pessoa. Let me note that and move on.
+
+Next part: "Nesse sentido : AÇÃO DIRETA DE INCONSTITUCIONALIDADE . LEI Nº 3.069/2002 . PESSOAS PORTADORAS DE DEFICIÊNCIA . RESERVA DE VAGAS PARA ESTÁGIO E DECORRENTES DE CONTRATOS DE PRESTAÇÃO DE SERVIÇO . INICIATIVA PARLAMENTAR . VÍCIO FORMAL . COMPETÊNCIA PRIVATIVA DO GOVERNADOR . OFENSA AOS ARTIGOS 53 , CAPUT , 71 , § 1º , I , II E IV E 100 , VI E X , DA LEI ORGÂNICA DO DISTRITO FEDERAL . DECLARAÇÃO DE INCONSTITUCIONALIDADE COM EFEITOS EX NUNC . 1 ."
+
+"LEI Nº 3.069/2002" is a legislative entity, so <span class="legislacao">. "Lei Orgânica do Distrito Federal" again is legislacao. "Distrito Federal" is local. "PESSOAS PORTADORAS DE DEFICIÊNCIA" is a generic term, not a specific person, so not pessoa. "GOVERNADOR" is a title, not a specific person, so not pessoa. "AÇÃO DIRETA DE INCONSTITUCIONIDADE" is a legal action, which might be jurisprudencia? Wait, the jurisprudencia is about judicial decisions, precedents, etc. But "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" is a type of legal action, not a specific case or decision. So maybe not jurisprudencia. The "DECLARAÇÃO DE INCONSTITUCIONALIDADE COM EFEITOS EX NUNC" is a legal declaration, but again, not a specific case. 
+
+Wait, the jurisprudencia is for references to specific cases, like "Súmula 123" or "Acórdão 456". In the input, there's "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" which is a type of legal action, not a specific case. So maybe that's not jurisprudencia. Similarly, "LEI Nº 3.069/2002" is legislation, so that's legislacao. 
+
+Looking back, "Distrito Federal" is local. "Lei Orgânica do Distrito Federal" is legislacao. The articles mentioned (53, 71, etc.) are parts of the legislation, so they should be included in the legislacao tag. 
+
+Also, "GOVERNADOR" is a title, not a specific person, so not pessoa. "Chefe do Poder Executivo" is a title, same as above. 
+
+So, the entities to mark are:
+
+- Distrito Federal (local)
+- Lei Orgânica do Distrito Federal (legislacao)
+- LEI Nº 3.069/2002 (legislacao)
+- AÇÃO DIRETA DE INCONSTITUCIONALIDADE (maybe not, unless it's a specific case, but the input doesn't specify a case number)
+- PESSOAS PORTADORAS DE DEFICIÊNCIA (not a specific entity)
+- RESERVA DE VAGAS... (not an entity)
+- INICIATIVA PARLAMENTAR (not an entity)
+- VÍCIO FORMAL (not an entity)
+- COMPETÊNCIA PRIVATIVA DO GOVERNADOR (GOVERNADOR is a title, not a specific person)
+- OFENSA AOS ARTIGOS... (artigos are part of the legislation)
+- DECLARAÇÃO DE INCONSTITUCIONALIDADE... (not a specific case)
+- 1 (maybe a number, but not an entity)
+
+Wait, the user's example output in the previous message had "Distrito Federal" as local, "Lei Orgânica do Distrito Federal" as legislacao, and "LEI Nº 3.069/2002" as legislacao. Also, "Ação Direta de Inconstitucionalidade" was marked as jurisprudencia? Wait, no, in the example output provided by the user, the output was:
+
+Como se vê , a norma interfere , nitidamente , na atividade de direção superior da <span class="organizacao">Administração Pública do Distrito Federal</span> , tema cuja iniciativa de lei é exclusiva do <span class="pessoa">Chefe do Poder Executivo</span> , nos termos dos artigos 53 , 71 , § 1º , incisos II e IV , e 100 , incisos VI e X da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . Nesse sentido : <span class="jurisprudencia">AÇÃO DIRETA DE INCONSTITUCIONALIDADE</span> . <span class="legislacao">LEI Nº 3.069/2002</span> . PESSOAS PORTADORAS DE DEFICIÊNCIA . RESERVA DE VAGAS PARA ESTÁGIO E DECORRENTES DE CONTRATOS DE PRESTAÇÃO DE SERVIÇO . INICIATIVA PARLAMENTAR . VÍCIO FORMAL . COMPETÊNCIA PRIVATIVA DO <span class="organizacao">GOVERNADOR</span> . OFENSA AOS ARTIGOS 53 , CAPUT , 71 , § 1º , I , II E IV E 100 , VI E X , DA <span class="legislacao">LEI ORGÂNICA DO DISTRITO FEDERAL</span> . <span class="jurisprudencia">DECLARAÇÃO DE INCONSTITUCIONALIDADE COM EFEITOS EX NUNC</span> . 1 .
+
+Wait, in the example output, "GOVERNADOR" was marked as organizacao. But according to the definitions, organizacao is entities like public organs, courts, etc. "GOVERNADOR" is a title, but maybe in this context, it's referring to the Governor as an organization? Wait, no. The Governor is a person, but the definition of organizacao includes public organs. However, "GOVERNADOR" is a title, not an organization. But in the example output, it was marked as organizacao. Maybe the user's example considered "GOVERNADOR" as an organization. Wait, maybe the user's example had "GOVERNADOR" as an organization. Let me check the original input again.
+
+In the input text, "GOVERNADOR" is part of "COMPETÊNCIA PRIVATIVA DO GOVERNADOR". The user's example output marked "GOVERNADOR" as organizacao. But according to the definitions, organizacao is entities like public organs, courts, etc. The Governor is a person, but maybe in this context, the term "GOVERNADOR" refers to the office or the institution, which could be considered an organization. However, the definition says "organizações" are entities formally constituted. The Governor is a person, not an organization. So maybe the example output was incorrect. But since the user provided that example, perhaps I should follow that. Alternatively, maybe the user's example had a mistake. 
+
+Alternatively, maybe "GOVERNADOR" is part of the organization's name. For example, "GOVERNADOR" could be part of the name of the organization, but in this case, it's a title. This is a bit ambiguous. However, given that the user's example marked "GOVERNADOR" as organizacao, I should follow that. 
+
+Similarly, "Administração Pública do Distrito Federal" is an organization, so that's marked as organizacao. 
+
+So, in the input text, "Administração Pública do Distrito Federal" is an organization, so <span class="organizacao">. "Chefe do Poder Executivo" is a person, so <span class="pessoa">. "Lei Orgânica do Distrito Federal" is legislacao. "LEI Nº 3.069/2002" is legislacao. "GOVERNADOR" is organizacao. "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" is jurisprudencia. "DECLARAÇÃO DE INCONSTITUCIONALIDADE COM EFEITOS EX NUNC" is jurisprudencia. 
+
+Wait, but "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" is a type of legal action, not a specific case. However, in the example output, it was marked as jurisprudencia. Maybe the user considers any legal action as jurisprudencia. But according to the definitions, jurisprudencia is about specific decisions, precedents, etc. So perhaps the example output was incorrect. However, since the user provided that example, I should follow it. 
+
+So, applying that, I'll mark "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" as jurisprudencia and "DECLARAÇÃO DE INCONSTITUCIONALIDADE COM EFEITOS EX NUNC" as jurisprudencia. 
+
+Also, "Distrito Federal" is local. 
+
+Putting it all together, the HTML should have the appropriate spans. Let me check each part again to ensure I didn't miss any entities.
+</think>
+
+Como se vê , a norma interfere , nitidamente , na atividade de direção superior da <span class="organizacao">Administração Pública do Distrito Federal</span> , tema cuja iniciativa de lei é exclusiva do <span class="pessoa">Chefe do Poder Executivo</span> , nos termos dos artigos 53 , 71 , § 1º , incisos II e IV , e 100 , incisos VI e X da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . Nesse sentido : <span class="jurisprudencia">AÇÃO DIRETA DE INCONSTITUCIONALIDADE</span> . <span class="legislacao">LEI Nº 3.069/2002</span> . PESSOAS PORTADORAS DE DEFICIÊNCIA . RESERVA DE VAGAS PARA ESTÁGIO E DECORRENTES DE CONTRATOS DE PRESTAÇÃO DE SERVIÇO . INICIATIVA PARLAMENTAR . VÍCIO FORMAL . COMPETÊNCIA PRIVATIVA DO <span class="organizacao">GOVERNADOR</span> . OFENSA AOS ARTIGOS 53 , CAPUT , 71 , § 1º , I , II E IV E 100 , VI E X , DA <span class="legislacao">LEI ORGÂNICA DO DISTRITO FEDERAL</span> . <span class="jurisprudencia">DECLARAÇÃO DE INCONSTITUCIONALIDADE COM EFEITOS EX NUNC</span> . 1 .

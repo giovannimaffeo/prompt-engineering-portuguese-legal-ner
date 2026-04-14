@@ -1,0 +1,54 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: ", acorda , em Turma , a 3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM . DES . FORTUNA GRION RELATOR . DES ."
+
+Let me break it down word by word. 
+
+Starting with "Turma" – that's a part of the court structure, maybe an organization? But "Turma" alone might not be an organization. Wait, the full phrase is "em Turma", which could be part of the court's name. But the main organization here is "Tribunal de Justiça do Estado de Minas Gerais". So "Tribunal de Justiça" is an organization, and "Estado de Minas Gerais" is a local (state). 
+
+Then "3ª CÂMARA CRIMINAL" – that's a chamber, part of the court structure. Maybe that's an organization? Or part of the organization name. The full name would be "3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais". So "Tribunal de Justiça" is the organization, and "CÂMARA CRIMINAL" is part of its name. But since the user wants to mark organizations, I should check if "Tribunal de Justiça" is the main organization here. 
+
+"Legislacao" – the input has "legislacao" as a possible entity. Wait, the input text mentions "ata dos julgamentos" which is "minutes of the judgments", so that's a record, not legislation. But the user's example might have "legislacao" as a term. Wait, the input text doesn't have the word "legislacao" in it. Wait, the input text is: "na conformidade da ata dos julgamentos" – that's "in accordance with the minutes of the judgments". So "ata" is minutes, which is a record, not legislation. So maybe there's no legislation here. 
+
+"Jurisprudencia" – the input has "jurisprudencia" as a possible entity. The text mentions "ata dos julgamentos" which relates to jurisprudence, but the term "jurisprudencia" isn't present. Wait, the input text is: "na conformidade da ata dos julgamentos" – so "ata" is minutes, which is a record, not jurisprudence. So maybe there's no jurisprudencia here. 
+
+"Tempo" – the input has no dates or times. 
+
+"Pessoa" – the text mentions "DES. FORTUNA GRION RELATOR" – "DES" might be an abbreviation for "Desembargador" (Judge), so "FORTUNA GRION" is a person's name. So "FORTUNA GRION" would be a pessoa. 
+
+"Local" – "Estado de Minas Gerais" is a local. 
+
+"Organizacao" – "Tribunal de Justiça do Estado de Minas Gerais" is the organization. 
+
+So putting it all together:
+
+- "Tribunal de Justiça do Estado de Minas Gerais" is the organization.
+- "Estado de Minas Gerais" is the local.
+- "FORTUNA GRION" is a pessoa.
+- The rest of the text doesn't have any other entities. 
+
+Wait, the input has "3ª CÂMARA CRIMINAL" – that's part of the organization's name. So maybe the full organization is "Tribunal de Justiça do Estado de Minas Gerais", and "3ª CÂMARA CRIMINAL" is part of that. But the user's example might have "CÂMARA CRIMINAL" as part of the organization. However, the user's instruction says to mark the entities as per the given types. So "Tribunal de Justiça" is the organization, and "Estado de Minas Gerais" is the local. 
+
+So the HTML should have:
+
+- <span class="organizacao">Tribunal de Justiça do Estado de Minas Gerais</span>
+- <span class="local">Estado de Minas Gerais</span>
+- <span class="pessoa">FORTUNA GRION</span>
+
+Wait, but "Tribunal de Justiça do Estado de Minas Gerais" is the full organization name. So the entire phrase should be marked as organizacao. But the input text has "em Turma , a 3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais" – so "Tribunal de Justiça do Estado de Minas Gerais" is the organization. 
+
+So the correct HTML would be:
+
+<span class="organizacao">Tribunal de Justiça do Estado de Minas Gerais</span>
+<span class="local">Estado de Minas Gerais</span>
+<span class="pessoa">FORTUNA GRION</span>
+
+But need to check if "Turma" is part of the organization. The input says "em Turma" which might be part of the court's name, but the main organization is the Tribunal. So "Turma" might not be an entity here. 
+
+Also, "DES" is an abbreviation for "Desembargador", so "DES. FORTUNA GRION RELATOR" – "FORTUNA GRION" is the person. 
+
+So the final HTML should have those three entities marked.
+</think>
+
+<span class="organizacao">Tribunal de Justiça do Estado de Minas Gerais</span> , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM . <span class="pessoa">FORTUNA GRION</span> RELATOR .

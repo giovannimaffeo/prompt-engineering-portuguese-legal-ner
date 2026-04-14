@@ -1,0 +1,92 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me start by breaking down the input text.
+
+The input is: "A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos nesta Lei Orgânica , cabe : ( ... ) § 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Governo , Órgãos e entidades da administração pública ; '' '' Art . 100 . Compete privativamente ao Governador do Distrito Federal : ( ... ) Fls ."
+
+Looking for entities:
+
+1. "Lei Orgânica" – This is a law, so it should be marked as legislacao. But wait, the example shows that "Lei Orgânica" is part of a larger expression. Wait, in the example input3, "LEI Nº 11.788" is marked as legislacao, and "Lei Orgânica" might be part of a larger term. Wait, the user's example input3 is "LEI Nº 11.788, DE 25 DE SETEMBRO DE 2008." and the output is "LEI Nº 11.788" as legislacao and the date as tempo. So "Lei Orgânica" would be part of a larger term. Wait, in the input text, "Lei Orgânica" is mentioned. But according to the definitions, "legislação" includes "Lei", so "Lei Orgânica" would be a legislation. But the example input5 has "Consolidação das Leis do Trabalho – CLT" marked as legislacao. So "Lei Orgânica" is a law, so it should be marked as legislacao. Wait, but in the input text, "Lei Orgânica" is part of the phrase "observada a forma e os casos previstos nesta Lei Orgânica". So "Lei Orgânica" is a legislation. So I should mark "Lei Orgânica" as legislacao.
+
+Next, "Distrito Federal" – this is a local entity. According to the guidelines, "local" includes states, cities, etc. "Distrito Federal" is a specific location, so it should be marked as local.
+
+"Secretarias de Governo" – these are government offices, which are organizations. So "Secretarias de Governo" would be organizacao. Similarly, "Órgãos" and "entidades da administração pública" – "Órgãos" is an organization, and "entidades da administração pública" are also organizations. Wait, but the example input4 has "ESTADO DO ACRE" marked as local, and "Rua Tribunal de Justiça" as local. So "Secretarias de Governo" is an organization. "Órgãos" is an organization. "entidades da administração pública" – "entidades" here refers to entities, which are organizations. So all these should be marked as organizacao.
+
+"Art. 100" – this is a reference to an article in a law, so it's part of the legislation. Wait, in the example input5, "Art . 100" is part of the legislation. So "Art. 100" should be marked as legislacao.
+
+"Governador do Distrito Federal" – "Governador" is a title, not a person's name, so it's not a pessoa. "Distrito Federal" is already marked as local. So "Governador" is a title, not a person, so no mark.
+
+"Fls." – this is an abbreviation for "Fls." which is "Folhas" in Portuguese, referring to pages. It's not a specific entity, so no mark.
+
+Now, checking for other entities. The text mentions "leis complementares e ordinárias" – these are types of laws, but they are not specific names, so they are not marked. "Iniciativa das leis" – again, not specific names. 
+
+So the entities to mark are:
+
+- "Lei Orgânica" as legislacao
+- "Distrito Federal" as local
+- "Secretarias de Governo" as organizacao
+- "Órgãos" as organizacao
+- "entidades da administração pública" as organizacao
+- "Art. 100" as legislacao
+
+Wait, but "entidades da administração pública" – the term "entidades" here refers to entities, which are organizations. So "entidades da administração pública" should be marked as organizacao. However, the example input4 has "ESTADO DO ACRE" as local, and "Rua Tribunal de Justiça" as local. So "entidades da administração pública" is a general term, but the example input5 has "Consolidação das Leis do Trabalho – CLT" as legislacao. So maybe "entidades da administração pública" is a general term, not a specific entity. Wait, but the guidelines say that "organizacao" includes "entidades coletivas formalmente constituídas". So "entidades da administração pública" refers to specific organizations, so they should be marked as organizacao. However, the example input5 has "Consolidação das Leis do Trabalho – CLT" as legislacao, which is a specific law. So "entidades da administração pública" is a general term, but the example input4 has "ESTADO DO ACRE" as local. So maybe "entidades da administração pública" is a general term and not a specific entity. Wait, but the example input4 has "ESTADO DO ACRE" as local, which is a specific state. So "entidades da administração pública" is a general term, not a specific entity. Therefore, maybe "entidades da administração pública" is not marked. Wait, but the example input5 has "Consolidação das Leis do Trabalho – CLT" as legislacao. So "entidades da administração pública" is a general term, not a specific entity. Therefore, perhaps only "Secretarias de Governo" and "Órgãos" are marked as organizacao. 
+
+Wait, the example input4 has "ESTADO DO ACRE" as local, and "Rua Tribunal de Justiça" as local. So "Secretarias de Governo" is an organization. "Órgãos" is an organization. "entidades da administração pública" is a general term, not a specific entity. So maybe only "Secretarias de Governo" and "Órgãos" are marked as organizacao. 
+
+But the example input5 has "Consolidação das Leis do Trabalho – CLT" as legislacao. So "Consolidação das Leis do Trabalho" is a specific law. Similarly, "Lei Orgânica" is a specific law. 
+
+So in the input text, "Lei Orgânica" is a specific law, so it's legislacao. "Distrito Federal" is a local. "Secretarias de Governo" is an organization. "Órgãos" is an organization. "Art. 100" is part of a law, so legislacao. 
+
+Wait, "Art. 100" is part of a law, so it's part of the legislation. So "Art. 100" should be marked as legislacao. 
+
+Putting it all together:
+
+- "Lei Orgânica" → legislacao
+- "Distrito Federal" → local
+- "Secretarias de Governo" → organizacao
+- "Órgãos" → organizacao
+- "Art. 100" → legislacao
+
+Wait, but "entidades da administração pública" – the term "entidades" here refers to entities, which are organizations. So "entidades da administração pública" is a general term, but the example input4 has "ESTADO DO ACRE" as local. So maybe "entidades da administração pública" is not marked. 
+
+So the final HTML would have:
+
+- "Lei Orgânica" as legislacao
+- "Distrito Federal" as local
+- "Secretarias de Governo" as organizacao
+- "Órgãos" as organizacao
+- "Art. 100" as legislacao
+
+But I need to check if "Secretarias de Governo" is a specific organization. The example input4 has "ESTADO DO ACRE" as local, and "Rua Tribunal de Justiça" as local. So "Secretarias de Governo" is an organization. 
+
+So the final output would be:
+
+A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos nesta <span class="legislacao">Lei Orgânica</span> , cabe : ( ... ) § 1º Compete privativamente ao Governador do <span class="local">Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class="organizacao">Secretarias de Governo</span> , <span class="organizacao">Órgãos</span> e <span class="organizacao">entidades da administração pública</span> ; '' '' <span class="legislacao">Art . 100</span> . Compete privativamente ao Governador do Distrito Federal : ( ... ) Fls .
+
+Wait, but "entidades da administração pública" – the example input5 has "Consolidação das Leis do Trabalho – CLT" as legislacao. So "entidades da administração pública" is a general term, not a specific entity. Therefore, maybe it's not marked. But the example input4 has "ESTADO DO ACRE" as local, which is a specific state. So "entidades da administração pública" is a general term, not a specific entity. Therefore, it's not marked. 
+
+So the correct entities are:
+
+- "Lei Orgânica" → legislacao
+- "Distrito Federal" → local
+- "Secretarias de Governo" → organizacao
+- "Órgãos" → organizacao
+- "Art. 100" → legislacao
+
+But the original text has "entidades da administração pública" – the term "entidades" here refers to entities, which are organizations. However, the example input5 has "Consolidação das Leis do Trabalho – CLT" as legislacao. So "entidades da administração pública" is a general term, not a specific entity. Therefore, it's not marked. 
+
+So the final HTML would have:
+
+A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos nesta <span class="legislacao">Lei Orgânica</span> , cabe : ( ... ) § 1º Compete privativamente ao Governador do <span class="local">Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class="organizacao">Secretarias de Governo</span> , <span class="organizacao">Órgãos</span> e <span class="organizacao">entidades da administração pública</span> ; '' '' <span class="legislacao">Art . 100</span> . Compete privativamente ao Governador do Distrito Federal : ( ... ) Fls .
+
+Wait, but the example input5 has "Consolidação das Leis do Trabalho – CLT" as legislacao. So "entidades da administração pública" is a general term, not a specific entity. Therefore, it's not marked. 
+
+So the correct answer is to mark "Lei Orgânica" as legislacao, "Distrito Federal" as local, "Secretarias de Governo" as organizacao, "Órgãos" as organizacao, and "Art. 100" as legislacao. The "entidades da administração pública" is not marked. 
+
+But the example input4 has "ESTADO DO ACRE" as local, and "Rua Tribunal de Justiça" as local. So "entidades da administração pública" is a general term, not a specific entity. Therefore, it's not marked. 
+
+So the final HTML should have the marked entities as above.
+</think>
+
+A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos nesta <span class="legislacao">Lei Orgânica</span> , cabe : ( ... ) § 1º Compete privativamente ao Governador do <span class="local">Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class="organizacao">Secretarias de Governo</span> , <span class="organizacao">Órgãos</span> e <span class="organizacao">entidades da administração pública</span> ; '' '' <span class="legislacao">Art . 100</span> . Compete privativamente ao Governador do Distrito Federal : ( ... ) Fls .

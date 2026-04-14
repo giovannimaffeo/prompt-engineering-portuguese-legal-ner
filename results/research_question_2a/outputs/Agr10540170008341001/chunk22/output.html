@@ -1,0 +1,62 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me parse each part.
+
+The text starts with "Desta feita , uma vez que a agravada poderá estipular prazo diverso , podendo executar as obras de acordo com o cronograma da distribuidora , não se configura assim , mora da agravada em adimplir o previsto na referida comunicação ."
+
+Looking for entities:
+
+- "aggravada" might refer to a legal term, possibly a party in a case. In legal contexts, "agravada" could be a person or organization. But since it's a legal term, maybe it's a person. Wait, in Brazilian law, "agravada" is the party being sued, so it's a person. So "agravada" should be marked as pessoa.
+
+- "distribuidora" is likely an organization, like a distributor company. So that's organizacao.
+
+- "cronograma" refers to a schedule, which is a time-related term. But "cronograma" itself isn't a time entity. Wait, the user's guide says to mark "tempo" for time/data. So maybe "prazo diverso" (different term) is a time entity. "Prazo" is a term, so "prazo diverso" could be a tempo entity. Wait, "prazo" is a term for a period, so maybe "prazo diverso" is a tempo entity. But the exact term might be "prazo" or "data". Let me check the original text again.
+
+The text mentions "prazo diverso" (different term), which is a time-related term. So "prazo diverso" would be marked as tempo. But the user's example might have different handling. Wait, the user's example in the output might have "prazo" as tempo. Let me check the sample output provided by the user. Wait, the user hasn't provided a sample output, but the task says to return the text with the entities marked.
+
+So, "prazo diverso" is a time term. So "prazo" would be tempo. But the exact term might be "prazo" as a time entity. So in the text, "prazo diverso" would be marked as tempo. But the user's guide says to use "tempo" for time/data. So "prazo" is a time term. So "prazo diverso" would be marked as tempo.
+
+Wait, but "prazo" is a term for a period, so it's a time entity. So "prazo diverso" would be marked as tempo. So in the text, "prazo diverso" would be wrapped in <span class="tempo">.
+
+Also, "distribuidora" is an organization, so that's organizacao.
+
+"Comunicação" refers to a legal document, which might be legislation or jurisprudence? Wait, "comunicação" here is a reference to a communication, which might be a legal document. But the user's entities are legislacao (legislation) and jurisprudencia (jurisprudence). "Comunicação" might not be one of those. Unless it's a specific legal document, but the user hasn't specified that. So maybe "comunicação" is not an entity here.
+
+So the entities in the text are:
+
+- "agravada" (pessoa)
+- "distribuidora" (organizacao)
+- "prazo diverso" (tempo)
+- "cronograma" (maybe tempo? Or is "cronograma" a local? No, it's a schedule. So "cronograma" is part of the time entity. Wait, the user's guide says to mark "tempo" for time/data. So "cronograma" is a schedule, which is a time-related term. But the exact term might be "prazo" or "data". So "cronograma" might not be marked unless it's part of a time entity. But the user's example might not have that. Let me check the original text again.
+
+Original text: "podendo executar as obras de acordo com o cronograma da distribuidora" – "cronograma" is part of the sentence, but it's a schedule. So maybe "cronograma" is not an entity. The user's guide says to mark "tempo" for time/data. So "prazo diverso" is a time entity. "Prazo" is a time term. So "prazo diverso" would be marked as tempo.
+
+So the entities are:
+
+- "agravada" → pessoa
+- "distribuidora" → organizacao
+- "prazo diverso" → tempo
+
+Wait, but "prazo diverso" is a phrase. Should I split it into "prazo" and "diverso"? Or mark the entire phrase as tempo? The user's guide says to mark the entities as they appear. So if "prazo diverso" is a time term, then the entire phrase is marked as tempo.
+
+So the HTML would be:
+
+Desta feita , uma vez que a <span class="pessoa">agravada</span> poderá estipular <span class="tempo">prazo diverso</span> , podendo executar as obras de acordo com o cronograma da <span class="organizacao">distribuidora</span> , não se configura assim , mora da <span class="pessoa">agravada</span> em adimplir o previsto na referida <span class="legislacao">comunicação</span> .
+
+Wait, but "comunicação" is mentioned as "referida comunicação". The user's guide says to mark "legislacao" for legislation. Is "comunicação" a legislation? Maybe not. Unless it's a specific legal document. But the user hasn't specified that. So maybe "comunicação" is not an entity here. So the only entities are agravada (pessoa), distribuidora (organizacao), prazo diverso (tempo). The rest are not entities.
+
+So the final HTML would have those three entities marked. Let me check again.
+
+Original text: "o previsto na referida comunicação" – "comunicação" is a reference to a communication, which might be a legal document. But unless it's a specific legislation or jurisprudence, it's not marked. So "comunicação" is not an entity here.
+
+So the final HTML would be:
+
+Desta feita , uma vez que a <span class="pessoa">agravada</span> poderá estipular <span class="tempo">prazo diverso</span> , podendo executar as obras de acordo com o cronograma da <span class="organizacao">distribuidora</span> , não se configura assim , mora da <span class="pessoa">agravada</span> em adimplir o previsto na referida comunicação .
+
+Wait, but "agravada" appears twice. The first instance is "agravada" and the second is "agravada" again. So both should be marked as pessoa.
+
+So the final output would have those three entities marked. Let me make sure there are no other entities. "Local" is not present. "Legislacao" or "jurisprudencia" are not mentioned. So the answer should be as above.
+</think>
+
+Desta feita , uma vez que a <span class="pessoa">agravada</span> poderá estipular <span class="tempo">prazo diverso</span> , podendo executar as obras de acordo com o cronograma da <span class="organizacao">distribuidora</span> , não se configura assim , mora da <span class="pessoa">agravada</span> em adimplir o previsto na referida comunicação .

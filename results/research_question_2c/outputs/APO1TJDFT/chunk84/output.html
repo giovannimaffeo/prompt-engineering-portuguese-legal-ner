@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 6 Distribuído o feito para esta relatoria , o Distrito Federal junta documento novo às fls ."
+
+Looking for entities:
+
+1. "Apelação" and "Reexame Necessário" – these are legal terms, but not sure if they are entities. The user's example output doesn't mark them, so maybe they are not considered entities here. The example output shows "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as an organization. Wait, "GABINETE DA DESEMBARGADORA" is part of the organization name. "MARIA IVATÔNIA" is a person's name. So "MARIA IVATÔNIA" should be a pessoa. The "GABINETE DA DESEMBARGADORA" is an organization. Then "Distrito Federal" is a local, as it refers to a region. The "Código de Verificação" and the numbers might be part of a code, but not sure if they are entities. The "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" are codes, but the user's example output doesn't mark them. The "20140110500434APO" might be a code, but since it's not one of the specified entities, it's left as is. The "Distrito Federal" is a local entity. The "relatoria" is a legal term but not an entity. The "fls" is an abbreviation for "fls" (fólio), which is a legal term but not an entity. 
+
+So, breaking down the text:
+
+- "GABINETE DA DESEMBARGADORA" – organization
+- "MARIA IVATÔNIA" – pessoa
+- "Distrito Federal" – local
+
+The rest of the text doesn't have any of the specified entities. So the HTML should have those three parts marked with their respective classes. Let me check the example output again. The user's example output shows "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as an organization and pessoa. Wait, in the example output, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is split into "GABINETE DA DESEMBARGADORA" as organizacao and "MARIA IVATÔNIA" as pessoa. So the original text has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as a single phrase, but the user's example output splits them. Wait, looking at the user's example input and output:
+
+Input: "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 6 Distribuído o feito para esta relatoria , o Distrito Federal junta documento novo às fls ."
+
+In the output, "GABINETE DA DESEMBARGADORA" is marked as organizacao, and "MARIA IVATÔNIA" as pessoa. So the original text has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as a single phrase, but the user's example splits them. Wait, maybe the user's example output is different. Let me check again.
+
+Wait, the user's example input is: "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 6 Distribuído o feito para esta relatoria , o Distrito Federal junta documento novo às fls ."
+
+The output example is not provided, but the user's instruction says to return the text with the entities marked. So in the input text, "GABINETE DA DESEMBARGADORA" is part of the organization, and "MARIA IVATÔNIA" is a pessoa. The "Distrito Federal" is a local. The rest of the text doesn't have any entities. So the HTML should have:
+
+- "GABINETE DA DESEMBARGADORA" as organizacao
+- "MARIA IVATÔNIA" as pessoa
+- "Distrito Federal" as local
+
+So the final HTML would have those parts wrapped in the respective spans. The rest of the text remains as is. Let me make sure there are no other entities. The numbers and codes are not marked, which is correct. The "Reexame Necessário" is a legal term but not an entity. The "Código de Verificação" is a term but not an entity. The "fls" is an abbreviation but not an entity. So the final HTML should have the three entities marked.
+</think>
+
+Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 6 Distribuído o feito para esta relatoria , o <span class="local">Distrito Federal</span> junta documento novo às fls .

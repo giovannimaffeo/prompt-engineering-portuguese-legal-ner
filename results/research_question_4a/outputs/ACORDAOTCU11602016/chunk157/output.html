@@ -1,0 +1,59 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to understand the definitions and examples provided. Let me go through each entity type again to make sure I don't miss any details.
+
+Pessoa: Names of individuals, like "Ana Silva" or "Carlos de Souza". Only proper names, not titles like "juiz" or "vítima".
+
+Organizacao: Formal entities like "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", etc. Also includes organizations like "UNIMED RIO COOPERATIVA...".
+
+Tempo: Dates, times, intervals. But only explicit temporal references. So "14/11/2017" or "março de 2013". Horários isolados like "17:26:32" aren't marked.
+
+Local: Specific places like cities, states, countries, addresses. "COMARCA DE BELO HORIZONTE", "Distrito Federal", etc. Not generic terms like "rua" without a specific name.
+
+Legislacao: Legal norms like "Constituição Federal", "Lei nº 8.666/93", "art. 71 da Lei 8.666/93". Must be full references, not just parts.
+
+Jurisprudencia: Judicial decisions, precedents, súmulas. Examples like "REsp 1694984/MS", "Súmula 331 do TST", "Acórdão nº 999404". Also includes "Autos nº 0715337-93.2014.8.01.0001".
+
+Now, looking at the input text:
+
+"Sobre essa matéria , em julgado desta Corte do qual fui relator , Acórdão nº 1879/2011 – Plenário , considerei que é indevido o pagamento antecipado por obras , serviços ou aquisições , salvo em casos excepcionais , devidamente justificados . 23 . Essa , aliás , é a jurisprudência predominante no Tribunal , que admite a antecipação de pagamento , desde que em situações excepcionais , devidamente justificadas pelo interesse público e observadas as devidas cautelas e garantias . Resgato alguns precedentes , a partir de pesquisa na jurisprudência selecionada desta Corte : “ A antecipação de pagamento somente deve ser admitida em situações excepcionais , devidamente justificadas pelo interesse público e observadas as devidas cautelas e garantias .”
+
+Let me parse each part:
+
+1. "Acórdão nº 1879/2011 – Plenário" – This is a judicial decision, so "Acórdão nº 1879/2011" should be marked as jurisprudencia. The "Plenário" might be part of the court's name, but since it's part of the Acórdão's reference, maybe it's included. Wait, the example in the guidelines says "Acórdão n. 999404" is marked as jurisprudencia. So here, "Acórdão nº 1879/2011" is a specific decision, so it's jurisprudencia. The "Plenário" might be part of the court's name, but in the example, "REsp n . 1694984/MS" is marked as jurisprudencia. So the entire reference is marked.
+
+2. "jurisprudência predominante no Tribunal" – "jurisprudência" is a generic term here, so it's not marked. "Tribunal" is an organization, but in the example, "Tribunal de Contas" is marked as organizacao. However, "Tribunal" alone might be considered an organization if it's a specific court. Wait, the example in the guidelines includes "Tribunal de Contas" as organizacao. But here, "Tribunal" is used without a specific name. Wait, the user's input says "Tribunal" without any specific name. So according to the guidelines, only specific names are marked. So "Tribunal" here is a generic term, not a specific organization. Therefore, it's not marked. Wait, but in the example, "Tribunal" is part of "Tribunal de Contas" which is marked. So if the text is "Tribunal" alone, it's not marked. So in the input, "Tribunal" is not marked.
+
+3. "jurisprudência selecionada desta Corte" – "jurisprudência" is generic, so not marked. "Corte" is a generic term for court, so not marked. But "Corte" might be part of a specific name. Wait, the example input has "Corte" in "esta Corte", which is part of the text. The example output for "Corte" is not marked. So in this case, "Corte" is not marked as organizacao unless it's a specific name. Since it's just "Corte", it's not marked.
+
+4. "Acórdão nº 1879/2011" – This is a specific judicial decision, so marked as jurisprudencia.
+
+5. "precedentes" – This is a generic term, not marked.
+
+6. "jurisprudência selecionada desta Corte" – Again, "jurisprudência" is generic, not marked.
+
+Now, checking for other entities:
+
+- Are there any pessoas? The text mentions "fui relator" – "relator" is a title, not a name. So no pessoa.
+
+- Organizacao: "Corte" is part of "esta Corte", but "Corte" alone is not a specific organization. So no organizacao.
+
+- Tempo: The text has "nº 1879/2011" – the year 2011 is part of the Acórdão's reference. But according to the guidelines, only explicit temporal references like dates are marked. The year here is part of the Acórdão's number, not a date. So it's not marked as tempo.
+
+- Local: No specific locations mentioned.
+
+- Legislacao: The text doesn't mention any laws or legal codes, so no legislacao.
+
+So the only entity to mark is "Acórdão nº 1879/2011" as jurisprudencia. Wait, but the example in the guidelines includes "REsp n . 1694984/MS" as jurisprudencia. So the entire reference is marked. In the input, "Acórdão nº 1879/2011 – Plenário" – the "Plenário" might be part of the court's name, but since it's part of the Acórdão's reference, maybe it's included. Wait, the example in the guidelines has "REsp n . 1694984/MS" as jurisprudencia. So the entire reference is marked. So in the input, "Acórdão nº 1879/2011 – Plenário" should be marked as jurisprudencia. Wait, but the "Plenário" is part of the court's name. Wait, the example input has "REsp n . 1694984/MS" as jurisprudencia. So the entire reference is marked. So in the input, "Acórdão nº 1879/2011 – Plenário" is a specific judicial decision, so the entire phrase is marked as jurisprudencia.
+
+Wait, but the example in the guidelines includes "REsp n . 1694984/MS" as jurisprudencia. So the entire reference is marked. Therefore, in the input, "Acórdão nº 1879/2011 – Plenário" should be marked as jurisprudencia. However, the "Plenário" might be part of the court's name, but since it's part of the Acórdão's reference, it's included. So the entire phrase is marked.
+
+Wait, but the example in the guidelines has "REsp n . 1694984/MS" as jurisprudencia. So the entire reference is marked. Therefore, in the input, "Acórdão nº 1879/2011 – Plenário" is a specific reference, so it's marked as jurisprudencia.
+
+So the final output should have "Acórdão nº 1879/2011 – Plenário" as jurisprudencia. Also, the "jurisprudência" in the text is a generic term, so not marked. The "Tribunal" is not marked as organizacao because it's not a specific name. The rest of the text has no entities to mark.
+
+So the HTML should have the Acórdão reference marked as jurisprudencia.
+</think>
+
+Sobre essa matéria , em julgado desta Corte do qual fui relator , <span class="jurisprudencia">Acórdão nº 1879/2011 – Plenário</span> , considerei que é indevido o pagamento antecipado por obras , serviços ou aquisições , salvo em casos excepcionais , devidamente justificados . 23 . Essa , aliás , é a jurisprudência predominante no Tribunal , que admite a antecipação de pagamento , desde que em situações excepcionais , devidamente justificadas pelo interesse público e observadas as devidas cautelas e garantias . Resgato alguns precedentes , a partir de pesquisa na jurisprudência selecionada desta Corte : “ A antecipação de pagamento somente deve ser admitida em situações excepcionais , devidamente justificadas pelo interesse público e observadas as devidas cautelas e garantias .”

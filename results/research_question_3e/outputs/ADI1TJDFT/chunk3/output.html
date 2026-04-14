@@ -1,0 +1,63 @@
+<think>
+Okay, let's tackle this HTML entity tagging task. The user provided a legal text and wants me to mark specific entities with HTML spans. First, I need to carefully go through the input text and identify each entity type: pessoa, organização, tempo, local, legislação, and jurisprudência.
+
+Starting with the first part: "Ação Direta de Inconstitucionalidade 20170020161362ADI tratando-se de vício que não é afastado por se tratar de norma meramente autorizativa nem pela ulterior sanção do Governador ."
+
+Here, "Ação Direta de Inconstitucionalidade" seems like a legal term, but it's not an entity type listed. The number "20170020161362ADI" might be a case number, which could fall under jurisprudência. But I need to check the guidelines. The example shows that complete identifiers like "REsp n . 1694984/MS" are marked as jurisprudência. So "20170020161362ADI" might be a case number, so I should mark it as jurisprudência.
+
+Next, "Lei nº 5.815/2017" is clearly legislation, so that's a legislação entity. "Lei Orgânica do Distrito Federal" is also legislation. The "artigo 53" and other articles mentioned are parts of the legislation, so they should be included in the legislação span.
+
+Then there's "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". This looks like a code or identifier, possibly a jurisprudência or legislação, but the example didn't mention codes like this. Wait, the example had "Código de Verificação" but didn't mark it. The guidelines say to mark only specific entities. Since "Código de Verificação" is a generic term, not a specific entity, maybe it's not marked. However, the number after it might be a case number. The example had "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" and in the output, it wasn't marked. So perhaps that's just a code and not an entity.
+
+Then there's "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". "GABINETE" is part of an organization's name, so the whole phrase might be an organization. "DESEMBARGADOR" is a title, not a person's name. "SILVANIO BARBOSA DOS SANTOS" is a full name, so that's a pessoa.
+
+"2 Fls." – "Fls." is an abbreviation for "Fls." which stands for "Fls." in legal terms, but it's not an entity. The number "2" is just a page number, not a time or date. So no entity here.
+
+Putting it all together:
+
+- "20170020161362ADI" as jurisprudência
+- "Lei nº 5.815/2017" as legislação
+- "Lei Orgânica do Distrito Federal" as legislação
+- "SILVANIO BARBOSA DOS SANTOS" as pessoa
+- "GABINETE DO DESEMBARGADOR" as organização (since it's part of the organization name)
+
+Wait, "GABINETE DO DESEMBARGADOR" – "DESEMBARGADOR" is a title, but the full name "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is an organization? Or is "SILVANIO BARBOSA DOS SANTOS" the person? The phrase is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" which might be the organization (gabinete) of the Desembargador (a title) named SILVANIO... So the person is SILVANIO, and the organization is GABINETE... So I need to split that. "SILVANIO BARBOSA DOS SANTOS" is a pessoa, and "GABINETE DO DESEMBARGADOR" is an organização. But the way it's written, it's the gabinete of the Desembargador, so maybe the entire phrase is an organization. Wait, the example had "MINISTÉRIO PÚBLICO FEDERAL" as organization. So if the text is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS", then "GABINETE DO DESEMBARGADOR" is the organization, and "SILVANIO..." is the person. But maybe the entire phrase is the organization's name. Alternatively, maybe "SILVANIO..." is the person, and the gabinete is the organization. The example in the guidelines says that expressions like "4ª Turma Cível" are organization. So "GABINETE DO DESEMBARGADOR" is an organization. The person is "SILVANIO BARBOSA DOS SANTOS".
+
+So in the text: "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – the organization is "GABINETE DO DESEMBARGADOR" and the pessoa is "SILVANIO BARBOSA DOS SANTOS".
+
+But the way the text is written, it's "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – maybe the entire thing is the organization's name. But "SILVANIO..." is a person. So I need to split them. Since the text is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS", the person is "SILVANIO BARBOSA DOS SANTOS", and the organization is "GABINETE DO DESEMBARGADOR".
+
+Putting it all together:
+
+- "20170020161362ADI" → jurisprudência
+- "Lei nº 5.815/2017" → legislação
+- "Lei Orgânica do Distrito Federal" → legislação
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+- "GABINETE DO DESEMBARGADOR" → organização
+
+So the final HTML would have those spans. Also, "Distrito Federal" is a local, so that should be marked as local. Wait, in the text: "Lei Orgânica do Distrito Federal" – "Distrito Federal" is a local. So that part should be <span class="local">Distrito Federal</span>.
+
+So putting all together:
+
+The text starts with "Ação Direta de Inconstitucionalidade 20170020161362ADI..." → the number is jurisprudência.
+
+Then "Lei nº 5.815/2017" is legislação.
+
+"Lei Orgânica do Distrito Federal" → "Distrito Federal" is local, and the entire law is legislation.
+
+Then "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – not an entity.
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" → "GABINETE DO DESEMBARGADOR" is organização, "SILVANIO..." is pessoa.
+
+So the HTML would look like:
+
+<Ação Direta de Inconstitucionalidade <span class="jurisprudencia">20170020161362ADI</span> tratando-se de vício que não é afastado por se tratar de norma meramente autorizativa nem pela ulterior sanção do Governador . 4 . Pedido julgado procedente para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto no<span class="legislacao">artigo 53 , `` caput '' e § 1º , artigo 71 , §1º , IV , artigo 100 , incisos IV , VI , X e XXIII , todos da <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> . <span class="jurisprudencia">Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span> <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 2 Fls .
+
+Wait, but the "Código de Verificação" part was not marked in the example, so maybe it's not an entity. Also, the "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the code is not an entity, so leave it as is. Similarly, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO..." is a pessoa.
+
+So the final output would have those spans. Let me check again for any missed entities. The "artigo 53" is part of the legislation, so it's included in the legislação span. The "Lei Orgânica do Distrito Federal" – the "Distrito Federal" is a local, so it's marked as local. The "GABINETE DO DESEMBARGADOR" is an organization. The "SILVANIO..." is a pessoa. The "20170020161362ADI" is jurisprudência. The "Código de Verificação" is not marked. The "2 Fls." is not an entity.
+
+So the final HTML should have those entities marked accordingly.
+</think>
+
+Ação Direta de Inconstitucionalidade <span class="jurisprudencia">20170020161362ADI</span> tratando-se de vício que não é afastado por se tratar de norma meramente autorizativa nem pela ulterior sanção do Governador . 4 . Pedido julgado procedente para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto no<span class="legislacao">artigo 53 , `` caput '' e § 1º , artigo 71 , §1º , IV , artigo 100 , incisos IV , VI , X e XXIII , todos da <span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span> . <span class="jurisprudencia">Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ</span> <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 2 Fls .

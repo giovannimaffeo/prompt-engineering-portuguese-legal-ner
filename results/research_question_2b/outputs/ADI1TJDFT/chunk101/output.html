@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is "O Senhor Desembargador CRUZ MACEDO - Vogal Senhor Presidente , também acompanho o eminente Relator , anotando que se o Executivo tiver interesse , pode sanar o vício encaminhando o texto nos mesmos termos da lei ."
+
+Looking for entities here. "Senhor Desembargador CRUZ MACEDO" – "CRUZ MACEDO" is a person's name, so that's a pessoa. "Senhor Presidente" is a title, but maybe "Presidente" is part of an organization? Wait, "Senhor Presidente" might refer to a person, but the title itself isn't an entity. Wait, the user's example output has "Senhor Desembargador CRUZ MACEDO" as a pessoa. So "CRUZ MACEDO" is a pessoa. Then "Vogal" is a title, but maybe not an entity. "Relator" is a role, perhaps part of an organization? Or maybe not. The example output doesn't mark "Relator" as an entity. So maybe only proper names are marked. 
+
+Next, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 26" – "GABINETE DO DESEMBARGADOR" is an organization? Or maybe "GABINETE" is the organization. "SILVANIO BARBOSA DOS SANTOS" is another pessoa. So "GABINETE DO DESEMBARGADOR" would be an organizacao. Wait, but "GABINETE" is a term for a cabinet, so maybe that's the organization. Then "SILVANIO BARBOSA DOS SANTOS" is a pessoa. 
+
+Then there's "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the code might be a reference, but not sure if it's a legislação or jurisprudência. The example output doesn't mark this, so maybe it's not an entity. 
+
+The part "Conforme relatado pelo em ." – "em" is probably a typo for "em" (in), but not an entity. 
+
+So, putting it all together:
+
+- "CRUZ MACEDO" is pessoa.
+- "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+- "GABINETE DO DESEMBARGADOR" is organizacao.
+- The code part is not marked.
+- "Código de Verificação" might be a reference, but not sure. The example output doesn't mark it, so maybe it's not an entity.
+
+Wait, the example output from the user's sample input shows that "Senhor Desembargador CRUZ MACEDO" is marked as pessoa. So "CRUZ MACEDO" is the pessoa. Similarly, "SILVANIO BARBOSA DOS SANTOS" is another pessoa. "GABINETE DO DESEMBARGADOR" is an organizacao. 
+
+So the HTML should have those spans. Let me check again. The input text has "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 26" – the "GABINETE DO DESEMBARGADOR" is the organization, and "SILVANIO BARBOSA DOS SANTOS" is the pessoa. 
+
+So the final HTML would have those spans. Also, the code part is not marked. 
+
+I think that's all. Let me structure the HTML accordingly.
+</think>
+
+O Senhor Desembargador <span class="pessoa">CRUZ MACEDO</span> - Vogal Senhor Presidente , também acompanho o eminente Relator , anotando que se o Executivo tiver interesse , pode sanar o vício encaminhando o texto nos mesmos termos da lei . Mas é evidente o vício de iniciativa . <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 26 Conforme relatado pelo em .

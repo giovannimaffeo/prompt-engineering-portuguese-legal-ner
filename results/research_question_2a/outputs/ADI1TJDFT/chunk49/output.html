@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "( Acórdão n.187778 , 20030020042411ADI , Relator : EDUARDO DE MORAES OLIVEIRA CONSELHO ESPECIAL , Data de Julgamento : 23/09/2003 , Publicado no DJU SEÇÃO 3 : 23/03/2004 . Pág. : 82 ) Fls ."
+
+Let me break it down. The first part is "( Acórdão n.187778 , 20030020042411ADI , Relator : EDUARDO DE MORAES OLIVEIRA CONSELHO ESPECIAL , Data de Julgamento : 23/09/2003 , Publicado no DJU SEÇÃO 3 : 23/03/2004 . Pág. : 82 ) Fls ."
+
+Looking for entities:
+
+1. "Acórdão n.187778" – Acórdão is a legal term, but the number might be a case number. Not sure if it's a jurisprudencia or legislation. Maybe it's a case number, which isn't one of the specified entities. So maybe leave as is.
+
+2. "20030020042411ADI" – This looks like a case number or some identifier. Not sure if it's an entity. Since it's a number, maybe not. Unless ADI refers to something. ADI could be an acronym, but without context, it's hard to say. Maybe leave as is.
+
+3. "Relator : EDUARDO DE MORAES OLIVEIRA" – "Relator" is a role, so the person's name is Eduardo de Moraes Oliveira. That's a pessoa.
+
+4. "CONSELHO ESPECIAL" – This is an organization, like a council. So that's organizacao.
+
+5. "Data de Julgamento : 23/09/2003" – The date is tempo.
+
+6. "Publicado no DJU SEÇÃO 3 : 23/03/2004" – DJU is the Diário da Justiça, which is a legal publication. So DJU is a local? Or maybe legislacao? Wait, DJU is a publication, so maybe local? Or maybe it's part of the legislation. Hmm. The user's guide says to use local for places. DJU is a publication, so maybe it's a local? Or maybe it's part of the legislation. Not sure. Alternatively, "SEÇÃO 3" might be a section, but not sure. The date here is 23/03/2004, which is tempo.
+
+7. "Pág. : 82" – Page number, not an entity.
+
+Now, let's map each part:
+
+- "Relator : EDUARDO DE MORAES OLIVEIRA" → pessoa
+- "CONSELHO ESPECIAL" → organizacao
+- "Data de Julgamento : 23/09/2003" → tempo
+- "Publicado no DJU SEÇÃO 3 : 23/03/2004" → DJU is a local? Or maybe legislacao? Wait, the user's guide says "local" for places. DJU is a publication, so maybe it's a local? Or maybe it's part of the legislation. Alternatively, "DJU" could be an acronym for a local publication. So maybe "DJU" is local. But the user might consider it as part of the legislation. Alternatively, maybe "DJU SEÇÃO 3" is a local. But I'm not certain. Since the user's example might not have this, perhaps I should mark "DJU" as local. Alternatively, maybe "DJU" is part of the legislation. But the user's guide doesn't specify that. So I'll go with local for DJU.
+
+So the HTML would be:
+
+(Acórdão n.187778 , 20030020042411ADI , Relator : <span class="pessoa">EDUARDO DE MORAES OLIVEIRA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">23/09/2003</span> , Publicado no <span class="local">DJU</span> SEÇÃO 3 : <span class="tempo">23/03/2004</span> . Pág. : 82 ) Fls .
+
+Wait, but "SEÇÃO 3" is part of the DJU. Maybe "DJU SEÇÃO 3" is the local. But the user's example might not have that. Alternatively, maybe "DJU" is the local, and "SEÇÃO 3" is part of the local. But the user's guide says to use local for places. So I'll mark "DJU" as local. The rest of the text remains as is.
+
+So the final HTML would have the specified spans for pessoa, organizacao, tempo, and local. The other parts like "Acórdão n.187778" and "20030020042411ADI" are not entities, so they stay as is.
+</think>
+
+(Acórdão n.187778 , 20030020042411ADI , Relator : <span class="pessoa">EDUARDO DE MORAES OLIVEIRA</span> <span class="organizacao">CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">23/09/2003</span> , Publicado no <span class="local">DJU</span> SEÇÃO 3 : <span class="tempo">23/03/2004</span> . Pág. : 82 ) Fls .

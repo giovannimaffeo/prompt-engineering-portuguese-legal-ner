@@ -1,0 +1,45 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each needs a class attribute.
+
+First, I need to parse the input text carefully. Let me read through the example text provided. 
+
+The text starts with "E M E N T A Órgão : 8ª TURMA CÍVEL". Here, "8ª TURMA CÍVEL" is an organization because it's a court or judicial body. So I'll mark that as organizacao.
+
+Next, "Classe : APELAÇÃO CÍVEL N . Processo : 20150110436469APC ( 0012843-03.2015.8.0001 )". The process number "20150110436469APC" and the internal number "0012843-03.2015.8.0001" might be jurisprudência since they are identifiers for legal cases. Wait, the guidelines mention that identifiers like "Acórdão n. 999404" should be jurisprudência. So these numbers are part of the process, so they should be marked as jurisprudência.
+
+Then, "Apelante ( s ) : BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA". These are company names, so organizacao. The names include "LTDA" which is common in Brazilian companies, so they should be marked as organizacao.
+
+"Apelado ( s ) : ALISSON SILVA BATISTA DE MORAES" is a person's name. "ALISSON SILVA BATISTA DE MORAES" is a full name, so pessoa.
+
+"Relatora : Desembargadora NÍDIA CORRÊA LIMA" – "NÍDIA CORRÊA LIMA" is a person's name, so pessoa. The title "Desembargadora" is a position, not a name, so not marked.
+
+"Acórdão N. : 1082726" – "1082726" is a number, but the guidelines say that identifiers like "Acórdão n. 999404" are jurisprudência. So "1082726" should be marked as jurisprudência.
+
+Next, "Súmula nº 503 do colendo Superior Tribunal de Justiça" – "Súmula nº 503" is a jurisprudência reference. The "Superior Tribunal de Justiça" is an organization, so organizacao.
+
+The rest of the text has dates and legal terms. For example, "3 de abril de 2017" would be tempo, but in the given text, there's no date. The process numbers are already marked as jurisprudência. 
+
+I need to check if any other entities are present. The text mentions "8ª TURMA CÍVEL" which is an organization. "BRASILIA CURSOS E CONCURSOS LTDA" and "GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" are organizations. "ALISSON SILVA BATISTA DE MORAES" is a pessoa. "NÍDIA CORRÊA LIMA" is another pessoa. The Acórdão number and Súmula are jurisprudência. The "Superior Tribunal de Justiça" is an organization.
+
+Wait, "Superior Tribunal de Justiça" is an organization, so that's organizacao. The Súmula is a jurisprudência reference. The process numbers are jurisprudência. The "8ª TURMA CÍVEL" is an organizacao. 
+
+I should make sure not to miss any. Also, the "Processo : 20150110436469APC ( 0012843-03.2015.8.0001 )" – the numbers inside the parentheses are part of the process identifier, so they should be marked as jurisprudência. 
+
+Let me go through each part again. 
+
+- "8ª TURMA CÍVEL" → organizacao
+- "BRASILIA CURSOS E CONCURSOS LTDA" → organizacao
+- "GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" → organizacao
+- "ALISSON SILVA BATISTA DE MORAES" → pessoa
+- "NÍDIA CORRÊA LIMA" → pessoa
+- "Acórdão N. : 1082726" → jurisprudência
+- "Súmula nº 503 do colendo Superior Tribunal de Justiça" → "Súmula nº 503" is jurisprudência, "Superior Tribunal de Justiça" is organizacao
+
+Wait, the Súmula is part of the jurisprudência. The "colendo" refers to the Superior Tribunal, which is an organization. So the entire "Súmula nº 503 do colendo Superior Tribunal de Justiça" would have "Súmula nº 503" as jurisprudência and "Superior Tribunal de Justiça" as organizacao. But in the text, it's written as "Súmula nº 503 do colendo Superior Tribunal de Justiça". So "Súmula nº 503" is the jurisprudência reference, and "Superior Tribunal de Justiça" is an organization.
+
+Also, the process numbers "20150110436469APC" and "0012843-03.2015.8.0001" are part of the process identifier, so they should be jurisprudência.
+
+So, putting it all together, I need to mark each of these entities with the appropriate class. Let me structure the HTML accordingly, ensuring that each entity is correctly identified and wrapped in the right <span> tags.
+</think>
+
+<span class="organizacao">8ª TURMA CÍVEL</span> Classe : APELAÇÃO CÍVEL N . Processo : <span class="jurisprudencia">20150110436469APC</span> ( <span class="jurisprudencia">0012843-03.2015.8.0001</span> ) Apelante ( s ) : <span class="organizacao">BRASILIA CURSOS E CONCURSOS LTDA</span> <span class="organizacao">GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA</span> Apelado ( s ) : <span class="pessoa">ALISSON SILVA BATISTA DE MORAES</span> Relatora : Desembargadora <span class="pessoa">NÍDIA CORRÊA LIMA</span> Acórdão N. : <span class="jurisprudencia">1082726</span> CIVIL E PROCESSUAL CIVIL . AÇÃO MONITÓRIA . CITAÇÃO REALIZADA APÓS O DECURSO DO PRAZO PRESCRICIONAL . PRESCRIÇÃO DA PRETENSÃO MONITÓRIA . RECONHECIMENTO . MANUTENÇÃO DA SENTENÇA . 1 . Nos termos da <span class="jurisprudencia">Súmula nº 503</span> do colendo <span class="organizacao">Superior Tribunal de Justiça</span> , `` O prazo para ajuizamento de ação monitória em face do emitente de cheque sem força executiva é quinquenal , a contar do dia seguinte à data de emissão estampada na cártula '' . 2 .

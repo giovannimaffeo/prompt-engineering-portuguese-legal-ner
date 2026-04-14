@@ -1,0 +1,35 @@
+<think>
+Okay, I need to generate an HTML version of the given legal text, marking specific entities. Let me start by reading through the input text carefully.
+
+First, the input text is about an appeal and a court decision. Let me go through each part step by step.
+
+The first part is "Apelação / Reexame Necessário 20140110500434APO". The number "20140110500434APO" looks like a case number. According to the guidelines, identifiers like this should be marked as jurisprudência. So I'll wrap that in <span class="jurisprudencia">.
+
+Next, "A C Ó R D Ã O" – this is "ACORDÃO" in uppercase, which is a court decision. The guidelines mention that mentions of acórdãos with specific numbers should be marked as jurisprudência. However, here it's just the word "ACORDÃO" without a number, so maybe not. But the example in the guidelines includes "Acórdão n. 999404" as jurisprudência. Since this is just the word, maybe it's not an entity. But I need to check if the word itself is a generic term. The user said not to mark generic terms like "súmula" or "acórdão" unless they refer to a specific decision. So in this case, "ACORDÃO" is just the word, so no tag.
+
+Then, "Acordam os Senhores Desembargadores da 5ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios". "5ª TURMA CÍVEL" is an organization. The guidelines say that expressions like "4ª Turma Cível" should be marked as organização. So "5ª TURMA CÍVEL" becomes <span class="organizacao">5ª TURMA CÍVEL</span>.
+
+"MARIA IVATÔNIA - Relatora" – "MARIA IVATÔNIA" is a person's name. So <span class="pessoa">MARIA IVATÔNIA</span>.
+
+"ANGELO PASSARELI - 1º Vogal" – "ANGELO PASSARELI" is a person. <span class="pessoa">ANGELO PASSARELI</span>.
+
+"SEBASTIÃO COELHO - 2º Vogal" – "SEBASTIÃO COELHO" is a person. <span class="pessoa">SEBASTIÃO COELHO</span>.
+
+"SILVA LEMOS - 3º Vogal" – "SILVA LEMOS" is a person. <span class="pessoa">SILVA LEMOS</span>.
+
+"JOSAPHA FRANCISCO DOS SANTOS - 4º Vogal" – "JOSAPHA FRANCISCO DOS SANTOS" is a person. <span class="pessoa">JOSAPHA FRANCISCO DOS SANTOS</span>.
+
+"SEBASTIÃO COELHO" again is a person. <span class="pessoa">SEBASTIÃO COELHO</span>.
+
+"Brasilia ( DF ) , 21 de Março de 2018" – "Brasilia" is a local, "DF" is the Distrito Federal, which is a local. "21 de Março de 2018" is a date, so time. So "Brasilia" becomes <span class="local">Brasilia</span>, "DF" becomes <span class="local">DF</span>, and "21 de Março de 2018" becomes <span class="tempo">21 de Março de 2018</span>.
+
+Now, checking for any other entities. The rest of the text includes terms like "VOTO-VISTA", "RECURSO", "REMESSA DE OFÍCIO", etc. These are not specific entities. The "Tribunal de Justiça do Distrito Federal e Territórios" is an organization. Wait, the original text says "do Tribunal de Justiça do Distrito Federal e Territórios". So "Tribunal de Justiça do Distrito Federal e Territórios" is an organization. Let me check the guidelines. The example includes "Tribunal de Contas" as an organization. So "Tribunal de Justiça do Distrito Federal e Territórios" should be <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span>.
+
+Wait, the original text has "do Tribunal de Justiça do Distrito Federal e Territórios" – the "do" is part of the phrase. So the full name is "Tribunal de Justiça do Distrito Federal e Territórios". So I need to mark that as an organization. So the entire phrase should be in the <span class="organizacao">.
+
+Putting it all together, I'll replace each entity with the appropriate span tags. Let me make sure I didn't miss any. The case number is marked as jurisprudência, the Turma Cível as organização, all the names as pessoas, the local entities as local, and the date as tempo. The Tribunal de Justiça is an organization. Also, the "DF" is a local, which is the abbreviation for Distrito Federal. So that's marked as local. The date "21 de Março de 2018" is marked as tempo.
+
+I think that's all. Let me review once more to ensure compliance with all the guidelines and that no generic terms are mistakenly marked.
+</think>
+
+Apelação / Reexame Necessário <span class="jurisprudencia">20140110500434APO</span> A C Ó R D Ã O Acordam os Senhores Desembargadores da <span class="organizacao">5ª TURMA CÍVEL</span> do <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span> , <span class="pessoa">MARIA IVATÔNIA</span> - Relatora , <span class="pessoa">ANGELO PASSARELI</span> - 1º Vogal , <span class="pessoa">SEBASTIÃO COELHO</span> - 2º Vogal , <span class="pessoa">SILVA LEMOS</span> - 3º Vogal , <span class="pessoa">JOSAPHA FRANCISCO DOS SANTOS</span> - 4º Vogal , sob a presidência do Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span> , em proferir a seguinte decisão : EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR . INSTAURADA A DIVERGÊNCIA PROSSEGUI-SE O JULGAMENTO INTEGRANDO O QUÓRUM O DES . <span class="pessoa">SILVA LEMOS</span> E O DES . <span class="pessoa">JOSAPHÁ FRANCISCO</span> . CONHECER DO RECURSO . RECEBER REMESSA DE OFÍCIO . NEGAR PROVIMENTO A AMBOS . MAIORIA . VENCIDO O 1º VOGAL. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">21 de Março de 2018</span> .

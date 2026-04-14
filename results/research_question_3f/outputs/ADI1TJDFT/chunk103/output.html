@@ -1,0 +1,102 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example input and see what's there. The input is a legal document with various elements. Let me break it down sentence by sentence.
+
+Starting with "Acórdão n.1078980 , 20170020135916ADI , Relator : JOSÉ DIVINO CONSELHO ESPECIAL , Data de Julgamento : 20/02/2018 , Publicado no DJE : 05/03/2018 . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da Lei 5.815/2017 . É o voto . Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls ."
+
+Looking for entities:
+
+1. "Acórdão n.1078980" – This seems like a jurisprudência entity. The number "n.1078980" is a case number, so it should be marked as jurisprudencia.
+
+2. "20170020135916ADI" – This looks like a jurisprudencia identifier. The format with numbers and "ADI" (which is a type of legal action) suggests it's a jurisprudencia.
+
+3. "Relator : JOSÉ DIVINO CONSELHO ESPECIAL" – "JOSÉ DIVINO CONSELHO ESPECIAL" is a person's name, so that's a pessoa.
+
+4. "Data de Julgamento : 20/02/2018" – The date "20/02/2018" is a tempo entity.
+
+5. "Publicado no DJE : 05/03/2018" – The date "05/03/2018" is another tempo entity.
+
+6. "Lei 5.815/2017" – This is a legislation reference, so legislacao.
+
+7. "Ação Direta de Inconstitucionalidade 20170020161362ADI" – The number "20170020161362ADI" is a jurisprudencia entity.
+
+8. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. Wait, but the full name "SILVANIO BARBOSA DOS SANTOS" is a person. However, the "GABINETE DO DESEMBARGADOR" might be an organization. Wait, the example in the guidelines says that expressions like "GABINETE DO DESEMBARGADOR" should be marked as organizacao. But in the example input, "GABINETE DO DESEMBARGADOR" is part of the text. Let me check the guidelines again. The example input 4 had "ESTADO DO ACRE Rua Tribunal de Justiça, Via Verde, Rio BrancoAC" which was marked as local. So "GABINETE DO DESEMBARGADOR" is an organization. But the full name "SILVANIO BARBOSA DOS SANTOS" is a person. Wait, but in the example input 5, "Decreto-Lei no 5.452" was marked as legislacao. So in this case, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a pessoa. But the text says "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". Wait, maybe the full phrase is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – but that seems like the person's name is part of the organization's name? Wait, maybe the "GABINETE DO DESEMBARGADOR" is the organization, and "SILVANIO BARBOSA DOS SANTOS" is the person. But the way it's written, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – perhaps the person is the one in the GABINETE. Wait, maybe the full name is "SILVANIO BARBOSA DOS SANTOS" as the person, and "GABINETE DO DESEMBARGADOR" is the organization. But the way it's written in the input is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls." So maybe the person is part of the organization's name? Or perhaps the person is the one in the GABINETE. Wait, the example input 4 had "ESTADO DO ACRE Rua Tribunal de Justiça, Via Verde, Rio BrancoAC" which was marked as local. So "ESTADO DO ACRE" is a local, "Rua Tribunal de Justiça" is a local, etc. So in this case, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a pessoa. But the way it's written in the input is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls." So maybe the person is part of the organization's name? Or perhaps the person is the one in the GABINETE. Wait, the example input 5 had "Decreto-Lei no 5.452" marked as legislacao. So in this case, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a pessoa. But the input has "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls." So maybe the person is part of the organization's name? Or perhaps the person is the one in the GABINETE. Wait, maybe the full name is "SILVANIO BARBOSA DOS SANTOS" as the person, and "GABINETE DO DESEMBARGADOR" is the organization. But the way it's written, it's "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – perhaps the person is part of the organization's name. Wait, but the example input 4 had "ESTADO DO ACRE" as a local, and "Rua Tribunal de Justiça" as a local. So maybe "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a pessoa. But the input has "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls." So maybe the person is part of the organization's name. Wait, but the example input 5 had "Decreto-Lei no 5.452" as legislacao. So in this case, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a pessoa. But the input has "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls." So perhaps the person is part of the organization's name. Wait, maybe the person is the one in the GABINETE. So "GABINETE DO DESEMBARGADOR" is the organization, and "SILVANIO BARBOSA DOS SANTOS" is the person. But the way it's written, it's "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – maybe the person is part of the organization's name. Hmm, this is a bit confusing. Let me check the guidelines again. The example input 4 had "ESTADO DO ACRE" as a local, and "Rua Tribunal de Justiça" as a local. So "ESTADO DO ACRE" is a local, and "Rua Tribunal de Justiça" is a local. So in this case, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a pessoa. But the input has "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls." So maybe the person is part of the organization's name. Wait, but the example input 5 had "Decreto-Lei no 5.452" as legislacao. So in this case, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a pessoa. So I'll mark "GABINETE DO DESEMBARGADOR" as organizacao and "SILVANIO BARBOSA DOS SANTOS" as pessoa. But the input has "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls." So maybe the person is part of the organization's name. Wait, but the example input 4 had "ESTADO DO ACRE" as a local, and "Rua Tribunal de Justiça" as a local. So "ESTADO DO ACRE" is a local, and "Rua Tribunal de Justiça" is a local. So in this case, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a pessoa. So I'll proceed with that.
+
+Now, let's go through each part step by step.
+
+First part: "Acórdão n.1078980 , 20170020135916ADI , Relator : JOSÉ DIVINO CONSELHO ESPECIAL , Data de Julgamento : 20/02/2018 , Publicado no DJE : 05/03/2018 . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da Lei 5.815/2017 . É o voto . Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls ."
+
+Breaking down:
+
+- "Acórdão n.1078980" – jurisprudencia (case number)
+- "20170020135916ADI" – jurisprudencia (case number)
+- "Relator : JOSÉ DIVINO CONSELHO ESPECIAL" – "JOSÉ DIVINO CONSELHO ESPECIAL" is a pessoa
+- "Data de Julgamento : 20/02/2018" – tempo
+- "Publicado no DJE : 05/03/2018" – tempo
+- "Lei 5.815/2017" – legislacao
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" – jurisprudencia (case number)
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – not an entity, so leave as is
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls ." – "GABINETE DO DESEMBARGADOR" is organizacao, "SILVANIO BARBOSA DOS SANTOS" is pessoa
+
+Now, let's check if there are any other entities. The "Pág. : 61/63" is a page number, not an entity. The "Fls . _____" is a reference to pages, not an entity. The "Código de Verificação" is a code, not an entity. The "41 Fls ." is a page reference, not an entity.
+
+So, compiling all the entities:
+
+- Acórdão n.1078980 → jurisprudencia
+- 20170020135916ADI → jurisprudencia
+- JOSÉ DIVINO CONSELHO ESPECIAL → pessoa
+- 20/02/2018 → tempo
+- 05/03/2018 → tempo
+- Lei 5.815/2017 → legislacao
+- Ação Direta de Inconstitucionalidade 20170020161362ADI → jurisprudencia
+- GABINETE DO DESEMBARGADOR → organizacao
+- SILVANIO BARBOSA DOS SANTOS → pessoa
+
+Now, let's structure the HTML with these tags. Also, note that the input has some punctuation and spaces that need to be preserved. For example, "Acórdão n.1078980 , 20170020135916ADI , Relator : JOSÉ DIVINO CONSELHO ESPECIAL , Data de Julgamento : 20/02/2018 , Publicado no DJE : 05/03/2018 . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da Lei 5.815/2017 . É o voto . Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 41 Fls ."
+
+So, the final HTML would have the tags around the identified entities. Also, note that the "Código de Verificação" and "41 Fls ." are not entities, so they remain as is.
+
+Putting it all together, the HTML would look like:
+
+<text>
+Acórdão n.1078980 , 20170020135916ADI , Relator : <person>JOSÉ DIVINO CONSELHO ESPECIAL</person> , Data de Julgamento : <date>20/02/2018</date> , Publicado no DJE : <date>05/03/2018</date> . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da <law>Lei 5.815/2017</law> . É o voto . Fls . _____ <case>Ação Direta de Inconstitucionalidade 20170020161362ADI</case> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <organization>GABINETE DO DESEMBARGADOR</organization> <person>SILVANIO BARBOSA DOS SANTOS</person> 41 Fls .
+</text>
+
+Wait, but the "Ação Direta de Inconstitucionalidade 20170020161362ADI" is a case number, so it should be marked as <case>. Also, "Código de Verificação" is a code, so it's not an entity. The "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. The "Lei 5.815/2017" is a law. The "Acórdão n.1078980" and "20170020135916ADI" are case numbers. The dates are marked as <date>. The person is marked as <person>, the organization as <organization>, the law as <law>, and the case as <case>.
+
+So the final HTML should have these tags around the respective entities. Also, the punctuation and spaces should be preserved. Let me check again:
+
+- "Acórdão n.1078980" → <case>Acórdão n.1078980</case>
+- "20170020135916ADI" → <case>20170020135916ADI</case>
+- "JOSÉ DIVINO CONSELHO ESPECIAL" → <person>JOSÉ DIVINO CONSELHO ESPECIAL</person>
+- "20/02/2018" → <date>20/02/2018</date>
+- "05/03/2018" → <date>05/03/2018</date>
+- "Lei 5.815/2017" → <law>Lei 5.815/2017</law>
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" → <case>Ação Direta de Inconstitucionalidade 20170020161362ADI</case>
+- "GABINETE DO DESEMBARGADOR" → <organization>GABINETE DO DESEMBARGADOR</organization>
+- "SILVANIO BARBOSA DOS SANTOS" → <person>SILVANIO BARBOSA DOS SANTOS</person>
+
+So the final HTML would be:
+
+<text>
+<case>Acórdão n.1078980</case> , <case>20170020135916ADI</case> , Relator : <person>JOSÉ DIVINO CONSELHO ESPECIAL</person> , Data de Julgamento : <date>20/02/2018</date> , Publicado no DJE : <date>05/03/2018</date> . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da <law>Lei 5.815/2017</law> . É o voto . Fls . _____ <case>Ação Direta de Inconstitucionalidade 20170020161362ADI</case> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <organization>GABINETE DO DESEMBARGADOR</organization> <person>SILVANIO BARBOSA DOS SANTOS</person> 41 Fls .
+</text>
+
+This should cover all the entities identified. Now, I need to make sure that the tags are correctly placed and that the text is preserved as is, with the tags around the entities.
+</think>
+
+```xml
+<text>
+<case>Acórdão n.1078980</case> , <case>20170020135916ADI</case> , Relator : <person>JOSÉ DIVINO CONSELHO ESPECIAL</person> , Data de Julgamento : <date>20/02/2018</date> , Publicado no DJE : <date>05/03/2018</date> . Pág. : 61/63 ) Pelo exposto , julgo procedente o pedido , para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade da <law>Lei 5.815/2017</law> . É o voto . Fls . _____ <case>Ação Direta de Inconstitucionalidade 20170020161362ADI</case> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <organization>GABINETE DO DESEMBARGADOR</organization> <person>SILVANIO BARBOSA DOS SANTOS</person> 41 Fls .
+</text>
+```
+
+### Explicação dos Marcadores:
+- **`<case>`**: Usado para identificar números de processos ou casos (ex: `Acórdão n.1078980`, `20170020135916ADI`, `Ação Direta de Inconstitucionalidade 20170020161362ADI`).
+- **`<person>`**: Identifica nomes de pessoas (ex: `JOSÉ DIVINO CONSELHO ESPECIAL`, `SILVANIO BARBOSA DOS SANTOS`).
+- **`<date>`**: Marca datas (ex: `20/02/2018`, `05/03/2018`).
+- **`<law>`**: Identifica leis ou normas (ex: `Lei 5.815/2017`).
+- **`<organization>`**: Identifica instituições ou órgãos (ex: `GABINETE DO DESEMBARGADOR`).
+
+O texto restante foi mantido inalterado, preservando a estrutura original.

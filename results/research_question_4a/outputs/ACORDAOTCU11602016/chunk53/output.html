@@ -1,0 +1,109 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text line by line.
+
+Starting with the first sentence: "Caso o ex-gestor ou a pessoa jurídica cumpram a deliberação desta Corte , ainda assim a contratada estará obrigada ao mandamento da Justiça Federal ( peça 66 , p. 11-12 ) ;"
+
+Here, "ex-gestor" is a title, not a name, so it's not a pessoa. "pessoa jurídica" is a generic term, not a specific name, so no mark. "Corte" is part of "Justiça Federal", which is an organization. Wait, "Corte" alone might not be an organization, but "Justiça Federal" is an organization. So "Justiça Federal" should be marked as organizacao. Also, "peça 66" is a reference to a document, but not an entity. The numbers and pages are part of a citation, but the user's examples show that only specific entities are marked. The parentheses have "peça 66" and "p. 11-12", which might be references but not entities. So maybe those are not marked.
+
+Next sentence: "f ) Conforme pacífica jurisprudência desta Casa , caso o réu seja absolvido na justiça comum , estará isento de reprimenda também na Corte de Contas ( peça 66 , p. 11 ) ;"
+
+"jurisprudência" is a generic term, so not marked. "Corte de Contas" is an organization, so mark as organizacao. "réu" is a generic term, not a name. "justiça comum" is a generic term. "peça 66" again, not an entity.
+
+Next: "g ) Com a deliberação da Justiça federal , que condenou o Grupo OK , favorecendo o recorrente , a prudência , a lógica e a Justiça recomendam a exclusão da responsabilidade dele no processo administrativo ou o sobrestamento do feito até decisão final do processo na Justiça Federal ;"
+
+"Juácia federal" is an organization, so mark as organizacao. "Grupo OK" is an organization, so mark as organizacao. "recorrente" is a generic term. "processo administrativo" is a generic term. "Justiça Federal" again, mark as organizacao.
+
+Next part: "Análise 7.2 . Os argumentos do recorrente não merecem prosperar . No ordenamento jurídico brasileiro vigora o princípio da independência das instâncias , em razão do qual podem ocorrer condenações simultâneas nas diferentes esferas – cível , criminal e administrativa ."
+
+"ordenamento jurídico" is a generic term. "cível", "criminal", "administrativa" are legal terms but not entities. "princípio da independência das instâncias" is a legal concept, not an entity. So no marks here.
+
+Now, checking for any other entities. "Corte" in the first sentence might be part of "Justiça Federal", which is an organization. "Corte de Contas" is an organization. "Justiça Federal" is an organization. "Grupo OK" is an organization. "Corte" alone might not be an organization unless it's part of a name. But in the first sentence, "Corte" is part of "Justiça Federal", so the full name is "Justiça Federal", which is an organization. "Corte de Contas" is another organization. "Grupo OK" is an organization. "Justiça Federal" again. 
+
+Wait, in the first sentence, "Corte" is part of "Justiça Federal", so the full name is "Justiça Federal", which is an organization. So "Justiça Federal" is marked as organizacao. "Corte de Contas" is also an organization. "Grupo OK" is an organization. 
+
+Also, "peça 66" and "p. 11-12" are references but not entities. The user's examples show that only specific entities are marked, not references to documents. 
+
+So the entities to mark are:
+
+- "Justiça Federal" (organizacao)
+- "Corte de Contas" (organizacao)
+- "Grupo OK" (organizacao)
+- "Corte" is part of "Justiça Federal", so not marked alone.
+- "peça 66" and "p. 11-12" are not entities.
+
+Wait, in the first sentence, "Corte" is part of "Justiça Federal", so the full name is "Justiça Federal", which is an organization. So "Justiça Federal" is marked. 
+
+In the second sentence, "Corte de Contas" is an organization. 
+
+In the third sentence, "Justiça Federal" again. 
+
+"Grupo OK" is an organization. 
+
+So the HTML should have:
+
+<span class="organizacao">Justiça Federal</span>
+<span class="organizacao">Corte de Contas</span>
+<span class="organizacao">Grupo OK</span>
+
+Wait, but in the first sentence, "Corte" is part of "Justiça Federal", so the full name is "Justiça Federal", which is an organization. So "Justiça Federal" is marked. 
+
+In the second sentence, "Corte de Contas" is an organization. 
+
+In the third sentence, "Justiça Federal" again. 
+
+Also, "Corte" in the first sentence is part of "Justiça Federal", so not marked alone. 
+
+So the final HTML should have those three organizations marked. 
+
+Let me check again. 
+
+Original text:
+
+"Caso o ex-gestor ou a pessoa jurídica cumpram a deliberação desta Corte , ainda assim a contratada estará obrigada ao mandamento da Justiça Federal ( peça 66 , p. 11-12 ) ;"
+
+Here, "Corte" is part of "Justiça Federal", so "Justiça Federal" is an organization. 
+
+"f ) Conforme pacífica jurisprudência desta Casa , caso o réu seja absolvido na justiça comum , estará isento de reprimenda também na Corte de Contas ( peça 66 , p. 11 ) ;"
+
+"Corte de Contas" is an organization. 
+
+"g ) Com a deliberação da Justiça federal , que condenou o Grupo OK , favorecendo o recorrente , a prudência , a lógica e a Justiça recomendam a exclusão da responsabilidade dele no processo administrativo ou o sobrestamento do feito até decisão final do processo na Justiça Federal ;"
+
+"Grupo OK" is an organization. "Justiça Federal" is an organization. 
+
+So the three organizations are "Justiça Federal", "Corte de Contas", and "Grupo OK". 
+
+Wait, "Justiça Federal" is mentioned twice. So in the first sentence, "Justiça Federal" is marked. In the third sentence, "Justiça Federal" again. 
+
+So the HTML should have those three instances marked. 
+
+Also, "Corte de Contas" is in the second sentence. 
+
+So the final output should have those three organizations marked. 
+
+No other entities are present. 
+
+So the HTML would be:
+
+Caso o ex-gestor ou a pessoa jurídica cumpram a deliberação desta Corte , ainda assim a contratada estará obrigada ao mandamento da <span class="organizacao">Justiça Federal</span> ( peça 66 , p. 11-12 ) ; f ) Conforme pacífica jurisprudência desta Casa , caso o réu seja absolvido na justiça comum , estará isento de reprimenda também na <span class="organizacao">Corte de Contas</span> ( peça 66 , p. 11 ) ; g ) Com a deliberação da <span class="organizacao">Justiça Federal</span> , que condenou o <span class="organizacao">Grupo OK</span> , favorecendo o recorrente , a prudência , a lógica e a Justiça recomendam a exclusão da responsabilidade dele no processo administrativo ou o sobrestamento do feito até decisão final do processo na <span class="organizacao">Justiça Federal</span> ; Análise 7.2 . Os argumentos do recorrente não merecem prosperar . No ordenamento jurídico brasileiro vigora o princípio da independência das instâncias , em razão do qual podem ocorrer condenações simultâneas nas diferentes esferas – cível , criminal e administrativa .
+
+Wait, but "Justiça Federal" is mentioned twice in the third sentence. So in the third sentence, "Justiça Federal" is marked again. 
+
+So the final HTML should have those four instances of "Justiça Federal" and "Corte de Contas" and "Grupo OK". 
+
+Wait, in the first sentence, "Justiça Federal" is marked once. In the third sentence, "Justiça Federal" is marked again. So total of two instances. 
+
+So the final output should have:
+
+- "Justiça Federal" (twice)
+- "Corte de Contas" (once)
+- "Grupo OK" (once)
+
+So the HTML would have those three organizations marked. 
+
+I think that's all. No other entities are present. The rest are generic terms or references.
+</think>
+
+Caso o ex-gestor ou a pessoa jurídica cumpram a deliberação desta Corte , ainda assim a contratada estará obrigada ao mandamento da <span class="organizacao">Justiça Federal</span> ( peça 66 , p. 11-12 ) ; f ) Conforme pacífica jurisprudência desta Casa , caso o réu seja absolvido na justiça comum , estará isento de reprimenda também na <span class="organizacao">Corte de Contas</span> ( peça 66 , p. 11 ) ; g ) Com a deliberação da <span class="organizacao">Justiça Federal</span> , que condenou o <span class="organizacao">Grupo OK</span> , favorecendo o recorrente , a prudência , a lógica e a Justiça recomendam a exclusão da responsabilidade dele no processo administrativo ou o sobrestamento do feito até decisão final do processo na <span class="organizacao">Justiça Federal</span> ; Análise 7.2 . Os argumentos do recorrente não merecem prosperar . No ordenamento jurídico brasileiro vigora o princípio da independência das instâncias , em razão do qual podem ocorrer condenações simultâneas nas diferentes esferas – cível , criminal e administrativa .

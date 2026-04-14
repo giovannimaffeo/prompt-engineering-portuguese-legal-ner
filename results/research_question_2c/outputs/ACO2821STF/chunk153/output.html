@@ -1,0 +1,43 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "RICARDO LEWANDOWSKI ACO 2821 A GR / MT Na mesma direção , vide AC 3.201-MC/PR , Rel ."
+
+Let me break it down word by word.
+
+"RICARDO LEWANDOWSKI" – these are names, so they should be 'pessoa'. So I'll wrap each name in <span class="pessoa">.
+
+"ACO 2821 A GR / MT" – ACO might stand for something, but I'm not sure. However, in legal contexts, "AC" could be an acronym for "Acórdão" (a court decision), which is part of jurisprudencia. But the user's example output shows "ACO 2821 A GR / MT" as part of the text without any tags. Wait, maybe "ACO" is an organization? Or maybe it's a case number. The user's example output includes "ACO 2821 A GR / MT" as is. Wait, looking at the sample output provided by the user, the output is: 
+
+<RICARDO LEWANDOWSKI> <span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A GR / MT Na mesma direção , vide <span class="jurisprudencia">AC 3.201-MC/PR</span> , Rel .
+
+Wait, in the sample output, "AC 3.201-MC/PR" is marked as jurisprudencia. So maybe "AC" here refers to a legal decision or a case. So "AC" is part of jurisprudencia. But in the input text, it's "AC 3.201-MC/PR". The user's example output shows "AC 3.201-MC/PR" as <span class="jurisprudencia">AC 3.201-MC/PR</span>. So I need to check if "AC" is part of jurisprudencia. 
+
+Similarly, "ACO 2821 A GR / MT" – maybe "ACO" is an organization? But the user's example output doesn't tag those parts. Wait, looking at the user's sample output, the input text is "RICARDO LEWANDOWSKI ACO 2821 A GR / MT Na mesma direção , vide AC 3.201-MC/PR , Rel ." and the output is:
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A GR / MT Na mesma direção , vide <span class="jurisprudencia">AC 3.201-MC/PR</span> , Rel .
+
+So in the sample output, "AC 3.201-MC/PR" is marked as jurisprudencia. The rest of the text, like "ACO 2821 A GR / MT" is left as is. So maybe "ACO" is not an entity here. 
+
+So, in the input text, "RICARDO LEWANDOWSKI" are pessoas. Then "AC 3.201-MC/PR" is jurisprudencia. The rest of the text doesn't have any entities. 
+
+So applying that to the input text: 
+
+"RICARDO LEWANDOWSKI" → pessoa
+"AC 3.201-MC/PR" → jurisprudencia
+The rest of the text (ACO 2821 A GR / MT, Na mesma direção , vide , Rel .) doesn't have any entities. 
+
+Wait, but "ACO 2821 A GR / MT" – maybe "GR" is a local? Like "GR" could be an abbreviation for a state or region. But the user's example output doesn't tag it. So perhaps in this case, the user's example output doesn't tag those parts. 
+
+Therefore, the correct HTML would be:
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A GR / MT Na mesma direção , vide <span class="jurisprudencia">AC 3.201-MC/PR</span> , Rel .
+
+So I need to make sure that only the entities are tagged. The rest remains as is. 
+
+Another thing to check: "AC 3.201-MC/PR" – the "AC" here might be an acronym for "Acórdão" (a court decision), which is part of jurisprudencia. So that's why it's tagged. 
+
+So the final output should have the two entities marked as pessoa and jurisprudencia, and the rest remains unchanged.
+</think>
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A GR / MT Na mesma direção , vide <span class="jurisprudencia">AC 3.201-MC/PR</span> , Rel .

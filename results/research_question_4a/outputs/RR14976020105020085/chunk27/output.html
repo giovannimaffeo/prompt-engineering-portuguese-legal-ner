@@ -1,0 +1,50 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with "Na presente hipótese , como o Reclamante é servidor público contratado por Autarquia Pública , pelo regime da CLT , tem direito ao adicional por tempo de serviço a cada cinco anos ( quinquênio ) ."
+
+Here, "Reclamante" is a person, but wait, the guidelines say that only proper names should be marked. "Reclamante" is a generic term, so it shouldn't be marked. "Autarquia Pública" is an organization. "CLT" is a legislation, but wait, CLT is the Consolidação das Leis do Trabalho, which is a legal code. So "CLT" should be marked as legislacao. "quinquênio" is a term related to time, but it's a generic term, not a specific date or time reference. So maybe not marked. "tempo de serviço" is a general term, not a specific time entity. So no tags here except "Autarquia Pública" as organizacao and "CLT" as legislacao.
+
+Next part: "Assim , não há como assegurar o processamento do recurso de revista quando o agravo de instrumento interposto não desconstitui os termos da decisão denegatória , que subsiste por seus próprios fundamentos . Agravo de instrumento desprovido . ( TST-AIRR-1377-74.2012.5.15.0088 , Relator Ministro Mauricio Godinho Delgado , 3ª Turma , DEJT 31/03/2015 ) AGRAVO DE INSTRUMENTO EM RECURSO DE REVISTA . PARCELA SEXTA-PARTE . EXTENSÃO AOS SERVIDORES PÚBLICOS REGIDOS PELA CLT . Nos termos da Orientação Jurisprudencial Transitória n.º 75 da SBDI-1 do TST - , a parcela denominada -sexta-parte- , instituída pelo art ."
+
+Looking for entities here. "TST-AIRR-1377-74.2012.5.15.0088" is a jurisprudencia reference. "Relator Ministro Mauricio Godinho Delgado" – "Ministro" is a title, not a proper name, so "Mauricio Godinho Delgado" is a pessoa. "3ª Turma" is an organization. "DEJT 31/03/2015" – "31/03/2015" is a tempo. "Orientação Jurisprudencial Transitória n.º 75 da SBDI-1 do TST" – "SBDI-1 do TST" is an organization. "art." is part of a legislation reference, but "art." alone isn't enough. Wait, the input ends with "art .", but maybe there's more context. However, the input text ends there, so maybe "art." is part of a legislation reference but not fully specified. Since the user's example includes "art.61 , §1º , da Lei nº 9.430/96" as legislacao, maybe "art." here is part of a legislation reference. But since it's incomplete, maybe not. Wait, the user's example includes "art." as part of the legislation. So perhaps "art." here is part of a legislation reference. However, the input text ends with "art .", so maybe it's incomplete. But according to the guidelines, only complete references should be marked. So maybe "art." isn't marked here. Alternatively, if it's part of a larger reference, but since the text ends there, perhaps it's not marked. 
+
+Wait, the input text has "Orientação Jurisprudencial Transitória n.º 75 da SBDI-1 do TST - , a parcela denominada -sexta-parte- , instituída pelo art .". The "art." here is part of a legislation reference, but it's incomplete. So maybe not marked. 
+
+So, let's list all the entities found:
+
+- "Autarquia Pública" → organizacao
+- "CLT" → legislacao
+- "TST-AIRR-1377-74.2012.5.15.0088" → jurisprudencia
+- "Mauricio Godinho Delgado" → pessoa
+- "3ª Turma" → organizacao
+- "DEJT 31/03/2015" → tempo
+- "SBDI-1 do TST" → organizacao
+- "art." → maybe not, since it's incomplete. But if it's part of a legislation reference, but the text ends there, so maybe not.
+
+Wait, the user's example includes "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So if the input has "art." followed by something, it would be marked. But in this case, the input ends with "art .", so it's incomplete. Therefore, not marked.
+
+So the entities are:
+
+- organizacao: Autarquia Pública, 3ª Turma, SBDI-1 do TST
+- legislacao: CLT
+- jurisprudencia: TST-AIRR-1377-74.2012.5.15.0088
+- tempo: DEJT 31/03/2015
+- pessoa: Mauricio Godinho Delgado
+
+Wait, "DEJT 31/03/2015" – "DEJT" is an acronym for Diário Eletrônico do Judiciário, which is a publication, so maybe not a local, but the date "31/03/2015" is a tempo. So "31/03/2015" is tempo. The "DEJT" is part of the date reference, but according to the guidelines, only the date part should be marked. So "31/03/2015" is tempo.
+
+Also, "Relator Ministro Mauricio Godinho Delgado" – "Ministro" is a title, not a proper name, so only "Mauricio Godinho Delgado" is pessoa.
+
+So putting it all together, the HTML should have the appropriate spans for each entity. Let me check again to make sure I didn't miss any.
+
+Another part: "Agravo de instrumento desprovido . ( TST-AIRR-1377-74.2012.5.15.0088 , Relator Ministro Mauricio Godinho Delgado , 3ª Turma , DEJT 31/03/2015 )". The "TST-AIRR-1377-74.2012.5.15.0088" is a jurisprudencia. "3ª Turma" is organizacao. "DEJT 31/03/2015" has the date as tempo.
+
+Also, "SBDI-1 do TST" is an organization. "TST" is an organization (Triângulo do Trabalho, but in Brazil, TST is the Superior Labor Court). So "SBDI-1 do TST" is an organization.
+
+So the final HTML should have all these tags. Let me structure the text with the correct spans.
+</think>
+
+Na presente hipótese , como o Reclamante é servidor público contratado por Autarquia Pública , pelo regime da CLT , tem direito ao adicional por tempo de serviço a cada cinco anos ( quinquênio ) . Assim , não há como assegurar o processamento do recurso de revista quando o agravo de instrumento interposto não desconstitui os termos da decisão denegatória , que subsiste por seus próprios fundamentos . Agravo de instrumento desprovido . ( <span class="jurisprudencia">TST-AIRR-1377-74.2012.5.15.0088</span> , Relator <span class="pessoa">Ministro Mauricio Godinho Delgado</span> , <span class="organizacao">3ª Turma</span> , <span class="tempo">DEJT 31/03/2015</span> ) AGRAVO DE INSTRUMENTO EM RECURSO DE REVISTA . PARCELA SEXTA-PARTE . EXTENSÃO AOS SERVIDORES PÚBLICOS REGIDOS PELA CLT . Nos termos da <span class="jurisprudencia">Orientação Jurisprudencial Transitória n.º 75 da SBDI-1 do TST</span> - , a parcela denominada -sexta-parte- , instituída pelo <span class="legislacao">art</span> .

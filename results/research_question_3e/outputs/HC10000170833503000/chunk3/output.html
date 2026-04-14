@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. I need to follow the guidelines provided, making sure each entity is correctly identified and tagged.
+
+First, I'll read through the input text carefully. Let me start by breaking down each sentence and identifying possible entities.
+
+The first part is ", acorda , em Turma , a 3ª CÂMARA CRIMINAL do Tribunal de Justiça do Estado de Minas Gerais , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM . DES . FORTUNA GRION RELATOR . DES . FORTUNA GRION ( RELATOR ) V O T O Trata-se de Habeas Corpus impetrado em favor de MÁRCIO ADAIR COELHO JÚNIOR , preso , em 19.08.16 , em virtude de decreto de prisão preventiva por ter , em 05.07.16 , violado , em tese , o disposto no art . 121 , §2º , II e IV , c/c art . 14 , II , ambos do CP , e ora pronunciado nos exatos termos da denúncia , objetivando , com o writ , o relaxamento da prisão do paciente ou , alternativamente , o direito de aguardar o julgamento perante o Tribunal do Júri em liberdade . Requer , ainda , a antecipação da sessão de julgamento designada para o dia 25.01.18 ."
+
+Looking for entities:
+
+- "3ª CÂMARA CRIMINAL" – this is part of the Tribunal de Justiça, which is an organization. So, "3ª CÂMARA CRIMINAL" should be marked as organizacao.
+- "Tribunal de Justiça do Estado de Minas Gerais" – another organization. The entire phrase is an organization.
+- "DES . FORTUNA GRION" – this seems like a person's name, so pessoa.
+- "MÁRCIO ADAIR COELHO JÚNIOR" – another person's name, so pessoa.
+- "19.08.16" and "05.07.16" – these are dates, so tempo.
+- "25.01.18" – another date, tempo.
+- "art . 121 , §2º , II e IV , c/c art . 14 , II , ambos do CP" – the "CP" here stands for Código Penal, which is legislation. So "art. 121, §2º, II e IV" and "art. 14, II" are parts of the legislation, so they should be marked as legislação. The "CP" is part of the legislation as well, so maybe "CP" is part of the legislation, but the example given in the guidelines includes "art. 61 , §1º , da Lei nº 9.430/96" as legislação. So here, "CP" is part of the legislation, so it should be included.
+
+Now, checking the guidelines again to make sure I'm not missing anything. For example, "3ª CÂMARA CRIMINAL" is an organization. "Tribunal de Justiça do Estado de Minas Gerais" is also an organization. "DES . FORTUNA GRION" is a person. "MÁRCIO ADAIR COELHO JÚNIOR" is a person. The dates are marked as tempo. The "CP" is part of the legislation. The "art. 121" and "art. 14" are parts of the legislation. Also, "Tribunal do Júri" is part of the organization, but the text says "Tribunal do Júri em liberdade", so "Tribunal do Júri" is an organization. Wait, the user's example includes "Tribunal de Contas" as an organization. So "Tribunal do Júri" should be marked as organizacao.
+
+Wait, the input text has "Tribunal do Júri em liberdade". The "Tribunal do Júri" is part of the organization, so that should be marked as organizacao. But in the example given, the user didn't mark "Tribunal de Justiça" as an organization, but in the guidelines, they said "organizações" include tribunais. So yes, "Tribunal do Júri" is an organization.
+
+So, putting it all together:
+
+- "3ª CÂMARA CRIMINAL" → organizacao
+- "Tribunal de Justiça do Estado de Minas Gerais" → organizacao
+- "DES . FORTUNA GRION" → pessoa
+- "MÁRCIO ADAIR COELHO JÚNIOR" → pessoa
+- "19.08.16" → tempo
+- "05.07.16" → tempo
+- "25.01.18" → tempo
+- "art. 121 , §2º , II e IV , c/c art . 14 , II , ambos do CP" → legislação, since "CP" is Código Penal, which is legislation.
+
+Wait, the "CP" is part of the legislation. The example in the guidelines includes "art. 61 , §1º , da Lei nº 9.430/96" as legislação. So here, "art. 121" and "art. 14" are parts of the legislation, and "CP" is the Código Penal, so the entire expression should be marked as legislação.
+
+Also, the "Tribunal do Júri" is part of the organization. So in the text, "perante o Tribunal do Júri em liberdade" → "Tribunal do Júri" is an organization.
+
+So the final HTML should have these entities marked with the appropriate classes.
+</think>
+
+, acorda , em Turma , a <span class="organizacao">3ª CÂMARA CRIMINAL</span> do <span class="organizacao">Tribunal de Justiça do Estado de Minas Gerais</span> , na conformidade da ata dos julgamentos , à unanimidade , em DENEGAR A ORDEM . <span class="pessoa">DES . FORTUNA GRION</span> RELATOR . <span class="pessoa">DES . FORTUNA GRION</span> ( RELATOR ) V O T O Trata-se de Habeas Corpus impetrado em favor de <span class="pessoa">MÁRCIO ADAIR COELHO JÚNIOR</span> , preso , em <span class="tempo">19.08.16</span> , em virtude de decreto de prisão preventiva por ter , em <span class="tempo">05.07.16</span> , violado , em tese , o disposto no <span class="legislacao">art . 121 , §2º , II e IV , c/c art . 14 , II , ambos do CP</span> , e ora pronunciado nos exatos termos da denúncia , objetivando , com o writ , o relaxamento da prisão do paciente ou , alternativamente , o direito de aguardar o julgamento perante o <span class="organizacao">Tribunal do Júri</span> em liberdade . Requer , ainda , a antecipação da sessão de julgamento designada para o dia <span class="tempo">25.01.18</span> .

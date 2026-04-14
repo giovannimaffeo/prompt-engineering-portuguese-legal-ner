@@ -1,0 +1,58 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify which parts fit each category. Let me go through the text line by line.
+
+Starting with "Intimada as partes sobre as provas a produzir `` fls.291 '' . Disse a parte autora não ter outras provas à fls . 293 não havendo manifestação do requerido à fls.294 . Vieram os autos conclusos para sentença ” ( fl . 298/298-v ) ."
+
+Here, "fls." seems to be an abbreviation for "fls." which is Portuguese for "folhas" (pages). The numbers like 291, 293, 294, 298/298-v are likely referring to page numbers or document references. Since these are temporal references (dates or page numbers), they might fall under 'tempo' or 'legislacao'? Wait, the 'tempo' category is for explicit time references. The numbers here are more like document references, not time. But the user's guidelines mention that 'tempo' includes dates, partial dates, years, etc. However, in legal contexts, 'fls.' is often used for page numbers, which are not time references. So maybe these are not 'tempo' but part of the legal document structure. However, the user's example might have different interpretations. Wait, the user's example output includes "DISPOSITIVO 458 , III , CPC" as legislacao. So maybe 'fls.' is part of the legal document references, but not sure if they are considered 'tempo' or not. Let me check the definitions again.
+
+The 'tempo' definition includes dates, partial dates, years, etc. The 'legislacao' includes references to legal norms like laws, codes, etc. The 'fls.' here are page numbers, which are not time or legislation. So maybe they are not marked. But the user's example might have different handling. Wait, the example output includes "DISPOSITIVO 458 , III , CPC" as legislacao. So 'DISPOSITIVO' is part of the legislation. Similarly, 'CPC' is the Código de Processo Civil, which is legislation. So in the input text, "DISPOSITIVO 458 , III , CPC" would be marked as legislacao. 
+
+Looking back at the input text, there's "DISPOSITIVO 458 , III , CPC" which is part of the legislation. So that should be marked as legislacao. Also, "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – the code might be part of a legal document, but the user's example might not mark it. Wait, the user's example output includes "DISPOSITIVO 458 , III , CPC" as legislacao. So the 'DISPOSITIVO' and 'CPC' are marked. 
+
+Now, looking at the input text again: "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – this is an organization, as it's the office of a judge. So "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" should be marked as organizacao. 
+
+The part "5 Julgo procedente o pedido..." – the date "5" is a day, so that's 'tempo'. Wait, but the date is written as "5 Julgo" – maybe "5" is the day, and "Julgo" is the month? Wait, in Portuguese, "Julho" is the month, but here it's written as "Julgo", which might be a typo for "Julho". So "5 Julgo" would be a date, so 'tempo'. 
+
+Also, "20140110500434APO" – this looks like a case number or some code, which might not be any of the entities. 
+
+The part "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – "Código de Verificação" is a term, but it's not a legal entity. The code after it is a string, not an entity. 
+
+So, putting it all together:
+
+- "DISPOSITIVO 458 , III , CPC" → legislacao
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" → organizacao
+- "5 Julgo" → tempo
+- "CPC" is part of the legislacao (Código de Processo Civil)
+- "fls." and numbers like 291, 293, 294, 298/298-v – these are document references, not entities, so not marked
+- "MARIA IVATÔNIA" is a person (the judge), so pessoa
+- "Código de Verificação" is not an entity, but the code is not marked
+- "20140110500434APO" is a code, not an entity
+- "2018ACO899XSQTZBL81ZOE6V34P" is a code, not an entity
+
+Wait, "MARIA IVATÔNIA" is a person, so that's pessoa. Also, "DESEMBARGADORA" is part of the organization's name, so the entire "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organization. 
+
+So the final HTML should have:
+
+- <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span>
+- <span class="pessoa">MARIA IVATÔNIA</span>
+- <span class="tempo">5 Julgo</span>
+- <span class="legislacao">DISPOSITIVO 458 , III , CPC</span>
+- <span class="legislacao">CPC</span> (since CPC is part of the legislation)
+- Also, "Código de Verificação" is not an entity, but the code is not marked. 
+
+Wait, the user's example output includes "DISPOSITIVO 458 , III , CPC" as legislacao. So in the input text, "DISPOSITIVO 458 , III , CPC" is marked as legislacao. Also, "CPC" is part of that, so it's included. 
+
+So the final HTML would have those spans. Let me check again. 
+
+The input text has "DISPOSITIVO 458 , III , CPC" which is part of the legislation. So that entire phrase is marked as legislacao. Also, "CPC" is part of that, but since it's within the same span, it's already covered. 
+
+The "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organization. "MARIA IVATÔNIA" is a person. "5 Julgo" is a date, so tempo. 
+
+So the HTML should have those spans. The rest of the text remains as is. 
+
+I think that's all. Let me put it all together.
+</think>
+
+<Intimada as partes sobre as provas a produzir `` fls.291 '' . Disse a parte autora não ter outras provas à fls . 293 não havendo manifestação do requerido à fls.294 . Vieram os autos conclusos para sentença ” ( fl . 298/298-v ) . O Juízo de origem apreciou a questão nos seguintes termos : “ O pedido deve ser julgado procedente . <span class="legislacao">DISPOSITIVO 458 , III , CPC</span> Fls . _____ Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> <span class="tempo">5 Julgo</span> julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença . A parte demandada goza de isenção legal , mas deve ressarcir as custas adiantadas pela parte autora .

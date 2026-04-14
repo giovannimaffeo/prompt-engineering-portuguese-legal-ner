@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities.
+
+Starting with "Supremo Tribunal Federal ACO 2821 A GR / MT unanimidade , negar provimento ao agravo regimental , nos termos do voto do Relator . Brasília , 16 de março de 2018 . RICARDO LEWANDOWSKI RELATOR 2 Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536376 . Inteiro Teor do Acórdão - Página 2 de 17 Relatório 16/03/2018 PLENÁRIO A G .REG ."
+
+Breaking it down:
+
+1. "Supremo Tribunal Federal" – This is an organization. So, <span class="organizacao">Supremo Tribunal Federal</span>.
+
+2. "ACO 2821 A GR / MT" – Not sure about ACO here. Maybe ACO is an acronym, but since it's not a known entity type, I'll leave it as is. "MT" could be a state abbreviation, but the user didn't specify to mark states, so maybe it's a local? Wait, the user's entities include 'local', but MT is a state in Brazil. However, the instruction says to mark 'local' if it's a place. But the example might not have it. Let me check the rest.
+
+3. "Brasília" – This is a city, so a local. <span class="local">Brasília</span>.
+
+4. "16 de março de 2018" – This is a date, so tempo. <span class="tempo">16 de março de 2018</span>.
+
+5. "RICARDO LEWANDOWSKI" – This is a person's name. <span class="pessoa">RICARDO LEWANDOWSKI</span>.
+
+6. "MP n° 2.200-2/2001" – MP stands for Medida Provisória, which is a legislative act. So, <span class="legislacao">MP n° 2.200-2/2001</span>.
+
+7. "Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil" – This is a legislative act or regulation. So, <span class="legislacao">Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil</span>.
+
+8. "http : //www.stf.jus.br/portal/autenticacao/" – This is a URL, but the user didn't mention URLs as entities. So leave as is.
+
+9. "14536376" – A number, not an entity.
+
+10. "Inteiro Teor do Acórdão" – This is part of the document title, but not an entity. "Página 2 de 17" – Not an entity. "Relatório 16/03/2018" – The date here is 16/03/2018, which is tempo. So <span class="tempo">16/03/2018</span>.
+
+Wait, the original text has "16 de março de 2018" and "16/03/2018". Both are dates, so both should be marked as tempo.
+
+Also, "PLENÁRIO" – This refers to the Plenary session of the court, which might be a jurisprudencia or part of the organization. But since it's part of the court's structure, maybe it's part of the organization. However, the user's entities don't include 'session' or 'plenary', so perhaps leave it as is.
+
+Putting it all together, I need to replace each identified entity with the appropriate <span> tags. Let me go through the text again and mark each entity.
+
+Final check: Are there any other entities? "ACO 2821 A GR" – Not sure. Maybe ACO is an acronym for something, but without context, it's safer to leave it. "A GR / MT" – MT is a state, so local? But the user's local is for places. MT is a state abbreviation, so maybe it's a local. But the user's example might not have that. Alternatively, since the user didn't specify to mark states, maybe it's better to leave it. However, the user's instruction says to mark 'local' if it's a place. So "MT" as a state abbreviation might be considered a local. But I'm not sure. The original text has "MT" in "ACO 2821 A GR / MT", which might be a state code. So, "MT" could be a local. But the user's example might not have that. Alternatively, maybe "MT" is part of the case number, so not an entity. I'll leave it as is.
+
+So, the final HTML should have the marked entities as discussed.
+</think>
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT unanimidade , negar provimento ao agravo regimental , nos termos do voto do Relator . <span class="local">Brasília</span> , <span class="tempo">16 de março de 2018</span> . <span class="pessoa">RICARDO LEWANDOWSKI</span> RELATOR 2 Documento assinado digitalmente conforme <span class="legislacao">MP n° 2.200-2/2001</span> de 24/08/2001 , que institui a <span class="legislacao">Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil</span> . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536376 . Inteiro Teor do Acórdão - Página 2 de 17 Relatório <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG .

@@ -1,0 +1,81 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me break down the sentence.
+
+The text starts with "Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a Decisão proferida em 9 de novembro de 2017 , que negou seguimento aos Embargos de Declaração opostos por Nelson Barroso Ferreira contra o Acórdão proferido por este Tribunal nos autos do Recurso em Sentido Estrito nº 109-80.2017.7.01.0201 , por seus próprios e jurídicos fundamentos . É o Voto ."
+
+Looking for entities:
+
+1. "Nelson Barroso Ferreira" is a person's name. So that's a 'pessoa'.
+2. "Acórdão" might refer to a legal decision, which could be part of jurisprudência, but I need to check. Wait, "Acórdão" is a court decision, so maybe it's part of jurisprudência. But the term "jurisprudência" is explicitly mentioned later. Wait, the text says "por seus próprios e jurídicos fundamentos" – here, "jurídicos" is an adjective, so maybe not an entity. Wait, the user wants to mark entities like 'jurisprudencia', which is a legal term. But in the text, "jurisprudência" is mentioned as a noun. Wait, the text says "por seus próprios e jurídicos fundamentos" – "jurídicos" is an adjective, so maybe not an entity. Wait, the user's example output might have "jurisprudencia" as a class. Let me check the example.
+
+Wait, the user provided an example where "jurisprudencia" is used. Let me check the input text again. The text mentions "Acórdão proferido por este Tribunal" – "Acórdão" is a court decision, which might be part of jurisprudência. But maybe "Acórdão" is a specific decision, so it's a jurisprudência entity. Alternatively, "Acórdão" could be part of the legal process, but I'm not sure. Alternatively, "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" is a case number, which might be a local or legislation? Wait, the case number is part of the legal process, so maybe it's a local entity? Or perhaps it's part of the legislation? Hmm, not sure. Maybe the case number is part of the local entity, but I'm not certain. Alternatively, the case number might not be an entity. Let me think again.
+
+The user's example output might have "jurisprudencia" for "Acórdão" or "Recurso em Sentido Estrito". Wait, the example output from the user's previous example (if any) isn't provided here, but the user's instruction says to use the classes as specified. Let me focus on the text.
+
+Looking for "pessoa": Nelson Barroso Ferreira is a person. So that's a <span class="pessoa">.
+
+"Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" – the number is a case number, which might be a local entity? Or maybe it's part of the legislation? Not sure. Alternatively, the "Recurso em Sentido Estrito" is a legal term, so maybe it's part of the legislation? Or perhaps it's a local entity. Alternatively, the number could be a local entity. But the user's example might have different handling. Let me check the text again.
+
+The text mentions "Acórdão proferido por este Tribunal" – "Acórdão" is a court decision, which is part of jurisprudência. So maybe "Acórdão" is a jurisprudência entity. Also, "Decisão proferida em 9 de novembro de 2017" – "Decisão" is a decision, which could be part of jurisprudência. The date "9 de novembro de 2017" is a tempo entity. The "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" – the number is a case number, which might be a local entity. Alternatively, the "Recurso em Sentido Estrito" is a legal term, so maybe it's part of the legislation? Not sure. Alternatively, the entire case number is a local entity. Let me proceed step by step.
+
+First, "9 de novembro de 2017" is a date, so that's a <span class="tempo">.
+
+"Nelson Barroso Ferreira" is a person, so <span class="pessoa">.
+
+"Acórdão" – since it's a court decision, which is part of jurisprudência, so <span class="jurisprudencia">.
+
+"Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" – the case number is a local entity? Or maybe it's part of the legislation? Alternatively, the "Recurso em Sentido Estrito" is a legal term, so maybe it's part of the legislation. But the user's example might not have that. Alternatively, the case number is a local entity. Let me check the user's example. Wait, the user's example output isn't provided here, but the user's instruction says to use the classes as specified. So, the case number might be a local entity. Alternatively, the "Recurso em Sentido Estrito" is a legal term, so maybe it's part of the legislation. But I'm not certain. Alternatively, the case number is a local entity. Let me proceed with that.
+
+So, the case number "109-80.2017.7.01.0201" is a local entity. So, wrap that in <span class="local">.
+
+Wait, but the case number is part of the legal process, so maybe it's a local entity. Alternatively, the entire "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" is a local entity. But the user's example might have different handling. Let me check the original text again.
+
+The text says "nos autos do Recurso em Sentido Estrito nº 109-80.2017.7.01.0201". The "Recurso em Sentido Estrito" is a legal term, so maybe it's part of the legislation? Or perhaps it's a local entity. Alternatively, the case number is a local entity. Since the user's example might not have that, but the instruction says to mark entities as per the classes. So, the case number is a local entity. So, the entire "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" would be a local entity? Or just the number? Hmm. The user's example might have the case number as a local entity. Let me proceed with that.
+
+So, the case number is a local entity. Therefore, wrap "109-80.2017.7.01.0201" in <span class="local">.
+
+Also, "este Tribunal" refers to the court, which is an organization. So "este Tribunal" is an organization. Wait, "este Tribunal" is a reference to the court, so it's an organization. So, "este Tribunal" should be <span class="organizacao">.
+
+Putting it all together:
+
+- "9 de novembro de 2017" → tempo
+- "Nelson Barroso Ferreira" → pessoa
+- "Acórdão" → jurisprudencia
+- "Recurso em Sentido Estrito nº 109-80.2017.7.01.0201" → local (the case number)
+- "este Tribunal" → organizacao
+
+Wait, but "Recurso em Sentido Estrito" is a legal term, so maybe it's part of the legislation? Or is it a local entity? Alternatively, the entire phrase is a local entity. But the user's example might not have that. Let me check again.
+
+The user's instruction says to mark entities as per the classes. So, "Recurso em Sentido Estrito" is a legal term, but it's not one of the specified entities. The case number is a local entity. So, the case number is a local entity. Therefore, the number part is a local entity. The rest of the phrase is part of the legal process, so maybe not an entity. So, the case number is a local entity.
+
+So, the final HTML would have:
+
+- "9 de novembro de 2017" → <span class="tempo">9 de novembro de 2017</span>
+- "Nelson Barroso Ferreira" → <span class="pessoa">Nelson Barroso Ferreira</span>
+- "Acórdão" → <span class="jurisprudencia">Acórdão</span>
+- "este Tribunal" → <span class="organizacao">este Tribunal</span>
+- "109-80.2017.7.01.0201" → <span class="local">109-80.2017.7.01.0201</span>
+
+Wait, but the case number is part of the "Recurso em Sentido Estrito nº ...", so the entire phrase might be a local entity. But the user's example might not have that. Alternatively, the case number is a local entity. Let me proceed with that.
+
+So, the final HTML would have the case number as a local entity. Also, "Decisão" is a decision, which is part of jurisprudência. Wait, the text says "Decisão proferida em 9 de novembro de 2017" – "Decisão" is a decision, which is part of jurisprudência. So "Decisão" should be marked as jurisprudência. Wait, but the user's example might have different handling. Let me check again.
+
+The user's instruction says to mark entities like 'jurisprudencia'. So, "Decisão" is a decision, which is part of jurisprudência. So, "Decisão" should be marked as <span class="jurisprudencia">Decisão</span>.
+
+Similarly, "Acórdão" is a court decision, so also jurisprudência. So, both "Decisão" and "Acórdão" are jurisprudência entities.
+
+So, the final HTML would have:
+
+- "9 de novembro de 2017" → tempo
+- "Nelson Barroso Ferreira" → pessoa
+- "Decisão" → jurisprudencia
+- "Acórdão" → jurisprudencia
+- "este Tribunal" → organizacao
+- "109-80.2017.7.01.0201" → local
+
+Putting it all together, the HTML would have these spans marked accordingly.
+</think>
+
+Ante o exposto , rejeito o presente Agravo Interno , para manter na íntegra a <span class="jurisprudencia">Decisão</span> proferida em <span class="tempo">9 de novembro de 2017</span> , que negou seguimento aos Embargos de Declaração opostos por <span class="pessoa">Nelson Barroso Ferreira</span> contra o <span class="jurisprudencia">Acórdão</span> proferido por <span class="organizacao">este Tribunal</span> nos autos do <span class="local">Recurso em Sentido Estrito nº 109-80.2017.7.01.0201</span> , por seus próprios e jurídicos fundamentos . É o Voto .

@@ -1,0 +1,36 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 15 de Março de 2018 ."
+
+Let me break it down word by word.
+
+"UNÂNIME." – This seems like an adjective, maybe indicating unanimous decision. Not one of the entities listed, so leave as is.
+
+", de acordo com a ata do julgamento e notas taquigráficas ." – "ata" is a record, maybe a legal document. "julgamento" is judgment, which could relate to jurisprudencia. "notas taquigráficas" are stenographic notes, possibly part of the record. So "ata" might be a legal document, but the classes are for entities like legislation, jurisprudence, etc. Wait, "ata" is a record of a meeting, maybe a type of document. But the classes are for entities, not documents. Hmm. Maybe "ata" isn't an entity here. The user's example output might help.
+
+Looking at the sample output provided by the user: The input text is "UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 15 de Março de 2018 ." and the output is:
+
+<span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">15 de Março de 2018</span> .
+
+So in the sample, "Brasilia ( DF )" is marked as local, and "15 de Março de 2018" as tempo. The rest are left as is. So "ata" and "julgamento" are not marked. So maybe the task is to mark only the specific entities listed, not all possible terms. So I need to check each word against the entity types.
+
+Let me go through the input again:
+
+"UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 15 de Março de 2018 ."
+
+- "UNÂNIME." – No entity.
+- "de acordo com a ata do julgamento e notas taquigráficas" – "ata" is a record, but not one of the entity types. "julgamento" is judgment, which might relate to jurisprudencia, but the sample didn't mark it. So maybe the user's example doesn't mark those. So perhaps only "Brasilia (DF)" as local and "15 de Março de 2018" as tempo. The rest are left as is.
+
+So the output should be:
+
+UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">15 de Março de 2018</span> .
+
+Wait, the sample output the user provided has "Brasilia ( DF )" as local, with DF also as local. So in the input, "Brasilia ( DF )" is marked as local. The "DF" is the District Federal, so it's a local entity. So in the output, both Brasilia and DF are marked as local.
+
+The date "15 de Março de 2018" is marked as tempo.
+
+So the final HTML should have those spans. The rest of the text remains unchanged.
+</think>
+
+UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">15 de Março de 2018</span> .

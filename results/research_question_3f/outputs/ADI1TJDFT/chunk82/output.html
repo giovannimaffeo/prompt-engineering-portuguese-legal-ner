@@ -1,0 +1,99 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me start by breaking down the text into parts.
+
+The first part is: "Compete privativamente ao Governador do Distrito Federal : ( ... ) VI - iniciar o processo legislativo , na forma e nos casos previstos nesta Lei Orgânica ; ( ... ) X - dispor sobre a organização e o funcionamento da administração do Distrito Federal , na forma desta Lei Orgânica ; ( ... ) XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da legislação em vigor '' . Sobre hipóteses semelhantes a dos autos , confira-se os seguintes julgados : '' AÇÃO DIRETA DE CONSTITUCIONALIDADE . LEI Nº 5.764/2016 . INICIATIVA PARLAMENTAR . TRANSFERÊNCIA DE ATRIBUIÇÕES DA ADASA PARA A SECRETARIA DE ESTADO DE MEIO AMBIENTE . DISCIPLINA DOS CRITÉRIOS DE EXPLORAÇÃO E USO DE BEM PÚBLICO DO DISTRITO FEDERAL ( ÁGUAS SUBTERRÂNEAS ) . MATÉRIAS DE COMPETÊNCIA PRIVATIVA DO CHEFE DO PODER EXECUTIVO . VIOLAÇÃO DA RESERVA DE ADMINISTRAÇÃO ."
+
+Let me go through each part step by step.
+
+Starting with "Governador do Distrito Federal". "Governador" is a title, not a name, so it's not a pessoa. "Distrito Federal" is a local entity, so I should mark that as local. Wait, the example in the guidelines mentions "Distrito Federal" as a local. So "Distrito Federal" should be <span class="local">Distrito Federal</span>.
+
+Next, "Lei Orgânica" – that's a legislation, so <span class="legislacao">Lei Orgânica</span>. Also, "Lei Orgânica" is part of the text, so I need to check if it's a full reference. The example shows "Lei nº 9.430/96" as legislation, so "Lei Orgânica" is a legislation reference. So mark that.
+
+Then, "Lei Nº 5.764/2016" is clearly a legislation, so <span class="legislacao">LEI Nº 5.764/2016</span>. Wait, the input has "LEI Nº 5.764/2016" with uppercase letters. The example shows "LEI Nº 11.788" as legislation, so I should use the same format.
+
+Looking at "ADASA" – that's an organization, so <span class="organizacao">ADASA</span>. Also, "SECRETARIA DE ESTADO DE MEIO AMBIENTE" is an organization, so <span class="organizacao">SECRETARIA DE ESTADO DE MEIO AMBIENTE</span>.
+
+"Distrito Federal" again appears in "BEM PÚBLICO DO DISTRITO FEDERAL ( ÁGUAS SUBTERRÂNEAS )". The "Distrito Federal" here is a local, so <span class="local">Distrito Federal</span>. The part in parentheses is "ÁGUAS SUBTERRÂNEAS", which is a generic term, not a specific location, so no tag.
+
+"CHEFE DO PODER EXECUTIVO" – this is a title, not a name, so no tag. "RESERVA DE ADMINISTRAÇÃO" is a generic term, not an entity.
+
+Now, checking for other entities. "Ação Direta de Constitucionalidade" – this is a type of legal action, but the example shows "REsp" as jurisprudencia. However, "Ação Direta de Constitucionalidade" is a legal term, but not a specific case or reference. The example mentions "REsp n . 1694984/MS" as jurisprudencia. Since "Ação Direta de Constitucionalidade" is a type of action, not a specific case, it's not marked. Similarly, "hipóteses semelhantes a dos autos" – "autos" refers to the case, but without a specific identifier, it's not marked.
+
+Looking for any other entities. "INICIATIVA PARLAMENTAR" – this is a term, not an entity. "TRANSFERÊNCIA DE ATRIBUIÇÕES" – generic term. "DISCIPLINA DOS CRITÉRIOS" – same. "MATÉRIAS DE COMPETÊNCIA PRIVATIVA" – generic. "VIOLAÇÃO DA RESERVA DE ADMINISTRAÇÃO" – generic.
+
+So, the entities to mark are:
+
+- "Distrito Federal" (local)
+- "Lei Orgânica" (legislacao)
+- "LEI Nº 5.764/2016" (legislacao)
+- "ADASA" (organizacao)
+- "SECRETARIA DE ESTADO DE MEIO AMBIENTE" (organizacao)
+
+Wait, the input has "Distrito Federal" in two places. The first part is "Governador do Distrito Federal" – "Distrito Federal" is a local. Then in the part about "BEM PÚBLICO DO DISTRITO FEDERAL", again "Distrito Federal" is a local. So both instances should be marked as local.
+
+Also, "Lei Orgânica" is mentioned twice. The first time in "na forma desta Lei Orgânica" and again in "Lei Orgânica" in the text. Wait, the input has "Lei Orgânica" in the first part as "na forma desta Lei Orgânica" and then later in the text as "Lei Orgânica" in the example. Wait, looking back at the input text:
+
+The first part is: "Compete privativamente ao Governador do Distrito Federal : ( ... ) VI - iniciar o processo legislativo , na forma e nos casos previstos nesta Lei Orgânica ; ( ... ) X - dispor sobre a organização e o funcionamento da administração do Distrito Federal , na forma desta Lei Orgânica ; ( ... ) XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da legislação em vigor '' . Sobre hipóteses semelhantes a dos autos , confira-se os seguintes julgados : '' AÇÃO DIRETA DE CONSTITUCIONALIDADE . LEI Nº 5.764/2016 . INICIATIVA PARLAMENTAR . TRANSFERÊNCIA DE ATRIBUIÇÕES DA ADASA PARA A SECRETARIA DE ESTADO DE MEIO AMBIENTE . DISCIPLINA DOS CRITÉRIOS DE EXPLORAÇÃO E USO DE BEM PÚBLICO DO DISTRITO FEDERAL ( ÁGUAS SUBTERRÂNEAS ) . MATÉRIAS DE COMPETÊNCIA PRIVATIVA DO CHEFE DO PODER EXECUTIVO . VIOLAÇÃO DA RESERVA DE ADMINISTRAÇÃO ."
+
+So "Lei Orgânica" is mentioned in two places: once as "nesta Lei Orgânica" and again as "na forma desta Lei Orgânica". Wait, no, the first part says "nesta Lei Orgânica" and "na forma desta Lei Orgânica". So "Lei Orgânica" is a legislation reference. So both instances should be marked as legislacao. Wait, but the text is "nesta Lei Orgânica" and "na forma desta Lei Orgânica". So "Lei Orgânica" is the same entity, so it's marked once. Wait, but the text is "nesta Lei Orgânica" and "na forma desta Lei Orgânica". So "Lei Orgânica" is the same entity, so it's marked once. Wait, but the user's example shows that "Lei Orgânica" is part of the text. For example, in the example input 3, "LEI Nº 11.788" is marked as legislacao. So "Lei Orgânica" is a legislation, so it should be marked as legislacao. However, in the input text, "Lei Orgânica" is part of the text, so I need to check if it's a full reference. The example shows "Lei Orgânica" as part of the text, but in the example input 3, "LEI Nº 11.788" is marked. So "Lei Orgânica" is a legislation, so it should be marked as legislacao. Wait, but in the example input 5, "Consolidação das Leis do Trabalho – CLT" is marked as legislacao. So "Lei Orgânica" is a legislation, so it should be marked as legislacao. Therefore, in the input text, "Lei Orgânica" is a legislation, so it should be marked as <span class="legislacao">Lei Orgânica</span>.
+
+Wait, but in the input text, "Lei Orgânica" is part of the text, not a full reference. For example, in the example input 3, "LEI Nº 11.788" is marked, but "Lei Orgânica" is not a full reference. However, in the example input 5, "Consolidação das Leis do Trabalho – CLT" is marked as legislacao. So "Lei Orgânica" is a legislation, so it should be marked. Therefore, in the input text, "Lei Orgânica" is a legislation, so it's marked as legislacao.
+
+So, the entities to mark are:
+
+- "Distrito Federal" (local)
+- "Lei Orgânica" (legislacao)
+- "LEI Nº 5.764/2016" (legislacao)
+- "ADASA" (organizacao)
+- "SECRETARIA DE ESTADO DE MEIO AMBIENTE" (organizacao)
+
+Wait, the input text has "Distrito Federal" in two places. The first part is "Governador do Distrito Federal" and then "BEM PÚBLICO DO DISTRITO FEDERAL". Both instances should be marked as local.
+
+Also, "Lei Orgânica" is mentioned in two places: "nesta Lei Orgânica" and "na forma desta Lei Orgânica". So "Lei Orgânica" is the same entity, so it's marked once. Wait, but the text is "nesta Lei Orgânica" and "na forma desta Lei Orgânica". So "Lei Orgânica" is the same entity, so it's marked once. However, in the input text, "Lei Orgânica" is part of the text, so it's marked as legislacao.
+
+Now, checking for any other entities. "Ação Direta de Constitucionalidade" – this is a type of legal action, but not a specific case, so no tag. "hipóteses semelhantes a dos autos" – "autos" refers to the case, but without a specific identifier, it's not marked. "julgados" – this is a term, not an entity. "LEI Nº 5.764/2016" is a legislation. "ADASA" is an organization. "SECRETARIA DE ESTADO DE MEIO AMBIENTE" is an organization. "Distrito Federal" is a local. "Lei Orgânica" is a legislation.
+
+So, putting it all together, the HTML should have the following tags:
+
+- "Distrito Federal" as local
+- "Lei Orgânica" as legislacao
+- "LEI Nº 5.764/2016" as legislacao
+- "ADASA" as organizacao
+- "SECRETARIA DE ESTADO DE MEIO AMBIENTE" as organizacao
+
+Now, let me structure the text with these tags. Also, note that the input has some parts in quotes, like "Sobre hipóteses semelhantes a dos autos , confira-se os seguintes julgados : '' AÇÃO DIRETA DE CONSTITUCIONALIDADE . LEI Nº 5.764/2016 . INICIATIVA PARLAMENTAR . TRANSFERÊNCIA DE ATRIBUIÇÕES DA ADASA PARA A SECRETARIA DE ESTADO DE MEIO AMBIENTE . DISCIPLINA DOS CRITÉRIOS DE EXPLORAÇÃO E USO DE BEM PÚBLICO DO DISTRITO FEDERAL ( ÁGUAS SUBTERRÂNEAS ) . MATÉRIAS DE COMPETÊNCIA PRIVATIVA DO CHEFE DO PODER EXECUTIVO . VIOLAÇÃO DA RESERVA DE ADMINISTRAÇÃO ."
+
+Wait, the part after "confira-se os seguintes julgados : '' " includes "AÇÃO DIRETA DE CONSTITUCIONALIDADE . LEI Nº 5.764/2016 . INICIATIVA PARLAMENTAR . TRANSFERÊNCIA DE ATRIBUIÇÕES DA ADASA PARA A SECRETARIA DE ESTADO DE MEIO AMBIENTE . DISCIPLINA DOS CRITÉRIOS DE EXPLORAÇÃO E USO DE BEM PÚBLICO DO DISTRITO FEDERAL ( ÁGUAS SUBTERRÂNEAS ) . MATÉRIAS DE COMPETÊNCIA PRIVATIVA DO CHEFE DO PODER EXECUTIVO . VIOLAÇÃO DA RESERVA DE ADMINISTRAÇÃO ."
+
+In this part, "LEI Nº 5.764/2016" is a legislation, so marked. "ADASA" is an organization. "SECRETARIA DE ESTADO DE MEIO AMBIENTE" is an organization. "Distrito Federal" in "BEM PÚBLICO DO DISTRITO FEDERAL" is a local. The rest are terms without specific entities.
+
+So, the final HTML should have all these tags. Let me make sure I didn't miss any. Also, check for any other possible entities. For example, "Chefe do Poder Executivo" – that's a title, not a name, so no tag. "Reserva de Administração" – generic term. "ÁGUAS SUBTERRÂNEAS" – not a specific location. "MATÉRIAS DE COMPETÊNCIA PRIVATIVA" – generic. "VIOLAÇÃO DA RESERVA DE ADMINISTRAÇÃO" – generic.
+
+Therefore, the final answer should include the tags for the identified entities.
+</think>
+
+Aqui está a versão do texto com as tags de identificação corretamente aplicadas, conforme solicitado:
+
+---
+
+**Texto com tags de identificação:**
+
+```
+Compete privativamente ao Governador do <span class="local">Distrito Federal</span> : ( ... ) VI - iniciar o processo legislativo , na forma e nos casos previstos nesta <span class="legislacao">Lei Orgânica</span> ; ( ... ) X - dispor sobre a organização e o funcionamento da administração do <span class="local">Distrito Federal</span> , na forma desta <span class="legislacao">Lei Orgânica</span> ; ( ... ) XXIII - celebrar ou autorizar convênios , ajustes ou acordos com entidades públicas ou particulares , na forma da legislação em vigor '' . Sobre hipóteses semelhantes a dos autos , confira-se os seguintes julgados : '' <span class="legislacao">AÇÃO DIRETA DE CONSTITUCIONALIDADE</span> . <span class="legislacao">LEI Nº 5.764/2016</span> . INICIATIVA PARLAMENTAR . TRANSFERÊNCIA DE ATRIBUIÇÕES DA <span class="organizacao">ADASA</span> PARA A <span class="organizacao">SECRETARIA DE ESTADO DE MEIO AMBIENTE</span> . DISCIPLINA DOS CRITÉRIOS DE EXPLORAÇÃO E USO DE BEM PÚBLICO DO <span class="local">Distrito Federal</span> ( ÁGUAS SUBTERRÂNEAS ) . MATÉRIAS DE COMPETÊNCIA PRIVATIVA DO CHEFE DO PODER EXECUTIVO . VIOLAÇÃO DA RESERVA DE ADMINISTRAÇÃO .
+```
+
+---
+
+### Explicação das tags:
+
+- **`<span class="local">Distrito Federal</span>`**: Identifica o "Distrito Federal" como uma unidade territorial.
+- **`<span class="legislacao">Lei Orgânica</span>`**: Refere-se a uma lei constitutiva ou reguladora de um ente político.
+- **`<span class="legislacao">LEI Nº 5.764/2016</span>`**: Identifica uma lei específica por meio de seu número e ano.
+- **`<span class="organizacao">ADASA</span>`**: Refere-se a uma empresa ou órgão público.
+- **`<span class="organizacao">SECRETARIA DE ESTADO DE MEIO AMBIENTE</span>`**: Identifica uma instituição pública.
+
+---
+
+Se precisar de uma versão formatada em HTML ou com destaque visual, posso ajustar conforme necessário.

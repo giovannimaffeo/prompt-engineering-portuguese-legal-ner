@@ -1,0 +1,52 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input is a legal decision text. Let me break it down sentence by sentence.
+
+The first part is "Decisão : O Tribunal , por unanimidade , aprovou a proposta de alteração da Resolução-TSE n° 23.549/2017 , nos termos do voto do relator .". Here, "Tribunal" is likely an organization, so I'll mark it as organizacao. "Resolução-TSE" seems like a legislative document, so that's legislacao. The number "23.549/2017" is part of the legislation, so it should be included in the legislacao span. The date "8.3.2018" is a tempo entity.
+
+Next, "Composição : Ministros Luiz Fux ( presidente ) , Rosa Weber , Luís Roberto Barroso , Napoleão Nunes Maia Filho , Jorge Mussi , Tarcísio Vieira de Carvalho Neto e Carlos Horbach ." Here, "Ministros" refers to people, so each name like Luiz Fux, Rosa Weber, etc., should be pessoa. The "(presidente)" is a title, but maybe the person's name is already covered. Wait, "presidente" is a title, but the person's name is Luiz Fux, so the title might not be an entity here. The user's example output shows "Ministros Luiz Fux ( presidente )" with "Luiz Fux" as pessoa and "presidente" as a title, but the user's example output might not include titles. Wait, the user's example output for the input text shows "Ministros Luiz Fux ( presidente )" with "Luiz Fux" as pessoa and "presidente" as a title? Wait, no, the user's example output might not have that. Let me check the example output provided.
+
+Wait, the user provided the input text and the output text. Let me check the example output. The user's example output is:
+
+Decisão : O Tribunal , por unanimidade , aprovou a proposta de alteração da <span class="legislacao">Resolução-TSE n° 23.549/2017</span> , nos termos do voto do relator . Composição : <span class="pessoa">Ministros Luiz Fux</span> ( presidente ) , <span class="pessoa">Rosa Weber</span> , <span class="pessoa">Luís Roberto Barroso</span> , <span class="pessoa">Napoleão Nunes Maia Filho</span> , <span class="pessoa">Jorge Mussi</span> , <span class="pessoa">Tarcísio Vieira de Carvalho Neto</span> e <span class="pessoa">Carlos Horbach</span> . Vice-Procurador-Geral Eleitoral em exercício : <span class="pessoa">Luciano Mariz Maia</span> . <span class="tempo">SESSÃO DE 8.3.2018</span> .
+
+So in the example, "Ministros Luiz Fux" is marked as pessoa. Wait, but "Ministros" is a title, but the user's example marks the entire "Ministros Luiz Fux" as pessoa. Maybe the user considers the entire name, including titles, as a pessoa. So I need to check each name and title. For example, "Ministros Luiz Fux ( presidente )" – the user's example marks "Ministros Luiz Fux" as pessoa, and "presidente" is not marked. So perhaps the titles are not considered entities here. So I should mark each person's name, including titles if they are part of the name. For example, "Ministros Luiz Fux" is a person, even though "Ministros" is a title. Wait, but in the example, "Ministros Luiz Fux" is marked as pessoa. So maybe the user considers the entire phrase as a person. So I need to check each name and title. For example, "Ministros Luiz Fux" is a person, so the entire phrase is marked as pessoa. Similarly, "Vice-Procurador-Geral Eleitoral em exercício : Luciano Mariz Maia" – "Luciano Mariz Maia" is a pessoa. The title "Vice-Procurador-Geral Eleitoral em exercício" is not marked as an entity, but the person's name is.
+
+So, in the input text, the entities are:
+
+- Tribunal: organizacao
+- Resolução-TSE n° 23.549/2017: legislacao
+- 8.3.2018: tempo
+- All the names listed under "Composição" and "Vice-Procurador-Geral Eleitoral em exercício" are pessoas.
+
+So, the HTML should have:
+
+- Tribunal as organizacao
+- Resolução-TSE n° 23.549/2017 as legislacao
+- 8.3.2018 as tempo
+- All the names as pessoas.
+
+Now, let me check the input text again. The input text is:
+
+"Decisão : O Tribunal , por unanimidade , aprovou a proposta de alteração da Resolução-TSE n° 23.549/2017 , nos termos do voto do relator . Composição : Ministros Luiz Fux ( presidente ) , Rosa Weber , Luís Roberto Barroso , Napoleão Nunes Maia Filho , Jorge Mussi , Tarcísio Vieira de Carvalho Neto e Carlos Horbach . Vice-Procurador-Geral Eleitoral em exercício : Luciano Mariz Maia . SESSÃO DE 8.3.2018 ."
+
+So, the entities are:
+
+- Tribunal: organizacao
+- Resolução-TSE n° 23.549/2017: legislacao
+- 8.3.2018: tempo
+- All the names in the "Composição" and "Vice-Procurador-Geral Eleitoral em exercício" are pessoas.
+
+So, the HTML should be:
+
+Decisão : O <span class="organizacao">Tribunal</span> , por unanimidade , aprovou a proposta de alteração da <span class="legislacao">Resolução-TSE n° 23.549/2017</span> , nos termos do voto do relator . Composição : <span class="pessoa">Ministros Luiz Fux</span> ( presidente ) , <span class="pessoa">Rosa Weber</span> , <span class="pessoa">Luís Roberto Barroso</span> , <span class="pessoa">Napoleão Nunes Maia Filho</span> , <span class="pessoa">Jorge Mussy</span> , <span class="pessoa">Tarcísio Vieira de Carvalho Neto</span> e <span class="pessoa">Carlos Horbach</span> . Vice-Procurador-Geral Eleitoral em exercício : <span class="pessoa">Luciano Mariz Maia</span> . <span class="tempo">SESSÃO DE 8.3.2018</span> .
+
+Wait, in the example output provided by the user, the "SESSÃO DE 8.3.2018" is marked as tempo. So the date is part of the tempo entity. Also, the "Vice-Procurador-Geral Eleitoral em exercício" is not marked, but the person's name is. So the user's example output shows that the entire "Ministros Luiz Fux" is marked as pessoa, even though "Ministros" is a title. So I need to follow that pattern.
+
+Therefore, the final HTML should have all the entities marked as per the example. Now, I need to make sure that each entity is correctly tagged. Also, the date "8.3.2018" is part of the tempo entity. The "SESSÃO DE 8.3.2018" is marked as tempo. So the entire phrase "SESSÃO DE 8.3.2018" is a tempo entity. Wait, in the example output, the user has "SESSÃO DE 8.3.2018" as tempo. So the entire phrase is marked as tempo. So I need to include that.
+
+So, putting it all together, the HTML should be as follows, with each entity properly tagged.
+</think>
+
+Decisão : O <span class="organizacao">Tribunal</span> , por unanimidade , aprovou a proposta de alteração da <span class="legislacao">Resolução-TSE n° 23.549/2017</span> , nos termos do voto do relator . Composição : <span class="pessoa">Ministros Luiz Fux</span> ( presidente ) , <span class="pessoa">Rosa Weber</span> , <span class="pessoa">Luís Roberto Barroso</span> , <span class="pessoa">Napoleão Nunes Maia Filho</span> , <span class="pessoa">Jorge Mussi</span> , <span class="pessoa">Tarcísio Vieira de Carvalho Neto</span> e <span class="pessoa">Carlos Horbach</span> . Vice-Procurador-Geral Eleitoral em exercício : <span class="pessoa">Luciano Mariz Maia</span> . <span class="tempo">SESSÃO DE 8.3.2018</span> .

@@ -1,0 +1,121 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have the appropriate class.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The input text starts with "Defende que “ a atualização da parcela Adicional Décimos , pelas Leis 3.318/2004 , 3.355/2004 e 3.782/2006 , iria diminuir o valor percebido em alguns casos , pois em conformidade com a decisão 4041/2007 do e. TCDF , o valor a ser considerado , para fins de cálculo é o da coluna Representação , que possui valores menores que os constantes das tabelas das Leis 1004 e 1141/96 ” , de modo que “ optou-se por não proceder à atualização pelo Plano de Carreira , mantendo os valores atualmente percebidos , a fim de não prejudicar os servidores que possuem cargos comissionados incorporados sob a égide das Leis 1004 e 1141/96 ” ( fl . 311 ) ."
+
+Looking for legislacao first. The text mentions "Leis 3.318/2004", "3.355/2004", "3.782/2006", "Leis 1004", "1141/96". These are all laws, so they should be marked as legislacao. Also, "art. 61 , §1º , da Lei nº 9.430/96" in the example was marked, but in this case, the input doesn't have "art." but just the law numbers. So I need to check if the format matches. The example shows that "Lei nº 9.430/93" is marked. Here, "Leis 3.318/2004" etc. are similar. So I should mark each law reference as legislacao.
+
+Next, "decisão 4041/2007 do e. TCDF". "decisão" here refers to a judicial decision, so that's jurisprudencia. "TCDF" is the Tribunal de Contas do Distrito Federal, which is an organization. So "TCDF" should be marked as organizacao. Also, "e." might be an abbreviation for "Excelentíssimo", but the user's guidelines say not to mark generic terms. Wait, the example had "e. TCDF" and in the output, it was marked as "TCDF" as organizacao. So "e." is part of the name? Wait, in the example, "e. TCDF" was marked as "TCDF" as organizacao. So maybe "e." is part of the organization's name. But according to the guidelines, "organização" includes "Tribunal de Contas", so "TCDF" is an organization. So "TCDF" is an organization, and "e." is part of the name? Or is "e." a title? The example shows that "e." is part of the organization name. So in the input, "do e. TCDF" would have "TCDF" as organizacao. The "e." might be a title or abbreviation, but according to the example, it's included. Wait, the example input had "REsp n . 1694984/MS" which was marked as jurisprudencia. So "n ." is part of the identifier. Similarly, in the current text, "decisão 4041/2007 do e. TCDF" – "decisão" is the type, and "4041/2007" is the identifier. So "4041/2007" is jurisprudencia. "TCDF" is the organization. So "e." is part of the organization's name? Or is it a title? The example shows that "e." is part of the organization's name. For example, in the example, "e. TCDF" was marked as "TCDF" as organizacao. So perhaps "e." is a prefix, and "TCDF" is the organization. Therefore, in the input, "do e. TCDF" would have "TCDF" marked as organizacao.
+
+Next, "fl . 311" – "fl" is "fl" for "fls" (folios), which is a reference to a page or document. According to the guidelines, only specific names of places are marked as local. "fl" is a term used in legal documents to refer to pages, so it's not a local. So it's left as is.
+
+Now, checking for other entities. Are there any pessoas? The text mentions "servidores", which is a generic term, not a specific person. No names of people are present. So no pessoa entities.
+
+Are there any temporais? The text has "2007" and "2004", "2006", "1996". According to the guidelines, years alone should be marked as tempo. So "2004", "2006", "2007", "1996" should be marked as tempo. Also, "fl . 311" – "311" is a number, but it's a page number, not a date, so not tempo.
+
+Are there any locais? The text mentions "TCDF" which is an organization, not a local. "Distrito Federal" is a local, but in the input, it's "TCDF", which is an organization. So no local entities here.
+
+So, compiling all the entities:
+
+- Legislacao: "Leis 3.318/2004", "3.355/2004", "3.782/2006", "Leis 1004", "1141/96". Wait, "Leis 1004" and "1141/96" – but the example had "Lei nº 9.430/93" marked as legislacao. So in this case, "Leis 3.318/2004" etc. are laws, so they should be marked. However, "Leis 1004" and "1141/96" – but "1004" and "1141/96" are law numbers. Wait, the example had "Lei nº 9.430/93" marked as legislacao. So in this case, "Leis 3.318/2004" etc. are laws, so they should be marked. Also, "Leis 1004" and "1141/96" – but the user's example had "Leis 1004 e 1141/96" as legislacao. So I need to mark each law reference as legislacao.
+
+- Jurisprudencia: "decisão 4041/2007" – the "4041/2007" is the identifier for a judicial decision, so it's jurisprudencia. Also, "TCDF" is an organization, so that's organizacao.
+
+- Organizacao: "TCDF" is the organization (Tribunal de Contas do Distrito Federal).
+
+- Tempo: the years "2004", "2006", "2007", "1996" should be marked as tempo.
+
+Now, putting it all together.
+
+Original text: "Defende que “ a atualização da parcela Adicional Décimos , pelas Leis 3.318/2004 , 3.355/2004 e 3.782/2006 , iria diminuir o valor percebido em alguns casos , pois em conformidade com a decisão 4041/2007 do e. TCDF , o valor a ser considerado , para fins de cálculo é o da coluna Representação , que possui valores menores que os constantes das tabelas das Leis 1004 e 1141/96 ” , de modo que “ optou-se por não proceder à atualização pelo Plano de Carreira , mantendo os valores atualmente percebidos , a fim de não prejudicar os servidores que possuem cargos comissionados incorporados sob a égide das Leis 1004 e 1141/96 ” ( fl . 311 ) ."
+
+Marking:
+
+- "Leis 3.318/2004" → legislacao
+- "3.355/2004" → legislacao
+- "3.782/2006" → legislacao
+- "decisão 4041/2007" → jurisprudencia (the number 4041/2007)
+- "e. TCDF" → "TCDF" is organizacao
+- "2004", "2006", "2007", "1996" → tempo
+- "Leis 1004" and "1141/96" → legislacao
+
+Wait, the text says "das Leis 1004 e 1141/96". So "Leis 1004" and "1141/96" are both laws. So they should be marked as legislacao.
+
+Also, "fl . 311" is left as is.
+
+So the final HTML should have:
+
+- <span class="legislacao">Leis 3.318/2004</span>
+- <span class="legislacao">3.355/2004</span>
+- <span class="legislacao">3.782/2006</span>
+- <span class="jurisprudencia">4041/2007</span>
+- <span class="organizacao">TCDF</span>
+- <span class="tempo">2004</span>
+- <span class="tempo">2006</span>
+- <span class="tempo">2007</span>
+- <span class="tempo">1996</span>
+- <span class="legislacao">Leis 1004</span>
+- <span class="legislacao">1141/96</span>
+
+Wait, but "Leis 1004" and "1141/96" – the example had "Lei nº 9.430/93" as legislacao. So in this case, "Leis 1004" would be marked as legislacao. Similarly, "1141/96" is a law. So yes.
+
+Now, in the text, "Leis 3.318/2004" – the "Leis" is plural, but the example had "Lei" as singular. However, the guidelines say to mark all references to laws, regardless of plural. So "Leis 3.318/2004" is legislacao.
+
+Also, "Leis 1004" – even though it's missing the year, but the example had "Lei 8.666/93" as legislacao. So "Leis 1004" is a law, so it's legislacao. Similarly, "1141/96" is a law.
+
+Now, the "decisão 4041/2007" – the "decisão" is the type, but the identifier is "4041/2007", which is the jurisprudencia. So in the text, "decisão 4041/2007" should be marked as <span class="jurisprudencia">4041/2007</span> (assuming that "decisão" is part of the identifier, but according to the example, "REsp n . 1694984/MS" is marked as jurisprudencia. So the identifier is the number, not the word "decisão". Therefore, "4041/2007" is the identifier, so it's jurisprudencia.
+
+Now, the text has "e. TCDF" – according to the example, "e. TCDF" is marked as "TCDF" as organizacao. So "TCDF" is the organization, and "e." is part of the name. So in the input, "do e. TCDF" would have "TCDF" marked as organizacao.
+
+So the HTML should have:
+
+- "Leis 3.318/2004" → legislacao
+- "3.355/2004" → legislacao
+- "3.782/2006" → legislacao
+- "decisão 4041/2007" → "4041/2007" as jurisprudencia
+- "TCDF" → organizacao
+- "2004", "2006", "2007", "1996" → tempo
+- "Leis 1004" → legislacao
+- "1141/96" → legislacao
+
+But in the text, the years are part of the law references. For example, "Leis 3.318/2004" includes the year 2004. But according to the guidelines, "tempo" is for dates, so the years in the law references (like 2004) should be marked as tempo. Wait, but the example had "art.61 , §1º , da Lei nº 9.430/93" as legislacao, and the year 93 was part of the law's number. So in that case, the year is part of the law's identifier, not a separate time entity. Therefore, in this case, the years in the law numbers (like 2004, 2006, 1996) are part of the law's identifier and should not be marked as tempo. Wait, this is conflicting.
+
+The guidelines say that "tempo" is for explicit dates, like "14/11/2017", "31 de dezembro de 2016", etc. The example had "art.61 , §1º , da Lei nº 9.430/93" as legislacao, which includes the year 93. But the example didn't mark the year as tempo. So in this case, the years in the law's number are part of the law's identifier and are not marked as tempo. Therefore, the years 2004, 2006, 1996 in the law references are part of the law's number and should not be marked as tempo. Therefore, they are part of the legislacao entity and not marked as tempo.
+
+Wait, but the guidelines say that "tempo" is for explicit dates. So in the case of "Leis 3.318/2004", the "/2004" is part of the law's number, not a date. Therefore, it's not marked as tempo. So the years in the law's numbers are part of the legislation and not as tempo. Therefore, the "2004", "2006", "2007", "1996" in the law numbers are part of the legislacao and not marked as tempo. So the years are not marked as tempo.
+
+But the example had "art.61 , §1º , da Lei nº 9.430/93" as legislacao, which includes the year 93. So the year is part of the law's number, not a separate time entity. Therefore, in the current text, the years in the law numbers are part of the legislacao and should not be marked as tempo.
+
+So, the previous step where I thought to mark the years as tempo was incorrect. Therefore, the years in the law numbers are part of the legislacao and not tempo.
+
+So, the only tempo entities are the dates in the text. But in the input, there are no explicit dates like "31 de dezembro de 2016" or "14/11/2017". The only time-related elements are the years in the law numbers, which are part of the legislation. Therefore, there are no tempo entities in the text.
+
+So, the only entities are:
+
+- Legislacao: "Leis 3.318/2004", "3.355/2004", "3.782/2006", "Leis 1004", "1141/96"
+- Jurisprudencia: "4041/2007"
+- Organizacao: "TCDF"
+- There are no tempo entities.
+
+Wait, but the text has "fl . 311" – which is a page reference. The guidelines say that "fl" is not a local. So it's left as is.
+
+So, the final HTML should have:
+
+- "Leis 3.318/2004" → legislacao
+- "3.355/2004" → legislacao
+- "3.782/2006" → legislacao
+- "decisão 4041/2007" → "4041/2007" as jurisprudencia
+- "TCDF" → organizacao
+- "Leis 1004" → legislacao
+- "1141/96" → legislacao
+
+Now, checking the text again for any other entities. Are there any other instances?
+
+In the text, "do e. TCDF" – "TCDF" is the organization. "e." is part of the name, so it's included in the organization's name. So "TCDF" is marked as organizacao.
+
+So, putting it all together, the HTML should have the appropriate spans.
+</think>
+
+Defende que “ a atualização da parcela Adicional Décimos , pelas <span class="legislacao">Leis 3.318/2004</span> , <span class="legislacao">3.355/2004</span> e <span class="legislacao">3.782/2006</span> , iria diminuir o valor percebido em alguns casos , pois em conformidade com a <span class="jurisprudencia">decisão 4041/2007</span> do <span class="organizacao">TCDF</span> , o valor a ser considerado , para fins de cálculo é o da coluna Representação , que possui valores menores que os constantes das tabelas das <span class="legislacao">Leis 1004</span> e <span class="legislacao">1141/96</span> ” , de modo que “ optou-se por não proceder à atualização pelo Plano de Carreira , mantendo os valores atualmente percebidos , a fim de não prejudicar os servidores que possuem cargos comissionados incorporados sob a égide das <span class="legislacao">Leis 1004</span> e <span class="legislacao">1141/96</span> ” ( fl . 311 ) .

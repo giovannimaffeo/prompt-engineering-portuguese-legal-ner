@@ -1,0 +1,54 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+Starting with "Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 .". Here, "Cleonilson Nicácio Silva" is a full name, so that's a pessoa. The "Matricula 8553" might be a number, but since it's part of the name, maybe not. Wait, the definition says only names should be marked. The matricula is a number, so maybe not. But the name is a pessoa.
+
+Next, "Em 22/02/2018 18:56:14 ." The date "22/02/2018" is a tempo, and the time "18:56:14" is also tempo. But the guidelines say only dates, not isolated times. Wait, the note says horários isolados (like "17:26:32") shouldn't be marked as tempo. So the time part here is not marked. Only the date "22/02/2018" is tempo.
+
+Then, "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7". The URL is not a local, so no tag. The "Codigo Verificador 21030663f7" is a code, not an entity.
+
+Next, "Justiça Militar da União Superior Tribunal Militar Sec Gab Min Cleonilson Nicácio Silva". "Justiça Militar da União" and "Superior Tribunal Militar" are organizations. "Sec Gab Min Cleonilson Nicácio Silva" – "Sec" might be an abbreviation for "Secretaria", but the full name is "Secretaria da Guerra" or similar? Wait, the example mentions "Turmas cíveis" as organizacao. Here, "Sec Gab Min" might be part of the organization's name. Wait, the text says "Sec Gab Min Cleonilson Nicácio Silva" – maybe "Sec Gab" is part of the organization's name. But the user's example shows "Turmas cíveis" as organizacao. So "Justiça Militar da União" and "Superior Tribunal Militar" are organizations. The "Sec Gab Min" might be part of the organization's name, but I'm not sure. Maybe "Sec Gab" is an abbreviation for "Secretaria da Guerra" or similar. But since the user's example includes "Turmas cíveis" as organizacao, perhaps "Sec Gab" is part of the organization. However, the exact terms might need to be checked. Alternatively, "Sec Gab Min Cleonilson Nicácio Silva" could be a title, but the name "Cleonilson Nicácio Silva" is already marked as pessoa. So maybe "Sec Gab Min" is part of the organization's name. Wait, the text is "Justiça Militar da União Superior Tribunal Militar Sec Gab Min Cleonilson Nicácio Silva". Maybe "Sec Gab Min" is part of the organization's name. But I'm not certain. Let me check the examples. In example 4, "ESTADO DO ACRE Rua Tribunal de Justiça, Via Verde, Rio BrancoAC" is marked as local. So "Rua Tribunal de Justiça" is local. Similarly, "Justiça Militar da União" and "Superior Tribunal Militar" are organizations. The "Sec Gab Min" might be part of the organization's name, but I'm not sure. Maybe "Sec Gab" is an abbreviation for "Secretaria da Guerra" or similar. But since the user's examples don't have such cases, perhaps I should mark "Justiça Militar da União" and "Superior Tribunal Militar" as organizacao.
+
+Next, "RELATOR : Ministro Ten Brig Ar Cleonilson Nicácio Silva". "Ministro Ten Brig Ar Cleonilson Nicácio Silva" – "Ministro" is a title, not a pessoa. The name "Cleonilson Nicácio Silva" is already marked as pessoa. So "Ministro Ten Brig Ar" is a title, not a pessoa.
+
+"PACIENTE : HENRIQUE DOS SANTOS BOTELHO , Cap Ex .". "HENRIQUE DOS SANTOS BOTELHO" is a pessoa. "Cap Ex" is an abbreviation for "Capitão Exército", which is a military rank, not a pessoa.
+
+"IMPETRANTE : Dra . Gisele Correia dos Santos Batista .". "Dra." is a title, not a pessoa. "Gisele Correia dos Santos Batista" is a pessoa.
+
+"IMPETRADO : Juiz-Auditor Substituto da 2ª Auditoria da 11ª CJM - JUSTIÇA MILITAR DA UNIÃO - Brasília". "Juiz-Auditor Substituto" is a title. "CJM" is an abbreviation for "Corregedoria Militar", which is an organization. "JUSTIÇA MILITAR DA UNIÃO" is an organization. "Brasília" is a local.
+
+"HABEAS CORPUS .". This is a legal term, not an entity.
+
+"AUDIÊNCIA DE INQUIRIÇÃO DE TESTEMUNHAS .". Legal term, no entity.
+
+"ALEGAÇÃO DE AUSÊNCIA DE INTIMAÇÃO PESSOAL DA ADVOGADA CONSTITUÍDA PELO RÉU .". "RÉU" is a legal term, not an entity.
+
+"ART . 288 DO CÓDIGO DE PROCESSO PENAL MILITAR .". "CÓDIGO DE PROCESSO PENAL MILITAR" is a legislacao.
+
+"CERTIDÃO EXPEDIDA PELO CARTÓRIO DO JUÍZO DE PRIMEIRO GRAU .". "Cartório do Juízo de Primeiro Grau" is a local.
+
+"FÉ PÚBLICA .". Legal term.
+
+"INTIMAÇÃO POR CORREIO ELETRÔNICO .". Legal term.
+
+Now, compiling all the entities:
+
+- pessoa: Cleonilson Nicácio Silva, HENRIQUE DOS SANTOS BOTELHO, Gisele Correia dos Santos Batista
+- organizacao: Justiça Militar da União, Superior Tribunal Militar, CJM (if applicable)
+- tempo: 22/02/2018
+- local: Brasília, Cartório do Juízo de Primeiro Grau
+- legislacao: CÓDIGO DE PROCESSO PENAL MILITAR
+- jurisprudencia: None in the text
+
+Wait, the text has "CJM - JUSTIÇA MILITAR DA UNIÃO - Brasília". "CJM" is an abbreviation for "Corregedoria Militar", which is an organization. So "CJM" should be marked as organizacao. Also, "Brasília" is a local.
+
+So the final HTML should have all these tags. Let me check again for any missed entities.
+
+Also, "Matricula 8553" – the matricula is a number, not an entity. The URL is not a local. The "Codigo Verificador 21030663f7" is a code, not an entity.
+
+So the final output should have the correct tags for each entity.
+</think>
+
+Documento assinado eletronicamente por <span class="pessoa">Cleonilson Nicácio Silva</span> , Matricula 8553 . Em <span class="tempo">22/02/2018</span> 18:56:14 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 <span class="organizacao">Justiça Militar da União</span> <span class="organizacao">Superior Tribunal Militar</span> Sec Gab Min <span class="pessoa">Cleonilson Nicácio Silva</span> RELATOR : Ministro Ten Brig Ar <span class="pessoa">Cleonilson Nicácio Silva</span> . PACIENTE : <span class="pessoa">HENRIQUE DOS SANTOS BOTELHO</span> , Cap Ex . IMPETRANTE : Dra . <span class="pessoa">Gisele Correia dos Santos Batista</span> . IMPETRADO : Juiz-Auditor Substituto da 2ª Auditoria da 11ª <span class="organizacao">CJM</span> - <span class="organizacao">JUSTIÇA MILITAR DA UNIÃO</span> - <span class="local">Brasília</span> <span class="jurisprudencia">HABEAS CORPUS</span> . <span class="jurisprudencia">AUDIÊNCIA DE INQUIRIÇÃO DE TESTEMUNHAS</span> . <span class="jurisprudencia">ALEGAÇÃO DE AUSÊNCIA DE INTIMAÇÃO PESSOAL DA ADVOGADA CONSTITUÍDA PELO RÉU</span> . <span class="legislacao">ART . 288 DO CÓDIGO DE PROCESSO PENAL MILITAR</span> . <span class="local">CERTIDÃO EXPEDIDA PELO CARTÓRIO DO JUÍZO DE PRIMEIRO GRAU</span> . FÉ PÚBLICA . <span class="jurisprudencia">INTIMAÇÃO POR CORREIO ELETRÔNICO</span> .

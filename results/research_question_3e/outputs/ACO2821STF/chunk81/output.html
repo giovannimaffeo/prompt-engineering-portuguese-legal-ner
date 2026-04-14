@@ -1,0 +1,81 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities are pessoa, organização, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating the type.
+
+First, I'll read through the input text carefully to identify all the entities. Let's start with the first sentence: "( A/S ) ( ES ) : PROCURADOR-GERAL DO ESTADO DE MATO GROSSO Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator ."
+
+Here, "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" seems like an organization. Wait, the definition says organizations include public bodies, courts, etc. But "PROCURADOR-GERAL" is a position, not an organization. Wait, but the example had "MINISTÉRIO PÚBLICO FEDERAL" as an organization. So maybe "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization? Or is it a title? Hmm. The example had "MINISTÉRIO PÚBLICO FEDERAL" as an organization. Similarly, "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is a title, but maybe the full name is considered an organization. Wait, the definition says "expressões que identificam entidades coletivas formalmente constituídas". The "PROCURADOR-GERAL" is a person's title, but the full name might refer to the office. Wait, maybe it's a person? Wait, the example had "PROCURADOR CARLOS HENRIQUE ALVES" as a pessoa. So "PROCURADOR-GERAL" is a title, not a person. So maybe this is an organization? Or is it a person? Wait, the user's definition says that "pessoa" is names of individuals. So "PROCURADOR-GERAL" is a title, not a person. So maybe it's not an entity. But the text says "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" – perhaps this is the name of the office, which is an organization. But the example had "MINISTÉRIO PÚBLICO FEDERAL" as an organization. So maybe "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization. Wait, but the example had "PROCURADOR CARLOS HENRIQUE ALVES" as a pessoa, so that's a person. So here, "PROCURADOR-GERAL" is a title, not a person. Therefore, maybe this is an organization. But I'm a bit confused here. Let me check the guidelines again. The definition for organização includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas". So maybe "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization? Or is it a person? Wait, the term "PROCURADOR-GERAL" is a position, so it's part of the organization. But the full name might be an organization. Alternatively, maybe it's a person. Hmm. Maybe I should check the example. The example had "PROCURADOR CARLOS HENRIQUE ALVES" as a pessoa. So that's a person. So "PROCURADOR-GERAL" is a title, but the full name might be a person. Wait, but in the input text, it's "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" – that's the title of the office, not a person. So maybe it's an organization? But the example didn't have such a case. Maybe I should not mark it as an organization. Alternatively, maybe it's a person. Wait, the user's definition says that "pessoa" is names of individuals. So if "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is a person, then it's a pessoa. But that's a title, not a name. So perhaps it's not an entity. Hmm. Maybe I should skip it. But I'm not sure. Let's move on and see other parts.
+
+Next sentence: "Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018 . Composição : Ministros Cármen Lúcia ( Presidente ) , Celso de Mello , Marco Aurélio , Gilmar Mendes , Ricardo Lewandowski , Dias Toffoli , Luiz Fux , Rosa Weber , Roberto Barroso , Edson Fachin e Alexandre de Moraes ."
+
+Here, "Plenário" – the definition says that expressions like "4ª Turma Cível" are organizations. So "Plenário" is a part of the court, so it's an organization. So "Plenário" should be marked as organização. Then "Sessão Virtual de 9.3.2018 a 15.3.2018" – the dates are "9.3.2018" and "15.3.2018". According to the guidelines, dates in DD/MM/YYYY format should be marked as tempo. So "9.3.2018" is a date, so it's tempo. Similarly, "15.3.2018" is also tempo.
+
+Then "Composição : Ministros Cármen Lúcia ( Presidente ) , Celso de Mello , Marco Aurélio , Gilmar Mendes , Ricardo Lewandowski , Dias Toffoli , Luiz Fux , Rosa Weber , Roberto Barroso , Edson Fachin e Alexandre de Moraes ." – these are names of people. Each of these names like "Cármen Lúcia", "Celso de Mello", etc., are pessoas. So each should be marked as <span class="pessoa">.
+
+Next part: "p/ Doralúcia das Neves Santos Assessora-Chefe do Plenário" – "Doralúcia das Neves Santos" is a person, so pessoa. "Assessora-Chefe do Plenário" is a title, not an entity. So only the name is marked.
+
+Then: "Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil ."
+
+"MP n° 2.200-2/2001" – MP is Medida Provisória, which is legislation. So "MP n° 2.200-2/2001" is legislação. "24/08/2001" is a date, so tempo. "ICP-Brasil" is mentioned, but the guidelines say that terms like "ICP" or "ICP-Brasil" are not considered legislation. So "ICP-Brasil" is not marked as legislação.
+
+Next: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp sob o número 14532100 Inteiro Teor do Acórdão - Página 17 de 17"
+
+The URL is not marked as local. The number "14532100" is a document number, which might be jurisprudência. But the guidelines say that identifiers like "14532100" should be marked as jurisprudência if they refer to a specific decision. But the example had "REsp n . 1694984/MS" as jurisprudência. So "14532100" is a number, but without context, maybe it's not. However, the example mentions "sob o número 14532100" which is a document number. But the guidelines say that only specific identifiers like "REsp 1694984/MS" are marked. So maybe "14532100" is not a jurisprudência here. So perhaps not marked.
+
+Now, let me go through the text again and mark all entities.
+
+Starting with the first part: "( A/S ) ( ES ) : PROCURADOR-GERAL DO ESTADO DE MATO GROSSO Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator ."
+
+"PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" – this is a title, not a person. Maybe it's an organization? Or is it a person? Since the example had "PROCURADOR CARLOS HENRIQUE ALVES" as a pessoa, but "PROCURADOR-GERAL" is a title. So maybe it's not an entity. Wait, the definition for organização includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas". So maybe "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization? Or is it the office of the procurador-geral, which is an organization? Alternatively, maybe it's a person. Hmm. The example had "PROCURADOR CARLOS HENRIQUE ALVES" as a pessoa. So here, "PROCURADOR-GERAL" is a title, but the full name might be a person. But the text says "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" – that's the title of the office, not a person. So perhaps it's an organization. But I'm not sure. Maybe I should not mark it. Let's proceed and see other parts.
+
+Next: "Plenário , Sessão Virtual de 9.3.2018 a 15.3.2018 ."
+
+"Plenário" – according to the guidelines, "expressões que identificam entidades coletivas formalmente constituídas" like "4ª Turma Cível" are organizations. So "Plenário" is part of the court, so it's an organization. So "Plenário" should be marked as organização.
+
+"9.3.2018" and "15.3.2018" are dates, so tempo.
+
+Then: "Composição : Ministros Cármen Lúcia ( Presidente ) , Celso de Mello , Marco Aurélio , Gilmar Mendes , Ricardo Lewandowski , Dias Toffoli , Luiz Fux , Rosa Weber , Roberto Barroso , Edson Fachin e Alexandre de Moraes ."
+
+Each name here is a pessoa. So "Cármen Lúcia", "Celso de Mello", etc., are pessoas.
+
+Next: "p/ Doralúcia das Neves Santos Assessora-Chefe do Plenário"
+
+"Doralúcia das Neves Santos" is a pessoa.
+
+"Assessora-Chefe do Plenário" is a title, not an entity.
+
+Then: "Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil ."
+
+"MP n° 2.200-2/2001" is a medida provisória, which is legislation. So "MP n° 2.200-2/2001" is legislação.
+
+"24/08/2001" is a date, so tempo.
+
+"ICP-Brasil" is not legislation, as per guidelines.
+
+Next: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp sob o número 14532100 Inteiro Teor do Acórdão - Página 17 de 17"
+
+The URL is not marked as local. The number "14532100" is a document number. The example had "Autos nº 0715337-93.2014.8.01.0001" as jurisprudência. So if this number refers to a specific document, maybe it's jurisprudência. But the text says "sob o número 14532100" – without more context, it's unclear. The example mentions "Autos nº" which is a specific document. So maybe "14532100" is jurisprudência. But the guidelines say that identifiers like "14532100" should be marked as jurisprudência if they are specific. So I'll mark it as jurisprudência.
+
+Now, putting it all together:
+
+- "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" – unsure, but maybe not marked. Let's check again. The example had "MINISTÉRIO PÚBLICO FEDERAL" as organização. So "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" might be an organization. Wait, but it's a title. Hmm. Alternatively, maybe it's a person. Wait, the example had "PROCURADOR CARLOS HENRIQUE ALVES" as a pessoa, so that's a person. So here, "PROCURADOR-GERAL" is a title, but the full name might be a person. Wait, but "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is the title of the office, not a person. So perhaps it's not an entity. Therefore, it's not marked.
+
+So the first part: "( A/S ) ( ES ) : <span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> Decisão : O Tribunal , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator ."
+
+Wait, but the example had "MINISTÉRIO PÚBLICO FEDERAL" as organização. So maybe "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is an organization. Because it's the name of the office. So I'll mark it as organização.
+
+Then "Plenário" is organização. "9.3.2018" and "15.3.2018" are tempo. The names of the ministers are pessoas. The number "14532100" is jurisprudência.
+
+So the final HTML would have:
+
+- "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" as organização
+- "Plenário" as organização
+- "9.3.2018" and "15.3.2018" as tempo
+- Each minister's name as pessoa
+- "MP n° 2.200-2/2001" as legislação
+- "24/08/2001" as tempo
+- "14532100" as jurisprudência
+
+Now, let's write the HTML accordingly.
+</think>
+
+O <span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> Decisão : O <span class="organizacao">Tribunal</span> , por unanimidade , negou provimento ao agravo regimental , nos termos do voto do Relator . <span class="organizacao">Plenário</span> , <span class="tempo">Sessão Virtual de 9.3.2018 a 15.3.2018</span> . Composição : <span class="pessoa">Ministros Cármen Lúcia</span> ( Presidente ) , <span class="pessoa">Celso de Mello</span> , <span class="pessoa">Marco Aurélio</span> , <span class="pessoa">Gilmar Mendes</span> , <span class="pessoa">Ricardo Lewandowski</span> , <span class="pessoa">Dias Toffoli</span> , <span class="pessoa">Luiz Fux</span> , <span class="pessoa">Rosa Weber</span> , <span class="pessoa">Roberto Barroso</span> , <span class="pessoa">Edson Fachin</span> e <span class="pessoa">Alexandre de Moraes</span> . p/ <span class="pessoa">Doralúcia das Neves Santos</span> <span class="organizacao">Assessora-Chefe do Plenário</span> Documento assinado digitalmente conforme <span class="legislacao">MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a Infra-estrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/autenticarDocumento.asp sob o número <span class="jurisprudencia">14532100</span> Inteiro Teor do Acórdão - Página 17 de 17

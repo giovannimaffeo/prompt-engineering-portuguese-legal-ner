@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The text is: "3 ) , o JuizAuditor Substituto da 2ª Auditoria da 1ª CJM deixou de conceder o indulto ao Sursitário , devido não atender aos requisitos previsto no Decreto nº 8 . 940 , de 22 de dezembro de 2016 ."
+
+Let me break it down sentence by sentence.
+
+Starting with "o JuizAuditor Substituto da 2ª Auditoria da 1ª CJM". Here, "JuizAuditor Substituto" seems like a person's title. Maybe "JuizAuditor" is a title, but "Substituto" might refer to a position. However, the user's example output might have "JuizAuditor" as a person. Wait, in the example output provided, "JuizAuditor" is marked as pessoa. So I should check if "JuizAuditor Substituto" is a person. Maybe "JuizAuditor" is a title, but the name might be "JuizAuditor Substituto" as a person. Alternatively, maybe "JuizAuditor" is part of the organization. Wait, the example output shows "JuizAuditor" as pessoa. So I'll mark that as pessoa.
+
+Next, "da 2ª Auditoria da 1ª CJM". "CJM" is likely an acronym for a judicial body, like "Corregedoria Geral de Justiça" or similar. So "CJM" would be an organization. The "2ª Auditoria" and "1ª CJM" are parts of the organization's name. So "2ª Auditoria" and "1ª CJM" would be parts of the organization. Wait, but the user's example output might have "CJM" as an organization. Let me check the example output again. The user's example output for the input text is: 
+
+"<span class="pessoa">JuizAuditor</span> Substituto da 2ª Auditoria da <span class="organizacao">1ª CJM</span> deixou de conceder o indulto ao <span class="pessoa">Sursitário</span> , devido não atender aos requisitos previsto no <span class="legislacao">Decreto nº 8 . 940</span> , de <span class="tempo">22 de dezembro de 2016</span> ."
+
+So in the example, "CJM" is marked as organizacao. So "1ª CJM" is an organization. Similarly, "2ª Auditoria" is part of the organization's name. Wait, but in the example, "2ª Auditoria" is not marked. So maybe only "CJM" is marked as organizacao. So I need to check each part.
+
+In the input text, "da 2ª Auditoria da 1ª CJM" – "CJM" is the organization. The "2ª Auditoria" is part of the organization's structure, but maybe not an entity. So "1ª CJM" is the organization. So I'll mark "1ª CJM" as organizacao.
+
+Next, "Sursitário" is a person, so that's pessoa.
+
+Then, "Decreto nº 8 . 940" is a legislative decree, so that's legislacao. The date "22 de dezembro de 2016" is tempo.
+
+So putting it all together:
+
+- "JuizAuditor" is pessoa.
+- "1ª CJM" is organizacao.
+- "Sursitário" is pessoa.
+- "Decreto nº 8 . 940" is legislacao.
+- "22 de dezembro de 2016" is tempo.
+
+Wait, the original text has "Decreto nº 8 . 940" – the number might be 8.940, but the user's example has "Decreto nº 8 . 940" as legislacao. So I'll mark that as legislacao.
+
+Also, the "2ª Auditoria" is part of the organization's name, but in the example, it's not marked. So maybe only "CJM" is the organization. So "1ª CJM" is the organization.
+
+So the final HTML would have:
+
+<span class="pessoa">JuizAuditor</span> Substituto da 2ª Auditoria da <span class="organizacao">1ª CJM</span> deixou de conceder o indulto ao <span class="pessoa">Sursitário</span> , devido não atender aos requisitos previsto no <span class="legislacao">Decreto nº 8 . 940</span> , de <span class="tempo">22 de dezembro de 2016</span> .
+
+I need to make sure that the rest of the text is left as is. Also, check for any other entities. The "22 de dezembro de 2016" is a date, so tempo. The "Decreto" is part of the legislacao. The "Sursitário" is a person. The "JuizAuditor" is a person. The "1ª CJM" is an organization. The rest of the text doesn't have any other entities. So that's the correct marking.
+</think>
+
+<span class="pessoa">JuizAuditor</span> Substituto da 2ª Auditoria da <span class="organizacao">1ª CJM</span> deixou de conceder o indulto ao <span class="pessoa">Sursitário</span> , devido não atender aos requisitos previsto no <span class="legislacao">Decreto nº 8 . 940</span> , de <span class="tempo">22 de dezembro de 2016</span> .

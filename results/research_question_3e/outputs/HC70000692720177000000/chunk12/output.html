@@ -1,0 +1,85 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let's start by breaking down the text.
+
+The text starts with "Em síntese , a Defesa requereu a concessão da ordem para que : '' ( ... ) sejam declaradas nulas as audiências ocorridas nos dias 07 , 08 e 09 de novembro , audiências ocorridas para oitiva de testemunhas de acusação , cuja intimação desta Impetrante não ocorreu , motivo pelo qual esta não se fez presente nas respectivas audiências , requerendo sejam realizadas novas audiências para que esta exerça seu direito de defesa em favor do acusado que a constituiu , em homenagem aos princípios da segurança jurídica , ampla defesa e contraditório , conforme disposto no art . 5º , inciso LV da CF/88 ; e ( 2 ) Cumulativamente , que sejam declarados nulos todos os atos posterior maculados pela ausência de intimação desta Impetrante . `` . Não assiste razão à Defesa . Consoante a redação do artigo 5º , inciso LXVIII , da Constituição Federal e do art ."
+
+Looking for entities:
+
+1. "Defesa" – This is an organization. The term "Defesa" here refers to the defense in a legal context, which is an organization. So, <span class="organizacao">Defesa</span>.
+
+2. "Impetrante" – This is a legal term referring to the petitioner, but according to the guidelines, only proper names should be marked. "Impetrante" is a generic term, not a proper name, so it's not marked.
+
+3. "audiências ocorridas nos dias 07 , 08 e 09 de novembro" – The dates "07, 08 e 09 de novembro" are temporal references. They should be marked as <span class="tempo">. So, "nos dias 07 , 08 e 09 de novembro" becomes "nos dias <span class="tempo">07 , 08 e 09 de novembro</span>".
+
+4. "art . 5º , inciso LV da CF/88" – "CF/88" refers to the Federal Constitution of 1988, which is legislation. So, "CF/88" is marked as <span class="legislacao">CF/88</span>.
+
+5. "artigo 5º , inciso LXVIII , da Constituição Federal" – "Constituição Federal" is the Federal Constitution, another legislation entity. So, "Constituição Federal" becomes <span class="legislacao">Constituição Federal</span>.
+
+6. "art . 5º , inciso LXVIII , da Constituição Federal e do art ." – The "art." here is part of a reference to the Constitution, so "Constituição Federal" is already marked. The "art." is a generic term, not a specific entity, so it's left as is.
+
+Now, checking for other entities:
+
+- "acusado" – This is a generic term, not a proper name, so no mark.
+- "princípios da segurança jurídica , ampla defesa e contraditório" – These are concepts, not entities.
+- "CF/88" – Already marked as legislation.
+- "Constituição Federal" – Already marked.
+- "art . 5º" – The "art." is a generic term, not a specific entity. The "5º" is part of the article reference, but since it's part of the legislation reference, it's included in the marked span.
+
+Wait, the "art . 5º , inciso LV da CF/88" – The "LV" here refers to an inciso (subsection) of the article. The entire reference is part of the legislation, so the span should include "art . 5º , inciso LV da CF/88" as legislation. However, the user's example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislation. So, in this case, "art . 5º , inciso LV da CF/88" should be marked as <span class="legislacao">art . 5º , inciso LV da CF/88</span>.
+
+Similarly, "artigo 5º , inciso LXVIII , da Constituição Federal" – "Constituição Federal" is the legislation, so the entire phrase should be marked. Wait, but the example in the guidelines shows "art.61 , §1º , da Lei nº 9.430/96" as legislation. So in this case, "art . 5º , inciso LV da CF/88" is legislation. However, "CF/88" is the same as "Constituição Federal" in the text. So in the text, "Constituição Federal" is the full name, so that should be marked as legislation. Therefore, "artigo 5º , inciso LXVIII , da Constituição Federal" would be marked as legislation, and "CF/88" is also part of that.
+
+Wait, the text has both "CF/88" and "Constituição Federal". So, in the input text, the user wrote: "conforme disposto no art . 5º , inciso LV da CF/88 ; e ( 2 ) Cumulativamente , que sejam declarados nulos todos os atos posterior maculados pela ausência de intimação desta Impetrante . `` . Não assiste razão à Defesa . Consoante a redação do artigo 5º , inciso LXVIII , da Constituição Federal e do art ."
+
+So, "CF/88" is an abbreviation for the Federal Constitution of 1988, and "Constituição Federal" is the full name. Both are legislation. Therefore, both should be marked as legislation. So, "CF/88" is marked as <span class="legislacao">CF/88</span> and "Constituição Federal" as <span class="legislacao">Constituição Federal</span>.
+
+Putting it all together:
+
+- "Defesa" → <span class="organizacao">Defesa</span>
+- "07 , 08 e 09 de novembro" → <span class="tempo">07 , 08 e 09 de novembro</span>
+- "CF/88" → <span class="legislacao">CF/88</span>
+- "Constituição Federal" → <span class="legislacao">Constituição Federal</span>
+
+Other parts like "art . 5º , inciso LV da CF/88" and "artigo 5º , inciso LXVIII , da Constituição Federal" should be marked as legislation. Wait, the entire reference is part of the legislation. So "art . 5º , inciso LV da CF/88" is a reference to a specific article and inciso of the legislation, so it should be marked as legislation. Similarly, "artigo 5º , inciso LXVIII , da Constituição Federal" is also a reference to the legislation. So those entire phrases should be in <span class="legislacao">.
+
+But in the example provided, the user had "art.61 , §1º , da Lei nº 9.430/96" marked as legislation. So in this case, the full reference is marked. Therefore, in the input text, the phrases "art . 5º , inciso LV da CF/88" and "artigo 5º , inciso LXVIII , da Constituição Federal" should be marked as legislation.
+
+Wait, but the input text has "art . 5º , inciso LV da CF/88" and "artigo 5º , inciso LXVIII , da Constituição Federal". So the first one is "art . 5º , inciso LV da CF/88" which includes "CF/88" (legislation) and "art . 5º , inciso LV" which is part of the legislation reference. So the entire phrase should be marked as legislation. Similarly, "artigo 5º , inciso LXVIII , da Constituição Federal" is also a reference to the legislation, so that should be marked.
+
+Therefore, the correct HTML would have those phrases marked as legislation. However, in the input text, the user wrote "art . 5º , inciso LV da CF/88" and "artigo 5º , inciso LXVIII , da Constituição Federal". So, each of these phrases should be marked as legislation.
+
+Now, let's check for other entities:
+
+- "Defesa" is an organization.
+- "CF/88" and "Constituição Federal" are legislation.
+- "07 , 08 e 09 de novembro" are time entities.
+
+No other entities like people, organizations, locations, jurisprudence, etc., are present in the text.
+
+So, the final HTML would include:
+
+- <span class="organizacao">Defesa</span>
+- <span class="tempo">07 , 08 e 09 de novembro</span>
+- <span class="legislacao">CF/88</span>
+- <span class="legislacao">Constituição Federal</span>
+- <span class="legislacao">art . 5º , inciso LV da CF/88</span>
+- <span class="legislacao">artigo 5º , inciso LXVIII , da Constituição Federal</span>
+
+Wait, but the "art . 5º , inciso LV da CF/88" is part of the text. The user's example had "art.61 , §1º , da Lei nº 9.430/96" as legislation. So in this case, "art . 5º , inciso LV da CF/88" is a reference to the legislation, so the entire phrase should be marked. Similarly, "artigo 5º , inciso LXVIII , da Constituição Federal" is another reference to the legislation, so that should be marked.
+
+Therefore, the HTML should have those phrases marked as legislation.
+
+Putting all together, the final output would be:
+
+"Em síntese , a <span class="organizacao">Defesa</span> requereu a concessão da ordem para que : '' ( ... ) sejam declaradas nulas as audiências ocorridas nos dias <span class="tempo">07 , 08 e 09 de novembro</span> , audiências ocorridas para oitiva de testemunhas de acusação , cuja intimação desta Impetrante não ocorreu , motivo pelo qual esta não se fez presente nas respectivas audiências , requerendo sejam realizadas novas audiências para que esta exerça seu direito de defesa em favor do acusado que a constituiu , em homenagem aos princípios da segurança jurídica , ampla defesa e contraditório , conforme disposto no <span class="legislacao">art . 5º , inciso LV da CF/88</span> ; e ( 2 ) Cumulativamente , que sejam declarados nulos todos os atos posterior maculados pela ausência de intimação desta Impetrante . `` . Não assiste razão à Defesa . Consoante a redação do <span class="legislacao">artigo 5º , inciso LXVIII , da Constituição Federal</span> e do art ."
+
+Wait, but in the input text, the user wrote "conforme disposto no art . 5º , inciso LV da CF/88 ; e ( 2 ) Cumulativamente , que sejam declarados nulos todos os atos posterior maculados pela ausência de intimação desta Impetrante . `` . Não assiste razão à Defesa . Consoante a redação do artigo 5º , inciso LXVIII , da Constituição Federal e do art ."
+
+So, the first legislation reference is "art . 5º , inciso LV da CF/88", and the second is "artigo 5º , inciso LXVIII , da Constituição Federal". Both should be marked as legislation. Also, "CF/88" is part of the first reference and "Constituição Federal" is part of the second. So, the entire phrases should be marked.
+
+Therefore, the final HTML would include all those marked spans. I need to make sure that all the legislation references are properly included.
+</think>
+
+Em síntese , a <span class="organizacao">Defesa</span> requereu a concessão da ordem para que : '' ( ... ) sejam declaradas nulas as audiências ocorridas nos dias <span class="tempo">07 , 08 e 09 de novembro</span> , audiências ocorridas para oitiva de testemunhas de acusação , cuja intimação desta Impetrante não ocorreu , motivo pelo qual esta não se fez presente nas respectivas audiências , requerendo sejam realizadas novas audiências para que esta exerça seu direito de defesa em favor do acusado que a constituiu , em homenagem aos princípios da segurança jurídica , ampla defesa e contraditório , conforme disposto no <span class="legislacao">art . 5º , inciso LV da CF/88</span> ; e ( 2 ) Cumulativamente , que sejam declarados nulos todos os atos posterior maculados pela ausência de intimação desta Impetrante . `` . Não assiste razão à Defesa . Consoante a redação do <span class="legislacao">artigo 5º , inciso LXVIII , da Constituição Federal</span> e do art .

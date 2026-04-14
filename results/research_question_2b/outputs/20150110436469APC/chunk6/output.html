@@ -1,0 +1,79 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is "Manifestação do autor/embargado as fls . 89/90 . Intimadas as partes a respeito de eventual prescrição , manifestaram-se as fls . 98/103 e 104-verso ."
+
+Looking for entities here. "autor/embargado" – that's a person, right? The author or the one who filed the objection. So "autor/embargado" should be a pessoa. Then "fls" is probably "fls" as in "folhas" (pages) in legal documents, which might be a local? Wait, no. "fls" is an abbreviation for "folhas" which refers to pages in a legal document. But the user's guide says to mark local, which is a place. Hmm, maybe "fls" isn't a local. Maybe it's just part of the document reference and not an entity. So maybe not mark it. 
+
+Next part: "Acrescento que o d Magistrado sentenciante reconheceu a prescrição da pretensão monitória e , com fundamento no artigo 487 , inciso II , do Código de Processo Civil , extinguiu o processo , com resolução do mérito , condenando a parte autora ao pagamento das custas judiciais e dos honorários advocatícios , estes fixados em 10 % ( dez por cento ) do valor da causa ."
+
+Here, "d Magistrado sentenciante" – "d" is probably "doutor" (doctor), so "Magistrado sentenciante" is the judge who issued the sentence. So "Magistrado sentenciante" is a pessoa. Wait, but "Magistrado" is a title, so maybe it's an organization? Or is it a person? In legal terms, a Magistrado is a judge, so it's a pessoa. So "Magistrado sentenciante" should be a pessoa. 
+
+Then "Código de Processo Civil" is a legislation, so that's legislacao. The article 487, inciso II is part of the legislation, so that should be marked as legislacao. 
+
+Now, checking for other entities. "parte autora" is the plaintiff, so that's a pessoa. "custas judiciais" and "honorários advocatícios" are legal terms but not entities. "10 % (dez por cento)" is a percentage, which might be a tempo? No, tempo is time. So maybe not. 
+
+So the entities to mark are:
+
+- autor/embargado (pessoa)
+- Magistrado sentenciante (pessoa)
+- Código de Processo Civil (legislacao)
+- artigo 487, inciso II (legislacao)
+
+Wait, the article 487 is part of the legislation, so it's part of the legislacao. So the entire "artigo 487 , inciso II , do Código de Processo Civil" should be marked as legislacao. 
+
+Also, "d" in "d Magistrado" – maybe "d" is an abbreviation for "doutor", but the user's guide doesn't mention abbreviations. So maybe just "Magistrado sentenciante" is the entity. 
+
+So putting it all together, the HTML should have spans for those entities. Let me check again.
+
+Original text:
+
+"Manifestação do autor/embargado as fls . 89/90 . Intimadas as partes a respeito de eventual prescrição , manifestaram-se as fls . 98/103 e 104-verso . Acrescento que o d Magistrado sentenciante reconheceu a prescrição da pretensão monitória e , com fundamento no artigo 487 , inciso II , do Código de Processo Civil , extinguiu o processo , com resolução do mérito , condenando a parte autora ao pagamento das custas judiciais e dos honorários advocatícios , estes fixados em 10 % ( dez por cento ) do valor da causa ."
+
+Marking:
+
+- "autor/embargado" as pessoa
+- "Magistrado sentenciante" as pessoa
+- "Código de Processo Civil" as legislacao
+- "artigo 487 , inciso II" as legislacao (since it's part of the legislation)
+
+Wait, the user's example in the output might have "artigo 487" as part of the legislacao. So I need to include that. Also, "d" might be part of "d Magistrado", but since "d" is an abbreviation, maybe it's not an entity. So the full "Magistrado sentenciante" is the entity.
+
+So the final HTML would have those spans. Let me make sure I didn't miss any other entities. "parte autora" is a pessoa, but the text says "parte autora" is the plaintiff, so that's a pessoa. Wait, in the original text, it's "condenando a parte autora" – "parte autora" is the plaintiff, so that's a pessoa. So I should mark "parte autora" as pessoa.
+
+Wait, the original text says "condenando a parte autora" – "parte autora" is the plaintiff, so that's a pessoa. So that's another entity.
+
+So adding that, the entities are:
+
+- autor/embargado (pessoa)
+- Magistrado sentenciante (pessoa)
+- parte autora (pessoa)
+- Código de Processo Civil (legislacao)
+- artigo 487, inciso II (legislacao)
+
+So I need to mark those. Let me check again.
+
+Original text:
+
+"Acrescento que o d Magistrado sentenciante reconheceu a prescrição da pretensão monitória e , com fundamento no artigo 487 , inciso II , do Código de Processo Civil , extinguiu o processo , com resolução do mérito , condenando a parte autora ao pagamento das custas judiciais e dos honorários advocatícios , estes fixados em 10 % ( dez por cento ) do valor da causa ."
+
+So "d Magistrado sentenciante" – "d" is "doutor", so the full name is "d Magistrado sentenciante", but maybe "Magistrado sentenciante" is the entity. However, "d" is part of the title, so perhaps the entire phrase is a pessoa. But the user's guide says to mark "pessoa" for people. So "Magistrado sentenciante" is a person (the judge), so that's a pessoa. "d" is part of the title, but maybe it's not an entity. So the span would be "Magistrado sentenciante".
+
+Similarly, "parte autora" is the plaintiff, so that's a pessoa.
+
+So the final HTML would have:
+
+<span class="pessoa">autor/embargado</span>
+<span class="pessoa">Magistrado sentenciante</span>
+<span class="pessoa">parte autora</span>
+<span class="legislacao">Código de Processo Civil</span>
+<span class="legislacao">artigo 487 , inciso II</span>
+
+Wait, but the "artigo 487" is part of the legislation, so the entire phrase "artigo 487 , inciso II , do Código de Processo Civil" should be marked as legislacao. But the user's example might have it as "artigo 487, inciso II" as part of the legislation. So I need to check if the entire phrase is part of the legislation. Since it's referring to a specific article in the legislation, it's part of the legislacao.
+
+So the final HTML would have those spans. Let me make sure I didn't miss any other entities. The rest of the text doesn't have any other entities. So the output should be the original text with those spans.
+</think>
+
+Manifestação do <span class="pessoa">autor/embargado</span> as fls . 89/90 . Intimadas as partes a respeito de eventual prescrição , manifestaram-se as fls . 98/103 e 104-verso . Acrescento que o d <span class="pessoa">Magistrado sentenciante</span> reconheceu a prescrição da pretensão monitória e , com fundamento no <span class="legislacao">artigo 487 , inciso II , do Código de Processo Civil</span> , extinguiu o processo , com resolução do mérito , condenando a <span class="pessoa">parte autora</span> ao pagamento das custas judiciais e dos honorários advocatícios , estes fixados em 10 % ( dez por cento ) do valor da causa .

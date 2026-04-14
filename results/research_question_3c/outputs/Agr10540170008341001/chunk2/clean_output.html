@@ -1,0 +1,63 @@
+python
+import py3dmodel as p3d
+import random
+
+def create_house(length, width, height, floors, windows, doors):
+    # Create base structure
+    base = p3d.construct.make_box(length, width, height)
+    
+    # Create floors
+    floors_list = []
+    for i in range(floors):
+        floor_height = height / floors
+        floor = p3d.construct.make_box(length, width, floor_height)
+        floor_placement = p3d.transform.translate_vector((0, 0, i * floor_height))
+        floor = p3d.transform.translate(floor, floor_placement)
+        floors_list.append(floor)
+    
+    # Combine floors
+    house = p3d.construct.boolean_union(floors_list)
+    
+    # Add windows
+    for window in windows:
+        window_box = p3d.construct.make_box(window['width'], window['height'], 0.1)
+        window_placement = p3d.transform.translate_vector((
+            window['x'], window['y'], window['z']
+        ))
+        window = p3d.transform.translate(window_box, window_placement)
+        house = p3d.construct.boolean_union([house, window])
+    
+    # Add doors
+    for door in doors:
+        door_box = p3d.construct.make_box(door['width'], door['height'], 0.1)
+        door_placement = p3d.transform.translate_vector((
+            door['x'], door['y'], door['z']
+        ))
+        door = p3d.transform.translate(door_box, door_placement)
+        house = p3d.construct.boolean_union([house, door])
+    
+    return house
+
+def main():
+    # Parameters
+    length = 10
+    width = 8
+    height = 5
+    floors = 2
+    windows = [
+        {'x': 2, 'y': 2, 'z': 1, 'width': 1, 'height': 1.5},
+        {'x': 6, 'y': 2, 'z': 1, 'width': 1, 'height': 1.5}
+    ]
+    doors = [
+        {'x': 4, 'y': 2, 'z': 0, 'width': 1, 'height': 2}
+    ]
+    
+    # Create house
+    house = create_house(length, width, height, floors, windows, doors)
+    
+    # Export to file (e.g., STL format)
+    p3d.io.export_stl("house_model.stl", house)
+    print("House model created and exported to house_model.stl")
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "Supremo Tribunal Federal ACO 2821 A GR / MT Na mesma direção , vide AC 3.201-MC/PR , Rel ."
+
+Let me break it down word by word.
+
+"Supremo Tribunal Federal" – that's the name of a Brazilian court, so it's an organization. So I'll mark that as <span class="organizacao">.
+
+"ACO 2821" – ACO might stand for "Acórdão" which is a legal term, but I'm not sure. However, the number 2821 could be a case number. Since it's a legal reference, maybe it's part of a case, but the user hasn't specified case numbers as an entity. The instruction says to mark the entities listed, so maybe ACO is part of an organization or legislation? Wait, the user's example output might help. Let me check the example given.
+
+Wait, the user provided an example input and output. Let me check that again. The input was "Supremo Tribunal Federal ACO 2821 A GR / MT Na mesma direção , vide AC 3.201-MC/PR , Rel ." and the output was:
+
+"<span class="organizacao">Supremo Tribunal Federal</span> <span class="jurisprudencia">ACO 2821</span> A GR / <span class="local">MT</span> Na mesma direção , vide <span class="jurisprudencia">AC 3.201-MC/PR</span> , Rel ."
+
+So in the example, "ACO 2821" is marked as jurisprudencia. That's interesting. So maybe ACO here refers to a judicial decision or a case. Similarly, "AC 3.201-MC/PR" is also marked as jurisprudencia. The "AC" might stand for "Acórdão" (decision) in Brazilian legal terms. So I need to follow that pattern.
+
+So, applying that to the input text:
+
+"Supremo Tribunal Federal" is an organization, so <span class="organizacao">.
+
+"ACO 2821" is jurisprudencia.
+
+"A GR" – not sure. Maybe "A" is an abbreviation for "Apelação" (appeal), but the user hasn't specified that. Since it's not one of the entities, leave as is.
+
+"/ MT" – MT is the abbreviation for Mato Grosso, a state in Brazil. So that's a local. So <span class="local">MT</span>.
+
+"Na mesma direção" – no entity here.
+
+", vide AC 3.201-MC/PR" – "AC" here is likely a reference to a judicial decision, so jurisprudencia. The number 3.201-MC/PR is part of that, so the whole "AC 3.201-MC/PR" is jurisprudencia.
+
+", Rel ." – "Rel" is short for "Relator" (relator), which is a person, but the user hasn't specified that. Wait, the example output had "Rel ." as is. Wait, in the example, the output was "Rel .", so maybe "Rel" is not marked. So perhaps "Rel" is not an entity here. So leave it as is.
+
+Putting it all together:
+
+<span class="organizacao">Supremo Tribunal Federal</span> <span class="jurisprudencia">ACO 2821</span> A GR / <span class="local">MT</span> Na mesma direção , vide <span class="jurisprudencia">AC 3.201-MC/PR</span> , Rel .
+
+I need to make sure that all the entities are correctly marked. Let me check again. The example output from the user shows that "ACO 2821" and "AC 3.201-MC/PR" are marked as jurisprudencia. So following that, the same applies here. The "MT" is a local. The rest are left as is. So the final HTML should be as above.
+</think>
+
+<span class="organizacao">Supremo Tribunal Federal</span> <span class="jurisprudencia">ACO 2821</span> A GR / <span class="local">MT</span> Na mesma direção , vide <span class="jurisprudencia">AC 3.201-MC/PR</span> , Rel .

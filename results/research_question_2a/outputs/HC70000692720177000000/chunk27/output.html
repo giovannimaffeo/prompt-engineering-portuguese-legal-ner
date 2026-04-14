@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "A Procuradoria-Geral da Justiça Militar , em Parecer da lavra da Subprocuradora-Geral Dra .". Let me break it down.
+
+Starting with "Procuradoria-Geral da Justiça Militar". That sounds like an organization. The term "Procuradoria-Geral" is a common name for a legal office, so I'll mark that as organizacao. Then "Justiça Militar" is part of the same organization, so maybe the entire phrase is an organization. Wait, but "Procuradoria-Geral da Justiça Militar" is the full name of the organization. So I should wrap that entire phrase in <span class="organizacao">.
+
+Next, "Parecer da lavra da Subprocuradora-Geral Dra". "Parecer" is a legal term for an opinion or report. "Subprocuradora-Geral" is a title, so that's a pessoa. The "Dra." is an abbreviation for "Doutora", which is a title for a woman, so that's also a pessoa. 
+
+Wait, the text has "Subprocuradora-Geral Dra ." – the "Dra." is part of the title, so the full title would be "Subprocuradora-Geral Dra." So "Subprocuradora-Geral" is a position, which might be part of an organization, but the person holding that position is a pessoa. So "Subprocuradora-Geral" is a title, but the person is the one with that title. However, the text says "da lavra da Subprocuradora-Geral Dra", which translates to "of the Subprocuradora-Geral Dra." So the person is the one who wrote the opinion. Therefore, "Subprocuradora-Geral Dra" refers to a person, so I should mark "Subprocuradora-Geral" and "Dra" as pessoa? Wait, "Dra" is an abbreviation, so maybe "Dra." is part of the title. But the person's name isn't given here. Wait, the text is "Subprocuradora-Geral Dra ." – maybe the "Dra." is part of the title, but the actual person's name isn't mentioned. Hmm, maybe "Subprocuradora-Geral" is the position, and "Dra." is the title, but the person isn't named. So perhaps the entire "Subprocuradora-Geral Dra" is part of the organization? Or is it a person? 
+
+Wait, the structure is "Parecer da lavra da Subprocuradora-Geral Dra". "Da lavra da" means "of the Subprocuradora-Geral Dra", so the person who wrote the opinion is the Subprocuradora-Geral Dra. So "Subprocuradora-Geral" is a position, and "Dra." is the title (Doctor), so the person is the one holding that position. But since the name isn't given, maybe we should mark "Subprocuradora-Geral" as a position (which might be part of an organization), but the user's entities are pessoa, organizacao, etc. So perhaps "Subprocuradora-Geral" is part of the organization, but the person is the one with that title. However, the text doesn't mention a specific person's name, just the title. So maybe "Subprocuradora-Geral" is part of the organization, but the user's instruction is to mark entities like pessoa, organizacao, etc. 
+
+Alternatively, maybe "Subprocuradora-Geral" is a position within the organization, so it's part of the organizacao. But the user's example might have different handling. Let me check the example given. The input text is "A Procuradoria-Geral da Justiça Militar , em Parecer da lavra da Subprocuradora-Geral Dra .". The output should be:
+
+A <span class="organizacao">Procuradoria-Geral da Justiça Militar</span> , em <span class="jurisprudencia">Parecer</span> da lavra da <span class="pessoa">Subprocuradora-Geral Dra</span> .
+
+Wait, in the example, "Parecer" is marked as jurisprudencia. But "Parecer" is a legal opinion, which could be part of jurisprudencia. However, jurisprudencia refers to court decisions or precedents, while a "Parecer" is an opinion, which might be part of the organization's work. But the user's example might have "Parecer" as jurisprudencia. Alternatively, maybe "Parecer" is a type of legal document, so perhaps it's part of jurisprudencia. 
+
+Alternatively, maybe "Parecer" is a type of legal opinion, which could be considered part of jurisprudencia. But I'm not sure. The user's example might have "Parecer" as jurisprudencia. So in the output, "Parecer" is marked as jurisprudencia. 
+
+Then "Subprocuradora-Geral Dra" is a person, so marked as pessoa. 
+
+So putting it all together:
+
+A <span class="organizacao">Procuradoria-Geral da Justiça Militar</span> , em <span class="jurisprudencia">Parecer</span> da lavra da <span class="pessoa">Subprocuradora-Geral Dra</span> .
+
+But wait, the original text has "Subprocuradora-Geral Dra ." with a period at the end. So maybe the "Dra." is part of the title, and the person is the one with that title. So "Subprocuradora-Geral Dra" is the person's title, so marked as pessoa. 
+
+I think that's the correct approach. So the final HTML would have those spans with the respective classes.
+</think>
+
+A <span class="organizacao">Procuradoria-Geral da Justiça Militar</span> , em <span class="jurisprudencia">Parecer</span> da lavra da <span class="pessoa">Subprocuradora-Geral Dra</span> .

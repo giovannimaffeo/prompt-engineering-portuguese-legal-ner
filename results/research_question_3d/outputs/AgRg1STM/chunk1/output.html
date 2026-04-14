@@ -1,0 +1,49 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each span needs a class indicating the type.
+
+First, I need to go through the text and identify each entity according to the definitions provided. Let me start by reading the text carefully.
+
+The first part is "Documento assinado eletronicamente por José Barroso Filho , Matricula 1117 .". Here, "José Barroso Filho" is a person's name, so that's a 'pessoa'. The "Matricula 1117" might be a number, but since it's part of the matricula, maybe not an entity. The date "02/03/2018 17:26:32" – the date part is 'tempo', but the time "17:26:32" is a horário, which the guidelines say not to mark. So only "02/03/2018" is 'tempo'.
+
+Next, "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4". The URL isn't a local, so skip that. The "Codigo Verificador" is a code, not an entity. The "3044c7190e4" is a code, but not an entity as per the guidelines.
+
+Then, "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000". The "AGRAVO INTERNO" is a legal term, but not an entity. The number "7000077-04.2017.7.00.0000" is a case number, which might be jurisprudencia. But the guidelines say that specific identifiers like "Acórdão n. 999404" are jurisprudencia. So this case number could be considered jurisprudencia.
+
+"RELATOR : MINISTRO JOSÉ BARROSO FILHO" – "MINISTRO JOSÉ BARROSO FILHO" is a person, but the title "MINISTRO" is not a name, so only "JOSÉ BARROSO FILHO" is 'pessoa'.
+
+"AGRAVANTE : NELSON BARROSO FERREIRA" – "NELSON BARROSO FERREIRA" is another 'pessoa'.
+
+"DEFENSORIA PÚBLICA DA UNIÃO" – that's an organization, so 'organizacao'.
+
+"AGRAVADO : MINISTÉRIO PÚBLICO MILITAR" – another 'organizacao'.
+
+"Ementa : AGRAVO INTERNO . ART . 290 CPM . CONTAGEM PERÍODO PROVA DE SURSIS PARA FINS DE INDULTO . INCONSTITUCIONALIDADE DO DECRETO PRESIDENCIAL DE INDULTO . EMBARGOS DE DECLARAÇÃO OPOSTOS CONTRA ACÓRDÃO DE RECURSO EM SENTIDO ESTRITO . INADMISSÃO . AGRAVADA A DECISÃO PELA DEFENSORIA PÚBLICA DA UNIÃO . AGRAVO REJEITADO . UNÂNIME . O Acórdão embargado , em sede de Recurso em Sentido Estrito , analisou os argumentos apresentados pela Defensoria Pública da União ."
+
+Here, "ART . 290 CPM" – "CPM" is a legislation (Código Penal Militar), so 'legislacao'. "Acórdão" is a jurisprudencia, but the text mentions "Acórdão embargado" without a specific number, so maybe not. However, the example given in the guidelines includes "Acórdão n. 999404" as jurisprudencia. Since the text here just says "Acórdão embargado", it's a general term, so not marked. The "Recurso em Sentido Estrito" is a legal term but not an entity. "Defensoria Pública da União" is already marked as 'organizacao'.
+
+Wait, "CPM" is an acronym for Código Penal Militar, which is legislation. So "ART . 290 CPM" should be 'legislacao' for "CPM". Also, "DECRETO PRESIDENCIAL DE INDULTO" – "DECRETO" is a type of legislation, so "DECRETO PRESIDENCIAL DE INDULTO" is 'legislacao'.
+
+Now, putting it all together:
+
+- "José Barroso Filho" → pessoa
+- "02/03/2018" → tempo
+- "MINISTRO JOSÉ BARROSO FILHO" → pessoa (only the name)
+- "NELSON BARROSO FERREIRA" → pessoa
+- "DEFENSORIA PÚBLICA DA UNIÃO" → organizacao
+- "MINISTÉRIO PÚBLICO MILITAR" → organizacao
+- "ART . 290 CPM" → legislacao (CPM)
+- "DECRETO PRESIDENCIAL DE INDULTO" → legislacao
+- "7000077-04.2017.7.00.0000" → jurisprudencia (case number)
+- "Acórdão embargado" → not marked because it's a general term
+- "Defensoria Pública da União" → already marked as organizacao
+
+Wait, the case number "7000077-04.2017.7.00.0000" is the AGRAVO INTERNO Nº, so that's a jurisprudencia. Also, "Acórdão n. 999404" is an example of jurisprudencia. In the text, "O Acórdão embargado" is mentioned, but without a specific number, so not marked. However, the case number "7000077-04.2017.7.00.0000" is the AGRAVO INTERNO Nº, which is a specific identifier, so it should be marked as jurisprudencia.
+
+So, let me check again:
+
+- "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" → the number is the case number, so jurisprudencia.
+
+Now, putting all these into HTML with the appropriate spans.
+</think>
+
+<span class="pessoa">José Barroso Filho</span> , Matricula 1117 . Em <span class="tempo">02/03/2018</span> 17:26:32 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 <span class="jurisprudencia">AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000</span> RELATOR : <span class="pessoa">MINISTRO JOSÉ BARROSO FILHO</span> <span class="pessoa">AGRAVANTE</span> : <span class="pessoa">NELSON BARROSO FERREIRA</span> <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span> <span class="organizacao">AGRAVADO</span> : <span class="organizacao">MINISTÉRIO PÚBLICO MILITAR</span> EMENTA : <span class="jurisprudencia">AGRAVO INTERNO</span> . <span class="legislacao">ART</span> . 290 <span class="legislacao">CPM</span> . CONTAGEM PERÍODO PROVA DE SURSIS PARA FINS DE INDULTO . INCONSTITUCIONALIDADE DO <span class="legislacao">DECRETO PRESIDENCIAL DE INDULTO</span> . EMBARGOS DE DECLARAÇÃO OPOSTOS CONTRA ACÓRDÃO DE RECURSO EM SENTIDO ESTRITO . INADMISSÃO . AGRAVADA A DECISÃO PELA <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span> . AGRAVO REJEITADO . UNÂNIME . O <span class="jurisprudencia">Acórdão</span> embargado , em sede de Recurso em Sentido Estrito , analisou os argumentos apresentados pela <span class="organizacao">Defensoria Pública da União</span> .

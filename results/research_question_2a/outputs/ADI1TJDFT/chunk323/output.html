@@ -1,0 +1,51 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about an Action Directa de Inconstitucionalidade (ADI) with a number, and a decision declaring a law unconstitutional. 
+
+Looking for entities:
+
+- "ADI" is a legal term, but it's part of the case name. The example output shows "ADI" as part of the text without a tag, so maybe it's not an entity here. Wait, the user's example output has "ADI" as is. So I should check if any of the entities apply here.
+
+- "Lei Distrital n . 5.815 , de 3 de abril de 2017" – "Lei Distrital" is a law, so that's legislacao. The number 5.815 is the law's number, but the user's example output marks "Lei Distrital n . 5.815" as legislacao. Wait, in the example output, the user has "Lei Distrital n . 5.815" as <span class="legislacao">. So I need to mark the entire law reference as legislacao.
+
+- "3 de abril de 2017" is a date, so that's tempo. The example output has "3 de abril de 2017" as <span class="tempo">.
+
+- "ex tunc" and "erga omnes" are legal terms, but they might not be any of the specified entities. The example output leaves them as is.
+
+- "Maioria" refers to the majority, which isn't one of the entities. So no tag there.
+
+So, the steps are:
+
+1. Identify all instances of the entities in the text.
+2. Wrap them with <span> tags having the appropriate class.
+3. Leave the rest of the text unchanged.
+
+Now, applying this to the input text:
+
+Original text: "Ação Direta de Inconstitucionalidade 20170020161362ADI D E C I S Ã O Julgar procedente o pedido e declarar a inconstitucionalidade formal da Lei Distrital n . 5.815 , de 3 de abril de 2017 , com efeitos `` ex tunc '' e eficácia `` erga omnes '' . Maioria ."
+
+Breaking it down:
+
+- "Ação Direta de Inconstitucionalidade" – these are legal terms, but not any of the specified entities. So no tag.
+
+- "20170020161362ADI" – this seems like a case number. The example output includes "ADI" as part of the text. Wait, in the example output, the user has "ADI" as is. So maybe the case number is not an entity here. The example output shows "ADI" without a tag. So I should leave it as is.
+
+- "D E C I S Ã O" – this is the word "DECISÃO" in uppercase. Since it's a legal term but not one of the entities, leave as is.
+
+- "Julgar procedente o pedido e declarar a inconstitucionalidade formal da Lei Distrital n . 5.815 , de 3 de abril de 2017 , com efeitos `` ex tunc '' e eficácia `` erga omnes '' . Maioria ."
+
+Here, "Lei Distrital n . 5.815" is legislacao. The date "3 de abril de 2017" is tempo. The rest are legal terms but not entities.
+
+So, the HTML should have:
+
+- "Lei Distrital n . 5.815" as <span class="legislacao">.
+
+- "3 de abril de 2017" as <span class="tempo">.
+
+Other parts remain unchanged.
+
+Now, putting it all together, making sure to replace the relevant parts with the <span> tags.
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI D E C I S Ã O Julgar procedente o pedido e declarar a inconstitucionalidade formal da <span class="legislacao">Lei Distrital n . 5.815 , de <span class="tempo">3 de abril de 2017</span> , com efeitos `` ex tunc '' e eficácia `` erga omnes '' . Maioria .

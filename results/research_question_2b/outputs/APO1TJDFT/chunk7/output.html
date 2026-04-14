@@ -1,0 +1,31 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example text again:
+
+"INSTAURADA A DIVERGÊNCIA PROSSEGUI-SE O JULGAMENTO INTEGRANDO O QUÓRUM O DES . SILVA LEMOS E O DES . JOSAPHÁ FRANCISCO . CONHECER DO RECURSO . RECEBER REMESSA DE OFÍCIO . NEGAR PROVIMENTO A AMBOS . MAIORIA . VENCIDO O 1º VOGAL. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 21 de Março de 2018 ."
+
+Alright, let's break it down. The first part mentions "DES . SILVA LEMOS" and "DES . JOSAPHÁ FRANCISCO". The "DES" here is likely an abbreviation for "Desembargador" (Judge), so these are names of people. So "SILVA LEMOS" and "JOSAPHÁ FRANCISCO" are pessoas. The "DES" might be part of their title, but since it's part of their name, maybe the entire "DES . SILVA LEMOS" is a person's name. Wait, but in legal contexts, "DES" is a title, so the actual names are "SILVA LEMOS" and "JOSAPHÁ FRANCISCO". So I should mark those as pessoa.
+
+Next, "Brasilia ( DF )" is a location. DF stands for Distrito Federal, so Brasilia is the capital of DF. So "Brasilia" and "DF" are local. Wait, but the user's example output shows "Brasilia ( DF )" as local. So I should wrap both in local tags.
+
+Then, "21 de Março de 2018" is a date, so that's tempo. The date is in the format "dia de mês de ano", so that's a tempo entity.
+
+Now, looking for other entities. The text mentions "ata do julgamento" which is a record of the judgment, but "ata" is a document, not a specific entity type. "Notas taquigráficas" are stenographic notes, which might be part of the jurisprudência or not. But the user's example output doesn't mark these, so maybe they are not entities here. The user's example output includes "Brasilia ( DF )" as local, "21 de Março de 2018" as tempo, and the names as pessoa.
+
+Wait, the user's example output for the input text is:
+
+"<span class="pessoa">SILVA LEMOS</span> e <span class="pessoa">JOSAPHÁ FRANCISCO</span>. <span class="local">Brasilia ( DF )</span>, <span class="tempo">21 de Março de 2018</span>."
+
+So the names are marked as pessoa, the location as local, and the date as tempo. The rest of the text is left as is. So I need to follow that pattern.
+
+So, in the input text, the names "SILVA LEMOS" and "JOSAPHÁ FRANCISCO" are pessoas. The location is "Brasilia ( DF )", which is local. The date is "21 de Março de 2018", which is tempo. The rest of the text doesn't have any of the other entities like organizacao, legislacao, or jurisprudencia. So those parts remain unchanged.
+
+I need to make sure that the HTML tags are correctly placed. Also, note that in the input text, there are periods and spaces that might need to be considered. For example, "DES . SILVA LEMOS" – the "DES" is part of the title, but the actual name is "SILVA LEMOS". So the "DES" is part of the title, but the user's example output only marks the names as pessoa. So I should only mark "SILVA LEMOS" and "JOSAPHÁ FRANCISCO" as pessoa.
+
+Also, the user's example output uses "Brasilia ( DF )" as a single local entity. So I should wrap that entire phrase in the local tag.
+
+So putting it all together, the HTML should have the names as pessoa, the location as local, and the date as tempo. The rest remains as is.
+</think>
+
+<span class="pessoa">SILVA LEMOS</span> e <span class="pessoa">JOSAPHÁ FRANCISCO</span>. <span class="local">Brasilia ( DF )</span>, <span class="tempo">21 de Março de 2018</span>.

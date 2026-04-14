@@ -1,0 +1,88 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me start by breaking down the input text.
+
+The input is: "71 e 100 da Lei Orgânica do Distrito Federal , verbis : '' Art . 71 . A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos na Lei Orgânica , cabe : Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 32 ( ... ) § 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Estado do Distrito Federal , órgãos e entidades da administração pública ; ( ... ) Art . 100 ."
+
+Let me go through each part step by step.
+
+1. "71 e 100 da Lei Orgânica do Distrito Federal": Here, "Lei Orgânica do Distrito Federal" is a law, so that's legislacao. The numbers 71 and 100 are likely articles, so they might be part of the legislation. But the user's examples show that "art. 61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So "71" and "100" here are parts of the law's articles, so they should be included in the legislacao tag. Wait, but the example shows that "art. 61" is marked as legislacao. So maybe "71" and "100" are articles of the law, so they should be part of the legislacao. Also, "Lei Orgânica do Distrito Federal" is a law, so that's legislacao.
+
+2. "verbis : '' Art . 71 .": "Art" is part of the article reference, so "Art . 71" would be part of the legislacao. But the example shows that "art. 61" is marked. So "Art . 71" should be part of the legislacao.
+
+3. "Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI": "Ação Direta de Inconstitucionalidade" is a type of legal action, which might be jurisprudencia. The number "20170020161362ADI" looks like a case number, so that's jurisprudencia. The "Fls . _____" is probably "Fls." as in "Fls." which is a legal abbreviation for "Folhas" (pages), but it's not an entity. The "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" seems like a code, but the example doesn't mention codes. The user's examples don't mark codes unless they are part of a specific entity. Since the code here is a verification code, maybe it's not an entity. 
+
+4. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 32 ( ... ) § 1º": "GABINETE DO DESEMBARGADOR" is an organization (a judicial office), so that's organizacao. "SILVANIO BARBOSA DOS SANTOS" is a person's name, so that's pessoa. The "32" might be a section or a number, but it's not an entity. The "§ 1º" is a section, but not an entity.
+
+5. "Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Estado do Distrito Federal , órgãos e entidades da administração pública ; ( ... ) Art . 100 .": "Distrito Federal" is a local entity, so that's local. "Secretarias de Estado do Distrito Federal" is an organization, so that's organizacao. "órgãos e entidades da administração pública" are organizations, so those should be marked as organizacao. "Art . 100" is part of the legislation, so that's legislacao.
+
+Now, putting it all together:
+
+- "Lei Orgânica do Distrito Federal" is legislacao.
+- "71" and "100" are parts of the law's articles, so they are part of legislacao.
+- "Art . 71" and "Art . 100" are part of legislacao.
+- "GABINETE DO DESEMBARGADOR" is organizacao.
+- "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" is jurisprudencia.
+- "Distrito Federal" is local.
+- "Secretarias de Estado do Distrito Federal" is organizacao.
+- "órgãos e entidades da administração pública" are organizacao.
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" is not an entity.
+- "Fls . _____" is not an entity.
+- "§ 1º" is not an entity.
+
+Wait, the example input 5 has "art . 428 da Consolidação das Leis do Trabalho – CLT" marked as legislacao. So in this case, "71" and "100" are parts of the law's articles, so they should be included in the legislacao tag. Also, "Art . 71" and "Art . 100" are part of the legislation.
+
+So the final HTML should have:
+
+- "71 e 100 da <span class='legislacao'>Lei Orgânica do Distrito Federal</span> , verbis : '' <span class='legislacao'>Art . 71</span> . A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos na <span class='legislacao'>Lei Orgânica</span> , cabe : <span class='jurisprudencia'>Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class='organizacao'>GABINETE DO DESEMBARGADOR</span> <span class='pessoa'>SILVANIO BARBOSA DOS SANTOS</span> 32 ( ... ) <span class='legislacao'>§ 1º</span> Compete privativamente ao Governador do <span class='local'>Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class='organizacao'>Secretarias de Estado do Distrito Federal</span> , <span class='organizacao'>órgãos</span> e <span class='organizacao'>entidades da administração pública</span> ; ( ... ) <span class='legislacao'>Art . 100</span> ."
+
+Wait, but "§ 1º" is part of the legislation? In the example input 5, "§ 1º" is part of the article, so it's part of the legislacao. But in the example input 5, the output is "altera a redação do <span class='legislacao'>art . 428 da Consolidação das Leis do Trabalho</span> – <span class='legislacao'>CLT</span>, aprovada pelo <span class='legislacao'>Decreto-Lei no 5.452</span>, de <span class='tempo'>1o de maio de 1943</span>". So the "§ 1º" is part of the legislation. Therefore, in this case, "§ 1º" should be part of the legislacao.
+
+But in the input text, "§ 1º" is part of the article, so it's part of the legislacao. However, the user's example input 5 has "§ 1º" as part of the legislation. So I should mark "§ 1º" as legislacao.
+
+Wait, but in the example input 5, the output is "altera a redação do <span class='legislacao'>art . 428 da Consolidação das Leis do Trabalho</span> – <span class='legislacao'>CLT</span>, aprovada pelo <span class='legislacao'>Decreto-Lei no 5.452</span>, de <span class='tempo'>1o de maio de 1943</span>". The "§ 1º" is not present there. So maybe "§ 1º" is not part of the legislacao. Wait, the example input 5 is about a law, and the output marks the articles and the decree. So "§ 1º" is part of the law's article, so it's part of the legislacao. But in the example input 5, the output doesn't have "§ 1º" marked. Hmm, maybe the user's examples don't include "§" in the legislacao. Let me check the examples again.
+
+Looking at example input 5: "altera a redação do art . 428 da Consolidação das Leis do Trabalho – CLT, aprovada pelo Decreto-Lei no 5.452, de 1o de maio de 1943" becomes "altera a redação do <span class='legislacao'>art . 428 da Consolidação das Leis do Trabalho</span> – <span class='legislacao'>CLT</span>, aprovada pelo <span class='legislacao'>Decreto-Lei no 5.452</span>, de <span class='tempo'>1o de maio de 1943</span>". So the "art . 428" is marked as legislacao, but "§ 1º" is not present here. Therefore, maybe "§ 1º" is not part of the legislacao. Wait, but in the input text, "§ 1º" is part of the article. So perhaps "§ 1º" is part of the legislacao. But the example input 5 doesn't have that. Maybe the user's examples don't include "§" in the legislacao. Alternatively, maybe "§ 1º" is part of the legislation. 
+
+Alternatively, maybe "§ 1º" is part of the article, so it's part of the legislacao. But in the example input 5, the "art . 428" is marked, but "§ 1º" is not. So perhaps "§ 1º" is not marked. Maybe the user's examples don't include "§" in the legislacao. Therefore, in this case, "§ 1º" is not marked. 
+
+But the user's example input 2 is "Superior Tribunal de Justiça RECURSO ESPECIAL Nº 1.583.083 - RS" which becomes "<span class='organizacao'>Superior Tribunal de Justiça</span> <span class='jurisprudencia'>RECURSO ESPECIAL Nº 1.583.083 - RS</span>". So the "RECURSO ESPECIAL" is part of the jurisprudencia. Similarly, in the input text, "Ação Direta de Inconstitucionalidade 20170020161362ADI" is a case number, so that's jurisprudencia. 
+
+So, putting it all together, the final HTML should have:
+
+- "71 e 100 da <span class='legislacao'>Lei Orgânica do Distrito Federal</span> , verbis : '' <span class='legislacao'>Art . 71</span> . A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos na <span class='legislacao'>Lei Orgânica</span> , cabe : <span class='jurisprudencia'>Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class='organizacao'>GABINETE DO DESEMBARGADOR</span> <span class='pessoa'>SILVANIO BARBOSA DOS SANTOS</span> 32 ( ... ) <span class='legislacao'>§ 1º</span> Compete privativamente ao Governador do <span class='local'>Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class='organizacao'>Secretarias de Estado do Distrito Federal</span> , <span class='organizacao'>órgãos</span> e <span class='organizacao'>entidades da administração pública</span> ; ( ... ) <span class='legislacao'>Art . 100</span> ."
+
+Wait, but "§ 1º" is part of the article, so it's part of the legislacao. However, in the example input 5, the "§ 1º" is not marked. Maybe the user's examples don't include "§" in the legislacao. Alternatively, maybe "§ 1º" is part of the article, so it's part of the legislacao. 
+
+Alternatively, maybe "§ 1º" is not part of the legislacao. But in the input text, "§ 1º" is part of the article, so it's part of the legislacao. 
+
+But the user's example input 5 doesn't have "§ 1º" marked. So perhaps "§ 1º" is not marked. Therefore, in this case, "§ 1º" is not marked. 
+
+So the final answer would be:
+
+"71 e 100 da <span class='legislacao'>Lei Orgânica do Distrito Federal</span> , verbis : '' <span class='legislacao'>Art . 71</span> . A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos na <span class='legislacao'>Lei Orgânica</span> , cabe : <span class='jurisprudencia'>Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class='organizacao'>GABINETE DO DESEMBARGADOR</span> <span class='pessoa'>SILVANIO BARBOSA DOS SANTOS</span> 32 ( ... ) Compete privativamente ao Governador do <span class='local'>Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class='organizacao'>Secretarias de Estado do Distrito Federal</span> , <span class='organizacao'>órgãos</span> e <span class='organizacao'>entidades da administração pública</span> ; ( ... ) <span class='legislacao'>Art . 100</span> ."
+
+But I'm not sure about the "§ 1º" part. Maybe it's better to leave it unmarked. 
+
+Alternatively, maybe "§ 1º" is part of the legislacao. 
+
+But given the examples, it's safer to mark "Art . 71" and "Art . 100" as legislacao, and "§ 1º" as part of the article, so it's part of the legislacao. 
+
+So the final answer would include "§ 1º" as part of the legislacao. 
+
+Therefore, the final HTML is as above.
+</think>
+
+```html
+71 e 100 da <span class="legislacao">Lei Orgânica do Distrito Federal</span> , verbis : '' <span class="legislacao">Art . 71</span> . A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos na <span class="legislacao">Lei Orgânica</span> , cabe : <span class="jurisprudencia">Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 32 ( ... ) <span class="legislacao">§ 1º</span> Compete privativamente ao Governador do <span class="local">Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class="organizacao">Secretarias de Estado do Distrito Federal</span> , <span class="organizacao">órgãos</span> e <span class="organizacao">entidades da administração pública</span> ; ( ... ) <span class="legislacao">Art . 100</span> .
+```
+
+### Explicação:
+- **`<span class="legislacao">`** foi aplicado a referências a artigos e leis, como "Art . 71", "Lei Orgânica", e "Art . 100".
+- **`<span class="jurisprudencia">`** foi usado para identificar ações judiciais, como "Ação Direta de Inconstitucionalidade".
+- **`<span class="organizacao">`** foi aplicado a instituições e entidades, como "GABINETE DO DESEMBARGADOR", "Secretarias de Estado do Distrito Federal", "órgãos", e "entidades da administração pública".
+- **`<span class="pessoa">`** foi usado para identificar nomes de pessoas, como "SILVANIO BARBOSA DOS SANTOS".
+- **`<span class="local">`** foi aplicado a referências geográficas, como "Distrito Federal".
+- **`<span class="legislacao">§ 1º</span>`** foi incluído como parte da estrutura de um artigo legal, seguindo a lógica de outros exemplos.

@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 19 de lei , ainda quando dele seja a prerrogativa usurpada , tem o condão de sanar esse defeito jurídico radical ."
+
+Looking for entities:
+
+1. "Ação Direta de Inconstitucionalidade" – This seems like a legal action, maybe a type of legislation? Wait, "Ação Direta de Inconstitucionalidade" is a legal term in Brazil, referring to a direct action against unconstitutionality. But the user's entities include 'legislacao' (legislation). However, the term itself is a legal procedure, not legislation. Maybe it's part of the jurisprudencia? Or perhaps it's a specific case. Hmm, maybe it's not an entity here. Let me check the example output.
+
+In the sample output, the user has marked "ADI" as a jurisprudencia. Wait, the input has "ADI Código de Verificação :2018..." So "ADI" is part of the code. But in the output example, the user has "ADI" as a jurisprudencia? Wait, looking at the sample output provided by the user, the output is:
+
+"Ação Direta de Inconstitucionalidade <span class="jurisprudencia">ADI</span> Código de Verificação :<span class="jurisprudencia">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 19 de <span class="tempo">lei</span> , ainda quando dele seja a prerrogativa usurpada , tem o condão de sanar esse defeito <span class="jurisprudencia">jurídico radical</span> ."
+
+Wait, that's not matching. Wait, the user's sample output shows "ADI" as jurisprudencia, "2018" as jurisprudencia, and "jurídico radical" as jurisprudencia. But that might be a mistake. Let me think again.
+
+Wait, the user's example input has "ADI Código de Verificação :2018..." So "ADI" is part of the code. But in the output, "ADI" is marked as jurisprudencia. Maybe "ADI" is a legal term, but according to the entities, maybe it's part of jurisprudencia. Alternatively, maybe "ADI" is a case number, which could be part of jurisprudencia. Also, "2018" is part of the code, but the user marked it as jurisprudencia. That's confusing. Maybe the user's example is incorrect, but I need to follow the guidelines.
+
+Alternatively, perhaps "ADI" is a type of legal action, which might fall under jurisprudencia. Also, "jurídico radical" is part of the text, which might be a legal term, so marked as jurisprudencia. The "19 de lei" – "19 de lei" could be a date, but "19 de lei" is not a date. Wait, maybe "19 de lei" is a typo. Maybe it's "19 de lei" as in "19 de lei" (like 19th of law?), but that doesn't make sense. Maybe it's "19 de lei" as in "19 de lei" (like 19th of law?), but that's unclear. Alternatively, "19 de lei" could be a date, but "de lei" is "of law", so maybe it's a typo for "19 de maio" (19th of May), but the user wrote "19 de lei". So perhaps "19 de lei" is not a date, so no 'tempo' entity there.
+
+Looking at the sample output, the user marked "19 de lei" as 'tempo', which is incorrect. Wait, the user's sample output shows:
+
+"Ação Direta de Inconstitucionalidade <span class="jurisprudencia">ADI</span> Código de Verificação :<span class="jurisprudencia">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 19 de <span class="tempo">lei</span> , ainda quando dele seja a prerrogativa usurpada , tem o condão de sanar esse defeito <span class="jurisprudencia">jurídico radical</span> ."
+
+Wait, that's not correct. The "19 de lei" is marked as 'tempo', which is time. But "19 de lei" is not a time. Maybe the user made a mistake in their example. But I need to follow the guidelines as per the user's instructions.
+
+So, the input text has:
+
+- "Ação Direta de Inconstitucionalidade" – this is a legal term, but not sure if it's legislation. Maybe it's part of the jurisprudencia? Or maybe it's a case name, so part of jurisprudencia.
+
+- "ADI" – this is an acronym for Ação Direta de Inconstitucionalidade, which is a type of legal action. So maybe it's part of jurisprudencia.
+
+- "Código de Verificação :2018..." – the "2018" is part of the code, but the user marked it as jurisprudencia. Maybe the code is part of the jurisprudencia.
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "SILVANIO BARBOSA DOS SANTOS" is a person, so marked as 'pessoa'.
+
+- "19 de lei" – "19" could be a date, but "de lei" is "of law", so maybe "19 de lei" is a typo for "19 de maio" (19th of May), but the user wrote "19 de lei". So perhaps "19" is a number, but not a date. So maybe no 'tempo' here.
+
+- "jurídico radical" – this is a legal term, so marked as 'jurisprudencia'.
+
+So, in the sample output, the user marked "ADI" as jurisprudencia, "2018" as jurisprudencia, and "jurídico radical" as jurisprudencia. But "2018" is part of the code, which might be a code number, not a jurisprudencia. However, the user's example shows that. So perhaps the user considers code numbers as part of jurisprudencia.
+
+So, applying that to the input text:
+
+- "Ação Direta de Inconstitucionalidade" – maybe not an entity, but the term itself is a legal action, so perhaps it's part of jurisprudencia? Or maybe it's a type of legislation. Wait, the user's entities include 'legislacao' (legislation), but "Ação Direta de Inconstitucionalidade" is a legal procedure, not legislation. So maybe it's not an entity.
+
+- "ADI" – as a code, maybe part of jurisprudencia.
+
+- "Código de Verificação :2018..." – the "2018" is part of the code, so marked as jurisprudencia.
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "SILVANIO BARBOSA DOS SANTOS" is a person, so 'pessoa'.
+
+- "19 de lei" – "19" is a number, but not a date. So no 'tempo'.
+
+- "jurídico radical" – legal term, so 'jurisprudencia'.
+
+So, the final HTML would be:
+
+"Ação Direta de Inconstitucionalidade <span class="jurisprudencia">ADI</span> Código de Verificação :<span class="jurisprudencia">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 19 de lei , ainda quando dele seja a prerrogativa usurpada , tem o condão de sanar esse defeito <span class="jurisprudencia">jurídico radical</span> ."
+
+But wait, the user's sample output has "19 de lei" marked as 'tempo', which is incorrect. But maybe the user intended that. Alternatively, maybe "19 de lei" is a date, but "de lei" is "of law", which doesn't make sense. So perhaps the user made a mistake in their example. But I need to follow the user's instructions as per their example.
+
+Alternatively, maybe "19 de lei" is a typo for "19 de maio" (19th of May), which would be a date. But the user wrote "19 de lei", so I should take it as is. Therefore, "19 de lei" is not a date, so no 'tempo' entity.
+
+So, the correct HTML would be as above, with the entities marked as per the user's example.
+</think>
+
+Ação Direta de Inconstitucionalidade <span class="jurisprudencia">ADI</span> Código de Verificação :<span class="jurisprudencia">2018</span>ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 19 de lei , ainda quando dele seja a prerrogativa usurpada , tem o condão de sanar esse defeito <span class="jurisprudencia">jurídico radical</span> .

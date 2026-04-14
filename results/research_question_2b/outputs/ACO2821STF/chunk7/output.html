@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The text starts with "( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO". Here, "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" seems like an organization. The title "PROCURADOR-GERAL" is a position, so maybe it's an organization. Wait, but "PROCURADOR-GERAL" is a person's title. Wait, but the full name might be an organization. Hmm, maybe "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" is the name of the organization. So I should mark that as organizacao.
+
+Next, "Senhor Ministro Ricardo Lewandowski ( Relator )". "Senhor Ministro" is a title, so "Ricardo Lewandowski" is a pessoa. The "( Relator )" is a role, but maybe not an entity here. So "Ricardo Lewandowski" should be a pessoa.
+
+Then, "União" is a legal entity, so that's organizacao. "Estado do Mato Grosso" is a local, but wait, "Estado do Mato Grosso" is a state, so local. Wait, but sometimes states are considered local entities. So "Estado do Mato Grosso" would be local. But maybe "Mato Grosso" is the local. Wait, the text says "Estado do Mato Grosso" as the name of the state, so that's a local. But maybe "Mato Grosso" is the local. Wait, the user's example in the output might have "Mato Grosso" as local. Let me check the example output provided. Wait, the user didn't provide an example output, but the task says to return the text with the entities marked. So I need to decide.
+
+"Certificado de Regularidade Previdenciária do Estado de Mato Grosso" – here, "Estado de Mato Grosso" is a local. So "Mato Grosso" is the local. Wait, but "Estado de Mato Grosso" is the name of the state, so maybe the entire phrase is a local. But the user's example might have "Mato Grosso" as local. Let me think. The user's example output might have "Mato Grosso" as local. So I'll mark "Mato Grosso" as local.
+
+Then, "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" – these are acronyms for different registries, so they might be considered as legislação or maybe not. Wait, the user's entities are legislacao, which refers to laws, decrees, etc. So "Decreto 3.788/2001" and "Portaria MPS n° 204/2008" are legislacao. Also, "CADPREV" is a registry, but maybe not a legislacao. Wait, the user's example might have "Decreto 3.788/2001" as legislacao. So I need to mark those as legislacao.
+
+"Decreto 3.788/2001" and "Portaria MPS n° 204/2008" are decrees and portarias, which are legislative acts, so they should be legislacao. The "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" are acronyms for registries, which might not be entities in the specified categories. Unless they are considered as legislação, but I think they are more like systems or registries, so maybe not. So those would not be marked.
+
+"Jurisprudência" is a term, but in the text, there's no mention of a specific jurisprudência case. The text mentions "incidenter tantum, a inconstitucionalidade do Decreto..." which is about a legal decision, but not a specific jurisprudência. So maybe no jurisprudencia here.
+
+So, putting it all together:
+
+- "PROCURADOR-GERAL DO ESTADO DE MATO GROSSO" as organizacao.
+- "Ricardo Lewandowski" as pessoa.
+- "União" as organizacao.
+- "Estado do Mato Grosso" as local (or "Mato Grosso" as local).
+- "Decreto 3.788/2001" and "Portaria MPS n° 204/2008" as legislacao.
+
+Wait, the user's example output might have "Mato Grosso" as local. Let me check the original text again. The text says "Estado do Mato Grosso" as the name of the state, so "Mato Grosso" is the local. So I should mark "Mato Grosso" as local.
+
+Also, "CADPREV", "CADIN", etc., are acronyms for registries, but they are not in the specified entities. So they remain as is.
+
+So the final HTML would have the spans for those entities. Let me structure the text accordingly.
+</think>
+
+<span class="organizacao">PROCURADOR-GERAL DO ESTADO DE MATO GROSSO</span> <span class="pessoa">Ricardo Lewandowski</span> ( Relator ) : Trata-se de agravo regimental interposto pela <span class="organizacao">União</span> contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo <span class="local">Estado do Mato Grosso</span> , determinando-se à <span class="organizacao">União</span> `` que renove o Certificado de Regularidade Previdenciária do <span class="local">Mato Grosso</span> , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS n° 204/2008</span> e de suas posteriores alterações '' .

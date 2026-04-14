@@ -1,0 +1,38 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "Condeno o réu ao pagamento de honorários advocatícios , os quais fixo em R $ 1.000,00 ( mil reais ) , nos termos do art . 20 , § 4º , do CPC . Sentença sujeita a revisão necessária . Transitada em julgado , arquivem-se . P.R.I. ” ( fls . 299-v/300 ) . Irresignado , apela o DISTRITO FEDERAL ( fls . 305/313 ) . No seu apelo , o DF tece considerações sobre a evolução da remuneração dos professores vinculados à SEE/DF e a incorporação de quintos/décimos ."
+
+Looking for entities:
+
+1. "réu" – this is a generic term for defendant, not a specific person. So no tag.
+2. "R $ 1.000,00" – this is a monetary value, not an entity. No tag.
+3. "art . 20 , § 4º , do CPC" – "CPC" is the Código de Processo Civil, which is legislation. So "art . 20 , § 4º , do CPC" should be marked as legislacao.
+4. "Sentença sujeita a revisão necessária" – "Sentença" is a legal term but not an entity. No tag.
+5. "Transitada em julgado" – again, legal terms but not entities. No tag.
+6. "P.R.I." – this might be an acronym, but without context, it's unclear. The example shows that acronyms like "REsp" are marked as jurisprudencia. However, "P.R.I." isn't a known legal entity here. Maybe it's a reference to a process, but without more info, I'll leave it as is.
+7. "fls . 299-v/300" – "fls" is an abbreviation for "fls" (fólio), which refers to pages. This is a reference to a document, but not an entity. No tag.
+8. "Irresignado , apela o DISTRITO FEDERAL" – "DISTRITO FEDERAL" is a specific location, so it's a local entity. Mark as local.
+9. "fls . 305/313" – similar to previous, just page numbers. No tag.
+10. "DF" – "DF" stands for Distrito Federal, which is a local entity. So "DF" should be marked as local.
+11. "SEE/DF" – "SEE" is the Secretaria de Estado da Educação, and "DF" is the Distrito Federal. Both are organizations. So "SEE/DF" is an organization. Wait, but "SEE/DF" is a specific entity. Let me check the definitions. The example shows that "SEE/DF" would be an organization. So mark as organizacao.
+
+Now, let's structure the HTML with the appropriate tags. 
+
+- "art . 20 , § 4º , do CPC" becomes <span class="legislacao">art . 20 , § 4º , do CPC</span>
+- "DISTRITO FEDERAL" becomes <span class="local">DISTRITO FEDERAL</span>
+- "DF" becomes <span class="local">DF</span>
+- "SEE/DF" becomes <span class="organizacao">SEE/DF</span>
+
+Wait, the user's example 4 had "ESTADO DO ACRE" as local, and "Rua Tribunal de Justiça" as local. So "SEE/DF" is an organization. The example 5 had "CLT" as legislation. So "SEE/DF" is an organization. 
+
+Also, check if "CPC" is legislation. Yes, because it's the Código de Processo Civil. So the "art . 20 , § 4º , do CPC" is legislation. 
+
+Other parts: "P.R.I." – not sure, but the examples don't mention it. Maybe it's a process reference, but without more context, I'll leave it as is. 
+
+Putting it all together, the HTML should have the spans for the identified entities.
+</think>
+
+Condeno o réu ao pagamento de honorários advocatícios , os quais fixo em R $ 1.000,00 ( mil reais ) , nos termos do <span class="legislacao">art . 20 , § 4º , do CPC</span> . Sentença sujeita a revisão necessária . Transitada em julgado , arquivem-se . <span class="jurisprudencia">P.R.I.</span> ” ( fls . 299-v/300 ) . Irresignado , apela o <span class="local">DISTRITO FEDERAL</span> ( fls . 305/313 ) . No seu apelo , o <span class="local">DF</span> tece considerações sobre a evolução da remuneração dos professores vinculados à <span class="organizacao">SEE/DF</span> e a incorporação de quintos/décimos .

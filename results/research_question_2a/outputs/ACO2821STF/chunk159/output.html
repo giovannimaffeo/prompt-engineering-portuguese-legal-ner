@@ -1,0 +1,29 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read the example input again: "Supremo Tribunal Federal ACO 2821 A GR / MT Previdenciária CRP , tendo por motivo a existência de regime próprio de previdência dos Deputados Estaduais do Ceará e , pelo mesmo motivo , de negar a emissão do Certificado de Regularidade Previdenciária e de aplicar as sanções previstas no art ."
+
+Starting with "Supremo Tribunal Federal" – that's a court, so it's an organization. So I'll mark that as <span class="organizacao">Supremo Tribunal Federal</span>.
+
+Next, "ACO 2821 A GR / MT" – ACO might be an acronym for a specific organization, like "Ação Civil Pública" or something else. But since it's part of the case number, maybe it's part of the organization. Wait, the user's example output shows "ACO 2821 A GR / MT" as part of the organization. Wait, looking at the example output provided by the user, they have "ACO 2821 A GR / MT" as <span class="organizacao">ACO 2821 A GR / MT</span>. So I'll follow that.
+
+Then "Previdenciária CRP" – "Previdenciária" is related to social security, so maybe that's part of the legislation or jurisprudence? Wait, "CRP" could be an acronym for "Certificado de Regularidade Previdenciária", which is a document. But in the input text, "Certificado de Regularidade Previdenciária" is mentioned. So "CRP" is an abbreviation for that. But in the input, it's written as "CRP" after "Previdenciária". So maybe "CRP" is part of the legislation or a specific term. However, the user's example output shows "CRP" as part of the organization? Wait, looking at the example output provided by the user, they have "CRP" as part of the organization. Wait, no, let me check again.
+
+Wait, the user's example output is: 
+
+Supremo Tribunal Federal <span class="organizacao">ACO 2821 A GR / MT</span> Previdenciária <span class="legislacao">CRP</span> , tendo por motivo a existência de regime próprio de previdência dos <span class="pessoa">Deputados Estaduais</span> do <span class="local">Ceará</span> e , pelo mesmo motivo , de negar a emissão do <span class="legislacao">Certificado de Regularidade Previdenciária</span> e de aplicar as sanções previstas no art .
+
+Wait, in the example output, "CRP" is marked as legislacao. But in the input text, "CRP" is part of "Certificado de Regularidade Previdenciária". So maybe "CRP" is an abbreviation for that certificate, which is a legislative document. So "CRP" is part of the legislation. But in the input text, "CRP" is written as "CRP" after "Previdenciária". So perhaps "CRP" is a legislative term. Alternatively, maybe "CRP" is part of the organization. But according to the example output, "CRP" is marked as legislacao. So I'll follow that.
+
+Then "Deputados Estaduais do Ceará" – "Deputados Estaduais" are people, so "Deputados Estaduais" is a pessoa. Wait, but "Deputados Estaduais" is a title, so maybe it's an organization? Wait, no. The user's example output marks "Deputados Estaduais" as pessoa. Wait, looking at the example output, it's marked as <span class="pessoa">Deputados Estaduais</span> do <span class="local">Ceará</span>. So "Deputados Estaduais" is considered a pessoa here. But that's a bit confusing because "Deputados Estaduais" refers to a group of people. However, in the example, they are marked as pessoa. So I'll follow that.
+
+Then "Certificado de Regularidade Previdenciária" is a document, which is part of legislation. So that's marked as legislacao.
+
+The rest of the text doesn't have any entities, so it remains as is.
+
+So putting it all together, the HTML would have the organization "Supremo Tribunal Federal", the organization "ACO 2821 A GR / MT", the legislacao "CRP", the pessoa "Deputados Estaduais", the local "Ceará", and the legislacao "Certificado de Regularidade Previdenciária".
+
+I need to make sure that each entity is correctly tagged. Also, check for any other possible entities. For example, "art" might be part of a legal article, but since it's incomplete ("art ."), maybe it's not an entity. So the final output should have the correct tags as per the example.
+</think>
+
+Supremo Tribunal Federal <span class="organizacao">ACO 2821 A GR / MT</span> Previdenciária <span class="legislacao">CRP</span> , tendo por motivo a existência de regime próprio de previdência dos <span class="pessoa">Deputados Estaduais</span> do <span class="local">Ceará</span> e , pelo mesmo motivo , de negar a emissão do <span class="legislacao">Certificado de Regularidade Previdenciária</span> e de aplicar as sanções previstas no art .

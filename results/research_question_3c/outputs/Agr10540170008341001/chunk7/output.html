@@ -1,0 +1,55 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The text starts with "35 : I - 60 ( sessenta ) dias , quando tratar-se exclusivamente de obras na rede de distribuição aérea de tensão secundária , incluindo a instalação ou substituição de posto de transformação ; e ( Incluído pela REN ANEEL 670 de 14.07.2015 ) II - 120 ( cento e vinte ) dias , quando tratar-se de obras com dimensão de até 1 ( um ) quilômetro na rede de distribuição aérea de tensão primária , incluindo nesta distância a complementação de fases na rede existente e , se for o caso , as obras do inciso I . §1º Demais situações não abrangidas nos incisos I e II , bem como as obras de que tratam os artigos 44 , 47 , 48 e 102 , devem ser executadas de acordo com o cronograma da distribuidora , observados , quando houver , prazos específicos estabelecidos na legislação vigente '' Ademais , foi informado ao agravante que sua propriedade rural será atendida até 31/12/2018 , conforme fls ."
+
+Looking for entities:
+
+1. "REN ANEEL 670 de 14.07.2015" – REN ANEEL is an organization (since it's an acronym for a regulatory body). The date "14.07.2015" is a tempo entity. So I need to mark "REN ANEEL" as organizacao and "14.07.2015" as tempo.
+
+2. "31/12/2018" – This is a date, so tempo.
+
+3. "artigos 44 , 47 , 48 e 102" – These are references to articles in legislation, so they should be marked as legislacao. Wait, the user's definition says "legislação" includes references to laws, codes, etc. So "artigos 44, 47, 48 e 102" are parts of legislation, so they should be marked as legislacao.
+
+4. "legislação vigente" – "legislação" is the entity here, so that's legislacao.
+
+5. "propriedade rural" – This is a generic term, not a specific location, so no mark.
+
+6. "fls" – This is an abbreviation for "fls" (fólio), which is a legal term but not one of the specified entities. So no mark.
+
+Now, checking for other entities:
+
+- "REN ANEEL" is an organization. "14.07.2015" is tempo. "31/12/2018" is tempo. "artigos 44, 47, 48 e 102" are legislacao. "legislação vigente" is legislacao.
+
+Wait, the user's example in the guidelines for legislação includes "art. 71 da Lei 8.666/93", so "artigos 44, 47, 48 e 102" would be part of legislation. So each article number should be marked as legislacao.
+
+Also, "REN ANEEL 670" – the "670" is part of the organization's reference? Wait, the user's example for organizacao includes "REN ANEEL" as an organization. The "670" might be a regulation number, but the user's definition for organizacao is entities like "MINISTÉRIO PÚBLICO FEDERAL", so maybe "REN ANEEL" is the organization, and "670" is part of the reference. But the user's example for organizacao includes "REN ANEEL" as an organization. So "REN ANEEL" is the organization, and "670" is part of the reference but not an entity. Wait, the user's example for organizacao includes "REN ANEEL" as an organization. So "REN ANEEL" is the organization, and "670" is a regulation number, which might be part of the legislation. Wait, the user's example for legislação includes "Lei nº 8.666/93", so "670" could be part of a regulation. But the user's example for organizacao includes "REN ANEEL" as an organization. So "REN ANEEL" is the organization, and "670" is part of the reference to a regulation. But the user's definition for legislação includes references to laws, so "670" might be part of a regulation. However, the user's example for legislação includes "Lei nº 8.666/93", so "670" would be part of a regulation. But the user's example for organizacao includes "REN ANEEL" as an organization. So "REN ANEEL" is the organization, and "670" is part of the reference to a regulation. Wait, the user's example for organizacao includes "REN ANEEL" as an organization. So "REN ANEEL" is the organization. The "670" is part of the reference to a regulation, which is part of the legislation. But the user's definition for legislação includes "Lei nº 8.666/93", so "670" would be part of a regulation. However, the user's example for legislação includes "art. 71 da Lei 8.666/93", so "artigos 44, 47, 48 e 102" are part of legislation. Therefore, "artigos 44, 47, 48 e 102" should be marked as legislacao. Also, "legislação vigente" is legislacao.
+
+So, putting it all together:
+
+- "REN ANEEL" is organizacao.
+- "14.07.2015" is tempo.
+- "31/12/2018" is tempo.
+- "artigos 44, 47, 48 e 102" is legislacao.
+- "legislação vigente" is legislacao.
+
+Wait, but "artigos 44, 47, 48 e 102" – the user's example for legislação includes "art. 71 da Lei 8.666/93", so "artigos" here are part of the legislation. So each article number should be marked as legislacao. So "44", "47", "48", "102" are part of the legislation. But the user's guidelines say to mark entire syntagmas. So "artigos 44, 47, 48 e 102" as a whole is a reference to legislation, so the entire phrase should be marked as legislacao. Similarly, "legislação vigente" is a reference to legislation, so that's legislacao.
+
+So the final HTML would have:
+
+- <span class="organizacao">REN ANEEL</span>
+- <span class="tempo">14.07.2015</span>
+- <span class="tempo">31/12/2018</span>
+- <span class="legislacao">artigos 44, 47, 48 e 102</span>
+- <span class="legislacao">legislação vigente</span>
+
+Wait, but "legislação vigente" is a reference to legislation, so it's legislacao. Also, "artigos 44, 47, 48 e 102" is a reference to articles in legislation, so that's legislacao.
+
+So the final HTML would have those spans. Let me check again for any other entities. The text mentions "propriedade rural" which is a generic term, not a specific location. "fls" is an abbreviation but not one of the specified entities. "REN ANEEL 670" – the "670" is part of the reference to a regulation, but the user's example for organizacao includes "REN ANEEL" as an organization. The "670" might be part of a regulation, but the user's definition for legislação includes references to laws, so "670" could be part of a regulation. However, the user's example for legislação includes "Lei nº 8.666/93", so "670" would be part of a regulation. But the user's example for organizacao includes "REN ANEEL" as an organization. So "REN ANEEL" is the organization, and "670" is part of the reference to a regulation. However, the user's guidelines say to mark only the entities as defined. Since "670" is a number, not an entity, it's not marked. So the only entities are the ones I identified.
+
+So the final HTML should have the spans for organizacao, tempo, and legislacao as mentioned.
+</think>
+
+35 : I - 60 ( sessenta ) dias , quando tratar-se exclusivamente de obras na rede de distribuição aérea de tensão secundária , incluindo a instalação ou substituição de posto de transformação ; e ( Incluído pela <span class="organizacao">REN ANEEL</span> 670 de <span class="tempo">14.07.2015</span> ) II - 120 ( cento e vinte ) dias , quando tratar-se de obras com dimensão de até 1 ( um ) quilômetro na rede de distribuição aérea de tensão primária , incluindo nesta distância a complementação de fases na rede existente e , se for o caso , as obras do inciso I . §1º Demais situações não abrangidas nos incisos I e II , bem como as obras de que tratam os <span class="legislacao">artigos 44 , 47 , 48 e 102</span> , devem ser executadas de acordo com o cronograma da distribuidora , conforme <span class="legislacao">legislação vigente</span> . <span class="tempo">31/12/2018</span> , conforme fls .

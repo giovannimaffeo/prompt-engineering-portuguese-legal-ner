@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate <span> tags. First, I need to carefully read the instructions and the definitions provided for each entity type.
+
+Starting with the text, I'll go through each sentence and identify which parts fit the categories: pessoa, organização, tempo, local, legislação, and jurisprudência. Let me break it down step by step.
+
+First sentence: "Ministro JOSÉ BARROSO FILHO Relator AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000 RELATOR : MINISTRO JOSÉ BARROSO FILHO AGRAVANTE : NELSON BARROSO FERREIRA DEFENSORIA PÚBLICA DA UNIÃO AGRAVADO : MINISTÉRIO PÚBLICO MILITAR RELATÓRIO"
+
+Here, "Ministro JOSÉ BARROSO FILHO" is a person. "JOSÉ BARROSO FILHO" is a full name, so I'll mark that as <span class="pessoa">. Then "NELSON BARROSO FERREIRA" is another person. "DEFENSORIA PÚBLICA DA UNIÃO" is an organization. "MINISTÉRIO PÚBLICO MILITAR" is also an organization. The "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" seems like a legal case number, which might be jurisprudência, but I need to check the guidelines. The number format with dates and numbers might be part of a case, so maybe mark it as jurisprudência. The "RELATOR" is a title, not a person's name, so not marked. "AGRAVANTE" and "AGRAVADO" are roles, not entities. "DEFENSORIA PÚBLICA DA UNIÃO" is an organization. "MINISTÉRIO PÚBLICO MILITAR" is another organization.
+
+Next sentence: "Trata-se de Agravo Interno interposto pela Defensoria Pública da União ( DPU ) , em nome de Nelson Barroso Ferreira , civil , contra a Decisão deste Ministro-Relator , de 9 de novembro de 2017 , que negou seguimento a Embargos de Declaração , por serem manifestamente incabíveis ."
+
+Here, "Defensoria Pública da União ( DPU )" is an organization. "Nelson Barroso Ferreira" is a person. "9 de novembro de 2017" is a date, so tempo. "Embargos de Declaração" is a legal term but not a specific entity, so not marked. "Ministro-Relator" is a title, not a person's name.
+
+Next part: "Para melhor descortino da quaestio pelos Eminentes Ministros desta Corte , faz-se necessária uma breve retrospectiva dos fatos . O Recorrente foi condenado à pena de 6 ( seis ) meses de detenção , como incurso no art . 302 do CPM , com o benefício do sursis pelo prazo de 2 ( dois ) anos ."
+
+"CPM" here refers to "Código Penal Militar" which is a legislation, so mark as <span class="legislacao">. The "art. 302" is part of the legislation, so also mark that. "6 ( seis ) meses" is a time period, but the guidelines say only explicit dates should be marked. The "2 ( dois ) anos" is similar, so not marked as tempo. The "sursis" is a legal term but not an entity. "Recorrente" is a role, not a person.
+
+Now, I need to check if all entities are correctly marked. Let me go through each part again.
+
+- "Ministro JOSÉ BARROSO FILHO" → pessoa (JOSÉ BARROSO FILHO)
+- "NELSON BARROSO FERREIRA" → pessoa
+- "DEFENSORIA PÚBLICA DA UNIÃO" → organização
+- "MINISTÉRIO PÚBLICO MILITAR" → organização
+- "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" → jurisprudência? The number format with dates and numbers is part of a case, so yes.
+- "9 de novembro de 2017" → tempo
+- "Defensoria Pública da União ( DPU )" → organização
+- "CPM" → legislação (Código Penal Militar)
+- "art. 302" → legislação (part of the CPM)
+
+Wait, the user's example output shows that in the sample input, the output has "AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000" as jurisprudência. The guidelines mention that identifiers like case numbers should be marked as jurisprudência. So that's correct.
+
+I need to make sure that all the entities are properly tagged. Also, check for any other possible entities. For example, "Defensoria Pública da União ( DPU )" is an organization, and "DPU" is the acronym, which is part of the organization's name, so the entire phrase is marked as organização. The "CPM" is a legislation, so "CPM" is marked as legislação. The "art. 302" is part of the legislation, so it's included.
+
+Also, "Ministro-Relator" is a title, not a person's name, so not marked. "Recorrente" is a role, not a person. "Emminentes Ministros" is a title, not a person. "Corte" is a generic term, not a specific location. "Civil" is a description, not a person.
+
+So, putting it all together, the HTML should have all these entities marked with the appropriate classes. Now, I'll structure the HTML with the spans correctly placed.
+</think>
+
+Ministro <span class="pessoa">JOSÉ BARROSO FILHO</span> Relator <span class="jurisprudencia">AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000</span> RELATOR : <span class="pessoa">MINISTRO JOSÉ BARROSO FILHO</span> AGRAVANTE : <span class="pessoa">NELSON BARROSO FERREIRA</span> <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span> AGRAVADO : <span class="organizacao">MINISTÉRIO PÚBLICO MILITAR</span> RELATÓRIO Trata-se de <span class="jurisprudencia">Agravo Interno</span> interposto pela <span class="organizacao">Defensoria Pública da União</span> ( DPU ) , em nome de <span class="pessoa">Nelson Barroso Ferreira</span> , civil , contra a Decisão deste <span class="pessoa">Ministro-Relator</span> , de <span class="tempo">9 de novembro de 2017</span> , que negou seguimento a <span class="jurisprudencia">Embargos de Declaração</span> , por serem manifestamente incabíveis . Para melhor descortino da quaestio pelos Eminentes Ministros desta Corte , faz-se necessária uma breve retrospectiva dos fatos . O <span class="pessoa">Recorrente</span> foi condenado à pena de 6 ( seis ) meses de detenção , como incurso no <span class="legislacao">art . 302 do CPM</span> , com o benefício do sursis pelo prazo de 2 ( dois ) anos .

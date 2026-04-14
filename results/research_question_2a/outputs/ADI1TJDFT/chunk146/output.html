@@ -1,0 +1,51 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is:
+
+"( Acórdão n.1040052 , 20170020089707ADI , Relator : ARNOLDO CAMANHO CONSELHO ESPECIAL , Data de Julgamento : 08/08/2017 , Publicado no DJE : 23/08/2017 . Pág. : 34 ) ( grifo nosso ) Com efeito , a norma rebatida dispõe sobre matéria de competência privativa do Chefe do Poder Executivo ."
+
+Looking for entities:
+
+1. "Acórdão n.1040052" – This seems like a legal document number, maybe a jurisprudencia entity? But the example output uses "jurisprudencia" for "Acórdão". Wait, the example output shows "Acórdão n.1040052" as <span class="jurisprudencia">Acórdão n.1040052</span>. So I should mark "Acórdão" as jurisprudencia.
+
+2. "20170020089707ADI" – This looks like a case number, maybe another jurisprudencia entity? Or perhaps it's part of the Acórdão. The example output includes "20170020089707ADI" as part of the jurisprudencia span. Wait, in the example output, the user's sample input has "Acórdão n.1040052 , 20170020089707ADI" and the output marks both as jurisprudencia. So I need to check if each part is a separate entity or part of the same. But the example output shows both as part of the same span. Wait, looking at the user's example output:
+
+The input text has "Acórdão n.1040052 , 20170020089707ADI" and the output is:
+
+<span class="jurisprudencia">Acórdão n.1040052</span> , <span class="jurisprudencia">20170020089707ADI</span>
+
+Wait, no. Wait the user's example output is:
+
+"( <span class="jurisprudencia">Acórdão n.1040052</span> , <span class="jurisprudencia">20170020089707ADI</span> , Relator : <span class="pessoa">ARNOLDO CAMANHO</span> <span class="organizacao">CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">08/08/2017</span> , Publicado no DJE : <span class="tempo">23/08/2017</span> . Pág. : 34 ) ( grifo nosso ) Com efeito , a norma rebatida dispõe sobre matéria de competência privativa do <span class="pessoa">Chefe do Poder Executivo</span> ."
+
+Wait, in the example output, "Acórdão n.1040052" is marked as jurisprudencia, and "20170020089707ADI" is also marked as jurisprudencia. Then "Relator" is followed by "ARNOLDO CAMANHO" as pessoa and "CONSELHO ESPECIAL" as organizacao. The dates are marked as tempo. The "Chefe do Poder Executivo" is marked as pessoa.
+
+So, the key is to identify each entity. Let's go through the input text step by step.
+
+First part: "( Acórdão n.1040052 , 20170020089707ADI , Relator : ARNOLDO CAMANHO CONSELHO ESPECIAL , Data de Julgamento : 08/08/2017 , Publicado no DJE : 23/08/2017 . Pág. : 34 ) ( grifo nosso ) Com efeito , a norma rebatida dispõe sobre matéria de competência privativa do Chefe do Poder Executivo ."
+
+Breaking it down:
+
+- "Acórdão n.1040052" – This is a legal document number, so jurisprudencia.
+- "20170020089707ADI" – Another legal document number, so jurisprudencia.
+- "Relator : ARNOLDO CAMANHO" – "ARNOLDO CAMANHO" is a person, so pessoa.
+- "CONSELHO ESPECIAL" – This is an organization, so organizacao.
+- "Data de Julgamento : 08/08/2017" – The date is tempo.
+- "Publicado no DJE : 23/08/2017" – Another date, tempo.
+- "Chefe do Poder Executivo" – This refers to a person (the head of the executive power), so pessoa.
+
+Now, the "grifo nosso" is not an entity, so it remains as is.
+
+So, the HTML should have each of these parts wrapped in the appropriate spans.
+
+Now, I need to make sure that each entity is correctly identified. For example, "Chefe do Poder Executivo" is a title, but in the context, it refers to a person (the President or head of the executive), so pessoa.
+
+Also, "CONSELHO ESPECIAL" is an organization, like a council.
+
+The dates are marked as tempo.
+
+So, putting it all together, the HTML should have the spans for each entity as per the example.
+</think>
+
+<span class="jurisprudencia">Acórdão n.1040052</span> , <span class="jurisprudencia">20170020089707ADI</span> , Relator : <span class="pessoa">ARNOLDO CAMANHO</span> <span class="organizacao">CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">08/08/2017</span> , Publicado no DJE : <span class="tempo">23/08/2017</span> . Pág. : 34 ) ( grifo nosso ) Com efeito , a norma rebatida dispõe sobre matéria de competência privativa do <span class="pessoa">Chefe do Poder Executivo</span> .

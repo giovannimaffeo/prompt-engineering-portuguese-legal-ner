@@ -1,0 +1,77 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by identifying each entity. 
+
+Looking at the first sentence: "Se essa lei objetada dissesse : `` o governador poderá celebrar convênios '' , não haveria inconstitucionalidade porque estaria repetindo . No entanto , ela diz : `` com tal entidade e com tal entidade '' , aí isso já é competência privativa do governador ."
+
+Here, "governador" is a person, so I should mark that as <span class="pessoa">. Then, "entidade" might refer to an organization, but it's a bit ambiguous. Wait, the text mentions "com tal entidade" which could be an organization. But maybe "entidade" here is a generic term. Hmm, maybe it's better to check if there's a specific organization mentioned. Alternatively, "entidade" could be a legal entity, so maybe it's an organization. I'll mark it as <span class="organizacao">.
+
+Next, "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the code here might be a reference, but it's not a legal entity. The "Código de Verificação" is a code, so maybe not. The "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is an organization, so that should be <span class="organizacao">. 
+
+"25 Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI" – "Ação Direta de Inconstitucionalidade" is a legal term, so that's legislation? Or maybe it's a type of legal action. Wait, "Ação Direta de Inconstitucionalidade" is a legal procedure, so maybe it's part of the legislation or jurisprudence? Not sure. Maybe it's a legal term, but since it's a specific case, perhaps it's part of the legislation. Alternatively, maybe it's a jurisprudência reference. Hmm, maybe I should leave it as is unless there's a clear entity. 
+
+"Senhor Desembargador ROMÃO C. OLIVEIRA - Vogal" – "Desembargador" is a title, so the person's name "ROMÃO C. OLIVEIRA" should be <span class="pessoa">. 
+
+"2018ACONT2JYXTK52JCSL251NVQ" – that's a code, not an entity. 
+
+"20170020161362ADI" – another code, maybe a case number. Not an entity. 
+
+"Legislação" is mentioned in the text, so any instance of that word should be marked as <span class="legislacao">. 
+
+"Jurisprudência" is another term, so if it's mentioned, it should be <span class="jurisprudencia">. 
+
+Wait, in the input text, the user mentioned "vício de inconstitucionalidade formal" which is a legal term, but not an entity. 
+
+So, going through each part:
+
+- "governador" → pessoa
+- "entidade" → organizacao (assuming it refers to an organization)
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" → organizacao
+- "ROMÃO C. OLIVEIRA" → pessoa
+- "Ação Direta de Inconstitucionalidade" → maybe legislation? Or maybe it's a legal action, so perhaps not an entity. But since it's a specific legal term, maybe it's part of the legislation. Alternatively, it's a case name, so maybe not. I'll leave it as is unless there's a clear entity.
+- "vício de inconstitucionalidade formal" → not an entity.
+- "Código de Verificação" → not an entity.
+- "2018ACONT2JYXTK52JCSL251NVQ" → code, not entity.
+- "20170020161362ADI" → code, not entity.
+
+Wait, the user's example output includes "Ação Direta de Inconstitucionalidade" as part of the text. Let me check the original input again. The input has "Ação Direta de Inconstitucionalidade 20170020161362ADI". The "Ação Direta de Inconstitucionalidade" is a legal term, but it's a type of legal action, not an entity. So maybe it's not marked. 
+
+Also, "legislacao" and "jurisprudencia" are the terms to look for. The input has "inconstitucionalidade" which is related to legislation, but not an entity. 
+
+So, the entities to mark are:
+
+- "governador" → pessoa
+- "entidade" → organizacao
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" → organizacao
+- "ROMÃO C. OLIVEIRA" → pessoa
+
+Wait, "entidade" is in the text: "com tal entidade e com tal entidade". So "entidade" is the word, so each occurrence should be marked as organizacao. 
+
+Also, "Desembargador" is a title, but the name "ROMÃO C. OLIVEIRA" is a person. 
+
+So, putting it all together, the HTML should have those spans. Let me make sure I didn't miss any other entities. 
+
+Another part: "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the code is not an entity. 
+
+"25 Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI" – "Ação Direta de Inconstitucionalidade" is a legal term, but not an entity. 
+
+So, the final HTML should have the spans for pessoa, organizacao, and maybe others if there are any. 
+
+Wait, the user's example output includes "Ação Direta de Inconstitucionalidade" as part of the text. Let me check the original input again. The input has "Ação Direta de Inconstitucionalidade 20170020161362ADI". The "Ação Direta de Inconstitucionalidade" is a legal term, but it's not an entity. So no span. 
+
+Therefore, the final HTML should have the spans for "governador", "entidade", "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS", and "ROMÃO C. OLIVEIRA". 
+
+Wait, "entidade" is in the text twice. So each occurrence should be marked. 
+
+So, the final HTML would have:
+
+- <span class="pessoa">governador</span>
+- <span class="organizacao">entidade</span> (twice)
+- <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span>
+- <span class="pessoa">ROMÃO C. OLIVEIRA</span>
+
+I think that's all. Let me make sure there are no other entities. The rest of the text doesn't have any of the specified entities. So the output should have those spans.
+</think>
+
+Se essa lei objetada dissesse : `` o <span class="pessoa">governador</span> poderá celebrar convênios '' , não haveria inconstitucionalidade porque estaria repetindo . No entanto , ela diz : `` com tal <span class="organizacao">entidade</span> e com tal <span class="organizacao">entidade</span> '' , aí isso já é competência privativa do <span class="pessoa">governador</span> . Portanto , essa lei incorre , sim , em vício de inconstitucionalidade formal e não tem como subsistir no ordenamento jurídico . Não obstante , repito , seu objetivo seja dos mais nobres e talvez aponte um caminho para a solução de um Estado ineficiente . Peço vênia à divergência e acompanho o eminente Relator . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS</span> 25 Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade</span> 20170020161362ADI <span class="pessoa">ROMÃO C. OLIVEIRA</span> - Vogal Acompanho o eminente Relator , Senhor Presidente , com a devida vênia .

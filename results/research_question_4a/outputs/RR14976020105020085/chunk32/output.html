@@ -1,0 +1,66 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "§ 1º - Integram o salário não só a importância fixa estipulada , como também as comissões , percentagens , gratificações ajustadas , diárias para viagens e abonos pagos pelo empregador . '' E mais . Também aqui a controvérsia se resolve pela simples leitura do artigo 129 da Constituição Paulista que , de forma bastante clara , prevê o pagamento da `` sexta-parte dos vencimentos integrais , concedida aos vinte anos de efetivo exercício ... '' . Destaco precedente do C . Tribunal Superior do Trabalho : `` SERVIDORES PÚBLICOS CELETISTAS . PARCELA SEXTA PARTE PREVISTA NA CONSTITUIÇÃO DO ESTADO DE SÃO PAULO . BASE DE CÁLCULO . A jurisprudência desta Corte é uníssona no sentido de que a previsão da incorporação da parcela denominada sexta-parte , constante do art ."
+
+Looking for entities:
+
+1. "Constituição Paulista" – This is a law, so it should be marked as legislacao. Wait, but the user's definition says "legislação" includes constitutions. So "Constituição Paulista" is a law, so yes, legislacao.
+
+2. "artigo 129 da Constituição Paulista" – The "artigo 129" is part of the legislation, so the entire phrase "artigo 129 da Constituição Paulista" should be marked as legislacao. Wait, but the example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So here, "artigo 129 da Constituição Paulista" would be legislacao.
+
+3. "Tribunal Superior do Trabalho" – This is an organization, so organizacao.
+
+4. "SERVIDORES PÚBLICOS CELETISTAS" – This seems like a title or a term, not a specific entity. The example mentions that terms like "súmula" without specific reference aren't marked. So this might not be an entity.
+
+5. "jurisprudência desta Corte" – "jurisprudência" is a general term, but the example shows that specific references like "Súmula 331 do TST" are marked. Here, "jurisprudência desta Corte" is a general term, so it shouldn't be marked. However, the phrase "A jurisprudência desta Corte é uníssona" – "jurisprudência" is a general term, so no tag. But the example mentions that specific jurisprudência references are marked. Wait, the user's definition says that "jurisprudência" is for references to decisions, precedents, etc. So if the text mentions a specific case or reference, it should be marked. But in this case, "jurisprudência desta Corte" is a general term, not a specific reference. So no tag.
+
+6. "Constituição do Estado de São Paulo" – This is a law, so legislacao. Wait, the user's example includes "Constituição Federal" as legislacao. So "Constituição do Estado de São Paulo" is a law, so legislacao.
+
+7. "art" – The text ends with "art .", which is likely "artigo" abbreviated. Since it's part of a reference to legislation, but the example shows that "art.61" is marked. However, in this case, "art" is incomplete. The user's guidelines say that only complete expressions should be marked. So "art" without a number might not be marked. But the example includes "art.61" as part of the legislation. So if the text has "art. 129" or similar, it's part of the legislation. However, in the input, the text says "artigo 129 da Constituição Paulista" which is already marked as legislacao. The ending "art ." might be a typo or incomplete, so maybe not marked.
+
+Now, checking for other entities:
+
+- "Corte" – This is part of "Tribunal Superior do Trabalho" which is already marked as organizacao. "Corte" alone is a generic term, so no tag.
+
+- "São Paulo" – This is a city, so local.
+
+Putting it all together:
+
+- "Constituição Paulista" → legislacao
+- "artigo 129 da Constituição Paulista" → legislacao
+- "Tribunal Superior do Trabalho" → organizacao
+- "São Paulo" → local
+
+Wait, the input has "Constituição do Estado de São Paulo" – that's another legislation. So "Constituição do Estado de São Paulo" should be marked as legislacao.
+
+Also, "Constituição Paulista" and "Constituição do Estado de São Paulo" are both laws, so both should be marked as legislacao.
+
+So the final HTML should have:
+
+- <span class="legislacao">Constituição Paulista</span>
+- <span class="legislacao">artigo 129 da Constituição Paulista</span>
+- <span class="organizacao">Tribunal Superior do Trabalho</span>
+- <span class="local">São Paulo</span>
+- <span class="legislacao">Constituição do Estado de São Paulo</span>
+
+Wait, the input text says "Constituição Paulista" and "Constituição do Estado de São Paulo". Both are laws, so both should be marked as legislacao.
+
+Also, "artigo 129 da Constituição Paulista" is part of the legislation, so that's legislacao.
+
+So the output should have those tags. Let me check again.
+
+Original text:
+
+"artigo 129 da Constituição Paulista que , de forma bastante clara , prevê o pagamento da `` sexta-parte dos vencimentos integrais , concedida aos vinte anos de efetivo exercício ... '' . Destaco precedente do C . Tribunal Superior do Trabalho : `` SERVIDORES PÚBLICOS CELETISTAS . PARCELA SEXTA PARTE PREVISTA NA CONSTITUIÇÃO DO ESTADO DE SÃO PAULO . BASE DE CÁLCULO . A jurisprudência desta Corte é uníssona no sentido de que a previsão da incorporação da parcela denominada sexta-parte , constante do art ."
+
+So "Constituição Paulista" and "Constituição do Estado de São Paulo" are both legislacao. "Tribunal Superior do Trabalho" is organizacao. "São Paulo" is local. The rest of the text doesn't have other entities.
+
+So the HTML should have those tags. Let me make sure I didn't miss any other entities. The rest of the text has terms like "jurisprudência" but it's general, so no tag. "Corte" is part of "Tribunal Superior do Trabalho" which is already marked. "SERVIDORES PÚBLICOS CELETISTAS" is a term, not a specific entity. "PARCELA SEXTA PARTE" is a term, not an entity. "art" is incomplete, so no tag.
+
+So the final output should have the marked entities as described.
+</think>
+
+§ 1º - Integram o salário não só a importância fixa estipulada , como também as comissões , percentagens , gratificações ajustadas , diárias para viagens e abonos pagos pelo empregador . '' E mais . Também aqui a controvérsia se resolve pela simples leitura do <span class="legislacao">artigo 129 da Constituição Paulista</span> que , de forma bastante clara , prevê o pagamento da `` sexta-parte dos vencimentos integrais , concedida aos vinte anos de efetivo exercício ... '' . Destaco precedente do <span class="organizacao">C . Tribunal Superior do Trabalho</span> : `` <span class="legislacao">SERVIDORES PÚBLICOS CELETISTAS</span> . <span class="legislacao">PARCELA SEXTA PARTE PREVISTA NA CONSTITUIÇÃO DO ESTADO DE SÃO PAULO</span> . BASE DE CÁLCULO . A <span class="jurisprudencia">jurisprudência</span> desta Corte é uníssona no sentido de que a previsão da incorporação da parcela denominada sexta-parte , constante do <span class="legislacao">art</span> .

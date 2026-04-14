@@ -1,0 +1,49 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example input again: "Em Decisum de 09/11/2017 , fls . 79-83 , Vossa Excelência , Ministro Relator , Dr. José Barroso Filho , monocraticamente , negou seguimento a recursal utilizando os dispositivos legais : inc. V , do art . 12 , e do § 2º do art . 126 , todos do RISTM ."
+
+Looking for entities:
+
+1. **Tempo/Data**: The date "09/11/2017" is clearly a tempo entity. Also, "fls. 79-83" might refer to folhas, which is a legal term for pages, but the user hasn't specified that as an entity. Wait, the user's guide says to mark tempo, so maybe "fls. 79-83" is part of the date? Or is "fls" an abbreviation for "folhas" which is a local? Hmm, not sure. The user's example output might clarify. Let me check the sample output provided.
+
+Wait, the user provided the input and the output. Let me see the sample output. Oh, the user hasn't provided the output yet. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML." So I need to process the input text.
+
+Let me go step by step.
+
+First, "Decisum" – is that an organization? Maybe not. "Vossa Excelência" is a title, not an entity. "Ministro Relator" is a title, not an entity. "Dr. José Barroso Filho" is a person. So that's a pessoa. "monocraticamente" is a term, not an entity. "negou seguimento a recursal" – no entity here. "dispositivos legais" – "legais" refers to legislation? Wait, "dispositivos legais" would be part of the legislation. But the user's guide says to mark "legislacao" as the entity. So "inc. V , do art . 12 , e do § 2º do art . 126" – these are references to articles in the legislation. So "art. 12" and "§ 2º do art. 126" are parts of the legislation. Also, "RISTM" is likely an acronym for a legal code, so that's legislation.
+
+So the entities would be:
+
+- "09/11/2017" → tempo
+- "Dr. José Barroso Filho" → pessoa
+- "art. 12", "§ 2º do art. 126", "RISTM" → legislacao
+
+Wait, "RISTM" is probably the acronym for "Regulamento Interno do Serviço Técnico Militar" or something similar. So that's legislation.
+
+So in the text, the date is marked as tempo, the person as pessoa, and the legal references as legislacao.
+
+Let me check the original text again:
+
+"Em Decisum de 09/11/2017 , fls . 79-83 , Vossa Excelência , Ministro Relator , Dr. José Barroso Filho , monocraticamente , negou seguimento a recursal utilizando os dispositivos legais : inc. V , do art . 12 , e do § 2º do art . 126 , todos do RISTM ."
+
+Breaking it down:
+
+- "09/11/2017" → tempo
+- "Dr. José Barroso Filho" → pessoa
+- "art. 12", "§ 2º do art. 126", "RISTM" → legislacao
+
+So the HTML would have:
+
+<span class="tempo">09/11/2017</span>
+<span class="pessoa">Dr. José Barroso Filho</span>
+<span class="legislacao">art. 12</span>
+<span class="legislacao">§ 2º do art. 126</span>
+<span class="legislacao">RISTM</span>
+
+Other parts like "fls. 79-83" – the user hasn't specified that as an entity, so leave as is. "Vossa Excelência" is a title, not an entity. "Ministro Relator" is a title. "monocraticamente" is a term, not an entity. "dispositivos legais" – "legais" refers to legislation, but the user's guide says to mark "legislacao" for legislation. So "dispositivos legais" would be part of the legislation? Or is "legislacao" only for specific references like articles? The example might clarify, but since the user hasn't provided one, I'll follow the guide.
+
+So the final HTML would have the date, the person, and the legal references marked. The rest remains as is.
+</think>
+
+Em Decisum de <span class="tempo">09/11/2017</span> , fls . 79-83 , Vossa Excelência , Ministro Relator , <span class="pessoa">Dr. José Barroso Filho</span> , monocraticamente , negou seguimento a recursal utilizando os dispositivos legais : inc. V , do art . <span class="legislacao">12</span> , e do § 2º do art . <span class="legislacao">126</span> , todos do <span class="legislacao">RISTM</span> .

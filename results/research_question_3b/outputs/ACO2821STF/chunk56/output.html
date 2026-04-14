@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to understand the input text thoroughly. The text mentions the Supremo Tribunal Federal (STF), which is a legal organization. Then there's a reference to a decision by Ministro Marco Aurélio, so that's a pessoa. The ACO 830/PR is likely a case number, which might fall under jurisprudencia. The date "11 mar. 2008" is a tempo. The STF is also an organizacao. The term "ACO 830" could be a jurisprudencia reference. The "DJe" is probably a legal document abbreviation, so that's legislacao. The "Rel. Min. MARCO AURÉLIO" refers to the relator, so that's a pessoa. The "SEPARAÇÃO DE PODERES..." seems like a jurisprudencia reference. The "previdência estadual" is a legal term, so maybe legislacao. Wait, but the user's example output shows some of these. Let me check the example again.
+
+Looking at the example output, they marked "Supremo Tribunal Federal" as organizacao, "Marco Aurélio" as pessoa, "ACO 830/PR" as jurisprudencia, "11 mar. 2008" as tempo, "STF" as organizacao, "DJe" as legislacao, and "Rel. Min. MARCO AURÉLIO" as pessoa. Also, "SEPARAÇÃO DE PODERES..." is marked as jurisprudencia. 
+
+So, I need to go through the input text and identify each entity. Let's break down the input:
+
+- "Supremo Tribunal Federal" is an organization (organizacao).
+- "Ministro Marco Aurélio" is a person (pessoa).
+- "ACO 830/PR" is a case reference, so jurisprudencia.
+- "Pleno" refers to the full court of the STF, which is part of the organization, but maybe not marked as a separate entity. Wait, the example output didn't mark "Pleno" as an organization. So maybe only the main organization name is marked.
+- "11 mar. 2008" is a date, so tempo.
+- "STF" is the same as "Supremo Tribunal Federal", so another organizacao.
+- "DJe" is a legal document abbreviation, so legislacao.
+- "Rel. Min. MARCO AURÉLIO" refers to the relator, so pessoa.
+- "SEPARAÇÃO DE PODERES..." is part of the ementa, which is a jurisprudencia reference.
+- "previdência estadual" is a legal term, but not sure if it's legislacao or jurisprudencia. The example didn't mark it, so maybe it's not an entity here.
+
+Wait, the example output includes "SEPARAÇÃO DE PODERES..." as jurisprudencia. So maybe any part of the ementa that refers to a legal decision is marked. Also, "ACO 830" is marked as jurisprudencia. The "DJe" is legislacao. 
+
+I need to make sure that all the entities are correctly categorized. Let me go through each part again:
+
+- "Supremo Tribunal Federal" → organizacao
+- "Ministro Marco Aurélio" → pessoa
+- "ACO 830/PR" → jurisprudencia
+- "Pleno" → part of the organization's name? Maybe not, since it's part of the STF's structure, but the example didn't mark it. So maybe not.
+- "11 mar. 2008" → tempo
+- "STF" → organizacao
+- "DJe" → legislacao
+- "Rel. Min. MARCO AURÉLIO" → pessoa
+- "SEPARAÇÃO DE PODERES..." → jurisprudencia
+- "previdência estadual" → not sure, but the example didn't mark it, so maybe not.
+
+So the final HTML should have all these entities marked with the appropriate classes. I need to make sure that each entity is correctly identified and that the tags are properly placed without overlapping or missing any parts.
+</think>
+
+<span class="organizacao">Supremo Tribunal Federal</span>, aliás, foi adotado pelo <span class="organizacao">STF</span>, em decisão monocrática do <span class="pessoa">Ministro Marco Aurélio</span>, ao examinar a antecipação de tutela na <span class="jurisprudencia">ACO 830/PR</span>, que veio a ser referendada pelo <span class="organizacao">Pleno</span>, conforme ementa : <span class="jurisprudencia">‘ SEPARAÇÃO DE PODERES PREVIDÊNCIA SOCIAL AÇÃO CÍVEL ORIGINÁRIA TUTELA . Surge relevante pedido voltado ao implemento de tutela antecipada quando estão em jogo competência concorrente e extravasamento do campo alusivo a normas gerais considerada a previdência estadual. ’</span> ( <span class="organizacao">STF</span> . <span class="jurisprudencia">ACO 830</span> . <span class="pessoa">Rel</span> . <span class="pessoa">Min</span> . <span class="pessoa">MARCO AURÉLIO</span> . <span class="tempo">DJe</span> , <span class="tempo">11 mar</span> . <span class="tempo">2008</span> . )

@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "Supremo Tribunal Federal ACO 2821 A GR / MT expressamente a inconstitucionalidade delas ."
+
+Let me break it down word by word.
+
+"Supremo Tribunal Federal" – that's the name of a Brazilian court, so it's an organization. So I'll mark that as <span class="organizacao">.
+
+"ACO 2821" – ACO might stand for something, but without context, I'm not sure. However, "ACO" could be an acronym for an organization. But since it's followed by a number, maybe it's a case number. Wait, the user's example output shows "ACO 2821" as part of the text without any tags. Wait, looking back at the example, the input was "Supremo Tribunal Federal ACO 2821 A GR / MT expressamente a inconstitucionalidade delas ." and the output was:
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 <span class="jurisprudencia">A GR</span> / <span class="local">MT</span> expressamente a inconstitucionalidade delas .
+
+So in the example, "A GR" is marked as jurisprudencia, and "MT" as local. So maybe "A GR" refers to a judicial decision or a jurisprudential reference. "MT" is the abbreviation for Mato Grosso, a state in Brazil, so that's a local.
+
+So applying that to the input text:
+
+"Supremo Tribunal Federal" is an organization.
+
+"ACO 2821" – not sure, but in the example, they left it as is. Maybe ACO is an acronym for an organization, but since it's not clear, perhaps it's not marked. Alternatively, maybe "ACO" is part of a case number. But the user's example didn't mark it, so maybe I should leave it as is.
+
+"A GR" – in the example, it's marked as jurisprudencia. So "A GR" here is likely a reference to a judicial decision or a jurisprudential term. So I'll mark that as <span class="jurisprudencia">A GR</span>.
+
+"/ MT" – "MT" is the abbreviation for Mato Grosso, so that's a local. So <span class="local">MT</span>.
+
+The rest of the text: "expressamente a inconstitucionalidade delas ." – no entities here, so left as is.
+
+Putting it all together:
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 <span class="jurisprudencia">A GR</span> / <span class="local">MT</span> expressamente a inconstitucionalidade delas .
+
+I need to make sure that only the specified entities are marked. The user's example shows that "A GR" is jurisprudencia and "MT" is local. So following that pattern, I'll apply the same here. The rest of the text doesn't have any of the specified entities, so it remains unchanged.
+</think>
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 <span class="jurisprudencia">A GR</span> / <span class="local">MT</span> expressamente a inconstitucionalidade delas .

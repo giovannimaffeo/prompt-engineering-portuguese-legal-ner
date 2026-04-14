@@ -1,0 +1,19 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. The text is a legal judgment, so there are likely several entities to identify. Let me go line by line.
+
+The first part mentions "Lei distrital n° 5.815 , de 3 de abril de 2017". Here, "Lei distrital" is a law, so that's legislacao. The number and date are part of the law's identifier, so maybe the date is tempo. Wait, the date is "3 de abril de 2017", which is a date, so that's tempo. The law's name is "Lei distrital n° 5.815", so the entire phrase might be legislacao. But the user's example output shows "Lei distrital n° 5.815" as legislacao, and the date as tempo. So I should split that.
+
+Next, "Lei Orgânica do Distrito Federal" is another law, so that's legislacao. The "Distrito Federal" is a local entity, so that's local. Wait, but "Distrito Federal" is the name of the district, so it's a local. So I need to mark "Distrito Federal" as local.
+
+Then, there are references to articles in the Lei Orgânica, like "arts. 15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X". These are parts of the legislation, so they should be part of the legislacao entity. But the user's example output shows that the entire "Lei Orgânica do Distrito Federal" is marked as legislacao, and the articles are part of that. Wait, maybe the articles are part of the legislation, so they are included in the legislacao tag. But the user's example output might have the entire law name as legislacao, and the articles are part of that. Let me check the example output provided.
+
+Looking at the example output, the user's sample input has "Lei distrital n° 5.815 , de 3 de abril de 2017" marked as legislacao, and the date as tempo. Then "Lei Orgânica do Distrito Federal" is also marked as legislacao. The "Distrito Federal" is marked as local. The articles are part of the legislacao, so they are included in the legislacao tag. So I need to make sure that all parts of the law references are included in the legislacao class.
+
+Also, the word "ex tunc" refers to a legal term, but it's not one of the specified entities. So it remains as is. The word "erga omnes" is a legal term but not an entity type, so it stays. The rest of the text doesn't have any other entities. 
+
+So, putting it all together: the law names are legislacao, the date is tempo, the local is "Distrito Federal", and the articles are part of the legislacao. The rest of the text remains unchanged. I need to wrap those parts with the appropriate <span> tags. Let me structure the HTML accordingly.
+</think>
+
+<span class="legislacao">Lei distrital n° 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , tendo em vista a violação aos <span class="legislacao">arts . 15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X</span> , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . É como voto .

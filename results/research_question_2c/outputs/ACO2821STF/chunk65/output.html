@@ -1,0 +1,49 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "RICARDO LEWANDOWSKI 16/03/2018 PLENÁRIO A G .REG ."
+
+Let me break it down word by word.
+
+"RICARDO LEWANDOWSKI" – these are names, likely a person. So both should be <span class="pessoa">.
+
+"16/03/2018" – that's a date, so <span class="tempo">.
+
+"PLENÁRIO" – this is a term often used in legal contexts, maybe referring to a court session. Not sure if it's a local, organization, or something else. Wait, "Plenário" in Brazilian legal terms refers to the full court or chamber, so maybe it's a local? Or perhaps it's part of an organization. Hmm, maybe it's a local here. Alternatively, maybe it's part of a legislative body. But since it's a term used in legal settings, perhaps it's a local. I'll go with local for now.
+
+"A G" – This might be an abbreviation. "A G" could stand for "Ao Governo" or something similar. But without more context, it's hard to tell. Since it's an abbreviation, maybe it's part of an organization or a local. Alternatively, it might not be any of the specified entities. Wait, the user said to leave the text as is if none of the entities are found. But maybe "A G" is part of an organization. Alternatively, maybe it's a typo or abbreviation for something else. Since I can't be certain, I'll leave it as is unless there's a clear match.
+
+".REG ." – This looks like a fragment, maybe an abbreviation for "Regimento" or something related to legislation. "REG" could stand for "Regulamento" (Regulation), which would fall under legislacao. But the full ".REG ." might be a typo or a fragment. If "REG" is part of a legislation entity, then it should be marked as legislacao. However, since it's a fragment, maybe it's not a complete entity. Alternatively, maybe it's a typo for "REG" as in a regulation. I'll consider "REG" as part of legislacao.
+
+Putting it all together:
+
+- RICARDO LEWANDOWSKI → pessoa
+- 16/03/2018 → tempo
+- PLENÁRIO → local (assuming it's a place or chamber)
+- A G → maybe not an entity, so left as is
+- .REG . → legislacao (assuming REG refers to legislation)
+
+Wait, but ".REG ." might be a typo. Maybe it's supposed to be "REG" as an abbreviation. If so, then "REG" would be legislacao. But the user's example output might have different handling. Let me check the example again.
+
+The input text is "RICARDO LEWANDOWSKI 16/03/2018 PLENÁRIO A G .REG ."
+
+In the sample output, the user might have marked "REG" as legislacao. Let me think again. "REG" could be an abbreviation for "Regulamento" (Regulation), which is legislation. So ".REG ." might be a fragment of that. So I'll mark "REG" as legislacao.
+
+So the final HTML would be:
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> <span class="tempo">16/03/2018</span> <span class="local">PLENÁRIO</span> A G <span class="legislacao">REG</span> .
+
+Wait, but the original text has ".REG ." with a period before and after. So maybe it's ".REG ." as a fragment. But the user might expect "REG" to be marked. Alternatively, maybe the entire ".REG ." is considered as legislacao. However, since it's a fragment, perhaps it's not. Alternatively, maybe the user intended "REG" as a legislation entity. So I'll mark "REG" as legislacao.
+
+So the final output would be:
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> <span class="tempo">16/03/2018</span> <span class="local">PLENÁRIO</span> A G <span class="legislacao">REG</span> .
+
+But I need to check if "PLENÁRIO" is a local. In Brazilian legal terms, "Plenário" refers to the full court, which is a part of the Supreme Court, so maybe it's a local. Alternatively, it could be part of an organization. But since the user's example might have different handling, I'll proceed with local.
+
+Another thing: "A G" could be an abbreviation for "Ao Governo" (To the Government), which might be a local or an organization. But without more context, it's safer to leave it as is.
+
+So the final HTML would be as above.
+</think>
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> <span class="tempo">16/03/2018</span> <span class="local">PLENÁRIO</span> A G <span class="legislacao">REG</span> .

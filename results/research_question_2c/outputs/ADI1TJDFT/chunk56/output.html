@@ -1,0 +1,82 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read the input text carefully. The text is a legal paragraph from a law or regulation. Let me parse it sentence by sentence.
+
+The first part is "§ 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Estado do Distrito Federal , Órgãos e entidades da administração pública ; Art ."
+
+Looking for entities:
+
+- "Governador do Distrito Federal" – here, "Governador" is a person, but since it's a title, maybe it's part of an organization? Wait, the user's guide says to use 'pessoa' for people. But "Governador" is a title, so maybe it's part of an organization? Wait, the example might have "Governador" as a person. Wait, the user's example might have "Governador" as a person. Let me check the sample output.
+
+Wait, the user provided a sample input and output. Let me check the sample output. Wait, the user hasn't provided a sample output yet. Wait, the user's instruction says to return only the annotated text. So I need to process the input text.
+
+In the input text, "Governador do Distrito Federal" – "Governador" is a person, but in this context, it's a title. However, according to the guidelines, "pessoa" is for people. So maybe "Governador" is a person. But sometimes, titles like "Governador" might be considered as part of an organization. Wait, the user's guide says to use 'pessoa' for people. So if "Governador" is a person, then it should be marked as 'pessoa'. But in legal terms, the Governor is a person, so maybe that's correct.
+
+Wait, but the text says "Governador do Distrito Federal" – the Governor of the Federal District. So "Governador" is a person, so "Governador" should be marked as 'pessoa'. But the full phrase is "Governador do Distrito Federal" – maybe the entire phrase is an organization? Wait, no. The "Distrito Federal" is a location. Wait, "Distrito Federal" is a location, so that should be marked as 'local'. But the user's guide says to use 'local' for locations. So "Distrito Federal" is a local entity.
+
+Wait, the text is in Portuguese. Let me parse the text again.
+
+Original text: "§ 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Estado do Distrito Federal , Órgãos e entidades da administração pública ; Art ."
+
+Breaking down:
+
+- "Governador do Distrito Federal" – "Governador" is a person, "Distrito Federal" is a location. So "Governador" is a pessoa, "Distrito Federal" is local.
+
+- "Secretarias de Estado do Distrito Federal" – "Secretarias" is a plural of "Secretaria", which is an organization. "Estado" here refers to the state, but in the context of the Distrito Federal, maybe "Estado" is part of the location? Wait, "Secretarias de Estado" would be state secretariats, but in the context of the Distrito Federal, which is a federal district, maybe "Estado" here is part of the location. Wait, but "Distrito Federal" is the location, so "Secretarias de Estado do Distrito Federal" – "Secretarias de Estado" are part of the Distrito Federal. So "Secretarias de Estado" would be organizations, and "Distrito Federal" is local.
+
+- "Órgãos e entidades da administração pública" – "Órgãos" and "entidades" are organizations. "administração pública" is a public administration, which is an organization.
+
+- "Art." – this is an abbreviation for "Artigo" (Article), which is part of the legislation, so maybe it's part of the legislation. But the user's guide says to mark 'legislacao' for legislation. However, "Art." is part of the legal text, so maybe it's part of the legislation. But the user's example might not have that. Wait, the user's example might not have that. Let me check the original text again.
+
+The original text has "Art." at the end. So "Art." is part of the legislation, so it should be marked as 'legislacao'.
+
+Now, let's go through each entity:
+
+1. "Governador" – pessoa
+2. "Distrito Federal" – local
+3. "Secretarias de Estado" – organizacao
+4. "Distrito Federal" again – local
+5. "Órgãos" – organizacao
+6. "entidades" – organizacao
+7. "administração pública" – organizacao
+8. "Art." – legislacao
+
+Wait, but "Secretarias de Estado do Distrito Federal" – "Secretarias de Estado" is an organization, and "Distrito Federal" is a local. So "Secretarias de Estado" is an organization, and "Distrito Federal" is a local. Similarly, "Órgãos e entidades da administração pública" – "Órgãos" and "entidades" are organizations, and "administração pública" is an organization.
+
+So the entities to mark are:
+
+- "Governador" – pessoa
+- "Distrito Federal" – local
+- "Secretarias de Estado" – organizacao
+- "Distrito Federal" – local
+- "Órgãos" – organizacao
+- "entidades" – organizacao
+- "administração pública" – organizacao
+- "Art." – legislacao
+
+Wait, but "Secretarias de Estado" is part of the Distrito Federal. So "Secretarias de Estado do Distrito Federal" – the entire phrase is part of the Distrito Federal. But the user's guide says to mark each entity. So "Secretarias de Estado" is an organization, and "Distrito Federal" is a local. So in the text, "Secretarias de Estado do Distrito Federal" would have "Secretarias de Estado" as organizacao and "Distrito Federal" as local.
+
+Similarly, "Órgãos e entidades da administração pública" – "Órgãos" and "entidades" are organizations, and "administração pública" is an organization.
+
+So the HTML would have:
+
+- "Governador" as <span class="pessoa">Governador</span>
+- "Distrito Federal" as <span class="local">Distrito Federal</span>
+- "Secretarias de Estado" as <span class="organizacao">Secretarias de Estado</span>
+- "Distrito Federal" again as <span class="local">Distrito Federal</span>
+- "Órgãos" as <span class="organizacao">Órgãos</span>
+- "entidades" as <span class="organizacao">entidades</span>
+- "administração pública" as <span class="organizacao">administração pública</span>
+- "Art." as <span class="legislacao">Art.</span>
+
+Wait, but "Secretarias de Estado do Distrito Federal" – the entire phrase is part of the Distrito Federal. But the user's guide says to mark each entity. So "Secretarias de Estado" is an organization, and "Distrito Federal" is a local. So in the text, "Secretarias de Estado do Distrito Federal" would have "Secretarias de Estado" as organizacao and "Distrito Federal" as local.
+
+Similarly, "Órgãos e entidades da administração pública" – "Órgãos" and "entidades" are organizations, and "administração pública" is an organization.
+
+So putting it all together, the HTML would have the entities marked as per the classes.
+
+Now, let's write the HTML with these tags.
+</think>
+
+§ 1º Compete privativamente ao <span class="pessoa">Governador</span> do <span class="local">Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class="organizacao">Secretarias de Estado</span> do <span class="local">Distrito Federal</span> , <span class="organizacao">Órgãos</span> e <span class="organizacao">entidades</span> da <span class="organizacao">administração pública</span> ; <span class="legislacao">Art</span>.

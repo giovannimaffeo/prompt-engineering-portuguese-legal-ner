@@ -1,0 +1,63 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about an appeal and includes some codes, dates, and legal terms. 
+
+Looking at the text: "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 5 Julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença ."
+
+I need to identify each entity. Let's break it down:
+
+1. "Apelação / Reexame Necessário" – These are legal terms, but not specific entities. Maybe "Reexame Necessário" is a legal procedure, but the user hasn't specified that as an entity type. So probably not marked.
+
+2. "20140110500434APO" – This looks like a code, maybe a case number. Not sure if it's an entity type. The user didn't mention codes, so maybe leave as is.
+
+3. "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – Again, codes. Probably not entities.
+
+4. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is an organization? Maybe. "DESEMBARGADORA" is a title, so maybe "MARIA IVATÔNIA" is a person. So "MARIA IVATÔNIA" should be <span class="pessoa">.
+
+5. "5 Julgo" – "Julgo" is a legal term, but "5" is a date. Wait, "5" might be a date, but in the text it's written as "5 Julgo". Wait, maybe "5" is part of a date. Wait, the original text says "5 Julgo" – perhaps "5" is the day, and "Julgo" is the verb. But the user's example output has "5" as a tempo. Wait, looking at the example output provided by the user, in their sample input, "5" is marked as tempo. Wait, the user's example input has "5 Julgo" and in the output, "5" is marked as tempo. So I need to check that.
+
+Wait, the user's example input is: "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 5 Julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença ."
+
+In the sample output, the user has "5" marked as tempo. So "5" is a tempo entity. So I need to mark "5" as <span class="tempo">.
+
+Then "Julgo" is a legal term, but not an entity type. So leave as is.
+
+Next, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is an organization? Maybe. "DESEMBARGADORA" is a title, so "MARIA IVATÔNIA" is a person. So "MARIA IVATÔNIA" is a pessoa.
+
+Other parts: "liquidação de sentença" – "sentença" is a legal term, but not an entity. "liquidação" is a process, not an entity.
+
+So putting it all together:
+
+- "5" is tempo.
+- "MARIA IVATÔNIA" is pessoa.
+- "GABINETE" is organizacao? Or maybe "GABINETE DA DESEMBARGADORA" is an organization. Wait, "GABINETE" is the office, so maybe "GABINETE" is an organization. But the user's example output in the sample input has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" with "MARIA IVATÔNIA" as pessoa. So "GABINETE" is part of the organization? Or maybe "GABINETE" is an organization. Let me check the user's example output. Wait, the user's example output is not provided, but the user's instruction says that in the sample input, "5" is marked as tempo, and "MARIA IVATÔNIA" as pessoa. So "GABINETE" might be an organization. But the user's example output may not have that. Wait, the user's example input is the one given, and the output is the one they want. Let me check the user's example input again.
+
+Wait, the user's input is the text provided, and the output is the HTML version. The user's example input is the text given, and the output is the HTML with entities marked. So in the input text, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is an organization, "MARIA IVATÔNIA" is a pessoa. So "GABINETE" would be organizacao, and "MARIA IVATÔNIA" is pessoa. But the user's example output may not have that. Wait, the user's example output is not given, but the user's instruction says that in the sample input, "5" is marked as tempo, and "MARIA IVATÔNIA" as pessoa. So I need to mark "5" as tempo, "MARIA IVATÔNIA" as pessoa. 
+
+So the final HTML would have:
+
+- "5" as <span class="tempo">5</span>
+- "MARIA IVATÔNIA" as <span class="pessoa">MARIA IVATÔNIA</span>
+
+Other parts like "GABINETE" – maybe it's an organization. But the user's example output may not have that. Wait, the user's example input is the one given, and the output is the HTML. So I need to check if "GABINETE" is an organization. Since "GABINETE" is a place where the judge works, maybe it's an organization. So "GABINETE" would be <span class="organizacao">GABINETE</span>. But the user's example output may not have that. Wait, the user's example input is the one given, and the output is the HTML. So I need to mark all entities. Let me check again.
+
+The input text is: "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 5 Julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença ."
+
+So the entities are:
+
+- "5" is a tempo (date).
+- "MARIA IVATÔNIA" is a pessoa.
+- "GABINETE" is an organization (since it's the office of the judge).
+- "DESEMBARGADORA" is a title, not an entity.
+- "Julgo" is a legal term, not an entity.
+- "liquidação de sentença" – "sentença" is a legal term, not an entity.
+
+So the HTML would be:
+
+Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE</span> DA DESEMBARGADORA <span class="pessoa">MARIA IVATÔNIA</span> <span class="tempo">5</span> Julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença .
+
+Wait, but "GABINETE DA DESEMBARGADORA" – maybe "GABINETE" is the organization, and "DESEMBARGADORA" is part of the title. So "GABINETE" is organizacao, and "MARIA IVATÔNIA" is pessoa. The "5" is tempo. So that's the correct marking.
+</think>
+
+Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE</span> DA DESEMBARGADORA <span class="pessoa">MARIA IVATÔNIA</span> <span class="tempo">5</span> Julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença .

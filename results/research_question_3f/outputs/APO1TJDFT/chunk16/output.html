@@ -1,0 +1,36 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with "A controvérsia dos autos trazida na exordial pelo SINPRO/DF diz respeito..." Here, "SINPRO/DF" is an organization. The acronym "SINPRO" might stand for a specific organization, and "DF" is the abbreviation for Distrito Federal, which is a local. Wait, but according to the guidelines, "DF" as an abbreviation for Distrito Federal should be marked as local. So I'll mark "SINPRO/DF" as organizacao and "DF" as local? Wait, no. Wait, the entire "SINPRO/DF" is the organization. The "DF" here is part of the organization's name, so it's part of the organization. So "SINPRO/DF" should be marked as organizacao.
+
+Next, "apelação / Reexame Necessário 20140110500434APO". The "20140110500434APO" looks like a jurisprudencia identifier. The example shows that such identifiers should be marked as jurisprudencia. So that part should be in <span class="jurisprudencia">.
+
+Then, "Senhora Desembargadora MARIA IVATÔNIA - Relatora". "MARIA IVATÔNIA" is a person, so that's <span class="pessoa">.
+
+Looking at "artigos 6º da Emenda Constitucional 41/2003 e 2º da Emenda Constitucional 47/2005". The "Emenda Constitucional 41/2003" and "47/2005" are legislative entities. The "artigos 6º" refers to articles in the legislation, so the entire "artigos 6º da Emenda Constitucional 41/2003" and "2º da Emenda Constitucional 47/2005" should be marked as legislacao. Wait, but the example shows that "art. 61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So here, "artigos 6º da Emenda Constitucional 41/2003" would be part of the legislation. Also, "Emenda Constitucional 41/2003" is a legislative entity. So I need to mark those parts.
+
+Also, "Novo Código de Processo Civil" is a legislation, so that should be marked as legislacao.
+
+Now, checking for any other entities. The "Fls . _____" is just "Fls" which is an abbreviation for "Folhas" and not an entity. The "V O T O S A" is part of the text and not an entity. The "Senhora Desembargadora" is a title, not a person, so not marked. The "Relatora" is a title, so not marked. The "Novo Código de Processo Civil" is a legislation. The "artigos 6º" is part of the legislation. The "Emenda Constitucional 41/2003" and "47/2005" are legislative entities. The "20140110500434APO" is jurisprudencia. The "MARIA IVATÔNIA" is pessoa. The "SINPRO/DF" is organizacao. The "DF" is part of the organization's name, so it's included in the organizacao tag. Wait, but the example shows that "Distrito Federal" is marked as local. However, in this case, "DF" is part of the organization's name, so it's part of the organization. So "SINPRO/DF" is the organization, and "DF" is part of it. Therefore, the entire "SINPRO/DF" is marked as organizacao.
+
+Putting it all together, I need to make sure each entity is correctly tagged. Let me go through the text again to confirm.
+
+The input text has:
+
+- "SINPRO/DF" → organizacao
+- "MARIA IVATÔNIA" → pessoa
+- "20140110500434APO" → jurisprudencia
+- "artigos 6º da Emenda Constitucional 41/2003" → legislacao
+- "Emenda Constitucional 41/2003" → legislacao
+- "2º da Emenda Constitucional 47/2005" → legislacao
+- "Emenda Constitucional 47/2005" → legislacao
+- "Novo Código de Processo Civil" → legislacao
+
+Wait, the "artigos 6º da Emenda Constitucional 41/2003" is part of the legislation. The "Emenda Constitucional 41/2003" is a legislative entity. Similarly for the 47/2005. Also, "artigos 6º" is part of the legislation. So the entire phrase "artigos 6º da Emenda Constitucional 41/2003" should be marked as legislacao. Similarly for the other parts.
+
+So the final HTML should have all these tags correctly placed. Let me structure the output accordingly.
+</think>
+
+A controvérsia dos autos trazida na exordial pelo <span class="organizacao">SINPRO/DF</span> diz respeito - tão somente - à aplicação da paridade de vencimentos dos servidores em atividade aos servidores inativos , desde que estes tenham se aposentado com fundamento nos <span class="legislacao">artigos 6º da Emenda Constitucional 41/2003</span> e <span class="legislacao">2º da Emenda Constitucional 47/2005</span> , dispositivos que asseguraram a integralidade e a paridade dos proventos de aposentadoria . Fls . _____ <span class="jurisprudencia">Apelação / Reexame Necessário 20140110500434APO</span> V O T O S A <span class="pessoa">Senhora Desembargadora MARIA IVATÔNIA</span> - Relatora Por força do advento do <span class="legislacao">Novo Código de Processo Civil</span> , o c .

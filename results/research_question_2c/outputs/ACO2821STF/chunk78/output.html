@@ -1,0 +1,43 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "RICARDO LEWANDOWSKI ACO 2821 A GR / MT que o Projeto de Lei Complementar 1/2016 encontra-se sob apreciação da Assembleia Legislativa do Estado ."
+
+Let me break it down word by word.
+
+"RICARDO LEWANDOWSKI" – these are names, so they should be 'pessoa'. So, both names get <span class="pessoa">.
+
+"ACO 2821 A GR / MT" – Hmm, not sure. ACO might be an acronym, but without context, maybe it's part of a code. The numbers and letters might not be entities here. The "/ MT" could be a location, like the state of Mato Grosso (MT). So "MT" is a local entity. Wait, but "MT" is an abbreviation for Mato Grosso, which is a state in Brazil. So "MT" should be <span class="local">.
+
+Next, "Projeto de Lei Complementar 1/2016" – "Projeto de Lei Complementar" is a legislative project, so "Legislacao" would be the class. The number 1/2016 is a date, so "tempo" or "data"? The user specified "tempo" for time/data. So "1/2016" is <span class="tempo">.
+
+"encontra-se sob apreciação da Assembleia Legislativa do Estado" – "Assembleia Legislativa" is an organization, so "organizacao". "Estado" here refers to the state, which is a local entity. Wait, but "Estado" could be part of the name of the legislative assembly. Wait, the full name is "Assembleia Legislativa do Estado", which is the Legislative Assembly of the State. So "Assembleia Legislativa" is the organization, and "Estado" might be part of the local entity. But "Estado" here is part of the name of the organization, so maybe it's part of the organization's name. Wait, but the user's example might have "Assembleia Legislativa" as the organization. Let me check the example again.
+
+In the sample input, the output for "Assembleia Legislativa do Estado" would have "Assembleia Legislativa" as organizacao and "Estado" as local? Or maybe "Assembleia Legislativa" is the organization, and "do Estado" is part of the name. Alternatively, "Estado" could be a local entity. But since "Estado" is part of the name of the legislative assembly, maybe it's part of the organization. However, the user's example might have "Assembleia Legislativa" as the organization. Let me think again.
+
+The user's example input is: "RICARDO LEWANDOWSKI ACO 2821 A GR / MT que o Projeto de Lei Complementar 1/2016 encontra-se sob apreciação da Assembleia Legislativa do Estado ."
+
+In the output, "Assembleia Legislativa" is an organization, and "Estado" is a local entity. Wait, but "Estado" here refers to the state, so it's a local. So "Assembleia Legislativa" is the organization, and "do Estado" is part of the name, but "Estado" is a local. So "Estado" would be <span class="local">.
+
+Putting it all together:
+
+- RICARDO LEWANDOWSKI → pessoa
+- ACO 2821 A GR / MT → MT is local
+- Projeto de Lei Complementar 1/2016 → legislacao (Projeto de Lei Complementar) and tempo (1/2016)
+- Assembleia Legislativa → organizacao
+- Estado → local
+
+Wait, but "Projeto de Lei Complementar" is a legislative project, so that's legislacao. The number 1/2016 is a date, so tempo.
+
+So the HTML would be:
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A GR / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa</span> do <span class="local">Estado</span> .
+
+Wait, but "1/2016" is part of the legislacao, so maybe the entire "Projeto de Lei Complementar 1/2016" is legislacao, and the date is part of it. Alternatively, the date is a tempo. But the user's example might have the date as tempo. Let me check the user's example again. The input has "Projeto de Lei Complementar 1/2016" which is a legislative project, so the entire phrase is legislacao. The date 1/2016 is part of that, so maybe the date is part of the legislacao. But the user's guide says to use "tempo" for time/data. So perhaps the date is a tempo. But the user's example might have the entire "Projeto de Lei Complementar 1/2016" as legislacao, and the date as tempo. Wait, but the date is part of the legislacao. Hmm, this is a bit ambiguous. Let me check the user's example again. The user's input is "Projeto de Lei Complementar 1/2016" and the output would have "Projeto de Lei Complementar 1/2016" as legislacao. But the date is part of the legislacao. Alternatively, the date is a tempo. But the user's guide says to use "tempo" for time/data. So maybe the date is a tempo. But the entire "Projeto de Lei Complementar 1/2016" is a legislative project, so it's legislacao. The date is part of that, so maybe the date is part of the legislacao. But the user's example might have the date as tempo. Let me think again. The user's example might have "Projeto de Lei Complementar 1/2016" as legislacao, and the date as tempo. But the date is part of the legislacao. Alternatively, the entire phrase is legislacao. Since the user's example might not have the date as a separate entity, perhaps the entire "Projeto de Lei Complementar 1/2016" is legislacao. So the date is part of that. Therefore, the HTML would be:
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> ACO 2821 A GR / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa</span> do <span class="local">Estado</span> .
+
+But wait, "Estado" is a local entity. So that's correct. Also, "ACO 2821 A GR" – maybe "ACO" is an acronym, but without context, it's not clear. The user's example might not mark it. So leave it as is. Similarly, "GR" could be an abbreviation, but again, not sure. So the final HTML would be as above.
+</think>
+
+RICARDO LEWANDOWSKI ACO 2821 A GR / <span class="local">MT</span> que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa</span> do <span class="local">Estado</span> .

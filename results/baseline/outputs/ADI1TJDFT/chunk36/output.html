@@ -1,0 +1,70 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first sentence mentions "Ajurisprudência do Supremo Tribunal Federal..." Here, "Ajurisprudência" is likely a typo for "A jurisprudência" (the jurisprudence). So "jurisprudência" should be marked as a jurisprudencia entity. Then "Supremo Tribunal Federal" is an organization, so that's organizacao. The "Assembléia Legislativa" is an organization too, so that's organizacao. The "Constituição do Estado do Paraná" refers to a legislative text, so that's legislacao. The "art. 2º, da C.F." is a reference to the Federal Constitution, so that's legislacao. The "art. 54" is also a legislative reference, so legislacao again.
+
+Next, "ADI 342" is a case number, which might be a jurisprudencia reference. The "Min." at the end is likely "Ministro" (Minister), so that's a pessoa. 
+
+Wait, the user mentioned "jurisprudencia" for legal precedents. The text mentions "Precedentes" and "ADI 342" which is a case, so those should be jurisprudencia. The "Constituição do Estado do Paraná" is a legislative text, so legislacao. The "art. 54" is part of the constitution, so legislacao. The "art. 2º, da C.F." is also part of the Federal Constitution, so legislacao. 
+
+Let me check each part again. 
+
+"A jurisprudência do Supremo Tribunal Federal" – "jurisprudência" is a jurisprudencia entity. "Supremo Tribunal Federal" is an organization. "Assembléia Legislativa" is an organization. "Constituição do Estado do Paraná" is a legislative text, so legislacao. "art. 2º, da C.F." refers to the Federal Constitution, so legislacao. "art. 54" is part of the state constitution, so legislacao. "ADI 342" is a case, so jurisprudencia. "Min." is a person (Ministro), so pessoa.
+
+I need to make sure that all these entities are correctly tagged. Also, check if any other parts might be entities. The "Estado do Paraná" is a local, so that's local. Wait, the text says "Constituição do Estado do Paraná" – "Estado do Paraná" is a local (state), so that's local. But the "Constituição" is the legislation, so legislacao. So "Constituição do Estado do Paraná" would have "Constituição" as legislacao and "Estado do Paraná" as local? Wait, but the user's guidelines say to mark each entity. So "Constituição" is legislacao, and "Estado do Paraná" is local. But in the text, it's "Constituição do Estado do Paraná" – so the entire phrase is a reference to the state constitution, which is a legislative text. So maybe "Constituição do Estado do Paraná" is a legislacao entity. But the user's example might have different handling. Let me check the example again.
+
+In the sample input, the user's output has "Constituição do Estado do Paraná" as legislacao. So I think that's correct. So "Constituição" is legislacao, and "Estado do Paraná" is local. Wait, but the user's example might have combined them. Wait, the original text says "Constituição do Estado do Paraná" – the "Constituição" is the legislation, and "Estado do Paraná" is the local. So both should be marked. But the user's example might have marked the entire phrase as legislacao. Hmm, maybe I need to check the exact guidelines. The user says to mark each entity. So "Constituição" is legislacao, and "Estado do Paraná" is local. But in the text, they are part of the same phrase. So perhaps the entire "Constituição do Estado do Paraná" is considered as a legislacao entity. Wait, the user's example might have different handling. Let me look at the sample output provided by the user. Wait, the user hasn't provided a sample output, but the task says to return the text with the entities marked. So I need to make sure that each entity is marked. 
+
+In the input text, "Constituição do Estado do Paraná" – "Constituição" is a legislation, and "Estado do Paraná" is a local. So both should be marked. Similarly, "art. 2º, da C.F." – "C.F." stands for Constituição Federal, so that's legislacao. "art. 54" is part of the state constitution, so legislacao. 
+
+So putting it all together, the HTML should have:
+
+- "jurisprudência" as jurisprudencia
+- "Supremo Tribunal Federal" as organizacao
+- "Assembléia Legislativa" as organizacao
+- "Constituição do Estado do Paraná" as legislacao (but maybe split into "Constituição" as legislacao and "Estado do Paraná" as local)
+- "art. 2º, da C.F." as legislacao
+- "art. 54" as legislacao
+- "ADI 342" as jurisprudencia
+- "Min." as pessoa
+
+Wait, but the user's example might have different handling. Let me re-express the text with the tags.
+
+Original text: "Ajurisprudência do Supremo Tribunal Federal é firme no sentido de que a regra que subordina a celebração de acordos ou convênios firmados por órgãos do Poder Executivo à autorização prévia ou ratificação da Assembléia Legislativa , fere o princípio da independência e harmonia dos poderes ( art . 2º , da C.F . ) . Precedentes . 2 . Ação Direta julgada procedente para a declaração de inconstitucionalidade do inciso XXI do art . 54 da Constituição do Estado do Paraná . ( ADI 342 , Relator ( a ) : Min ."
+
+Breaking down:
+
+1. "Ajurisprudência" → "jurisprudência" is jurisprudencia.
+2. "Supremo Tribunal Federal" → organizacao.
+3. "Assembléia Legislativa" → organizacao.
+4. "art. 2º, da C.F." → "C.F." is Constituição Federal, so legislacao.
+5. "Precedentes" → this is a reference to jurisprudencia, so maybe mark as jurisprudencia.
+6. "ADI 342" → case number, so jurisprudencia.
+7. "Min." → "Ministro" (Minister), so pessoa.
+8. "Constituição do Estado do Paraná" → "Constituição" is legislacao, "Estado do Paraná" is local.
+9. "art. 54" → legislacao.
+10. "art. 54 da Constituição do Estado do Paraná" → "Constituição" is legislacao, "Estado do Paraná" is local.
+
+So the HTML would have:
+
+- <span class="jurisprudencia">jurisprudência</span>
+- <span class="organizacao">Supremo Tribunal Federal</span>
+- <span class="organizacao">Assembléia Legislativa</span>
+- <span class="legislacao">art. 2º, da C.F.</span>
+- <span class="jurisprudencia">Precedentes</span>
+- <span class="jurisprudencia">ADI 342</span>
+- <span class="pessoa">Min.</span>
+- <span class="legislacao">Constituição</span>
+- <span class="local">Estado do Paraná</span>
+- <span class="legislacao">art. 54</span>
+
+Wait, but the original text has "Constituição do Estado do Paraná" as a single entity. Maybe the entire phrase is considered as a legislacao entity. But according to the guidelines, each entity should be marked. So "Constituição" is legislacao, and "Estado do Paraná" is local. So both should be marked. Similarly, "art. 54 da Constituição do Estado do Paraná" would have "art. 54" as legislacao and "Constituição do Estado do Paraná" as legislacao again. Wait, but "Constituição do Estado do Paraná" is the same as before. So maybe "Constituição" is legislacao, and "Estado do Paraná" is local. 
+
+Putting all together, the final HTML should have all these tags. Now, I need to make sure that the text is correctly split and each entity is marked. Also, check for any other entities. The "Poder Executivo" is an organization? Or is it part of the government? Maybe not an entity. The "art. 54" is part of the legislation. 
+
+I think that's all. Now, I'll format the text with the appropriate <span> tags.
+</think>
+
+Ajurisprudência do <span class="organizacao">Supremo Tribunal Federal</span> é firme no sentido de que a regra que subordina a celebração de acordos ou convênios firmados por órgãos do Poder Executivo à autorização prévia ou ratificação da <span class="organizacao">Assembléia Legislativa</span> , fere o princípio da independência e harmonia dos poderes ( <span class="legislacao">art . 2º</span> , da <span class="legislacao">C.F .</span> ) . <span class="jurisprudencia">Precedentes</span> . 2 . <span class="jurisprudencia">Ação Direta</span> julgada procedente para a declaração de inconstitucionalidade do inciso XXI do <span class="legislacao">art . 54</span> da <span class="legislacao">Constituição</span> do <span class="local">Estado do Paraná</span> . ( <span class="jurisprudencia">ADI 342</span> , Relator ( a ) : <span class="pessoa">Min</span> . )

@@ -1,0 +1,147 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me start by breaking down the text into parts.
+
+The first part is "Ementa e Acórdão 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC . ( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO Ementa : AÇÃO CÍVEL ORIGINÁRIA . NEGATIVA DE EMISSÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA . COMPETÊNCIA CONCORRENTE EM MATÉRIA DE PREVIDENCIA SOCIAL . ANÁLISE ADMINISTRATIVA . DESEQUILÍBRIO DA RELAÇÃO FEDERATIVA . NULIDADE DO ATO ADMINISTRATIVO . RESERVA JURISDICIONAL . AGRAVO REGIMENTAL A QUE SE NEGA PROVIMENTO . I Compete à União , aos Estados e ao Distrito Federal legislar , concorrentemente , sobre previdência social , nos termos do disposto no art ."
+
+Looking for entities:
+
+1. "16/03/2018" is a date, so that's tempo.
+2. "PLENÁRIO" – this is a part of the court, maybe an organization? Wait, the definition says "organizacao" includes tribunals, so "PLENÁRIO" could be part of an organization. But the example given includes "Tribunal de Contas", so maybe "PLENÁRIO" is part of an organization. However, in the text, "PLENÁRIO" is part of "Acórdão 16/03/2018 PLENÁRIO", which might refer to the Plenary of a court. But the exact entity here might be the court itself. Wait, the example for organizacao includes "Tribunal de Contas", so maybe "PLENÁRIO" is part of an organization. But in the text, "PLENÁRIA" is part of the Acórdão, which is a court decision. Maybe "PLENÁRIO" is part of the organization. Alternatively, maybe it's a part of the court, so perhaps it's not an entity. Hmm, need to check the definitions again. The organizacao includes "órgãos públicos, tribunais, unidades do sistema de justiça". So "PLENÁRIO" could be part of an organization. But in the text, "PLENÁRIO" is part of the Acórdão, which is a court decision. Maybe "PLENÁRIO" is part of the organization. Alternatively, maybe it's not an entity. Wait, the example for organizacao includes "Tribunal de Contas", so "PLENÁRIO" might be part of an organization. But in the text, "PLENÁRIO" is part of the Acórdão, which is a court decision. Maybe "PLENÁRIO" is not an entity here. Alternatively, maybe "PLENÁRIO" is part of the organization. This is a bit tricky. Let me check other parts.
+
+Next, "MATO GROSSO" is a state, so that's local.
+
+"RELATOR : MIN . RICARDO LEWANDOWSKI" – "MIN" is an abbreviation for Ministro (Minister), so "RICARDO LEWANDOWSKI" is a person. So "RICARDO LEWANDOWSKI" is pessoa.
+
+"AGTE . ( S ) : UNIÃO" – "UNIÃO" is the Union, which is an organization. So "UNIÃO" is organizacao.
+
+"ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO" – "ADVOGADO -GERAL DA UNIÃO" is the General Attorney of the Union, which is an organization. Wait, but "ADVOGADO -GERAL DA UNIÃO" is a title, so maybe it's part of the organization. But the actual entity here is the person, but the text says "ADVOGADO -GERAL DA UNIÃO" is the title. Wait, the text says "ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO" – the "ADVOGADO -GERAL DA UNIÃO" is the title, so maybe it's not an entity. Wait, the user's example for organizacao includes "UNIMED RIO COOPERATIVA DE TRABALHO MÉDICO DO RIO DE JANEIRO LTDA". So "ADVOGADO -GERAL DA UNIÃO" is a title, not an organization. So maybe it's not an entity. Wait, but "UNIÃO" is an organization. So "UNIÃO" is organizacao.
+
+"AGDO . ( A / S ) : ESTADO DE MATO GROSSO" – "ESTADO DE MATO GROSSO" is an organization (state), so that's organizacao.
+
+"PROC . ( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" – "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" is a title, so not an entity. But "ESTADO DE MATO GROSSO" is an organization, which we already marked.
+
+In the Ementa section: "AÇÃO CÍVEL ORIGINÁRIA" – that's a legal action, not an entity. "NEGATIVA DE EMISSÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA" – not an entity. "COMPETÊNCIA CONCORRENTE EM MATÉRIA DE PREVIDENCIA SOCIAL" – not an entity. "ANÁLISE ADMINISTRATIVA" – not an entity. "DESEQUILÍBRIO DA RELAÇÃO FEDERATIVA" – not an entity. "NULIDADE DO ATO ADMINISTRATIVO" – not an entity. "RESERVA JURISDICIONAL" – not an entity. "AGRAVO REGIMENTAL A QUE SE NEGA PROVIMENTO" – not an entity. "I Compete à União , aos Estados e ao Distrito Federal legislar , concorrentemente , sobre previdência social , nos termos do disposto no art ." – "União" is an organization, "Distrito Federal" is a local.
+
+Wait, "Distrito Federal" is a local, so that's local. Also, "União" is an organization. So in the Ementa part, "União" and "Distrito Federal" are entities.
+
+So compiling all the entities:
+
+- Tempo: 16/03/2018
+- Local: MATO GROSSO, Distrito Federal
+- Organizacao: UNIÃO, ESTADO DE MATO GROSSO, PROCURADOR -GERAL DO ESTADO DE MATO GROSSO (wait, no, the "PROCURADOR -GERAL" is a title, not an organization. Wait, "ESTADO DE MATO GROSSO" is an organization. "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" is a title, so not an entity. So only "ESTADO DE MATO GROSSO" is organizacao.
+
+Wait, the text says "AGDO . ( A / S ) : ESTADO DE MATO GROSSO" – "ESTADO DE MATO GROSSO" is an organization. So that's organizacao.
+
+Also, "PLENÁRIO" – is that an organization? The example includes "Tribunal de Contas", so maybe "PLENÁRIO" is part of an organization. But in the text, "PLENÁRIO" is part of the Acórdão, which is a court decision. Maybe "PLENÁRIO" is part of the organization. But the exact entity here is unclear. Alternatively, maybe "PLENÁRIO" is not an entity. Let me check the definitions again. The organizacao includes "órgãos públicos, tribunais, unidades do sistema de justiça". So "PLENÁRIO" could be part of an organization. But in the text, "PLENÁRIO" is part of the Acórdão, which is a court decision. Maybe "PLENÁRIO" is not an entity here. Alternatively, maybe "PLENÁRIO" is part of the organization. Hmm, this is a bit ambiguous. Let me think again. The example for organizacao includes "Tribunal de Contas", so "PLENÁRIO" might be part of an organization. But in the text, "PLENÁRIO" is part of the Acórdão, which is a court decision. Maybe "PLENÁRIO" is not an entity. Alternatively, maybe "PLENÁRIO" is part of the organization. Since the user's example includes "Tribunal de Contas", which is a court, maybe "PLENÁRIO" is part of the organization. But I'm not sure. Maybe it's safer to not mark it as an entity unless it's clearly an organization. Let me check the text again. The text says "Acórdão 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO". The "PLENÁRIO" here is part of the court's name. So maybe "PLENÁRIO" is part of the organization. But the exact entity is unclear. Maybe it's better to not mark it unless it's a clear organization. Alternatively, maybe "PLENÁRIO" is part of the organization. But I'm not certain. Let me proceed with the entities I can confidently identify.
+
+So, the entities are:
+
+- Tempo: 16/03/2018
+- Local: MATO GROSSO, Distrito Federal
+- Organizacao: UNIÃO, ESTADO DE MATO GROSSO
+- Pessoa: RICARDO LEWANDOWSKI
+- Legislacao: "art." (but the text ends with "nos termos do disposto no art .", so "art." is part of the legislation reference. Wait, the example for legislacao includes "art." as part of the reference. So "art." is part of the legislation. But the user's example for organizacao includes "Tribunal de Contas", so "art." is part of the legislation. Wait, the user's example for organizacao includes "Tribunal de Contas", but the example for legislacao is not given. However, the user's example for organizacao includes "Tribunal de Contas", so "art." is part of the legislation. But in the text, "art." is part of the reference to a law. So "art." is part of the legislation. But the user's example for legislacao is not given. However, the user's example for organizacao includes "Tribunal de Contas", so "art." is part of the legislation. Wait, the user's example for organizacao includes "Tribunal de Contas", but the example for legislacao is not given. However, the user's example for organizacao includes "Tribunal de Contas", so "art." is part of the legislation. But the user's example for legislacao is not given. So maybe "art." is part of the legislation. But the text says "nos termos do disposto no art .", which refers to an article of a law. So "art." is part of the legislation. But the user's example for legislacao is not given. However, the user's example for organizacao includes "Tribunal de Contas", so "art." is part of the legislation. But the user's example for legislacao is not given. So maybe "art." is part of the legislation. But the user's example for legislacao is not given. So perhaps "art." is not an entity. Alternatively, maybe "art." is part of the legislation. But the user's example for legislacao is not given. So perhaps "art." is not an entity. Therefore, the only entities are:
+
+- Tempo: 16/03/2018
+- Local: MATO GROSSO, Distrito Federal
+- Organizacao: UNIÃO, ESTADO DE MATO GROSSO
+- Pessoa: RICARDO LEWANDOWSKI
+
+Wait, but "Distrito Federal" is a local. Also, "ESTADO DE MATO GROSSO" is an organization. "UNIÃO" is an organization. "RICARDO LEWANDOWSKI" is a person. "16/03/2018" is tempo. Are there any other entities?
+
+In the Ementa part: "Compete à União , aos Estados e ao Distrito Federal legislar" – "União" is an organization, "Distrito Federal" is a local. So those are already covered.
+
+So the final entities are:
+
+- Tempo: 16/03/2018
+- Local: MATO GROSSO, Distrito Federal
+- Organizacao: UNIÃO, ESTADO DE MATO GROSSO
+- Pessoa: RICARDO LEWANDOWSKI
+
+Now, let's check if "PLENÁRIO" is an entity. The text says "Acórdão 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO". The "PLENÁRIO" here is part of the court's name. For example, "PLENÁRIO" could be part of the organization. But the example for organizacao includes "Tribunal de Contas", so "PLENÁRIO" might be part of an organization. However, in the text, "PLENÁRIO" is part of the Acórdão, which is a court decision. So maybe "PLENÁRIO" is not an entity. Alternatively, maybe it's part of the organization. Since the user's example includes "Tribunal de Contas", which is a court, "PLENÁRIO" could be part of the organization. But I'm not sure. Given the ambiguity, perhaps it's safer to not mark "PLENÁRIO" as an entity unless it's clearly an organization. So I'll proceed with the entities I have.
+
+Now, let's structure the answer with the entities marked in the text.
+</think>
+
+### Identificação de Entidades no Texto
+
+**1. Tempo**  
+- **16/03/2018**  
+  - **Motivo**: Representa uma data, que é classificada como "tempo" de acordo com as definições fornecidas.
+
+**2. Local**  
+- **MATO GROSSO**  
+  - **Motivo**: Refere-se a um estado brasileiro, classificado como "local".  
+- **Distrito Federal**  
+  - **Motivo**: Refere-se ao Distrito Federal, que é uma unidade territorial, também classificada como "local".
+
+**3. Organização**  
+- **UNIÃO**  
+  - **Motivo**: Representa a União, que é uma entidade federal, classificada como "organização".  
+- **ESTADO DE MATO GROSSO**  
+  - **Motivo**: Refere-se ao estado de Mato Grosso, que é uma entidade política e administrativa, classificada como "organização".
+
+**4. Pessoa**  
+- **RICARDO LEWANDOWSKI**  
+  - **Motivo**: Nome de um ministro (Ministro), classificado como "pessoa".
+
+---
+
+### Resposta Final com Entidades Marcadas
+
+**Texto com Entidades Identificadas:**
+
+> **16/03/2018** Acórdão **PLENÁRIO** A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 **MATO GROSSO**  
+>  
+> **RELATOR : MIN. RICARDO LEWANDOWSKI**  
+>  
+> **AGTE . ( S ) : UNIÃO**  
+>  
+> **ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO**  
+>  
+> **AGDO . ( A / S ) : ESTADO DE MATO GROSSO**  
+>  
+> **PROC . ( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO**  
+>  
+> **EMENTA**  
+>  
+> **AÇÃO CÍVEL ORIGINÁRIA**  
+>  
+> **NEGATIVA DE EMISSÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA**  
+>  
+> **COMPETÊNCIA CONCORRENTE EM MATÉRIA DE PREVIDENCIA SOCIAL**  
+>  
+> **ANÁLISE ADMINISTRATIVA**  
+>  
+> **DESEQUILÍBRIO DA RELAÇÃO FEDERATIVA**  
+>  
+> **NULIDADE DO ATO ADMINISTRATIVO**  
+>  
+> **RESERVA JURISDICIONAL**  
+>  
+> **AGRAVO REGIMENTAL A QUE SE NEGA PROVIMENTO**  
+>  
+> **I Compete à **UNIÃO**, aos **ESTADOS** e ao **Distrito Federal** legislar, concorrentemente, sobre previdência social, nos termos do disposto no **art**.**
+
+---
+
+### Resumo das Entidades Identificadas
+
+| Tipo       | Entidade                          | Descrição                                                                 |
+|------------|-----------------------------------|---------------------------------------------------------------------------|
+| **Tempo**  | 16/03/2018                        | Data do acórdão.                                                         |
+| **Local**  | MATO GROSSO                       | Estado brasileiro.                                                       |
+| **Local**  | Distrito Federal                  | Unidade territorial federal.                                             |
+| **Organização** | UNIÃO                          | Representa a União Federal.                                              |
+| **Organização** | ESTADO DE MATO GROSSO         | Representa o estado de Mato Grosso.                                     |
+| **Pessoa** | RICARDO LEWANDOWSKI               | Ministro que atuou como relator do acórdão.                             |
+
+---
+
+### Observações Finais
+
+- **PLENÁRIO**: Embora possa ser associado a uma instância judicial, não foi classificado como "organização" devido à ambiguidade no texto.  
+- **art.**: Referência a um artigo de lei, mas não foi classificado como "legislação" por falta de contexto suficiente.  
+- **ESTADOS**: Apenas "ESTADO DE MATO GROSSO" foi classificado como "organização", enquanto "ESTADOS" (plural) não foi identificado como entidade específica.

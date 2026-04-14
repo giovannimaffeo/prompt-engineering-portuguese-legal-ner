@@ -1,0 +1,65 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "( Habeas Corpus nº 237.388/SP , Relator : Ministro Marco Aurélio Bellizze , DJe : 16/9/2013 )". Let me break it down.
+
+Starting with "Habeas Corpus nº 237.388/SP". Habeas Corpus is a legal term, so that's probably legislation. The number might be a case number, which could be part of the legislation or maybe a jurisprudencia reference? Wait, the user's entities include 'legislacao' and 'jurisprudencia'. Habeas Corpus is a legal remedy, so maybe it's legislation. But sometimes, in Brazil, Habeas Corpus is a type of writ, so maybe it's part of the jurisprudencia? Hmm, not sure. Maybe the number is part of the case, which could be a jurisprudencia reference. Wait, the user's example might have Habeas Corpus as legislation. Let me check the example output given. Wait, the user provided the input and the output. Wait, the user's example input is "( Habeas Corpus nº 237.388/SP , Relator : Ministro Marco Aurélio Bellizze , DJe : 16/9/2013 )". The output should be the same text with entities marked.
+
+Looking at the example, the output would have Habeas Corpus as legislation? Or maybe the number is part of the case, which is a jurisprudencia. Wait, the user's example output isn't provided, but the task is to generate it. Let me think again.
+
+The text has "Habeas Corpus nº 237.388/SP". Habeas Corpus is a legal term, so maybe it's legislation. The number is a case number, which might be part of the jurisprudencia. But the user's entities include 'jurisprudencia' for legal precedents. Alternatively, the case number could be part of the legislation. Wait, maybe the Habeas Corpus is the type of legal action, so it's legislation. The number is part of the case, which might be a jurisprudencia reference. But I'm not sure. Alternatively, the entire "Habeas Corpus nº 237.388/SP" could be a case, so maybe jurisprudencia. But the user's example might have Habeas Corpus as legislation. Let me check the example again. Wait, the user's input is the text, and the output is the HTML with entities. Let me proceed step by step.
+
+Next, "Relator : Ministro Marco Aurélio Bellizze". "Relator" is the relator, which is a person. So "Ministro Marco Aurélio Bellizze" is a person, so that's a 'pessoa' entity. The word "Relator" is a title, so maybe not an entity. So the name should be in <span class="pessoa">.
+
+Then "DJe : 16/9/2013". DJe is the Diário da Justiça Eletrônico, which is an organization. So "DJe" should be <span class="organizacao">. The date "16/9/2013" is a tempo entity, so that's <span class="tempo">.
+
+Putting it all together:
+
+- "Habeas Corpus nº 237.388/SP" – Habeas Corpus is a legal term, so maybe legislation. The number is part of the case, which could be jurisprudencia. But I'm not sure. Alternatively, the entire phrase could be a case, so maybe jurisprudencia. But the user's example might have Habeas Corpus as legislation. Let me check the example again. Wait, the user's example input is the text, and the output is the HTML. Let me think again.
+
+Wait, the user's example input is "( Habeas Corpus nº 237.388/SP , Relator : Ministro Marco Aurélio Bellizze , DJe : 16/9/2013 )". The output should be the same text with entities marked. So:
+
+- "Habeas Corpus" is a legal term, so legislation. The number is part of the case, which is a jurisprudencia. But maybe the entire "Habeas Corpus nº 237.388/SP" is a case, so jurisprudencia. Alternatively, the Habeas Corpus is the type of legal action, so legislation. The number is part of the case, which is a jurisprudencia. But I'm not sure. Maybe the Habeas Corpus is legislation, and the case number is part of the jurisprudencia. But I'm not certain. Alternatively, the case number is part of the legislation. Hmm.
+
+Alternatively, the Habeas Corpus is a type of legal action, so legislation. The case number is part of the case, which is a jurisprudencia. So:
+
+- "Habeas Corpus" is legislation.
+- "nº 237.388/SP" is part of the case, so jurisprudencia.
+- "Relator" is a title, but the name is a pessoa.
+- "DJe" is an organization.
+- "16/9/2013" is tempo.
+
+So the HTML would be:
+
+<span class="legislacao">Habeas Corpus</span> nº <span class="jurisprudencia">237.388/SP</span> , Relator : <span class="pessoa">Ministro Marco Aurélio Bellizze</span> , <span class="organizacao">DJe</span> : <span class="tempo">16/9/2013</span>
+
+But wait, the user's example might have Habeas Corpus as legislation. Alternatively, maybe the entire "Habeas Corpus nº 237.388/SP" is a case, so jurisprudencia. But I'm not sure. Let me check the example again. The user's input is the text, and the output is the HTML. The example output is not given, but the user's instruction says to return the text with entities marked. So I need to make sure each entity is correctly identified.
+
+Another approach: "Habeas Corpus" is a legal term, so legislation. The number is part of the case, which is a jurisprudencia. So the entire "Habeas Corpus nº 237.388/SP" would be a jurisprudencia? Or maybe the Habeas Corpus is legislation, and the case number is part of the jurisprudencia. But the case number is part of the case, which is a jurisprudencia. So the case number is jurisprudencia. The Habeas Corpus is legislation. So:
+
+<span class="legislacao">Habeas Corpus</span> nº <span class="jurisprudencia">237.388/SP</span> , Relator : <span class="pessoa">Ministro Marco Aurélio Bellizze</span> , <span class="organizacao">DJe</span> : <span class="tempo">16/9/2013</span>
+
+But the user's example might have the entire "Habeas Corpus nº 237.388/SP" as a case, so jurisprudencia. But I'm not sure. Alternatively, the Habeas Corpus is the type of legal action, so legislation. The case number is part of the case, so jurisprudencia. So the answer would be as above.
+
+Another thing: "SP" is the state abbreviation, so local. Wait, the user's entities include 'local'. So "SP" is a local. So the case number "237.388/SP" would have "SP" as local. So the case number is part of the jurisprudencia, and "SP" is local. So:
+
+<span class="jurisprudencia">237.388</span>/<span class="local">SP</span>
+
+But the user's example might have "SP" as local. So the case number is part of the jurisprudencia, and "SP" is local. So the entire "Habeas Corpus nº 237.388/SP" would be:
+
+<span class="legislacao">Habeas Corpus</span> nº <span class="jurisprudencia">237.388</span>/<span class="local">SP</span>
+
+But I'm not sure if "SP" is considered a local here. Alternatively, the entire "237.388/SP" is a jurisprudencia, and "SP" is local. So the case number is jurisprudencia, and "SP" is local. So the case number would be <span class="jurisprudencia">237.388/SP</span>, but then "SP" is local. Wait, but the user's entities are to be marked. So if "SP" is a local, then it should be marked as local. So the case number would be <span class="jurisprudencia">237.388</span>/<span class="local">SP</span>.
+
+But the user's example might have "SP" as local. So the final HTML would be:
+
+<span class="legislacao">Habeas Corpus</span> nº <span class="jurisprudencia">237.388</span>/<span class="local">SP</span> , Relator : <span class="pessoa">Ministro Marco Aurélio Bellizze</span> , <span class="organizacao">DJe</span> : <span class="tempo">16/9/2013</span>
+
+But I'm not entirely sure. Alternatively, the entire "Habeas Corpus nº 237.388/SP" is a case, so jurisprudencia. Then "SP" is local. So:
+
+<span class="jurisprudencia">Habeas Corpus nº 237.388</span>/<span class="local">SP</span>
+
+But that might not be correct. The user's example might have Habeas Corpus as legislation, and the case number as jurisprudencia. So I'll proceed with that.
+</think>
+
+<span class="legislacao">Habeas Corpus</span> nº <span class="jurisprudencia">237.388</span>/<span class="local">SP</span> , Relator : <span class="pessoa">Ministro Marco Aurélio Bellizze</span> , <span class="organizacao">DJe</span> : <span class="tempo">16/9/2013</span>

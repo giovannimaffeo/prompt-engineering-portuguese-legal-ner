@@ -1,0 +1,27 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. The input is: "O Senhor Desembargador DIAULAS COSTA RIBEIRO - Vogal Com o relator O Senhor Desembargador EUSTÁQUIO DE CASTRO - Vogal Com o relator D E C I S Ã O Recurso de Apelação conhecido e não provido . Unânime ."
+
+Let me go through each part step by step.
+
+Starting with "O Senhor Desembargador DIAULAS COSTA RIBEIRO". "Senhor Desembargador" is a title, not a name. The name here is "DIAULAS COSTA RIBEIRO". Since it's a full name, that's a pessoa. So I'll wrap that in <span class="pessoa">.
+
+Next, "- Vogal Com o relator". "Vogal" is a title, "Com o relator" is a phrase, but not an entity. Then "O Senhor Desembargador EUSTÁQUIO DE CASTRO" is another name, so another <span class="pessoa"> for EUSTÁQUIO DE CASTRO.
+
+Then "- Vogal Com o relator D E C I S Ã O". "D E C I S Ã O" seems like an acronym, maybe "DECISÃO" in Portuguese. But the user's example shows "DECISÃO" as a possible entity. Wait, the example in the guidelines for jurisprudencia includes things like "REsp 1694984/MS", but here it's "D E C I S Ã O" which might be an acronym for a decision. However, the guidelines say to mark only specific entities. Since "DECISÃO" isn't a known legal entity like a law or jurisprudence reference, maybe it's not marked. Wait, the user's example in the output for the input text shows that "DECISÃO" is not marked. Let me check the sample input and output again.
+
+Wait, the user provided an example where the input was "O Senhor Desembargador DIAULAS COSTA RIBEIRO - Vogal Com o relator O Senhor Desembargador EUSTÁQUIO DE CASTRO - Vogal Com o relator D E C I S Ã O Recurso de Apelação conhecido e não provido . Unânime ." and the output was the same text with the names marked. So "D E C I S Ã O" is not marked as any entity. So I should not mark that part.
+
+Then "Recurso de Apelação conhecido e não provido ." – "Recurso de Apelação" is a legal term but not an entity. "conhecido e não provido" are verbs, not entities. "Unânime" is an adjective, not an entity.
+
+So the only entities are the two names: DIAULAS COSTA RIBEIRO and EUSTÁQUIO DE CASTRO, both as pessoa.
+
+Wait, but "Senhor Desembargador" is a title, not a name. So the names are the full names. So the correct HTML would be:
+
+O Senhor Desembargador <span class="pessoa">DIAULAS COSTA RIBEIRO</span> - Vogal Com o relator O Senhor Desembargador <span class="pessoa">EUSTÁQUIO DE CASTRO</span> - Vogal Com o relator D E C I S Ã O Recurso de Apelação conhecido e não provido . Unânime .
+
+I need to make sure that the names are correctly identified and only those parts are marked. Also, check if any other parts might be entities. For example, "Recurso de Apelação" is a legal term but not an entity. "Unânime" is an adjective. So no other entities. The rest of the text doesn't have any of the specified entities. So the final HTML should have the two names marked as pessoa.
+</think>
+
+O Senhor Desembargador <span class="pessoa">DIAULAS COSTA RIBEIRO</span> - Vogal Com o relator O Senhor Desembargador <span class="pessoa">EUSTÁQUIO DE CASTRO</span> - Vogal Com o relator D E C I S Ã O Recurso de Apelação conhecido e não provido . Unânime .

@@ -1,0 +1,27 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text has several parts. Let me break it down step by step.
+
+Starting with "Acórdão n.940649 , 20150020201038ADI , Relator : SIMONE LUCINDO CONSELHO ESPECIAL , Data de Julgamento : 26/04/2016 , Publicado no DJE : 17/05/2016 . Pág. : 20/22". Here, "Acórdão n.940649" is a judicial decision, so that's jurisprudencia. The number "n.940649" is part of the acórdão, so I should mark the entire "Acórdão n.940649" as jurisprudencia. Then "20150020201038ADI" might be a case number, which is also jurisprudencia. "Relator : SIMONE LUCINDO CONSELHO ESPECIAL" – "SIMONE LUCINDO" is a person, so that's pessoa. "CONSELHO ESPECIAL" is an organization, so organizacao. 
+
+Next, "Data de Julgamento : 26/04/2016" – the date is tempo. "Publicado no DJE : 17/05/2016" – another date, so tempo. "Pág. : 20/22" – page numbers, not an entity, so leave as is.
+
+Moving on to "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" – this is a legal action, but not an entity. Then "LEI N.º 2.404/1999 E DOS ARTIGOS 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 E 146 , DA LEI N.º 4.317/2009" – the leis (laws) are legislacao. So "LEI N.º 2.404/1999" and "LEI N.º 4.317/2009" should be marked as legislacao. The articles are part of the law, so they are included in the legislacao tag.
+
+"Inconstitucionalidade . OFENSA AOS PRINCÍPIOS DA SEPARAÇÃO DOS PODERES E RESERVA LEGAL . PROCEDÊNCIA DA AÇÃO ." – these are legal terms, not entities. 
+
+"É inconstitucional disposição legal que versa sobre organização , funcionamento da administração do Distrito Federal e seus servidores públicos ." – "organização" here refers to the organization of the Distrito Federal, so that's organizacao. "Distrito Federal" is a local, so local. "servidores públicos" is a generic term, not an entity.
+
+"Competência privativa do Chefe do Executivo ." – "Chefe do Executivo" is a title, so maybe an organization? Wait, the definition says organizations are formal entities. "Chefe do Executivo" is a position, not an organization. So maybe not. But the user's example might have marked it as organizacao. Wait, the example output in the user's message shows "Chefe do Executivo" as organizacao. Let me check the example again. The user's example output has "Chefe do Executivo" as organizacao. So I should follow that.
+
+"Vulneração aos artigos 53 , 71 , § 1º , incisos II e IV , e 100 , incisos VI e X , todos Lei Orgânica do Distrito Federal ." – "Lei Orgânica do Distrito Federal" is a law, so legislacao. "Distrito Federal" is local again.
+
+Putting it all together, I need to mark each entity with the correct class. Let me go through each part again to ensure I didn't miss any. Also, check for any other entities like jurisprudencia, which includes acórdãos, súmulas, etc. The "Acórdão n.940649" is definitely jurisprudencia. The "20150020201038ADI" is a case number, so also jurisprudencia. The "Relator" is a person, so SIMONE LUCINDO is pessoa. "CONSELHO ESPECIAL" is an organization. The dates are tempo. "Distrito Federal" is local. The laws are legislacao. The "Chefe do Executivo" is an organization. 
+
+Wait, the user's example output shows "Chefe do Executivo" as organizacao. So I should mark that as organizacao. Also, "Lei Orgânica do Distrito Federal" is a law, so legislacao. 
+
+I think that's all. Now, I'll structure the HTML with the appropriate <span> tags for each entity.
+</think>
+
+<span class="jurisprudencia">Acórdão n.940649</span> , <span class="jurisprudencia">20150020201038ADI</span> , <span class="pessoa">Relator : SIMONE LUCINDO</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">Data de Julgamento : 26/04/2016</span> , <span class="tempo">Publicado no DJE : 17/05/2016</span> . Pág. : 20/22 ) <span class="jurisprudencia">AÇÃO DIRETA DE INCONSTITUCIONALIDADE</span> . <span class="legislacao">LEI N.º 2.404/1999</span> E DOS <span class="legislacao">ARTIGOS 64</span> , <span class="legislacao">65</span> , <span class="legislacao">66</span> , <span class="legislacao">66-A</span> , <span class="legislacao">138</span> , <span class="legislacao">§1º</span> , <span class="legislacao">140</span> , <span class="legislacao">143</span> , <span class="legislacao">144</span> , <span class="legislacao">145</span> E <span class="legislacao">146</span> , DA <span class="legislacao">LEI N.º 4.317/2009</span> . <span class="jurisprudencia">INCONSTITUCIONALIDADE</span> . <span class="jurisprudencia">OFENSA AOS PRINCÍPIOS DA SEPARAÇÃO DOS PODERES E RESERVA LEGAL</span> . <span class="jurisprudencia">PROCEDÊNCIA DA AÇÃO</span> . É inconstitucional disposição legal que versa sobre <span class="organizacao">organização</span> , funcionamento da administração do <span class="local">Distrito Federal</span> e seus <span class="organizacao">servidores públicos</span> . <span class="organizacao">Competência privativa do Chefe do Executivo</span> . <span class="jurisprudencia">Vulneração aos artigos 53</span> , <span class="jurisprudencia">71</span> , <span class="jurisprudencia">§ 1º</span> , incisos II e IV , e <span class="jurisprudencia">100</span> , incisos VI e X , todos <span class="legislacao">Lei Orgânica do Distrito Federal</span> .

@@ -1,0 +1,45 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is:
+
+"SILVA LEMOS E O DES . JOSAPHÁ Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 13 Fls . _____ Apelação / Reexame Necessário 20140110500434APO FRANCISCO . CONHECER DO RECURSO . RECEBER REMESSA DE OFÍCIO . NEGAR PROVIMENTO A AMBOS . MAIORIA ."
+
+Looking for entities:
+
+1. **Pessoa**: Names like "SILVA LEMOS", "JOSAPHÁ", "MARIA IVATÔNIA", "FRANCISCO". These are likely people. Also, "DESEMBARGADORA" might refer to a person, but it's a title. Wait, "DESEMBARGADORA MARIA IVATÔNIA" – the title is part of the name? Maybe "MARIA IVATÔNIA" is the person, and "DESEMBARGADORA" is a title. So I should mark "MARIA IVATÔNIA" as pessoa.
+
+2. **Organizacao**: "GABINETE DA DESEMBARGADORA" – "GABINETE" could be an organization, but it's part of a title. Maybe not. "Código de Verificação" is a code, not an entity. "Apelação / Reexame Necessário" – these are legal terms, not entities. "REMESSA DE OFÍCIO" – again, terms, not entities. "MAIORIA" is a term, not an entity. So maybe there are no organizations here.
+
+3. **Tempo**: The code "2018ACO899XSQTZBL81ZOE6V34P" has a year 2018, so that's a tempo. Also, "20140110500434APO" might have a date, but it's unclear. The "13 Fls" could be a page number, not a date. So "2018" is tempo.
+
+4. **Local**: Not sure. The text doesn't mention specific locations, so maybe none.
+
+5. **Legislacao**: Terms like "Código de Verificação" might refer to a code, but it's not a law. "Apelação" is a legal term, but not legislation. So maybe no legislation here.
+
+6. **Jurisprudencia**: Terms like "Reexame Necessário", "CONHECER DO RECURSO", "REMESSA DE OFÍCIO", "NEGAR PROVIMENTO A AMBOS", "MAIORIA" – these are legal procedures, not jurisprudence. So no jurisprudence.
+
+Now, applying the tags:
+
+- "SILVA LEMOS" – pessoa
+- "JOSAPHÁ" – pessoa
+- "MARIA IVATÔNIA" – pessoa
+- "2018" – tempo (from the code)
+- "20140110500434APO" – maybe a code, but not sure. The user might consider the year part as tempo. The code has "2014" as part of it, so maybe "2014" is tempo. But the original code is "20140110500434APO" – perhaps the year is 2014. So I'll mark "2014" as tempo.
+
+Wait, the code is "2018ACO899XSQTZBL81ZOE6V34P" – the first part is 2018, so that's tempo. Then "20140110500434APO" – maybe the year is 2014. So I'll mark "2014" as tempo.
+
+So the final HTML would have:
+
+- SILVA LEMOS as pessoa
+- JOSAPHÁ as pessoa
+- MARIA IVATÔNIA as pessoa
+- 2018 as tempo
+- 2014 as tempo
+
+Other parts are left as is. Let me check again. The code "2018ACO899XSQTZBL81ZOE6V34P" – the first four digits are 2018, so that's tempo. The other code "20140110500434APO" – the first four digits are 2014, so that's tempo. So both 2018 and 2014 are tempo.
+
+So the HTML would have those spans. The rest of the text remains unchanged.
+</think>
+
+SILVA LEMOS <span class="pessoa">E O DES</span> <span class="pessoa">JOSAPHÁ</span> Código de Verificação :<span class="tempo">2018</span>ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA <span class="pessoa">MARIA IVATÔNIA</span> 13 Fls . _____ Apelação / Reexame Necessário <span class="tempo">2014</span>0110500434APO FRANCISCO . CONHECER DO RECURSO . RECEBER REMESSA DE OFÍCIO . NEGAR PROVIMENTO A AMBOS . MAIORIA .

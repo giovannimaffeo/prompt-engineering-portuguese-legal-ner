@@ -1,0 +1,81 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to go through the input text carefully and identify each entity according to the definitions provided. Let me start by reading the text again to spot any obvious entities.
+
+The text starts with "5.815 , DE 3 DE ABRIL DE 2017 , COM EFEITOS `` EX TUNC '' E EFICÁCIA `` ERGA OMNES '' . MAIORIA. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 13 de Março de 2018 . Documento Assinado Eletronicamente SILVANIO BARBOSA DOS SANTOS Relator Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 3 A norma impugnada possui a seguinte redação : LEI Nº 5.815 , DE 03 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) Dispõe sobre convênio do Distrito Federal com o CREADF e o CAU-DF e dá outras providências . O GOVERNADOR DO DISTRITO FEDERAL , FAÇO SABER QUE A CÂMARA LEGISLATIVA DO DISTRITO FEDERAL DECRETA E EU SANCIONO A SEGUINTE LEI : Art ."
+
+Looking for entities:
+
+1. "5.815" – This is a law number, so it's part of the legislation. But the exact format might be LEI Nº 5.815, so the number itself is part of the legislation. Wait, the user's example output shows LEI Nº 5.815 as a legislacao. So I should mark "LEI Nº 5.815" as legislacao.
+
+2. "3 DE ABRIL DE 2017" – This is a date, so tempo.
+
+3. "EX TUNC" and "ERGA OMNES" – These are legal terms, but they might not be entities. The user's example didn't mark them, so maybe they are not entities here.
+
+4. "Brasilia ( DF )" – Brasilia is a local, DF is Distrito Federal, which is a local as well. So both should be marked as local.
+
+5. "13 de Março de 2018" – Another date, tempo.
+
+6. "SILVANIO BARBOSA DOS SANTOS" – This is a person's name, so pessoa.
+
+7. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – The person's name is already marked, but "GABINETE DO DESEMBARGADOR" is an organization? Wait, the organization definition includes formal entities. The Gabinete is part of the organization, but the name of the person is already marked. Maybe "GABINETE DO DESEMBARGADOR" is an organization? Or is it part of the person's title? Hmm, the user's example might have "GABINETE DO DESEMBARGADOR" as an organization. Wait, in the example output, the user's sample input had "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" and in the output, "GABINETE DO DESEMBARGADOR" was marked as organizacao. Wait, maybe not. Let me check the example again. Wait, the user's example output for the input text is not provided, but the user's instruction says to return only the annotated text. So I need to process the input text.
+
+Continuing:
+
+8. "Deputado Rafael Prudente" – "Deputado" is a title, but "Rafael Prudente" is a person's name. So "Rafael Prudente" is pessoa.
+
+9. "Distrito Federal" – This is a local, as it's a specific region.
+
+10. "CREADF" and "CAU-DF" – These are acronyms for organizations. CREADF is the Conselho Regional de Administração do Distrito Federal, and CAU-DF is the Conselho Regional de Engenharia e Agronomia do Distrito Federal. So these are organizations.
+
+11. "CÂMARA LEGISLATIVA DO DISTRITO FEDERAL" – This is an organization, as it's a legislative body.
+
+12. "GOVERNADOR DO DISTRITO FEDERAL" – This is a title, but the person holding the title is the governor. However, the text doesn't mention the name, so it's not a pessoa. But the term "GOVERNADOR" is part of the organization? Or is it a title? Since the user's example might not mark titles unless they are part of an organization. Wait, the organization definition includes formal entities. The CÂMARA LEGISLATIVA is an organization. The GOVERNADOR is a title, but the actual person isn't named here. So maybe not marked.
+
+13. "LEI Nº 5.815" – This is legislation, so legislacao.
+
+14. "Art." – This is part of a legal text, but not an entity. The user's example might not mark it.
+
+Now, applying the tags:
+
+- "3 DE ABRIL DE 2017" → tempo
+- "13 de Março de 2018" → tempo
+- "Brasilia ( DF )" → local (Brasilia) and local (DF)
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+- "Rafael Prudente" → pessoa
+- "Distrito Federal" → local
+- "CREADF" → organizacao
+- "CAU-DF" → organizacao
+- "CÂMARA LEGISLATIVA DO DISTRITO FEDERAL" → organizacao
+- "LEI Nº 5.815" → legislacao
+
+Wait, the original text has "LEI Nº 5.815" in the redação part. So that's legislation. Also, "DE 03 DE ABRIL DE 2017" is a date, so tempo.
+
+Also, "DESEMBARGADOR" is part of the organization's name? Or is it a title? The GABINETE DO DESEMBARGADOR is part of the organization. Wait, the text says "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". The Gabinete is the office, and the Desembargador is the title. Since the person's name is already marked, maybe "GABINETE DO DESEMBARGADOR" is an organization. But the user's example might not mark it. Alternatively, "GABINETE DO DESEMBARGADOR" is part of the organization. Wait, the user's example might have "GABINETE DO DESEMBARGADOR" as an organization. Let me check the example again. The user's example output for the input text is not provided, but the user's instruction says to return only the annotated text. So I need to make sure.
+
+In the input text, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – the Gabinete is the office, and the Desembargador is the title. Since the person's name is already marked, the Gabinete is part of the organization. So "GABINETE DO DESEMBARGADOR" is an organization. Wait, but the user's example might not mark it. Alternatively, maybe "GABINETE DO DESEMBARGADOR" is part of the organization. But the user's example might not mark it. Let me think again.
+
+The user's example might not mark "GABINETE DO DESEMBARGADOR" as an organization because it's part of the person's title. But according to the definitions, organizations are formal entities. The Gabinete is an office, which is part of the organization. However, the text doesn't mention the name of the organization, just the person's title. So maybe it's not marked. Alternatively, the Gabinete is an organization. But the user's example might not mark it. Let me proceed with the entities I can confidently identify.
+
+So, the final HTML would have:
+
+- "3 DE ABRIL DE 2017" → tempo
+- "13 de Março de 2018" → tempo
+- "Brasilia ( DF )" → local (Brasilia) and local (DF)
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+- "Rafael Prudente" → pessoa
+- "Distrito Federal" → local
+- "CREADF" → organizacao
+- "CAU-DF" → organizacao
+- "CÂMARA LEGISLATIVA DO DISTRITO FEDERAL" → organizacao
+- "LEI Nº 5.815" → legislacao
+
+Also, "DE 03 DE ABRIL DE 2017" is part of the legislation's date, so "03 DE ABRIL DE 2017" is tempo.
+
+Wait, the original text has "LEI Nº 5.815 , DE 03 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente )". So "DE 03 DE ABRIL DE 2017" is a date, so tempo.
+
+Putting it all together, the HTML should have the appropriate <span> tags for each entity. Now, I need to make sure that all the entities are correctly marked and that the rest of the text remains unchanged.
+</think>
+
+<span class="tempo">3 DE ABRIL DE 2017</span> , COM EFEITOS `` EX TUNC '' E EFICÁCIA `` ERGA OMNES '' . MAIORIA. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">13 de Março de 2018</span> . Documento Assinado Eletronicamente <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> Relator Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 3 A norma impugnada possui a seguinte redação : <span class="legislacao">LEI Nº 5.815</span> , <span class="tempo">DE 03 DE ABRIL DE 2017</span> ( Autoria do Projeto : <span class="pessoa">Deputado Rafael Prudente</span> ) Dispõe sobre convênio do <span class="local">Distrito Federal</span> com o <span class="organizacao">CREADF</span> e o <span class="organizacao">CAU-DF</span> e dá outras providências . O <span class="organizacao">GOVERNADOR DO DISTRITO FEDERAL</span> , FAÇO SABER QUE A <span class="organizacao">CÂMARA LEGISLATIVA DO DISTRITO FEDERAL</span> DECRETA E EU SANCIONO A SEGUINTE LEI : Art .

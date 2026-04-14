@@ -1,0 +1,27 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "O Senhor Desembargador DIAULAS COSTA RIBEIRO - Vogal Com o relator O Senhor Desembargador EUSTÁQUIO DE CASTRO - Vogal Com o relator D E C I S Ã O Recurso de Apelação conhecido e não provido . Unânime ."
+
+Let me break it down. The first part mentions "Senhor Desembargador DIAULAS COSTA RIBEIRO". "Senhor Desembargador" is a title, so the name "DIAULAS COSTA RIBEIRO" is a person. So I should mark that as pessoa.
+
+Next, there's "Vogal Com o relator". "Vogal" might be a title, but "relator" is a role, so maybe the person after that is another pessoa. Wait, the next part is "O Senhor Desembargador EUSTÁQUIO DE CASTRO". Again, "Senhor Desembargador" is a title, so "EUSTÁQUIO DE CASTRO" is another pessoa.
+
+Then there's "D E C I S Ã O" which looks like "DECISÃO" (decision in Portuguese). That's a legal term, so maybe that's a jurisprudencia or legislacao? Wait, "DECISÃO" here is part of the decision text, so maybe it's part of the jurisprudência. But I'm not sure. Alternatively, maybe it's part of the legal process, so perhaps not an entity. The user's example output might help.
+
+Looking at the sample output provided by the user, they have "O Senhor Desembargador <span class="pessoa">DIAULAS COSTA RIBEIRO</span> - Vogal Com o relator O Senhor Desembargador <span class="pessoa">EUSTÁQUIO DE CASTRO</span> - Vogal Com o relator <span class="jurisprudencia">D E C I S Ã O</span> Recurso de Apelação conhecido e não provido . Unânime ."
+
+So in their example, "D E C I S Ã O" is marked as jurisprudencia. That makes sense because "DECISÃO" is a judicial decision, which falls under jurisprudência. So I should mark that part as jurisprudencia.
+
+The rest of the text doesn't have any entities. "Recurso de Apelação" is a legal term but not one of the specified entities. "Conhecido e não provido" are legal terms but not entities. "Unânime" is an adjective, so no entity.
+
+So the steps are: identify each entity, wrap them in the appropriate span tags, and leave the rest as is. Let me check again:
+
+- "DIAULAS COSTA RIBEIRO" is a person.
+- "EUSTÁQUIO DE CASTRO" is another person.
+- "D E C I S Ã O" is a decision, so jurisprudencia.
+
+The rest of the text doesn't have any of the specified entities. So the final HTML should have those three spans with the correct classes.
+</think>
+
+O Senhor Desembargador <span class="pessoa">DIAULAS COSTA RIBEIRO</span> - Vogal Com o relator O Senhor Desembargador <span class="pessoa">EUSTÁQUIO DE CASTRO</span> - Vogal Com o relator <span class="jurisprudencia">D E C I S Ã O</span> Recurso de Apelação conhecido e não provido . Unânime .

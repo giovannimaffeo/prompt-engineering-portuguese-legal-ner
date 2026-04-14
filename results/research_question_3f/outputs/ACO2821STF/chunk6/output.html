@@ -1,0 +1,43 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+Starting with the first sentence: "Neste recurso , a agravante sustenta não haver fundamento para o afastamento das regras previstas no Decreto 3.788/2001 e da Portaria MPS 20412008 e suas posteriores alterações , editados com fundamento no art . 84 , IV , da Constituição e na Lei 9.717/1998 , e que o paradigma apontado na decisão agravada ( ACO 830/PR ) não representa um posicionamento definitivo sobre o tema no âmbito do STF . Insistiu , no mais , nos argumentos já refutados . Em contrarrazões , o agravado sustentou o acerto da decisão e Documento assinado digitalmente conforme MP n° 2.200-2/2001 de 24/08/2001 , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536377 . Supremo Tribunal Federal 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN ."
+
+Looking for entities:
+
+1. "Decreto 3.788/2001" – This is a decree, so it's legislation. The class should be "legislacao".
+2. "Portaria MPS 20412008" – Portaria is a type of decree, so legislation again. "MPS" might be an organization, but the full name isn't given. Wait, the example says "Portaria MPS 20412008" is part of legislation. So I'll mark the whole phrase as legislation.
+3. "art . 84 , IV , da Constituição" – "art" refers to an article in a law, so "art. 84" is part of legislation. "Constituição" is the Constitution, which is a legislation entity. So "art. 84, IV" and "Constituição" should be marked as legislacao.
+4. "Lei 9.717/1998" – This is a law, so legislation.
+5. "ACO 830/PR" – ACO is likely an acronym for a judicial decision, so jurisprudencia.
+6. "STF" – Supremo Tribunal Federal is an organization, so "STF" should be marked as organizacao.
+7. "MP n° 2.200-2/2001" – MP is a medida provisória (provisional measure), which is legislation. So the whole phrase is legislation.
+8. "ICP-Brasil" – The user's guidelines say that terms like "ICP" or "ICP-Brasil" should not be marked as legislation. So this is not marked.
+9. "http : //www.stf.jus.br/portal/autenticacao/" – This is an URL, which is not a local, so no marking.
+10. "Supremo Tribunal Federal" – This is an organization, so "Supremo Tribunal Federal" is organizacao.
+11. "16/03/2018" – This is a date, so tempo.
+12. "PLENÁRIO" – This is part of the court's name, but the example shows that "PLENÁRIO" is part of the organization name. Wait, the example input had "Supremo Tribunal Federal 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN ." The output marked "Supremo Tribunal Federal" as organizacao. So "PLENÁRIO" is part of the organization's name? Or is it a separate entity? Wait, the example input had "Supremo Tribunal Federal" as the organization. The "PLENÁRIO" here is part of the court's session, but the example didn't mark it. So maybe "PLENÁRIO" is not an entity here. The user's guidelines say that only specific names should be marked. Since "PLENÁRIO" is a part of the court's structure but not a specific name, it might not be marked. Similarly, "A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN ." – "Mato Grosso" is a state, so local. "RELATOR : MIN ." – "MIN." is an abbreviation for "Ministro", which is a title, not a person's name. So "Mato Grosso" is local.
+
+Now, let's structure the HTML with the appropriate tags.
+
+Check each part again:
+
+- "Decreto 3.788/2001" → legislacao
+- "Portaria MPS 20412008" → legislacao
+- "art . 84 , IV , da Constituição" → "art. 84, IV" and "Constituição" → both legislacao
+- "Lei 9.717/1998" → legislacao
+- "ACO 830/PR" → jurisprudencia
+- "STF" → organizacao
+- "MP n° 2.200-2/2001" → legislacao
+- "Supremo Tribunal Federal" → organizacao
+- "16/03/2018" → tempo
+- "Mato Grosso" → local
+
+Other parts like "http..." are not marked. "PLENÁRIO" and "RELATOR : MIN ." are not entities. "A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821" – "AÇÃO CÍVEL ORIGINÁRIA 2.821" is a case number, which is jurisprudencia. Wait, the example input had "RECURSO ESPECIAL Nº 1.583.083 - RS" marked as jurisprudencia. So case numbers like "2.821" would be jurisprudencia. Also, "A G .REG ." might be part of the case name. But the example didn't mark "A G .REG ." as anything. So maybe "AÇÃO CÍVEL ORIGINÁRIA 2.821" is a case number, so jurisprudencia.
+
+Putting it all together, the HTML should have the appropriate spans for each entity. Let me make sure I didn't miss any. Also, check for any other possible entities. For example, "Mato Grosso" is a state, so local. "Supremo Tribunal Federal" is an organization. "STF" is the abbreviation for that, so also organizacao. "16/03/2018" is tempo. "ACO 830/PR" is jurisprudencia. "MP n° 2.200-2/2001" is legislacao. "Decreto 3.788/2001" and "Portaria MPS 20412008" are legislacao. "Lei 9.717/1998" is legislacao. "Constituição" is part of the legislation. "A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821" – the case number "2.821" is jurisprudencia. "Mato Grosso" is local. "RELATOR : MIN ." – "MIN." is a title, not a person. So the final HTML should have all these tags.
+</think>
+
+Neste recurso , a agravante sustenta não haver fundamento para o afastamento das regras previstas no <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS 20412008</span> e suas posteriores alterações , editados com fundamento no <span class="legislacao">art . 84 , IV , da Constituição</span> e na <span class="legislacao">Lei 9.717/1998</span> , e que o paradigma apontado na decisão agravada ( <span class="jurisprudencia">ACO 830/PR</span> ) não representa um posicionamento definitivo sobre o tema no âmbito do <span class="organizacao">STF</span> . Insistiu , no mais , nos argumentos já refutados . Em contrarrazões , o agravado sustentou o acerto da decisão e <span class="legislacao">Documento assinado digitalmente conforme MP n° 2.200-2/2001</span> de <span class="tempo">24/08/2001</span> , que institui a Infraestrutura de Chaves Públicas Brasileira - ICP-Brasil . O documento pode ser acessado no endereço eletrônico <span class="local">http : //www.stf.jus.br/portal/autenticacao/</span> sob o número <span class="jurisprudencia">14536377</span> . <span class="organizacao">Supremo Tribunal Federal</span> <span class="tempo">16/03/2018</span> <span class="organizacao">PLENÁRIO</span> <span class="jurisprudencia">A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821</span> <span class="local">MATO GROSSO</span> <span class="organizacao">RELATOR : MIN</span> .

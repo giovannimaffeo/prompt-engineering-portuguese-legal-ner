@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is "Por outro lado , o alegado não recebimento de ligação ou de e-mail sobre a realização das Audiências contrapõe-se à certificação contida nos autos , expedida pela Oficiala de Justiça Elvira Maria de Queiroz Rodrigues , nos seguintes termos : '' CERTIFICO que , nesta data , telefonei para o número 92-98171-6151 e a ligação não foi atendida ."
+
+Looking for entities:
+
+1. "Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" – This seems like a person's name. The title "Oficiala de Justiça" might be an organization, but the name "Elvira Maria de Queiroz Rodrigues" is a person. Wait, but in some contexts, "Oficiala de Justiça" could be a title for a public official, so maybe it's an organization? Or is it a person's title? Hmm. The term "Oficiala de Justiça" is a position, so maybe it's an organization? Or perhaps the person is the one holding that position. Wait, the text says "expedida pela Oficiala de Justiça..." which translates to "issued by the Official of Justice..." So "Oficiala de Justiça" is the person's title. So the full name "Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" would be a person. So I should mark "Elvira Maria de Queiroz Rodrigues" as pessoa. But the title "Oficiala de Justiça" might be part of the name. Wait, maybe the entire phrase is the person's name. For example, in Brazil, "Oficiala de Justiça" is a judicial officer, so the full name would include that title. So maybe the entire phrase is a person. But the user's example might have different rules. Let me check the example given in the problem statement. Wait, the user hasn't provided an example, but the task is to mark entities. So I need to decide whether "Oficiala de Justiça" is part of the person's name or an organization. Since it's a title, perhaps it's part of the person's name. So the entire phrase would be a pessoa. But maybe the user expects "Oficiala de Justiça" as an organization. Alternatively, maybe "Oficiala de Justiça" is an organization, and the name is the person. Wait, the text says "expedida pela Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" – so the person is Elvira Maria de Queiroz Rodrigues, and she holds the position of Oficiala de Justiça. So the full name would be "Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" as a person. Therefore, I should mark that entire phrase as pessoa.
+
+Next, "Audiências" – this is a plural of "audiência", which in legal terms refers to a hearing or court session. But the user's entities don't include "audiência" as a category. So maybe it's not an entity here. Unless "Audiências" is part of a larger entity, but in this case, it's just a noun, so no tag.
+
+"neste data" – "nesta data" is "on this date", so "data" is a temporal entity. So "nesta data" would be marked as tempo. Wait, the exact phrase is "nesta data", so "data" is the entity. So "nesta data" would be tempo. But the user's example might have different rules. Let me check the guidelines again. The user says to use <span class="tempo"> for time/data. So "data" here is a tempo entity. So "nesta data" would be marked as tempo.
+
+"número 92-98171-6151" – this is a phone number, which is a local? Or is it a local entity? Wait, the user's entities include "local", which refers to a place. A phone number is not a local, but maybe the number is part of a local. Wait, the user's example might not have phone numbers as entities. The user's entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So phone numbers are not part of these. Therefore, the number should remain as is.
+
+"certificação contida nos autos" – "autos" refers to the court records or case files. But "autos" is not one of the entities. So no tag here.
+
+"expedida pela Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" – as discussed earlier, the person is Elvira Maria de Queiroz Rodrigues, so the entire phrase is pessoa.
+
+"nos seguintes termos" – this is a phrase, not an entity.
+
+"CERTIFICO que" – this is a verb, not an entity.
+
+"nesta data" – as before, tempo.
+
+"telefonei para o número 92-98171-6151" – the number is not an entity, so no tag.
+
+So putting it all together:
+
+- "Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" is pessoa.
+- "nesta data" is tempo.
+
+Wait, but "Oficiala de Justiça" is a title, so maybe the person's name is "Elvira Maria de Queiroz Rodrigues", and "Oficiala de Justiça" is an organization? Or is it part of the person's name? This is a bit ambiguous. Let me think again. In legal contexts, "Oficiala de Justiça" is a position, so the person holding that position is the person. Therefore, the full name would be "Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" as a person. So the entire phrase is pessoa.
+
+So the HTML would have:
+
+<span class="pessoa">Oficiala de Justiça Elvira Maria de Queiroz Rodrigues</span>
+
+And "nesta data" becomes <span class="tempo">nesta data</span>.
+
+Wait, but the original text has "nesta data" as part of the sentence. So the entire phrase "nesta data" is marked as tempo.
+
+So the final HTML would have those two spans. Let me check again.
+
+Original text:
+
+"expedida pela Oficiala de Justiça Elvira Maria de Queiroz Rodrigues , nos seguintes termos : '' CERTIFICO que , nesta data , telefonei para o número 92-98171-6151 e a ligação não foi atendida ."
+
+So the entities are:
+
+- "Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" – pessoa
+- "nesta data" – tempo
+
+So the HTML would be:
+
+expedida pela <span class="pessoa">Oficiala de Justiça Elvira Maria de Queiroz Rodrigues</span> , nos seguintes termos : '' CERTIFICO que , <span class="tempo">nesta data</span> , telefonei para o número 92-98171-6151 e a ligação não foi atendida .
+
+Wait, but the original text has "Oficiala de Justiça Elvira Maria de Queiroz Rodrigues" as the person. So the entire phrase is the person's name. So the span should cover that entire phrase.
+
+Also, "número 92-98171-6151" is a phone number, but since it's not one of the entities, it remains as is.
+
+So the final output would have the two spans as mentioned.
+</think>
+
+Por outro lado , o alegado não recebimento de ligação ou de e-mail sobre a realização das Audiências contrapõe-se à certificação contida nos autos , expedida pela <span class="pessoa">Oficiala de Justiça Elvira Maria de Queiroz Rodrigues</span> , nos seguintes termos : '' CERTIFICO que , <span class="tempo">nesta data</span> , telefonei para o número 92-98171-6151 e a ligação não foi atendida .

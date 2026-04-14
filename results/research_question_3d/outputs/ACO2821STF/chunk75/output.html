@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute.
+
+First, I need to parse the input text carefully. Let me read through it again to identify all possible entities.
+
+Starting with the first sentence: "Isso posto , confirmo a tutela de urgência anteriormente deferida e julgo procedente a presente ação para determinar à ré que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CAUC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS nº 204/2008 e de suas posteriores alterações ."
+
+Looking for pessoas: The text mentions "ré" which is a legal term for the defendant, but it's a generic term, not a specific name. So no pessoa here.
+
+Organizacoes: "Certificado de Regularidade Previdenciária do Estado de Mato Grosso" – the Estado de Mato Grosso is a state, so that's a local? Wait, Mato Grosso is a state, so maybe "Estado de Mato Grosso" is a local entity. But according to the guidelines, local is for explicit places like cities, states, etc. So "Estado de Mato Grosso" would be a local. But the user's guidelines say to mark local entities. Wait, the definition says "expressões que correspondem a lugares explicitamente identificáveis, como cidades, estados, países..." So "Estado de Mato Grosso" is a state, so that's a local. But the example given for local includes "Distrito Federal", "Rio de Janeiro", etc. So "Estado de Mato Grosso" should be marked as local. Also, "CADPREV" is a cadastro, which is an organization? Or is it a acronym for a specific entity? The example for organizacao includes "UNIMED RIO COOPERATIVA..." which is a specific organization. But CADPREV might be an acronym for a specific organization. However, the user's guidelines say to mark only if it's an explicit entity. If CADPREV is a known organization, then it should be organizacao. But the text says "Cadastro de Regime Próprio de Previdência Social CADPREV", so CADPREV is an acronym for that. So maybe CADPREV is an organization. But the example for organizacao includes "Tribunal de Contas", etc. So if CADPREV is a known organization, then it should be organizacao. However, the user's example for legislação includes "Lei nº 8.666/93", so maybe CADPREV is a registration system, not an organization. Hmm, this is tricky. Maybe CADPREV is a system, not an organization. So perhaps not. Let me check the definitions again. Organizacao is for entities like tribunals, public organs, etc. CADPREV is a registration system, so maybe it's a system, not an organization. So maybe not. Alternatively, if CADPREV is an acronym for a specific organization, then it would be. But the text doesn't specify, so maybe it's better to leave it as is unless it's clearly an organization. The text also mentions "CADIN", "CAUC", "SIAFI", "SICONV" – these are systems, so perhaps they are local? No, they are systems, maybe part of the organizacao? Or perhaps they are part of the legislation? Not sure. Maybe they are systems, but not explicitly mentioned as organizations. 
+
+Legislacao: The text mentions "Decreto 3.788/2001" and "Portaria MPS nº 204/2008". These are decreto and portaria, which are legislative acts. So these should be marked as legislacao. The "Decreto" is a decree, and "Portaria" is an order. So those should be in the legislacao class.
+
+Jurisprudencia: The text doesn't mention any specific jurisprudencia, like REsp, Súmula, etc. So no.
+
+Tempo: The text doesn't have any dates or time references. So no.
+
+Local: "Estado de Mato Grosso" is a state, so that's a local. Also, "Mato Grosso" is a state, but the full name is "Estado de Mato Grosso", so that's the local entity.
+
+Now, the second part: "Os argumentos lançados no regimental não são capazes de afastar os fundamentos da decisão combatida , que , por tal razão , deve ser mantida . Ante o exposto , nego provimento ao agravo regimental . É como voto ."
+
+No entities here except maybe "agrago regimental" – but that's a legal term, not a specific entity. So no.
+
+Putting it all together:
+
+- "Estado de Mato Grosso" should be local.
+- "Decreto 3.788/2001" is legislacao.
+- "Portaria MPS nº 204/2008" is legislacao.
+- "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" – these are acronyms for systems, but not sure if they are organizacao. The guidelines say to mark only if they are explicitly entities. Since the text refers to them as cadastros, maybe they are systems, but not organizations. So perhaps not. However, the example for organizacao includes "UNIMED RIO COOPERATIVA...", which is a specific organization. If CADPREV is a specific organization, then it should be organizacao. But the text says "Cadastro de Regime Próprio de Previdência Social CADPREV", so CADPREV is an acronym for that system. Therefore, it's a system, not an organization. So maybe not. Unless the acronym itself is an organization. But the user's example for organizacao includes "Tribunal de Contas", which is an organization. So maybe CADPREV is an organization. Alternatively, the user's guidelines say that "organizacao" includes "unidades do sistema de justiça", but CADPREV is a system, not an organization. Hmm. This is a bit ambiguous. Maybe the best approach is to mark "CADPREV" as organizacao since it's an acronym for a specific entity. Similarly for the others. Alternatively, since they are systems, perhaps not. But the user's example includes "Câmara Legislativa" as organizacao, which is a legislative body. CADPREV is a system, so maybe not. Therefore, perhaps not. So the only entities here are "Estado de Mato Grosso" as local, "Decreto 3.788/2001" and "Portaria MPS nº 204/2008" as legislacao.
+
+So the HTML would have:
+
+- <span class="local">Estado de Mato Grosso</span>
+- <span class="legislacao">Decreto 3.788/2001</span>
+- <span class="legislacao">Portaria MPS nº 204/2008</span>
+
+Other parts like "CADPREV", etc., are systems, not explicitly organizations or legislations. So they are left as is.
+</think>
+
+<span class="local">Estado de Mato Grosso</span> , confirmo a tutela de urgência anteriormente deferida e julgo procedente a presente ação para determinar à ré que renove o Certificado de Regularidade Previdenciária do <span class="local">Estado de Mato Grosso</span> , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social <span class="legislacao">CADPREV</span> ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( <span class="legislacao">CADIN</span> , <span class="legislacao">CAUC</span> , <span class="legislacao">SIAFI</span> , <span class="legislacao">SICONV</span> ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS nº 204/2008</span> e de suas posteriores alterações . Os argumentos lançados no regimental não são capazes de afastar os fundamentos da decisão combatida , que , por tal razão , deve ser mantida . Ante o exposto , nego provimento ao agravo regimental . É como voto .

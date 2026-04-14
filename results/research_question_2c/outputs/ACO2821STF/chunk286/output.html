@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read the text again: "Supremo Tribunal Federal ACO 2821 A GR / MT Previdenciária CRP , tendo por motivo a existência de regime próprio de previdência dos Deputados Estaduais do Ceará e , pelo mesmo motivo , de negar a emissão do Certificado de Regularidade Previdenciária e de aplicar as sanções previstas no art ."
+
+Starting with "Supremo Tribunal Federal" – that's a court, so it's an organization. So I'll mark that as <span class="organizacao">Supremo Tribunal Federal</span>.
+
+Next, "ACO 2821 A GR / MT" – ACO might be an acronym for something, but since it's not clear, maybe it's part of a case number. The user didn't specify to mark case numbers, so perhaps leave as is. Wait, but the user's example might have different handling. Let me check the example output they provided. Wait, the user hasn't given an example yet. Hmm.
+
+Wait, the user provided the input and output. Let me check the output they expect. Wait, the user hasn't provided an example output yet. Wait, looking back, the user's instruction says "Retorne apenas o texto original anotado em HTML. Não inclua explicações ou blocos de código." So the output should be the text with the entities marked.
+
+So, proceeding. "ACO 2821 A GR / MT" – maybe "ACO" is an organization? Not sure. Maybe "GR" is a court, like "Grande Tribunal" or something. But without more context, it's safer to leave as is unless it's clearly an entity. The user's example might have "ACO 2821 A GR / MT" as part of the case number, so perhaps not marked. Let me check the original text again.
+
+Then "Previdenciária CRP" – "CRP" could be an acronym for "Certificado de Regularidade Previdenciária", which is mentioned later. So "CRP" might be an abbreviation for a legal term, but since it's part of the term, maybe it's not an entity. Wait, the user's example output might have "Certificado de Regularidade Previdenciária" marked as legislacao? Or maybe not. Let me think.
+
+"Deputados Estaduais do Ceará" – "Ceará" is a state in Brazil, so that's a local. So "Ceará" should be marked as <span class="local">Ceará</span>.
+
+"Certificado de Regularidade Previdenciária" – this is a document, so maybe it's a legislacao or jurisprudencia? Or perhaps it's a term, not an entity. The user's example might not mark it. Wait, the user's example output might have "Certificado de Regularidade Previdenciária" as a term, not an entity. So maybe not marked.
+
+"art" – that's likely "artigo" (article) in Portuguese, referring to a legal article. So "art" could be part of a reference to legislation, so maybe "art" is part of a legislacao entity. But since it's just "art", maybe it's not marked. Alternatively, if the full term is "artigo", but here it's just "art", so perhaps not.
+
+Putting it all together:
+
+- "Supremo Tribunal Federal" is an organization.
+- "Ceará" is a local.
+- "Certificado de Regularidade Previdenciária" might be a term, not an entity.
+- "Deputados Estaduais" is a group of people, but the user's entities are pessoa, organizacao, etc. "Deputados" is a role, not a pessoa. So maybe not marked.
+- "ACO 2821 A GR / MT" – not sure, but perhaps not marked.
+- "Previdenciária" is part of the term, not an entity.
+- "CRP" is an acronym, but not sure if it's an entity.
+
+So the final HTML would have:
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT Previdenciária CRP , tendo por motivo a existência de regime próprio de previdência dos <span class="local">Ceará</span> e , pelo mesmo motivo , de negar a emissão do Certificado de Regularidade Previdenciária e de aplicar as sanções previstas no <span class="legislacao">art</span> .
+
+Wait, but "art" is part of "artigo", which is a legal article. So maybe "art" is part of a legislacao entity. But since it's just "art", maybe not. Alternatively, if the user expects "art" to be part of a legislacao, then mark it. But without more context, it's safer to leave as is unless it's clearly an entity.
+
+So the final output would have the organization and local marked. The rest remains as is.
+</think>
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT Previdenciária CRP , tendo por motivo a existência de regime próprio de previdência dos Deputados Estaduais do <span class="local">Ceará</span> e , pelo mesmo motivo , de negar a emissão do Certificado de Regularidade Previdenciária e de aplicar as sanções previstas no <span class="legislacao">art</span> .

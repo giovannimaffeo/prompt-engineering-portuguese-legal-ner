@@ -1,0 +1,40 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 15 previsão constitucional distrital de que compete privativamente ao Governador '' celebrar ou autorizar convênios '' ( art ."
+
+Looking for entities:
+
+1. "Ação Direta de Inconstitucionalidade" – This seems like a legal action, maybe a type of case, but not one of the specified entities. The user mentioned entities like pessoa, organizacao, etc. So maybe not.
+
+2. "20170020161362ADI" – This looks like a case number or code. Not sure if it's a legislação or jurisprudencia. Probably not, since it's a code, not a law or court decision.
+
+3. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – "Código de Verificação" might be a code, but again, not one of the specified entities. The numbers after might be a code, but not sure.
+
+4. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE DO DESEMBARGADOR" is an organization (organizacao), and "SILVANIO BARBOSA DOS SANTOS" is a person (pessoa). So I should mark those.
+
+5. "15 previsão constitucional distrital" – "previsão constitucional" relates to legislation (legislacao), maybe. "distrital" refers to a local area, so local.
+
+6. "competente privativamente ao Governador" – "Governador" is a person (pessoa), but maybe "Governador" as a title? Wait, the user's example output has "Governador" as a pessoa. So I should mark that.
+
+7. "celebrar ou autorizar convênios" – These are actions, not entities. The parentheses "( art ." – "art" might refer to an article in legislation, so maybe "art" is part of legislação. But the example output has "( art ." as is, so maybe not. Wait, the example output shows "( art ." without any tags. So perhaps the user's example output doesn't tag those parts. Let me check the example output again.
+
+Looking at the example output provided by the user, the output is:
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 15 <span class="legislacao">previsão constitucional distrital</span> de que compete privativamente ao <span class="pessoa">Governador</span> '' celebrar ou autorizar convênios '' ( art ."
+
+So in the example, "GABINETE DO DESEMBARGADOR" is organizacao, "SILVANIO BARBOSA DOS SANTOS" is pessoa, "previsão constitucional distrital" is legislacao, and "Governador" is pessoa. The rest are left as is.
+
+So applying that to the input text:
+
+- "GABINETE DO DESEMBARGADOR" is organizacao.
+- "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+- "previsão constitucional distrital" is legislacao.
+- "Governador" is pessoa.
+
+Other parts like "Ação Direta de Inconstitucionalidade" and the codes are not tagged. The numbers and codes are not entities in the specified categories. The "art ." is left as is.
+
+So the final HTML should have those spans with the correct classes. Let me make sure I didn't miss any other entities. The "distrital" might be a local, but in the example, it's part of "previsão constitucional distrital" which is tagged as legislacao. So I think that's correct.
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 15 <span class="legislacao">previsão constitucional distrital</span> de que compete privativamente ao <span class="pessoa">Governador</span> '' celebrar ou autorizar convênios '' ( art .

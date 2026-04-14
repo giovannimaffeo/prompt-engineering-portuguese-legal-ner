@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input is a legal process description with various elements like Processo, Apelante, Apelado, Relatora, Acórdão, and some legal areas.
+
+Looking at each part:
+
+- "Processo : 20140110500434APO ( 0011249-34.2014.8.07.0018 )" – The process number here might be a tempo or local? Wait, the format seems like a legal case number, which might not be any of the specified entities. The numbers might relate to dates or codes, but since the user hasn't specified that numbers are considered tempo, I should check if any part here is a date. The "2014" part could be a year, so maybe "2014" is a tempo entity. But the entire number might not be. Let me think. The user's example output shows that "2014" is marked as tempo. Wait, looking at the sample output provided by the user, in their example, the process number is marked as tempo. Wait, the user's example input has "Processo : 20140110500434APO ( 0011249-34.2014.8.07.0018 )" and in the output, "2014" is marked as tempo. So I need to check each part.
+
+Next, "Apelante (s ) : DF DISTRITO FEDERAL" – "DF DISTRITO FEDERAL" is a local, since DF is the Distrito Federal, which is a region in Brazil. So "DF DISTRITO FEDERAL" should be marked as local.
+
+"Apelado ( s ) : SINPRO SINDICATO DOS PROFESSORES DO DISTRITO FEDERAL" – "SINPRO" is an organization, and the full name is the organization's name. So "SINPRO SINDICATO DOS PROFESSORES DO DISTRITO FEDERAL" should be organizacao.
+
+"Relatora : Desembargadora MARIA IVATÔNIA" – "MARIA IVATÔNIA" is a person, so that's pessoa.
+
+"Acórdão N. : 1084759" – The number here might be a tempo or not. The example output shows that "1084759" is not marked, but maybe the user's example has different markings. Wait, looking at the user's example output, the process number "2014" is marked as tempo, but the Acórdão number "1084759" is not. So perhaps only the year in the process number is marked as tempo. Let me check the original input again.
+
+The input has "Processo : 20140110500434APO ( 0011249-34.2014.8.07.0018 )" – the part "2014" is part of the process number. Since the user's example output marks "2014" as tempo, I should do the same here. The rest of the numbers might not be entities. Also, "DIREITO ADMINISTRATIVO . DIREITO PROCESSUAL CIVIL" – these are legal areas, which might not be any of the specified entities. The user's example output doesn't mark these, so I should leave them as is.
+
+So, breaking down the input:
+
+- "2014" is tempo.
+- "DF DISTRITO FEDERAL" is local.
+- "SINPRO SINDICATO DOS PROFESSORES DO DISTRITO FEDERAL" is organizacao.
+- "MARIA IVATÔNIA" is pessoa.
+
+Other parts like "Processo", "Apelante", "Apelado", "Relatora", "Acórdão" are not entities. The numbers like "0011249-34.2014.8.07.0018" might have "2014" as tempo, but the rest is not. The "DIREITO..." parts are not entities.
+
+So the HTML should have:
+
+- <span class="tempo">2014</span>
+- <span class="local">DF DISTRITO FEDERAL</span>
+- <span class="organizacao">SINPRO SINDICATO DOS PROFESSORES DO DISTRITO FEDERAL</span>
+- <span class="pessoa">MARIA IVATÔNIA</span>
+
+Other parts remain unchanged. Let me make sure I didn't miss any other entities. The "DISTRITO FEDERAL" is part of the local, so the entire phrase "DF DISTRITO FEDERAL" is local. The "SINPRO" is the organization, and the full name is the organization. The "MARIA IVATÔNIA" is the person. The rest of the text doesn't have any of the specified entities. So the final HTML should have those spans correctly placed.
+</think>
+
+Processo : <span class="tempo">2014</span>0110500434APO ( 0011249-34.2014.8.07.0018 ) Apelante ( s ) : DF DISTRITO FEDERAL Apelado ( s ) : <span class="organizacao">SINPRO SINDICATO DOS PROFESSORES DO DISTRITO FEDERAL</span> Relatora : Desembargadora <span class="pessoa">MARIA IVATÔNIA</span> Acórdão N. : 1084759 DIREITO ADMINISTRATIVO . DIREITO PROCESSUAL CIVIL .

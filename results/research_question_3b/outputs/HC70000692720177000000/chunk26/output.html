@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities. 
+
+Starting with the first part: "370 , § 1º , do Código de Processo Penal , a comunicação , tal como feita , alcançou a finalidade pretendida , qual seja , cientificar os causídicos da sessão de julgamento do recurso de apelação , de modo que o simples inconformismo com o procedimento utilizado , desprovido de prova inequívoca da mácula ocasionada , não se presta para o reconhecimento de nulidade , especialmente na atual sistemática processual , em que a formalidade há de ceder à substância , havendo esta de prevalecer se e quando em confronto com aquela . Ora , as formas processuais representam tão somente um instrumento para a correta aplicação do Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 . Em 22/02/2018 18:56:14 ."
+
+Looking for legal entities:
+
+1. "Código de Processo Penal" – This is a legal code, so it should be marked as legislacao.
+2. "Cleonilson Nicácio Silva" – This is a person's full name, so pessoa.
+3. "Matricula 8553" – This is a registration number, but the user's guidelines mention that only specific entities like legislation, jurisprudence, etc., should be marked. Since "Matricula" is part of a document reference, maybe it's part of the document's identifier, but the user's definition for legislacao includes "dispositivos internos claramente associados a essas normas". However, "Matricula" here is part of the document's details, not a legal entity itself. Wait, the document is "Documento assinado eletronicamente por Cleonilson Nicácio Silva, Matricula 8553". The "Matricula" here is part of the document's information, but the user's guidelines specify that only certain entities should be marked. Since "Matricula" isn't one of the defined types, maybe it's not marked. But the user's example in the output includes "Código de Processo Penal" as legislacao. So I should check if "Matricula" is part of a legal entity. The user's definition for legislacao includes "dispositivos internos claramente associados a essas normas", so maybe "Matricula" is part of the document's reference, but the main entity here is the document itself. However, the text says "Documento assinado eletronicamente por Cleonilson Nicácio Silva, Matricula 8553". The "Documento" is a document, but the user's guidelines don't mention documents as an entity. The only entities are the six listed. So "Documento" might not be marked. The "Matricula" is part of the document's details, but again, not one of the defined types. So maybe only "Cleonilson Nicácio Silva" is pessoa, and "Código de Processo Penal" is legislacao. 
+
+Next, "22/02/2018 18:56:14" – this is a date and time, so tempo.
+
+Now, checking the rest of the text. There's "sessão de julgamento do recurso de apelação" – these are parts of a legal process, but they don't fit any of the entity types. "recurso de apelação" is a legal term but not an entity. "Causídicos" refers to lawyers, but it's a general term, not a specific person. "Formas processuais" is a legal term but not an entity. "Documento assinado eletronicamente" – the document is mentioned, but again, not an entity. 
+
+So the entities to mark are:
+
+- "Código de Processo Penal" → legislacao
+- "Cleonilson Nicácio Silva" → pessoa
+- "22/02/2018 18:56:14" → tempo
+
+Wait, the user's example in the output includes "Código de Processo Penal" as legislacao. Also, the "Matricula 8553" – but the user's guidelines don't mention that. So maybe "Matricula" is part of the document's details, but since it's not one of the defined entities, it's left as is. 
+
+So the final HTML should have:
+
+- <span class="legislacao">Código de Processo Penal</span>
+- <span class="pessoa">Cleonilson Nicácio Silva</span>
+- <span class="tempo">22/02/2018 18:56:14</span>
+
+Other parts of the text remain unchanged. Let me make sure there are no other entities. For example, "recurso de apelação" is a legal term but not an entity. "Sessão de julgamento" is part of a process, not an entity. "Formas processuais" is a term but not an entity. 
+
+So the final output should have those three entities marked with their respective classes.
+</think>
+
+370 , § 1º , do <span class="legislacao">Código de Processo Penal</span> , a comunicação , tal como feita , alcançou a finalidade pretendida , qual seja , cientificar os causídicos da sessão de julgamento do recurso de apelação , de modo que o simples inconformismo com o procedimento utilizado , desprovido de prova inequívoca da mácula ocasionada , não se presta para o reconhecimento de nulidade , especialmente na atual sistemática processual , em que a formalidade há de ceder à substância , havendo esta de prevalecer se e quando em confronto com aquela . Ora , as formas processuais representam tão somente um instrumento para a correta aplicação do Documento assinado eletronicamente por <span class="pessoa">Cleonilson Nicácio Silva</span> , Matricula 8553 . <span class="tempo">Em 22/02/2018 18:56:14</span> .

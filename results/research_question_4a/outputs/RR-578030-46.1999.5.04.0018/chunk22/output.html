@@ -1,0 +1,36 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with the first sentence: "254 adotam entendimento diametralmente oposto ao do Regional , de que a Portaria n° 3.214/78 - anexo NR-14 da NR-15 - não contempla as atividades de limpeza realizadas nas dependências de prédios residenciais e comerciais , mesmo estando incluída a limpeza de banheiros ."
+
+Looking for entities here. "Regional" might be an organization, but the example shows that "Regional" is part of a larger term. Wait, in the example, "Regional" was part of "Regional" as an organization. Wait, in the example given, "Regional" was marked as an organization. Wait, the example input had "Regional" and it was marked as organizacao. So maybe "Regional" here refers to a judicial region, which is an organization. So I should mark "Regional" as organizacao.
+
+Next, "Portaria n° 3.214/78" – Portaria is a type of legislation, so that's legislacao. The number 3.214/78 is part of the legislation reference. Then "NR-14 da NR-15" – NR stands for Norma Regulamentadora, which are Brazilian labor regulations, so these are part of legislacao. So "Portaria n° 3.214/78 - anexo NR-14 da NR-15" should be marked as legislacao.
+
+Next sentence: "CONHEÇO , por divergência jurisprudencial ."
+
+"CONHEÇO" is a legal term, but it's not an entity. The phrase "divergência jurisprudencial" refers to a legal principle, but "jurisprudencial" is a generic term, so it's not marked. Wait, the example shows that "REsp n . 1694984/MS" is marked as jurisprudencia. So if there's a specific reference to a judicial decision, it's marked. But here, "divergência jurisprudencial" is a general term, so no tag.
+
+Next part: "I.3 - HONORÁRIOS PERICIAIS - CRITÉRIO DE REAJUSTAMENTO O Regional entendeu que a atualização dos honorários periciais deve ser feita pelos mesmos critérios aplicados à correção dos débitos trabalhistas , porque são devidos em decorrência de processo trabalhista ( fl . 237 ) ."
+
+"Regional" again is an organization. "fl . 237" refers to a page number, which is not a time or date, so no tag. "processo trabalhista" is a generic term, not an entity.
+
+Next sentence: "O reclamado assevera que essa decisão afronta os artigos 5° , inciso II , e 37 , caput , da Constituição Federal , pois não existe lei que determine a utilização de tal critério para atualização de honorários de perito ."
+
+"Constituição Federal" is a legislation, so that's legislacao. "artigos 5° , inciso II , e 37 , caput" are references to articles in the Constitution, so they should be part of the legislacao tag. The full reference would be "artigos 5° , inciso II , e 37 , caput , da Constituição Federal" as legislacao.
+
+Now, checking for any other entities. "fl . 237" is a page reference, not a time or date. "reclamado" is a generic term, not a person. "Constituição Federal" is legislacao. "Regional" is organizacao. "Portaria n° 3.214/78" and "NR-14 da NR-15" are legislacao. "REsp n . 1694984/MS" is jurisprudencia, but in the input text, there's no such reference. Wait, the input text has "Regional" and "Portaria n° 3.214/78 - anexo NR-14 da NR-15" as legislacao. Also, "Constituição Federal" is legislacao. "Regional" is organizacao. Any other entities? "fl . 237" is not a time or date. "processo trabalhista" is not an entity. "reclamado" is not a person. So the entities are:
+
+- Regional (organizacao)
+- Portaria n° 3.214/78 - anexo NR-14 da NR-15 (legislacao)
+- Constituição Federal (legislacao)
+- artigos 5° , inciso II , e 37 , caput , da Constituição Federal (legislacao)
+
+Wait, the "artigos 5° , inciso II , e 37 , caput , da Constituição Federal" is part of the reference to the Constitution, so it should be included in the legislacao tag. So the entire phrase "artigos 5° , inciso II , e 37 , caput , da Constituição Federal" is part of the legislacao.
+
+Putting it all together, the HTML should have the appropriate spans for each entity. Let me structure the output accordingly.
+</think>
+
+O <span class="organizacao">Regional</span> adotam entendimento diametralmente oposto ao do <span class="organizacao">Regional</span>, de que a <span class="legislacao">Portaria n° 3.214/78 - anexo NR-14 da NR-15</span> não contempla as atividades de limpeza realizadas nas dependências de prédios residenciais e comerciais, mesmo estando incluída a limpeza de banheiros. <span class="jurisprudencia">CONHEÇO</span>, por divergência jurisprudencial. I.3 - <span class="legislacao">HONORÁRIOS PERICIAIS - CRITÉRIO DE REAJUSTAMENTO</span> <span class="organizacao">Regional</span> entendeu que a atualização dos honorários periciais deve ser feita pelos mesmos critérios aplicados à correção dos débitos trabalhistas, porque são devidos em decorrência de processo trabalhista (<span class="tempo">fl . 237</span>). <span class="organizacao">O reclamado</span> assevera que essa decisão afronta os <span class="legislacao">artigos 5° , inciso II , e 37 , caput , da Constituição Federal</span>, pois não existe lei que determine a utilização de tal critério para atualização de honorários de perito.

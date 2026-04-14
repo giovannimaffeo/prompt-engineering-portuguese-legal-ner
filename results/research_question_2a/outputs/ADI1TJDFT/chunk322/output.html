@@ -1,0 +1,29 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "Pelo exposto , julgo procedente o pedido para declarar a inconstitucionalidade formal da Lei distrital nº 5.815 , de 03/04/2017 , com efeitos ex tunc e eficácia erga omnes . É o voto . Fls ."
+
+Let me go through each part. 
+
+Starting with "Lei distrital nº 5.815" – "Lei" is a law, which falls under legislacao. The number and date might be part of it. The date "03/04/2017" is a tempo entity. 
+
+"ex tunc" and "erga omnes" are legal terms, but they don't seem to be any of the specified entities. "voto" is a vote, which might not be an entity here. "Fls" is likely "Fls." as an abbreviation, which might not be an entity either.
+
+So, the entities to mark are:
+- "Lei distrital nº 5.815" as legislacao.
+- "03/04/2017" as tempo.
+
+Wait, the date is part of the law's reference. The law's name is "Lei distrital nº 5.815", so the entire phrase should be marked as legislacao. The date is part of the law's reference, so maybe the date is part of the legislacao entity. But according to the guidelines, each entity should be marked. However, the date is a tempo entity. So, I need to split them.
+
+Wait, the law's number and date are part of the legislation. But the date is a separate entity. So, "Lei distrital nº 5.815" is the legislation, and "03/04/2017" is the tempo. But the date is part of the law's reference. Hmm, maybe the entire "Lei distrital nº 5.815 , de 03/04/2017" is the legislation, with the date as tempo. But the user's example output might have the date as tempo. Let me check the example.
+
+In the sample input, the output would have "Lei distrital nº 5.815" as legislacao and "03/04/2017" as tempo. So, the date is a separate entity. Therefore, I need to split them. 
+
+So, the text would be:
+
+"Pelo exposto , julgo procedente o pedido para declarar a inconstitucionalidade formal da <span class='legislacao'>Lei distrital nº 5.815</span> , de <span class='tempo'>03/04/2017</span> , com efeitos ex tunc e eficácia erga omnes . É o voto . Fls ."
+
+That's the correct approach. The rest of the text doesn't have any of the specified entities. So, the final HTML should have those two spans with the respective classes.
+</think>
+
+Pelo exposto , julgo procedente o pedido para declarar a inconstitucionalidade formal da <span class="legislacao">Lei distrital nº 5.815</span> , de <span class="tempo">03/04/2017</span> , com efeitos ex tunc e eficácia erga omnes . É o voto . Fls .

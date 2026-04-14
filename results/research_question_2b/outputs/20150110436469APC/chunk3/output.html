@@ -1,0 +1,66 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input is a legal decision text. Let me go line by line.
+
+Starting with "A C Ó R D Ã O Acordam os Senhores Desembargadores da 8ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios , NÍDIA CORRÊA LIMA - Relatora , DIAULAS COSTA RIBEIRO - 1º Vogal , EUSTÁQUIO DE CASTRO - 2º Vogal , sob a presidência do Senhor Desembargador DIAULAS COSTA RIBEIRO , em proferir a seguinte decisão : RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO . UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 15 de Março de 2018 ."
+
+Looking for entities:
+
+1. "Senhores Desembargadores" – these are people, so "pessoa" class. But wait, "Senhores Desembargadores" is a title, not a name. The names are NÍDIA CORRÊA LIMA, DIAULAS COSTA RIBEIRO, EUSTÁQUIO DE CASTRO. These are individuals, so they should be marked as "pessoa".
+
+2. "Tribunal de Justiça do Distrito Federal e Territórios" – this is an organization, so "organizacao".
+
+3. "Brasilia ( DF )" – "Brasilia" is a local, and "DF" is the abbreviation for Distrito Federal, which is also a local. So both should be marked as "local".
+
+4. "15 de Março de 2018" – this is a date, so "tempo".
+
+5. "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" – this seems like a legal term, possibly related to jurisprudence or legislation. But the exact term might be part of the legal process. However, the user's example output marks "RECURSO DE APELAÇÃO" as "jurisprudencia". Wait, maybe "RECURSO DE APELAÇÃO" is a legal term, but in the example output, it's marked as "jurisprudencia". Wait, the user's example output shows "RECURSO DE APELAÇÃO" as "jurisprudencia". Let me check the example output again.
+
+Looking at the example output provided by the user:
+
+The output has "RECURSO DE APELAÇÃO" marked as "jurisprudencia". Wait, but "RECURSO DE APELAÇÃO" is a legal term, but maybe in this context, it's part of the jurisprudence. Alternatively, maybe it's part of the legislation. Wait, the user's example output shows that "RECURSO DE APELAÇÃO" is marked as "jurisprudencia". So I need to follow that.
+
+But I need to be careful. Let me check each part again.
+
+In the input text, "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" – this is a legal decision, so maybe "jurisprudencia" is the correct class here. Also, "UNÂNIME" is a term related to the decision, so maybe that's part of the jurisprudence. But the user's example output shows "RECURSO DE APELAÇÃO" as "jurisprudencia".
+
+So, I'll mark "RECURSO DE APELAÇÃO" as "jurisprudencia".
+
+Also, "Brasilia ( DF )" – "Brasilia" is a local, and "DF" is the abbreviation for Distrito Federal, which is also a local. So both should be marked as "local".
+
+"15 de Março de 2018" is a date, so "tempo".
+
+Now, let's go through each part step by step.
+
+First sentence: "A C Ó R D Ã O Acordam os Senhores Desembargadores da 8ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios , NÍDIA CORRÊA LIMA - Relatora , DIAULAS COSTA RIBEIRO - 1º Vogal , EUSTÁQUIO DE CASTRO - 2º Vogal , sob a presidência do Senhor Desembargador DIAULAS COSTA RIBEIRO , em proferir a seguinte decisão : RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO . UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 15 de Março de 2018 ."
+
+Breaking down:
+
+- "Senhores Desembargadores" – titles, not names, so no entity.
+- "8ª TURMA CÍVEL" – part of the court structure, maybe organization? Or part of the name. Wait, "Tribunal de Justiça do Distrito Federal e Territórios" is the organization. The "8ª TURMA CÍVEL" is part of the court's structure, so maybe it's part of the organization. But the user's example output doesn't mark it. Wait, the example output shows "Tribunal de Justiça do Distrito Federal e Territórios" as "organizacao". So I'll mark that as "organizacao".
+
+- "NÍDIA CORRÊA LIMA" – pessoa.
+- "DIAULAS COSTA RIBEIRO" – pessoa.
+- "EUSTÁQUIO DE CASTRO" – pessoa.
+- "RECURSO DE APELAÇÃO" – jurisprudencia.
+- "UNÂNIME" – maybe part of the decision, but not sure. The example output doesn't mark it, so maybe it's not an entity.
+- "Brasilia ( DF )" – local.
+- "15 de Março de 2018" – tempo.
+
+So, putting it all together:
+
+- "Tribunal de Justiça do Distrito Federal e Territórios" → organizacao.
+- "NÍDIA CORRÊA LIMA" → pessoa.
+- "DIAULAS COSTA RIBEIRO" → pessoa.
+- "EUSTÁQUIO DE CASTRO" → pessoa.
+- "RECURSO DE APELAÇÃO" → jurisprudencia.
+- "Brasilia ( DF )" → local.
+- "15 de Março de 2018" → tempo.
+
+Now, I need to make sure that all these are correctly marked. Also, check if "DF" is part of the local. Since "DF" stands for Distrito Federal, which is a local, so "DF" should be marked as local.
+
+So, the final HTML should have these spans with the appropriate classes.
+</think>
+
+A C Ó R D Ã O Acordam os Senhores Desembargadores da 8ª TURMA CÍVEL do <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span> , <span class="pessoa">NÍDIA CORRÊA LIMA</span> - Relatora , <span class="pessoa">DIAULAS COSTA RIBEIRO</span> - 1º Vogal , <span class="pessoa">EUSTÁQUIO DE CASTRO</span> - 2º Vogal , sob a presidência do Senhor Desembargador <span class="pessoa">DIAULAS COSTA RIBEIRO</span> , em proferir a seguinte decisão : <span class="jurisprudencia">RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO</span> . UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">15 de Março de 2018</span> .

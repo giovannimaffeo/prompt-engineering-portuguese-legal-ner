@@ -1,0 +1,23 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with the first sentence: "Os arestos colacionados ( fls . 345/346 ) revelam-se formalmente inválidos , pois provenientes de Vara do Trabalho ou do mesmo Tribunal Regional prolator da decisão recorrida , órgãos judicantes não elencados no artigo 896 , `` a '' , da CLT . Nego provimento ."
+
+Looking for entities here. "Vara do Trabalho" is an organization, so that should be marked as organizacao. "Tribunal Regional" is also an organization. "CLT" is a legislation reference, so that's legislacao. The "artigo 896" is part of the legislation, so it should be included in the legislacao tag. The "fls . 345/346" is a reference to pages, but since it's not a date or time, maybe it's not an entity. Wait, the user mentioned that only explicit temporal references are marked as tempo. "fls" is likely "fls" as in "folhas" (pages), which is not a date, so it's not a tempo. So, "Vara do Trabalho" and "Tribunal Regional" are organizations, "CLT" is legislation, and "artigo 896" is part of the legislation.
+
+Next part: "4 . DANO MORAL . OFENSAS . Quanto ao tema , o Regional se manifestou nos seguintes termos : `` Da indenização por dano moral - ofensa . Sob alegação de que no dia 14.03.2013 , por volta das 19h , seu ex-patrão , Sr. Wladimir , foi até seu atual emprego , dirigindo-lhe ameaças e difamando-o perante seu empregador e colegas de trabalho , o autor pretende receber uma indenização . A ré afirmou que o Sr. Wladimir é seu empregado , mas não tem qualquer ingerência nas suas atitudes , pois ele não a representa e não tinha ordem para assim agir ( ID n . 1191555 ) ."
+
+Here, "14.03.2013" is a date, so that's tempo. "Sr. Wladimir" is a person, so pessoa. "ID n . 1191555" is a jurisprudencia reference, so that should be marked as jurisprudencia. Also, "ex-patrão" is a title, but since it's a generic term, not a name, it's not marked. "empregador" and "colegas de trabalho" are generic terms, not specific locations or entities. "ID n . 1191555" is a reference to a case, so jurisprudencia.
+
+Wait, the user mentioned that "ID n . 1191555" is a jurisprudencia. The example given in the guidelines includes "REsp n . 1694984/MS" as jurisprudencia. So, "ID n . 1191555" should be marked as jurisprudencia.
+
+Now, checking for any other entities. "Regional" here refers to the Tribunal Regional, which was already marked as organizacao. "CLT" is legislation. "artigo 896" is part of the legislation. "14.03.2013" is tempo. "Sr. Wladimir" is pessoa. "ID n . 1191555" is jurisprudencia.
+
+Putting it all together, I need to wrap each identified entity with the appropriate <span> tags. Let me make sure I didn't miss any. Also, check if any terms are part of a larger entity. For example, "Vara do Trabalho" is an organization, so the entire phrase should be marked. Similarly, "Tribunal Regional" is an organization. "CLT" is legislation. "artigo 896" is part of the legislation. "14.03.2013" is tempo. "Sr. Wladimir" is pessoa. "ID n . 1191555" is jurisprudencia.
+
+I think that's all. Now, construct the HTML with the appropriate tags.
+</think>
+
+Os arestos colacionados ( fls . 345/346 ) revelam-se formalmente inválidos , pois provenientes de <span class="organizacao">Vara do Trabalho</span> ou do mesmo <span class="organizacao">Tribunal Regional</span> prolator da decisão recorrida , órgãos judicantes não elencados no <span class="legislacao">artigo 896 , `` a '' , da CLT</span> . Nego provimento . 4 . DANO MORAL . OFENSAS . Quanto ao tema , o <span class="organizacao">Regional</span> se manifestou nos seguintes termos : `` Da indenização por dano moral - ofensa . Sob alegação de que no dia <span class="tempo">14.03.2013</span> , por volta das 19h , seu ex-patrão , <span class="pessoa">Sr. Wladimir</span> , foi até seu atual emprego , dirigindo-lhe ameaças e difamando-o perante seu empregador e colegas de trabalho , o autor pretende receber uma indenização . A ré afirmou que o <span class="pessoa">Sr. Wladimir</span> é seu empregado , mas não tem qualquer ingerência nas suas atitudes , pois ele não a representa e não tinha ordem para assim agir ( <span class="jurisprudencia">ID n . 1191555</span> ) .

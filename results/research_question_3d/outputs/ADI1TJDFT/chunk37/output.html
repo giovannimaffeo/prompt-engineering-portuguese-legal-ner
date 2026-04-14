@@ -1,0 +1,29 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+Starting with the first part: "SYDNEY SANCHES , Tribunal Pleno , julgado em 06/02/2003 , DJ 11-04-2003 PP-00025 EMENT VOL-02106- 01 PP-00001 ) ( grifo nosso )"
+
+- "SYDNEY SANCHES" is clearly a person's name. So I'll mark that as <span class="pessoa">SYDNEY SANCHES</span>.
+- "Tribunal Pleno" refers to a judicial organization. The definition says organizations include courts, so this should be <span class="organizacao">Tribunal Pleno</span>.
+- "julgado em 06/02/2003" has a date, which is a tempo entity. So "06/02/2003" becomes <span class="tempo">06/02/2003</span>.
+- "DJ 11-04-2003 PP-00025 EMENT VOL-02106- 01 PP-00001" – "DJ" might be an abbreviation for Diário da Justiça, which is a legal document. The date "11-04-2003" is another tempo entity. The rest like PP-00025 and EMENT VOL-02106-01 PP-00001 might be case numbers or references, which could be jurisprudencia. But the user's example shows that "DJ 11-04-2003 PP-00025" is marked as jurisprudencia. Wait, the example in the output might have different handling. Let me check the example given in the task. The user provided an example where "DJ 11-04-2003 PP-00025" is marked as jurisprudencia. So I'll follow that. So "DJ 11-04-2003 PP-00025" becomes <span class="jurisprudencia">DJ 11-04-2003 PP-00025</span>. The rest like EMENT VOL-02106- 01 PP-00001 might be part of the same reference, but the example doesn't mention them. Maybe they are part of the jurisprudencia. So I'll include them as well.
+
+Next part: "Note-se que a Lei Orgânica Distrital delimitou que a celebração e a autorização para a celebração de convênios por parte do Chefe do Poder Executivo local se darão `` na forma da legislação em vigor '' - o que não significa competir à lei autorizara celebração de convênios , mas sim regulamentar os moldes de sua celebração . Interpretação no sentido de que a lei ( de iniciativa parlamentar ) poderia autorizar a celebração de convênios colidiria frontalmente com a expressa Fls ."
+
+- "Lei Orgânica Distrital" is a law, so it's legislacao. Mark as <span class="legislacao">Lei Orgânica Distrital</span>.
+- "Chefe do Poder Executivo local" – "Chefe" here refers to a person, but the context is the local executive head, which might be a title, not a specific name. However, the guidelines say only proper names should be marked. Since "Chefe do Poder Executivo local" is a title, not a name, it shouldn't be marked.
+- "legislação em vigor" – "legislação" is the term, but the example says to mark only references to norms. "Legislação em vigor" is a general term, not a specific reference. So it's not marked.
+- "Fls" at the end might be a reference to a document, but without more context, it's unclear. The example doesn't mention it, so maybe it's not marked.
+
+Now, putting it all together. I need to make sure that each entity is correctly identified and tagged. Also, check for any other possible entities like "local" or "organizacao".
+
+Wait, "Distrital" in "Lei Orgânica Distrital" – "Distrital" refers to the district, which is a local entity. But according to the guidelines, only proper names of locations should be marked. "Distrital" is an adjective, not a specific name. So it's not marked. Only "Lei Orgânica Distrital" as a whole is legislacao.
+
+Another point: "Tribunal Pleno" is an organization. The example in the task's output shows "Tribunal Pleno" as organizacao. So that's correct.
+
+So the final HTML should have all these tags properly inserted. Let me structure each part with the appropriate spans.
+</think>
+
+<span class="pessoa">SYDNEY SANCHES</span>, <span class="organizacao">Tribunal Pleno</span>, julgado em <span class="tempo">06/02/2003</span>, <span class="jurisprudencia">DJ 11-04-2003 PP-00025 EMENT VOL-02106- 01 PP-00001</span>) ( grifo nosso ) Note-se que a <span class="legislacao">Lei Orgânica Distrital</span> delimitou que a celebração e a autorização para a celebração de convênios por parte do Chefe do Poder Executivo local se darão `` na forma da legislação em vigor '' - o que não significa competir à lei autorizara celebração de convênios , mas sim regulamentar os moldes de sua celebração . Interpretação no sentido de que a lei ( de iniciativa parlamentar ) poderia autorizar a celebração de convênios colidiria frontalmente com a expressa Fls .

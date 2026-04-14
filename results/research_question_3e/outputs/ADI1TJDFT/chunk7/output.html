@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. The entities are pessoa, organização, tempo, local, legislação, and jurisprudência. Each should be wrapped in a <span> with the corresponding class.
+
+First, I'll read through the input text carefully to identify all the entities. Let's start breaking it down sentence by sentence.
+
+The first part is "Ação Direta de Inconstitucionalidade 20170020161362ADI R E L A T Ó R I O Trata-se de ação direta de inconstitucionalidade proposta pela PROCURADORIA GERAL DE JUSTIÇA DO DISTRITO FEDERAL em face do inteiro teor da Lei Distrital nº 5.815 , de 3 de abril de 2017 , aqual permite ao Distrito Federal firmar convênios com o Conselho Regional de Engenharia e Agronomia do Distrito Federal CREA/DF e com o Conselho de Arquitetura e Urbanismo do Distrito Federal CAU/DF para analisarem processos de responsabilidade das Administrações Regionais , proferindo parecer por concessão ou negativa de pedido de Alvará de Construção e de Carta de Habite-se de edificações ."
+
+Looking for entities here:
+
+- "PROCURADORIA GERAL DE JUSTIÇA DO DISTRITO FEDERAL" is an organization. So I'll mark that as <span class="organizacao">.
+
+- "Lei Distrital nº 5.815" is legislation. The full name "Lei Distrital nº 5.815" should be marked as legislação.
+
+- "3 de abril de 2017" is a date, so that's tempo.
+
+- "Distrito Federal" is a local entity. So mark that as local.
+
+- "Conselho Regional de Engenharia e Agronomia do Distrito Federal CREA/DF" and "Conselho de Arquitetura e Urbanismo do Distrito Federal CAU/DF" are organizations. Both should be marked as organização.
+
+Next part: "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 4 supremacia do interesse público . Art . 3º O Poder Executivo regulamentará esta Lei no prazo de 60 dias . Art ."
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is an organization. The person's name "SILVANIO BARBOSA DOS SANTOS" is a pessoa.
+
+- "Art . 3º" is part of the legislation, but since it's just an article reference without a specific law name, maybe it's not marked. Wait, the user's example includes "art.61 , §1º , da Lei nº 9.430/96" as legislação. So here, "Art . 3º" refers to an article in the law, so the entire "Art. 3º" would be part of the legislation reference. Wait, but the law name is "Lei Distrital nº 5.815", so the article is part of that law. So maybe "Art. 3º" should be included as part of the legislation. But the user's example includes the article in the legislação tag. So in this case, "Art. 3º" is part of the legislation reference, so it should be marked as legislação. However, the user's example shows that the entire legislation reference (like "art.61 , §1º , da Lei nº 9.430/96") is marked. So here, "Art. 3º" is part of the law, so the entire "Art. 3º" would be part of the legislação. Wait, but the law is "Lei Distrital nº 5.815", so "Art. 3º" is part of that law. Therefore, the entire "Art. 3º" should be marked as legislação. But the user's example includes the article as part of the legislation. So in this case, "Art. 3º" is part of the legislation, so it should be marked. However, the user's instructions say that legislação includes references to norms, so the article number is part of the legislation reference. So I need to mark "Art. 3º" as legislação. Wait, but in the example, "art.61 , §1º , da Lei nº 9.430/96" is marked as legislação, which includes the article and section. So here, "Art. 3º" is part of the law, so it should be included as part of the legislation. Therefore, I should mark "Art. 3º" as legislação.
+
+But let me check again. The user's example includes "art.61 , §1º , da Lei nº 9.430/96" as legislação. So the article and section are part of the legislation reference. Therefore, in this case, "Art. 3º" is part of the legislation reference. So I should mark "Art. 3º" as legislação. However, the law name is "Lei Distrital nº 5.815", so the article is part of that law. Therefore, the entire "Art. 3º" is part of the legislation. Therefore, I need to mark "Art. 3º" as legislação.
+
+Wait, but the user's example includes "art.61 , §1º , da Lei nº 9.430/96" as a single entity. So in this case, the article number is part of the legislation. So the same applies here. Therefore, "Art. 3º" should be marked as legislação.
+
+But wait, the user's instruction says: "Apenas referências a normas devem ser marcadas." So the article is part of the norm (the law). Therefore, the entire "Art. 3º" should be included in the legislação tag. However, in the example, the article is part of the legislation reference. So I think that's the case here.
+
+So in the text, "Art. 3º" is part of the legislation, so it should be marked as legislação. However, in the input text, it's written as "Art . 3º" with spaces. So I need to mark "Art. 3º" as part of the legislation. But wait, the law is "Lei Distrital nº 5.815", so the article is part of that law. Therefore, the entire "Art. 3º" is part of the legislation. So I should mark it as legislação.
+
+But the user's example includes the article as part of the legislation. So I think that's correct here.
+
+Now, checking the rest of the text. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – this is a code, but not a specific entity. The user's guidelines say not to mark codes unless they are specific to entities. Since this is a verification code, it's not an entity, so leave it as is.
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE" is part of the organization name. The entire phrase "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" is an organization. So mark that as <span class="organizacao">.
+
+"SILVANIO BARBOSA DOS SANTOS" is a person's name, so <span class="pessoa">.
+
+"Distrito Federal" is a local, so <span class="local">.
+
+"Conselho Regional de Engenharia e Agronomia do Distrito Federal CREA/DF" – "Conselho Regional de Engenharia e Agronomia" is an organization, and "CREA/DF" is an acronym for that organization. So the entire "Conselho Regional de Engenharia e Agronomia do Distrito Federal CREA/DF" is an organization. Similarly for "Conselho de Arquitetura e Urbanismo do Distrito Federal CAU/DF" – mark as organização.
+
+Now, checking the date "3 de abril de 2017" – that's a tempo entity.
+
+Putting it all together, I'll replace each entity with the appropriate span tags. Also, ensuring that all parts of the entities are included, like articles and possessives. For example, "PROCURADORIA GERAL DE JUSTIÇA DO DISTRITO FEDERAL" is a full organization name, so mark the entire phrase.
+
+I need to make sure not to miss any entities. Let me go through the text again:
+
+- "PROCURADORIA GERAL DE JUSTIÇA DO DISTRITO FEDERAL" → organização
+- "Lei Distrital nº 5.815" → legislação
+- "3 de abril de 2017" → tempo
+- "Distrito Federal" → local
+- "Conselho Regional de Engenharia e Agronomia do Distrito Federal CREA/DF" → organização
+- "Conselho de Arquitetura e Urbanismo do Distrito Federal CAU/DF" → organização
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" → organização
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+- "Art. 3º" → legislação
+
+Wait, the "Art. 3º" is part of the legislation, so it should be included. But in the input text, it's written as "Art . 3º" with a space. So I need to mark "Art. 3º" as legislação. However, the user's example includes "art.61 , §1º , da Lei nº 9.430/96" as a single entity. So here, "Art. 3º" is part of the legislation reference. Therefore, I should mark it as legislação.
+
+So the final HTML should have all these entities marked. Let me structure the text with the spans accordingly.
+</think>
+
+O <span class="organizacao">PROCURADORIA GERAL DE JUSTIÇA DO DISTRITO FEDERAL</span>, por meio do Procurador <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>, propôs ação com base no <span class="legislacao">Lei Distrital nº 5.815</span>, de <span class="tempo">3 de abril de 2017</span>, a qual permite ao <span class="local">Distrito Federal</span> firmar convênios com o <span class="organizacao">Conselho Regional de Engenharia e Agronomia do Distrito Federal CREA/DF</span> e com o <span class="organizacao">Conselho de Arquitetura e Urbanismo do Distrito Federal CAU/DF</span> para analisarem processos de responsabilidade das Administrações Regionais, proferindo parecer por concessão ou negativa de pedido de Alvará de Construção e de Carta de Habite-se de edificações. <span class="legislacao">Art. 3º</span> O Poder Executivo regulamentará esta Lei no prazo de 60 dias. <span class="legislacao">Art.</span>

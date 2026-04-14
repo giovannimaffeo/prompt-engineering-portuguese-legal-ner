@@ -1,0 +1,60 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities.
+
+Starting with the text: "Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 22 Lei nº 5.815/2017 , por violação ao disposto noartigo 53 , `` caput '' e § 1º , e artigo 100 , incisos IV , VI , X e XXIII todos da Lei Orgânica do Distrito Federal . Efeitos Saliente-se , por oportuno , que não se vislumbra qualquer razão de segurança jurídica ou de excepcional interesse social apta a justificar a modulação dos efeitos , razão pela qual a declaração de inconstitucionalidade da Lei nº 5.815/2017 deverá retroagir à data da sua promulgação ."
+
+Looking for entities:
+
+1. "Ação Direta de Inconstitucionalidade" – This seems like a legal action, maybe a type of judicial process. But the user's entities don't include "ação" as a category. Wait, the entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So maybe "Ação Direta de Inconstitucionalidade" is a type of legal proceeding, but since it's not one of the specified categories, I shouldn't mark it.
+
+2. "20170020161362ADI" – This looks like a case number. Not sure if it's an entity type. The user didn't mention case numbers, so maybe leave as is.
+
+3. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – The code here might be a verification code, but again, not one of the specified entities. So leave as is.
+
+4. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE DO DESEMBARGADOR" is an organization (maybe the office), and "SILVANIO BARBOSA DOS SANTOS" is a person. So I should mark "SILVANIO BARBOSA DOS SANTOS" as pessoa and "GABINETE DO DESEMBARGADOR" as organizacao.
+
+5. "22" – Could be a number, but not an entity type. Leave as is.
+
+6. "Lei nº 5.815/2017" – "Lei" is legislation, so "Lei nº 5.815/2017" should be marked as legislacao.
+
+7. "artigo 53 , `` caput '' e § 1º , e artigo 100 , incisos IV , VI , X e XXIII todos da Lei Orgânica do Distrito Federal" – "Lei Orgânica do Distrito Federal" is another legislation, so mark that as legislacao. "Distrito Federal" is a local entity, so mark that as local.
+
+8. "Efeitos Saliente-se , por oportuno , que não se vislumbra qualquer razão de segurança jurídica ou de excepcional interesse social apta a justificar a modulação dos efeitos , razão pela qual a declaração de inconstitucionalidade da Lei nº 5.815/2017 deverá retroagir à data da sua promulgação ." – "data da sua promulgação" refers to a date, so "data" is tempo. But the exact date isn't specified here, so maybe "data da sua promulgação" is marked as tempo.
+
+Wait, the user's example in the output might have "data da sua promulgação" as tempo. Let me check again.
+
+Also, "Lei Orgânica do Distrito Federal" is a legislation, so "Lei Orgânica" is legislacao, and "Distrito Federal" is local.
+
+Putting it all together:
+
+- "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+- "GABINETE DO DESEMBARGADOR" is organizacao.
+- "Lei nº 5.815/2017" is legislacao.
+- "Lei Orgânica do Distrito Federal" is legislacao (since it's a law) and "Distrito Federal" is local.
+- "data da sua promulgação" is tempo.
+
+Wait, but "data da sua promulgação" is a phrase, not a specific date. The user's example might have marked "data" as tempo. But the exact text is "data da sua promulgação", so maybe the entire phrase is marked as tempo. Alternatively, just "data" as tempo. But the user's example might have "data da sua promulgação" as tempo. Let me check the sample output.
+
+Looking at the sample output provided by the user, in the example, "data da sua promulgação" is marked as tempo. So I should do the same here.
+
+So, the final HTML would have:
+
+- <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span>
+- <span class="organizacao">GABINETE DO DESEMBARGADOR</span>
+- <span class="legislacao">Lei nº 5.815/2017</span>
+- <span class="legislacao">Lei Orgânica do Distrito Federal</span>
+- <span class="local">Distrito Federal</span>
+- <span class="tempo">data da sua promulgação</span>
+
+Wait, but "Lei Orgânica do Distrito Federal" is a law, so "Lei Orgânica" is part of the legislation. But the entire phrase "Lei Orgânica do Distrito Federal" is a law, so it should be marked as legislacao. Similarly, "Distrito Federal" is a local entity.
+
+So, in the text, "Lei Orgânica do Distrito Federal" is a legislation, so the entire phrase is legislacao. "Distrito Federal" is local.
+
+Also, "data da sua promulgação" is tempo.
+
+So, putting all these into the HTML tags accordingly.
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="organizacao">SILVANIO BARBOSA DOS SANTOS</span> 22 <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto noartigo 53 , `` caput '' e § 1º , e artigo 100 , incisos IV , VI , X e XXIII todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . Efeitos Saliente-se , por oportuno , que não se vislumbra qualquer razão de segurança jurídica ou de excepcional interesse social apta a justificar a modulação dos efeitos , razão pela qual a declaração de inconstitucionalidade da <span class="legislacao">Lei nº 5.815/2017</span> deverá retroagir à <span class="tempo">data da sua promulgação</span> .

@@ -1,0 +1,92 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is "Documento Assinado Eletronicamente MARIA IVATÔNIA Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 3 O relatório é , em parte , o da sentença : “ RELATÓRIO ( ARTIGO 458 , I , CPC ) O SINPRO/DF - Sindicato dos Professores do Distrito Federal ajuizou ação contra o Distrito Federal formulando os seguintes pedidos : a ."
+
+Looking for entities:
+
+1. "MARIA IVATÔNIA" appears twice. Since she's referred to as "Relatora" and "DESEMBARGADORA", these are likely titles, so she's a pessoa. So, both instances should be <span class="pessoa">.
+
+2. "SINPRO/DF - Sindicato dos Professores do Distrito Federal" – here, "SINPRO/DF" is an organization, so <span class="organizacao">. The full name "Sindicato dos Professores do Distrito Federal" is also an organization, so that part should be marked as well.
+
+3. "Distrito Federal" is a local, so <span class="local">. It's mentioned twice, once as the entity being sued and once in the organization's name.
+
+4. "ARTIGO 458 , I , CPC" – "CPC" stands for Código de Processo Civil, which is legislation. So "ARTIGO 458" and "CPC" should be <span class="legislacao">.
+
+5. "RELATÓRIO" and "sentença" – these are parts of legal terminology. "RELATÓRIO" might be part of jurisprudência, but I need to check. However, in the context, "RELATÓRIO" here refers to a legal report, which could be part of jurisprudência. But the user's example might have "RELATÓRIO" as part of the text without a specific entity. Wait, the user's example output includes "RELATÓRIO" as part of the text. Let me check the example again.
+
+Wait, the user provided an example where "RELATÓRIO" is not marked. So maybe "RELATÓRIO" here is part of the legal process and not an entity. So perhaps it's not marked. Similarly, "sentença" is a legal term but not an entity type. So those might not be marked.
+
+Also, "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – the code is a reference, but it's not an entity type. So no marking there.
+
+Now, let's go through each part step by step.
+
+First line: "Documento Assinado Eletronicamente MARIA IVATÔNIA Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 3 O relatório é , em parte , o da sentença : “ RELATÓRIO ( ARTIGO 458 , I , CPC ) O SINPRO/DF - Sindicato dos Professores do Distrito Federal ajuizou ação contra o Distrito Federal formulando os seguintes pedidos : a ."
+
+Breaking down:
+
+- "MARIA IVATÔNIA" is a person, so <span class="pessoa">.
+
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "DESEMBARGADORA" is a title, so "MARIA IVATÔNIA" again is a pessoa.
+
+- "SINPRO/DF - Sindicato dos Professores do Distrito Federal" – "SINPRO/DF" is an organization, so <span class="organizacao">. The full name "Sindicato dos Professores do Distrito Federal" is also an organization, so that part should be marked as well.
+
+- "Distrito Federal" is a local, so <span class="local">. It's mentioned twice: once in the organization's name and once as the entity being sued.
+
+- "ARTIGO 458" and "CPC" are parts of legislation, so <span class="legislacao">.
+
+Now, putting it all together:
+
+- "MARIA IVATÔNIA" (pessoa)
+- "SINPRO/DF" (organizacao)
+- "Sindicato dos Professores do Distrito Federal" (organizacao)
+- "Distrito Federal" (local)
+- "ARTIGO 458" (legislacao)
+- "CPC" (legislacao)
+
+Wait, the user's example output includes "CPC" as part of the legislation. So I need to make sure that "ARTIGO 458" and "CPC" are marked as legislacao.
+
+Also, "GABINETE DA DESEMBARGADORA" – "GABINETE" is a place, but the user's example might not mark it. Wait, "GABINETE" here refers to the office of the Desembargadora, so maybe it's a local? Or is it part of the organization? Hmm. The user's example might not mark "GABINETE" as a local. Let me check the example again.
+
+In the user's example, the output is:
+
+"Documento Assinado Eletronicamente <span class="pessoa">MARIA IVATÔNIA</span> Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> 3 O relatório é , em parte , o da sentença : “ <span class="jurisprudencia">RELATÓRIO</span> ( <span class="legislacao">ARTIGO 458</span> , I , <span class="legislacao">CPC</span> ) <span class="organizacao">SINPRO/DF</span> - <span class="organizacao">Sindicato dos Professores do Distrito Federal</span> ajuizou ação contra o <span class="local">Distrito Federal</span> formulando os seguintes pedidos : a ."
+
+Wait, in the user's example, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is marked as organizacao. But "GABINETE" is part of the organization's name. So maybe the entire phrase is considered an organization. Also, "SINPRO/DF" is an organization, and the full name is also an organization. "Distrito Federal" is a local. "ARTIGO 458" and "CPC" are legislation. "RELATÓRIO" is marked as jurisprudencia. 
+
+So following that, I need to mark:
+
+- "MARIA IVATÔNIA" as pessoa (twice)
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as organizacao
+- "SINPRO/DF" as organizacao
+- "Sindicato dos Professores do Distrito Federal" as organizacao
+- "Distrito Federal" as local
+- "ARTIGO 458" as legislacao
+- "CPC" as legislacao
+- "RELATÓRIO" as jurisprudencia
+
+Wait, in the user's example, "RELATÓRIO" is marked as jurisprudencia. So I need to check if that's correct. The term "RELATÓRIO" in legal context can refer to a judicial report, which might be part of jurisprudência. So yes, that's marked as jurisprudencia.
+
+Putting all together, the HTML should have those spans with the correct classes. Now, I need to make sure that the text is correctly split and each entity is marked. Also, the user's example includes "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as organizacao, which is the entire phrase. So I need to check if that's the case here.
+
+So the final HTML would have:
+
+- "MARIA IVATÔNIA" as pessoa
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as organizacao
+- "SINPRO/DF" as organizacao
+- "Sindicato dos Professores do Distrito Federal" as organizacao
+- "Distrito Federal" as local
+- "ARTIGO 458" as legislacao
+- "CPC" as legislacao
+- "RELATÓRIO" as jurisprudencia
+
+I need to make sure that the text is split correctly. For example, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is considered an organization, even though it includes the name of the person. Maybe the entire phrase is the organization's name, so it's marked as organizacao.
+
+Also, "SINPRO/DF - Sindicato dos Professores do Distrito Federal" – the hyphen is part of the organization's name, so both parts are marked as organizacao.
+
+So the final HTML should have all these spans correctly placed.
+</think>
+
+Documento Assinado Eletronicamente <span class="pessoa">MARIA IVATÔNIA</span> Relatora Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> 3 O relatório é , em parte , o da sentença : “ <span class="jurisprudencia">RELATÓRIO</span> ( <span class="legislacao">ARTIGO 458</span> , I , <span class="legislacao">CPC</span> ) <span class="organizacao">SINPRO/DF</span> - <span class="organizacao">Sindicato dos Professores do Distrito Federal</span> ajuizou ação contra o <span class="local">Distrito Federal</span> formulando os seguintes pedidos : a .

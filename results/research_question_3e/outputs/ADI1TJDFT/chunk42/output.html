@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this HTML entity tagging task. The user provided a legal text and wants me to mark specific entities with appropriate HTML tags. First, I need to carefully read the input text and identify each entity according to the definitions given.
+
+Starting with the first part: "Relator : ÁLVARO MANOEL ROSINDO BOURGUIGNON ) ( grifo nosso )". The name "ÁLVARO MANOEL ROSINDO BOURGUIGNON" is clearly a person's full name, so that should be a <span class="pessoa">. The "grifo nosso" is a generic term, so it's not an entity. The "Relator" is a title, not a name, so no tag there.
+
+Next sentence: "Alei criada por inciativa do Poder Legislativo , em matéria de competência exclusiva do Poder executivo , evidencia vício de iniciativa caracterizador de sua inconstitucionalidade , não a convalidando a sanção pelo Prefeito Municipal .". Here, "Poder Legislativo" and "Poder executivo" are organizations? Wait, the definition says organizations are formal entities like courts, government bodies. "Poder Legislativo" is a branch of government, so maybe "organizacao"? But the example shows "MINISTÉRIO PÚBLICO FEDERAL" as an organization. Hmm, maybe "Poder Legislativo" is part of the government structure, so it's an organization. Similarly, "Prefeito Municipal" is a person, but the title "Prefeito" is a position, not a name. So "Prefeito Municipal" would be a person? Wait, the definition says only names should be marked. "Prefeito" is a title, so maybe not. Wait, the example had "Procurador CARLOS HENRIQUE ALVES" as a person. So if there's a specific name, like "Prefeito Municipal" with a specific name, then it's a person. But in this case, it's just "Prefeito Municipal" without a name. So maybe not a person. So perhaps "Poder Legislativo" and "Poder executivo" are organizations. But wait, the definition says organizations are formal entities like courts, etc. "Poder Legislativo" is a branch, not a specific organization. Maybe they should not be tagged as organizations. Wait, the example had "Tribunal de Contas" as an organization. So maybe "Poder Legislativo" is part of the government structure, but not a specific organization. So perhaps they should not be tagged. But the user's example didn't tag such terms. So maybe I should leave them as is. Wait, the user's example had "MINISTÉRIO PÚBLICO FEDERAL" as an organization. So maybe "Poder Legislativo" is part of the government, but the term is generic. So perhaps not an organization. So maybe I should not tag them here.
+
+Moving on: "Processo : ADI 01987668220128260000 SP 0198766- 82.2012.8.26.0000 . Órgão Julgador : Órgão Especial . Publicação : 18/04/2013 . Julgamento : 27 de Março de 2013 .". 
+
+The "ADI 01987668220128260000 SP 0198766- 82.2012.8.26.0000" looks like a legal process number. According to the jurisprudencia definition, identifiers like "ADI" (which is a type of judicial decision) should be tagged as jurisprudencia. The "ADI" is part of the process number, so the entire identifier "ADI 01987668220128260000 SP 0198766- 82.2012.8.26.0000" should be a jurisprudencia. 
+
+"Órgão Especial" is an organization, as it refers to a specific judicial body. So that should be an <span class="organizacao">. 
+
+"Publicação : 18/04/2013" is a date, so tempo. "Julgamento : 27 de Março de 2013" is also a date, so tempo.
+
+Now, checking for other entities. "Relator" is a title, not a name. "grifo nosso" is a generic term. "Poder Legislativo" and "Poder executivo" are branches, not specific names. "Prefeito Municipal" is a title, not a name. "Órgão Julgador" is a title. 
+
+So the entities are:
+
+- ÁLVARO MANOEL ROSINDO BOURGUIGNON: pessoa
+- ADI 01987668220128260000 SP 0198766- 82.2012.8.26.0000: jurisprudencia
+- Órgão Especial: organizacao
+- 18/04/2013: tempo
+- 27 de Março de 2013: tempo
+
+Wait, the "ADI" part is the process number, which is a jurisprudencia. The "SP" might be a state abbreviation, but in the example, the jurisprudencia includes the full identifier. So the entire process number should be tagged as jurisprudencia. 
+
+Also, "Órgão Especial" is an organization. 
+
+So putting it all together:
+
+"Relator : <span class="pessoa">ÁLVARO MANOEL ROSINDO BOURGUIGNON</span> ) ( grifo nosso ) 1 . Alei criada por inciativa do Poder Legislativo , em matéria de competência exclusiva do Poder executivo , evidencia vício de iniciativa caracterizador de sua inconstitucionalidade , não a convalidando a sanção pelo Prefeito Municipal . 2 . Acircunstância de se cuidar de lei meramente autorizativa não elide , suprime ou elimina a sua inconstitucionalidade pelo fato de estar ela dispondo sobre matéria reservada â iniciativa privativa do Poder Executivo . ( Processo : <span class="jurisprudencia">ADI 01987668220128260000 SP 0198766- 82.2012.8.26.0000</span> . Órgão Julgador : <span class="organizacao">Órgão Especial</span> . Publicação : <span class="tempo">18/04/2013</span> . Julgamento : <span class="tempo">27 de Março de 2013</span> ."
+
+Wait, but in the example, the jurisprudencia was "REsp n . 1694984/MS" and "Súmula 331 do TST". So the full process number is the jurisprudencia. Also, "Órgão Especial" is an organization. 
+
+I think that's all. Let me check again for any other entities. The "Poder Legislativo" and "Poder executivo" are not specific names, so they are not tagged. "Prefeito Municipal" is a title, not a name. "SP" is a state abbreviation, but not a specific location. The date formats are correctly marked as tempo. The "ADI" is part of the jurisprudencia. 
+
+Yes, that should cover all the entities. Now, format the output as HTML with the appropriate tags.
+</think>
+
+Relator : <span class="pessoa">ÁLVARO MANOEL ROSINDO BOURGUIGNON</span> ) ( grifo nosso ) 1 . Alei criada por inciativa do Poder Legislativo , em matéria de competência exclusiva do Poder executivo , evidencia vício de iniciativa caracterizador de sua inconstitucionalidade , não a convalidando a sanção pelo Prefeito Municipal . 2 . Acircunstância de se cuidar de lei meramente autorizativa não elide , suprime ou elimina a sua inconstitucionalidade pelo fato de estar ela dispondo sobre matéria reservada â iniciativa privativa do Poder Executivo . ( Processo : <span class="jurisprudencia">ADI 01987668220128260000 SP 0198766- 82.2012.8.26.0000</span> . Órgão Julgador : <span class="organizacao">Órgão Especial</span> . Publicação : <span class="tempo">18/04/2013</span> . Julgamento : <span class="tempo">27 de Março de 2013</span> .

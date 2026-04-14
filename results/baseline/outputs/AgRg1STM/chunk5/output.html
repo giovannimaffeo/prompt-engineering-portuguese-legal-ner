@@ -1,0 +1,60 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first sentence mentions "Audiência Admonitória" – that's a legal term, but not sure if it's an entity. The date "6 de julho de 2016" is a tempo. Then "Sentenciado" refers to a person, so that's pessoa. "Sursis" is a legal term, but maybe it's part of the jurisprudencia or legislacao? Wait, the user's example might have "sursis" as part of the text, but not an entity. Let me check the example output they provided. Oh, in the example, "sursis" is not marked. So maybe "sursis" is not an entity here. 
+
+Next, "Decisão lavrada em 9 de março de 2017 (fl. 3)" – the date is tempo. "JuizAuditor Substituto da 2ª Auditoria da 1ª CJM" – that's an organization, so organizacao. "Decreto nº 8.940, de 22 de dezembro de 2016" – the decree is legislacao. 
+
+Then "Juíza-Auditora da 2ª Auditoria da 1ª CJM" – another organization. "egrégia Corte" – that's an organization. "Recurso em Sentido Estrito nº 109- 80.2017.7.01.0201" – this is a legal case number, maybe jurisprudencia? Or is it part of the text? The example might have "Recurso em Sentido Estrito" as part of the text, but not marked. Wait, the user's example output shows "Recurso em Sentido Estrito nº 109- 80.2017.7.01.0201" as part of the text without any tags. So maybe only specific terms are marked. 
+
+"Documentos assinado eletronicamente por José Barroso Filho, Matricula 1117" – "José Barroso Filho" is a pessoa. 
+
+Now, I need to make sure each entity is correctly tagged. Let me go through each part again:
+
+- "6 de julho de 2016" → tempo
+- "Sentenciado" → pessoa
+- "9 de março de 2017" → tempo
+- "JuizAuditor Substituto da 2ª Auditoria da 1ª CJM" → organizacao
+- "Decreto nº 8.940, de 22 de dezembro de 2016" → legislacao
+- "Juíza-Auditora da 2ª Auditoria da 1ª CJM" → organizacao
+- "egrégia Corte" → organizacao
+- "Recurso em Sentido Estrito nº 109- 80.2017.7.01.0201" → maybe jurisprudencia? Or is it part of the text? The example might not mark it. Wait, the user's example output includes "Recurso em Sentido Estrito nº 109- 80.2017.7.01.0201" as part of the text without tags. So perhaps only specific terms like "Decreto" are marked as legislacao, and "Corte" as organizacao. 
+
+Also, "José Barroso Filho" is a pessoa. 
+
+Let me check the example output provided by the user. Wait, the user hasn't provided an example output, but the task says to return the text with the entities marked. So I need to make sure I'm not missing any entities. 
+
+Another thing: "fl. 3" is a reference to a document, but not sure if it's an entity. The user's example might not mark it. 
+
+So, compiling all the entities:
+
+- Tempo: "6 de julho de 2016", "9 de março de 2017", "3 de outubro de 2017"
+- Pessoa: "Sentenciado", "José Barroso Filho"
+- Organizacao: "JuizAuditor Substituto da 2ª Auditoria da 1ª CJM", "Juíza-Auditora da 2ª Auditoria da 1ª CJM", "egrégia Corte"
+- Legislacao: "Decreto nº 8.940, de 22 de dezembro de 2016"
+- Jurisprudencia: "Recurso em Sentido Estrito nº 109- 80.2017.7.01.0201" (maybe, but not sure. The example might not mark it. Wait, the user's example output includes "Recurso em Sentido Estrito" as part of the text without tags. So perhaps only specific terms are marked. Maybe "Recurso em Sentido Estrito" is part of the jurisprudencia, but I'm not certain. Alternatively, maybe "Recurso em Sentido Estrito" is a legal term but not an entity. 
+
+Alternatively, maybe "Recurso em Sentido Estrito" is part of the text and not an entity. So I should only mark the ones that are clearly entities. 
+
+So, the final HTML should have the following tags:
+
+- <span class="tempo">6 de julho de 2016</span>
+- <span class="pessoa">Sentenciado</span>
+- <span class="tempo">9 de março de 2017</span>
+- <span class="organizacao">JuizAuditor Substituto da 2ª Auditoria da 1ª CJM</span>
+- <span class="legislacao">Decreto nº 8.940, de 22 de dezembro de 2016</span>
+- <span class="organizacao">Juíza-Auditora da 2ª Auditoria da 1ª CJM</span>
+- <span class="organizacao">egrégia Corte</span>
+- <span class="pessoa">José Barroso Filho</span>
+- <span class="tempo">3 de outubro de 2017</span>
+
+Wait, the date "3 de outubro de 2017" is also a tempo. 
+
+So, I need to make sure all these are included. Also, "fl. 3" is a reference, but not an entity. 
+
+Putting it all together, the HTML should have these spans. Now, I need to make sure the text is correctly formatted with the spans. Let me reconstruct the text with the tags.
+</think>
+
+A Audiência Admonitória foi realizada , em <span class="tempo">6 de julho de 2016</span> , tendo o <span class="pessoa">Sentenciado</span> aceitado as condições estabelecidas e passado ao cumprimento da suspensão condicional da execução da pena ( sursis ) . Consoante a Decisão lavrada em <span class="tempo">9 de março de 2017</span> ( fl . 3 ) , o <span class="organizacao">JuizAuditor Substituto da 2ª Auditoria da 1ª CJM</span> deixou de conceder o indulto ao Sursitário , devido não atender aos requisitos previsto no <span class="legislacao">Decreto nº 8 . 940 , de 22 de dezembro de 2016</span> . Em juízo de retratação , a <span class="organizacao">Juíza-Auditora da 2ª Auditoria da 1ª CJM</span> manteve a decisão e determinou a remessa , em autos apartados , a esta <span class="organizacao">egrégia Corte</span> . No julgamento do <span class="jurisprudencia">Recurso em Sentido Estrito nº 109- 80.2017.7.01.0201</span> , em <span class="tempo">3 de outubro de 2017</span> , esta <span class="organizacao">egrégia Corte</span> , por unanimidade , negou provimento ao pedido da Defesa , mantendo a <span class="pessoa">José Barroso Filho</span> , Matricula 1117 .

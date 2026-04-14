@@ -1,0 +1,46 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. The entities to look for are pessoa, organizacao, tempo, local, legislação, and jurisprudência. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The first sentence: "Condeno o réu ao pagamento de honorários advocatícios , os quais fixo em R $ 1.000,00 ( mil reais ) , nos termos do art . 20 , § 4º , do CPC . Sentença sujeita a revisão necessária . Transitada em julgado , arquivem-se . P.R.I. ” ( fls . 299-v/300 ) ."
+
+Looking for entities here. "réu" is a generic term for the defendant, so it's not a specific person, so no pessoa tag. "CPC" is the Código de Processo Civil, which is legislation. So I should mark "CPC" as legislação. The "art. 20, § 4º" refers to an article and section of the legislation, so that part should also be marked. The "P.R.I." might be an acronym, but since it's not a specific legal entity, maybe it's not an entity. The "fls. 299-v/300" refers to page numbers, which are not time, so no tag there.
+
+Next part: "Irresignado , apela o DISTRITO FEDERAL ( fls . 305/313 ) . No seu apelo , o DF tece considerações sobre a evolução da remuneração dos professores vinculados à SEE/DF e a incorporação de quintos/décimos ."
+
+"DISTRITO FEDERAL" is a specific organization or local? Wait, the definition says "organização" includes public organs, and "local" includes places like states. But "Distrito Federal" is a federal district, which is a local entity. However, according to the guidelines, "local" should be marked if it's a specific place. So "DISTRITO FEDERAL" should be marked as local. Also, "DF" is an abbreviation for Distrito Federal, so that should also be marked as local. "SEE/DF" is the Secretaria de Estado da Educação, which is an organization. So "SEE/DF" should be marked as organizacao. 
+
+Wait, the user's example in the guidelines for "organizacao" includes "Câmara Legislativa", so "SEE/DF" is an organization. Also, "DF" is an abbreviation for Distrito Federal, which is a local entity. 
+
+So in the text, "DISTRITO FEDERAL" and "DF" are both local entities. "SEE/DF" is an organization. 
+
+Now, checking for other entities. The "fls." refers to folhas (pages), which are not time, so no tag. The "quintos/décimos" are fractions, not entities. 
+
+So putting it all together:
+
+- "CPC" is legislação.
+- "art. 20, § 4º" is part of the legislation, so also legislação.
+- "DISTRITO FEDERAL" and "DF" are local.
+- "SEE/DF" is organizacao.
+
+Wait, but the user's example for "organizacao" includes "UNIMED RIO COOPERATIVA DE TRABALHO MÉDICO DO RIO DE JANEIRO LTDA", which is a full name. "SEE/DF" is an abbreviation, but according to the guidelines, if it's an organization, it should be marked. So "SEE/DF" is an organization. 
+
+Also, "P.R.I." might be an acronym, but the guidelines say that if it's a specific legal entity, it should be marked. However, without knowing what P.R.I. stands for, I can't assume it's an entity. So it's safe to leave it as is.
+
+Now, applying the HTML tags:
+
+- "CPC" becomes <span class="legislacao">CPC</span>
+- "art. 20, § 4º" becomes <span class="legislacao">art. 20, § 4º</span>
+- "DISTRITO FEDERAL" becomes <span class="local">DISTRITO FEDERAL</span>
+- "DF" becomes <span class="local">DF</span>
+- "SEE/DF" becomes <span class="organizacao">SEE/DF</span>
+
+Other parts like "réu" are not specific people, so no tag. "fls." and page numbers are not time. "P.R.I." is not an entity. 
+
+So the final HTML should have these tags. Let me check again to make sure I didn't miss any entities. The text mentions "P.R.I." but since it's not clear, I leave it. The "fls. 299-v/300" and "fls. 305/313" are page numbers, not time. 
+
+Yes, that seems correct. Now, I'll format the text accordingly.
+</think>
+
+Condeno o réu ao pagamento de honorários advocatícios , os quais fixo em R $ 1.000,00 ( mil reais ) , nos termos do <span class="legislacao">art . 20 , § 4º , do CPC</span> . Sentença sujeita a revisão necessária . Transitada em julgado , arquivem-se . <span class="jurisprudencia">P.R.I.</span> ” ( <span class="tempo">fls . 299-v/300</span> ) . Irresignado , apela o <span class="local">DISTRITO FEDERAL</span> ( <span class="tempo">fls . 305/313</span> ) . No seu apelo , o <span class="local">DF</span> tece considerações sobre a evolução da remuneração dos professores vinculados à <span class="organizacao">SEE/DF</span> e a incorporação de quintos/décimos .

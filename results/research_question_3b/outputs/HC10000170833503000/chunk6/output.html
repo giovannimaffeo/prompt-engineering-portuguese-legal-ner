@@ -1,0 +1,29 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is "Prestadas as informações pela autoridade indigitada coatora , os autos foram remetidos à douta Procuradoria-Geral de Justiça que , no parecer de fl . 128-131v.º , opinou pela denegação da ordem . É , no essencial , o relatório . Decido ."
+
+Looking for entities here. "Procuradoria-Geral de Justiça" seems like an organization. That's a legal body, so I'll mark that as organizacao. The rest of the text doesn't have any other entities here.
+
+Next sentence: "Alega o imperante , primeiramente , com o mandamus , que o paciente encontra-se preso desde o dia 19.08.16 , sendo que a sessão de julgamento do Tribunal do Júri foi designada para o dia 25.01.18 , quando restará configurado o excesso de prazo para a formação da culpa . Penso razão não assistir ao impetrante ."
+
+Here, "Tribunal do Júri" is an organization, so that's organizacao. The dates "19.08.16" and "25.01.18" are temporal references, so those are tempo. The term "imperante" might be a person, but I need to check. Wait, "imperante" is a legal term referring to the petitioner, which is a person. So that's pessoa. "Impetrante" is also a term for the petitioner, so that's another pessoa. Wait, but the user's guidelines say to mark only names, not terms. Wait, the definitions say that "pessoa" is names of individuals. "Imperante" and "impetrante" are terms used in legal contexts to refer to the petitioner, but they are not names. So maybe they shouldn't be marked. Hmm, need to be careful here. The user's guidelines mention that only names should be marked, not generic terms. So "imperante" and "impetrante" are terms, not names, so they shouldn't be marked. So maybe those are not entities. Let me check again. The user's definition for pessoa is names of individuals. So if the text uses terms like "imperante" which is a role, not a name, then they shouldn't be marked. So in this case, "imperante" and "impetrante" are not names, so they are not marked. So the only entities here are the dates and the Tribunal do Júri.
+
+Next part: "Conforme se verifica do documento acostado aos autos , a sentença de pronúncia transitou em julgado para a defesa em 12.06.17 , tendo sido designada sessão de julgamento perante o Tribunal do Júri para o dia 25.01.18 ."
+
+Here, "Tribunal do Júri" again is an organization. The dates "12.06.17" and "25.01.18" are tempo. The term "sentença de pronúncia" refers to a legal document, which might be part of legislation, but the user's definition for legislação is norms like laws, decrees, etc. "Sentença de pronúncia" is a judicial decision, not a legislative act, so it's not legislação. So the only entities here are the dates and the Tribunal do Júri again.
+
+Putting it all together, the entities are:
+
+- Procuradoria-Geral de Justiça (organizacao)
+- Tribunal do Júri (organizacao)
+- 19.08.16 (tempo)
+- 25.01.18 (tempo)
+- 12.06.17 (tempo)
+
+Wait, the dates are in the format DD.MM.YY, which is common in Brazil. So all those dates are tempo. The "imperante" and "impetrante" are terms, not names, so they are not marked. The "douta Procuradoria-Geral de Justiça" is an organization. The "Tribunal do Júri" is also an organization. The rest of the text doesn't have any other entities. So the final HTML should have those spans marked accordingly.
+</think>
+
+<Prestadas as informações pela autoridade indigitada coatora , os autos foram remetidos à douta <span class="organizacao">Procuradoria-Geral de Justiça</span> que , no parecer de fl . 128-131v.º , opinou pela denegação da ordem . É , no essencial , o relatório . Decido . <span class="pessoa">imperante</span> , primeiramente , com o mandamus , que o paciente encontra-se preso desde o dia <span class="tempo">19.08.16</span> , sendo que a sessão de julgamento do <span class="organizacao">Tribunal do Júri</span> foi designada para o dia <span class="tempo">25.01.18</span> , quando restará configurado o excesso de prazo para a formação da culpa . Penso razão não assistir ao <span class="pessoa">impetrante</span> . Conforme se verifica do documento acostado aos autos , a <span class="legislacao">sentença de pronúncia</span> transitou em julgado para a defesa em <span class="tempo">12.06.17</span> , tendo sido designada sessão de julgamento perante o <span class="organizacao">Tribunal do Júri</span> para o dia <span class="tempo">25.01.18</span> .

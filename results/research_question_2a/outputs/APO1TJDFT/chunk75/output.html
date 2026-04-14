@@ -1,0 +1,49 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal document with mentions of people, organizations, dates, and locations. 
+
+Looking at the sample output, they've highlighted "SEBASTIÃO COELHO" as a pessoa, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as an organizacao, "2018ACO899XSQTZBL81ZOE6V34P" as tempo (though that looks like a code, maybe a date?), and "MARIA IVATÔNIA" as a pessoa again. Wait, but in the sample output, "MARIA IVATÔNIA" is part of the organizacao. Hmm, maybe the GABINETE is the organization, and the name MARIA IVATÔNIA is part of that. 
+
+Wait, the original text says "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So "GABINETE" is the organization, and "MARIA IVATÔNIA" is the person. But in the sample output, the entire "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is marked as organizacao. That might be because the entire phrase refers to the organization. But "MARIA IVATÔNIA" is a person. Wait, maybe the user's sample output has "MARIA IVATÔNIA" as part of the organizacao. Let me check the sample output again.
+
+In the sample output provided, the user's example shows:
+
+"Senhor Desembargador SEBASTIÃO COELHO - Presidente e Vogal Peço vista . Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 12 Fls ."
+
+The output is:
+
+"Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span> - Presidente e Vogal Peço vista . Código de Verificação :<span class="tempo">2018ACO899XSQTZBL81ZOE6V34P</span> <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> 12 Fls ."
+
+Wait, so "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is marked as organizacao. But "MARIA IVATÔNIA" is a person. However, in the original text, "MARIA IVATÔNIA" is part of the organization's name. So maybe the entire phrase is considered an organization. But the user's sample output includes "MARIA IVATÔNIA" as part of the organizacao. So perhaps the entire phrase is treated as an organization. 
+
+But in the original text, "MARIA IVATÔNIA" is the name of the Desembargadora, which is a judicial position. So maybe "MARIA IVATÔNIA" is a pessoa, but in the sample output, it's part of the organizacao. That's a bit confusing. Maybe the user's sample output is correct, and I should follow that. 
+
+So, in the input text, "SEBASTIÃO COELHO" is a pessoa. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organizacao. The code "2018ACO899XSQTZBL81ZOE6V34P" is marked as tempo. 
+
+Wait, but "2018ACO899XSQTZBL81ZOE6V34P" looks like a code, not a date. However, the user's sample output marks it as tempo. Maybe the user considers that code as a date or a temporal identifier. 
+
+So, following the sample, I need to mark "SEBASTIÃO COELHO" as pessoa, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as organizacao, and the code as tempo. 
+
+Now, looking at the original text again: "Peço a máxima vênia à eminente Relatora para dar provimento ao recurso e à remessa para julgar improcedente o pedido . O Senhor Desembargador SEBASTIÃO COELHO - Presidente e Vogal Peço vista . Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 12 Fls ."
+
+Breaking it down:
+
+- "SEBASTIÃO COELHO" is a person (pessoa).
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organization (organizacao).
+- "2018ACO899XSQTZBL81ZOE6V34P" is marked as tempo.
+- "MARIA IVATÔNIA" is part of the organization's name, so it's included in the organizacao tag.
+- "12 Fls" might be a local or a code, but in the sample output, it's not marked. So maybe it's not an entity here.
+
+So, applying the same logic, the output should have:
+
+- SEBASTIÃO COELHO as pessoa.
+- GABINETE DA DESEMBARGADORA MARIA IVATÔNIA as organizacao.
+- 2018ACO899XSQTZBL81ZOE6V34P as tempo.
+
+Other parts like "Relatora", "Desembargador", "Código de Verificação", "Fls" are not entities. 
+
+So the final HTML would have those spans with the respective classes. I need to make sure that the tags are correctly placed around the entities. Also, check if "MARIA IVATÔNIA" is part of the organizacao or if it's a separate pessoa. But according to the sample, it's part of the organizacao. So I'll follow that.
+</think>
+
+Peço a máxima vênia à eminente Relatora para dar provimento ao recurso e à remessa para julgar improcedente o pedido . O Senhor Desembargador <span class="pessoa">SEBASTIÃO COELHO</span> - Presidente e Vogal Peço vista . Código de Verificação :<span class="tempo">2018ACO899XSQTZBL81ZOE6V34P</span> <span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> 12 Fls .

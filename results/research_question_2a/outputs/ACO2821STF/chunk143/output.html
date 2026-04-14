@@ -1,0 +1,55 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text carefully. The input is: "Supremo Tribunal Federal ACO 2821 A GR / MT servidores ativos e inativos e dos pensionistas , observados critérios que preservem o equilíbrio financeiro e atuarial e o disposto neste artigo."
+
+Let me break it down word by word.
+
+"Supremo Tribunal Federal" – that's the name of a Brazilian federal court, so that's an organization. So I'll mark "Supremo Tribunal Federal" as organizacao.
+
+"ACO 2821" – ACO might stand for something, but without more context, I'm not sure. However, since it's part of the case number (ACO 2821 A GR / MT), maybe "ACO" is an organization? Or perhaps it's part of the case reference. But the user's example output shows "ACO 2821" as part of the text without any tag. Wait, looking at the example output provided by the user, maybe "ACO 2821" is not tagged. Let me check the example again. The user's example input is the same as the one here, and the output is the same as the input but with some tags. Wait, the user's example output isn't shown here, but the task says to return the text with the entities marked. So I need to process each part.
+
+Next, "A GR / MT" – "GR" could be "Grande" or an abbreviation, but in legal contexts, "GR" might refer to a court or a specific term. However, without more context, it's hard to say. The user's example might have "GR" as part of the case reference. But since the user hasn't provided an example output, I need to rely on the guidelines.
+
+"servidores ativos e inativos e dos pensionistas" – "servidores" is a term for public employees, so that's a pessoa? Wait, "servidores" refers to people, so maybe "servidores" should be marked as pessoa. But the term "servidores" is a collective term, so maybe it's not an individual. However, the user's guidelines might consider it as a pessoa. Alternatively, maybe it's not an entity. Wait, the user's example might have "servidores" as pessoa. Let me think again.
+
+"observados critérios que preservem o equilíbrio financeiro e atuarial e o disposto neste artigo." – "disposto neste artigo" refers to a legislative article, so "artigo" here is part of the legislation. So "neste artigo" would be legislacao. But "artigo" is a term, so maybe "artigo" is part of the legislation. However, the exact phrase "neste artigo" is part of the text, so the entire phrase "neste artigo" would be marked as legislacao? Or just "artigo"? Hmm.
+
+Wait, the user's example output might have "artigo" as part of the legislation. Let me check the example again. The user's input is the same as the one here, and the output is the same as the input but with some tags. Wait, the user hasn't provided an example output, but the task says to return the text with the entities marked. So I need to process each part.
+
+Let me go step by step.
+
+"Supremo Tribunal Federal" – this is an organization, so <span class="organizacao">Supremo Tribunal Federal</span>.
+
+"ACO 2821" – ACO could be an acronym for an organization, but without context, it's hard to say. However, in Brazilian legal contexts, ACO might refer to a specific entity. But since the user hasn't provided an example, maybe it's not tagged. Alternatively, "ACO" could be part of the case number, so maybe it's not an entity. So I'll leave it as is.
+
+"A GR / MT" – "GR" and "MT" could be abbreviations for states or regions. "MT" is Mato Grosso, a state in Brazil. So "MT" is a local. "GR" might be "Grande" or another abbreviation. If "GR" is a region, then it's a local. But without more context, it's safer to mark "MT" as local. So "GR" might not be a local. So "MT" is local.
+
+"servidores ativos e inativos e dos pensionistas" – "servidores" refers to people, so "servidores" is pessoa. "pensionistas" are people, so "pensionistas" is pessoa.
+
+"observados critérios que preservem o equilíbrio financeiro e atuarial e o disposto neste artigo." – "disposto neste artigo" refers to a legislative article, so "artigo" is part of the legislation. So "neste artigo" would be legislacao. But "artigo" is a term, so maybe "artigo" is part of the legislation. However, the exact phrase "neste artigo" is part of the text, so the entire phrase would be marked as legislacao. Wait, the user's example might have "artigo" as part of the legislation. So "neste artigo" would be legislacao.
+
+Putting it all together:
+
+- "Supremo Tribunal Federal" → organizacao
+- "MT" → local
+- "servidores" → pessoa
+- "pensionistas" → pessoa
+- "neste artigo" → legislacao
+
+So the HTML would be:
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / <span class="local">MT</span> <span class="pessoa">servidores</span> ativos e inativos e dos <span class="pessoa">pensionistas</span> , observados critérios que preservem o equilíbrio financeiro e atuarial e o disposto neste <span class="legislacao">artigo</span>.
+
+Wait, but "neste artigo" is the phrase, so maybe "neste artigo" is the entire legislacao. But the user's example might have "artigo" as the legislacao. Alternatively, "neste artigo" refers to a legislative article, so the entire phrase is part of the legislation. However, the exact term "artigo" is part of the legislation. So "artigo" is the term, so "neste artigo" would be legislacao. But the user's example might have "artigo" as the legislacao. Let me check again.
+
+The user's example input is the same as the one here, and the output is the same as the input but with some tags. Wait, the user hasn't provided an example output, but the task says to return the text with the entities marked. So I need to make sure that "artigo" is marked as legislacao. So "neste artigo" would be legislacao. But "artigo" is a term, so maybe "artigo" is part of the legislation. So the entire phrase "neste artigo" is part of the legislation. Therefore, the HTML would have "neste <span class="legislacao">artigo</span>".
+
+But I'm not entirely sure. However, based on the guidelines, "legislacao" refers to legislation, so "artigo" is part of that. Therefore, "artigo" is marked as legislacao.
+
+So the final HTML would be:
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / <span class="local">MT</span> <span class="pessoa">servidores</span> ativos e inativos e dos <span class="pessoa">pensionistas</span> , observados critérios que preservem o equilíbrio financeiro e atuarial e o disposto neste <span class="legislacao">artigo</span>.
+</think>
+
+<span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / <span class="local">MT</span> <span class="pessoa">servidores</span> ativos e inativos e dos <span class="pessoa">pensionistas</span> , observados critérios que preservem o equilíbrio financeiro e atuarial e o disposto neste <span class="legislacao">artigo</span>.

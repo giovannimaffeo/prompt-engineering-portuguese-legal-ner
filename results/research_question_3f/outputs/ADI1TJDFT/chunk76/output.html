@@ -1,0 +1,46 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The input text is: "Aduz que também é patente a inconstitucionalidade material da norma , uma vez que delega à autarquia de natureza especial o exercício do poder de polícia , atividade exclusiva do Estado . Requer a procedência do pedido , com a declaração de inconstitucionalidade da Lei Distrital n° 5.815/2017 , com efeitos ex tunc e erga omnes , tendo em vista a violação aos arts . 15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X , todos da Lei Orgânica do Distrito Federal . A Mesa da Câmara Legislativa do Distrito Federal defende a constitucionalidade da lei , ao argumento de que o Poder Legislativo é competente para tratar do tema ."
+
+Starting with the first part: "Aduz que também é patente a inconstitucionalidade material da norma , uma vez que delega à autarquia de natureza especial o exercício do poder de polícia , atividade exclusiva do Estado ."
+
+Here, I don't see any entities. "Aduz" is a verb, not a name. "autarquia" is a term, but not a specific organization. "Estado" is a generic term, not a specific place. So no tags here.
+
+Next part: "Requer a procedência do pedido , com a declaração de inconstitucionalidade da Lei Distrital n° 5.815/2017 , com efeitos ex tunc e erga omnes , tendo em vista a violação aos arts . 15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X , todos da Lei Orgânica do Distrito Federal ."
+
+Looking for entities here. "Lei Distrital n° 5.815/2017" is a law, so that's legislacao. The "Lei Orgânica do Distrito Federal" is also a law, so that's legislacao. The "n° 5.815/2017" is part of the law's name, so it should be included. The "Lei Orgânica do Distrito Federal" is a specific law, so that's legislacao. The "Distrito Federal" is a local entity, so that's local. The "n° 5.815/2017" is part of the law's name, so it's part of the legislacao tag. The "arts . 15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X" refers to articles and sections of the law, so they are part of the legislacao as well. Wait, but the example shows that articles and sections are part of the legislation. So the entire "Lei Distrital n° 5.815/2017" and "Lei Orgânica do Distrito Federal" should be marked as legislacao. Also, "Distrito Federal" is a local entity. 
+
+Then, the next part: "A Mesa da Câmara Legislativa do Distrito Federal defende a constitucionalidade da lei , ao argumento de que o Poder Legislativo é competente para tratar do tema ."
+
+Here, "Câmara Legislativa do Distrito Federal" is an organization, so that's organizacao. "Distrito Federal" again is a local entity. "Poder Legislativo" is a generic term, not a specific entity, so no tag. 
+
+Putting it all together:
+
+- "Lei Distrital n° 5.815/2017" → legislacao
+- "Lei Orgânica do Distrito Federal" → legislacao
+- "Distrito Federal" → local
+- "Câmara Legislativa do Distrito Federal" → organizacao
+
+Wait, the "Câmara Legislativa do Distrito Federal" is an organization, so that's organizacao. Also, "Distrito Federal" is a local entity. 
+
+So the HTML should have:
+
+<span class="legislacao">Lei Distrital n° 5.815/2017</span>, com efeitos ex tunc e erga omnes , tendo em vista a violação aos <span class="legislacao">arts . 15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X</span>, todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span>. <span class="organizacao">Câmara Legislativa do Distrito Federal</span> defende a constitucionalidade da lei , ao argumento de que o <span class="local">Distrito Federal</span> é competente para tratar do tema .
+
+Wait, but the "Lei Orgânica do Distrito Federal" is a specific law, so it's legislacao. The "Distrito Federal" is a local entity. The "Câmara Legislativa do Distrito Federal" is an organization. 
+
+Also, the "n° 5.815/2017" is part of the law's name, so it's included in the legislacao tag. The "arts . 15..." refers to articles of the law, so they are part of the legislacao as well. 
+
+I need to make sure that all parts of the law's name are included. For example, "Lei Distrital n° 5.815/2017" is a law, so the entire phrase is legislacao. Similarly, "Lei Orgânica do Distrito Federal" is another law. 
+
+So the final HTML should have those tags. Let me check the examples again. In example 5, "Lei Orgânica do Distrito Federal" is marked as legislacao. So yes, that's correct. 
+
+Also, "Câmara Legislativa do Distrito Federal" is an organization, so that's organizacao. 
+
+Therefore, the output should have the appropriate spans for each entity.
+</think>
+
+Aduz que também é patente a inconstitucionalidade material da norma , uma vez que delega à autarquia de natureza especial o exercício do poder de polícia , atividade exclusiva do Estado . Requer a procedência do pedido , com a declaração de inconstitucionalidade da <span class="legislacao">Lei Distrital n° 5.815/2017</span> , com efeitos ex tunc e erga omnes , tendo em vista a violação aos <span class="legislacao">arts . 15 , incisos XIV e XV , 19 , caput , 53 , 71 , § 1° , inciso IV e 100 , incisos VI e X</span> , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . <span class="organizacao">Câmara Legislativa do Distrito Federal</span> defende a constitucionalidade da lei , ao argumento de que o <span class="local">Distrito Federal</span> é competente para tratar do tema .

@@ -1,0 +1,55 @@
+<think>
+Okay, let's tackle this HTML annotation task. The user provided a legal text and wants specific entities marked with HTML spans. First, I need to understand each entity type and how to identify them.
+
+Starting with the input text: "RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+Breaking it down. The first part is "RICARDO LEWANDOWSKI". That's a full name, so that's a 'pessoa'. Then "AGTE" – that's likely an abbreviation for "Agente" or "Agente", but in legal contexts, "AGTE" might stand for "Agente" or "Agen" (like "Agen" in some contexts). However, the user's guidelines say to mark only names, not abbreviations unless they're full names. But here, "AGTE" is an abbreviation, not a full name, so maybe not. Wait, but the user's example for 'pessoa' includes "Ana Silva" and "Carlos de Souza". So maybe "AGTE" isn't a name, but an abbreviation. So maybe not mark it.
+
+Next is "UNIÃO". That's an organization. The user's example includes "UNIMED RIO COOPERATIVA..." so "UNIÃO" as an organization. Then "ADV" – that's an abbreviation for "Advogado", which is a profession, not an organization. So not marked. Then "ADVOGADO -GERAL DA UNIÃO" – "ADVOGADO" is a profession, so not marked. "GERAL DA UNIÃO" – "GERAL" is a title, not a name. "UNIÃO" again is an organization. So "UNIÃO" is marked as 'organizacao'.
+
+Then "AGDO" – abbreviation for "Agente" or "Agdo" (like "Agente do" something). Not a name, so not marked. "ESTADO DE MATO GROSSO" – "ESTADO" is a generic term, but "MATO GROSSO" is a state, so that's a 'local'. "PROC" is probably "Processo" or "Procurador", but not a specific entity. So "ESTADO DE MATO GROSSO" would be 'local' because "MATO GROSSO" is a specific state.
+
+Now, checking all the entities. Let's go step by step:
+
+1. "RICARDO LEWANDOWSKI" – full name, 'pessoa'.
+2. "AGTE" – abbreviation, not a name.
+3. "UNIÃO" – organization.
+4. "ADV" – abbreviation for profession, not marked.
+5. "ADVOGADO" – profession, not marked.
+6. "GERAL DA UNIÃO" – "GERAL" is a title, "UNIÃO" is already marked.
+7. "AGDO" – abbreviation, not marked.
+8. "ESTADO DE MATO GROSSO" – "MATO GROSSO" is a local (state), so 'local'.
+9. "PROC" – abbreviation, not marked.
+
+So the HTML should have:
+
+- "RICARDO LEWANDOWSKI" as <span class="pessoa">RICARDO LEWANDOWSKI</span>
+- "UNIÃO" as <span class="organizacao">UNIÃO</span>
+- "ESTADO DE MATO GROSSO" as <span class="local">ESTADO DE MATO GROSSO</span>
+
+Wait, but "ESTADO DE MATO GROSSO" – the entire phrase is a local? Or just "MATO GROSSO"? The user's definition says "expressões que correspondem a lugares explicitamente identificáveis". So "ESTADO DE MATO GROSSO" is a specific place, so it should be marked as 'local'. However, the user's example for 'local' includes "Distrito Federal", "Rio de Janeiro", etc. So "ESTADO DE MATO GROSSO" is a state, so it's a local.
+
+But in the input text, it's written as "ESTADO DE MATO GROSSO PROC." – maybe "PROC" is an abbreviation for "Procurador" or "Processo", but not sure. But the main part is "ESTADO DE MATO GROSSO".
+
+So the final HTML would be:
+
+RICARDO LEWANDOWSKI AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : ADVOGADO -GERAL DA <span class="organizacao">UNIÃO</span> AGDO . ( A / S ) : <span class="local">ESTADO DE MATO GROSSO</span> PROC .
+
+Wait, but "UNIÃO" appears twice. The first time it's "UNIÃO" as an organization. Then "GERAL DA UNIÃO" – "UNIÃO" again. So both instances should be marked as 'organizacao'.
+
+So the correct HTML would have both "UNIÃO" instances marked.
+
+Also, "AGTE" and "AGDO" are abbreviations, so not marked. "PROC" is an abbreviation, not a specific entity.
+
+So the final output should have:
+
+- "RICARDO LEWANDOWSKI" as 'pessoa'
+- "UNIÃO" (twice) as 'organizacao'
+- "ESTADO DE MATO GROSSO" as 'local'
+
+So the HTML would be:
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : ADVOGADO -GERAL DA <span class="organizacao">UNIÃO</span> AGDO . ( A / S ) : <span class="local">ESTADO DE MATO GROSSO</span> PROC .
+</think>
+
+<span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : ADVOGADO -GERAL DA <span class="organizacao">UNIÃO</span> AGDO . ( A / S ) : <span class="local">ESTADO DE MATO GROSSO</span> PROC .

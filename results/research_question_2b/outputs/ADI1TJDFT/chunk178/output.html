@@ -1,0 +1,49 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first sentence: "É inconstitucional disposição legal que versa sobre organização , funcionamento da administração do Distrito Federal e seus servidores públicos . Competência privativa do Chefe do Executivo ."
+
+Looking for entities here. "organização" is an organization, so I'll mark that with <span class="organizacao">. "Distrito Federal" is a local entity, so that should be <span class="local">. "servidores públicos" might be part of an organization, but since it's part of the description, maybe not. "Chefe do Executivo" refers to a person, so that's a pessoa. Wait, but "Chefe do Executivo" is a title, so maybe it's an organization? Or is it a person? Hmm, in legal contexts, "Chefe do Executivo" is usually a title for a person, like the Chief Executive, so I'll mark it as pessoa.
+
+Next sentence: "Vulneração aos artigos 53 , 71 , § 1º , incisos II e IV , e 100 , incisos VI e X , todos Lei Orgânica do Distrito Federal ."
+
+Here, "Lei Orgânica do Distrito Federal" is a legislation, so that's <span class="legislacao">. The numbers like 53, 71, etc., are parts of the legislation, so they might be part of the legislation reference. But the user's example in the output shows that the numbers are kept as is, so maybe they don't need to be marked. Wait, the user's example in the output includes "Lei n.º 2.404/1999" as a legislacao. So the numbers are part of the legislation reference. So in this case, "Lei Orgânica do Distrito Federal" is a legislation, so that's marked. The numbers 53, 71, etc., are part of the articles, so they might be part of the legislation, but the user's example shows that the entire "Lei n.º 2.404/1999" is marked as legislacao. So maybe the numbers in the articles are part of the legislation reference. But in the current sentence, the articles are part of the legislation, so maybe they are part of the legislacao. Wait, the user's example shows that the entire "Lei n.º 2.404/1999" is marked as legislacao. So in this case, "Lei Orgânica do Distrito Federal" is a legislation, so that's marked. The numbers 53, 71, etc., are part of the articles, but since they are part of the legislation, maybe they are included in the legislacao tag. But the user's example doesn't mark the numbers, only the law name. So perhaps the numbers are not marked. So in this case, "Lei Orgânica do Distrito Federal" is the legislacao, and the numbers are just text.
+
+Next sentence: "Declarada , com efeitos ex-tunc e erga omnes , a inconstitucionalidade da Lei n.º 2.404/1999 e dos artigos 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 e 146 , da Lei n.º 4.317/2009 ."
+
+Here, "Lei n.º 2.404/1999" and "Lei n.º 4.317/2009" are legislation, so they should be marked as legislacao. The numbers 64, 65, etc., are part of the articles, so they are part of the legislation reference. But again, the user's example shows that the entire law name is marked, not the numbers. So in this case, the law names are marked as legislacao, and the numbers are left as is.
+
+Putting it all together:
+
+- "organização" → organizacao
+- "Distrito Federal" → local
+- "Chefe do Executivo" → pessoa
+- "Lei Orgânica do Distrito Federal" → legislacao
+- "Lei n.º 2.404/1999" → legislacao
+- "Lei n.º 4.317/2009" → legislacao
+
+Other parts like "artigos 53" are part of the legislation, but since they are not named laws, they are left as text. The numbers in the articles are not marked. The "ex-tunc" and "erga omnes" are legal terms but not entities, so they remain as is.
+
+Now, I need to make sure that each entity is correctly tagged. Let me go through the text again step by step.
+
+Original text:
+
+"É inconstitucional disposição legal que versa sobre organização , funcionamento da administração do Distrito Federal e seus servidores públicos . Competência privativa do Chefe do Executivo . Vulneração aos artigos 53 , 71 , § 1º , incisos II e IV , e 100 , incisos VI e X , todos Lei Orgânica do Distrito Federal . Declarada , com efeitos ex-tunc e erga omnes , a inconstitucionalidade da Lei n.º 2.404/1999 e dos artigos 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 e 146 , da Lei n.º 4.317/2009 ."
+
+Breaking down:
+
+1. "organização" → organizacao
+2. "Distrito Federal" → local
+3. "Chefe do Executivo" → pessoa
+4. "Lei Orgânica do Distrito Federal" → legislacao
+5. "Lei n.º 2.404/1999" → legislacao
+6. "Lei n.º 4.317/2009" → legislacao
+
+Other parts like "artigos 53" are not marked as entities. The numbers in the articles are part of the legislation reference but not marked. The terms like "ex-tunc" and "erga omnes" are not entities, so they remain as is.
+
+So the final HTML should have the spans for those entities. Let me write that out.
+</think>
+
+É inconstitucional disposição legal que versa sobre <span class="organizacao">organização</span> , funcionamento da administração do <span class="local">Distrito Federal</span> e seus servidores públicos . Competência privativa do <span class="pessoa">Chefe do Executivo</span> . Vulneração aos artigos 53 , 71 , § 1º , incisos II e IV , e 100 , incisos VI e X , todos <span class="legislacao">Lei Orgânica do Distrito Federal</span> . Declarada , com efeitos ex-tunc e erga omnes , a inconstitucionalidade da <span class="legislacao">Lei n.º 2.404/1999</span> e dos artigos 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 e 146 , da <span class="legislacao">Lei n.º 4.317/2009</span> .

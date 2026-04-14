@@ -1,0 +1,59 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The text starts with "Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 .". Here, "Cleonilson Nicácio Silva" is a person, so that's a 'pessoa'. The "Matricula 8553" might be a number, but since it's part of the person's information, maybe it's not an entity. Wait, the user didn't mention numbers as entities, so I should leave that as is.
+
+Next, "Em 22/02/2018 18:56:14 ." – this is a date and time, so that's 'tempo'.
+
+Then, "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7". The URL is part of the text, but the user didn't specify URLs as entities. So maybe leave that as is. The "Codigo Verificador" is a code, not an entity type mentioned, so no tag.
+
+Moving on: "Justiça Militar da União Superior Tribunal Militar Sec Gab Min Cleonilson Nicácio Silva". "Justiça Militar da União" and "Superior Tribunal Militar" are organizations, so those are 'organizacao'. "Sec Gab Min" might be an abbreviation for a position or department, but since it's part of the name, maybe it's part of the organization. Wait, "Sec Gab Min" could be part of the organization's name. But the user's example might have "Sec Gab Min" as part of the organization. Let me check the example output. Wait, the user provided an example output where "Sec Gab Min Cleonilson Nicácio Silva" is part of the text. Wait, in the input text, after "Superior Tribunal Militar" comes "Sec Gab Min Cleonilson Nicácio Silva". So "Sec Gab Min" might be part of the organization's name. But maybe "Sec Gab Min" is an abbreviation for a section or department. However, the user's example output might have "Sec Gab Min" as part of the organization. Wait, looking at the example output provided by the user, in the sample input, the output includes "Sec Gab Min Cleonilson Nicácio Silva" as part of the text. Wait, the user's example input has "Sec Gab Min Cleonilson Nicácio Silva" and in the output, it's marked as 'organizacao'? Wait, no. Let me check the user's example again. Wait, the user's example input is the text provided, and the output is the HTML with entities marked. But the user hasn't provided the example output yet. Wait, the user's instruction says to return only the text with the entities marked. So I need to process the input text.
+
+Continuing, "RELATOR : Ministro Ten Brig Ar Cleonilson Nicácio Silva ." – "Ministro Ten Brig Ar Cleonilson Nicácio Silva" is a person, so that's 'pessoa'.
+
+"PACIENTE : HENRIQUE DOS SANTOS BOTELHO , Cap Ex ." – "HENRIQUE DOS SANTOS BOTELHO" is a person, so 'pessoa'.
+
+"IMPETRANTE : Dra . Gisele Correia dos Santos Batista ." – "Dra. Gisele Correia dos Santos Batista" is a person, so 'pessoa'.
+
+Now, checking for other entities. "Justiça Militar da União" and "Superior Tribunal Militar" are organizations. "Sec Gab Min" might be part of the organization's name, but since it's followed by a person's name, maybe it's part of the organization's structure. Wait, "Sec Gab Min" could be an abbreviation for "Secretaria da Gabinec de Ministro" or similar. But since the user's example might not have that, perhaps I should mark "Justiça Militar da União" and "Superior Tribunal Militar" as 'organizacao'.
+
+Also, "https : //eproc2g.stm.jus.br/eproc_2g_prod/" is a URL, but the user didn't mention URLs as entities, so leave as is.
+
+Now, putting it all together. Let me go through each part again.
+
+Original text:
+
+"Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 . Em 22/02/2018 18:56:14 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 Justiça Militar da União Superior Tribunal Militar Sec Gab Min Cleonilson Nicácio Silva RELATOR : Ministro Ten Brig Ar Cleonilson Nicácio Silva . PACIENTE : HENRIQUE DOS SANTOS BOTELHO , Cap Ex . IMPETRANTE : Dra . Gisele Correia dos Santos Batista ."
+
+Breaking down:
+
+- "Cleonilson Nicácio Silva" is a person (pessoa).
+- "22/02/2018 18:56:14" is tempo.
+- "Justiça Militar da União" is organizacao.
+- "Superior Tribunal Militar" is organizacao.
+- "Sec Gab Min Cleonilson Nicácio Silva" – "Sec Gab Min" might be part of the organization, but since it's followed by a person's name, maybe it's part of the organization's structure. Wait, but the person's name is repeated here. Wait, the text says "Sec Gab Min Cleonilson Nicácio Silva" – perhaps "Sec Gab Min" is part of the organization's name, and then the person's name again. But the person's name is already marked. So maybe "Sec Gab Min" is part of the organization. Alternatively, maybe "Sec Gab Min" is an abbreviation for a section, and the person's name is part of the organization. But the user's example might not have that. Alternatively, maybe "Sec Gab Min" is part of the organization's name. Let me check the original text again. The text after "Superior Tribunal Militar" is "Sec Gab Min Cleonilson Nicácio Silva". So "Sec Gab Min" is part of the organization's name, and then the person's name again. So "Sec Gab Min" is part of the organization. So I should mark "Sec Gab Min" as organizacao? Or is it part of the person's title? Wait, the person's name is "Cleonilson Nicácio Silva" which is already marked as pessoa. So "Sec Gab Min" is part of the organization's name. So "Justiça Militar da União", "Superior Tribunal Militar", and "Sec Gab Min" are all organizations. But "Sec Gab Min" might be an abbreviation for a section, so it's part of the organization. So I should mark "Sec Gab Min" as organizacao.
+
+Then, "RELATOR : Ministro Ten Brig Ar Cleonilson Nicácio Silva" – the person's name is already marked as pessoa.
+
+"PACIENTE : HENRIQUE DOS SANTOS BOTELHO" – pessoa.
+
+"IMPETRANTE : Dra . Gisele Correia dos Santos Batista" – pessoa.
+
+So the final HTML would have:
+
+- Cleonilson Nicácio Silva as pessoa.
+- 22/02/2018 18:56:14 as tempo.
+- Justiça Militar da União as organizacao.
+- Superior Tribunal Militar as organizacao.
+- Sec Gab Min as organizacao.
+- HENRIQUE DOS SANTOS BOTELHO as pessoa.
+- Dra. Gisele Correia dos Santos Batista as pessoa.
+
+Wait, but "Sec Gab Min" is part of the text after "Superior Tribunal Militar". So the full text after "Superior Tribunal Militar" is "Sec Gab Min Cleonilson Nicácio Silva". So "Sec Gab Min" is part of the organization's name. So I should mark "Sec Gab Min" as organizacao. But the person's name is again mentioned, which is already marked. So the entire "Sec Gab Min Cleonilson Nicácio Silva" would have "Sec Gab Min" as organizacao and "Cleonilson Nicácio Silva" as pessoa. But the user's example might have that. So in the HTML, "Sec Gab Min" is organizacao, and "Cleonilson Nicácio Silva" is pessoa.
+
+So putting it all together, the HTML would have the appropriate spans for each entity. Let me make sure I didn't miss any other entities. The URL is not an entity, and the code is not an entity. The rest are people, organizations, and time. So the final HTML should have those spans.
+</think>
+
+Documento assinado eletronicamente por <span class="pessoa">Cleonilson Nicácio Silva</span> , Matricula 8553 . Em <span class="tempo">22/02/2018 18:56:14</span> . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 <span class="organizacao">Justiça Militar da União</span> <span class="organizacao">Superior Tribunal Militar</span> <span class="organizacao">Sec Gab Min</span> <span class="pessoa">Cleonilson Nicácio Silva</span> RELATOR : <span class="pessoa">Ministro Ten Brig Ar Cleonilson Nicácio Silva</span> . PACIENTE : <span class="pessoa">HENRIQUE DOS SANTOS BOTELHO</span> , Cap Ex . IMPETRANTE : <span class="pessoa">Dra . Gisele Correia dos Santos Batista</span> .

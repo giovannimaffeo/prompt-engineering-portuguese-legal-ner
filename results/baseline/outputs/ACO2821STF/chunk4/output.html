@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text into parts to identify each entity.
+
+The text starts with "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536376 . Inteiro Teor do Acórdão - Página 2 de 17 Relatório 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC ."
+
+Looking for entities:
+
+1. "16/03/2018" is a date, so that's tempo.
+2. "PLENÁRIO" – this is a part of the court, maybe a local? Wait, PLENÁRIO is a term used in Brazilian courts for the full court, so maybe it's a local or part of the organization. But the user's example might consider it as part of the organization. Wait, the example in the output shows "PLENÁRIO" as part of the jurisprudencia? Wait, no. Let me check the sample output provided.
+
+Wait, the user provided a sample output. Let me check that. The sample input is similar to the one here. Let me see the sample output. Oh, the user hasn't provided a sample output, but the task says to return the text with entities marked. So I need to process the given text.
+
+Continuing:
+
+- "16/03/2018" is a date, so tempo.
+- "MATO GROSSO" is a state, so local.
+- "UNIÃO" is the Union, which is an organization, so organizacao.
+- "ADVOGADO -GERAL DA UNIÃO" – "ADVOGADO GERAL DA UNIÃO" is the General Attorney of the Union, which is an organization, so organizacao.
+- "ESTADO DE MATO GROSSO" – the state of Mato Grosso, so organizacao? Or is "ESTADO" a local? Wait, "ESTADO DE MATO GROSSO" is the state government, so it's an organization. So organizacao.
+- "RICARDO LEWANDOWSKI" is a person, so pessoa.
+- "PLENÁRIO" – in the context of a court, this might be part of the organization or a local. But in the example, maybe it's considered as part of the jurisprudencia? Wait, the user's example might have "PLENÁRIO" as part of the jurisprudencia. Wait, no. Let me think again. The term "PLENÁRIO" refers to the full court, which is part of the judicial organization. So maybe it's part of the organization. But the user's example might have it as part of the jurisprudencia. Hmm, this is a bit ambiguous. Let me check the original text again.
+
+Looking at the original text: "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI..." So "PLENÁRIO" is part of the court's name. In Brazilian legal terms, "PLENÁRIO" refers to the full court, which is part of the judicial organization. So maybe it's part of the organization. But the user's example might have it as part of the jurisprudencia. Wait, the user's example might not be provided, so I need to make a judgment.
+
+Alternatively, "PLENÁRIO" could be part of the jurisprudencia if it's referring to a court session. But I think it's more likely to be part of the organization. However, since the user hasn't provided examples, I need to rely on the definitions.
+
+Another entity: "14536376" is a number, but it's not one of the specified types. The URL is part of the text but not an entity. The date "16/03/2018" is tempo. "MATO GROSSO" is local. "UNIÃO" is organizacao. "ADVOGADO GERAL DA UNIÃO" is organizacao. "ESTADO DE MATO GROSSO" is organizacao. "RICARDO LEWANDOWSKI" is pessoa. "PLENÁRIO" – maybe it's part of the organization. But I'm not sure. Alternatively, "PLENÁRIO" could be part of the jurisprudencia if it's referring to a court session. But I think it's more likely to be part of the organization. However, since the user hasn't provided examples, I'll proceed with the entities I can confidently identify.
+
+So, the entities are:
+
+- 16/03/2018 → tempo
+- MATO GROSSO → local
+- UNIÃO → organizacao
+- ADVOGADO GERAL DA UNIÃO → organizacao
+- ESTADO DE MATO GROSSO → organizacao
+- RICARDO LEWANDOWSKI → pessoa
+- PLENÁRIO → maybe part of the organization or jurisprudencia. Since it's part of the court's name, perhaps it's part of the organization. But I'm not certain. Alternatively, since it's part of the court's name, maybe it's part of the jurisprudencia. Hmm. Let me think again. Jurisprudencia refers to judicial decisions or precedents. PLENÁRIO is a court session, so maybe it's part of the jurisprudencia. But I'm not sure. Alternatively, it's part of the organization. Since the user hasn't provided examples, I'll proceed with the entities I can confidently identify and mark the rest as per the guidelines.
+
+So, the final HTML would have the following spans:
+
+- <span class="tempo">16/03/2018</span>
+- <span class="local">MATO GROSSO</span>
+- <span class="organizacao">UNIÃO</span>
+- <span class="organizacao">ADVOGADO GERAL DA UNIÃO</span>
+- <span class="organizacao">ESTADO DE MATO GROSSO</span>
+- <span class="pessoa">RICARDO LEWANDOWSKI</span>
+
+The rest of the text remains as is. Let me check the original text again to ensure I didn't miss any other entities. The URL is part of the text but not an entity. The number 14536376 is not an entity. The "PLENÁRIO" is part of the court's name, but I'm not sure if it's an entity. Since the user hasn't provided examples, I'll proceed with the entities I identified.
+</think>
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536376 . Inteiro Teor do Acórdão - Página 2 de 17 Relatório <span class="tempo">16/03/2018</span> <span class="local">MATO GROSSO</span> <span class="organizacao">PLENÁRIO</span> A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : <span class="organizacao">ADVOGADO -GERAL DA UNIÃO</span> AGDO . ( A / S ) : <span class="organizacao">ESTADO DE MATO GROSSO</span> PROC .

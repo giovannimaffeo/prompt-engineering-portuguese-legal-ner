@@ -1,0 +1,55 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with appropriate spans. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. 
+
+First, I need to parse the input text carefully. Let me read through the example input again. The text is: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . Supremo Tribunal Federal 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO V O T O O Senhor Ministro Ricardo Lewandowski ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma ."
+
+Alright, let's break it down sentence by sentence.
+
+1. "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 ."
+   - The URL here is mentioned, but according to the guidelines, URLs like "http://..." shouldn't be marked as local. So I'll leave it as is.
+   - The number "14536378" is a number, but it's not a date or time, so no entity here.
+
+2. "Supremo Tribunal Federal"
+   - This is an organization. The example mentions "Supremo Tribunal Federal" as an organization. So I should mark it with <span class="organizacao">.
+
+3. "16/03/2018"
+   - This is a date, so it's a tempo entity. Mark as <span class="tempo">.
+
+4. "PLENÁRIO"
+   - This is part of the name of the court session. The example says that "Turmas cíveis" should be marked as organizacao. However, "PLENÁRIO" might be part of the organization's name. Wait, the example says "expressões que identifiquem turmas cíveis... devem ser anotadas como organização." But "PLENÁRIO" isn't a turma cível. Maybe it's part of the organization's name. Let me check the guidelines again. The example for organizacao includes "Supremo Tribunal Federal", which is a higher court. So "PLENÁRIO" here is part of the organization's name. But the original text says "Supremo Tribunal Federal 16/03/2018 PLENÁRIO..." So maybe "PLENÁRIO" is part of the organization's name. However, the user might consider "PLENÁRIO" as part of the organization. Wait, the example says that "Turmas cíveis" like "4ª Turma Cível" are organizations. So "PLENÁRIO" might be part of the organization's name. But the original text has "Supremo Tribunal Federal" followed by "PLENÁRIO". Maybe "PLENÁRIO" is the chamber, so it's part of the organization. But the guidelines say that "expressões que identifiquem turmas cíveis" are organizations. So "PLENÁRIO" might not be a turma cível. Hmm, perhaps "PLENÁRIO" is part of the organization's name. But I'm not sure. Wait, the example in the input text has "Supremo Tribunal Federal" as an organization. Then "PLENÁRIO" might be part of that. But maybe it's a separate entity. Alternatively, maybe it's part of the court's name. However, the guidelines don't mention PLENÁRIO as an organization. So maybe I should leave it as is unless it's a known organization. Since the example doesn't mention it, perhaps it's not an organization. So I'll leave it as is.
+
+5. "A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO V O T O"
+   - "A G .REG ." might be an abbreviation. The example says that jurisprudência includes numbers like "REsp 1694984/MS". The number "2.821" could be a case number, so it's jurisprudência. "Mato Grosso" is a state, so it's local. "V O T O" might be part of the court's name, but not sure. Wait, "Mato Grosso" is a state, so it's a local. So mark "Mato Grosso" as local.
+
+6. "O Senhor Ministro Ricardo Lewandowski ( Relator ) :"
+   - "Ricardo Lewandowski" is a person, so mark as pessoa. "Ministro" is a title, not a person. The parentheses "( Relator )" is a role, so not an entity.
+
+7. "Bem examinados os autos , verifico que a decisão agravada não merece reforma ."
+   - "auto" is a legal term, but it's not an entity. The rest doesn't have entities.
+
+Now, let me go through each part again to make sure.
+
+- "Supremo Tribunal Federal" is an organization.
+- "16/03/2018" is tempo.
+- "Mato Grosso" is local.
+- "Ricardo Lewandowski" is pessoa.
+- "2.821" is a case number, so jurisprudência.
+- The URL is not marked as local.
+- The rest of the text doesn't have entities.
+
+Wait, the number "2.821" in "AÇÃO CÍVEL ORIGINÁRIA 2.821" – the example says that jurisprudência includes numbers like "REsp 1694984/MS". So "2.821" is a case number, so it's jurisprudência. So I should mark that as <span class="jurisprudência">.
+
+Also, "Mato Grosso" is a state, so local.
+
+So the final HTML should have:
+
+- Supremo Tribunal Federal as organizacao.
+- 16/03/2018 as tempo.
+- Mato Grosso as local.
+- Ricardo Lewandowski as pessoa.
+- 2.821 as jurisprudência.
+
+Now, let me construct the HTML accordingly, making sure to wrap those parts with the correct spans.
+</think>
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . <span class="organizacao">Supremo Tribunal Federal</span> <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA <span class="jurisprudencia">2.821</span> <span class="local">MATO GROSSO</span> V O T O O <span class="pessoa">Senhor Ministro Ricardo Lewandowski</span> ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma .

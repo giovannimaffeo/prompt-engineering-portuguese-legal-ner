@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input is a legal document with various elements like case numbers, names, dates, and references to laws or resolutions.
+
+Starting with the first part: "Inst n° 0604337-81.2018.6.00.0000/DF 3 EXTRATO DA ATA Inst n° 0604337-81.2018.6.00.0000/DF ." Here, "Inst" might be an abbreviation for "Instância" or "Instrução", but since it's part of a case number, maybe it's not an entity. The case number itself might not be an entity unless specified. The "3 EXTRATO DA ATA" seems like part of the document title, so probably not an entity. 
+
+Next, "Relator : Ministro Luiz Fux ." Here, "Ministro Luiz Fux" is a person, so I should mark "Luiz Fux" as a pessoa. The "Relator" is a title, not an entity.
+
+"Interessado : Tribunal Superior Eleitoral ." "Tribunal Superior Eleitoral" is an organization, so that's organizacao.
+
+"Decisão : O Tribunal , por unanimidade , aprovou a proposta de alteração da Resolução-TSE n° 23.549/2017 , nos termos do voto do relator ." Here, "Resolução-TSE n° 23.549/2017" refers to a legislative resolution, so that's legislacao. The "TSE" might be an acronym for Tribunal Superior Eleitoral, which we already marked as an organization. The date "23.549/2017" is part of the resolution number, so maybe the year 2017 is tempo. Wait, the date format here is a bit unclear. The resolution number might have a date in it, like 23.549/2017, where 2017 is the year. So "2017" would be tempo.
+
+"Composição : Ministros Luiz Fux ( presidente ) , Rosa Weber , Luís Roberto Barroso , Napoleão Nunes Maia Filho , Jorge Mussi , Tarcísio Vieira de Carvalho Neto e Carlos Horbach ." Here, all the names like "Luiz Fux", "Rosa Weber", etc., are pessoas. The "presidente" is a title, not an entity. 
+
+"Vice-Procurador-Geral Eleitoral em exercício : Luciano Mariz Maia ." "Luciano Mariz Maia" is a pessoa.
+
+"SESSÃO DE 8.3.2018 ." The date "8.3.2018" is tempo. The format might be day.month.year, so 8.3.2018 would be March 8, 2018. So "8.3.2018" is tempo.
+
+Now, checking for any other entities. The "TSE" in "Resolução-TSE" is part of the resolution name, so it's part of the legislacao entity. The "Tribunal Superior Eleitoral" was already marked as organizacao. 
+
+I need to make sure that each entity is correctly tagged. Let me go through each part again:
+
+- "Ministro Luiz Fux" → pessoa (Luiz Fux)
+- "Tribunal Superior Eleitoral" → organizacao
+- "Resolução-TSE n° 23.549/2017" → legislacao (the entire resolution number)
+- "2017" → tempo (year)
+- All names in "Composição" → pessoa
+- "Luciano Mariz Maia" → pessoa
+- "8.3.2018" → tempo
+
+Wait, the date "8.3.2018" is in the format day.month.year, so the year is 2018. So "2018" is tempo. Also, the resolution number has "23.549/2017", so "2017" is tempo. 
+
+I need to make sure that the entire resolution number is marked as legislacao. The "Resolução-TSE n° 23.549/2017" is the full name of the legislation, so the entire phrase should be in <span class="legislacao">. 
+
+Similarly, the case number "Inst n° 0604337-81.2018.6.00.0000/DF" might not be an entity unless specified. The user didn't mention case numbers as entities, so I'll leave them as is. 
+
+So, putting it all together, the HTML should have the appropriate spans for each entity. Let me structure the output accordingly.
+</think>
+
+Inst n° 0604337-81.2018.6.00.0000/DF 3 EXTRATO DA ATA Inst n° 0604337-81.2018.6.00.0000/DF . Relator : Ministro <span class="pessoa">Luiz Fux</span> . Interessado : <span class="organizacao">Tribunal Superior Eleitoral</span> . Decisão : O Tribunal , por unanimidade , aprovou a proposta de alteração da <span class="legislacao">Resolução-TSE n° 23.549/2017</span> , nos termos do voto do relator . Composição : <span class="pessoa">Ministros Luiz Fux</span> ( presidente ) , <span class="pessoa">Rosa Weber</span> , <span class="pessoa">Luís Roberto Barroso</span> , <span class="pessoa">Napoleão Nunes Maia Filho</span> , <span class="pessoa">Jorge Mussi</span> , <span class="pessoa">Tarcísio Vieira de Carvalho Neto</span> e <span class="pessoa">Carlos Horbach</span> . Vice-Procurador-Geral Eleitoral em exercício : <span class="pessoa">Luciano Mariz Maia</span> . SESSÃO DE <span class="tempo">8.3.2018</span> .

@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text sentence by sentence.
+
+The first part is "Nesse sentido , a decisão que decretou a prisão preventiva do paciente : [ ... ] ''". Here, "prisão preventiva" is a legal term, but it's not one of the specified entities. The word "paciente" might be a person, but it's used in a generic sense here, so maybe not. Wait, the user mentioned that "pessoa" should be names, not generic terms. So "paciente" is a role, not a name, so it's not marked.
+
+Next, "O delito imputado ao investigado é punido com pena superior a quatro anos de privação de liberdade." The term "investigado" is a role, not a name, so no mark. "Delito" is a legal term but not an entity type here.
+
+Then, "Além disso , há fortíssimos indícios quanto à materialidade e autoria do delito , o que se extrai especialmente do depoimento da própria vítima à Autoridade Policial .". "Autoridade Policial" is an organization, so I should mark that as organizacao. "Vítima" is a role, not a name, so no mark.
+
+Next sentence: "Por outro lado , a prisão preventiva se justifica como forma de garantia da ordem pública , face à gravidade concreta do fato e diante da extremada periculosidade do investigado .". "Investigado" again is a role, not a name. No marks here.
+
+Next part: "Pelo que consta dos autos , no dia anterior ao fato a vítima estava em sua casa quando o Sr. Márcio Adair ligou o som de seu carro em volume excessivo sendo que , ao ser solicitado que o baixasse , disse que `` quem manda ali é ele '' ."
+
+Here, "Sr. Márcio Adair" is a person's name. So I need to mark "Márcio Adair" as pessoa. Also, "Autoridade Policial" was mentioned earlier, so that's an organizacao. "Dia anterior ao fato" refers to a time, so "dia anterior ao fato" should be tempo. Wait, the user's definition for tempo includes dates, but here it's a relative time. The example given includes "março de 2013", so maybe "dia anterior ao fato" is a temporal reference. But the user's example for tempo includes "período de maio a novembro de 2014", so maybe "dia anterior ao fato" is a temporal expression. However, the user's instruction says to mark only explicit temporal references. Since "dia anterior ao fato" is a relative time, maybe it's not marked. Wait, the example includes "31 de dezembro de 2016" and "2016", so maybe "dia anterior ao fato" is not a specific date, so it's not marked. Hmm, need to check.
+
+Wait, the user's definition for tempo is "expressões que contenham uma referência temporal explícita, incluindo datas completas, datas parciais, anos isolados, dias da semana, meses ou intervalos de tempo". So "dia anterior ao fato" is a relative time, but not a specific date. So maybe it's not marked. However, the user's example includes "período de maio a novembro de 2014", which is an interval. So "dia anterior ao fato" is a temporal reference but not a specific date. So perhaps it's not marked. Therefore, only "Sr. Márcio Adair" is a pessoa, and "Autoridade Policial" is an organizacao.
+
+Wait, "Autoridade Policial" is an organization. So in the text, "Autoridade Policial" should be marked as organizacao. Also, "Sr. Márcio Adair" is a pessoa. Are there any other entities?
+
+Looking back, "prisão preventiva" is a legal term but not one of the entity types. "Vítima" is a role, not a name. "Investigado" is a role. "Autoridade Policial" is an organization. "Sr. Márcio Adair" is a person. So the only entities are "Autoridade Policial" (organizacao) and "Márcio Adair" (pessoa). Wait, "Sr." is part of the name, so "Sr. Márcio Adair" should be marked as pessoa. But the user's definition for pessoa includes names, so "Márcio Adair" is the name, and "Sr." is a title. The user's guidelines say to include articles and possessives. So "Sr." is part of the name, so the entire "Sr. Márcio Adair" should be marked as pessoa. Wait, but the user's example for pessoa includes "Ana Silva", "Carlos de Souza", etc. So "Sr. Márcio Adair" is a person's name with a title, so it should be marked as pessoa.
+
+So in the text, "Autoridade Policial" is an organizacao, and "Sr. Márcio Adair" is a pessoa. Are there any other entities?
+
+Looking again, "no dia anterior ao fato" is a temporal reference, but since it's not a specific date, maybe it's not marked. The user's example for tempo includes "março de 2013", which is a month and year. "Dia anterior ao fato" is a relative time, not a specific date, so it's not marked. Therefore, the only entities are "Autoridade Policial" and "Sr. Márcio Adair".
+
+Wait, the user's example for tempo includes "período de maio a novembro de 2014", which is an interval. So "dia anterior ao fato" is a temporal reference but not a specific date. So it's not marked. Therefore, the only entities are "Autoridade Policial" (organizacao) and "Sr. Márcio Adair" (pessoa).
+
+So the final HTML should have those two entities marked. Let me check again.
+
+Original text: "Autoridade Policial" is an organization. "Sr. Márcio Adair" is a person. So the HTML should have those two spans. The rest of the text remains as is.
+</think>
+
+Nesse sentido , a decisão que decretou a prisão preventiva do paciente : [ ... ] '' O delito imputado ao investigado é punido com pena superior a quatro anos de privação de liberdade . Além disso , há fortíssimos indícios quanto à materialidade e autoria do delito , o que se extrai especialmente do depoimento da própria vítima à <span class="organizacao">Autoridade Policial</span> . Por outro lado , a prisão preventiva se justifica como forma de garantia da ordem pública , face à gravidade concreta do fato e diante da extremada periculosidade do investigado . Pelo que consta dos autos , no dia anterior ao fato a vítima estava em sua casa quando o <span class="pessoa">Sr. Márcio Adair</span> ligou o som de seu carro em volume excessivo sendo que , ao ser solicitado que o baixasse , disse que `` quem manda ali é ele '' .

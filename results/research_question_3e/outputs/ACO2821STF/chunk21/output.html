@@ -1,0 +1,42 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each span should have a class indicating the type.
+
+First, I need to carefully read the input text and identify which parts fit each category. Let me start by going through the text sentence by sentence.
+
+The first part is: "Requereu seja determinado à ré que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o da situação de irregular do Cadastro de Regime Próprio de Previdência Social CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CAUC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade da Lei 9.717/1998 , do Decreto 3.788/2001 e da Portaria MPS 204/2008 e de suas posteriores alterações ."
+
+Looking for entities here. "Estado de Mato Grosso" is a local, so that should be marked as local. "CADPREV", "CADIN", "CAUC", "SIAFI", "SICONV" are acronyms for systems, which might be considered as local or maybe not. Wait, the guidelines say that local is for explicit places, but these are systems, not places. So maybe they are not local. Then "Lei 9.717/1998", "Decreto 3.788/2001", "Portaria MPS 204/2008" are all legislação. The "Mato Grosso" is a state, so local. The "Estado de Mato Grosso" is a local. Also, "CADPREV" is a system, but the example in the guidelines includes "CADPREV" as part of a local? Wait, no. The example in the guidelines for local includes "COMARCA DE BELO HORIZONTE", "Distrito Federal", etc. So "CADPREV" is a system, not a place. So maybe not marked as local. The parentheses have CADIN, CAUC, SIAFI, SICONV – these are systems, but they are not local. So they might be part of the legislação? Or are they part of the local? Wait, the user's example includes "Lei nº 8.666/93" as legislação, so similar here. So "Lei 9.717/1998" is legislação. Similarly for Decreto and Portaria. 
+
+Next part: "A tutela de urgência foi deferida ( documento eletrônico 9 ) . Em contestação ( documento eletrônico 27 ) , a União defendeu a constitucionalidade da Lei 9.717/1998 e do Decreto 3.788/2001 , aduzindo que a finalidade da Lei foi a de regular nacionalmente os Regimes Próprios de Previdência , impondo o cumprimento de determinadas exigências a todos os entes da Federação ."
+
+Here, "União" is an organization, so that should be marked as organizacao. The "documento eletrônico 9" and "documento eletrônico 27" are references to documents, but the guidelines say that only specific legal entities are marked. The examples don't mention documents, so maybe they are not considered. The "Lei 9.717/1998" and "Decreto 3.788/2001" are again legislação. "Regimes Próprios de Previdência" might be part of the legislation, but the user's example has "Lei nº 8.666/93" as legislação, so the full name of the law is marked. 
+
+Wait, the user's example shows "art.61 , §1º , da Lei nº 9.430/96" as legislação. So in this case, "Lei 9.717/1998" is marked as legislação. Similarly, "Decreto 3.788/2001" and "Portaria MPS 204/2008" are also legislação. 
+
+Also, "União" is an organization. So the text should have "União" as organizacao. 
+
+Now, checking for other entities. The "Estado de Mato Grosso" is a local. The "CADPREV", "CADIN", etc., are systems, but not places. So they are not local. 
+
+In the first sentence, "Certificado de Regularidade Previdenciária do Estado de Mato Grosso" – "Estado de Mato Grosso" is a local. 
+
+So putting it all together:
+
+- "Estado de Mato Grosso" → local
+- "Lei 9.717/1998", "Decreto 3.788/2001", "Portaria MPS 204/2008" → legislação
+- "União" → organizacao
+- "documento eletrônico 9" and "documento eletrônico 27" – not sure, but the guidelines don't mention documents, so maybe leave as is.
+
+Wait, the user's example includes "REsp n . 1694984/MS" as jurisprudência. The input text has "documento eletrônico 9" and "documento eletrônico 27" – these are references to documents, but the guidelines don't specify them. The examples don't mention documents, so I think they should be left as is. 
+
+So the final HTML would have:
+
+- <span class="local">Estado de Mato Grosso</span>
+- <span class="legislacao">Lei 9.717/1998</span>, <span class="legislacao">Decreto 3.788/2001</span>, <span class="legislacao">Portaria MPS 204/2008</span>
+- <span class="organizacao">União</span>
+
+Other parts like "CADPREV", "CADIN", etc., are not local or legislação. The "Regimes Próprios de Previdência" is part of the text but not an entity. 
+
+So the output should have these entities marked accordingly.
+</think>
+
+Requereu seja determinado à ré que renove o Certificado de Regularidade Previdenciária do <span class="local">Estado de Mato Grosso</span> , retirando-o da situação de irregular do Cadastro de Regime Próprio de Previdência Social CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CAUC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade da <span class="legislacao">Lei 9.717/1998</span> , do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS 204/2008</span> e de suas posteriores alterações . A tutela de urgência foi deferida ( documento eletrônico 9 ) . Em contestação ( documento eletrônico 27 ) , a <span class="organizacao">União</span> defendeu a constitucionalidade da <span class="legislacao">Lei 9.717/1998</span> e do <span class="legislacao">Decreto 3.788/2001</span> , aduzindo que a finalidade da Lei foi a de regular nacionalmente os Regimes Próprios de Previdência , impondo o cumprimento de determinadas exigências a todos os entes da Federação .

@@ -1,0 +1,94 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. First, I need to understand each entity type and how to identify them in the text.
+
+Starting with the input text: "Dessa feita , possibilitar que entes com o objeto social delimitado legal e constitucionalmente à fiscalização do exercício profissional possam exercer análise necessária , nos termos da Lei 1.172/96 , para a concessão de Alvará de Construção ou Carta de Habite-se de empreendimentos no Distrito Federal , implica em chancelar violação severa às normas constitucionais , nos termos já explicitados , o que não pode ser tolerado pelo Poder Judiciário do Distrito Federal e Territórios '' . Forte em tais considerações , admito a presente ação direta e julgo PROCEDENTE O PEDIDO deduzido na inicial para proclamar , com efeitos erga omnes e ex tunc , a inconstitucionalidade formal e material da Lei distrital n° 5.815 , de 3 de abril de 2017 , tendo em vista a violação aos arts ."
+
+First, I need to scan for each entity type:
+
+1. **Pessoa**: Look for names. The text mentions "Poder Judiciário" which is an organization, not a person. No names like "Ana Silva" or similar. So no pessoa entities here.
+
+2. **Organização**: "Poder Judiciário" is an organization. Also, "Distrito Federal e Territórios" is a local, but maybe "Poder Judiciário" is an organization. Wait, the definition says organizations include public organs, courts, etc. "Poder Judiciário" is the judicial power, so it's an organization. Also, "Distrito Federal" is a local, but maybe "Distrito Federal e Territórios" is a local? Wait, the definition says "local" includes regions like Distrito Federal. So "Distrito Federal" is a local. But "Poder Judiciário" is an organization.
+
+3. **Tempo**: The text has "3 de abril de 2017" which is a date, so that's tempo. Also, "de 3 de abril de 2017" has the date.
+
+4. **Local**: "Distrito Federal" and "Distrito Federal e Territórios" are local entities. Also, "Distrito Federal" is mentioned again in the text.
+
+5. **Legislação**: "Lei 1.172/96" and "Lei distrital n° 5.815 , de 3 de abril de 2017" are legislative references. Also, "art. 71 da Lei 8.666/93" but that's not in the text here. Wait, the text mentions "Lei 1.172/96" and "Lei distrital n° 5.815" so those are legislation. Also, "art. 71 da Lei 8.666/93" is in the example, but the input text has "violação aos arts." which is incomplete, but the user might have intended to mention "arts." as part of the legislation. However, the actual text here doesn't have the full "art." so maybe not. But the user's example might have a typo. Anyway, in the given text, "Lei 1.172/96" and "Lei distrital n° 5.815" are legislation.
+
+6. **Jurisprudência**: The text doesn't mention any specific judicial decisions, precedents, or súmulas. So no jurisprudência here.
+
+Now, applying the tags:
+
+- "Lei 1.172/96" → legislation
+- "Lei distrital n° 5.815" → legislation
+- "3 de abril de 2017" → tempo
+- "Distrito Federal" → local
+- "Poder Judiciário" → organização
+
+Wait, "Distrito Federal e Territórios" is mentioned. "Distrito Federal" is a local, but "Territórios" might be part of the local. However, the exact term "Distrito Federal" is a local. "Poder Judiciário" is an organization.
+
+So, in the text, the entities would be:
+
+- Lei 1.172/96 → legislação
+- Lei distrital n° 5.815 → legislação
+- 3 de abril de 2017 → tempo
+- Distrito Federal → local
+- Poder Judiciário → organização
+
+Wait, the user's example in the guidelines has "Distrito Federal" as local. Also, "Poder Judiciário" is an organization. So, in the text:
+
+"para a concessão de Alvará de Construção ou Carta de Habite-se de empreendimentos no Distrito Federal" → "Distrito Federal" is local.
+
+"Poder Judiciário do Distrito Federal e Territórios" → "Poder Judiciário" is organization, "Distrito Federal e Territórios" is local? Or maybe "Distrito Federal" is local and "Territórios" is part of it? The definition says "local" includes regions like Distrito Federal. So "Distrito Federal" is a local, and "Territórios" might be part of the same local, but the exact term is "Distrito Federal" so that's the local.
+
+Also, "Lei distrital n° 5.815" → legislation.
+
+So, in the HTML, those parts should be wrapped with the respective classes.
+
+Now, let's process the text step by step.
+
+Original text:
+
+"Dessa feita , possibilitar que entes com o objeto social delimitado legal e constitucionalmente à fiscalização do exercício profissional possam exercer análise necessária , nos termos da Lei 1.172/96 , para a concessão de Alvará de Construção ou Carta de Habite-se de empreendimentos no Distrito Federal , implica em chancelar violação severa às normas constitucionais , nos termos já explicitados , o que não pode ser tolerado pelo Poder Judiciário do Distrito Federal e Territórios '' . Forte em tais considerações , admito a presente ação direta e julgo PROCEDENTE O PEDIDO deduzido na inicial para proclamar , com efeitos erga omnes e ex tunc , a inconstitucionalidade formal e material da Lei distrital n° 5.815 , de 3 de abril de 2017 , tendo em vista a violação aos arts ."
+
+Breaking down:
+
+- "Lei 1.172/96" → legislação
+- "Distrito Federal" → local
+- "Poder Judiciário" → organização
+- "Distrito Federal e Territórios" → "Distrito Federal" is local, "Territórios" might not be a local as per the definition. Wait, the definition says "local" includes regions like Distrito Federal. "Territórios" might be part of the same local, but the exact term is "Distrito Federal" so we mark that as local. "Territórios" is not a specific place, so it's not marked.
+- "Lei distrital n° 5.815" → legislação
+- "3 de abril de 2017" → tempo
+
+So, the HTML should have:
+
+- <span class="legislacao">Lei 1.172/96</span>
+- <span class="local">Distrito Federal</span>
+- <span class="organizacao">Poder Judiciário</span>
+- <span class="legislacao">Lei distrital n° 5.815</span>
+- <span class="tempo">3 de abril de 2017</span>
+
+Now, applying these to the text:
+
+Original text parts:
+
+"para a concessão de Alvará de Construção ou Carta de Habite-se de empreendimentos no <span class="local">Distrito Federal</span> , implica em chancelar violação severa às normas constitucionais , nos termos já explicitados , o que não pode ser tolerado pelo <span class="organizacao">Poder Judiciário</span> do <span class="local">Distrito Federal</span> e Territórios '' . ... a inconstitucionalidade formal e material da <span class="legislacao">Lei distrital n° 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , tendo em vista a violação aos arts ."
+
+Also, "Lei 1.172/96" is in the text: "nos termos da <span class="legislacao">Lei 1.172/96</span>"
+
+So the entire text would be:
+
+"Dessa feita , possibilitar que entes com o objeto social delimitado legal e constitucionalmente à fiscalização do exercício profissional possam exercer análise necessária , nos termos da <span class="legislacao">Lei 1.172/96</span> , para a concessão de Alvará de Construção ou Carta de Habite-se de empreendimentos no <span class="local">Distrito Federal</span> , implica em chancelar violação severa às normas constitucionais , nos termos já explicitados , o que não pode ser tolerado pelo <span class="organizacao">Poder Judiciário</span> do <span class="local">Distrito Federal</span> e Territórios '' . Forte em tais considerações , admito a presente ação direta e julgo PROCEDENTE O PEDIDO deduzido na inicial para proclamar , com efeitos erga omnes e ex tunc , a inconstitucionalidade formal e material da <span class="legislacao">Lei distrital n° 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , tendendo em vista a violação aos arts ."
+
+Wait, the original text has "de 3 de abril de 2017" which is "de" followed by the date. So the "3 de abril de 2017" is the date, so it's marked as tempo.
+
+Also, "Lei distrital n° 5.815" is legislation.
+
+So that's all the entities. The rest of the text doesn't have any other entities. Let me check again for any missed entities.
+
+"Lei distrital n° 5.815" is legislation. "3 de abril de 2017" is tempo. "Distrito Federal" is local. "Poder Judiciário" is organization. "Lei 1.172/96" is legislation. That's all. The rest of the text doesn't have any other entities.
+
+So the final HTML should have these tags. Now, I need to make sure that the tags are correctly placed and that the text is otherwise unchanged.
+</think>
+
+Dessa feita , possibilitar que entes com o objeto social delimitado legal e constitucionalmente à fiscalização do exercício profissional possam exercer análise necessária , nos termos da <span class="legislacao">Lei 1.172/96</span> , para a concessão de Alvará de Construção ou Carta de Habite-se de empreendimentos no <span class="local">Distrito Federal</span> , implica em chancelar violação severa às normas constitucionais , nos termos já explicitados , o que não pode ser tolerado pelo <span class="organizacao">Poder Judiciário</span> do <span class="local">Distrito Federal</span> e Territórios '' . Forte em tais considerações , admito a presente ação direta e julgo PROCEDENTE O PEDIDO deduzido na inicial para proclamar , com efeitos erga omnes e ex tunc , a inconstitucionalidade formal e material da <span class="legislacao">Lei distrital n° 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , tendendo em vista a violação aos arts .

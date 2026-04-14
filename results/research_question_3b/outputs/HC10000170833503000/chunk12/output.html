@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first sentence: "No dia seguinte , ao ver a vítima passando em seu veículo , o investigado saiu do estabelecimento onde se encontrava na posse de arma de fogo e efetuou cerca de seis disparos na direção de Matheus Pereira dos Santos , atingindo seu carro por duas vezes , o que revela real periculosidade capaz de sustentar a prisão cautelar e fazer presumir que solto , o investigado colocará em risco a ordem pública em razão do seu descontrole emocional ."
+
+Looking for entities here. "No dia seguinte" is a time reference, so that's tempo. "Matheus Pereira dos Santos" is a full name, so that's pessoa. "Estabelecimento" might be an organization, but it's a bit generic. Wait, the definition says organizations are formal entities like public organs, courts, etc. "Estabelecimento" could be a place, but maybe not a specific organization. Maybe it's a local, but the definition says local is specific places like cities, states, etc. So "estabelecimento" might not be a local. Maybe it's a generic term, so not marked. "arma de fogo" is a weapon, not an entity. "seu carro" is a car, not an entity. "prisão cautelar" is a legal term, but it's part of a phrase, not a specific legislation. "ordem pública" is a legal concept, but again, not a specific entity. "descontrole emocional" is a description, not an entity.
+
+Next sentence: "Uma pessoa que anda armada e efetua disparos contra outrem em via pública , por motivo tão banal , não pode permanecer em liberdade ."
+
+Here, "pessoa" is a generic term, so not marked. "via pública" is a local, but it's a generic term. Wait, the definition says local is specific places. "Via pública" is a general term for public roads, so maybe not marked. "liberdade" is a legal term but not an entity.
+
+Next part: "Ademais , conforme narrado pela autoridade policial à f . 35 , soma-se ainda em desfavor do investigado as informações de que ele possui envolvimento com o tráfico de drogas e delitos de roubo ."
+
+"autoridade policial" is an organization, since it's a police authority. "f. 35" might be a reference to a legal document, like a court decision or a legal text. Wait, "f. 35" could be a footnote or a reference to a legal document. But the definition for legislação includes legal norms like laws, decrees, etc. If "f. 35" refers to a legal document, maybe it's a legislation. However, without more context, it's hard to tell. Alternatively, "f. 35" could be a reference to a judicial decision, which would be jurisprudencia. But the user's example might have "f. 35" as a reference to a legal document. Let me check the example output provided by the user. Wait, the user hasn't provided an example output, but the task says to return only the annotated text. So I need to make a judgment here. "f. 35" could be a reference to a legal document, like a court decision or a law. If it's a court decision, it's jurisprudencia. If it's a law, it's legislação. Since the text mentions "conforme narrado pela autoridade policial à f. 35", it's likely a reference to a legal document, possibly a court decision. So I'll mark "f. 35" as jurisprudencia. But I'm not entirely sure. Alternatively, maybe "f. 30" is a footnote, but the user's example might have it as jurisprudencia. Let me proceed with that.
+
+Also, "tráfico de drogas" is a legal term but not an entity. "delitos de roubo" is a legal term, but again, not an entity. "investigado" is a generic term, not a specific person. "autoridade policial" is an organization.
+
+So, putting it all together:
+
+- "No dia seguinte" → tempo
+- "Matheus Pereira dos Santos" → pessoa
+- "autoridade policial" → organizacao
+- "f. 35" → jurisprudencia (assuming it's a reference to a judicial decision)
+
+Wait, the user's example might have "f. 35" as a reference to a legal document. Let me check the original text again. The text says "conforme narrado pela autoridade policial à f. 35". The "f. 35" is likely a reference to a legal document, such as a court decision or a legal text. Since "f." could stand for "fólio" (page) in legal documents, but in some contexts, it might refer to a judicial decision. However, the definition for jurisprudencia includes "decisões, precedentes ou súmulas provenientes do Poder Judiciário". If "f. 35" is a reference to a judicial decision, then it's jurisprudencia. If it's a law, it's legislação. Since the text is about a legal case, "f. 35" is more likely a reference to a judicial decision, so I'll mark it as jurisprudencia.
+
+So the final HTML would have:
+
+- <span class="tempo">No dia seguinte</span>
+- <span class="pessoa">Matheus Pereira dos Santos</span>
+- <span class="organizacao">autoridade policial</span>
+- <span class="jurisprudencia">f. 35</span>
+
+Other parts don't have entities. Let me check again for any missed entities. "Estabelecimento" is a generic term, not a specific organization. "via pública" is a general term, not a local. "prisão cautelar" is a legal term but not an entity. "ordem pública" is a concept, not an entity. "tráfico de drogas" is a legal term, not an entity. "delitos de roubo" is a legal term, not an entity. "investigado" is a role, not a specific person. "autoridade policial" is an organization. "f. 35" is a reference to a judicial decision. So that's all.
+</think>
+
+<span class="tempo">No dia seguinte</span> , ao ver a vítima passando em seu veículo , o <span class="pessoa">investigado</span> saiu do <span class="local">estabelecimento</span> onde se encontrava na posse de arma de fogo e efetuou cerca de seis disparos na direção de <span class="pessoa">Matheus Pereira dos Santos</span> , atingindo seu carro por duas vezes , o que revela real periculosidade capaz de sustentar a prisão cautelar e fazer presumir que solto , o <span class="pessoa">investigado</span> colocará em risco a ordem pública em razão do seu descontrole emocional . Uma <span class="pessoa">pessoa</span> que anda armada e efetua disparos contra outrem em via pública , por motivo tão banal , não pode permanecer em liberdade . Ademais , conforme narrado pela <span class="organizacao">autoridade policial</span> à <span class="jurisprudencia">f. 35</span> , soma-se ainda em desfavor do <span class="pessoa">investigado</span> as informações de que ele possui envolvimento com o tráfico de drogas e delitos de roubo .

@@ -1,0 +1,160 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. First, I need to understand the definitions and guidelines provided for each entity type: pessoa, organizacao, tempo, local, legislacao, and jurisprudencia.
+
+Starting with the input text. Let me read through it carefully. The text seems to be about legal procedures, specifically regarding prescription interruption and citation in Brazilian law. 
+
+Looking for entities:
+
+1. **Legislacao**: The text mentions "CC" which stands for Código Civil (Civil Code), and "CPC" which is Código de Processo Civil (Civil Procedure Code). These are legal codes, so they should be marked as legislação. Also, there are references to articles like "art. 240, § 2º, do CPC" and "art. 240, § 1º, do CPC". These are parts of the legislation, so they need to be tagged. The "Enunciado nº 106, do STJ" refers to a judicial enunciation, which is part of jurisprudência, not legislation. 
+
+2. **Jurisprudencia**: The mention of "Enunciado nº 106, do STJ" is a judicial enunciation, so that's jurisprudência. Also, the text refers to "§ 3º do mesmo artigo do CPC" but that's part of the legislation, not a separate jurisprudência entity. 
+
+3. **Tempo**: The text has "dez ( 10 ) dias" which is a time period, so that's tempo. However, the user's guidelines say that only explicit dates or time references should be marked. Here, "dez dias" is a duration, not a specific date, so maybe it's not marked. Wait, the example in the guidelines includes "período de maio a novembro de 2014" as tempo. The text here has "prazo de dez ( 10 ) dias" which is a time period, so it should be marked as tempo.
+
+4. **Outros**: The rest of the text seems to be general legal discussion without specific entities. 
+
+Now, I need to check each part of the text. 
+
+First sentence: "202 , inciso I , do CC , elencar como causa interruptiva da prescrição o despacho do juiz que determina a citação , esse preceito legal deve ser interpretado em conjunto com a exigência de que o autor promova o ato citatório no prazo e na forma da lei processual , isto é , em observância ao disposto no art . 240 , § 2º , do CPC ."
+
+- "CC" is Código Civil, so that's legislação.
+- "CPC" is Código de Processo Civil, also legislação.
+- "art. 240, § 2º, do CPC" is part of the legislation, so legislação.
+- "art. 240, § 1º, do CPC" same as above.
+
+Second part: "3 . Nos termos do § 2º do art . 240 do CPC , incumbe à parte autora promover a citação do réu no prazo de dez ( 10 ) dias ."
+
+- "dez ( 10 ) dias" is a time period, so tempo.
+
+Third part: "Com efeito , embora referido prazo não seja peremptório , vale notar que a citação levada a efeito após o transcurso deste , não tem o condão de interromper a prescrição , retroagindo à data da propositura da ação ( § 1º do art . 240 , do CPC ) , salvo se a demora na citação se der por motivos inerentes ao mecanismo da Justiça , consoante o § 3º do mesmo artigo do CPC e o Enunciado nº 106 , do STJ , que não é o caso . 4 ."
+
+- "§ 1º do art . 240 , do CPC" is legislação.
+- "§ 3º do mesmo artigo do CPC" is part of legislation.
+- "Enunciado nº 106 , do STJ" is jurisprudência.
+
+So, putting it all together, the entities are:
+
+- "CC" → legislação
+- "CPC" → legislação
+- "art. 240, § 2º, do CPC" → legislação
+- "art. 240, § 1º, do CPC" → legislação
+- "dez ( 10 ) dias" → tempo
+- "Enunciado nº 106 , do STJ" → jurisprudência
+
+Now, I need to wrap these in <span> tags with the appropriate classes. Also, check if any other entities are present. The text doesn't mention any people, organizations, places, or other entities. 
+
+Wait, "STJ" is the Superior Court of Justice, which is an organization. But according to the guidelines, "organizacao" includes courts. So "STJ" should be marked as organizacao. However, in the example, "STJ" was not marked as an organization. Wait, the example input had "STJ" in "Enunciado nº 106 , do STJ" and the output marked it as jurisprudência. Wait, no, the example input was "REsp n . 1694984/MS" and "Súmula 331 do TST", which were marked as jurisprudência. But "STJ" is an organization (Superior Court of Justice). Wait, but in the example, "STJ" was part of the jurisprudência entity. Let me check the guidelines again.
+
+The guidelines say that "organizacao" includes "tribunais, unidades do sistema de justiça". So "STJ" is an organization. However, in the example, "STJ" was part of "Enunciado nº 106 , do STJ" which was marked as jurisprudência. Wait, but the example's input was "Enunciado nº 106 , do STJ", and the output was "Enunciado nº 106 do TST" (assuming a typo). Wait, the example input was "Enunciado nº 106 , do STJ" and the output was "Enunciado nº 106 do TST" (maybe a typo in the example). But according to the guidelines, "STJ" is an organization, so it should be marked as organizacao. But the example output marked it as jurisprudência. Hmm, maybe the example is incorrect, but I need to follow the guidelines strictly. 
+
+Wait, the example in the problem statement says:
+
+Input: "REsp n . 1694984/MS" and "Súmula 331 do TST" are marked as jurisprudência. But "TST" is the Labor Court (Tribunal Superior do Trabalho), which is an organization. However, in the example, they were marked as jurisprudência. That seems conflicting with the guidelines. But the guidelines say that "jurisprudência" includes references to súmulas, enunciados, etc., even if they are part of a court. So maybe "STJ" in "Enunciado nº 106 , do STJ" is part of the jurisprudência entity. But according to the guidelines, "organizacao" includes "tribunais", so "STJ" should be marked as organizacao. However, in the example, "TST" was not marked as organizacao, but the example output marked "Súmula 331 do TST" as jurisprudência. 
+
+This is confusing. Let me check the guidelines again. The guidelines for jurisprudência say that "expressões que identificam decisões, precedentes ou súmulas provenientes do Poder Judiciário ou de órgãos com função jurisdicional" should be marked. So "Súmula 331 do TST" is a súmula from the TST, which is a court, so it's jurisprudência. The "TST" itself is an organization, but in the example, it's part of the jurisprudência entity. 
+
+So in the current text, "Enunciado nº 106 , do STJ" — "STJ" is the Superior Court of Justice, which is an organization. However, the "Enunciado" is a jurisprudência entity. So the entire "Enunciado nº 106 , do STJ" is jurisprudência, and "STJ" is part of that. But according to the guidelines, "organizacao" includes "tribunais", so "STJ" should be marked as organizacao. However, in the example, the "TST" was not marked as organizacao, but the súmula was marked as jurisprudência. 
+
+This is a bit ambiguous. But the guidelines say that "jurisprudência" includes references to súmulas and enunciados, even if they are part of a court. Therefore, "Enunciado nº 106 , do STJ" is jurisprudência. The "STJ" here is part of the jurisprudência entity, but according to the guidelines, only the specific references to jurisprudência (like súmulas, acórdãos) should be marked. The "STJ" itself is an organization, but since it's part of a jurisprudência reference, it might not be marked separately. 
+
+Alternatively, maybe "STJ" is part of the jurisprudência entity, and not marked as an organization. This is a bit tricky. But the example in the problem statement shows that "Súmula 331 do TST" is marked as jurisprudência, and "TST" is not marked as an organization. So perhaps in this case, "STJ" is part of the jurisprudência entity and not marked as an organization. 
+
+Therefore, in the current text, "Enunciado nº 106 , do STJ" is marked as jurisprudência. The "STJ" is part of that reference, so it's not marked separately as an organization. 
+
+So, putting it all together, the entities are:
+
+- "CC" → legislação
+- "CPC" → legislação
+- "art. 240, § 2º, do CPC" → legislação
+- "art. 240, § 1º, do CPC" → legislação
+- "dez ( 10 ) dias" → tempo
+- "Enunciado nº 106 , do STJ" → jurisprudência
+
+Now, the text also has "§ 3º do mesmo artigo do CPC" which is part of the legislation, so it should be marked as legislação. Wait, the original text says "§ 3º do mesmo artigo do CPC" — "do CPC" is part of the legislation. But the entire phrase "§ 3º do mesmo artigo do CPC" is part of the legislation. So that should be marked as legislação. 
+
+Wait, the user's input text has:
+
+"salvo se a demora na citação se der por motivos inerentes ao mecanismo da Justiça , consoante o § 3º do mesmo artigo do CPC e o Enunciado nº 106 , do STJ , que não é o caso . 4 ."
+
+So "§ 3º do mesmo artigo do CPC" is part of the legislation, so it should be marked as legislação. But in the example, similar references were marked as legislação. 
+
+Therefore, the text should have:
+
+- "CC" → legislação
+- "CPC" → legislação
+- "art. 240, § 2º, do CPC" → legislação
+- "art. 240, § 1º, do CPC" → legislação
+- "dez ( 10 ) dias" → tempo
+- "Enunciado nº 106 , do STJ" → jurisprudência
+- "§ 3º do mesmo artigo do CPC" → legislação
+
+So now, I need to structure the HTML with these tags. 
+
+Let me write out the text with the appropriate spans.
+
+Original text:
+
+"202 , inciso I , do CC , elencar como causa interruptiva da prescrição o despacho do juiz que determina a citação , esse preceito legal deve ser interpretado em conjunto com a exigência de que o autor promova o ato citatório no prazo e na forma da lei processual , isto é , em observância ao disposto no art . 240 , § 2º , do CPC . 3 . Nos termos do § 2º do art . 240 do CPC , incumbe à parte autora promover a citação do réu no prazo de dez ( 10 ) dias . Com efeito , embora referido prazo não seja peremptório , vale notar que a citação levada a efeito após o transcurso deste , não tem o condão de interromper a prescrição , retroagindo à data da propositura da ação ( § 1º do art . 240 , do CPC ) , salvo se a demora na citação se der por motivos inerentes ao mecanismo da Justiça , consoante o § 3º do mesmo artigo do CPC e o Enunciado nº 106 , do STJ , que não é o caso . 4 ."
+
+Breaking it down:
+
+- "CC" → <span class="legislacao">CC</span>
+- "CPC" → <span class="legislacao">CPC</span>
+- "art. 240, § 2º, do CPC" → <span class="legislacao">art. 240, § 2º, do <span class="legislacao">CPC</span></span> (Wait, but "CPC" is already marked as legislação, so maybe it's better to mark the entire phrase as legislação. But according to the guidelines, only the reference to the legislation should be marked. So "art. 240, § 2º, do CPC" is part of the legislation, so the entire phrase is legislação. But in the example, "art.61 , §1º , da Lei nº 9.430/93" was marked as legislação. So the entire phrase is one entity. Therefore, "art. 240, § 2º, do CPC" should be marked as legislação. Similarly for "art. 240, § 1º, do CPC".
+
+Wait, the example had "art.61 , §1º , da Lei nº 9.430/93" as one entity. So in the current text, "art. 240, § 2º, do CPC" is one entity. So the entire phrase should be marked as legislação. Similarly, "art. 240, § 1º, do CPC" is another entity. 
+
+So, the first part:
+
+"202 , inciso I , do <span class="legislacao">CC</span> , elencar como causa interruptiva da prescrição o despacho do juiz que determina a citação , esse preceito legal deve ser interpretado em conjunto com a exigência de que o autor promova o ato citatório no prazo e na forma da lei processual , isto é , em observância ao disposto no <span class="legislacao">art. 240 , § 2º , do <span class="legislacao">CPC</span></span> . 3 . ..."
+
+Wait, but "art. 240, § 2º, do CPC" is a single entity, so the entire phrase should be marked as legislação. Therefore, the correct way is to mark the entire phrase as one span. So:
+
+"em observância ao disposto no <span class="legislacao">art. 240 , § 2º , do CPC</span> ."
+
+Similarly for "art. 240, § 1º, do CPC".
+
+Then, "dez ( 10 ) dias" is tempo.
+
+"§ 1º do art . 240 , do CPC" is part of the legislation.
+
+"§ 3º do mesmo artigo do CPC" is part of the legislation.
+
+"Enunciado nº 106 , do STJ" is jurisprudência.
+
+Putting it all together, the HTML should be:
+
+"202 , inciso I , do <span class="legislacao">CC</span> , elencar como causa interruptiva da prescrição o despacho do juiz que determina a citação , esse preceito legal deve ser interpretado em conjunto com a exigência de que o autor promova o ato citatório no prazo e na forma da lei processual , isto é , em observância ao disposto no <span class="legislacao">art. 240 , § 2º , do <span class="legislacao">CPC</span></span> . 3 . Nos termos do § 2º do art . 240 do <span class="legislacao">CPC</span> , incumbe à parte autora promover a citação do réu no prazo de <span class="tempo">dez ( 10 ) dias</span> . Com efeito , embora referido prazo não seja peremptório , vale notar que a citação levada a efeito após o transcurso deste , não tem o condão de interromper a prescrição , retroagindo à data da propositura da ação ( <span class="legislacao">§ 1º do art . 240 , do <span class="legislacao">CPC</span></span> ) , salvo se a demora na citação se der por motivos inerentes ao mecanismo da Justiça , consoante o <span class="legislacao">§ 3º do mesmo artigo do <span class="legislacao">CPC</span></span> e o <span class="jurisprudencia">Enunciado nº 106 , do STJ</span> , que não é o caso . 4 ."
+
+Wait, but "CPC" is already marked as legislação in the first instance. However, in the sentence "Nos termos do § 2º do art . 240 do CPC", the "CPC" is part of the legislation, so it's already marked. But in the previous part, "art. 240, § 2º, do CPC" was marked as legislação. So the entire phrase "art. 240, § 2º, do CPC" is one entity. Similarly, "§ 2º do art . 240 do CPC" is part of the same legislation. 
+
+Wait, but in the example, "art.61 , §1º , da Lei nº 9.430/93" was marked as one entity. So in this case, "art. 240, § 2º, do CPC" is one entity. Similarly, "§ 2º do art . 240 do CPC" is part of the same legislation. So the entire phrase should be marked as legislação. 
+
+But the user's example had "art.61 , §1º , da Lei nº 9.430/93" as one span. So in this case, "art. 240, § 2º, do CPC" is one span. Similarly, "§ 1º do art . 240 , do CPC" is part of the same legislation. 
+
+Therefore, the correct approach is to mark each complete reference to legislation as a single span. 
+
+Thus, the final HTML would have:
+
+- "CC" → <span class="legislacao">CC</span>
+- "CPC" → <span class="legislacao">CPC</span>
+- "art. 240, § 2º, do CPC" → <span class="legislacao">art. 240, § 2º, do CPC</span>
+- "art. 240, § 1º, do CPC" → <span class="legislacao">art. 240, § 1º, do CPC</span>
+- "dez ( 10 ) dias" → <span class="tempo">dez ( 10 ) dias</span>
+- "Enunciado nº 106 , do STJ" → <span class="jurisprudencia">Enunciado nº 106 , do STJ</span>
+- "§ 3º do mesmo artigo do CPC" → <span class="legislacao">§ 3º do mesmo artigo do CPC</span>
+
+Wait, but "§ 3º do mesmo artigo do CPC" is part of the legislation. However, in the text, it's written as "consoante o § 3º do mesmo artigo do CPC". So the entire phrase "§ 3º do mesmo artigo do CPC" is part of the legislation, so it should be marked as legislação. 
+
+But in the example, "art.61 , §1º , da Lei nº 9.430/93" was marked as one entity, so the entire phrase is one span. Therefore, "§ 3º do mesmo artigo do CPC" is another span. 
+
+So, putting all together, the final HTML would have all these spans. 
+
+Now, I need to ensure that all these entities are correctly marked. Also, check if any other parts are missed. 
+
+The text doesn't have any other entities like people, organizations, locations. 
+
+Therefore, the final output should be the original text with these spans.
+</think>
+
+202 , inciso I , do <span class="legislacao">CC</span> , elencar como causa interruptiva da prescrição o despacho do juiz que determina a citação , esse preceito legal deve ser interpretado em conjunto com a exigência de que o autor promova o ato citatório no prazo e na forma da lei processual , isto é , em observância ao disposto no <span class="legislacao">art. 240 , § 2º , do <span class="legislacao">CPC</span></span> . 3 . Nos termos do <span class="legislacao">§ 2º do art . 240 do <span class="legislacao">CPC</span></span> , incumbe à parte autora promover a citação do réu no prazo de <span class="tempo">dez ( 10 ) dias</span> . Com efeito , embora referido prazo não seja peremptório , vale notar que a citação levada a efeito após o transcurso deste , não tem o condão de interromper a prescrição , retroagindo à data da propositura da ação ( <span class="legislacao">§ 1º do art . 240 , do <span class="legislacao">CPC</span></span> ) , salvo se a demora na citação se der por motivos inerentes ao mecanismo da Justiça , consoante o <span class="legislacao">§ 3º do mesmo artigo do <span class="legislacao">CPC</span></span> e o <span class="jurisprudencia">Enunciado nº 106 , do STJ</span> , que não é o caso . 4 .

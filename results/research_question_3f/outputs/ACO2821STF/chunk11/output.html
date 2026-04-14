@@ -1,0 +1,91 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me start by breaking down the input sentence by sentence.
+
+The first part is: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536377 ."
+
+Looking for entities here. The URL is mentioned, but the guidelines say that electronic addresses like "http://..." shouldn't be marked as local. So the URL isn't a local. The number "14536377" might be a jurisprudencia reference, but the example shows that numbers like "14536377" without a specific identifier might not be marked. Wait, the example with "RECURSO ESPECIAL Nº 1.583.083 - RS" was marked as jurisprudencia. However, in this case, the number is just "14536377" without any context. The guidelines mention that identifiers like "20140110500434APO" should be marked as jurisprudencia. But here, it's just a number. Maybe it's a case number, so I should mark it as jurisprudencia. Wait, the example in the guidelines says that "Acórdão n. 999404" is jurisprudencia. So if the number is part of a case, it should be marked. But the input here is "sob o número 14536377". The number alone might not be enough. Maybe it's a case number, so I should mark it as jurisprudencia. But I'm not sure. Let me check the examples again. In example 2, "RECURSO ESPECIAL Nº 1.583.083 - RS" is marked as jurisprudencia. So if the number is part of a case, even without the "nº" or "RECURSO", maybe it's still jurisprudencia. But the input here is just "número 14536377". Maybe it's a case number, so I should mark it as jurisprudencia. Alternatively, maybe it's not. The guidelines say that identifiers like "20140110500434APO" are marked, but here it's a simple number. Maybe it's not. Hmm. I'll note that and check other parts.
+
+Next sentence: "Inteiro Teor do Acórdão - Página 4 de 17 Voto - MIN . RICARDO LEWANDOWSKI 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO V O T O O Senhor Ministro Ricardo Lewandowski ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma ."
+
+Looking for entities here. "MIN . RICARDO LEWANDOWSKI" – "MIN" is an abbreviation for "Ministro", which is a title, not a person. The name "RICARDO LEWANDOWSKI" is a person, so that should be marked as pessoa. "16/03/2018" is a date, so tempo. "PLENÁRIO" is part of the organization name, but the example shows that "Superior Tribunal de Justiça" is an organization. Here, "PLENÁRIO" might be part of the organization, but the example in the guidelines says that "Turmas cíveis" are organizations. However, "PLENÁRIO" is a part of the court, so maybe it's part of the organization. Wait, the example input 2 had "Superior Tribunal de Justiça" as an organization. So "PLENÁRIO" might be part of the organization. But in the input, it's written as "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO". Wait, maybe "PLENÁRIO" is part of the organization. But the example input 4 had "ESTADO DO ACRE" as local. So "MATO GROSSO" is a state, so local. "2.821" might be a case number, so jurisprudencia. "AÇÃO CÍVEL ORIGINÁRIA" is a legal term, but not an entity. "V O T O" is part of the text, not an entity. "Senhor Ministro Ricardo Lewandowski" – "Ministro" is a title, not a person. The name "Ricardo Lewandowski" is a person. "Relator" is a title, not a person. 
+
+Putting it all together:
+
+- "RICARDO LEWANDOWSKI" is pessoa.
+- "16/03/2018" is tempo.
+- "MATO GROSSO" is local.
+- "2.821" might be a case number, so jurisprudencia. But the example in the guidelines had "RECURSO ESPECIAL Nº 1.583.083 - RS" as jurisprudencia. Here, "2.821" is a number, but without the "nº" or other context, maybe it's not. Wait, the example input 5 had "2.821" as part of a case number. Wait, in example 5, the input was "2.821 MATO GROSSO" and the output was "2.821 MATO GROSSO" with "MATO GROSSO" as local. So "2.821" wasn't marked. So maybe in this case, "2.821" is not an entity. Therefore, only "MATO GROSSO" is local. 
+
+Wait, the input has "AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO". The "2.821" might be a case number, but the example in the guidelines didn't mark numbers like that. So perhaps it's not. 
+
+So the entities are:
+
+- "RICARDO LEWANDOWSKI" as pessoa.
+- "16/03/2018" as tempo.
+- "MATO GROSSO" as local.
+
+Now, the number "14536377" in the first sentence. The example input 2 had "RECURSO ESPECIAL Nº 1.583.083 - RS" as jurisprudencia. Here, the number is "14536377" without any context. The guidelines mention that identifiers like "20140110500434APO" are marked. But "14536377" is just a number. Maybe it's a case number, so jurisprudencia. But the example in the guidelines didn't mark numbers without context. So perhaps it's not. Alternatively, maybe it's a case number. 
+
+Alternatively, maybe the number is part of the case, so it's jurisprudencia. 
+
+So, putting it all together:
+
+- "14536377" as jurisprudencia.
+- "RICARDO LEWANDOWSKI" as pessoa.
+- "16/03/2018" as tempo.
+- "MATO GROSSO" as local.
+
+Now, the URL "http : //www.stf.jus.br/portal/autenticacao/" is not marked as local. 
+
+So the final HTML would have:
+
+- "14536377" as jurisprudencia.
+- "RICARDO LEWANDOWSKI" as pessoa.
+- "16/03/2018" as tempo.
+- "MATO GROSSO" as local.
+
+Let me check again. The first sentence: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536377 ."
+
+The number "14536377" is under "sob o número", which means "under the number". So it's a case number. Therefore, it should be marked as jurisprudencia. 
+
+In the example input 2, "RECURSO ESPECIAL Nº 1.583.083 - RS" is marked as jurisprudencia. So even if the number is part of a case, it's marked. So "14536377" is a case number, so jurisprudencia. 
+
+So the final HTML would have:
+
+- "14536377" as jurisprudencia.
+- "RICARDO LEWANDOWSKI" as pessoa.
+- "16/03/2018" as tempo.
+- "MATO GROSSO" as local.
+
+Now, the rest of the text. The "PLENÁRIO" might be part of the organization, but the example input 2 had "Superior Tribunal de Justiça" as an organization. Here, "PLENÁRIO" is part of the court, but the example input 4 had "ESTADO DO ACRE" as local. So "PLENÁRIO" is not an entity. 
+
+So the final HTML would be:
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o <span class="jurisprudencia">14536377</span> . Inteiro Teor do Acórdão - Página 4 de 17 Voto - <span class="pessoa">RICARDO LEWANDOWSKI</span> <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA <span class="local">MATO GROSSO</span> V O T O O Senhor Ministro <span class="pessoa">Ricardo Lewandowski</span> ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma .
+
+Wait, the name "RICARDO LEWANDOWSKI" is in the text as "MIN . RICARDO LEWANDOWSKI". The "MIN" is an abbreviation for "Ministro", which is a title, not a person. So the name "RICARDO LEWANDOWSKI" is the person. But in the text, it's written as "MIN . RICARDO LEWANDOWSKI". So the "MIN" is part of the title, and the name is "RICARDO LEWANDOWSKI". So the person is "RICARDO LEWANDOWSKI". 
+
+In the second part, "Senhor Ministro Ricardo Lewandowski ( Relator )", the name is "Ricardo Lewandowski", which is the same as before. So both instances should be marked as pessoa. 
+
+So the final HTML would have:
+
+- "14536377" as jurisprudencia.
+- "RICARDO LEWANDOWSKI" as pessoa.
+- "16/03/2018" as tempo.
+- "MATO GROSSO" as local.
+- "Ricardo Lewandowski" as pessoa again.
+
+Wait, the first occurrence is "MIN . RICARDO LEWANDOWSKI" and the second is "Senhor Ministro Ricardo Lewandowski". Both are the same person, so both should be marked as pessoa. 
+
+So the final HTML would have:
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o <span class="jurisprudencia">14536377</span> . Inteiro Teor do Acórdão - Página 4 de 17 Voto - <span class="pessoa">RICARDO LEWANDOWSKI</span> <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA <span class="local">MATO GROSSO</span> V O T O O Senhor Ministro <span class="pessoa">Ricardo Lewandowski</span> ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma .
+
+But the user's example shows that in example 5, "art . 428 da Consolidação das Leis do Trabalho – CLT" is marked as legislacao. So the same applies here. 
+
+I think that's all. Now, I'll format the answer accordingly.
+</think>
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o <span class="jurisprudencia">14536377</span> . Inteiro Teor do Acórdão - Página 4 de 17 Voto - <span class="pessoa">RICARDO LEWANDOWSKI</span> <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA <span class="local">MATO GROSSO</span> V O T O O Senhor Ministro <span class="pessoa">Ricardo Lewandowski</span> ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma .

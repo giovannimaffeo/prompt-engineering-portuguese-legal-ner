@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The first part is "Dessa forma , considerando a insusceptibilidade de designação do julgamento entre os dias 20 próximo e 20 de janeiro de 2018 , ante a expressa proibição legal inserta no art . 313 , §8º , da LC 59/2001 , com a redação dada pelo art . 103 da LC 135/2014 , e à vista do que dispõe o art . 428 , caput , do CPP , que estabelece o prazo de 06 meses , contado do trânsito em julgado da pronúncia , para o julgamento , pelo Tribunal do Júri , do acusado de homicídio , não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri . Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa ."
+
+Looking for entities:
+
+1. "20 próximo e 20 de janeiro de 2018" – Here, "20 de janeiro de 2018" is a date, so that's tempo. The "20 próximo" might be a typo or incomplete, but since it's part of a date reference, maybe it's part of the date. Wait, the example shows that dates like "25 de setembro de 2008" are marked as tempo. So "20 de janeiro de 2018" should be marked as tempo. The "20 próximo" might not be a date, but since it's part of the same phrase, maybe it's part of the date. Wait, the original text says "entre os dias 20 próximo e 20 de janeiro de 2018". Hmm, maybe "20 próximo" is a typo for "20 de novembro" or something else. But as per the input, it's written as "20 próximo e 20 de janeiro de 2018". The user might have intended "20 próximo" as a date, but since it's not a standard date format, maybe it's not marked. However, the example shows that dates in formats like "DD/MM/YYYY" or "DD de mês de AAAA" are marked. So "20 de janeiro de 2018" is a date, so that part should be marked as tempo. The "20 próximo" might not be a date, so it's not marked.
+
+2. "LC 59/2001" – LC stands for Lei Complementar. So "LC 59/2001" is a legislation reference. Similarly, "LC 135/2014" is also legislation. The "art . 313 , §8º" refers to articles and sections of legislation, so those should be marked as legislacao. The "art . 103 da LC 135/2014" is also legislation. "art . 428 , caput , do CPP" – CPP is Código Penal, which is legislation. So "CPP" should be marked as legislacao. The "art . 428 , caput" is part of the legislation reference.
+
+3. "Tribunal do Júri" – This is an organization, as it's a judicial body. So "Tribunal do Júri" should be marked as organizacao.
+
+4. "mandado de busca e apreensão" – This is a legal term, but it's not a specific entity. The user's guidelines say that generic terms like "mandado" shouldn't be marked unless they refer to a specific document. Since it's a general term, it's not marked.
+
+5. "paciente" – This is a generic term referring to a person, but not a specific name. So it's not marked as pessoa.
+
+6. "acusado de homicídio" – "acusado" is a generic term, not a specific person. So not marked.
+
+Now, applying the tags:
+
+- "20 de janeiro de 2018" is tempo.
+- "LC 59/2001" is legislacao.
+- "LC 135/2014" is legislacao.
+- "art . 313 , §8º" is legislacao.
+- "art . 103 da LC 135/2014" is legislacao.
+- "art . 428 , caput , do CPP" is legislacao (CPP is legislacao).
+- "Tribunal do Júri" is organizacao.
+
+Wait, the original text has "art . 313 , §8º , da LC 59/2001" – the "LC 59/2001" is legislation. The "art . 313" is part of the legislation reference. Similarly, "art . 103 da LC 135/2014" – "LC 135/2014" is legislation. The "art . 428 , caput , do CPP" – "CPP" is legislation. So all these parts should be marked as legislacao.
+
+Also, "20 de janeiro de 2018" is tempo. The "20 próximo" might not be a date, so it's not marked.
+
+Putting it all together, the HTML should have the appropriate spans for each identified entity.
+</think>
+
+Dessa forma , considerando a insusceptibilidade de designação do julgamento entre os dias 20 próximo e <span class="tempo">20 de janeiro de 2018</span> , ante a expressa proibição legal inserta no <span class="legislacao">art . 313 , §8º</span> , da <span class="legislacao">LC 59/2001</span> , com a redação dada pelo <span class="legislacao">art . 103</span> da <span class="legislacao">LC 135/2014</span> , e à vista do que dispõe o <span class="legislacao">art . 428 , caput</span> , do <span class="legislacao">CPP</span> , que estabelece o prazo de 06 meses , contado do trânsito em julgado da pronúncia , para o julgamento , pelo <span class="organizacao">Tribunal do Júri</span> , do acusado de homicídio , não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri . Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa .

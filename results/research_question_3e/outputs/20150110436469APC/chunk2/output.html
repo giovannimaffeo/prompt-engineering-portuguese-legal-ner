@@ -1,0 +1,39 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate <span> tags. First, I need to carefully read the input text and identify all the entities that fit the categories: pessoa, organização, tempo, local, legislação, and jurisprudência.
+
+Starting with the first sentence: "Evidenciado que a citação somente foi aperfeiçoada após o decurso do prazo prescricional , tem-se por correta a extinção da demanda monitória , com resolução do mérito , nos termos do artigo 485 , inciso II , do Código de Processo Civil ."
+
+Looking for entities here. "Código de Processo Civil" is a legislation, so that should be marked as legislação. The rest of the sentence doesn't have any other entities.
+
+Next sentence: "3 . Recurso de Apelação conhecido e não provido ."
+
+No entities here. The term "Recurso de Apelação" is a type of legal process, but it's not a specific entity like a case number or a law. So no tags needed.
+
+Then: "A C Ó R D Ã O Acordam os Senhores Desembargadores da 8ª TURMA CÍVEL do Tribunal de Justiça do Distrito Federal e Territórios , NÍDIA CORRÊA LIMA - Relatora , DIAULAS COSTA RIBEIRO - 1º Vogal , EUSTÁQUIO DE CASTRO - 2º Vogal , sob a presidência do Senhor Desembargador DIAULAS COSTA RIBEIRO , em proferir a seguinte decisão : RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO . UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas ."
+
+Here, "8ª TURMA CÍVEL" is an organization, so that should be marked as organização. The names like NÍDIA CORRÊA LIMA, DIAULAS COSTA RIBEIRO, and EUSTÁQUIO DE CASTRO are people, so they should be pessoa. "Tribunal de Justiça do Distrito Federal e Territórios" is an organization. "Distrito Federal" is a local. "Brasilia ( DF ) , 15 de Março de 2018 ." has "Brasilia" as a local and "15 de Março de 2018" as tempo.
+
+Also, "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" is a legal decision, but since it's a general term without a specific identifier, it's not jurisprudência. However, "UNÂNIME." is a term used in legal contexts, but it's not an entity. The "ata do julgamento" is a record, but not an entity.
+
+Wait, the "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" is a decision, but the example shows that only specific case numbers or references are marked. Since this is a general statement, it's not marked. The "UNÂNIME." is just a term, not an entity.
+
+Now, checking the "8ª TURMA CÍVEL" again. The guidelines say that expressions like "4ª Turma Cível" should be marked as organização. So "8ª TURMA CÍVEL" is an organization. Similarly, "Tribunal de Justiça do Distrito Federal e Territórios" is an organization. "Distrito Federal" is a local. "Brasilia" is a local, and "DF" is the abbreviation for Distrito Federal, which is part of the local name. The date "15 de Março de 2018" is tempo.
+
+So putting it all together:
+
+- "8ª TURMA CÍVEL" → organização
+- "NÍDIA CORRÊA LIMA", "DIAULAS COSTA RIBEIRO", "EUSTÁQUIO DE CASTRO" → pessoa
+- "Tribunal de Justiça do Distrito Federal e Territórios" → organização
+- "Distrito Federal" → local
+- "Brasilia ( DF )" → local (since DF is part of the name)
+- "15 de Março de 2018" → tempo
+- "Código de Processo Civil" → legislação
+
+Wait, the original text has "Código de Processo Civil" in the first part. That's a legislation, so it should be marked as legislação.
+
+Now, checking for any other entities. The "RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO" is a legal term but not a specific entity. The "ata do julgamento" is a record, not an entity. The "notas taquigráficas" is a type of document, not an entity.
+
+So the final HTML should have all these entities marked accordingly. Let me structure the text with the appropriate <span> tags.
+</think>
+
+Evidenciado que a citação somente foi aperfeiçoada após o decurso do prazo prescricional , tem-se por correta a extinção da demanda monitória , com resolução do mérito , nos termos do <span class="legislacao">artigo 485 , inciso II , do Código de Processo Civil</span> . 3 . Recurso de Apelação conhecido e não provido . A C Ó R D Ã O Acordam os Senhores Desembargadores da <span class="organizacao">8ª TURMA CÍVEL</span> do <span class="organizacao">Tribunal de Justiça do Distrito Federal e Territórios</span> , <span class="pessoa">NÍDIA CORRÊA LIMA</span> - Relatora , <span class="pessoa">DIAULAS COSTA RIBEIRO</span> - 1º Vogal , <span class="pessoa">EUSTÁQUIO DE CASTRO</span> - 2º Vogal , sob a presidência do Senhor Desembargador <span class="pessoa">DIAULAS COSTA RIBEIRO</span> , em proferir a seguinte decisão : <span class="jurisprudencia">RECURSO DE APELAÇÃO CONHECIDO E NÃO PROVIDO</span> . UNÂNIME. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia</span> ( <span class="local">DF</span> ) , <span class="tempo">15 de Março de 2018</span> .

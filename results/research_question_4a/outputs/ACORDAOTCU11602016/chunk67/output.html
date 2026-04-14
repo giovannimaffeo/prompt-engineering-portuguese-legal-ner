@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text sentence by sentence.
+
+Starting with the first sentence: "O recorrente não logrou êxito em afastar as irregularidades a ele imputadas." The word "recorrente" is a legal term, but according to the guidelines, it's a generic term referring to a party in a legal proceeding. The guidelines say not to mark generic terms unless they are specific names. Since "recorrente" is a role, not a specific name, it shouldn't be marked. So no tags here.
+
+Next sentence: "É pacífico na jurisprudência desta Corte que a boa-fé do responsável deve ser objetivamente analisada e provada no caso concreto , considerando-se a prática efetiva e as consequências de determinado ato à luz de um modelo de conduta comum do homem médio ( Acórdãos 2.464/2013 e 2.550/2008 , ambos do Plenário ) ."
+
+Here, "jurisprudência" is a general term, so it's not marked. The part in parentheses has "Acórdãos 2.464/2013" and "2.550/2008". These look like jurisprudência references. The example given in the guidelines mentions "REsp n . 1694984/MS" and "Súmula 331 do TST" as jurisprudência. So "Acórdãos 2.464/2013" and "2.550/2008" should be marked as jurisprudencia. Also, "Plenário" is part of the court's name, but the guidelines mention that expressions like "4ª Turma Cível" are organizations. However, "Plenário" is a chamber within a court, so maybe it's part of an organization. Wait, the example in the guidelines includes "Plenário" as part of the jurisprudência reference. Wait, in the example, "REsp n . 1694984/MS" and "Súmula 331 do TST" are marked. So "Plenário" here is part of the reference, but the example doesn't mark it. Wait, the example shows "REsp n . 1694984/MS" as jurisprudencia. So maybe "Plenário" is part of the reference but not marked. Wait, the example's output includes "REsp n . 1694984/MS" as jurisprudencia. So in the current text, "Acórdãos 2.464/2013" and "2.550/2008" are references to acórdãos, which are jurisprudência. So those should be marked. Also, "Plenário" is part of the reference, but since it's part of the identifier, maybe it's included. Wait, the example includes "REsp n . 1694984/MS" as a single entity. So in this case, "Acórdãos 2.464/2013" and "2.550/2008" are separate jurisprudência entries. So I'll mark those as jurisprudencia.
+
+Next sentence: "8.3 . Há nos autos e nas próprias provas colacionadas pelo recorrente elementos que demonstram que seria exigível do responsável , como Diretor-Geral do STM , conduta diversa na condução das aquisições questionadas , em cotejo com a ação do gestor médio ."
+
+Here, "Diretor-Geral do STM" is a title. The guidelines say that titles like "Diretor-Geral" are not marked as pessoa. However, "STM" might be an organization. Wait, "STM" could stand for "Superintendência do Trabalho e da Previdência Social" or similar. But the example in the guidelines includes "MINISTÉRIO PÚBLICO FEDERAL" as an organization. So if "STM" is an organization, it should be marked as organizacao. However, the text says "Diretor-Geral do STM", so "STM" is the organization. So "STM" should be marked as organizacao. Also, "Diretor-Geral" is a title, not a name, so not marked. The rest of the sentence doesn't have any entities.
+
+Next sentence: "8.4 . O Diretor-Geral anterior , de fato , previu a possibilidade de compra de materiais relativos a etapas subsequentes da obra , ainda em março de 1999 ( peça 66 , p. 38-39 , questão 15 ) ."
+
+Here, "março de 1999" is a date, so it should be marked as tempo. The rest of the sentence doesn't have any entities. The parentheses have "peça 66" which is a reference to a document, but the guidelines don't mention that as an entity. "p. 38-39" is a page reference, not an entity. "questão 15" is a question number, not an entity. So only "março de 1999" is marked as tempo.
+
+Putting it all together:
+
+- "Acórdãos 2.464/2013" and "2.550/2008" are jurisprudencia.
+- "STM" is organizacao.
+- "março de 1999" is tempo.
+
+Wait, the first part of the text has "Acórdãos 2.464/2013 e 2.550/2008 , ambos do Plenário". The "Plenário" is part of the reference. But in the example, "REsp n . 1694984/MS" is marked as jurisprudencia. So "Acórdãos 2.464/2013" and "2.550/2008" are the references, and "Plenário" is part of the description. Since the example includes "REsp n . 1694984/MS" as a single entity, I think each acórdão reference is marked as jurisprudencia. So "Acórdãos 2.464/2013" and "2.550/2008" are marked. The "Plenário" is part of the description but not an entity. So the correct tags would be for those two acórdãos.
+
+Also, "STM" is an organization. So in the sentence "Diretor-Geral do STM", "STM" is marked as organizacao.
+
+The date "março de 1999" is marked as tempo.
+
+So the final HTML should have those tags.
+</think>
+
+O recorrente não logrou êxito em afastar as irregularidades a ele imputadas . É pacífico na jurisprudência desta Corte que a boa-fé do responsável deve ser objetivamente analisada e provada no caso concreto , considerando-se a prática efetiva e as consequências de determinado ato à luz de um modelo de conduta comum do homem médio ( <span class="jurisprudencia">Acórdãos 2.464/2013</span> e <span class="jurisprudencia">2.550/2008</span> , ambos do Plenário ) . 8.3 . Há nos autos e nas próprias provas colacionadas pelo recorrente elementos que demonstram que seria exigível do responsável , como Diretor-Geral do <span class="organizacao">STM</span> , conduta diversa na condução das aquisições questionadas , em cotejo com a ação do gestor médio . 8.4 . O Diretor-Geral anterior , de fato , previu a possibilidade de compra de materiais relativos a etapas subsequentes da obra , ainda em <span class="tempo">março de 1999</span> ( peça 66 , p. 38-39 , questão 15 ) .

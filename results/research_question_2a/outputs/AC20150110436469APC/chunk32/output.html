@@ -1,0 +1,90 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text carefully. The input is: "Recurso não provido . Sentença mantida . ( Acórdão n.999404 , 20160610082800APC , Relator : ARNOLDO CAMANHO 4ª TURMA CÍVEL , Data de Julgamento : 22/02/2017 , Publicado no DJE : 08/03/2017 . Pág. : 283/300 ) - grifo nosso ."
+
+Let me go through each part step by step.
+
+Starting with "Recurso não provido . Sentença mantida ." – these seem like legal terms but not specific entities. No need to mark them.
+
+Next, the part in parentheses: "( Acórdão n.999404 , 20160610082800APC , Relator : ARNOLDO CAMANHO 4ª TURMA CÍVEL , Data de Julgamento : 22/02/2017 , Publicado no DJE : 08/03/2017 . Pág. : 283/300 )"
+
+Breaking this down:
+
+- "Acórdão n.999404" – "Acórdão" is a legal term, but the number might be an entity. Wait, the user's guide says to mark entities like 'legislacao' or 'jurisprudencia'. "Acórdão" is a judicial decision, so maybe that's jurisprudencia? Or is it a type of document? Not sure. Maybe it's part of the case number. The number "n.999404" could be a case number, but the user hasn't specified that as an entity. The entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "Acórdão" might be part of the jurisprudencia, but I'm not certain. Alternatively, maybe the entire "Acórdão n.999404" is a jurisprudencia entity. But the user's example might not have that. Let me check the example output.
+
+Wait, the user provided the input and the output. Let me look at the example. The input is the text given, and the output is the HTML with entities marked. But the user hasn't provided the example output yet. Wait, the user's instruction says "Retorne apenas o texto original anotado em HTML. Não inclua explicações ou blocos de código." So the user is expecting me to generate the HTML with the entities marked.
+
+So, let's proceed.
+
+Looking at the input again:
+
+- "Acórdão n.999404" – "Acórdão" is a judicial decision, which might be considered jurisprudencia. The number "n.999404" is a case number, but the user hasn't specified that as an entity. So maybe "Acórdão" is part of jurisprudencia. But I'm not sure. Alternatively, maybe the entire "Acórdão n.999404" is a jurisprudencia entity. But the user's example might not have that. Let me think.
+
+Next, "20160610082800APC" – this looks like a date or a case number. The format is 20160610082800APC. Maybe the first part is a date (20160610 is 10 June 2016), and the rest is a code. But the user's entities include 'tempo' for time/date. So "20160610082800APC" could be a tempo entity. But the user's example might not have that. Wait, the user's example output is not provided, but the user's instruction says to mark the entities as per the guide.
+
+Then, "Relator : ARNOLDO CAMANHO" – "Relator" is a title, and "ARNOLDO CAMANHO" is a person. So "ARNOLDO CAMANHO" should be marked as pessoa.
+
+"4ª TURMA CÍVEL" – "TURMA CÍVEL" is a court, which might be an organization. So "4ª TURMA CÍVEL" could be organizacao.
+
+"Data de Julgamento : 22/02/2017" – "Data de Julgamento" is a date, so "22/02/2017" is tempo.
+
+"Publicado no DJE : 08/03/2017" – "DJE" is a legal publication, so "DJE" might be an organization. Wait, "DJE" is the Diário da Justiça Eletrônico, which is an organization. So "DJE" should be organizacao. The date "08/03/2017" is tempo.
+
+"Pág. : 283/300" – "Pág." is page, and "283/300" is a page number, but not sure if it's an entity. The user's entities don't include page numbers, so maybe leave as is.
+
+"- grifo nosso" – "grifo nosso" is a note, not an entity.
+
+Putting it all together:
+
+- "Relator : ARNOLDO CAMANHO" → "ARNOLDO CAMANHO" is pessoa.
+- "4ª TURMA CÍVEL" → organizacao.
+- "Data de Julgamento : 22/02/2017" → "22/02/2017" is tempo.
+- "Publicado no DJE : 08/03/2017" → "DJE" is organizacao, "08/03/2017" is tempo.
+- "Acórdão n.999404" → Maybe "Acórdão" is jurisprudencia? Or is it part of the case number? The user's example might not have that, but according to the guide, "jurisprudencia" is for judicial decisions. So "Acórdão" could be jurisprudencia. But the number "n.999404" is a case number, which isn't an entity. So maybe "Acórdão" is jurisprudencia.
+
+Wait, the user's example output isn't given, but the user's instruction says to mark the entities as per the guide. So I need to make sure I'm applying the correct classes.
+
+So, the final HTML would have:
+
+- "ARNOLDO CAMANHO" as pessoa.
+- "4ª TURMA CÍVEL" as organizacao.
+- "22/02/2017" as tempo.
+- "DJE" as organizacao.
+- "08/03/2017" as tempo.
+
+Other parts like "Acórdão n.999404" – "Acórdão" is a judicial decision, so maybe jurisprudencia. But the number is part of the case, not an entity. So "Acórdão" would be jurisprudencia.
+
+So the HTML would have:
+
+<span class="pessoa">ARNOLDO CAMANHO</span>
+<span class="organizacao">4ª TURMA CÍVEL</span>
+<span class="tempo">22/02/2017</span>
+<span class="organizacao">DJE</span>
+<span class="tempo">08/03/2017</span>
+<span class="jurisprudencia">Acórdão</span>
+
+Wait, but "Acórdão" is part of the case number. Maybe the entire "Acórdão n.999404" is a jurisprudencia entity. But the user's guide says to mark entities as per the types. So "Acórdão" is a type of judicial decision, so jurisprudencia. The number is part of the case, but not an entity. So "Acórdão" is marked as jurisprudencia.
+
+Putting all together, the HTML would have those spans. Let me check again.
+
+Original text:
+
+"Recurso não provido . Sentença mantida . ( Acórdão n.999404 , 20160610082800APC , Relator : ARNOLDO CAMANHO 4ª TURMA CÍVEL , Data de Julgamento : 22/02/2017 , Publicado no DJE : 08/03/2017 . Pág. : 283/300 ) - grifo nosso ."
+
+So the parts to mark:
+
+- "Acórdão" → jurisprudencia
+- "20160610082800APC" → tempo (assuming it's a date)
+- "ARNOLDO CAMANHO" → pessoa
+- "4ª TURMA CÍVEL" → organizacao
+- "22/02/2017" → tempo
+- "DJE" → organizacao
+- "08/03/2017" → tempo
+
+Wait, "20160610082800APC" – the format is 20160610 (date) 082800 (time) APC (maybe a code). So the entire string could be a date/time, so "tempo".
+
+So the final HTML would have those spans. Let me structure the text with the spans accordingly.
+</think>
+
+Recurso não provido . Sentença mantida . ( <span class="jurisprudencia">Acórdão</span> n.999404 , <span class="tempo">20160610082800APC</span> , Relator : <span class="pessoa">ARNOLDO CAMANHO</span> <span class="organizacao">4ª TURMA CÍVEL</span> , Data de Julgamento : <span class="tempo">22/02/2017</span> , Publicado no <span class="organizacao">DJE</span> : <span class="tempo">08/03/2017</span> . Pág. : 283/300 ) - grifo nosso .

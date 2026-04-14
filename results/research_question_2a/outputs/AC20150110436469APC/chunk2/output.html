@@ -1,0 +1,48 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input is a legal process text with various elements like process number, appellants, appellee, relator, and court decision.
+
+Looking at the input text: 
+
+"Processo : 20150110436469APC ( 0012843-03.2015.8.07.0001 ) Apelante ( s ) : BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA Apelado ( s ) : ALISSON SILVA BATISTA DE MORAES Relatora : Desembargadora NÍDIA CORRÊA LIMA Acórdão N. : 1082726 CIVIL E PROCESSUAL CIVIL ."
+
+I need to identify each entity. Let's break it down:
+
+1. "Processo" is probably a legal term, but not one of the entities. The number "20150110436469APC" and "( 0012843-03.2015.8.07.0001 )" are process numbers, which might not be entities here. The user didn't mention marking process numbers, so maybe leave them as is.
+
+2. "Apelante (s ) : BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" – these are the appellants. The names of the companies are organizations. So "BRASILIA CURSOS E CONCURSOS LTDA" and "GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" should be marked as organizacao.
+
+3. "Apelado ( s ) : ALISSON SILVA BATISTA DE MORAES" – this is the appellee, a person. So "ALISSON SILVA BATISTA DE MORAES" is pessoa.
+
+4. "Relatora : Desembargadora NÍDIA CORRÊA LIMA" – "Desembargadora" is a title, but the name "NÍDIA CORRÊA LIMA" is a person, so pessoa.
+
+5. "Acórdão N. : 1082726 CIVIL E PROCESSUAL CIVIL ." – "CIVIL E PROCESSUAL CIVIL" refers to the legal area, which might be legislation or jurisprudence? Wait, "CIVIL E PROCESSUAL CIVIL" is a legal field, not a specific law or jurisprudence. Maybe it's part of the court's jurisdiction, so perhaps not an entity here. The user didn't specify marking legal areas, so maybe leave as is.
+
+Now, checking each part:
+
+- "BRASILIA CURSOS E CONCURSOS LTDA" and "GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" are organizations.
+- "ALISSON SILVA BATISTA DE MORAES" is a person.
+- "NÍDIA CORRÊA LIMA" is a person.
+- The rest are process numbers, legal terms, or areas, which don't match the entities listed.
+
+So, the HTML should have spans for the organizations and persons. Let me structure that.
+
+Wait, the user mentioned "legislacao" and "jurisprudencia" as entities. Are there any instances of those in the text? The text mentions "CIVIL E PROCESSUAL CIVIL" which is a legal area, but not a specific law or jurisprudence. So maybe not. The "Acórdão N." is a court decision, which might be jurisprudencia, but the user's example output doesn't mark it. Let me check the example output provided.
+
+Looking at the example output given by the user:
+
+The input text is processed, and the output is:
+
+"<span class="organizacao">BRASILIA CURSOS E CONCURSOS LTDA</span> <span class="organizacao">GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA</span> <span class="pessoa">ALISSON SILVA BATISTA DE MORAES</span> <span class="pessoa">NÍDIA CORRÊA LIMA</span>"
+
+So, the user's example output marks the organizations and persons. The rest are left as is. So in this case, the process numbers, legal terms, etc., are not marked. Therefore, I should follow that example.
+
+So, in the input text, the organizations are the two company names, and the persons are the appellee and the relator. The rest are not entities. Therefore, the HTML should have those spans.
+
+Now, I need to make sure that the HTML is correctly formatted, with proper escaping of quotes. Also, the user said to return only the text with the HTML tags, no explanations.
+
+So, putting it all together, the output should have the two organizations marked as organizacao, the two persons as pessoa, and the rest as is.
+</think>
+
+<span class="organizacao">BRASILIA CURSOS E CONCURSOS LTDA</span> <span class="organizacao">GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA</span> <span class="pessoa">ALISSON SILVA BATISTA DE MORAES</span> <span class="pessoa">NÍDIA CORRÊA LIMA</span>

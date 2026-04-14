@@ -1,0 +1,75 @@
+<think>
+Okay, let's tackle this HTML entity tagging task. First, I need to understand the user's requirements thoroughly. The goal is to generate an HTML version of the input text, marking specific legal entities with appropriate <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each tag should have a class indicating the entity type.
+
+Let me start by reading the input text carefully. The text seems to be a legal document, possibly a court case summary. I need to scan through each part and identify any entities that fit the definitions provided.
+
+First, looking for 'pessoa'. The text mentions "BRASÍLIA CURSOS E CONCURSOS LTDA" which is an organization, not a person. There are no names of individuals mentioned, so no pessoa entities here.
+
+Next, 'organizacao'. The phrase "BRASÍLIA CURSOS E CONCURSOS LTDA" clearly refers to a company, so that's an organizacao. Also, "Curadoria Especial" might be an organization, but I need to check if it's a proper name. Since it's capitalized and seems to be a specific entity, I'll mark it as organizacao.
+
+For 'tempo', I need to look for dates or time references. The text has "fl . 84" which is a page reference, not a date. There's no explicit date mentioned, so no tempo entities.
+
+'Local' entities would be specific places. The text mentions "BRASÍLIA" which is a city, so that's a local. But "BRASÍLIA CURSOS E CONCURSOS LTDA" is an organization, not a local. Wait, the name "BRASÍLIA" is part of the organization's name, but the city itself is a local. However, in the context, "BRASÍLIA" is part of the company name, so maybe it's not a separate local. I need to be careful here. Since "BRASÍLIA" is part of the organization's name, it's not a standalone local. So no local entities here.
+
+'Legislação' refers to legal norms. The text mentions "Código de Processo Civil" which is a law, so that's legislação. Also, "artigo 487 , inciso II" refers to a specific article in the Code, so that should be part of the legislação tag. The full reference would be "artigo 487 , inciso II , do Código de Processo Civil".
+
+'Jurisprudência' includes references to legal precedents. The text mentions "RELAÇÃO CIVIL interposta por" which might be a case reference, but it's not a specific jurisprudência identifier. The example given in the guidelines includes things like "REsp 1694984/MS" or "Súmula 331 do TST". In this text, there's no such specific identifier, so no jurisprudência entities.
+
+Now, let's go through the text again step by step.
+
+The first part: "80/81 ) , mas deixou transcorrer `` in albis '' o prazo para defesa , conforme fl . 84 ." – No entities here.
+
+"A Curadoria Especial ofertou embargos à ação monitória , por negativa geral ( fl . 85 ) . " – "Curadoria Especial" is an organization, so mark as organizacao.
+
+"Manifestação do autor/embargado as fls . 89/90 . Intimadas as partes a respeito de eventual prescrição , manifestaram-se as fls . 98/103 e 104-verso . " – No entities here.
+
+"Acrescento que o d Magistrado sentenciante reconheceu a prescrição da pretensão monitória e , com fundamento no artigo 487 , inciso II , do Código de Processo Civil , extinguiu o processo , com resolução do mérito , condenando a parte autora ao pagamento das custas judiciais e dos honorários advocatícios , estes fixados em 10 % ( dez por cento ) do valor da causa . " – "Código de Processo Civil" is a law, so legislação. The "artigo 487 , inciso II" is part of that, so include it in the legislação tag.
+
+"R E L A T Ó R I O Cuida-se de Apelação Cível interposta por BRASÍLIA CURSOS E CONCURSOS LTDA em face da r. sentença de fls ." – "BRASÍLIA CURSOS E CONCURSOS LTDA" is an organization. Also, "BRASÍLIA" is a city, so local. Wait, but the company name includes "BRASÍLIA" as part of its name. However, the city itself is a local. But in the context, it's part of the organization's name. So maybe it's better to mark the entire organization name as organizacao. However, if "BRASÍLIA" is a city, but in this case, it's part of the company's name. The user's guidelines say that only proper names of places should be marked as local. Since "BRASÍLIA" is a city, but here it's part of the organization's name, should I mark it as local? The example in the guidelines includes "COMARCA DE BELO HORIZONTE" as a local. So if "BRASÍLIA" is a city, it's a local. However, in this case, it's part of the organization's name. The user's guidelines say that only names of places should be marked. So if the text is "BRASÍLIA CURSOS E CONCURSOS LTDA", the "BRASÍLIA" is part of the organization's name, but the city itself is a local. But how to handle that? The example given in the guidelines includes "COMARCA DE BELO HORIZONTE" as a local. So if "BRASÍLIA" is a city, then it's a local. However, in this case, the entire name is an organization. The user's guidelines state that only proper names of places should be marked. So if "BRASÍLIA" is a city, then it's a local. But in this context, it's part of the organization's name. The guidelines also mention that if a term is part of an organization's name, like "MINISTÉRIO PÚBLICO FEDERAL" as an organization, but "FEDERAL" is not a local. So in this case, "BRASÍLIA" is part of the organization's name, but it's a city. However, the organization's name includes the city. But according to the guidelines, the entire organization name is marked as organizacao, not breaking it down. Therefore, "BRASÍLIA CURSOS E CONCURSOS LTDA" is an organization, so the entire name is marked as organizacao, and "BRASÍLIA" is part of that name. Therefore, no separate local entity here. So only "BRASÍLIA CURSOS E CONCURSOS LTDA" is an organizacao.
+
+So, in the text, the entities are:
+
+- "Curadoria Especial" as organizacao.
+
+- "Código de Processo Civil" as legislação.
+
+- "artigo 487 , inciso II" as part of the legislação.
+
+- "BRASÍLIA CURSOS E CONCURSOS LTDA" as organizacao.
+
+Wait, but the "artigo 487 , inciso II" is part of the "Código de Processo Civil", so the entire reference should be in the legislação tag. So the full text would be "artigo 487 , inciso II , do Código de Processo Civil".
+
+Now, putting it all together:
+
+The text has "Curadoria Especial" as organizacao.
+
+"BRASÍLIA CURSOS E CONCURSOS LTDA" as organizacao.
+
+"Código de Processo Civil" as legislação.
+
+"artigo 487 , inciso II" as part of legislação.
+
+So the HTML would have:
+
+<span class="organizacao">Curadoria Especial</span>
+
+<span class="organizacao">BRASÍLIA CURSOS E CONCURSOS LTDA</span>
+
+<span class="legislacao">artigo 487 , inciso II , do Código de Processo Civil</span>
+
+Wait, but the original text says "com fundamento no artigo 487 , inciso II , do Código de Processo Civil". So the entire phrase is part of the legislação. Therefore, the <span> should include the entire reference.
+
+Also, check if "BRASÍLIA" is a local. If it's a city, then it's a local. But since it's part of the organization's name, maybe not. The guidelines say that only proper names of places should be marked. So if the text is "BRASÍLIA CURSOS E CONCURSOS LTDA", the entire name is an organization. However, "BRASÍLIA" is a city, but in this context, it's part of the organization's name. Therefore, it's better to mark the entire organization name as organizacao, and not split it. So no local entity here.
+
+So the final HTML would have the two organizacao and one legislação.
+
+Now, the text also has "R E L A T Ó R I O" which is a title, not an entity. "Cuida-se de Apelação Cível interposta por BRASÍLIA CURSOS E CONCURSOS LTDA" – the "BRASÍLIA CURSOS E CONCURSOS LTDA" is already marked as organizacao.
+
+So putting all together, the HTML should have the spans for those entities.
+</think>
+
+O texto original anotado em HTML com as entidades identificadas é:
+
+```
+80/81 ) , mas deixou transcorrer `` in albis '' o prazo para defesa , conforme fl . 84 . A <span class="organizacao">Curadoria Especial</span> ofertou embargos à ação monitória , por negativa geral ( fl . 85 ) . Manifestação do autor/embargado as fls . 89/90 . Intimadas as partes a respeito de eventual prescrição , manifestaram-se as fls . 98/103 e 104-verso . Acrescento que o d Magistrado sentenciante reconheceu a prescrição da pretensão monitória e , com fundamento no <span class="legislacao">artigo 487 , inciso II , do Código de Processo Civil</span> , extinguiu o processo , com resolução do mérito , condenando a parte autora ao pagamento das custas judiciais e dos honorários advocatícios , estes fixados em 10 % ( dez por cento ) do valor da causa . <span class="organizacao">BRASÍLIA CURSOS E CONCURSOS LTDA</span> em face da r. sentença de fls .
+```

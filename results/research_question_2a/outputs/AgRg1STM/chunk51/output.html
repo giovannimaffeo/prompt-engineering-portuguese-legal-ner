@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me parse each part.
+
+The text starts with "É oportuno frisar , ainda que o objetivo da combativa Defesa seja exaurir a instância , para fins de prequestionamento da matéria e futura interposição dos recursos cabíveis na instância extraordinária , os embargos de declaração apresentados são absolutamente distantes das hipóteses previstas em lei ."
+
+Looking for entities:
+
+- "Defesa" could be an organization or a legal term. In legal contexts, "Defesa" might refer to the defense team, which is an organization. But sometimes it's part of a legal term. Wait, the user's example output might have "Defesa" as an organization. Let me check the example given. Oh, the user provided an example where "Defesa" is marked as organizacao. So I should follow that.
+
+- "instância" is a legal term, but it's not one of the specified entities. The entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "instância" isn't one of them. Similarly, "recursos cabíveis" and "hipóteses previstas em lei" – "lei" is part of "legislacao". Wait, "previstas em lei" refers to legislation, so "lei" here is part of the legislacao entity. But the exact term "legislacao" isn't present. Wait, the user's example might have "lei" as legislacao. Let me check the example output again. The user's example output for the input text is:
+
+"É oportuno frisar , ainda que o objetivo da combativa <span class="organizacao">Defesa</span> seja exaurir a <span class="local">instância</span> , para fins de prequestionamento da matéria e futura interposição dos recursos cabíveis na <span class="local">instância</span> extraordinária , os embargos de declaração apresentados são absolutamente distantes das <span class="legislacao">hipóteses previstas em lei</span> ."
+
+Wait, in the example, "instância" is marked as local, and "hipóteses previstas em lei" is legislacao. So "instância" is considered a local entity. But "instância" is a legal term, but according to the guidelines, "local" refers to a place. Maybe in this context, "instância" refers to a court or a level of the judiciary, which is a local entity? Or perhaps the user's example considers "instância" as a local. Alternatively, maybe "instância" is part of a local term. But the user's example shows that "instância" is marked as local. So I should follow that.
+
+Similarly, "hipóteses previstas em lei" is marked as legislacao. So "lei" is part of that. So in the input text, "previstas em lei" is part of the legislacao entity. Therefore, the entire phrase "hipóteses previstas em lei" is marked as legislacao.
+
+So applying that to the input text:
+
+Original text: "É oportuno frisar , ainda que o objetivo da combativa Defesa seja exaurir a instância , para fins de prequestionamento da matéria e futura interposição dos recursos cabíveis na instância extraordinária , os embargos de declaração apresentados são absolutamente distantes das hipóteses previstas em lei ."
+
+Breaking it down:
+
+- "Defesa" is an organization (organizacao).
+- "instância" is local (local), appearing twice.
+- "hipóteses previstas em lei" is legislacao.
+
+So the HTML would be:
+
+É oportuno frisar , ainda que o objetivo da combativa <span class="organizacao">Defesa</span> seja exaurir a <span class="local">instância</span> , para fins de prequestionamento da matéria e futura interposição dos recursos cabíveis na <span class="local">instância</span> extraordinária , os embargos de declaração apresentados são absolutamente distantes das <span class="legislacao">hipóteses previstas em lei</span> .
+
+I need to make sure that all instances of the entities are marked. Let me check again. Are there any other entities? "tempo", "local", "legislacao", etc. "tempo" isn't present. "local" is "instância" here. "legislacao" is "hipóteses previstas em lei". "organizacao" is "Defesa". The rest are not entities. So that's the correct marking.
+</think>
+
+É oportuno frisar , ainda que o objetivo da combativa <span class="organizacao">Defesa</span> seja exaurir a <span class="local">instância</span> , para fins de prequestionamento da matéria e futura interposição dos recursos cabíveis na <span class="local">instância</span> extraordinária , os embargos de declaração apresentados são absolutamente distantes das <span class="legislacao">hipóteses previstas em lei</span> .

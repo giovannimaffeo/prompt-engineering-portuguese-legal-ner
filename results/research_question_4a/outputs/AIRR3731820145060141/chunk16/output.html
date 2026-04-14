@@ -1,0 +1,47 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with the first sentence: "Da mesma forma , inviável o processamento do recurso de revista por violação dos artigos 5° , LV , da Constituição Federal e 896 , §§ 5º e 9º , da CLT , pois , conforme consignado pelo Tribunal Regional `` Se a procuração tinha validade , o substabelecimento dela decorrente com ela feneceu . Ao outorgar novamente os poderes , necessário substabelecer mais uma vez sob a égide do novel instrumento para regularizar a cadeia . Outrossim , com o vencimento da primeira procuração , a nova , válida , possui data posterior ao único substabelecimento existente , o que enseja a incidência da Súmula nº 395 , IV , do C.TST . '' Assim como é inviável o processamento do recurso de revista por contrariedade à Súmula 395 , I , do TST , uma vez que a matéria foi decidida nos termos do item IV da mesma Súmula . In verbis : Súmula nº 395 do TST MANDATO E SUBSTABELECIMENTO ."
+
+Looking for entities:
+
+1. "Constituição Federal" – This is a legal document, so it's legislacao.
+2. "CLT" – This stands for Consolidação das Leis do Trabalho, which is a labor law, so legislacao.
+3. "Tribunal Regional" – This is an organization, so organizacao.
+4. "Súmula nº 395 , IV , do C.TST" – Súmula is a jurisprudência reference. C.TST is the Conselho de Justiça do Trabalho, which is an organization. Wait, but the Súmula is a jurisprudência entity. So "Súmula nº 395 , IV , do C.TST" should be jurisprudencia. Also, "C.TST" is an organization.
+5. "Súmula 395 , I , do TST" – Similarly, this is jurisprudencia. "TST" is the Tribunal Superior do Trabalho, which is an organization.
+6. "Súmula nº 395 do TST" – Again, jurisprudencia. "TST" is organizacao.
+7. "MANDATO E SUBSTABELECIMENTO" – These are terms related to legal procedures, but they are not specific entities. The user's guidelines say that generic terms like "súmula" without specific reference shouldn't be marked. So "MANDATO E SUBSTABELECIMENTO" are not entities here.
+
+Now, checking for other entities:
+
+- "Tribunal Regional" is an organization. But the text says "Tribunal Regional ``" – the quotes might be part of a quote, but the actual entity is "Tribunal Regional" as an organization.
+- "C.TST" is an abbreviation for Conselho de Justiça do Trabalho, which is an organization.
+- "TST" is the Tribunal Superior do Trabalho, another organization.
+- "Constituição Federal" is legislacao.
+- "CLT" is legislacao.
+- "Súmula nº 395" and similar references are jurisprudencia.
+
+I need to make sure that all the entities are correctly tagged. Also, check if any other terms might be entities. For example, "vencimento da primeira procuração" – "procuração" is a legal term but not an entity. "data posterior" – "data" is a temporal reference, but the user's guidelines say only explicit dates should be marked. Here, "data posterior" is a description, not a specific date, so it's not marked as tempo.
+
+So, the entities to mark are:
+
+- "Constituição Federal" → legislacao
+- "CLT" → legislacao
+- "Tribunal Regional" → organizacao
+- "C.TST" → organizacao
+- "TST" → organizacao
+- "Súmula nº 395 , IV , do C.TST" → jurisprudencia
+- "Súmula 395 , I , do TST" → jurisprudencia
+- "Súmula nº 395 do TST" → jurisprudencia
+
+Wait, the user's example shows that "Súmula 331 do TST" is marked as jurisprudencia. So any mention of a súmula with a number and possibly a reference to an organization (like TST or C.TST) should be marked as jurisprudencia.
+
+Also, "C.TST" is an organization, so that should be marked as organizacao.
+
+Putting it all together, the HTML should have the appropriate spans with the correct classes. Let me structure the output accordingly.
+</think>
+
+Da mesma forma , inviável o processamento do recurso de revista por violação dos artigos 5° , LV , da <span class="legislacao">Constituição Federal</span> e <span class="legislacao">896 , §§ 5º e 9º , da CLT</span> , pois , conforme consignado pelo <span class="organizacao">Tribunal Regional</span> `` Se a procuração tinha validade , o substabelecimento dela decorrente com ela feneceu . Ao outorgar novamente os poderes , necessário substabelecer mais uma vez sob a égide do novel instrumento para regularizar a cadeia . Outrossim , com o vencimento da primeira procuração , a nova , válida , possui data posterior ao único substabelecimento existente , o que enseja a incidência da <span class="jurisprudencia">Súmula nº 395 , IV , do C.TST</span> . '' Assim como é inviável o processamento do recurso de revista por contrariedade à <span class="jurisprudencia">Súmula 395 , I , do TST</span> , uma vez que a matéria foi decidida nos termos do item IV da mesma <span class="jurisprudencia">Súmula</span> . In verbis : <span class="jurisprudencia">Súmula nº 395 do TST</span> <span class="organizacao">MANDATO E SUBSTABELECIMENTO</span> .

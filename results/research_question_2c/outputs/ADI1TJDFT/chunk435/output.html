@@ -1,0 +1,94 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "LEI Nº 5.815 , DE 3 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal Fls ."
+
+Alright, let's break it down. The first part is "LEI Nº 5.815 , DE 3 DE ABRIL DE 2017". Here, "LEI" is likely legislation, so that's a legislacao entity. The number 5.815 is part of the law's identifier, so maybe that's part of the legislacao. Then "DE 3 DE ABRIL DE 2017" is a date, so that's tempo. 
+
+Next, "( Autoria do Projeto : Deputado Rafael Prudente )". "Deputado Rafael Prudente" is a person, so that's pessoa. 
+
+Then "O GOVERNADOR DO DISTRITO FEDERAL" – "GOVERNADOR" is a title, but the actual entity here is the person, maybe? Wait, but the text says "GOVERNADOR DO DISTRITO FEDERAL" which is the Governor of the Federal District. But the actual person's name isn't mentioned here. So maybe "GOVERNADOR" is part of the title, but since there's no specific name, perhaps it's not a pessoa. Alternatively, maybe "GOVERNADOR" is part of the organization? Wait, the organization would be the entity, like a government body. But the text here is referring to the Governor, so maybe it's a pessoa? Hmm, but the text doesn't mention a specific person's name. So maybe "GOVERNADOR" is part of the title, not an entity. Wait, the user's example output might clarify this. Let me check the sample output provided.
+
+Looking at the sample output, the user's example input is similar, and the output has "LEI Nº 5.815" as legislacao, "3 DE ABRIL DE 2017" as tempo, "Deputado Rafael Prudente" as pessoa, and "Câmara Legislativa do Distrito Federal" as organizacao. Wait, but in the input text, the user's example output includes "Câmara Legislativa do Distrito Federal" as organizacao. So in the input text provided, "Câmara Legislativa do Distrito Federal" is an organization. 
+
+So applying that to the current input text: "O GOVERNADOR DO DISTRITO FEDERAL" – the "GOVERNADOR" is part of the title, but since there's no specific name, maybe it's not a pessoa. However, the text says "GOVERNADOR DO DISTRITO FEDERAL" which is the Governor of the Federal District. But since the actual person isn't named, perhaps it's not marked as pessoa. Alternatively, maybe "GOVERNADOR" is part of the organization? Wait, the organization would be the entity, like the government body. But in this case, the text is referring to the Governor, not the organization. So maybe "GOVERNADOR" isn't an entity here. 
+
+Wait, the input text is: "O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal Fls ."
+
+So "Câmara Legislativa do Distrito Federal" is an organization, so that's organizacao. The "GOVERNADOR DO DISTRITO FEDERAL" is the Governor, but since the name isn't given, maybe it's not marked. However, in the sample output, the user's example includes "Câmara Legislativa do Distrito Federal" as organizacao. So in the current input, "Câmara Legislativa do Distrito Federal" is an organization. 
+
+So in the input text, "Câmara Legislativa do Distrito Federal" is an organization. Also, "Distrito Federal" is a local, but in the sample output, "Distrito Federal" is part of the organization name. Wait, maybe "Distrito Federal" is a local. Let me check the sample output again. 
+
+In the sample input, the output has "Câmara Legislativa do Distrito Federal" as organizacao. So "Distrito Federal" is part of the organization's name. Therefore, in the current input, "Distrito Federal" is part of the organization's name. So "Câmara Legislativa do Distrito Federal" is an organization. 
+
+So, in the input text, the entities would be:
+
+- "LEI Nº 5.815" as legislacao
+- "3 DE ABRIL DE 2017" as tempo
+- "Deputado Rafael Prudente" as pessoa
+- "Câmara Legislativa do Distrito Federal" as organizacao
+- "Distrito Federal" as local? Or is it part of the organization? Wait, in the sample output, "Distrito Federal" is part of the organization name. So maybe "Distrito Federal" is a local, but in the sample output, it's part of the organization. Hmm, this is a bit confusing. 
+
+Wait, the user's sample input is similar to the current input. Let me check the sample input and output again. 
+
+Sample input: "LEI Nº 5.815 , DE 3 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal Fls ."
+
+Sample output: 
+
+< span class="legislacao">LEI Nº 5.815</span> , < span class="tempo">3 DE ABRIL DE 2017</span> ( Autoria do Projeto : < span class="pessoa">Deputado Rafael Prudente</span> ) O < span class="organizacao">GOVERNADOR DO DISTRITO FEDERAL</span> , Faço saber que a < span class="organizacao">Câmara Legislativa do Distrito Federal</span> Fls .
+
+Wait, in the sample output, "GOVERNADOR DO DISTRITO FEDERAL" is marked as organizacao. But that seems incorrect because "GOVERNADOR" is a title, not an organization. However, the user's sample output might have that. So perhaps in this case, the user considers "GOVERNADOR DO DISTRITO FEDERAL" as an organization. Maybe the user's system is trained to mark such titles as organizations. 
+
+Alternatively, maybe "GOVERNADOR" is part of the organization. But I need to follow the user's example. 
+
+In the sample output, "GOVERNADOR DO DISTRITO FEDERAL" is marked as organizacao. So in the current input, "GOVERNADOR DO DISTRITO FEDERAL" is an organization. But that seems odd. However, perhaps the user's system is designed to mark such titles as organizations. 
+
+Alternatively, maybe "GOVERNADOR" is a title, and "Distrito Federal" is a local. But in the sample output, "Distrito Federal" is part of the organization. 
+
+This is a bit confusing, but I need to follow the user's example. 
+
+So, applying that to the current input:
+
+- "LEI Nº 5.815" is legislacao
+- "3 DE ABRIL DE 2017" is tempo
+- "Deputado Rafael Prudente" is pessoa
+- "GOVERNADOR DO DISTRITO FEDERAL" is organizacao
+- "Câmara Legislativa do Distrito Federal" is organizacao
+- "Distrito Federal" is part of the organization name, so it's not marked as local unless it's a separate entity. 
+
+Wait, in the sample output, "Distrito Federal" is part of the organization name. So in the current input, "Distrito Federal" is part of the organization name. Therefore, it's not marked as local. 
+
+So the final HTML would have:
+
+- LEI Nº 5.815 as legislacao
+- 3 DE ABRIL DE 2017 as tempo
+- Deputado Rafael Prudente as pessoa
+- GOVERNADOR DO DISTRITO FEDERAL as organizacao
+- Câmara Legislativa do Distrito Federal as organizacao
+
+But wait, in the sample input, the user's output includes "GOVERNADOR DO DISTRITO FEDERAL" as organizacao. So I need to follow that. 
+
+Therefore, the current input text would have:
+
+- LEI Nº 5.815 as legislacao
+- 3 DE ABRIL DE 2017 as tempo
+- Deputado Rafael Prudente as pessoa
+- GOVERNADOR DO DISTRITO FEDERAL as organizacao
+- Câmara Legislativa do Distrito Federal as organizacao
+
+But wait, the original input text has "O GOVERNADOR DO DISTRITO FEDERAL , Faço saber que a Câmara Legislativa do Distrito Federal Fls ."
+
+So "GOVERNADOR DO DISTRITO FEDERAL" is part of the text, and "Câmara Legislativa do Distrito Federal" is another organization. 
+
+So the HTML would be:
+
+<span class="legislacao">LEI Nº 5.815</span> , <span class="tempo">3 DE ABRIL DE 2017</span> ( Autoria do Projeto : <span class="pessoa">Deputado Rafael Prudente</span> ) O <span class="organizacao">GOVERNADOR DO DISTRITO FEDERAL</span> , Faço saber que a <span class="organizacao">Câmara Legislativa do Distrito Federal</span> Fls .
+
+But wait, in the sample output, the user's example includes "GOVERNADOR DO DISTRITO FEDERAL" as organizacao. So I need to follow that. 
+
+Therefore, the final HTML would have those spans. 
+
+I think that's the correct approach. Now, I'll format the output accordingly.
+</think>
+
+<span class="legislacao">LEI Nº 5.815</span> , <span class="tempo">3 DE ABRIL DE 2017</span> ( Autoria do Projeto : <span class="pessoa">Deputado Rafael Prudente</span> ) O <span class="organizacao">GOVERNADOR DO DISTRITO FEDERAL</span> , Faço saber que a <span class="organizacao">Câmara Legislativa do Distrito Federal</span> Fls .

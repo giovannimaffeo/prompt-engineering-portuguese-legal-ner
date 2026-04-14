@@ -1,0 +1,143 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. The text is a legal judgment or a court decision, so there are likely several entities to mark. Let me go through each sentence and identify the entities.
+
+Starting with the first part: "SEJAM JULGADOS PROCEDENTES OS PEDIDOS para condenar o Réu ao pagamento das diferenças existentes entre os valores que vêm sendo pagos a títulos de proventos de aposentadoria ( nos quais o Réu tem desconsiderado a paridade no que toca às gratificações de cargo comissionado/função gratificada incorporada - quintos/ décimos ) e os proventos efetivamente devidos ( isto é , com a observância da paridade aqui tratada ) ; c. seja o Réu condenado a pagar os valores referentes às parcelas imprescritas , acrescidas da projeção de 12 ( doze ) meses , além das parcelas que vencerem no curso do processo e que eventualmente não estejam aqui incluídas ; d. seja o Réu condenado ao pagamento de custas processuais e honorários advocatícios , a serem fixados nos moldes do artigo 20 , §4º do Código do Processo civil ; Para formular tais pedidos alegou sua legitimidade para propor a demanda , falou da competência das Varas de Fazenda Pública e disse que `` A presente ação tem por finalidade , assegurar o direito dos professores substituídos nesta demanda ao pagamento das diferenças existentes entre os valores que vêm sendo pagos a título de proventos de aposentadoria ... e os proventos efetivamente devidos . ''"
+
+Looking for entities:
+
+1. "Réu" – This is a legal term, but in Portuguese, "Réu" is the defendant. However, the user's guidelines mention that "pessoa" should be names of individuals. Since "Réu" is a role, not a specific name, maybe it's not a pessoa. Wait, but in some contexts, "Réu" could refer to a specific person. However, the text doesn't specify a name. So maybe it's not marked as pessoa. But the user's example might have it as a pessoa. Wait, the user's example in the output might have "Réu" as a pessoa? Let me check the sample output provided. Wait, the user hasn't provided a sample output, but the task is to generate it. So I need to decide based on the definitions.
+
+Wait, the definitions say that "pessoa" is names of individuals. "Réu" is a role, not a name. So it's not a pessoa. So maybe not marked. But maybe in some contexts, "Réu" is used as a name. But the text doesn't specify a name. So perhaps not marked.
+
+Next, "Varas de Fazenda Pública" – this is an organization, as it refers to a court or judicial body. So that's an organizacao.
+
+"artigo 20 , §4º do Código do Processo civil" – this is legislation, as it refers to a legal code. So "Código do Processo civil" is a legislacao. The "artigo 20" is part of that legislation, so it should be marked as legislacao.
+
+"§4º" is part of the article, so included in the legislacao tag.
+
+"professores substituídos" – this is a generic term, not a specific name, so not pessoa. "Código do Processo civil" is a legislacao.
+
+"Varas de Fazenda Pública" is an organizacao.
+
+"Réu" – as discussed, not a pessoa unless it's a specific name. Since it's a role, not a name, it's not marked.
+
+"12 ( doze ) meses" – this is a time reference, so "12 meses" is tempo.
+
+"doze" is part of the time reference, so included in tempo.
+
+"artigo 20" – part of the legislacao.
+
+"§4º" – part of the legislacao.
+
+"processo" – not a specific entity, just a term.
+
+"custas processuais" – not an entity.
+
+"honorários advocatícios" – not an entity.
+
+"legitimidade" – not an entity.
+
+"competência das Varas de Fazenda Pública" – "Varas" is part of the organizacao.
+
+"ação" – not an entity.
+
+"proventos de aposentadoria" – not an entity.
+
+"gratificações de cargo comissionado/função gratificada incorporada" – not entities.
+
+"quintos/ décimos" – not entities.
+
+"paridade" – not an entity.
+
+"imprescritas" – not an entity.
+
+"projeção de 12 meses" – "12 meses" is tempo.
+
+"parcelas que vencerem no curso do processo" – not entities.
+
+"custas processuais" – not an entity.
+
+"artigo 20" – part of legislacao.
+
+"§4º" – part of legislacao.
+
+"Código do Processo civil" – legislacao.
+
+"Varas de Fazenda Pública" – organizacao.
+
+"professores substituídos" – not entities.
+
+So, the entities to mark are:
+
+- organizacao: "Varas de Fazenda Pública"
+- legislacao: "Código do Processo civil", "artigo 20", "§4º"
+- tempo: "12 meses", "doze meses" (but "doze" is part of the time reference, so included in the tempo tag)
+- "Réu" – not marked as pessoa, since it's a role, not a name.
+
+Wait, but in the text, "Réu" is used as a role, but maybe in some contexts, it's a specific person. However, the text doesn't provide a name, so it's not a pessoa. So no mark.
+
+So, the HTML should have:
+
+<span class="organizacao">Varas de Fazenda Pública</span>
+
+<span class="legislacao">Código do Processo civil</span>
+
+<span class="tempo">12 meses</span>
+
+Also, "doze" is part of the time reference, so included in the tempo tag. Wait, the original text has "projeção de 12 ( doze ) meses". So "12 meses" and "doze meses" are both time references. So both should be marked as tempo.
+
+Wait, the user's guidelines say that "tempo" is expressions with explicit temporal references. So "12 meses" and "doze meses" are both time references. So both should be marked as tempo.
+
+So, in the text, "12 ( doze ) meses" would be marked as tempo, including "doze" as part of the time reference.
+
+So, the HTML would have:
+
+<span class="tempo">12 ( doze ) meses</span>
+
+Similarly, "12 meses" is part of that.
+
+Wait, the original text has "acrescidas da projeção de 12 ( doze ) meses". So the entire phrase "12 ( doze ) meses" is a time reference. So the entire phrase is marked as tempo.
+
+So, in the HTML, that part would be:
+
+<span class="tempo">12 ( doze ) meses</span>
+
+Also, "artigo 20 , §4º do Código do Processo civil" – the "artigo 20" and "§4º" are parts of the legislation, so they should be included in the legislacao tag. So the entire phrase "artigo 20 , §4º do Código do Processo civil" is part of the legislacao.
+
+Wait, but the "Código do Processo civil" is the legislation, and the "artigo 20" and "§4º" are parts of it. So the entire phrase "artigo 20 , §4º do Código do Processo civil" is part of the legislacao. So the HTML would have:
+
+<span class="legislacao">artigo 20 , §4º do Código do Processo civil</span>
+
+But wait, the "Código do Processo civil" is the legislation, and the "artigo 20" and "§4º" are parts of it. So the entire phrase is part of the legislacao. So the entire phrase is marked as legislacao.
+
+So, putting it all together, the HTML would have:
+
+- "Varas de Fazenda Pública" as organizacao
+- "Código do Processo civil" as legislacao
+- "12 ( doze ) meses" as tempo
+- "artigo 20 , §4º do Código do Processo civil" as legislacao
+
+Wait, but "artigo 20" and "§4º" are parts of the legislation. So the entire phrase "artigo 20 , §4º do Código do Processo civil" is part of the legislacao. So the entire phrase is marked as legislacao.
+
+So, the final HTML would have those tags. Let me check again.
+
+Another part: "Código do Processo civil" is a legislation, so marked as legislacao.
+
+"artigo 20 , §4º" is part of that legislation, so included in the legislacao tag.
+
+So, the entire phrase "artigo 20 , §4º do Código do Processo civil" is marked as legislacao.
+
+Also, "12 ( doze ) meses" is marked as tempo.
+
+"Varas de Fazenda Pública" is organizacao.
+
+So, the final HTML would have those tags. Let me make sure there are no other entities.
+
+Looking again, "Réu" is a role, not a name, so not marked. "professores substituídos" is a generic term, not a specific name. "Código do Processo civil" is legislacao. "Varas de Fazenda Pública" is organizacao. "12 ( doze ) meses" is tempo. "artigo 20 , §4º" is part of legislacao.
+
+So, the HTML should have those tags. Now, I need to structure the text with these tags. Let me write the HTML accordingly.
+</think>
+
+<span class="organizacao">Varas de Fazenda Pública</span> ; c. seja o <span class="pessoa">Réu</span> condenado a pagar os valores referentes às parcelas imprescritas , acrescidas da projeção de <span class="tempo">12 ( doze ) meses</span> , além das parcelas que vencerem no curso do processo e que eventualmente não estejam aqui incluídas ; d. seja o <span class="pessoa">Réu</span> condenado ao pagamento de custas processuais e honorários advocatícios , a serem fixados nos moldes do <span class="legislacao">artigo 20 , §4º do Código do Processo civil</span> ; Para formular tais pedidos alegou sua legitimidade para propor a demanda , falou da competência das <span class="organizacao">Varas de Fazenda Pública</span> e disse que `` A presente ação tem por finalidade , assegurar o direito dos <span class="pessoa">professores substituídos</span> nesta demanda ao pagamento das diferenças existentes entre os valores que vêm sendo pagos a título de proventos de aposentadoria ... e os proventos efetivamente devidos . ''

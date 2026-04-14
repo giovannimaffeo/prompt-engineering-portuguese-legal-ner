@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 4 de Educação e em razão de terem exercido por vários anos cargos comissionados em funções gratificadas incorporaram aos seus vencimentos os quintos/décimos correspondentes , conforme a Lei 1.004/1996 , regulamentada pelo Decreto nº 17.182/96 ."
+
+Starting with the first part: "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P". The code here seems like a verification code, not an entity. So no span needed here.
+
+Next, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". "GABINETE" is likely an organization, so "organizacao". "DESEMBARGADORA MARIA IVATÔNIA" refers to a person, so "pessoa". Wait, "DESEMBARGADORA" is a title, so maybe the full name is "MARIA IVATÔNIA", making her the person. So "MARIA IVATÔNIA" is a pessoa.
+
+Then "4 de Educação". "4 de Educação" might be a local, but "Educação" is a department, so maybe "local" here. Wait, "4 de Educação" could be a location, like a department or a specific place. Alternatively, "Educação" as a local? Not sure. Maybe "Educação" is part of a local name. Alternatively, maybe "4 de Educação" is a local. I'll mark "Educação" as local.
+
+Next part: "em razão de terem exercido por vários anos cargos comissionados em funções gratificadas incorporaram aos seus vencimentos os quintos/décimos correspondentes". This seems like a legal explanation, no entities here.
+
+Then "conforme a Lei 1.004/1996". "Lei" is legislation, so "legislacao". The number 1.004/1996 is the law's identifier, so that's part of the legislacao.
+
+Finally, "regulamentada pelo Decreto nº 17.182/96". "Decreto" is a decree, which is part of legislation, so "legislacao" again. The number 17.182/96 is part of the decree's identifier.
+
+Putting it all together:
+
+- "GABINETE" as organizacao
+- "MARIA IVATÔNIA" as pessoa
+- "Educação" as local
+- "Lei 1.004/1996" as legislacao
+- "Decreto nº 17.182/96" as legislacao
+
+Wait, "Decreto" is a decree, which is part of legislation, so yes, legislacao. Also, "Lei" is legislation. The numbers are part of the identifiers, so they are included in the spans.
+
+Now, check if any other parts are entities. The "4 de Educação" might be a local, but "4" is a number, so maybe not. "4 de Educação" could be a local name, like a department or a specific location. So "Educação" is local. The "4" is part of the local name, but since it's a number, maybe it's part of the local. However, the user's example might have "Educação" as local. Let me check the example output again.
+
+In the example, the user's output has "Educação" as local. So I'll follow that. So "Educação" is local.
+
+So the final HTML would have the spans for those entities. Let me structure the text accordingly.
+</think>
+
+Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 4 de <span class="local">Educação</span> e em razão de terem exercido por vários anos cargos comissionados em funções gratificadas incorporaram aos seus vencimentos os quintos/décimos correspondentes , conforme a <span class="legislacao">Lei 1.004/1996</span> , regulamentada pelo <span class="legislacao">Decreto nº 17.182/96</span> .

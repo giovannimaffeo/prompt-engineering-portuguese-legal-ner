@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to read the input text carefully. The text mentions "40 da Constituição Federal". "Constituição Federal" is a legal document, so that's "legislacao". The number 40 is part of the article reference, so maybe it's part of the legislation. Wait, the user's example output shows "40 da Constituição Federal" as "40 da <span class='legislacao'>Constituição Federal</span>". So the entire "Constituição Federal" is marked as legislation.
+
+Next, looking at the conditions. "sessenta anos de idade" and "cinqüenta e cinco anos de idade" – these are ages, which are time entities. So "sessenta anos" and "cinqüenta e cinco anos" should be marked as "tempo". Similarly, "trinta e cinco anos de contribuição" and "trinta anos de contribuição" are also time. "vinte anos de efetivo exercício" and "dez anos de carreira" and "cinco anos de efetivo exercício" – all these are time. So each of these numerical phrases with "anos" or "anos de contribuição" etc. should be "tempo".
+
+The text also mentions "serviço público" and "cargo em que se der a aposentadoria". "serviço público" is a local? Wait, no. "serviço público" refers to public service, which is a general term. Maybe not a local. Wait, the user's example output doesn't mark these. Let me check the example again. The example output shows "40 da <span class='legislacao'>Constituição Federal</span>" and the rest of the text without any other spans. So maybe in this case, there are no other entities except the legislation and the time.
+
+Wait, the user's example output is the text with "Constituição Federal" marked as legislation. The rest of the text has numbers and conditions, but no other entities. So in this case, the only entities are the legislation and the time. So I need to mark all the numerical age and contribution periods as "tempo".
+
+So, breaking down the text:
+
+"40 da Constituição Federal" → "Constituição Federal" is legislation.
+
+Then, "sessenta anos de idade" → "sessenta anos" is tempo.
+
+"trinta e cinco anos de contribuição" → "trinta e cinco anos" is tempo.
+
+"trinta anos de contribuição" → "trinta anos" is tempo.
+
+"vinte anos de efetivo exercício" → "vinte anos" is tempo.
+
+"dez anos de carreira" → "dez anos" is tempo.
+
+"cinco anos de efetivo exercício" → "cinco anos" is tempo.
+
+So each of these numerical phrases with "anos" or "anos de contribuição" etc. should be marked as "tempo".
+
+Now, I need to make sure that each of these parts is wrapped in <span class="tempo">. Also, check if any other entities are present. For example, "serviço público" – is that a local? Maybe not. "cargo em que se der a aposentadoria" – that's a position, but not one of the specified entities. So no other entities here.
+
+So the final HTML should have the "Constituição Federal" marked as legislation, and all the numerical age and contribution periods marked as tempo.
+</think>
+
+40 da Constituição Federal , vier a preencher , cumulativamente , as seguintes condições : I - <span class="tempo">sessenta anos de idade</span> , se homem , e <span class="tempo">cinqüenta e cinco anos de idade</span> , se mulher ; II - <span class="tempo">trinta e cinco anos de contribuição</span> , se homem , e <span class="tempo">trinta anos de contribuição</span> , se mulher ; III - <span class="tempo">vinte anos de efetivo exercício no serviço público</span> ; e IV - <span class="tempo">dez anos de carreira</span> e <span class="tempo">cinco anos de efetivo exercício no cargo em que se der a aposentadoria</span> .

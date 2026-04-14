@@ -1,0 +1,43 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal document with names, dates, and references. 
+
+Starting with the first part: "MARIA ELIZABETH GUIMARÃES TEIXEIRA". That's a full name, so that's a pessoa. I'll wrap that in <span class="pessoa">.
+
+Next, "Extrato da Ata do Julgamento" – this seems like a document title, but it's not a specific entity. The user mentioned to only mark specific entities, so maybe this isn't one. Wait, "Extrato da Ata" might be part of a legal document, but according to the guidelines, only specific entities like legislation, jurisprudence, etc., should be marked. Since "Extrato da Ata" is a generic term, it might not be marked. 
+
+Then "por unanimidade de votos" – this is a description, not an entity. 
+
+"Agravo Interno" – this is a legal term, but is it a jurisprudência or legislação? Agravo is a type of legal appeal, so maybe it's part of a jurisprudência reference. Wait, the user's example output shows "Agravo Interno" as part of a jurisprudência. Let me check the example output again. In the sample, "Agravo Interno" is marked as jurisprudencia. So I should mark that. 
+
+"Relator Ministro JOSÉ BARROSO FILHO" – "Ministro" is a title, but the name "JOSÉ BARROSO FILHO" is a pessoa. So I'll mark the name as pessoa. 
+
+"Documento assinado eletronicamente por José Barroso Filho" – again, the name is a pessoa. 
+
+"Matricula 1117" – this is a registration number, not an entity. 
+
+"Em 02/03/2018 17:26:32" – this is a date and time, so tempo. 
+
+"Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4" – the URL is part of the document, but the user didn't mention URLs as entities. The code "3044c7190e4" is a verifier code, not an entity. 
+
+"Brasília , 26 de outubro de 2017 ." – "Brasília" is a local, and "26 de outubro de 2017" is a tempo. 
+
+Now, checking the example output provided by the user. The sample output has "MARIA ELIZABETH GUIMARÃES TEIXEIRA" as pessoa, "Agravo Interno" as jurisprudencia, "JOSÉ BARROSO FILHO" as pessoa, "Brasília" as local, and "26 de outubro de 2017" as tempo. 
+
+Wait, in the input text, there's "por unanimidade de votos , em rejeitar o Agravo Interno , nos termos do voto do Relator Ministro JOSÉ BARROSO FILHO". The "Agravo Interno" is part of the legal process, so it's a jurisprudência. The "Relator Ministro" refers to the judge, so the name is pessoa. 
+
+Also, "02/03/2018 17:26:32" is a tempo. 
+
+"Brasília" is a local. 
+
+So putting it all together, I need to mark each of these entities with the appropriate class. Let me make sure I'm not missing any. 
+
+Another thing to check: the URL and code are not entities. The "Extrato da Ata do Julgamento" is part of the document title, but not an entity. 
+
+So the final HTML should have the names marked as pessoa, the date as tempo, the location as local, and the Agravo Interno as jurisprudencia. 
+
+I think that's all. Let me structure the HTML accordingly.
+</think>
+
+<span class="pessoa">MARIA ELIZABETH GUIMARÃES TEIXEIRA</span> , na conformidade do <span class="jurisprudencia">Extrato da Ata do Julgamento</span> , por unanimidade de votos , em rejeitar o <span class="jurisprudencia">Agravo Interno</span> , nos termos do voto do Relator <span class="pessoa">Ministro JOSÉ BARROSO FILHO</span> . Documento assinado eletronicamente por <span class="pessoa">José Barroso Filho</span> , Matricula 1117 . <span class="tempo">Em 02/03/2018 17:26:32</span> . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 <span class="local">Brasília</span> , <span class="tempo">26 de outubro de 2017</span> .

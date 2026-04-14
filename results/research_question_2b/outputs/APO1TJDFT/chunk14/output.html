@@ -1,0 +1,87 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read through the input text carefully. Let me start by breaking down the text sentence by sentence.
+
+The first part is "O Juízo de origem apreciou a questão nos seguintes termos : “ O pedido deve ser julgado procedente . ( DISPOSITIVO 458 , III , CPC ) Fls . _____ Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 5 Julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença . A parte demandada goza de isenção legal , mas deve ressarcir as custas adiantadas pela parte autora ."
+
+Looking for entities:
+
+1. "Juízo de origem" – This is a judicial body, so maybe "organizacao"? Wait, "Juízo" is a court, which is an organization. So "Juízo de origem" would be an organization. But maybe "Juízo" is a legal term for a court, so it's an organization. So I'll mark "Juízo" as organizacao.
+
+2. "DISPOSITIVO 458 , III , CPC" – "CPC" stands for Código de Processo Civil, which is legislation. So "CPC" should be legislacao.
+
+3. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is the office of a judge, so that's an organization. "DESEMBARGADORA MARIA IVATÔNIA" – "DESEMBARGADORA" is a title, so "MARIA IVATÔNIA" is a person. So "MARIA IVATÔNIA" should be pessoa.
+
+4. "5 Julgo" – "Julgo" is a verb, so no entity here. "5" is a date, so tempo. Wait, "5" is a number, but in the context, it's likely a date. So "5" is tempo.
+
+5. "liquidação de sentença" – "sentença" is a legal term, but not an entity. "liquidação" is a process, not an entity.
+
+6. "isenção legal" – "isenção legal" refers to a legal exemption, so "isenção legal" is part of legislation? Or maybe it's part of the text, but not an entity. Wait, "isenção legal" is a legal term, but not an entity. So maybe not marked.
+
+7. "custas adiantadas" – "custas" refers to legal costs, but again, not an entity.
+
+Now, let's go through each part again to make sure.
+
+- "Juízo de origem" – "Juízo" is a court, so organizacao.
+- "DISPOSITIVO 458 , III , CPC" – "CPC" is legislacao.
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is an organization, "MARIA IVATÔNIA" is pessoa.
+- "5" – date, so tempo.
+- "Código de Verificação" – "Código" is part of the code, but not an entity. "Verificação" is a process, not an entity.
+- "Apelação / Reexame Necessário 20140110500434APO" – "Apelação" is a legal term, but not an entity. "Reexame Necessário" is a legal term, but not an entity. The number "20140110500434APO" is a code, but not an entity.
+- "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – "Código de Verificação" is a term, not an entity. The code is a number, but not an entity.
+
+So the entities to mark are:
+
+- "Juízo" as organizacao
+- "CPC" as legislacao
+- "MARIA IVATÔNIA" as pessoa
+- "5" as tempo
+
+Wait, "5 Julgo" – "5" is a date, so tempo. "Julgo" is a verb, so no. So "5" is tempo.
+
+Now, let's check if there are any other entities. "DESEMBARGADORA" is a title, so not an entity. "GABINETE" is an organization. "Código de Verificação" is a term, not an entity. "Custas adiantadas" is a legal term, but not an entity.
+
+So the final HTML should have:
+
+- <span class="organizacao">Juízo</span> de origem
+- <span class="legislacao">CPC</span>
+- <span class="pessoa">MARIA IVATÔNIA</span>
+- <span class="tempo">5</span>
+
+Wait, but "GABINETE" is part of "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So "GABINETE" is an organization. So "GABINETE" should be organizacao. But the text is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So "GABINETE" is an organization. So I need to mark "GABINETE" as organizacao.
+
+Wait, but the user's example in the output might have different. Let me check the original input again.
+
+Original input: "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA"
+
+So "GABINETE" is the office, which is an organization. "DESEMBARGADORA" is a title, so not an entity. "MARIA IVATÔNIA" is a person. So "GABINETE" is organizacao, "MARIA IVATÔNIA" is pessoa.
+
+So in the text, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" would have "GABINETE" as organizacao and "MARIA IVATÔNIA" as pessoa.
+
+Also, "DISPOSITIVO 458 , III , CPC" – "CPC" is legislacao.
+
+"5" is tempo.
+
+So putting it all together:
+
+- "Juízo" is organizacao
+- "CPC" is legislacao
+- "GABINETE" is organizacao
+- "MARIA IVATÔNIA" is pessoa
+- "5" is tempo
+
+Now, let's check the rest of the text. Are there any other entities?
+
+"Fls . _____" – "Fls" is an abbreviation for "Folhas", which is a legal term, but not an entity. "Fls" is not an entity here.
+
+"Apelação / Reexame Necessário 20140110500434APO" – "Apelação" and "Reexame Necessário" are legal terms, but not entities. The number is a code, not an entity.
+
+"Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – "Código de Verificação" is a term, not an entity. The code is a number, not an entity.
+
+So the final HTML should have the marked entities as above.
+
+Now, let's write the HTML with these tags.
+</think>
+
+O <span class="organizacao">Juízo</span> de origem apreciou a questão nos seguintes termos : “ O pedido deve ser julgado procedente . ( <span class="legislacao">DISPOSITIVO 458 , III , CPC</span> ) Fls . _____ Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> <span class="tempo">5</span> Julgo procedente o pedido para condenar o requerido a pagar as diferenças entre os valores pagos e os efetivamente devidos aos autores , o que será apurado em liquidação de sentença . A parte demandada goza de isenção legal , mas deve ressarcir as custas adiantadas pela parte autora .

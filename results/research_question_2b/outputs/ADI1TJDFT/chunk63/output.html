@@ -1,0 +1,91 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about an Action Direta de Inconstitucionalidade (ADI) with some codes and details. 
+
+Looking for entities:
+
+1. "pessoa": The text mentions "DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" which is a person, so that's a pessoa. Also, "TRIBUNAL PLENO" might be an organization, but wait, "TRIBUNAL PLENO" is a court body, so maybe that's an organizacao. Wait, but "TRIBUNAL PLENO" is part of the court, so maybe it's an organization. But the user's example output shows "TRIBUNAL PLENO" as an organizacao. Let me check the example output given.
+
+Wait, the user provided a sample input and output. Let me check the sample output. The sample input includes "TRIBUNAL PLENO" and in the output, it's marked as organizacao. So I need to follow that.
+
+2. "organizacao": "GABINETE DO DESEMBARGADOR" is an organization, maybe. Also "TRIBUNAL PLENO" is an organization. 
+
+3. "tempo": Dates like "30/10/2007" and "4 de Outubro de 2001" are tempo. Also "20170020161362ADI" might be a code, but not sure. Wait, the code "20170020161362ADI" is part of the ADI number, so maybe not a tempo. The dates are "30/10/2007" and "4 de Outubro de 2001" which are tempo.
+
+4. "local": The text mentions "GABINETE DO DESEMBARGADOR" which is a location, so local. Also "TRIBUNAL PLENO" might be a local, but in the example output, it's marked as organizacao. Wait, the example output shows "TRIBUNAL PLENO" as organizacao. So maybe "GABINETE DO DESEMBARGADOR" is local. Wait, "GABINETE DO DESEMBARGADOR" is the office of the judge, so maybe that's a local. Or maybe it's an organization. Hmm, need to be careful here.
+
+5. "legislacao": The text mentions "Código de Verificação" which is a code, but not sure if it's legislation. The term "legislacao" would be something like a law or statute. The text has "Código de Verificação" which might be a code, but not sure if it's legislation. Maybe not. The example output doesn't mark "Código de Verificação" as legislacao, so perhaps it's not.
+
+6. "jurisprudencia": The text mentions "precedentes do STF" which refers to precedents from the Supreme Court, so that's jurisprudencia. Also "STF" is the Supreme Federal Court, which is an organization, but in the example output, "STF" is marked as jurisprudencia? Wait, the example output shows "precedentes do STF" as jurisprudencia. Wait, the user's example output shows "precedentes do STF" as jurisprudencia. So "precedentes" is jurisprudencia, and "STF" is an organization. Wait, but in the example output, "STF" is not marked. Let me check the sample output again.
+
+Wait, the user's sample input includes "precedentes do STF" and in the sample output, it's marked as jurisprudencia. So "precedentes" is jurisprudencia. Also, "STF" is an organization, but in the sample output, it's not marked. Wait, maybe the user's example output doesn't include that. Let me check the sample output provided by the user.
+
+The user's sample input is:
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 16 3 - Segundo precedentes do STF , o fato de a lei impugnada ser meramente autorizativa não lhe retira a característica de inconstitucionalidade , que a desqualifica pela raiz quando invade a esfera a administrativa alcançando atos ligados à atividade típica da Administração Pública . ( Processo : 100010012076 ES 100010012076 . Órgão Julgador : TRIBUNAL PLENO . Publicação : 30/10/2007 . Julgamento : 4 de Outubro de 2001 ."
+
+The sample output is:
+
+"<span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="jurisprudencia">precedentes do STF</span> <span class="tempo">30/10/2007</span> <span class="tempo">4 de Outubro de 2001</span> <span class="organizacao">TRIBUNAL PLENO</span>"
+
+So in the sample output, "precedentes do STF" is marked as jurisprudencia. "STF" is part of that phrase, but in the sample output, it's not marked. Wait, the sample output shows "precedentes do STF" as jurisprudencia. So "precedentes" is the jurisprudencia, and "STF" is part of the organization? Or maybe "STF" is an organization. But in the sample output, "STF" is not marked. Wait, the sample output includes "precedentes do STF" as jurisprudencia. So the entire phrase is marked as jurisprudencia. So "precedentes" is the jurisprudencia, and "STF" is part of the phrase but not marked. Wait, maybe the user's example output is different. Let me check again.
+
+In the sample output provided by the user, the text is:
+
+"<span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="jurisprudencia">precedentes do STF</span> <span class="tempo">30/10/2007</span> <span class="tempo">4 de Outubro de 2001</span> <span class="organizacao">TRIBUNAL PLENO</span>"
+
+So "precedentes do STF" is marked as jurisprudencia. "STF" is part of that phrase but not marked. Wait, but "STF" is an organization (Supreme Federal Court), so maybe in the sample output, "STF" is not marked. But according to the user's example, it's not. So perhaps the user's example output doesn't mark "STF" as an organization. Maybe the user's example output is correct, and I should follow that.
+
+So, in the input text, the entities are:
+
+- "SILVANIO BARBOSA DOS SANTOS" is a pessoa.
+- "GABINETE DO DESEMBARGADOR" is an organizacao.
+- "precedentes do STF" is jurisprudencia.
+- "30/10/2007" and "4 de Outubro de 2001" are tempo.
+- "TRIBUNAL PLENO" is organizacao.
+
+Wait, but in the sample output, "TRIBUNAL PLENO" is marked as organizacao. So that's correct.
+
+Now, applying this to the input text provided by the user. Let me go through each part.
+
+The input text is:
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 16 3 - Segundo precedentes do STF , o fato de a lei impugnada ser meramente autorizativa não lhe retira a característica de inconstitucionalidade , que a desqualifica pela raiz quando invade a esfera a administrativa alcançando atos ligados à atividade típica da Administração Pública . ( Processo : 100010012076 ES 100010012076 . Órgão Julgador : TRIBUNAL PLENO . Publicação : 30/10/2007 . Julgamento : 4 de Outubro de 2001 ."
+
+Breaking it down:
+
+1. "Ação Direta de Inconstitucionalidade" – no entity here.
+2. "20170020161362ADI" – code, not an entity.
+3. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – code, not an entity.
+4. "GABINETE DO DESEMBARGADOR" – organization (organizacao).
+5. "SILVANIO BARBOSA DOS SANTOS" – pessoa.
+6. "16 3 - Segundo precedentes do STF" – "precedentes do STF" is jurisprudencia.
+7. "o fato de a lei impugnada ser meramente autorizativa não lhe retira a característica de inconstitucionalidade , que a desqualifica pela raiz quando invade a esfera a administrativa alcançando atos ligados à atividade típica da Administração Pública ." – no entities here.
+8. "( Processo : 100010012076 ES 100010012076 . Órgão Julgador : TRIBUNAL PLENO . Publicação : 30/10/2007 . Julgamento : 4 de Outubro de 2001 ."
+
+In this part, "TRIBUNAL PLENO" is organizacao, "30/10/2007" and "4 de Outubro de 2001" are tempo.
+
+So the entities are:
+
+- pessoa: SILVANIO BARBOSA DOS SANTOS
+- organizacao: GABINETE DO DESEMBARGADOR, TRIBUNAL PLENO
+- jurisprudencia: precedentes do STF
+- tempo: 30/10/2007, 4 de Outubro de 2001
+
+Now, I need to wrap each of these with the appropriate <span> tags.
+
+So the HTML output would be:
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 16 3 - Segundo <span class="jurisprudencia">precedentes do STF</span> , o fato de a lei impugnada ser meramente autorizativa não lhe retira a característica de inconstitucionalidade , que a desqualifica pela raiz quando invade a esfera a administrativa alcançando atos ligados à atividade típica da Administração Pública . ( Processo : 100010012076 ES 100010012076 . Órgão Julgador : <span class="organizacao">TRIBUNAL PLENO</span> . Publicação : <span class="tempo">30/10/2007</span> . Julgamento : <span class="tempo">4 de Outubro de 2001</span> ."
+
+Wait, but in the sample output, the user's example shows "precedentes do STF" as jurisprudencia. So I need to make sure that the entire phrase is marked. Also, "STF" is part of that phrase but not marked. So in the input text, "precedentes do STF" is marked as jurisprudencia. So the entire phrase is wrapped in the span.
+
+Also, "TRIBUNAL PLENO" is marked as organizacao. So that's correct.
+
+I need to make sure that all the entities are correctly identified and marked. Let me check again.
+
+Yes, that's all. So the final HTML should have the spans for each entity as identified.
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 16 3 - Segundo <span class="jurisprudencia">precedentes do STF</span> , o fato de a lei impugnada ser meramente autorizativa não lhe retira a característica de inconstitucionalidade , que a desqualifica pela raiz quando invade a esfera a administrativa alcançando atos ligados à atividade típica da Administração Pública . ( Processo : 100010012076 ES 100010012076 . Órgão Julgador : <span class="organizacao">TRIBUNAL PLENO</span> . Publicação : <span class="tempo">30/10/2007</span> . Julgamento : <span class="tempo">4 de Outubro de 2001</span> .

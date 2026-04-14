@@ -1,0 +1,90 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities. 
+
+Starting with the date: "16/03/2018" – that's a date, so it should be marked as tempo. Then "PLENÁRIO" – that's a part of the court, maybe an organization? Wait, "PLENÁRIO" is a term used in Brazilian courts, so maybe it's part of the organization. But I need to check if there's a specific entity here. The text mentions "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO". Hmm, "A G .REG ." might be an abbreviation. Maybe "REG" stands for Registro? Not sure. Let me look for other entities.
+
+"UNIÃO" is a legal entity, so that's an organizacao. "ESTADO DE MATO GROSSO" is also an organizacao. "MIN . RICARDO LEWANDOWSKI" – that's a person, so pessoa. "ADVOGADO -GERAL DA UNIÃO" – that's an organization, maybe? Or part of the organization. "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" – another organization. 
+
+"MATO GROSSO" is a local. "LEGISLAÇÃO" is a term that refers to legislation, so that's legislacao. "ART" might be part of a legal article reference, so maybe legislacao. 
+
+Looking at the "Ementa" part: "COMPETÊNCIA CONCORRENTE EM MATÉRIA DE PREVIDENCIA SOCIAL" – "PREVIDENCIA SOCIAL" is a legal term, maybe part of legislacao? Or maybe it's part of the jurisprudencia? Wait, the user specified that legislacao is for legislation, so "legislacao" would be the class. 
+
+Also, "RESERVA JURISDICIONAL" – that's a legal term, but it's not an entity type. The user's entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So "RESERVA JURISDICIONAL" might not be an entity here. 
+
+Now, the date "16/03/2018" is definitely tempo. "MATO GROSSO" is a local. "UNIÃO" and "ESTADO DE MATO GROSSO" are organizacoes. "MIN . RICARDO LEWANDOWSKI" is a pessoa. "ADVOGADO -GERAL DA UNIÃO" and "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" are parts of organizations, so maybe they should be marked as organizacao. 
+
+Wait, the user's example output might have some clues. Let me check the sample output provided. The user's example shows that "16/03/2018" is marked as tempo, "PLENÁRIO" as organizacao? Or maybe not. Wait, in the sample output, "PLENÁRIO" is not marked. Let me think again. 
+
+The text has "PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO". "PLENÁRIO" is part of the court, but maybe it's not an entity. The user's example might not have marked it. So perhaps "PLENÁRIO" is not an entity here. 
+
+So, the entities I need to mark are:
+
+- 16/03/2018 → tempo
+- MATO GROSSO → local
+- UNIÃO → organizacao
+- ESTADO DE MATO GROSSO → organizacao
+- MIN. RICARDO LEWANDOWSKI → pessoa
+- ADVOGADO -GERAL DA UNIÃO → organizacao (since it's part of the Union's legal team)
+- PROCURADOR -GERAL DO ESTADO DE MATO GROSSO → organizacao
+- LEGISLAÇÃO → legislacao (but in the text, it's "legislar" in the sentence, so maybe "legislacao" is the term here. Wait, the text says "legislar" which is the verb, but the user's entity is "legislacao" which is the noun. So maybe "legislacao" is the term. Wait, the text has "legislar" in the sentence: "Compete à União , aos Estados e ao Distrito Federal legislar , concorrentemente , sobre previdência social , nos termos do disposto no art ." So "legislar" is the verb, but the user's entity is "legislacao" which refers to legislation. So maybe "legislacao" is not present here. Wait, the user's example might have "legislacao" as a term. Let me check the original text again. 
+
+Looking at the text: "legislar" is the verb, but the user's entity is "legislacao" (noun). So maybe there's no "legislacao" entity here. Unless there's a mention of a specific law. Wait, the text mentions "art" which could be an article of a law, but the user's example might not have that. 
+
+Wait, the user's example output includes "legislacao" as a class. Let me check the sample output. The user's sample output shows that "legislacao" is marked. Wait, the user's sample output is not provided, but the user's instruction says to return the text with the entities marked. 
+
+So, in the given text, the only possible "legislacao" entity is the word "legislacao" itself. But in the text, the word is "legislar" (verb), not "legislacao" (noun). So maybe there's no "legislacao" entity here. 
+
+Wait, the user's instruction says to mark "legislacao" as an entity. So if the text has the word "legislacao", then it should be marked. But in the given text, the word is "legislar" (verb), so maybe there's no "legislacao" entity here. 
+
+Similarly, "jurisprudencia" is another entity. The text mentions "jurisprudencia" in the ementa? Let me check. The ementa says "RESERVA JURISDICIONAL" – that's a legal term, but not "jurisprudencia". So maybe there's no "jurisprudencia" entity here. 
+
+So, the entities to mark are:
+
+- 16/03/2018 → tempo
+- MATO GROSSO → local
+- UNIÃO → organizacao
+- ESTADO DE MATO GROSSO → organizacao
+- MIN. RICARDO LEWANDOWSKI → pessoa
+- ADVOGADO -GERAL DA UNIÃO → organizacao
+- PROCURADOR -GERAL DO ESTADO DE MATO GROSSO → organizacao
+
+Wait, "ADVOGADO -GERAL DA UNIÃO" is part of the Union's legal team, so it's an organization. Similarly, "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" is part of the state's legal team, so also an organization. 
+
+So, I need to wrap those parts with the appropriate classes. Also, "PLENÁRIO" might be part of the court, but since it's not an entity type, maybe it's not marked. 
+
+Now, let's go through the text step by step and mark each entity.
+
+Original text:
+
+"Ementa e Acórdão 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV . ( A / S ) : ADVOGADO -GERAL DA UNIÃO AGDO . ( A / S ) : ESTADO DE MATO GROSSO PROC . ( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO Ementa : AÇÃO CÍVEL ORIGINÁRIA . NEGATIVA DE EMISSÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA . COMPETÊNCIA CONCORRENTE EM MATÉRIA DE PREVIDENCIA SOCIAL . ANÁLISE ADMINISTRATIVA . DESEQUILÍBRIO DA RELAÇÃO FEDERATIVA . NULIDADE DO ATO ADMINISTRATIVO . RESERVA JURISDICIONAL . AGRAVO REGIMENTAL A QUE SE NEGA PROVIMENTO . I Compete à União , aos Estados e ao Distrito Federal legislar , concorrentemente , sobre previdência social , nos termos do disposto no art ."
+
+Breaking it down:
+
+- "16/03/2018" → tempo
+- "MATO GROSSO" → local
+- "UNIÃO" → organizacao
+- "ESTADO DE MATO GROSSO" → organizacao
+- "MIN . RICARDO LEWANDOWSKI" → pessoa
+- "ADVOGADO -GERAL DA UNIÃO" → organizacao
+- "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" → organizacao
+
+Other parts like "PLENÁRIO" and "A G .REG ." might not be entities. "A G .REG ." could be an abbreviation, but since it's not a recognized entity type, it's left as is. 
+
+Now, applying the HTML tags:
+
+- "16/03/2018" becomes <span class="tempo">16/03/2018</span>
+- "MATO GROSSO" becomes <span class="local">MATO GROSSO</span>
+- "UNIÃO" becomes <span class="organizacao">UNIÃO</span>
+- "ESTADO DE MATO GROSSO" becomes <span class="organizacao">ESTADO DE MATO GROSSO</span>
+- "MIN . RICARDO LEWANDOWSKI" becomes <span class="pessoa">MIN . RICARDO LEWANDOWSKI</span>
+- "ADVOGADO -GERAL DA UNIÃO" becomes <span class="organizacao">ADVOGADO -GERAL DA UNIÃO</span>
+- "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" becomes <span class="organizacao">PROCURADOR -GERAL DO ESTADO DE MATO GROSSO</span>
+
+Other parts like "PLENÁRIO" and "A G .REG ." are left as is. 
+
+Now, putting it all together in HTML format, ensuring that the tags are correctly placed and the rest of the text remains unchanged.
+</think>
+
+Ementa e Acórdão <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> RELATOR : <span class="pessoa">MIN . RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV . ( A / S ) : <span class="organizacao">ADVOGADO -GERAL DA UNIÃO</span> AGDO . ( A / S ) : <span class="organizacao">ESTADO DE MATO GROSSO</span> PROC . ( A / S ) ( ES ) : <span class="organizacao">PROCURADOR -GERAL DO ESTADO DE MATO GROSSO</span> Ementa : AÇÃO CÍVEL ORIGINÁRIA . NEGATIVA DE EMISSÃO DE CERTIFICADO DE REGULARIDADE PREVIDENCIÁRIA . COMPETÊNCIA CONCORRENTE EM MATÉRIA DE PREVIDENCIA SOCIAL . ANÁLISE ADMINISTRATIVA . DESEQUILÍBRIO DA RELAÇÃO FEDERATIVA . NULIDADE DO ATO ADMINISTRATIVO . RESERVA JURISDICIONAL . AGRAVO REGIMENTAL A QUE SE NEGA PROVIMENTO . I Compete à União , aos Estados e ao Distrito Federal legislar , concorrentemente , sobre previdência social , nos termos do disposto no art .

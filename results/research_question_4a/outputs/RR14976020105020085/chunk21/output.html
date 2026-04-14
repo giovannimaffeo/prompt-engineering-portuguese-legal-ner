@@ -1,0 +1,44 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The first sentence: "Não obstante a reclamada alegar que é requisito da concessão da sexta-parte a comprovação de 7300 dias de efetivo trabalho , descontados os afastamentos , é certo que não trouxe aos autos qualquer documento comprovando que o autor não tivesse completado 20 anos de efetivo exercício , pelo que resta mantida a condenação relativa à sexta-parte . ( ... ) . ( fls . 106/108-grifo nosso )"
+
+Looking for entities here. "reclamada" is a legal term, but it's a generic term for the defendant, not a specific name. So no entity. "sexta-parte" is a term, but it's not a specific entity. "fls. 106/108" – "fls" is an abbreviation for "folhas" (pages), and the numbers 106/108 are page numbers. Wait, the guidelines say that only explicit temporal references should be marked as tempo. But "fls" refers to pages, which is a location? Wait, no. The local is for specific places. "fls" is not a place. The tempo is for dates or time. "fls. 106/108" is about pages, not time. So maybe it's not an entity. But the user's example had "fls . 106/108-grifo nosso" and in the output, it wasn't marked. So I think that's not an entity here.
+
+Next part: "A Reclamada sustenta que o Reclamante é empregado público regido pela CLT e , por essa razão , a ele não se estende o benefício denominado `` sexta parte '' , o qual é devido somente aos servidores públicos estatutários . Aduz que há inconstitucionalidade formal , uma vez que o constituinte estadual extrapolou os limites de sua atuação . Aponta ofensa aos artigos 2º , 18 , 25 , 28 , 37 , caput , I , XIV , 60 , 61 e 169 da Constituição Federal . Traz arestos para o cotejo de teses . À análise ."
+
+Looking for entities here. "Reclamada" and "Reclamante" are terms, but they are generic terms for the parties, not specific names. So no pessoa. "CLT" is the Consolidação das Leis do Trabalho, which is a legislation. So "CLT" should be marked as legislacao. "Constituição Federal" is a legislation, so that's legislacao. The articles mentioned like "artigos 2º , 18 , 25 , 28 , 37 , caput , I , XIV , 60 , 61 e 169 da Constituição Federal" – the "artigos" refer to articles of the Constitution, so the "Constituição Federal" is the legislation. The numbers like "2º" are part of the legislation reference, so the entire "artigos 2º , 18 , 25 , 28 , 37 , caput , I , XIV , 60 , 61 e 169 da Constituição Federal" should be marked as legislacao. Wait, but the guidelines say that only references to norms should be marked. So "artigos 2º..." is part of the legislation reference. So the entire phrase "artigos 2º , 18 , 25 , 28 , 37 , caput , I , XIV , 60 , 61 e 169 da Constituição Federal" is a reference to the Constitution, so it should be marked as legislacao. Also, "Constituição Federal" is a legislation, so that's marked as legislacao.
+
+Other parts: "constituinte estadual" – "constituinte" refers to the constituent assembly, but it's a generic term. "estadual" is an adjective, not a specific entity. So no entity here.
+
+"arestos para o cotejo de teses" – "teses" is a generic term, not a specific jurisprudência. So no entity.
+
+So the entities to mark are:
+
+- "CLT" as legislacao
+- "Constituição Federal" as legislacao
+- The entire "artigos 2º , 18 , 25 , 28 , 37 , caput , I , XIV , 60 , 61 e 169 da Constituição Federal" as legislacao
+
+Wait, but the example in the guidelines had "art.61 , §1º , da Lei nº 9.430/96" marked as legislacao. So in this case, the articles mentioned are part of the Constitution, so the entire phrase should be marked as legislacao.
+
+So in the input text, the parts to mark are:
+
+- "CLT" → legislacao
+- "Constituição Federal" → legislacao
+- "artigos 2º , 18 , 25 , 28 , 37 , caput , I , XIV , 60 , 61 e 169 da Constituição Federal" → legislacao
+
+Wait, but the user's example had "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So in this case, the articles are part of the legislation. So the entire phrase "artigos 2º , 18 , 25 , 28 , 37 , caput , I , XIV , 60 , 61 e 169 da Constituição Federal" should be marked as legislacao.
+
+So the output would have those parts wrapped in <span class="legislacao">.
+
+Also, check for any other entities. The text mentions "fls . 106/108-grifo nosso" – "fls" is an abbreviation for "folhas" (pages), but it's not a specific date or time. The numbers 106/108 are page numbers, not a temporal reference. So no entity here.
+
+So the final HTML should have the CLT, Constituição Federal, and the articles mentioned as legislacao.
+</think>
+
+O texto original anotado em HTML com as entidades identificadas é:
+
+O texto original anotado em HTML com as entidades identificadas é:  
+Não obstante a reclamada alegar que é requisito da concessão da sexta-parte a comprovação de 7300 dias de efetivo trabalho , descontados os afastamentos , é certo que não trouxe aos autos qualquer documento comprovando que o autor não tivesse completado 20 anos de efetivo exercício , pelo que resta mantida a condenação relativa à sexta-parte . ( ... ) . ( fls . 106/108-grifo nosso ) A Reclamada sustenta que o Reclamante é empregado público regido pela <span class="legislacao">CLT</span> e , por essa razão , a ele não se estende o benefício denominado `` sexta parte '' , o qual é devido somente aos servidores públicos estatutários . Aduz que há inconstitucionalidade formal , uma vez que o constituinte estadual extrapolou os limites de sua atuação . Aponta ofensa aos <span class="legislacao">artigos 2º , 18 , 25 , 28 , 37 , caput , I , XIV , 60 , 61 e 169 da Constituição Federal</span> . Traz arestos para o cotejo de teses . À análise .

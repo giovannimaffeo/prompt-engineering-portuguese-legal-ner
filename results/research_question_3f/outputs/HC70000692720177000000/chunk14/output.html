@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The input starts with "Daí , o habeas corpus como instrumento ou meio destinado a prevenir a irregularidade constitucional , ou a restaurar a situação que se apresenta como lesiva do ius Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 . Em 22/02/2018 18:56:14 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 libertatis constitucionalmente proclamado . '' ( Grifo nosso ) . Ainda percorrendo a seara doutrinária , Heráclito Antônio Mossin ( Habeas Corpus : antecedentes históricos , hipóteses de impetração , processo , competência e recursos , modelos de petição , jurisprudência . 5ª ed. Atlas . São Paulo ."
+
+Let me break this down:
+
+1. "Cleonilson Nicácio Silva" – This is a full name, so it's a pessoa. I'll mark that with <span class="pessoa">.
+
+2. "Matricula 8553" – The word "Matricula" is a term, but the number 8553 is a matricula number. However, the guidelines say to mark only names of people, organizations, etc. Since "Matricula" is a term and not a name, maybe the number isn't an entity. Wait, the example in the guidelines mentions that identifiers like "20140110500434APO" are jurisprudencia. But here, "Matricula 8553" is part of a signature, but the number might not be an entity. The user's examples don't mark numbers unless they are part of a specific identifier. So maybe "Matricula 8553" isn't an entity here. Wait, the example in the guidelines for jurisprudencia includes "REsp n . 1694984/MS" and "Súmula 331 do TST". So numbers like 1694984/MS are marked. But here, "Matricula 8553" is part of a signature, but the number 8553 isn't an entity unless it's a specific identifier. Since the user's examples don't mark such numbers, maybe I shouldn't mark it. So "Matricula 8553" is not an entity.
+
+3. "22/02/2018 18:56:14" – The date "22/02/2018" is a tempo entity. The time "18:56:14" is a horário, but the guidelines say only dates should be marked. So "22/02/2018" is tempo, and the time is not marked.
+
+4. "https : //eproc2g.stm.jus.br/eproc_2g_prod/" – This is an URL, which the guidelines say not to mark as local. So no tag here.
+
+5. "Codigo Verificador 21030663f7" – The code "21030663f7" is an identifier, but the guidelines mention that identifiers like "20140110500434APO" are jurisprudencia. However, "21030663f7" might be a code, but the example in the guidelines for jurisprudencia includes "REsp n . 1694984/MS" and "Súmula 331 do TST". The code here is part of a verifier, but it's not a specific legal entity. So maybe it's not marked. Wait, the example in the guidelines for jurisprudencia includes "REsp n . 1694984/MS" which is a specific identifier. The code here is "21030663f7", which might be a code, but the guidelines don't mention codes as entities. So perhaps it's not marked.
+
+6. "libertatis constitucionalmente proclamado" – This is a term, but not a specific entity. The word "libertatis" is a Latin term, but it's not a legal entity. So no tag here.
+
+7. "Heráclito Antônio Mossin" – This is a full name, so pessoa.
+
+8. "Habeas Corpus" – This is a legal term, but the guidelines say to mark only specific entities. Since "Habeas Corpus" is a legal concept, not a specific entity, it's not marked. Wait, the example in the guidelines for jurisprudencia includes "Súmula 331 do TST", which is a specific reference. But "Habeas Corpus" is a general term, so it's not marked.
+
+9. "Atlas" – This is a publisher, so organizacao.
+
+10. "São Paulo" – This is a city, so local.
+
+Now, let me check each part again to ensure I didn't miss any entities.
+
+- "Cleonilson Nicácio Silva" is a pessoa.
+- "Heráclito Antônio Mossin" is a pessoa.
+- "Atlas" is an organizacao.
+- "São Paulo" is a local.
+- "22/02/2018" is tempo.
+- The rest of the text doesn't have any other entities.
+
+Wait, the user's example 4 had "ESTADO DO ACRE Rua Tribunal de Justiça, Via Verde, Rio BrancoAC" and marked all as local. So "São Paulo" is a local.
+
+Also, the user's example 5 had "CLT" as legislacao. In the input, "libertatis constitucionalmente proclamado" is not an entity. The term "habeas corpus" is a legal concept but not an entity. The code "21030663f7" is not marked. The URL is not marked. The "Matricula 8553" is not marked. The "Codigo Verificador" is not marked. The "Grifo nosso" is not an entity. The "5ª ed." is not an entity. The "Atlas" is an organizacao. "São Paulo" is a local. "22/02/2018" is tempo.
+
+So the final HTML should have:
+
+- pessoa for Cleonilson Nicácio Silva and Heráclito Antônio Mossin.
+- organizacao for Atlas.
+- local for São Paulo.
+- tempo for 22/02/2018.
+
+Other parts remain as is. Let me structure the HTML accordingly.
+</think>
+
+Daí , o habeas corpus como instrumento ou meio destinado a prevenir a irregularidade constitucional , ou a restaurar a situação que se apresenta como lesiva do ius Documento assinado eletronicamente por <span class="pessoa">Cleonilson Nicácio Silva</span> , Matricula 8553 . Em <span class="tempo">22/02/2018</span> 18:56:14 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 libertatis constitucionalmente proclamado . '' ( Grifo nosso ) . Ainda percorrendo a seara doutrinária , <span class="pessoa">Heráclito Antônio Mossin</span> ( Habeas Corpus : antecedentes históricos , hipóteses de impetração , processo , competência e recursos , modelos de petição , jurisprudência . 5ª ed. <span class="organizacao">Atlas</span> . <span class="local">São Paulo</span> .

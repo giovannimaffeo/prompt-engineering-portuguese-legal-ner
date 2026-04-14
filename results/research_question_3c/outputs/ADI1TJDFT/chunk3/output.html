@@ -1,0 +1,34 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me start by breaking down the text.
+
+The text starts with "Ação Direta de Inconstitucionalidade 20170020161362ADI". Here, "Ação Direta de Inconstitucionalidade" is a legal term, but it's a type of action, not an entity. The number "20170020161362ADI" looks like a case number, which might be a jurisprudencia reference. Wait, the example given for jurisprudencia includes things like "REsp 1694984/MS", so maybe the case number here is part of a jurisprudencia entity. But the format here is different. Maybe it's a case number, so I should mark it as jurisprudencia.
+
+Next, "tratando-se de vício que não é afastado por se tratar de norma meramente autorizativa nem pela ulterior sanção do Governador". Here, "Governador" is a title, but it's not a specific name. The user's guidelines say that only names of individuals should be marked as pessoa. Since "Governador" is a title, not a specific person, it shouldn't be marked. The word "vício" is a generic term, so no entity there.
+
+Moving on: "4 . Pedido julgado procedente para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da Lei nº 5.815/2017 , por violação ao disposto noartigo 53 , `` caput '' e § 1º , artigo 71 , §1º , IV , artigo 100 , incisos IV , VI , X e XXIII , todos da Lei Orgânica do Distrito Federal . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 2 Fls ."
+
+Here, "Lei nº 5.815/2017" is a law, so that's legislacao. The "Lei Orgânica do Distrito Federal" is also a law, so that's legislacao. The "Código de Verificação" is a code, but it's not a legal entity. The "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. So I need to mark both. The "Distrito Federal" is a local entity. The "2018ACONT2JYXTK52JCSL251NVQ" might be a code, but not sure. The "2 Fls" is probably "2 folhas" (pages), which is a temporal reference? Wait, "Fls" is an abbreviation for "Folhas" in legal documents, so it's a reference to pages, not a time. So maybe not a tempo entity.
+
+Also, "artigo 53 , `` caput '' e § 1º , artigo 71 , §1º , IV , artigo 100 , incisos IV , VI , X e XXIII" – these are references to articles and sections of the law, so they are part of the legislacao entity. The "Lei Orgânica do Distrito Federal" is a law, so that's legislacao.
+
+Putting it all together:
+
+- "Lei nº 5.815/2017" → legislacao
+- "Lei Orgânica do Distrito Federal" → legislacao
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa
+- "GABINETE DO DESEMBARGADOR" → organizacao
+- "Distrito Federal" → local
+- "20170020161362ADI" → jurisprudencia (assuming it's a case number)
+- "2018ACONT2JYXTK52JCSL251NVQ" → maybe not, but the user didn't mention codes, so leave as is
+- "2 Fls" → not a time, so leave
+
+Wait, the "20170020161362ADI" is a case number. The example for jurisprudencia includes "REsp 1694984/MS", which is a case number. So "20170020161362ADI" should be marked as jurisprudencia.
+
+Also, "GABINETE DO DESEMBARGADOR" is an organization, and "SILVANIO BARBOSA DOS SANTOS" is a person. The "Distrito Federal" is a local entity.
+
+So the final HTML should have these spans with the appropriate classes.
+</think>
+
+<span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> tratando-se de vício que não é afastado por se tratar de norma meramente autorizativa nem pela ulterior sanção do Governador . 4 . Pedido julgado procedente para declarar , com efeitos `` ex tunc '' e eficácia `` erga omnes '' , a inconstitucionalidade formal da <span class="legislacao">Lei nº 5.815/2017</span> , por violação ao disposto noartigo 53 , `` caput '' e § 1º , artigo 71 , §1º , IV , artigo 100 , incisos IV , VI , X e XXIII , todos da <span class="legislacao">Lei Orgânica do Distrito Federal</span> . <span class="codigo">Código de Verificação</span> :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 2 Fls .

@@ -1,0 +1,64 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify all instances of these entities. Let me start by breaking down the text into parts.
+
+The first sentence mentions "este Tribunal" which is a legal entity. Since "Tribunal" is an organization, I should mark "Tribunal" as <span class="organizacao">. Then there's "Ação Direta de Inconstitucionalidade" which is a legal action, so that's a jurisprudência? Wait, no. Wait, "Ação Direta de Inconstitucionalidade" is a type of legal action, but in the context of jurisprudência, maybe it's a case. Wait, the user's guide says to use <span class="jurisprudencia"> for jurisprudence. But "Ação Direta" might be a legal procedure, not necessarily a jurisprudência. Hmm, maybe I should check if "Ação Direta de Inconstitucionalidade" is a specific case or a type of legal action. Since it's a legal term, perhaps it's part of the jurisprudência. Alternatively, maybe it's a legislation? No, it's a legal action. Wait, the user's example in the output might help. Let me look at the sample output provided.
+
+Wait, the user provided a sample output. Let me check that. The sample output shows that "AÇÃO DIRETA DE INCONSTITUCIONALIDADE" is marked as <span class="jurisprudencia">. So I should follow that. So "Ação Direta de Inconstitucionalidade" is a jurisprudência. Then "LEIS DISTRITAIS 5.641/2016 e 5.645/2016" are legislation, so those should be <span class="legislacao">. 
+
+Next, "SERVIÇO PÚBLICO" is a term, but not sure if it's an organization or a local. Wait, "SERVIÇO PÚBLICO" is a public service, which might be a local or an organization. But in the context, it's part of the legal text, so maybe it's not an entity. Wait, the user's guide says to mark entities related to the legal domain. "SERVIÇO PÚBLICO" is a term, but not an entity. So maybe leave it as is. 
+
+"TRANSPORTE COLETIVO" is a service, not an entity. "ALTERAÇÕES SISTEMÁTICAS" is a term, not an entity. "INICIATIVA PARLAMENTAR" is a term, not an entity. "VÍCIO FORMAL" is a legal term, not an entity. "INCONSTITUCIONALIDADE" is a legal term, not an entity. 
+
+Then in the second part: "Projetos de lei de iniciativa parlamentar" – "iniciativa parlamentar" is a term, not an entity. "Lei Orgânica do Distrito Federal" is a legislation, so "Lei Orgânica" should be <span class="legislacao">, and "Distrito Federal" is a local, so "Distrito Federal" should be <span class="local">. 
+
+Wait, "Distrito Federal" is a local, so that's a local entity. Also, "Chefe do Poder Executivo" – "Poder Executivo" is an organization? Or is it a part of the government? Maybe "Poder Executivo" is an organization. Wait, "Poder Executivo" is a branch of government, so perhaps it's an organization. But the user's example might have "Poder Executivo" as an organization. 
+
+Wait, in the sample output, "Poder Executivo" is marked as <span class="organizacao">. Let me check the sample output again. The user's sample output shows that "Poder Executivo" is marked as <span class="organizacao">. So I should follow that. 
+
+So, putting it all together:
+
+- "Tribunal" → organizacao
+- "Ação Direta de Inconstitucionalidade" → jurisprudencia
+- "LEIS DISTRITAIS 5.641/2016 e 5.645/2016" → legislacao
+- "Lei Orgânica do Distrito Federal" → "Lei Orgânica" is legislacao, "Distrito Federal" is local
+- "Poder Executivo" → organizacao
+
+Other terms like "SERVIÇO PÚBLICO" are not entities, so left as is. 
+
+Now, I need to make sure that all instances are covered. Let me go through the text again.
+
+Original text:
+
+"Em hipóteses semelhantes , este Tribunal já se pronunciou em conformidade com a orientação que ora se adota , no sentido de que padecem de vício de inconstitucionalidade formal as leis que criam atribuições e despesas não previstas no orçamento para os órgãos do Poder Executivo , senão vejamos : AÇÃO DIRETA DE INCONSTITUCIONALIDADE . LEIS DISTRITAIS 5.641/2016 e 5.645/2016 . SERVIÇO PÚBLICO . TRANSPORTE COLETIVO . ALTERAÇÕES SISTEMÁTICAS . INICIATIVA PARLAMENTAR . VÍCIO FORMAL . INCONSTITUCIONALIDADE . 1 . Projetos de lei de iniciativa parlamentar que versam sobre criação de normas a respeito da organização e funcionamento da Administração , nos termos dos arts . 71 , § 1º , inc. IV , e 100 , inc. X , da Lei Orgânica do Distrito Federal , estão maculadas por vício formal , eis que a competência é exclusiva do Chefe do Poder Executivo , por força da `` reserva de administração '' . 2 ."
+
+Breaking down:
+
+- "este Tribunal" → Tribunal is organizacao
+- "Ação Direta de Inconstitucionalidade" → jurisprudencia
+- "LEIS DISTRITAIS 5.641/2016 e 5.645/2016" → legislacao
+- "Lei Orgânica do Distrito Federal" → "Lei Orgânica" is legislacao, "Distrito Federal" is local
+- "Poder Executivo" → organizacao
+- "Chefe do Poder Executivo" → "Poder Executivo" is organizacao again
+
+So, the HTML should have:
+
+- <span class="organizacao">Tribunal</span>
+- <span class="jurisprudencia">AÇÂO DIRETA DE INCONSTITUCIONALIDADE</span>
+- <span class="legislacao">LEIS DISTRITAIS 5.641/2016 e 5.645/2016</span>
+- <span class="legislacao">Lei Orgânica</span> and <span class="local">Distrito Federal</span>
+- <span class="organizacao">Poder Executivo</span>
+
+Wait, but in the original text, "Lei Orgânica do Distrito Federal" is a single entity. So "Lei Orgânica" is legislation, and "Distrito Federal" is local. So in the text, "Lei Orgânica do Distrito Federal" would be split into "Lei Orgânica" (legislacao) and "Distrito Federal" (local). 
+
+Also, "Poder Executivo" is an organization. 
+
+So the final HTML should have all these tags. Let me make sure I didn't miss any other entities. The rest of the terms like "SERVIÇO PÚBLICO", "TRANSPORTE COLETIVO", etc., are not entities, so they remain as is. 
+
+Now, I need to format the HTML correctly, ensuring that each entity is properly wrapped in <span> tags with the correct class. Also, the user specified to return only the text with the HTML tags, no explanations. 
+
+So the final output should be the original text with the entities marked as per the guidelines.
+</think>
+
+Em hipóteses semelhantes , este <span class="organizacao">Tribunal</span> já se pronunciou em conformidade com a orientação que ora se adota , no sentido de que padecem de vício de inconstitucionalidade formal as leis que criam atribuições e despesas não previstas no orçamento para os órgãos do <span class="organizacao">Poder Executivo</span> , senão vejamos : <span class="jurisprudencia">AÇÃO DIRETA DE INCONSTITUCIONALIDADE</span> . <span class="legislacao">LEIS DISTRITAIS 5.641/2016 e 5.645/2016</span> . SERVIÇO PÚBLICO . TRANSPORTE COLETIVO . ALTERAÇÕES SISTEMÁTICAS . INICIATIVA PARLAMENTAR . VÍCIO FORMAL . INCONSTITUCIONALIDADE . 1 . Projetos de lei de iniciativa parlamentar que versam sobre criação de normas a respeito da organização e funcionamento da Administração , nos termos dos arts . 71 , § 1º , inc. IV , e 100 , inc. X , da <span class="legislacao">Lei Orgânica</span> do <span class="local">Distrito Federal</span> , estão maculadas por vício formal , eis que a competência é exclusiva do Chefe do <span class="organizacao">Poder Executivo</span> , por força da `` reserva de administração '' . 2 .

@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The first sentence: "No tocante à alegação de que a análise da prisão em flagrante dos pacientes não foi feita no prazo de 24h , sendo , portanto , ilegal , verifico tratar-se de mera irregularidade que não tem o condão de contaminar o processo ."
+
+Looking for entities here. "24h" is a time reference, so that's tempo. But wait, the guidelines say only explicit dates or time periods. "24h" is a duration, not a specific date. The example mentions "3 de abril de 2017" as tempo, but "24h" is a time span. The guidelines say to mark only explicit dates. So maybe "24h" isn't marked as tempo. Wait, the example includes "período de maio a novembro de 2014" as tempo. So "24h" might not be considered a specific time point. So maybe "24h" isn't marked here. Let me check the guidelines again. The tempo definition includes "intervalos de tempo" like "período de maio a novembro de 2014". So "24h" is a duration, not a specific time. So maybe it's not marked. Hmm, but the user's example includes "24h" as part of the input. Wait, in the example input, the user had "prazo de 24h" and the output didn't mark it. Wait, looking at the example input and output: the input had "prazo de 24h" and the output didn't mark it. So maybe "24h" isn't considered a tempo entity here. So I'll skip that.
+
+Next, "HABEAS CORPUS CRIMINAL Nº 1.0000.15.058928-1/000 - COMARCA DE CONTAGEM - PACIENTE ( S ) : IGOR LEONARDO DE OLIVEIRA MENDES , WELLINGTON DOUGLAS SANTOS SOUZA - AUTORI . COATORA : JD 1 V CR COMARCA CONTAGEM A C Ó R D Ã O Vistos etc."
+
+Looking for entities here. "HABEAS CORPUS CRIMINAL Nº 1.0000.15.058928-1/000" is a legal case number, which is jurisprudencia. The number format matches the example where "REsp n . 1694984/MS" was marked as jurisprudencia. So that should be marked as jurisprudencia.
+
+"COMARCA DE CONTAGEM" is a local, as per the definition. "COMARCA" is a judicial district, so that's a local. "CONTAGEM" is a city, so that's a local. So both "COMARCA DE CONTAGEM" and "CONTAGEM" should be marked as local. Wait, the example had "COMARCA DE BELO HORIZONTE" marked as local. So "COMARCA DE CONTAGEM" is a local. Also, "CONTAGEM" is a city, so that's a local. So both parts should be marked.
+
+"PACIENTE ( S ) : IGOR LEONARDO DE OLIVEIRA MENDES , WELLINGTON DOUGLAS SANTOS SOUZA" – these are names of people, so they should be marked as pessoa. "IGOR LEONARDO DE OLIVEIRA MENDES" and "WELLINGTON DOUGLAS SANTOS SOUZA" are full names, so pessoa.
+
+"AUTORI" – this might be a typo for "AUTOR" (author), but since it's not a specific name, maybe it's not marked. The guidelines say to mark only specific names, not generic terms. So "AUTORI" is not a specific name, so not marked.
+
+"JD 1 V CR COMARCA CONTAGEM A C Ó R D Ã O" – "JD 1 V CR" might be an abbreviation for a judicial district or something. But according to the guidelines, "expressões que identifiquem normas jurídicas" are legislacao. However, "JD 1 V CR" doesn't look like a legal norm. "COMARCA CONTAGEM" is already marked as local. "A C Ó R D Ã O" is a word, but it's not a specific reference. The example had "A C Ó R D Ã O" in the input, and the output didn't mark it. So maybe it's not marked. Wait, the example input had "A C Ó R D Ã O" and the output didn't mark it. So I'll leave that as is.
+
+Now, checking the rest of the text. The rest seems to be about legal procedures and doesn't have any entities. So the main entities are:
+
+- HABEAS CORPUS CRIMINAL Nº 1.0000.15.058928-1/000 → jurisprudencia
+- COMARCA DE CONTAGEM → local
+- CONTAGEM → local
+- IGOR LEONARDO DE OLIVEIRA MENDES → pessoa
+- WELLINGTON DOUGLAS SANTOS SOUZA → pessoa
+
+Wait, the input has "COMARCA DE CONTAGEM" and "CONTAGEM" as separate parts. So both should be marked as local. Also, "COMARCA DE CONTAGEM" is a local, and "CONTAGEM" is a city, so both are local.
+
+So putting it all together, the HTML should have the appropriate spans for each entity. Let me make sure I didn't miss any other entities. The rest of the text doesn't have any other entities. The "24h" wasn't marked, and "HABEAS CORPUS" is a legal term but not a specific entity. The case number is the jurisprudencia. The names are pessoa, the comarca and city are local. That's all.
+</think>
+
+O tocante à alegação de que a análise da prisão em flagrante dos pacientes não foi feita no prazo de 24h , sendo , portanto , ilegal , verifico tratar-se de mera irregularidade que não tem o condão de contaminar o processo . Ademais , a alegação de eventuais irregularidades no flagrante , se as houve , foram sanadas pela conversão em prisão preventiva quanto ao paciente <span class="pessoa">Wellington Douglas</span> e concessão da liberdade provisória sem fiança em relação ao paciente <span class="pessoa">Igor Leonardo</span> , devidamente fundamentada pelo Juízo competente . <span class="jurisprudencia">HABEAS CORPUS CRIMINAL Nº 1.0000.15.058928-1/000</span> - <span class="local">COMARCA DE CONTAGEM</span> - <span class="local">CONTAGEM</span> - PACIENTE ( S ) : <span class="pessoa">Igor Leonardo de Oliveira Mendes</span> , <span class="pessoa">Wellington Douglas Santos Souza</span> - AUTORI . COATORA : JD 1 V CR <span class="local">COMARCA CONTAGEM</span> A C Ó R D Ã O Vistos etc.

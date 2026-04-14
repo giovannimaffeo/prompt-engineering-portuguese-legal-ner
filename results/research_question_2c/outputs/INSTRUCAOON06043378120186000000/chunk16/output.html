@@ -1,0 +1,21 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text: "Vice-Procurador-Geral Eleitoral em exercício : Luciano Mariz Maia .". Let's break it down.
+
+The first part is "Vice-Procurador-Geral Eleitoral em exercício". This seems like a title or position. "Vice-Procurador-Geral Eleitoral" is likely a legal position, maybe an organization or a role. But the user's entities don't include roles, only pessoa, organizacao, etc. Since it's a title, maybe it's part of an organization? Wait, the user's example output shows that "Luciano Mariz Maia" is marked as pessoa. So the name is a person. 
+
+The colon separates the title from the name. The title "Vice-Procurador-Geral Eleitoral em exercício" might be part of an organization, but I'm not sure. Alternatively, maybe "Vice-Procurador-Geral Eleitoral" is a position, which isn't one of the entities. The user's example output doesn't mark the title, only the name. So perhaps only "Luciano Mariz Maia" is a pessoa. 
+
+Wait, the input text is "Vice-Procurador-Geral Eleitoral em exercício : Luciano Mariz Maia .". The colon separates the title from the name. The title is a position, not an entity. The name is a person. So in the output, only "Luciano Mariz Maia" should be wrapped in <span class="pessoa">. 
+
+But wait, maybe "Vice-Procurador-Geral Eleitoral" is part of an organization? For example, if it's a title within an organization, but the user's entities don't include titles. The user's example output only marks the name as pessoa. So I should only mark "Luciano Mariz Maia" as pessoa. 
+
+Let me check the example output. The user provided the input and the output. Wait, the user's example input is "Vice-Procurador-Geral Eleitoral em exercício : Luciano Mariz Maia ." and the output is the same text with "Luciano Mariz Maia" marked as pessoa. So the output would be:
+
+Vice-Procurador-Geral Eleitoral em exercício : <span class="pessoa">Luciano Mariz Maia</span> .
+
+So I need to make sure that only the name is marked. The rest of the text is left as is. No other entities are present here. The title is part of the position, not an entity. So the final HTML should have the name in a span with class pessoa, and the rest of the text remains unchanged.
+</think>
+
+Vice-Procurador-Geral Eleitoral em exercício : <span class="pessoa">Luciano Mariz Maia</span> .

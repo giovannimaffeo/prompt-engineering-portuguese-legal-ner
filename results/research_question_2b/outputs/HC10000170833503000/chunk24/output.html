@@ -1,0 +1,31 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read through the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me parse each sentence.
+
+The first part: "Constata-se , portanto , que o magistrado a quo analisou o fato concreto , conforme alhures exposto , verificando a necessidade da segregação cautelar do paciente para garantia da ordem pública , uma vez existir indícios de ser o mesmo uma ameaça ao meio social ."
+
+Looking for entities here. "magistrado a quo" – "magistrado" is a person, but "a quo" is a legal term referring to the court, which might be an organization. Wait, "a quo" is a Latin term meaning "from which," often used in legal contexts to refer to the court that made a decision. So maybe "a quo" is part of an organization? Or is it a legal term that doesn't fit any of the categories? The user's guide says to use the specified classes. Since "a quo" is a legal term, but not a person, organization, time, etc., maybe it's not marked. Wait, the user's example might have "a quo" as part of the text. Let me check the sample output provided. Wait, the user hasn't provided a sample output yet. Wait, the user's instruction says to return only the text with the HTML tags. So I need to process the text.
+
+Looking for "magistrado" – that's a person, so "magistrado" would be a pessoa. Then "a quo" – maybe it's part of the text, but not an entity. The rest of the text mentions "ordem pública" which is a legal concept, but not an entity. "segurança cautelar" – again, legal terms, not entities. "meio social" – not an entity. So in this part, only "magistrado" is a pessoa.
+
+Next sentence: "Assim , verifico presente a periculosidade concreta que , com fundamento no princípio da necessidade , justifica a prisão processual do paciente ."
+
+Here, "princípio da necessidade" – "princípio" is a legal concept, but not an entity. "prisão processual" is a legal term, not an entity. "paciente" – that's a person, so "paciente" would be a pessoa. Wait, but "paciente" in a legal context might refer to a person, so it's a pessoa. So in this sentence, "paciente" is a pessoa.
+
+So the entities are "magistrado" and "paciente" as pessoa. Are there any other entities? Let me check again.
+
+Looking for "organizacao" – any organization mentioned? The text doesn't mention any organizations. "tempo" – any dates or times? The text has "uma vez existir indícios" – no time. "local" – any place? The text mentions "meio social" which is a social context, not a local. "legislacao" – any laws? The text refers to "ordem pública" which is a legal principle, but not legislation. "jurisprudencia" – any references to jurisprudence? The text mentions "princípio da necessidade" which is a legal principle, but not jurisprudence. So the only entities are "magistrado" and "paciente" as pessoa.
+
+Wait, "a quo" – maybe it's part of the organization? But "a quo" is a legal term referring to the court, but the user's guide doesn't mention legal terms as entities. The user's guide specifies the entities as pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So "a quo" is not an entity here. Therefore, the only entities are "magistrado" and "paciente" as pessoa.
+
+So the HTML should have <span class="pessoa"> around "magistrado" and "paciente". Let me check the original text again to confirm the exact words.
+
+Original text: "magistrado a quo" – "magistrado" is a person, "a quo" is part of the text but not an entity. Then "paciente" is a person. So the HTML would be:
+
+"Constata-se , portanto , que o <span class="pessoa">magistrado</span> a quo analisou o fato concreto , conforme alhures exposto , verificando a necessidade da segregação cautelar do <span class="pessoa">paciente</span> para garantia da ordem pública , uma vez existir indícios de ser o mesmo uma ameaça ao meio social . Assim , verifico presente a periculosidade concreta que , com fundamento no princípio da necessidade , justifica a prisão processual do <span class="pessoa">paciente</span> ."
+
+Wait, the original text has "paciente" twice? Let me check again. The first mention is "do paciente" and the second is "do paciente" again. So both instances should be marked as pessoa. So the final HTML would have "magistrado" and "paciente" as pessoa. No other entities. So the output is as above.
+</think>
+
+Constata-se , portanto , que o <span class="pessoa">magistrado</span> a quo analisou o fato concreto , conforme alhures exposto , verificando a necessidade da segregação cautelar do <span class="pessoa">paciente</span> para garantia da ordem pública , uma vez existir indícios de ser o mesmo uma ameaça ao meio social . Assim , verifico presente a periculosidade concreta que , com fundamento no princípio da necessidade , justifica a prisão processual do <span class="pessoa">paciente</span> .

@@ -1,0 +1,158 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to go through the input text carefully and identify each entity according to the definitions provided. Let me start by reading the text again.
+
+The first part is "Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 . Em 22/02/2018 18:56:14 . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7 A Defesa acostou aos autos a cópia da Certidão da Oficiala de Justiça , dando conta da tentativa de contato telefônico efetuada com a causídica com vistas à Notificação Judicial . Em Decisão de 5 de dezembro de 2017 , indeferi o pleito liminar e solicitei à Autoridade indigitada coatora que prestasse as informações necessárias ao julgamento do presente mandamus , bem como que se desse vista à Procuradoria-Geral da Justiça Militar , na forma do § 3º do artigo 472 do CPPM ."
+
+Let me break it down sentence by sentence.
+
+1. "Documento assinado eletronicamente por Cleonilson Nicácio Silva , Matricula 8553 ."
+   - "Cleonilson Nicácio Silva" is a person's name, so that's a pessoa.
+   - "Matricula 8553" might be a matricula, but the definition says only names of people should be marked. Since "Matricula" is a term, not a name, maybe it's not. Wait, the user's guidelines say to mark only names, not terms like matricula. So "Matricula 8553" is part of the name? Or is the matricula a separate entity? Wait, the matricula is a number, not a name. So maybe only the name is marked. So "Cleonilson Nicácio Silva" is pessoa.
+
+2. "Em 22/02/2018 18:56:14 ."
+   - "22/02/2018 18:56:14" is a date and time, so that's tempo.
+
+3. "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 21030663f7"
+   - The URL is part of the text, but the user didn't mention URLs as entities. The guidelines don't specify URLs, so maybe leave them as is. The "Codigo Verificador 21030663f7" is a code, not an entity. So no tags here.
+
+4. "A Defesa acostou aos autos a cópia da Certidão da Oficiala de Justiça , dando conta da tentativa de contato telefônico efetuada com a causídica com vistas à Notificação Judicial ."
+   - "Defesa" could be an organization, but in legal terms, "Defesa" might refer to a legal defense, which is a role, not an organization. Wait, the definition says "organizacao" includes entities like public organs, courts, etc. "Defesa" here might be part of a legal entity, but the text says "Defesa acostou aos autos", which is "the defense filed...". So "Defesa" here is a role, not an organization. So maybe not marked. "Oficiala de Justiça" – "Oficiala" is a title, but "Oficiala de Justiça" is an organization, like a judicial officer. So "Oficiala de Justiça" would be organizacao. Wait, the user's definition says "organizacao" includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas." So "Oficiala de Justiça" is an organization. So that should be organizacao.
+
+5. "Em Decisão de 5 de dezembro de 2017 , indeferi o pleito liminar e solicitei à Autoridade indigitada coatora que prestasse as informações necessárias ao julgamento do presente mandamus , bem como que se desse vista à Procuradoria-Geral da Justiça Militar , na forma do § 3º do artigo 472 do CPPM ."
+   - "Decisão de 5 de dezembro de 2017" – "5 de dezembro de 2017" is a date, so tempo.
+   - "Procuradoria-Geral da Justiça Militar" is an organization, so organizacao.
+   - "CPPM" is a legislation code, so legislacao. Because CPPM is the Código Penal Militar, which is a legal code.
+
+Now, let me check each part again to make sure I didn't miss any entities.
+
+Looking back:
+
+- "Cleonilson Nicácio Silva" is pessoa.
+- "22/02/2018 18:56:14" is tempo.
+- "Oficiala de Justiça" is organizacao.
+- "5 de dezembro de 2017" is tempo.
+- "Procuradoria-Geral da Justiça Militar" is organizacao.
+- "CPPM" is legislacao.
+
+Wait, the user's definition for legislacao includes "leis, códigos, constituições, decretos, medidas provisórias, regimentos ou equivalentes". So "CPPM" is a code, so it's legislacao.
+
+Also, "Decisão" – is that a jurisprudencia? No, because "Decisão" here refers to a decision made by a judge, which is part of jurisprudencia. Wait, the definition says "jurisprudência é definida como: expressões que identificam decisões, precedentes ou súmulas provenientes do Poder Judiciário ou de órgãos com função jurisdicional." So "Decisão" in "Decisão de 5 de dezembro de 2017" is a decision, which is jurisprudencia. Wait, but the text says "Em Decisão de 5 de dezembro de 2017" – the "Decisão" here is a reference to a judicial decision, so that's jurisprudencia. But the user's example output might not have that. Wait, the user's example output in the previous message (the one they provided) might have different entities. Wait, the user hasn't provided an example output, but the task is to generate the HTML with the correct tags.
+
+Wait, the user's input text includes "Decisão de 5 de dezembro de 2017" – the "Decisão" here is a reference to a judicial decision, which is part of jurisprudencia. So "Decisão" should be marked as jurisprudencia. But the date "5 de dezembro de 2017" is tempo. So "Decisão" is a jurisprudencia entity. Wait, but the user's definition says "jurisprudência é definida como: expressões que identificam decisões, precedentes ou súmulas provenientes do Poder Judiciário ou de órgãos com função jurisdicional." So "Decisão" here is a reference to a decision, which is part of jurisprudencia. Therefore, "Decisão" should be marked as jurisprudencia. But in the text, it's part of "Decisão de 5 de dezembro de 2017" – the "Decisão" is the entity, and the date is tempo. So "Decisão" is jurisprudencia, and "5 de dezembro de 2017" is tempo.
+
+Wait, but the user's example output in the previous message (the one they provided) might have different entities. Wait, the user hasn't provided an example output, but the task is to generate the correct HTML. So I need to make sure that "Decisão" is marked as jurisprudencia. However, sometimes "Decisão" might be part of a larger phrase. Let me check the exact text again.
+
+The text says: "Em Decisão de 5 de dezembro de 2017 , indeferi o pleito liminar..." So "Decisão" is a reference to a judicial decision, which is part of jurisprudencia. Therefore, "Decisão" should be marked as jurisprudencia. But the user's guidelines say to mark only complete NPs. So "Decisão de 5 de dezembro de 2017" is a NP, but the "Decisão" is the main entity. Wait, but the date is part of the NP. So the entire phrase "Decisão de 5 de dezembro de 2017" is a NP, but according to the guidelines, only the entities should be marked. However, the date is a tempo entity. So "Decisão" is jurisprudencia, and "5 de dezembro de 2017" is tempo. But the user's guidelines say to include all modifiers with the concept. So if "Decisão" is part of a NP, and the date is a modifier, then both should be marked. Wait, the guidelines say: "Inclua todos os modificadores junto com os conceitos quando aparecerem na mesma frase, exceto modificadores de asserção." So if "Decisão" is the concept and the date is a modifier, then both should be included. But the date is a tempo entity. So the entire phrase "Decisão de 5 de dezembro de 2017" would have "Decisão" as jurisprudencia and "5 de dezembro de 2017" as tempo. But the user's example might not have that. Wait, the user's example output is not provided, so I need to follow the guidelines strictly.
+
+So, in the text "Em Decisão de 5 de dezembro de 2017", "Decisão" is a jurisprudencia entity, and "5 de dezembro de 2017" is tempo. Therefore, both should be marked. But the user's guidelines say to mark only the entities, not the modifiers. Wait, the guidelines say: "Inclua todos os modificadores junto com os conceitos quando aparecerem na mesma frase, exceto modificadores de asserção." So if "Decisão" is the concept and the date is a modifier, then both should be included. Therefore, "Decisão" is jurisprudencia, and "5 de dezembro de 2017" is tempo. So both should be marked.
+
+Wait, but the user's example might not have that. Let me check again. The user's input text includes "Decisão de 5 de dezembro de 2017" – the "Decisão" is a reference to a judicial decision, which is part of jurisprudencia. The date is a tempo entity. So both should be marked. Therefore, in the HTML, "Decisão" would be <span class="jurisprudencia">Decisão</span> and "5 de dezembro de 2017" would be <span class="tempo">5 de dezembro de 2017</span>.
+
+But wait, the user's guidelines say that "tempo" is for explicit temporal references. So "5 de dezembro de 2017" is a tempo entity. So that's correct.
+
+Now, let me go through the entire text again and mark each entity.
+
+1. "Cleonilson Nicácio Silva" – pessoa.
+2. "22/02/2018 18:56:14" – tempo.
+3. "Oficiala de Justiça" – organizacao.
+4. "5 de dezembro de 2017" – tempo.
+5. "Procuradoria-Geral da Justiça Militar" – organizacao.
+6. "CPPM" – legislacao.
+
+Also, "Decisão" in "Decisão de 5 de dezembro de 2017" – jurisprudencia.
+
+Wait, but the user's example might not have "Decisão" as jurisprudencia. Let me think again. The user's definition for jurisprudência includes "decisões, precedentes ou súmulas provenientes do Poder Judiciário ou de órgãos com função jurisdicional." So "Decisão" here is a reference to a judicial decision, which is part of jurisprudência. Therefore, "Decisão" should be marked as jurisprudência.
+
+So, the entities are:
+
+- pessoa: Cleonilson Nicácio Silva
+- tempo: 22/02/2018 18:56:14, 5 de dezembro de 2017
+- organizacao: Oficiala de Justiça, Procuradoria-Geral da Justiça Militar
+- legislacao: CPPM
+- jurisprudencia: Decisão
+
+Wait, but "Decisão" is part of the phrase "Decisão de 5 de dezembro de 2017". So the entire phrase is a NP, but the "Decisão" is the concept, and the date is a modifier. According to the guidelines, both should be included. So "Decisão" is jurisprudencia, and "5 de dezembro de 2017" is tempo.
+
+Therefore, the HTML would have:
+
+<span class="pessoa">Cleonilson Nicácio Silva</span>
+<span class="tempo">22/02/2018 18:56:14</span>
+<span class="organizacao">Oficiala de Justiça</span>
+<span class="tempo">5 de dezembro de 2017</span>
+<span class="organizacao">Procuradoria-Geral da Justiça Militar</span>
+<span class="legislacao">CPPM</span>
+<span class="jurisprudencia">Decisão</span>
+
+Wait, but the "Decisão" is part of the phrase "Decisão de 5 de dezembro de 2017". So the entire phrase is "Decisão de 5 de dezembro de 2017", which includes both "Decisão" (jurisprudencia) and "5 de dezembro de 2017" (tempo). So the HTML would have:
+
+<span class="jurisprudencia">Decisão</span> de <span class="tempo">5 de dezembro de 2017</span>
+
+But the user's guidelines say to include all modifiers with the concept. So the entire phrase "Decisão de 5 de dezembro de 2017" is a NP, but the "Decisão" is the concept, and the date is a modifier. Therefore, both should be marked. So the HTML would have:
+
+<span class="jurisprudencia">Decisão</span> de <span class="tempo">5 de dezembro de 2017</span>
+
+But the user's example might not have that. However, according to the guidelines, this is correct.
+
+Now, putting it all together, the final HTML would have the following tags:
+
+- pessoa: Cleonilson Nicácio Silva
+- tempo: 22/02/2018 18:56:14, 5 de dezembro de 2017
+- organizacao: Oficiala de Justiça, Procuradoria-Geral da Justiça Militar
+- legislacao: CPPM
+- jurisprudencia: Decisão
+
+So the final HTML would be:
+
+<span class="pessoa">Cleonilson Nicácio Silva</span>
+<span class="tempo">22/02/2018 18:56:14</span>
+<span class="organizacao">Oficiala de Justiça</span>
+<span class="tempo">5 de dezembro de 2017</span>
+<span class="organizacao">Procuradoria-Geral da Justiça Militar</span>
+<span class="legislacao">CPPM</span>
+<span class="jurisprudencia">Decisão</span>
+
+But I need to make sure that all entities are correctly marked. Also, the user's example might not have "Decisão" as jurisprudencia, but according to the guidelines, it should be. So I think this is correct.
+</think>
+
+Aqui está a versão formatada com as tags corretas para identificar os elementos conforme as diretrizes fornecidas:
+
+```html
+<span class="pessoa">Cleonilson Nicácio Silva</span>
+<span class="tempo">22/02/2018 18:56:14</span>
+<span class="organizacao">Oficiala de Justiça</span>
+<span class="tempo">5 de dezembro de 2017</span>
+<span class="organizacao">Procuradoria-Geral da Justiça Militar</span>
+<span class="legislacao">CPPM</span>
+<span class="jurisprudencia">Decisão</span>
+```
+
+### Explicação dos Marcadores:
+
+1. **`<span class="pessoa">Cleonilson Nicácio Silva</span>`**  
+   - **Pessoa**: Refere-se a um indivíduo, nesse caso, o advogado ou representante legal.
+
+2. **`<span class="tempo">22/02/2018 18:56:14</span>`**  
+   - **Tempo**: Data e hora de um evento, conforme definido na diretriz.
+
+3. **`<span class="organizacao">Oficiala de Justiça</span>`**  
+   - **Organização**: Refere-se a uma instituição ou órgão público com função jurisdicional, como uma autoridade judicial.
+
+4. **`<span class="tempo">5 de dezembro de 2017</span>`**  
+   - **Tempo**: Data de uma decisão judicial, também conforme a definição de tempo.
+
+5. **`<span class="organizacao">Procuradoria-Geral da Justiça Militar</span>`**  
+   - **Organização**: Órgão público com função jurisdicional, responsável por representar o Estado em processos judiciais.
+
+6. **`<span class="legislacao">CPPM</span>`**  
+   - **Legislação**: Código Penal Militar, que é um código legal.
+
+7. **`<span class="jurisprudencia">Decisão</span>`**  
+   - **Jurisprudência**: Refere-se a uma decisão judicial, que é um dos elementos da jurisprudência, conforme definido.
+
+### Observação:
+- A palavra **"Decisão"** foi marcada como **`jurisprudencia`**, pois se refere a uma decisão judicial, que é um dos componentes da jurisprudência.
+- A data **"5 de dezembro de 2017"** foi marcada como **`tempo`**, pois é uma referência explícita a uma data, conforme definido na diretriz.
+
+Essa abordagem segue rigorosamente as diretrizes fornecidas para a identificação de elementos em texto jurídico.

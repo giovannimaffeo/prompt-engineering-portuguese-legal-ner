@@ -1,0 +1,72 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities.
+
+The text starts with "Ação direta de inconstitucionalidade julgada procedente com efeitos ex nunc e erga omnes . ( Acórdão n.940649 , 20150020201038ADI , Relator : SIMONE LUCINDO CONSELHO ESPECIAL , Data de Julgamento : 26/04/2016 , Publicado no DJE : 17/05/2016 . Pág. : 20/22 ) AÇÃO DIRETA DE INCONSTITUCIONALIDADE . LEI N.º 2.404/1999 E DOS ARTIGOS 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 E 146 , DA LEI N.º 4.317/2009 . INCONSTITUCIONALIDADE . OFENSA AOS PRINCÍPIOS DA SEPARAÇÃO DOS PODERES E RESERVA LEGAL . PROCEDÊNCIA DA AÇÃO ."
+
+Looking for entities:
+
+1. "Acórdão n.940649" – This seems like a legal document number, maybe an organization or a jurisprudência reference? Wait, "Acórdão" is a court decision, so maybe it's part of jurisprudência. But the number might be an organization? Not sure. Maybe "Acórdão" is part of the jurisprudência, but the number is a reference. Hmm, maybe the entire "Acórdão n.940649" is a jurisprudência entity. But I need to check the guidelines. The user says to mark entities like 'organizacao', 'jurisprudencia', etc. So "Acórdão" is a legal decision, which is part of jurisprudência. So I should mark "Acórdão n.940649" as jurisprudencia.
+
+2. "20150020201038ADI" – This looks like a case number, maybe an organization or a jurisprudência reference. Since it's a case number, perhaps it's part of the jurisprudência. But the user might consider it as an organization? Wait, the example in the output might help. Let me check the sample output provided by the user. Wait, the user hasn't provided a sample output, but the example in the task shows that "Acórdão n.940649" is marked as jurisprudencia. So I'll follow that.
+
+3. "Relator : SIMONE LUCINDO CONSELHO ESPECIAL" – "Relator" is the judge, so "SIMONE LUCINDO CONSELHO ESPECIAL" is a pessoa. So I need to mark that as pessoa.
+
+4. "Data de Julgamento : 26/04/2016" – The date is a tempo entity. So "26/04/2016" should be marked as tempo.
+
+5. "Publicado no DJE : 17/05/2016" – "DJE" is a publication medium, which might be an organizacao. So "DJE" should be organizacao. The date "17/05/2016" is tempo.
+
+6. "LEI N.º 2.404/1999" – "LEI" is legislation, so "LEI N.º 2.404/1999" is legislacao. Similarly, "LEI N.º 4.317/2009" is also legislacao.
+
+7. "ARTIGOS 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 E 146" – These are articles of the law, so they are part of legislacao. But the user might want to mark the entire law reference as legislacao. Wait, the example in the output might have "LEI N.º 2.404/1999" as legislacao. So I'll mark the entire law references as legislacao.
+
+8. "INCONSTITUCIONALIDADE" – This is a legal term, not an entity. So no tag needed.
+
+9. "OFENSA AOS PRINCÍPIOS DA SEPARAÇÃO DOS PODERES E RESERVA LEGAL" – These are legal principles, not entities. So no tag.
+
+10. "PROCEDÊNCIA DA AÇÃO" – This is a legal term, not an entity.
+
+Now, let's go through the text step by step and apply the tags.
+
+First part: "Ação direta de inconstitucionalidade julgada procedente com efeitos ex nunc e erga omnes . ( Acórdão n.940649 , 20150020201038ADI , Relator : SIMONE LUCINDO CONSELHO ESPECIAL , Data de Julgamento : 26/04/2016 , Publicado no DJE : 17/05/2016 . Pág. : 20/22 ) AÇÃO DIRETA DE INCONSTITUCIONALIDADE . LEI N.º 2.404/1999 E DOS ARTIGOS 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 E 146 , DA LEI N.º 4.317/2009 . INCONSTITUCIONALIDADE . OFENSA AOS PRINCÍPIOS DA SEPARAÇÃO DOS PODERES E RESERVA LEGAL . PROCEDÊNCIA DA AÇÃO ."
+
+Breaking it down:
+
+- "Acórdão n.940649" → jurisprudencia
+- "20150020201038ADI" → maybe part of jurisprudencia? Or is it an organization? Wait, the number might be a case number, so perhaps it's part of jurisprudencia. But the user's example might have "Acórdão n.940649" as jurisprudencia. So I'll mark "Acórdão n.940649" as jurisprudencia. The "20150020201038ADI" is a case number, so maybe it's part of jurisprudencia as well. But the user might consider it as an organization? Not sure. Alternatively, maybe the entire "Acórdão n.940649 , 20150020201038ADI" is part of jurisprudencia. But the user's example might have "Acórdão n.940649" as jurisprudencia. Let me check the sample output again. Wait, the user hasn't provided a sample output, but the example in the task shows that "Acórdão n.940649" is marked as jurisprudencia. So I'll proceed with that.
+
+- "Relator : SIMONE LUCINDO CONSELHO ESPECIAL" → "SIMONE LUCINDO CONSELHO ESPECIAL" is a pessoa.
+
+- "Data de Julgamento : 26/04/2016" → "26/04/2016" is tempo.
+
+- "Publicado no DJE : 17/05/2016" → "DJE" is organizacao, "17/05/2016" is tempo.
+
+- "LEI N.º 2.404/1999" → legislacao.
+
+- "DA LEI N.º 4.317/2009" → legislacao.
+
+- "ARTIGOS 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 E 146" → part of legislacao.
+
+Now, putting it all together with the appropriate tags.
+
+Wait, the user's example in the task might have "Acórdão n.940649" as jurisprudencia. So I'll mark that. Also, "20150020201038ADI" is part of the same context, so maybe it's part of jurisprudencia. But the user might not have specified that. Alternatively, maybe "20150020201038ADI" is a case number, which could be an organization? Not sure. But since the user hasn't provided examples, I'll proceed with the entities I identified.
+
+So, the final HTML would have:
+
+- <span class="jurisprudencia">Acórdão n.940649</span>
+- <span class="jurisprudencia">20150020201038ADI</span> (if applicable)
+- <span class="pessoa">SIMONE LUCINDO CONSELHO ESPECIAL</span>
+- <span class="tempo">26/04/2016</span>
+- <span class="organizacao">DJE</span>
+- <span class="tempo">17/05/2016</span>
+- <span class="legislacao">LEI N.º 2.404/1999</span>
+- <span class="legislacao">DA LEI N.º 4.317/2009</span>
+- <span class="legislacao">ARTIGOS 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 E 146</span>
+
+Wait, but "DA LEI N.º 4.317/2009" is part of the same legislation reference. So maybe "DA LEI N.º 4.317/2009" is also legislacao. Also, the "ARTIGOS" part is part of the same law, so it's part of legislacao.
+
+Now, let me structure the HTML accordingly, making sure to wrap each entity with the correct class.
+</think>
+
+Ação direta de inconstitucionalidade julgada procedente com efeitos ex nunc e erga omnes . ( <span class="jurisprudencia">Acórdão n.940649</span> , <span class="jurisprudencia">20150020201038ADI</span> , Relator : <span class="pessoa">SIMONE LUCINDO CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">26/04/2016</span> , Publicado no <span class="organizacao">DJE</span> : <span class="tempo">17/05/2016</span> . Pág. : 20/22 ) AÇÃO DIRETA DE INCONSTITUCIONALIDADE . <span class="legislacao">LEI N.º 2.404/1999</span> E DOS ARTIGOS 64 , 65 , 66 , 66-A , 138 , §1º , 140 , 143 , 144 , 145 E 146 , DA <span class="legislacao">LEI N.º 4.317/2009</span> . INCONSTITUCIONALIDADE . OFENSA AOS PRINCÍPIOS DA SEPARAÇÃO DOS PODERES E RESERVA LEGAL . PROCEDÊNCIA DA AÇÃO .

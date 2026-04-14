@@ -1,0 +1,74 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify which parts correspond to each entity type. Let's start by breaking down the text.
+
+The first part mentions "família" – that's a family, but the user specified "pessoa" for people. Wait, "família" is a family, not an individual person. So maybe "família" isn't a pessoa. But the text says "sua família" – the family of the person. However, the user's example output might have "família" as a local? Wait, no. Let me check the example output again. Wait, the user hasn't provided an example output yet. Wait, the user's instruction says to return only the annotated text. Let me focus on the input.
+
+Looking at the input text: "família" – that's a family, which is a group of people, but the entity types are pessoa (individual), organizacao (organization), tempo (time), local (place), legislacao (law), jurisprudencia (jurisprudence). So "família" might not be any of these. Unless "família" is considered a local? No, local is a place. Maybe "família" isn't an entity here. Wait, the user's example output might have "família" as a local? Wait, no. Let me check the input again.
+
+The text mentions "propriedade da família do agravante" – the property of the family of the appellant. "Família" here is part of the property, but the property is a local? Wait, "propriedade" is a property, which is a local. So "propriedade da família do agravante" would be the property of the family of the appellant. So "propriedade" is a local. But the user's example output might have "propriedade" as a local. Wait, the user's example output isn't provided, but the task is to mark entities as per the guidelines.
+
+Next, "recurso" – that's a legal term, but it's not one of the entity types. "Recurso" is a legal action, but the entity types are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So "recurso" isn't an entity here.
+
+Looking for "organizacao": The text mentions "Procuradoria Geral de Justiça" – that's an organization. So "Procuradoria Geral de Justiça" should be marked as organizacao.
+
+"Tempo" – the text mentions "sob pena de multa diária" – daily penalty, which refers to time. So "diária" might be a tempo entity. But "diária" is an adjective. Wait, the user's example might have "diária" as tempo. Alternatively, "sob pena de multa diária" – the daily penalty. So "diária" could be a tempo entity. But I need to check if "diária" is a time entity. Alternatively, maybe "sob pena de multa diária" is part of the legal request, not an entity. Hmm.
+
+"Local" – the text mentions "propriedade da família do agravante" – the property of the family of the appellant. "Propriedade" is a local. So "propriedade" should be marked as local.
+
+"Legislacao" – the text mentions "legislação" in the example? Wait, the input text doesn't have "legislação" explicitly. Wait, the input text says "recurso foi recebido apenas no seu efeito devolutivo , conforme decisão de fls . 46/48-TJ . Contrarrazões às fls . 51/54 , pelo desprovimento do recurso . Parecer da Procuradoria Geral de Justiça às fls ." – here, "Parecer da Procuradoria Geral de Justiça" is an organization, which we already marked. The "TJ" in "fls . 46/48-TJ" refers to the Tribunal de Justiça, which is an organization. So "TJ" should be marked as organizacao. Wait, but "TJ" is an abbreviation for Tribunal de Justiça, which is an organization. So "TJ" should be marked as organizacao.
+
+"Jurisprudencia" – the text mentions "jurisprudência" in the example? Wait, the input text doesn't have "jurisprudência" explicitly. Wait, the user's input text is: "Requer ainda os benefícios da justiça gratuita . O recurso foi recebido apenas no seu efeito devolutivo , conforme decisão de fls . 46/48-TJ . Contrarrazões às fls . 51/54 , pelo desprovimento do recurso . Parecer da Procuradoria Geral de Justiça às fls ." – there's no mention of jurisprudência here. So maybe there are no jurisprudência entities.
+
+Now, let's go through the text step by step.
+
+Original text: "Sustenta que a situação tem causado grande desconforto à sua família , tendo que recorrer aos vizinhos quanto à falta de energia elétrica , e que se encontra impossibilitado de possuir diversos equipamentos que são dependentes de energia elétrica . Diante do exposto , requer seja concedido , liminarmente , a tutela provisória , determinando que o agravado realize a obra necessária e a correta distribuição de energia elétrica na propriedade da família do agravante , sob pena de multa diária em razão do descumprimento de ordem judicial , e ao final , seja dado provimento ao presente recurso para reformar a decisão agravada . Requer ainda os benefícios da justiça gratuita . O recurso foi recebido apenas no seu efeito devolutivo , conforme decisão de fls . 46/48-TJ . Contrarrazões às fls . 51/54 , pelo desprovimento do recurso . Parecer da Procuradoria Geral de Justiça às fls ."
+
+Looking for entities:
+
+- "família" – not an entity type (pessoa, organizacao, tempo, local, legislacao, jurisprudencia). So no tag.
+- "vizinhos" – people, so "pessoa"?
+Wait, "vizinhos" is plural for neighbors, which are people. So "vizinhos" should be marked as pessoa. But the user's example might have "vizinhos" as pessoa. So in the text, "recorrer aos vizinhos" – "vizinhos" is a pessoa.
+- "propriedade" – local.
+- "TJ" – abbreviation for Tribunal de Justiça, which is an organization. So "TJ" should be marked as organizacao.
+- "Procuradoria Geral de Justiça" – organization, so marked as organizacao.
+- "diária" – time? The phrase "sob pena de multa diária" refers to daily penalty, so "diária" could be a tempo entity. But "diária" is an adjective. Alternatively, maybe "diária" is part of the legal term and not an entity. Hmm. The user's example might not have it. Let me check the original text again. The text says "sob pena de multa diária em razão do descumprimento de ordem judicial" – "diária" here refers to daily, so it's a time entity. So "diária" should be marked as tempo.
+- "fls" – abbreviation for "folhas" (pages), which is a legal term but not an entity type. So no tag.
+- "recurso" – not an entity type.
+- "justiça gratuita" – not an entity type.
+- "decisão" – not an entity type.
+- "Parecer da Procuradoria Geral de Justiça" – "Procuradoria Geral de Justiça" is an organization, already marked.
+
+So the entities to mark are:
+
+- "vizinhos" as pessoa.
+- "propriedade" as local.
+- "TJ" as organizacao.
+- "Procuradoria Geral de Justiça" as organizacao.
+- "diária" as tempo.
+
+Wait, but "propriedade" is part of "propriedade da família do agravante" – the property of the family of the appellant. So "propriedade" is a local. So "propriedade" should be marked as local.
+
+Now, let's go through the text and apply the tags.
+
+Original text:
+
+"Sustenta que a situação tem causado grande desconforto à sua família , tendo que recorrer aos vizinhos quanto à falta de energia elétrica , e que se encontra impossibilitado de possuir diversos equipamentos que são dependentes de energia elétrica . Diante do exposto , requer seja concedido , liminarmente , a tutela provisória , determinando que o agravado realize a obra necessária e a correta distribuição de energia elétrica na propriedade da família do agravante , sob pena de multa diária em razão do descumprimento de ordem judicial , e ao final , seja dado provimento ao presente recurso para reformar a decisão agravada . Requer ainda os benefícios da justiça gratuita . O recurso foi recebido apenas no seu efeito devolutivo , conforme decisão de fls . 46/48-TJ . Contrarrazões às fls . 51/54 , pelo desprovimento do recurso . Parecer da Procuradoria Geral de Justiça às fls ."
+
+Now, applying the tags:
+
+- "vizinhos" → <span class="pessoa">vizinhos</span>
+- "propriedade" → <span class="local">propriedade</span>
+- "TJ" → <span class="organizacao">TJ</span>
+- "Procuradoria Geral de Justiça" → <span class="organizacao">Procuradoria Geral de Justiça</span>
+- "diária" → <span class="tempo">diária</span>
+
+Wait, "diária" is in "sob pena de multa diária" – so "diária" is part of the phrase. So the entire "diária" should be marked as tempo.
+
+So the final HTML would have these tags. Let me check again.
+
+Yes, that's all. The rest of the text doesn't have any of the specified entities. So the output should have these tags.
+</think>
+
+Sustenta que a situação tem causado grande desconforto à sua família , tendo que recorrer aos <span class="pessoa">vizinhos</span> quanto à falta de energia elétrica , e que se encontra impossibilitado de possuir diversos equipamentos que são dependentes de energia elétrica . Diante do exposto , requer seja concedido , liminarmente , a tutela provisória , determinando que o agravado realize a obra necessária e a correta distribuição de energia elétrica na <span class="local">propriedade</span> da família do agravante , sob pena de multa <span class="tempo">diária</span> em razão do descumprimento de ordem judicial , e ao final , seja dado provimento ao presente recurso para reformar a decisão agravada . Requer ainda os benefícios da justiça gratuita . O recurso foi recebido apenas no seu efeito devolutivo , conforme decisão de fls . 46/48-<span class="organizacao">TJ</span> . Contrarrazões às fls . 51/54 , pelo desprovimento do recurso . Parecer da <span class="organizacao">Procuradoria Geral de Justiça</span> às fls .

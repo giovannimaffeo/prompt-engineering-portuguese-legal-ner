@@ -1,0 +1,51 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+Starting with the first sentence: "Nos termos da Súmula nº 503 do colendo Superior Tribunal de Justiça , `` O prazo para ajuizamento de ação monitória em face do emitente de cheque sem força executiva é quinquenal , a contar do dia seguinte à data de emissão estampada na cártula '' ."
+
+Here, "Súmula nº 503" is a jurisprudência reference. The "colendo Superior Tribunal de Justiça" is an organization. The "Súmula" is part of the jurisprudência, so I need to mark "Súmula nº 503" as jurisprudência. The "Superior Tribunal de Justiça" is an organization. 
+
+Next, the text mentions "Código Civil" and "Código de Processo Civil" which are legislacao. The "artigo 202 , inciso I" and "artigo 240 , §§ 1º e 2º" are parts of the legislacao. The "10 ( dez ) dias" includes a tempo reference, but "dez" is a number, so maybe "10 dias" is tempo. Wait, the guidelines say that dates in explicit formats like "DD/MM/YYYY" are tempo, but "10 dias" is a duration, not a date. So maybe "10 ( dez ) dias" is not tempo. Wait, the example in the guidelines includes "1o de maio de 1943" as tempo. So "10 dias" might not be considered tempo. Hmm, need to check the guidelines again. The tempo is defined as explicit references to time, including dates, partial dates, years, etc. "10 dias" is a duration, not a specific date. So maybe it's not marked as tempo. But the example in the input has "10 ( dez ) dias" and in the output example, "10 ( dez ) dias" is not marked. Wait, looking at the example Saída5: "no prazo de 10 ( dez ) dias" is not marked as tempo. So maybe the user doesn't mark durations as tempo. So in this case, "10 ( dez ) dias" is not marked as tempo. 
+
+Now, looking at the rest of the text. The "data de emissão estampada na cártula" refers to a date, but it's not in a specific format. The example Saída3 has "25 DE SETEMBRO DE 2008" marked as tempo. So if the text has "data de emissão" but not a specific date, it's not marked. 
+
+So, in the input text, the entities to mark are:
+
+- "Súmula nº 503" as jurisprudência
+- "Superior Tribunal de Justiça" as organizacao
+- "Código Civil" and "Código de Processo Civil" as legislacao
+- "artigo 202 , inciso I" and "artigo 240 , §§ 1º e 2º" as legislacao
+- "10 ( dez ) dias" is not marked as tempo
+- "1o de maio de 1943" is tempo, but in the input text, there's no such date. Wait, the input text has "no prazo de 10 ( dez ) dias" and "data de emissão estampada na cártula" but no specific date. So maybe only the "Súmula" and the "Códigos" are marked. 
+
+Wait, the input text has "artigo 202 , inciso I" and "artigo 240 , §§ 1º e 2º" which are parts of the legislacao. So those should be marked. Also, "Súmula nº 503" is jurisprudência. The "Superior Tribunal de Justiça" is organizacao. 
+
+So putting it all together, the HTML should have:
+
+- <span class="jurisprudencia">Súmula nº 503</span>
+- <span class="organizacao">Superior Tribunal de Justiça</span>
+- <span class="legislacao">artigo 202 , inciso I</span>
+- <span class="legislacao">artigo 240 , §§ 1º e 2º</span>
+- The rest of the text remains as is, except for the "10 ( dez ) dias" which is not marked as tempo.
+
+Wait, but in the example Saída5, "no prazo de 10 ( dez ) dias" is not marked. So in this case, the same applies here. 
+
+So the final HTML should have the marked entities as above. Let me check again to make sure I didn't miss any. The "colendo" is part of the organization name, so "colendo Superior Tribunal de Justiça" is part of the organization. Wait, the example Saída2 has "Superior Tribunal de Justiça" as organizacao. So "colendo" is part of the name, but the entire phrase "colendo Superior Tribunal de Justiça" is the organization. Wait, the example Saída1 has "MINISTÉRIO PÚBLICO FEDERAL" as organizacao. So in the input text, "colendo Superior Tribunal de Justiça" is the organization. So the entire phrase should be marked as organizacao. 
+
+Wait, the original text says "Súmula nº 503 do colendo Superior Tribunal de Justiça". So "colendo Superior Tribunal de Justiça" is the organization. So the entire phrase "colendo Superior Tribunal de Justiça" is the organization. So I need to mark that as organizacao. 
+
+So the correct marking would be:
+
+- "Súmula nº 503" as jurisprudência
+- "colendo Superior Tribunal de Justiça" as organizacao
+- "Código Civil" and "Código de Processo Civil" as legislacao
+- "artigo 202 , inciso I" and "artigo 240 , §§ 1º e 2º" as legislacao
+
+Also, the "1o de maio de 1943" is in the example Saída5, but in the input text, there's no such date. So no tempo marking there. 
+
+So the final HTML should have those spans. Let me structure the text accordingly.
+</think>
+
+Nos termos da <span class="jurisprudencia">Súmula nº 503 do colendo Superior Tribunal de Justiça</span> , `` O prazo para ajuizamento de ação monitória em face do emitente de cheque sem força executiva é quinquenal , a contar do dia seguinte à data de emissão estampada na cártula '' . Cabe ressaltar que , segundo o <span class="legislacao">artigo 202 , inciso I</span> do <span class="legislacao">Código Civil</span> , a interrupção da prescrição , que somente poderá ocorrer uma vez , dar-se-á `` por despacho do juiz , mesmo incompetente , que ordenar a citação , se o interessado a promover no prazo e na forma da lei processual . '' Ressalte-se que , de acordo com o <span class="legislacao">artigo 240 , §§ 1º e 2º</span> do <span class="legislacao">Código de Processo Civil</span> , incumbe ao autor da ação , no prazo de 10 ( dez ) dias , viabilizar a citação do réu , sob pena de não ver interrompida a prescrição no momento do ajuizamento , mas apenas na data em que efetivamente for realizado o ato citatório .

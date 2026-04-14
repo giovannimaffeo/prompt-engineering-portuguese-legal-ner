@@ -1,0 +1,38 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input is a legal process description with various elements like Processo, Apelante, Apelado, Relatora, Acórdão, and DIREITO ADMINISTRATIVO.
+
+Looking at each part:
+
+- "Processo : 20140110500434APO ( 0011249-34.2014.8.07.0018 )" – The process number here might be a tempo or local? Wait, the format seems like a legal case number, which might not be any of the specified entities. The numbers might relate to dates or codes, but the user hasn't specified that numbers are considered tempo. The example output doesn't mark these numbers, so maybe they are left as is.
+
+- "Apelante ( s ) : DF DISTRITO FEDERAL" – "DF DISTRITO FEDERAL" is likely a local, as it refers to the Federal District. So "DF" and "DISTRITO FEDERAL" should be marked as local.
+
+- "Apelado ( s ) : SINPRO SINDICATO DOS PROFESSORES DO DISTRITO FEDERAL" – "SINPRO" is an organization, and "SINDICATO DOS PROFESSORES DO DISTRITO FEDERAL" is also an organization. So both should be organizacao.
+
+- "Relatora : Desembargadora MARIA IVATÔNIA" – "Desembargadora MARIA IVATÔNIA" is a person, so "MARIA IVATÔNIA" should be pessoa. The title "Desembargadora" is part of her title, but the user might want only the name in the span. Wait, the example output in the user's message shows "Relatora : <span class="pessoa">MARIA IVATÔNIA</span>". So the name is marked, but the title is left as is.
+
+- "Acórdão N. : 1084759" – The number here is likely a reference, not any of the entities. So left as is.
+
+- "DIREITO ADMINISTRATIVO" – This is a legal area, which might fall under legislacao or jurisprudencia? Wait, "DIREITO ADMINISTRATIVO" is a branch of law, so maybe it's considered legislacao? Or perhaps it's not any of the specified entities. The example output in the user's message doesn't mark this, so maybe it's left as is.
+
+Wait, looking at the user's example output, the text is:
+
+Processo : 20140110500434APO ( 0011249-34.2014.8.07.0018 ) Apelante ( s ) : <span class="local">DF</span> <span class="local">DISTRITO FEDERAL</span> Apelado ( s ) : <span class="organizacao">SINPRO</span> <span class="organizacao">SINDICATO DOS PROFESSORES DO DISTRITO FEDERAL</span> Relatora : Desembargadora <span class="pessoa">MARIA IVATÔNIA</span> Acórdão N. : 1084759 DIREITO ADMINISTRATIVO .
+
+So in the example, "DF" and "DISTRITO FEDERAL" are marked as local. "SINPRO" and the full organization name are organizacao. "MARIA IVATÔNIA" is pessoa. The rest are left as is.
+
+So applying that to the input text:
+
+- "DF DISTRITO FEDERAL" becomes two local spans.
+- "SINPRO SINDICATO DOS PROFESSORES DO DISTRITO FEDERAL" becomes two organizacao spans.
+- "MARIA IVATÔNIA" is pessoa.
+- The rest like process numbers, acordão number, and "DIREITO ADMINISTRATIVO" are left as is.
+
+I need to make sure that each entity is correctly identified. Also, check if "DISTRITO FEDERAL" is a local. Since it's a place, yes. "SINPRO" is an organization. The full name of the organization is also marked. The person's name is marked. The rest are not entities.
+
+So the final HTML should have the spans for those parts. Let me structure the text accordingly.
+</think>
+
+Processo : 20140110500434APO ( 0011249-34.2014.8.07.0018 ) Apelante ( s ) : <span class="local">DF</span> <span class="local">DISTRITO FEDERAL</span> Apelado ( s ) : <span class="organizacao">SINPRO</span> <span class="organizacao">SINDICATO DOS PROFESSORES DO DISTRITO FEDERAL</span> Relatora : Desembargadora <span class="pessoa">MARIA IVATÔNIA</span> Acórdão N. : 1084759 DIREITO ADMINISTRATIVO .

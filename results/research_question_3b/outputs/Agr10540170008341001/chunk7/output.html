@@ -1,0 +1,32 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify which parts fit each entity category. Let me go through the text step by step.
+
+The text starts with "35 : I - 60 ( sessenta ) dias..." Here, "60 ( sessenta )" is a number with a word, but since it's a quantity, not a specific time reference, maybe it's not a tempo entity. Wait, the tempo definition includes dates, intervals, etc. The phrase "60 dias" is a time period, so that should be marked as tempo. Similarly, "120 dias" and "31/12/2018" are also time references. The date "14.07.2015" is a specific date, so that's tempo as well.
+
+Next, "REN ANEEL 670 de 14.07.2015" – "REN ANEEL" is an organization, as it's a regulatory body. "670" might be a regulation number, but the user's example output shows "REN ANEEL 670" as an organization. Wait, the definition for organizacao includes entities like regulatory bodies. So "REN ANEEL" is an organization. The "670" might be part of the regulation's identifier, but since the user's example output includes "REN ANEEL 670" as an organization, I'll follow that. Also, "14.07.2015" is a date, so that's tempo.
+
+Then, "artigos 44 , 47 , 48 e 102" – these are articles in legislation, so they should be marked as legislacao. The phrase "legislação vigente" is also legislation, so that's another legislacao.
+
+Looking for other entities: "propriedade rural" is a local, but the user's example output doesn't mark it. Wait, the definition for local requires explicit place names. "propriedade rural" is a generic term, not a specific location, so it shouldn't be marked. Similarly, "fls" is an abbreviation for "fls" (which is "fls" in Portuguese for "fls" meaning "fls" as in "fls" is a common abbreviation for "fls" in legal documents, but it's not a specific entity. So no marking there.
+
+Now, checking the example output provided by the user. The user's example output includes "REN ANEEL 670" as an organization, "14.07.2015" as tempo, "artigos 44 , 47 , 48 e 102" as legislacao, and "31/12/2018" as tempo. So I need to make sure I follow that pattern.
+
+So, in the input text, the entities are:
+
+- "60 ( sessenta ) dias" → tempo
+- "120 ( cento e vinte ) dias" → tempo
+- "14.07.2015" → tempo
+- "REN ANEEL 670" → organizacao
+- "artigos 44 , 47 , 48 e 102" → legislacao
+- "31/12/2018" → tempo
+
+Wait, the user's example output includes "REN ANEEL 670" as an organization. So I should mark that as organizacao. Also, "legislação vigente" is part of the text, so "legislação" should be marked as legislacao. The "artigos 44, 47, 48 e 102" are articles in legislation, so they should be legislacao.
+
+Putting it all together, I'll wrap each identified entity with the appropriate <span> tags. Let me make sure I don't miss any. Also, check for any other possible entities. For example, "inciso I" and "inciso II" are parts of legal text, but they are not entities as per the definitions. The user's example doesn't mark them, so I shouldn't. Similarly, "§1º" is a section, but not an entity.
+
+So the final HTML should have the specified spans for each entity. Let me structure the text accordingly.
+</think>
+
+35 : I - <span class="tempo">60 ( sessenta ) dias</span> , quando tratar-se exclusivamente de obras na rede de distribuição aérea de tensão secundária , incluindo a instalação ou substituição de posto de transformação ; e ( <span class="organizacao">REN ANEEL</span> <span class="legislacao">670</span> de <span class="tempo">14.07.2015</span> ) II - <span class="tempo">120 ( cento e vinte ) dias</span> , quando tratar-se de obras com dimensão de até 1 ( um ) quilômetro na rede de distribuição aérea de tensão primária , incluindo nesta distância a complementação de fases na rede existente e , se for o caso , as obras do inciso I . <span class="jurisprudencia">§1º</span> Demais situações não abrangidas nos incisos I e II , bem como as obras de que tratam os <span class="legislacao">artigos 44</span> , <span class="legislacao">47</span> , <span class="legislacao">48</span> e <span class="legislacao">102</span> , devem ser executadas de acordo com o cronograma da distribuidora , observados , quando houver , prazos específicos estabelecidos na <span class="legislacao">legislação vigente</span> '' Ademais , foi informado ao agravante que sua propriedade rural será atendida até <span class="tempo">31/12/2018</span> , conforme fls .

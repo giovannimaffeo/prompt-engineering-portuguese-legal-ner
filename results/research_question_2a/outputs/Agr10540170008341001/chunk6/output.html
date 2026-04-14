@@ -1,0 +1,27 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "CARLOS ROBERTO DE FARIA ( RELATOR ) V O T O Trata-se de agravo de instrumento interposto Gendire Carvalho Da Silva , nos autos da Ação de Obrigação de Fazer c/c Indenização por Danos Morais , ajuizada em face de Cemig Distribuição S/A , contra decisão de fls ."
+
+Starting with the first part: "CARLOS ROBERTO DE FARIA ( RELATOR )". Here, "CARLOS ROBERTO DE FARIA" is a person's name, so that's a 'pessoa'. The "( RELATOR )" part might be a title, but since it's part of the name, maybe it's still a pessoa. Wait, but the RELATOR is a role, not a person. Wait, but the name is CARLOS ROBERTO DE FARIA, and the RELATOR is in parentheses. So maybe the RELATOR is part of the name? Or is it a separate entity? Hmm. The user's example output shows that "CARLOS ROBERTO DE FARIA" is marked as pessoa, and the "( RELATOR )" is not marked. Wait, looking at the sample output provided by the user, the output is:
+
+"<span class="pessoa">CARLOS ROBERTO DE FARIA</span> ( RELATOR ) V O T O Trata-se de agravo de instrumento interposto <span class="pessoa">Gendire Carvalho Da Silva</span> , nos autos da Ação de Obrigação de Fazer c/c Indenização por Danos Morais , ajuizada em face de <span class="organizacao">Cemig Distribuição S/A</span> , contra decisão de fls ."
+
+So in the sample, "CARLOS ROBERTO DE FARIA" is marked as pessoa, and the "( RELATOR )" is left as is. Then "Gendire Carvalho Da Silva" is another pessoa. "Cemig Distribuição S/A" is an organizacao. The rest like "Ação de Obrigação de Fazer" might be part of the legal process, but not one of the specified entities. "fls" is likely an abbreviation for "fls." (fólio), which is a legal term but not one of the entities. So the task is to identify the entities as per the given classes.
+
+So, in the input text, the entities are:
+
+- CARLOS ROBERTO DE FARIA: pessoa
+- Gendire Carvalho Da Silva: pessoa
+- Cemig Distribuição S/A: organizacao
+
+The rest of the text doesn't have any of the specified entities. The "RELATOR" is part of the name, but in the sample output, it's not marked. So maybe the RELATOR is part of the name, but the user's example shows that only the name is marked. So I should mark the full name as pessoa, and leave the "( RELATOR )" as is.
+
+So the HTML would be:
+
+<span class="pessoa">CARLOS ROBERTO DE FARIA</span> ( RELATOR ) V O T O Trata-se de agravo de instrumento interposto <span class="pessoa">Gendire Carvalho Da Silva</span> , nos autos da Ação de Obrigação de Fazer c/c Indenização por Danos Morais , ajuizada em face de <span class="organizacao">Cemig Distribuição S/A</span> , contra decisão de fls .
+
+I need to make sure that all the entities are correctly identified. Let me check again. The "Ação de Obrigação de Fazer" is a legal term, but it's not one of the specified entities. "fls" is an abbreviation, but not an entity. So the only entities are the two pessoas and the organizacao. The rest remains as is. That's the correct approach.
+</think>
+
+<span class="pessoa">CARLOS ROBERTO DE FARIA</span> ( RELATOR ) V O T O Trata-se de agravo de instrumento interposto <span class="pessoa">Gendire Carvalho Da Silva</span> , nos autos da Ação de Obrigação de Fazer c/c Indenização por Danos Morais , ajuizada em face de <span class="organizacao">Cemig Distribuição S/A</span> , contra decisão de fls .

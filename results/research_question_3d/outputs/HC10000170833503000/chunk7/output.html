@@ -1,0 +1,29 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute.
+
+First, I need to read through the input text carefully and identify each entity according to the definitions provided. Let's start by breaking down the text sentence by sentence.
+
+The first sentence: "Dessa forma , considerando a insusceptibilidade de designação do julgamento entre os dias 20 próximo e 20 de janeiro de 2018 , ante a expressa proibição legal inserta no art . 313 , §8º , da LC 59/2001 , com a redação dada pelo art . 103 da LC 135/2014 , e à vista do que dispõe o art . 428 , caput , do CPP , que estabelece o prazo de 06 meses , contado do trânsito em julgado da pronúncia , para o julgamento , pelo Tribunal do Júri , do acusado de homicídio , não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri ."
+
+Looking for tempo entities. The dates mentioned are "entre os dias 20 próximo e 20 de janeiro de 2018". Wait, "20 próximo" might be a typo. Maybe it's supposed to be "20 de novembro" or something similar? But the user's example includes "20 de janeiro de 2018". So I'll take it as is. The date "20 de janeiro de 2018" is a time entity. Also, "06 meses" is a time period. So I'll mark "20 de janeiro de 2018" as tempo and "06 meses" as tempo.
+
+Next, "LC 59/2001" and "LC 135/2014" are leis complementares, so those should be legislação. The "CPP" is Código de Processo Penal, which is a legislação. The "art. 313", "§8º", "art. 103", "art. 428, caput" are references to legal articles, so they should be part of the legislação entries. Wait, the guidelines say to mark the entire reference, like "art. 313, §8º da LC 59/2001". So I need to make sure that the entire legal reference is marked as legislação. For example, "art . 313 , §8º , da LC 59/2001" would be a legislação entity. Similarly for "art . 103 da LC 135/2014" and "art . 428 , caput , do CPP".
+
+Then, "Tribunal do Júri" is an organization. The "CPP" is a legislação. "Júri" is part of the organization name here. So "Tribunal do Júri" should be an organizacao. Wait, but "Tribunal do Júri" is an organization, so the whole phrase should be marked as organizacao.
+
+Next sentence: "Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa ."
+
+Looking for entities here. "paciente" is a pessoa, but the text says "do paciente", which is a generic term. The guidelines say that only names should be marked, not generic terms. So "paciente" is not a pessoa. Similarly, "mandado de busca e apreensão" is a legal term but not an entity. The "aparelho celular do paciente" is a local? No, "aparelho celular" is not a local. So no entities here.
+
+Now, checking for any other entities. The "LC" refers to Lei Complementar, which is legislação. The "CPP" is Código Penal, so legislação. The "Tribunal do Júri" is an organizacao. The dates "20 de janeiro de 2018" and "06 meses" are tempo. The legal articles and references are part of legislação. The "art. 313, §8º da LC 59/2001" and similar are all legislação.
+
+Wait, the user's example output shows "art. 313 , §8º , da LC 59/2001" as a legislação. So I need to make sure that all the legal references are marked as legislação. Also, the "Tribunal do Júri" is an organizacao.
+
+So putting it all together. Let me go through the text again and apply the tags.
+
+First, the date "20 de janeiro de 2018" is tempo. Then "06 meses" is tempo. The "LC 59/2001" and "LC 135/2014" are legislação. The "CPP" is also legislação. The "art. 313, §8º da LC 59/2001" is a full reference, so that's legislação. Similarly, "art. 103 da LC 135/2014" and "art. 428, caput, do CPP" are all part of the legislação. The "Tribunal do Júri" is an organizacao. The rest of the text doesn't have any other entities.
+
+So the HTML should have the spans for these entities. Let me structure that.
+</think>
+
+Dessa forma , considerando a insusceptibilidade de designação do julgamento entre os dias <span class="tempo">20 próximo e 20 de janeiro de 2018</span> , ante a expressa proibição legal inserta no <span class="legislacao">art . 313 , §8º , da LC 59/2001</span> , com a redação dada pelo <span class="legislacao">art . 103 da LC 135/2014</span> , e à vista do que dispõe o <span class="legislacao">art . 428 , caput , do CPP</span> , que estabelece o prazo de <span class="tempo">06 meses</span> , contado do trânsito em julgado da pronúncia , para o julgamento , pelo <span class="organizacao">Tribunal do Júri</span> , do acusado de homicídio , não há falar-se em relaxamento de prisão por excesso de prazo na formação da culpa , tampouco em antecipação da aludida sessão do Júri . Doutro giro , no que pertine ao pleito de nulidade da prova documental juntada aos autos , extraída do aparelho celular do paciente , visto que sua colheita ultrapassou os limites do mandado de busca e apreensão , melhor sorte não socorre à defesa .

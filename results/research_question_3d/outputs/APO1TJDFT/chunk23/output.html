@@ -1,0 +1,92 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute.
+
+First, I need to go through the input text carefully. Let me start by reading the text again to spot any entities.
+
+The text is in Portuguese. Let me parse it sentence by sentence.
+
+The first part: "Logo , o ponto não é qual legislação distrital procedeu com a atualização dos valores de quintos ou décimos , mas sim que toda e qualquer atualização destes valores - e de quaisquer vantagens recebidas pelos servidores em atividade - devem ser aplicadas , igualmente , aos servidores inativos que se aposentaram com fundamento nas hipóteses constitucionais acima transcritas ."
+
+Looking for entities here. "legislação distrital" – "legislação" is a term, but the full name might be needed. However, the example given for legislação includes things like "Lei nº 8.666/93". Here, it's "legislação distrital" which is a general term, not a specific law. So maybe not marked. "servidores" – that's a generic term, not a specific person or organization. "hipóteses constitucionais" – again, general, not a specific entity. So no entities here.
+
+Next sentence: "No sentido , o entendimento do e. TJDFT , destaca-se : Fls . _____ Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10 `` ADMINISTRATIVO E PROCESSUAL CIVIL . AÇÃO DE CONHECIMENTO . TRANSFORMAÇÃO DE COMPLEMENTAÇÃO SALARIAL EM VANTAGEM PESSOAL NOMINALMENTE IDENTIFICADA CONCEDIDA AOS SERVIDORES ATIVOS E AOS APOSENTADOS A PARTIR DA EDIÇAO DA LEI DISTRITAL Nº 5.105/2013 ."
+
+Looking for entities here. "e. TJDFT" – that's an abbreviation. The example for organização includes "Tribunal de Contas", so maybe TJDFT is an organization. But I need to check. "TJDFT" could stand for Tribunal de Justiça do Distrito Federal. So that's an organization. So I should mark "e. TJDFT" as organizacao. Wait, the example says "MINISTÉRIO PÚBLICO FEDERAL" is an organization. So "TJDFT" would be similar, so yes, organizacao.
+
+Then "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "DESEMBARGADORA" is a title, not a person. But "MARIA IVATÔNIA" is a name, so that's a pessoa. So "MARIA IVATÔNIA" should be marked as pessoa.
+
+Next, "Apelação / Reexame Necessário 20140110500434APO" – the number "20140110500434APO" is a jurisprudência identifier. According to the guidelines, identifiers with numbers and suffixes are jurisprudência. So that should be marked as jurisprudência.
+
+"Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – the code is a verification code, not a specific entity. So not marked.
+
+"LEI DISTRITAL Nº 5.105/2013" – this is a specific law, so it's legislação. The example includes "Lei nº 8.666/93", so this should be marked as legislação.
+
+Now, putting all together. Let me check again for any missed entities.
+
+"servidores" – not marked as they are generic. "APOSENTADOS" – same as above. "ADMINISTRATIVO E PROCESSUAL CIVIL" – these are areas, not entities. "AÇÃO DE CONHECIMENTO" – a legal action, but not an entity. "COMPLEMENTAÇÃO SALARIAL" – a term, not an entity.
+
+So the entities are:
+
+- "e. TJDFT" → organizacao
+- "MARIA IVATÔNIA" → pessoa
+- "20140110500434APO" → jurisprudência
+- "LEI DISTRITAL Nº 5.105/2013" → legislação
+
+Wait, the text has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". The "GABINETE" is part of the organization, but the example says "organizações" include "Câmara Legislativa", so "GABINETE DA DESEMBARGADORA" is part of the organization. But the name "MARIA IVATÔNIA" is a person. So in the text, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – the entire phrase is the organization? Wait, the example for organizacao includes "Tribunal de Contas". So "GABINETE DA DESEMBARGADORA" is part of the organization, but the person is "MARIA IVATÔNIA". Wait, no. The "GABINETE DA DESEMBARGADORA" is the office, and "MARIA IVATÔNIA" is the person. So the entire phrase "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" would be the organization? Or is "MARIA IVATÔNIA" a person?
+
+Wait, the example says "organizações" include "Câmara Legislativa", "UNIMED RIO COOPERATIVA...". So "GABINETE DA DESEMBARGADORA" is part of the organization. But the name "MARIA IVATÔNIA" is a person. So in the text, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – the "MARIA IVATÔNIA" is a person, so that part should be marked as pessoa. But the rest is the organization. So the entire phrase would have "GABINETE DA DESEMBARGADORA" as organizacao and "MARIA IVATÔNIA" as pessoa. But the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10 `` ...". So maybe "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. But in the text, they are written together. So need to split them. So in the text, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – the "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is a person. So the correct way is to mark "GABINETE DA DESEMBARGADORA" as organizacao and "MARIA IVATÔNIA" as pessoa. But the way the text is written, they are connected. So maybe the entire phrase is an organization, but that doesn't make sense. Alternatively, maybe "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. So in the HTML, we need to split them. But the text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10 `` ...". So the "MARIA IVATÔNIA" is part of the organization's name? Or is it a separate entity. Hmm. Since "MARIA IVATÔNIA" is a name, it's a pessoa. So the correct approach is to mark "MARIA IVATÔNIA" as pessoa, and the rest as organizacao. So the HTML would have <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span>.
+
+But the original text has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as a single phrase. So perhaps the entire phrase is the organization's name, but that's unlikely. Alternatively, the "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. So in the text, we need to split them. But the user's example shows that "Câmara Legislativa" is an organization, so "GABINETE DA DESEMBARGADORA" is similar. Therefore, "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. So in the HTML, we need to mark each part. So the text would have:
+
+GABINETE DA DESEMBARGADORA <span class="organizacao">GABINETE DA DESEMBARGADORA</span> MARIA IVATÔNIA <span class="pessoa">MARIA IVATÔNIA</span>
+
+But the original text is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10 `` ...". So the "MARIA IVATÔNIA" is part of the organization's name? Maybe not. It's more likely that "MARIA IVATÔNIA" is the person. So the correct way is to split the phrase into "GABINETE DA DESEMBARGADORA" as organizacao and "MARIA IVATÔNIA" as pessoa. Therefore, in the HTML, the text would have:
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span>
+
+But the original text has them together, so I need to check if they are part of the same entity. Alternatively, maybe "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is the organization. But that's not standard. The example for organizacao includes "Tribunal de Contas", which is a specific organization. So "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is a person. Therefore, the correct approach is to mark each part separately.
+
+Another point: "Apelação / Reexame Necessário 20140110500434APO" – the number "20140110500434APO" is a jurisprudência identifier. So that should be marked as <span class="jurisprudência">20140110500434APO</span>.
+
+Also, "LEI DISTRITAL Nº 5.105/2013" is a specific law, so <span class="legislacao">LEI DISTRITAL Nº 5.105/2013</span>.
+
+Now, putting all together:
+
+- "e. TJDFT" → organizacao
+- "GABINETE DA DESEMBARGADORA" → organizacao
+- "MARIA IVATÔNIA" → pessoa
+- "20140110500434APO" → jurisprudência
+- "LEI DISTRITAL Nº 5.105/2013" → legislação
+
+Wait, the text also has "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". So the "MARIA IVATÔNIA" is a person, and the rest is the organization. So the HTML would have:
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span>
+
+But in the original text, they are written together. So the exact text is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10 `` ...". So the entire phrase is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10 `` ...". Therefore, the "MARIA IVATÔNIA" is part of the organization's name? Or is it a separate entity. Since "MARIA IVATÔNIA" is a person, it's better to mark it as pessoa. So the HTML would have:
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 10 `` ...
+
+But the original text has them together. So maybe the entire phrase is an organization, but that's unlikely. Alternatively, the "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. Therefore, in the text, we split them. So in the HTML, we have:
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 10 `` ...
+
+But the original text is written as "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 10 `` ...". So the exact text would have the "GABINETE DA DESEMBARGADORA" and "MARIA IVATÔNIA" separated by a space. So the HTML would have:
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 10 `` ...
+
+So that's correct.
+
+Now, checking the rest of the text. The "20140110500434APO" is a jurisprudência identifier. The "LEI DISTRITAL Nº 5.105/2013" is a legislation. The "e. TJDFT" is an organization. "MARIA IVATÔNIA" is a person. The rest of the text has no other entities.
+
+So the final HTML would have the entities marked as follows:
+
+- "e. TJDFT" → organizacao
+- "GABINETE DA DESEMBARGADORA" → organizacao
+- "MARIA IVATÔNIA" → pessoa
+- "20140110500434APO" → jurisprudência
+- "LEI DISTRITAL Nº 5.105/2013" → legislação
+
+Now, constructing the HTML with these tags.
+</think>
+
+Logo , o ponto não é qual legislação distrital procedeu com a atualização dos valores de quintos ou décimos , mas sim que toda e qualquer atualização destes valores - e de quaisquer vantagens recebidas pelos servidores em atividade - devem ser aplicadas , igualmente , aos servidores inativos que se aposentaram com fundamento nas hipóteses constitucionais acima transcritas . No sentido , o entendimento do <span class="organizacao">e. TJDFT</span> , destaca-se : Fls . _____ <span class="jurisprudencia">Apelação / Reexame Necessário 20140110500434APO</span> Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 10 `` ADMINISTRATIVO E PROCESSUAL CIVIL . AÇÃO DE CONHECIMENTO . TRANSFORMAÇÃO DE COMPLEMENTAÇÃO SALARIAL EM VANTAGEM PESSOAL NOMINALMENTE IDENTIFICADA CONCEDIDA AOS SERVIDORES ATIVOS E AOS APOSENTADOS A PARTIR DA EDIÇAO DA <span class="legislacao">LEI DISTRITAL Nº 5.105/2013</span> .

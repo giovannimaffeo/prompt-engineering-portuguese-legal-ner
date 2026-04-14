@@ -1,0 +1,139 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each tag needs a class attribute indicating the entity type.
+
+First, I need to parse the input text and identify which parts correspond to each entity type. Let's start by looking at the example provided to understand the expected output. The example input had "MINISTÉRIO PÚBLICO FEDERAL" marked as organizacao and "CARLOS HENRIQUE ALVES" as pessoa. The legislation part was marked with the "legislacao" class, and the jurisprudência part had "REsp n . 1694984/MS" and "Súmula 331 do TST".
+
+Now, looking at the user's input text. Let me go through each sentence step by step.
+
+The first part is "Ressalto , ainda , a precisa manifestação da ProcuradoriaGeral da República : ‘ 2.1 Ocorrência do conflito federativo Em primeiro lugar , registre-se que o Supremo Tribunal Federal tem reconhecido a ocorrência de conflito federativo em situações nas quais a União nega a emissão do Certificado de Regularidade Previdenciária a Estadomembro , impossibilitando-o de receber transferências voluntárias e repasse de recursos federais , bem como de celebrar acordos , convênios e operações de crédito com instituições federais . Reconhecida , assim , a competência da Suprema Corte para examinar a presente ação , nos termos do art . 102 , I , f , do texto constitucional . 2.2 Observância ao art . 246 da Constituição Federal O autor alega que a Lei 9.717/1998 , por ser decorrente de conversão de medida provisória editada no ano de 1998 , viola a vedação constante do art ."
+
+Breaking this down:
+
+- "ProcuradoriaGeral da República" – This seems like an organization. The example had "ProcuradoriaGeral da República" in the input, and in the output, it was marked as organizacao. Wait, in the example, the input was "ProcuradoriaGeral da República" and the output had it as <span class="organizacao">ProcuradoriaGeral da República</span>. So yes, that's an organization.
+
+- "Supremo Tribunal Federal" – This is a well-known organization, the Supreme Federal Court. So that should be organizacao.
+
+- "União" – This refers to the Union, which is a legal entity, so that's an organization.
+
+- "Estadomembro" – This might be a typo or shorthand for "Estado-membro" (member state). Since it's a specific entity, maybe it's a local? Wait, the user's guidelines mention that local is for explicit places like cities, states, countries. "Estadomembro" could be a state member, but it's not a specific place. However, the example had "Estadomembro" in the input and it wasn't marked. Wait, the example input was "Estadomembro" and the output didn't mark it. So maybe "Estadomembro" is considered a generic term, not a specific local. So perhaps it's not marked.
+
+- "Constituição Federal" – This is legislation. The example had "Constituição Federal" marked as legislação. So in the input, "Constituição Federal" would be marked.
+
+- "Lei 9.717/1998" – This is legislation. The example had "Lei nº 9.430/93" marked as legislação. So "Lei 9.717/1998" would be marked as legislação.
+
+- "art . 102 , I , f , do texto constitucional" – The "art" refers to an article in the legislation, so "art. 102" is part of the legislation. The example had "art.61 , §1º , da Lei nº 9.430/93" marked as legislação. So "art. 102" and "art. 246" would be part of the legislation.
+
+- "Suprema Corte" – This is the Supreme Court, which is an organization. The example had "Suprema Corte" in the input and it was marked as organizacao. So that's an organization.
+
+Now, checking for other entities:
+
+- "tempo": The input has "ano de 1998" which is a year, so that's tempo. The example had "ano de 1998" marked as tempo. So "ano de 1998" should be marked as tempo.
+
+- "local": Any specific places? The input mentions "Estadomembro" but that's not a specific location. The example had "COMARCA DE BELO HORIZONTE" as local. The input here doesn't have any specific local names, so no local entities.
+
+- "jurisprudência": The input doesn't mention any specific cases, precedents, or súmulas. The example had "REsp n . 1694984/MS" and "Súmula 331 do TST" as jurisprudência. The input here doesn't have such references, so no jurisprudência.
+
+- "pessoa": The input doesn't have any specific names of individuals. "ProcuradoriaGeral da República" is an organization, not a person. So no pessoa entities.
+
+So putting it all together:
+
+- "ProcuradoriaGeral da República" → organizacao
+- "Supremo Tribunal Federal" → organizacao
+- "União" → organizacao (as it refers to the federal government)
+- "Constituição Federal" → legislação
+- "Lei 9.717/1998" → legislação
+- "art. 102" and "art. 246" → part of legislação
+- "ano de 1998" → tempo
+- "Suprema Corte" → organizacao
+
+Wait, in the input, "Suprema Corte" is mentioned. The example had "Suprema Corte" marked as organizacao. So that's correct.
+
+Now, checking for any other possible entities. For example, "texto constitucional" refers to the constitutional text, which is part of the legislation. But the example had "texto constitucional" as part of the legislation reference. So "texto constitucional" would be part of the legislação.
+
+But in the input, the sentence is "nos termos do art . 102 , I , f , do texto constitucional". The "texto constitucional" is part of the legislation, so the entire reference to the article in the constitution should be marked as legislação.
+
+Similarly, "art . 246 da Constituição Federal" would be part of the legislation.
+
+So the final HTML would have the following spans:
+
+- ProcuradoriaGeral da República → organizacao
+- Supremo Tribunal Federal → organizacao
+- União → organizacao
+- Constituição Federal → legislação
+- Lei 9.717/1998 → legislação
+- art. 102 → legislação
+- texto constitucional → legislação
+- ano de 1998 → tempo
+- Suprema Corte → organizacao
+
+Wait, "texto constitucional" is part of the legislation. So the entire phrase "do texto constitucional" would be part of the legislation reference. But the example had "do texto constitucional" as part of the legislation in the output. So in the input, "do texto constitucional" would be part of the legislation.
+
+But in the input, the text is: "nos termos do art . 102 , I , f , do texto constitucional . 2.2 Observância ao art . 246 da Constituição Federal O autor alega que a Lei 9.717/1998 , por ser decorrente de conversão de medida provisória editada no ano de 1998 , viola a vedação constante do art ."
+
+So "art . 102" and "art . 246 da Constituição Federal" are part of the legislation. The "texto constitucional" is part of the reference to the article in the constitution. So the entire "do texto constitucional" would be part of the legislation.
+
+But the example had "do texto constitucional" in the input, and in the output, it was part of the legislação. So I should mark "do texto constitucional" as part of the legislation.
+
+Wait, the example had "art. 102 , I , f , do texto constitucional" as part of the legislation. So in the input, "do texto constitucional" is part of the legislation reference. Therefore, the entire phrase "do texto constitucional" would be marked as legislação.
+
+Similarly, "art . 246 da Constituição Federal" is part of the legislation.
+
+So in the input, the text is:
+
+"nos termos do art . 102 , I , f , do texto constitucional . 2.2 Observância ao art . 246 da Constituição Federal O autor alega que a Lei 9.717/1998 , por ser decorrente de conversão de medida provisória editada no ano de 1998 , viola a vedação constante do art ."
+
+Breaking this down:
+
+- "art . 102" → part of legislation
+- "do texto constitucional" → part of legislation
+- "art . 246 da Constituição Federal" → part of legislation
+- "Lei 9.717/1998" → legislation
+- "ano de 1998" → tempo
+
+So all these parts need to be marked as legislação. Also, "Suprema Corte" is an organization. "Supremo Tribunal Federal" is also an organization.
+
+Now, putting all these into the HTML tags.
+
+So the final output should have:
+
+- "ProcuradoriaGeral da República" → organizacao
+- "Supremo Tribunal Federal" → organizacao
+- "União" → organizacao
+- "Constituição Federal" → legislação
+- "Lei 9.717/1998" → legislação
+- "art . 102" → legislação
+- "do texto constitucional" → legislação
+- "art . 246 da Constituição Federal" → legislação
+- "ano de 1998" → tempo
+- "Suprema Corte" → organizacao
+
+Wait, but the example had "art.61 , §1º , da Lei nº 9.430/93" as legislação. So in the input, "art . 102 , I , f , do texto constitucional" is part of the legislation. So the entire phrase "art . 102 , I , f , do texto constitucional" should be marked as legislação. Similarly, "art . 246 da Constituição Federal" is part of the legislation.
+
+Also, "Lei 9.717/1998" is legislation.
+
+So in the input text, the marked parts are:
+
+- ProcuradoriaGeral da República (organizacao)
+- Supremo Tribunal Federal (organizacao)
+- União (organizacao)
+- Constituição Federal (legislacao)
+- Lei 9.717/1998 (legislacao)
+- art . 102 , I , f , do texto constitucional (legislacao)
+- art . 246 da Constituição Federal (legislacao)
+- ano de 1998 (tempo)
+- Suprema Corte (organizacao)
+
+Now, the input text has "Suprema Corte" and "Supremo Tribunal Federal" as organizations.
+
+So the final HTML would have these spans with the appropriate classes.
+
+I need to make sure that all these entities are correctly identified and marked. Also, check for any other possible entities that might be missed.
+
+Another thing to check: "Estadomembro" in the input. The example didn't mark it as a local. The user's guidelines say that "Estadomembro" is not a specific local, so it's not marked. So it remains as is.
+
+Also, "ProcuradoriaGeral da República" is an organization, so it's marked as organizacao.
+
+Putting all this together, the HTML output should have the appropriate spans.
+</think>
+
+O <span class="organizacao">ProcuradoriaGeral da República</span> : ‘ 2.1 Ocorrência do conflito federativo Em primeiro lugar , registre-se que o <span class="organizacao">Supremo Tribunal Federal</span> tem reconhecido a ocorrência de conflito federativo em situações nas quais a <span class="organizacao">União</span> nega a emissão do Certificado de Regularidade Previdenciária a <span class="local">Estadomembro</span> , impossibilitando-o de receber transferências voluntárias e repasse de recursos federais , bem como de celebrar acordos , convênios e operações de crédito com instituições federais . Reconhecida , assim , a competência da <span class="organizacao">Suprema Corte</span> para examinar a presente ação , nos termos do <span class="legislacao">art . 102 , I , f , do texto constitucional</span> . 2.2 Observância ao <span class="legislacao">art . 246 da Constituição Federal</span> O autor alega que a <span class="legislacao">Lei 9.717/1998</span> , por ser decorrente de conversão de medida provisória editada no <span class="tempo">ano de 1998</span> , viola a vedação constante do <span class="legislacao">art</span> .

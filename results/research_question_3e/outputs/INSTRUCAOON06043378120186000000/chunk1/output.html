@@ -1,0 +1,143 @@
+<think>
+Okay, let's tackle this HTML entity tagging task. First, I need to understand the user's requirements thoroughly. The goal is to convert the given legal text into HTML by marking specific entities with appropriate <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+Starting with the input text: 
+
+"TRIBUNAL SUPERIOR ELEITORAL RESOLUÇÃO N° 23.561 INSTRUÇÃO N° 0604337-81.2018.6.00.0000 - CLASSE 19 - BRASÍLIA - DISTRITO FEDERAL Relator : Ministro Luiz Fux Interessado : Tribunal Superior Eleitoral Altera a Resolução-TSE n° 23.549 , de 18 de dezembro de 2017 , que dispõe sobre pesquisas eleitorais para as eleições de 2018 . O TRIBUNAL SUPERIOR ELEITORAL , no uso das atribuições que lhe confere o art . 23 , inciso IX , do Código Eleitoral , resolve : Art . 1o Ficam revogados os §§ 10 e 11 do art . 2o da Resolução-TSE n° 23.549 , de 18.12.2017 . Art . 2o ] Esta resolução entra em vigor na data de sua publicação ."
+
+First, I'll go through each part of the text to identify the entities.
+
+1. "TRIBUNAL SUPERIOR ELEITORAL" – This is an organization. The example given in the guidelines includes "Tribunal de Contas" as an organization, so this should be marked as organizacao.
+
+2. "RESOLUÇÃO N° 23.561" – This is a legislative document. The example mentions "Lei nº 8.666/93" as legislation, so "RESOLUÇÃO N° 23.561" is part of the legislation. Wait, but the user's example for legislation includes things like "Lei nº 8.666/93". So "RESOLUÇÃO N° 23.561" would be a resolution, which is a type of legislation. Therefore, it should be marked as legislacao.
+
+3. "INSTRUÇÃO N° 0604337-81.2018.6.00.0000" – This looks like a case number or legal document. The example includes "REsp 1694984/MS" as jurisprudencia. This number might be a process number, so it should be jurisprudencia.
+
+4. "CLASSE 19" – This is a class number, which might be part of a case, so possibly jurisprudencia. But the guidelines mention that identifiers like "20140110500434APO" are jurisprudencia. Since "CLASSE 19" is a class, maybe not. Need to check. The example includes "CLASSE 19" as part of a case reference. Wait, the input has "CLASSE 19" after the instruction number. It might be part of the case reference, so maybe it's part of the jurisprudencia. But the user's guidelines mention that "identificadores completos de decisões ou processos" should be jurisprudencia. Since "CLASSE 19" is part of the case reference, perhaps it should be included as part of the jurisprudencia. But I'm not sure. Maybe it's better to check if "CLASSE 19" is a standalone entity. Alternatively, since it's part of the case number, maybe the entire instruction number is jurisprudencia. Let me think. The example in the guidelines includes "REsp 1694984/MS" as jurisprudencia. So numbers like "0604337-81.2018.6.00.0000" might be part of a process, so it's jurisprudencia. So "INSTRUÇÃO N° 0604337-81.2018.6.00.0000" would be jurisprudencia. But the "INSTRUÇÃO" is part of the name, so the entire instruction number is jurisprudencia. So "INSTRUÇÃO N° 0604337-81.2018.6.00.0000" should be marked as jurisprudencia.
+
+5. "BRASÍLIA - DISTRITO FEDERAL" – These are local entities. "BRASÍLIA" is a city, and "DISTRITO FEDERAL" is a federal district. So both should be local.
+
+6. "Ministro Luiz Fux" – "Ministro" is a title, not a person. The person is "Luiz Fux", so he should be marked as pessoa.
+
+7. "Tribunal Superior Eleitoral" – This is an organization, same as the first mention. So it's organizacao.
+
+8. "Resolução-TSE n° 23.549" – "Resolução-TSE" is a legislative document, so legislacao. The number "n° 23.549" is part of the legislation reference, so it's part of the legislacao.
+
+9. "18 de dezembro de 2017" – This is a date, so tempo.
+
+10. "art . 23 , inciso IX , do Código Eleitoral" – "Código Eleitoral" is a legislative text, so legislacao. The "art. 23" is part of the legislation.
+
+11. "Art . 1o" – This is part of a legislative text (resolution), so legislacao.
+
+12. "Art . 2o" – Same as above, part of the legislation.
+
+13. "18.12.2017" – This is a date, so tempo.
+
+14. "data de sua publicação" – "data" is a temporal reference, so tempo.
+
+Now, I need to apply these to the text, making sure to wrap the entities in <span> tags with the appropriate classes. Also, need to check for any other entities I might have missed.
+
+Another thing to note is that "TRIBUNAL SUPERIOR ELEITORAL" is mentioned twice. The first time as the organization, and the second time as the entity being referred to. So both instances should be marked as organizacao.
+
+The "Resolução-TSE" in "Resolução-TSE n° 23.549" is part of the legislation, so the entire reference should be marked as legislacao.
+
+The "INSTRUÇÃO N° 0604337-81.2018.6.00.0000" is a case number, so jurisprudencia.
+
+"CLASSE 19" – If it's part of the case reference, it's part of the jurisprudencia. But in the example given, the user included "CLASSE 19" as part of a case reference, but in the example input, they didn't. Wait, the example input in the user's guidelines had "CLASSE 19" in the output. Wait, looking back at the example input and output, the user's example input included "CLASSE 19" and the output didn't mark it. Wait, no, in the example provided by the user, the input was: 
+
+Exemplo Entrada1: O MINISTÉRIO PÚBLICO FEDERAL, por meio do Procurador CARLOS HENRIQUE ALVES, propôs ação com base no art.61 , §1º , da Lei nº 9.430/96, conforme entendimento do REsp n . 1694984/MS e da Súmula 331 do TST.
+
+The output marked "MINISTÉRIO PÚBLICO FEDERAL" as organizacao, "CARLOS HENRIQUE ALVES" as pessoa, "art.61 , §1º , da Lei nº 9.430/96" as legislacao, "REsp n . 1694984/MS" as jurisprudencia, and "Súmula 331 do TST" as jurisprudencia.
+
+So in the current input, "CLASSE 19" is part of the instruction number. The instruction number is "INSTRUÇÃO N° 0604337-81.2018.6.00.0000 - CLASSE 19". The "CLASSE 19" is part of the case reference, so it should be marked as jurisprudencia. But in the example, "CLASSE 19" wasn't marked. Wait, but the user's example didn't include that. Maybe the user's example was different. Wait, the user's example input included "CLASSE 19" in the output? Let me check again.
+
+Wait, the user's example input was:
+
+Exemplo Entrada1: O MINISTÉRIO PÚBLICO FEDERAL, por meio do Procurador CARLOS HENRIQUE ALVES, propôs ação com base no art.61 , §1º , da Lei nº 9.430/96, conforme entendimento do REsp n . 1694984/MS e da Súmula 331 do TST.
+
+The output was:
+
+O <span class="organizacao">MINISTÉRIO PÚBLICO FEDERAL</span>, por meio do Procurador <span class="pessoa">CARLOS HENRIQUE ALVES</span>, propôs ação com base no <span class="legislacao">art.61 , §1º , da Lei nº 9.430/96</span>, conforme entendimento do <span class="jurisprudencia">REsp n . 1694984/MS</span> e da <span class="jurisprudencia">Súmula 331 do TST</span>.
+
+So in that example, "CLASSE 19" is not present. Therefore, in our current text, "CLASSE 19" is part of the case reference. The instruction number "INSTRUÇÃO N° 0604337-81.2018.6.00.0000" is a case number, so it's jurisprudencia. The "CLASSE 19" is part of that case reference, so it should be included in the jurisprudencia. However, the user's guidelines mention that "identificadores completos de decisões ou processos" should be marked as jurisprudencia, even if they appear without the word "acórdão". So "INSTRUÇÃO N° 0604337-81.2018.6.00.0000" is a case number, so it's jurisprudencia. The "CLASSE 19" is part of that case reference, so it's part of the jurisprudencia. Therefore, the entire instruction number including "CLASSE 19" should be marked as jurisprudencia.
+
+Now, putting it all together:
+
+- "TRIBUNAL SUPERIOR ELEITORAL" is organizacao.
+- "RESOLUÇÃO N° 23.561" is legislacao.
+- "INSTRUÇÃO N° 0604337-81.2018.6.00.0000 - CLASSE 19" is jurisprudencia.
+- "BRASÍLIA" and "DISTRITO FEDERAL" are local.
+- "Ministro Luiz Fux" – "Ministro" is a title, so only "Luiz Fux" is pessoa.
+- "Tribunal Superior Eleitoral" again is organizacao.
+- "Resolução-TSE n° 23.549" is legislacao.
+- "18 de dezembro de 2017" is tempo.
+- "art . 23 , inciso IX , do Código Eleitoral" – "Código Eleitoral" is legislacao.
+- "Art . 1o" and "Art . 2o" are part of the legislation, so legislacao.
+- "18.12.2017" is tempo.
+- "data de sua publicação" – "data" is tempo.
+
+Now, I need to make sure all these are properly tagged. Let me go through the text again step by step.
+
+Original text:
+
+TRIBUNAL SUPERIOR ELEITORAL RESOLUÇÃO N° 23.561 INSTRUÇÃO N° 0604337-81.2018.6.00.0000 - CLASSE 19 - BRASÍLIA - DISTRITO FEDERAL Relator : Ministro Luiz Fux Interessado : Tribunal Superior Eleitoral Altera a Resolução-TSE n° 23.549 , de 18 de dezembro de 2017 , que dispõe sobre pesquisas eleitorais para as eleições de 2018 . O TRIBUNAL SUPERIOR ELEITORAL , no uso das atribuições que lhe confere o art . 23 , inciso IX , do Código Eleitoral , resolve : Art . 1o Ficam revogados os §§ 10 e 11 do art . 2o da Resolução-TSE n° 23.549 , de 18.12.2017 . Art . 2o ] Esta resolução entra em vigor na data de sua publicação .
+
+Breaking down:
+
+1. "TRIBUNAL SUPERIOR ELEITORAL" – organizacao.
+2. "RESOLUÇÃO N° 23.561" – legislacao.
+3. "INSTRUÇÃO N° 0604337-81.2018.6.00.0000" – jurisprudencia.
+4. "- CLASSE 19" – part of the case reference, so jurisprudencia.
+5. "- BRASÍLIA" – local.
+6. "- DISTRITO FEDERAL" – local.
+7. "Relator : Ministro Luiz Fux" – "Ministro" is a title, so "Luiz Fux" is pessoa.
+8. "Interessado : Tribunal Superior Eleitoral" – "Tribunal Superior Eleitoral" is organizacao.
+9. "Altera a Resolução-TSE n° 23.549" – "Resolução-TSE" is legislacao.
+10. ", de 18 de dezembro de 2017" – "18 de dezembro de 2017" is tempo.
+11. "que dispõe sobre pesquisas eleitorais para as eleições de 2018" – "eleições de 2018" is tempo.
+12. "O TRIBUNAL SUPERIOR ELEITORAL" – organizacao.
+13. ", no uso das atribuições que lhe confere o art . 23 , inciso IX , do Código Eleitoral" – "Código Eleitoral" is legislacao.
+14. ", resolve : Art . 1o Ficam revogados os §§ 10 e 11 do art . 2o da Resolução-TSE n° 23.549 , de 18.12.2017" – "Resolução-TSE" is legislacao, "18.12.2017" is tempo.
+15. ". Art . 2o ] Esta resolução entra em vigor na data de sua publicação ." – "data de sua publicação" is tempo.
+
+Now, applying the tags:
+
+- "TRIBUNAL SUPERIOR ELEITORAL" → <span class="organizacao">TRIBUNAL SUPERIOR ELEITORAL</span>
+- "RESOLUÇÃO N° 23.561" → <span class="legislacao">RESOLUÇÃO N° 23.561</span>
+- "INSTRUÇÃO N° 0604337-81.2018.6.00.0000" → <span class="jurisprudencia">INSTRUÇÃO N° 0604337-81.2018.6.00.0000</span>
+- "CLASSE 19" → <span class="jurisprudencia">CLASSE 19</span>
+- "BRASÍLIA" → <span class="local">BRASÍLIA</span>
+- "DISTRITO FEDERAL" → <span class="local">DISTRITO FEDERAL</span>
+- "Ministro Luiz Fux" → <span class="pessoa">Luiz Fux</span>
+- "Tribunal Superior Eleitoral" → <span class="organizacao">Tribunal Superior Eleitoral</span>
+- "Resolução-TSE n° 23.549" → <span class="legislacao">Resolução-TSE n° 23.549</span>
+- "18 de dezembro de 2017" → <span class="tempo">18 de dezembro de 2017</span>
+- "eleições de 2018" → <span class="tempo">eleições de 2018</span>
+- "TRIBUNAL SUPERIOR ELEITORAL" → <span class="organizacao">TRIBUNAL SUPERIOR ELEITORAL</span>
+- "Código Eleitoral" → <span class="legislacao">Código Eleitoral</span>
+- "Resolução-TSE n° 23.549" → <span class="legislacao">Resolução-TSE n° 23.549</span>
+- "18.12.2017" → <span class="tempo">18.12.2017</span>
+- "data de sua publicação" → <span class="tempo">data de sua publicação</span>
+
+Now, need to make sure that all these are correctly placed in the text. Also, check for any other entities.
+
+For example, "art . 23" and "art . 2o" are part of the legislation, so they should be included in the legislacao tags. However, the user's example in the guidelines included "art.61" as part of the legislation. So in the current text, "art . 23" and "art . 2o" are part of the legislation, so they should be included in the legislacao tags.
+
+Wait, in the text, the part is:
+
+"no uso das atribuições que lhe confere o art . 23 , inciso IX , do Código Eleitoral , resolve : Art . 1o Ficam revogados os §§ 10 e 11 do art . 2o da Resolução-TSE n° 23.549 , de 18.12.2017 ."
+
+Here, "art . 23" and "Art . 1o" and "art . 2o" are part of the legislation. The "Código Eleitoral" is legislacao. The "Resolução-TSE n° 23.549" is also legislacao. So the entire part "art . 23 , inciso IX , do Código Eleitoral" should be part of the legislacao. Wait, but the "art . 23" is part of the legislation. So the entire phrase "art . 23 , inciso IX , do Código Eleitoral" is part of the legislation. Therefore, the entire span should include "art . 23" and "Código Eleitoral".
+
+Similarly, "Art . 1o" and "art . 2o" are parts of the legislation. So when they are mentioned in the text, they should be included in the legislacao tags.
+
+But in the text, they are part of the resolution. So the entire phrase "no uso das atribuições que lhe confere o art . 23 , inciso IX , do Código Eleitoral , resolve : Art . 1o Ficam revogados os §§ 10 e 11 do art . 2o da Resolução-TSE n° 23.549 , de 18.12.2017 ." – the "art . 23" and "Código Eleitoral" are part of the legislation, and "Art . 1o" and "art . 2o" are part of the legislation as well. So the entire references should be marked as legislacao.
+
+Therefore, the correct way is to wrap all these parts in the legislacao tag.
+
+Now, putting all these together into the HTML:
+
+The final output should have all these entities marked correctly. Let's construct the HTML step by step.
+</think>
+
+TRIBUNAL SUPERIOR ELEITORAL <span class="organizacao">RESOLUÇÃO N° 23.561</span> <span class="jurisprudencia">INSTRUÇÃO N° 0604337-81.2018.6.00.0000</span> - <span class="jurisprudencia">CLASSE 19</span> - <span class="local">BRASÍLIA</span> - <span class="local">DISTRITO FEDERAL</span> Relator : <span class="pessoa">Luiz Fux</span> Interessado : <span class="organizacao">Tribunal Superior Eleitoral</span> Altera a <span class="legislacao">Resolução-TSE n° 23.549</span> , de <span class="tempo">18 de dezembro de 2017</span> , que dispõe sobre pesquisas eleitorais para as <span class="tempo">eleições de 2018</span> . O <span class="organizacao">TRIBUNAL SUPERIOR ELEITORAL</span> , no uso das atribuições que lhe confere o <span class="legislacao">art . 23</span> , inciso IX , do <span class="legislacao">Código Eleitoral</span> , resolve : <span class="legislacao">Art . 1o</span> Ficam revogados os §§ 10 e 11 do <span class="legislacao">art . 2o</span> da <span class="legislacao">Resolução-TSE n° 23.549</span> , de <span class="tempo">18.12.2017</span> . <span class="legislacao">Art . 2o</span> ] Esta resolução entra em vigor na <span class="tempo">data de sua publicação</span> .

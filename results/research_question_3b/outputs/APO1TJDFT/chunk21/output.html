@@ -1,0 +1,50 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal document with various elements. Let me go through each part step by step.
+
+Starting with "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P". Here, "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" look like codes, maybe related to case numbers or verification codes. Since they are codes, they might not be any of the specified entities. The "Código de Verificação" is a title, so probably not an entity. I'll leave them as is.
+
+Next, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". "GABINETE DA DESEMBARGADORA" is an organization, as it refers to a judicial office. "MARIA IVATÔNIA" is a person's name, so that's a pessoa. So I'll mark "GABINETE DA DESEMBARGADORA" as organizacao and "MARIA IVATÔNIA" as pessoa.
+
+Then, "9 § 1º , inciso III , alínea `` a '' , da Constituição Federal , de um ano de idade para cada ano de contribuição que exceder a condição prevista no inciso I do caput deste artigo . -- Parágrafo único . Aplica-se ao valor dos proventos de aposentadorias concedidas com base neste artigo o disposto no art . 7º da Emenda Constitucional nº 41 , de 2003 , observando-se igual critério de revisão às pensões derivadas dos proventos de servidores falecidos que tenham se aposentado em conformidade com este artigo '' . -- Emenda Constitucional 41/2003 '' Art . 7º Observado o disposto no art ."
+
+Looking for legislacao here. "Constituição Federal" is a legal document, so that's legislacao. "Emenda Constitucional nº 41 , de 2003" is a legislative act, so that's legislacao. "Art . 7º" refers to a specific article in the legislation, so that's part of legislacao. Also, "Emenda Constitucional 41/2003" is another legislative reference. The "Art . 7º" again is part of the legislation.
+
+Now, checking for other entities. "2003" is a year, so that's tempo. "de 2003" would be tempo. "de um ano de idade" is a time reference, but it's part of a description, not a specific date, so maybe not. Wait, the user's definition says tempo includes years, so "2003" is tempo. Also, "de 2003" would be tempo. But in the text, "de 2003" is part of the Emenda Constitucional, so the entire "de 2003" should be marked as tempo.
+
+Wait, the user's guidelines say to mark only full NPs or APs. So "de 2003" is part of the legislative reference, but the year itself is tempo. So "2003" should be marked as tempo. Also, "de 2003" as a whole might be considered as part of the legislation, but according to the definitions, tempo is for explicit temporal references. So "2003" is tempo.
+
+Now, checking for jurisprudencia. The text mentions "Apelação / Reexame Necessário" which could be a legal proceeding, but it's not a specific jurisprudential reference. The rest seems to be about legislation, so no jurisprudencia here.
+
+Local: There's no mention of specific places, so no local.
+
+Pessoa: "MARIA IVATÔNIA" is the only person mentioned.
+
+Organizacao: "GABINETE DA DESEMBARGADORA" is an organization.
+
+Legislacao: "Constituição Federal", "Emenda Constitucional nº 41", "Art . 7º", "Emenda Constitucional 41/2003".
+
+Tempo: "2003" and "de 2003".
+
+Wait, "de 2003" is part of the legislative reference, but according to the tempo definition, it's a temporal reference. So "de 2003" should be marked as tempo. But the user's example might have different handling. Let me check the example again.
+
+In the sample input, the output has "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" as codes, not marked. The "2003" is marked as tempo. So I need to mark "2003" as tempo. Also, "de 2003" would be part of the legislative reference, but the year is tempo. So "2003" is tempo.
+
+Putting it all together:
+
+- "GABINETE DA DESEMBARGADORA" → organizacao
+- "MARIA IVATÔNIA" → pessoa
+- "Constituição Federal" → legislacao
+- "Emenda Constitucional nº 41" → legislacao
+- "2003" → tempo
+- "Art . 7º" → legislacao (since it's part of the legislation)
+- "Emenda Constitucional 41/2003" → legislacao
+- "de 2003" → tempo (since it's a temporal reference)
+
+Wait, but "de 2003" is part of the legislative reference. However, according to the tempo definition, any explicit temporal reference, including years, should be marked. So "de 2003" is a temporal reference, so "2003" is tempo. But "de 2003" as a whole is a phrase, but the user's guidelines say to mark full NPs or APs. So "de 2003" is a prepositional phrase, but the year is the temporal entity. So only "2003" is marked as tempo.
+
+So the final HTML should have the appropriate spans for each entity. Let me structure the output accordingly.
+</think>
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 9 § 1º , inciso III , alínea `` a '' , da <span class="legislacao">Constituição Federal</span> , de um ano de idade para cada ano de contribuição que exceder a condição prevista no inciso I do caput deste artigo . -- Parágrafo único . Aplica-se ao valor dos proventos de aposentadorias concedidas com base neste artigo o disposto no art . 7º da <span class="legislacao">Emenda Constitucional nº 41</span> , de <span class="tempo">2003</span> , observando-se igual critério de revisão às pensões derivadas dos proventos de servidores falecidos que tenham se aposentado em conformidade com este artigo '' . -- <span class="legislacao">Emenda Constitucional 41/2003</span> '' Art . 7º Observado o disposto no art .

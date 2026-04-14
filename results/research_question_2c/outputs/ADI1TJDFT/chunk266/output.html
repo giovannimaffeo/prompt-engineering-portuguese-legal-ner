@@ -1,0 +1,23 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text. The example given is: "O Senhor Desembargador TEÓFILO CAETANO - Vogal Com a devida vênia da divergência , acompanho o eminente Relator ."
+
+Looking for entities:
+
+- "Senhor Desembargador TEÓFILO CAETANO" seems like a person. "TEÓFILO CAETANO" is likely a person's name, so I'll mark that as pessoa.
+- "Vogal" might be a position, but not sure if it's an organization. Maybe not. The example output shows "Vogal" as part of the text without a tag, so perhaps it's not an entity here.
+- "Relator" is a title, maybe part of an organization or a role. But in the example output, it's not tagged. Wait, the example output provided by the user shows "Relator" as part of the text without a tag. So maybe "Relator" isn't considered an entity here.
+- "Com a devida vênia da divergência" – these are phrases, not entities.
+- "acompanho o eminente Relator" – again, "Relator" is a title, but not tagged in the example.
+
+Wait, looking at the sample output provided by the user, the output is:
+
+<O Senhor <span class="pessoa">Desembargador TEÓFILO CAETANO</span> - Vogal Com a devida vênia da divergência , acompanho o eminente Relator .>
+
+So in the sample output, "Desembargador TEÓFILO CAETANO" is marked as pessoa. The rest of the text remains as is. So the key is to identify the person's name here. "TEÓFILO CAETANO" is the name, and "Desembargador" is a title, but the entire phrase is considered a pessoa. So I need to wrap that entire part in the pessoa class.
+
+Other parts like "Vogal", "Relator" are not tagged. So the task is to identify any of the specified entities and tag them. In this case, the only entity is the person's name. So the correct approach is to tag "Desembargador TEÓFILO CAETANO" as pessoa. The rest of the text remains unchanged.
+</think>
+
+O Senhor <span class="pessoa">Desembargador TEÓFILO CAETANO</span> - Vogal Com a devida vênia da divergência , acompanho o eminente Relator .

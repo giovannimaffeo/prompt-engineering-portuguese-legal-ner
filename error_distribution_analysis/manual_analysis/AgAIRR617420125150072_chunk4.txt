@@ -1,0 +1,103 @@
+ERROR ANALYSIS: AgAIRR617420125150072 (chunk4)
+================================================================================
+
+Start: "Assim , não há que se falar"
+End: "DEJT-05/08/11."
+File: data/test/AgAIRR617420125150072.bio, lines 454-580
+
+GOLD ENTITIES (26):
+text: "alínea `` c '' do art . 896 da CLT", entity: "LEGISLACAO"
+text: "TST", entity: "ORGANIZACAO"
+text: "RR-162000-20.2007.5.15.0046", entity: "JURISPRUDENCIA"
+text: "1ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-09/03/12", entity: "TEMPO"
+text: "RR-81400-81.2008.5.15.0141", entity: "JURISPRUDENCIA"
+text: "2ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-04/05/12", entity: "TEMPO"
+text: "RR-82300-64.2008.5.15.0141", entity: "JURISPRUDENCIA"
+text: "3ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-17/06/11", entity: "TEMPO"
+text: "RR-173100-04.2008.5.15.0024", entity: "JURISPRUDENCIA"
+text: "4ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-20/04/12", entity: "TEMPO"
+text: "RR-385-55.2010.5.15.0033", entity: "JURISPRUDENCIA"
+text: "5ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-23/03/12", entity: "TEMPO"
+text: "RR-140600-76.2009.5.15.0143", entity: "JURISPRUDENCIA"
+text: "6ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-19/04/11", entity: "TEMPO"
+text: "RR-164200-74.2007.5.15.0086", entity: "JURISPRUDENCIA"
+text: "7ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-30/09/11e", entity: "TEMPO"
+text: "RR-114900-67.2008.5.15.0003", entity: "JURISPRUDENCIA"
+text: "8ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-05/08/11", entity: "TEMPO"
+
+PREDICTED ENTITIES (27):
+text: "arts . 37 , X , XIII , 61 , § 1º , II , `` a '' , 169 , § 1º , I e II , e 207", entity: "LEGISLACAO"
+text: "art . 896 da CLT", entity: "LEGISLACAO"
+text: "C. TST", entity: "ORGANIZACAO"
+text: "RR-162000-20.2007.5.15.0046", entity: "JURISPRUDENCIA"
+text: "1ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-09/03/12", entity: "TEMPO"
+text: "RR-81400-81.2008.5.15.0141", entity: "JURISPRUDENCIA"
+text: "2ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-04/05/12", entity: "TEMPO"
+text: "RR-82300-64.2008.5.15.0141", entity: "JURISPRUDENCIA"
+text: "3ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-17/06/11", entity: "TEMPO"
+text: "RR-173100-04.2008.5.15.0024", entity: "JURISPRUDENCIA"
+text: "4ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-20/04/12", entity: "TEMPO"
+text: "RR-385-55.2010.5.15.0033", entity: "JURACAO"
+text: "5ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-23/03/12", entity: "TEMPO"
+text: "RR-140600-76.2009.5.15.0143", entity: "JURISPRUDENCIA"
+text: "6ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-19/04/11", entity: "TEMPO"
+text: "RR-164200-74.2007.5.15.0086", entity: "JURISPRUDENCIA"
+text: "7ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-30/09/11", entity: "TEMPO"
+text: "RR-114900-67.2008.5.15.0003", entity: "JURISPRUDENCIA"
+text: "8ª Turma", entity: "ORGANIZACAO"
+text: "DEJT-05/08/11", entity: "TEMPO"
+
+================================================================================
+ERROR DISTRIBUTION:
+================================================================================
+
+BOUNDARY ERRORS (2):
+--------------------------------------------------------------------------------
+1. Gold: "alínea `` c '' do art . 896 da CLT" (LEGISLACAO)
+   Pred: "art . 896 da CLT" (LEGISLACAO)
+   → Predicted entity is shorter, missing the prefix "alínea `` c '' do"
+
+2. Gold: "TST" (ORGANIZACAO)
+   Pred: "C. TST" (ORGANIZACAO)
+   → Predicted entity is longer, includes prefix "C."
+
+3. Gold: "DEJT-30/09/11e" (TEMPO)
+   Pred: "DEJT-30/09/11" (TEMPO)
+   → Predicted entity is shorter, missing the suffix "e"
+
+INCORRECT EXTRACTION (1):
+--------------------------------------------------------------------------------
+1. Pred: "arts . 37 , X , XIII , 61 , § 1º , II , `` a '' , 169 , § 1º , I e II , e 207" (LEGISLACAO)
+   Gold: (not annotated)
+   → False positive - predicted entity that doesn't exist in gold
+
+================================================================================
+SUMMARY:
+================================================================================
+Total errors: 3
+- Boundary errors: 3 (100%)
+- Incorrect extraction: 1 (False positive)
+- Missing entities: 0
+- Incorrect entity type: 0
+
+Notes:
+- Most entities match exactly between gold and predicted
+- Main issues are boundary mismatches where predicted entities include/exclude
+  slight prefixes or suffixes
+- One false positive where model detected a LEGISLACAO reference that wasn't
+  annotated in gold standard

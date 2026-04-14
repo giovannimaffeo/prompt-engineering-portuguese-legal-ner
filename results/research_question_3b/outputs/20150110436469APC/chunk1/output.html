@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal document with various elements. Let me go line by line.
+
+Starting with "Órgão : 8ª TURMA CÍVEL". "Órgão" is an organization, so "8ª TURMA CÍVEL" should be marked as organizacao. Wait, but "TURMA CÍVEL" might be part of the organization's name. Maybe the entire "8ª TURMA CÍVEL" is the organization. So I'll wrap that in <span class="organizacao">.
+
+Next line: "Classe : APELAÇÃO CÍVEL". "Classe" is a legal term, but it's not one of the entities we need to mark. So leave it as is.
+
+"Processo : 20150110436469APC ( 0012843-03.2015.8.0001 )". The process number is just a reference, not an entity. So no tags here.
+
+"Apelante ( s ) : BRASILIA CURSOS E CONCURSOS LTDA GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA". These are companies, so both should be organizacao. "BRASILIA CURSOS E CONCURSOS LTDA" and "GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA" are organizations. So wrap each with <span class="organizacao">.
+
+"Apelado ( s ) : ALISSON SILVA BATISTA DE MORAES". This is a person's name. So "ALISSON SILVA BATISTA DE MORAES" becomes <span class="pessoa">.
+
+"Relatora : Desembargadora NÍDIA CORRÊA LIMA". "Desembargadora" is a title, but the name "NÍDIA CORRÊA LIMA" is a person. So mark that as <span class="pessoa">.
+
+"Acórdão N. : 1082726". The number is just a reference, no tag needed.
+
+"CIVIL E PROCESSUAL CIVIL . AÇÃO MONITÓRIA . CITAÇÃO REALIZADA APÓS O DECURSO DO PRAZO PRESCRICIONAL . PRESCRIÇÃO DA PRETENSÃO MONITÓRIA . RECONHECIMENTO . MANUTENÇÃO DA SENTENÇA . 1 . Nos termos da Súmula nº 503 do colendo Superior Tribunal de Justiça , `` O prazo para ajuizamento de ação monitória em face do emitente de cheque sem força executiva é quinquenal , a contar do dia seguinte à data de emissão estampada na cártula '' . 2 ."
+
+Here, "Súmula nº 503 do colendo Superior Tribunal de Justiça" refers to a jurisprudential reference. "Súmula" is a jurisprudential entity, so "Súmula nº 503" should be <span class="jurisprudencia">. The "Superior Tribunal de Justiça" is an organization, so that part should be <span class="organizacao">. The rest of the text is legal terms but not entities, so no tags.
+
+Wait, the "Súmula nº 503" is a jurisprudential reference, so that's a jurisprudencia. The "Superior Tribunal de Justiça" is an organization. So in the sentence, "Súmula nº 503 do colendo Superior Tribunal de Justiça", the "Súmula nº 503" is the jurisprudencia, and "Superior Tribunal de Justiça" is the organizacao. So I need to split that part.
+
+Also, the date "03.2015.8.0001" might be a date, but the format is not clear. The user's guidelines say to mark time if it's a date. However, the example in the input has "0012843-03.2015.8.0001" which is a process number, not a date. So maybe no time entity here.
+
+Putting it all together, I'll go through each part again to ensure all entities are marked correctly. Let me check each line again to make sure I didn't miss any.
+
+Yes, that should cover all the entities. Now, I'll format the HTML accordingly, making sure each span has the correct class and that the text is preserved as is otherwise.
+</think>
+
+<span class="organizacao">8ª TURMA CÍVEL</span> Classe : APELAÇÃO CÍVEL N . Processo : 20150110436469APC ( 0012843-03.2015.8.0001 ) Apelante ( s ) : <span class="organizacao">BRASILIA CURSOS E CONCURSOS LTDA</span> <span class="organizacao">GRANCURSOS ESCOLA PARA CONCURSOS PUBLICOS LTDA</span> Apelado ( s ) : <span class="pessoa">ALISSON SILVA BATISTA DE MORAES</span> Relatora : Desembargadora <span class="pessoa">NÍDIA CORRÊA LIMA</span> Acórdão N. : 1082726 CIVIL E PROCESSUAL CIVIL . AÇÃO MONITÓRIA . CITAÇÃO REALIZADA APÓS O DECURSO DO PRAZO PRESCRICIONAL . PRESCRIÇÃO DA PRETENSÃO MONITÓRIA . RECONHECIMENTO . MANUTENÇÃO DA SENTENÇA . 1 . Nos termos da <span class="jurisprudencia">Súmula nº 503</span> do colendo <span class="organizacao">Superior Tribunal de Justiça</span> , `` O prazo para ajuizamento de ação monitória em face do emitente de cheque sem força executiva é quinquenal , a contar do dia seguinte à data de emissão estampada na cártula '' . 2 .

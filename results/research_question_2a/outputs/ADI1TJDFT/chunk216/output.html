@@ -1,0 +1,34 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "Para a análise da questão , transcrevo a Lei n° 5.815/2017 , verbis : LEI Nº 5.815 , DE 3 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) Fls ."
+
+Let me break it down. The main elements here are the law references. "Lei n° 5.815/2017" and "LEI Nº 5.815" are both references to legislation, so those should be marked as 'legislacao'. The date "3 DE ABRIL DE 2017" is a date, so that's 'tempo'. The "Deputado Rafael Prudente" is a person, so that's 'pessoa'. The "Autoria do Projeto" might be part of the organization, but since it's part of the law's authorship, maybe it's not an organization. Wait, the user's example output shows "Deputado Rafael Prudente" as a pessoa. So I should mark that as 'pessoa'. The "Fls." is probably an abbreviation for "Folha" or something similar, but since it's not a recognized entity type, it should remain as is.
+
+Now, checking each part:
+
+- "Lei n° 5.815/2017" → legislacao
+- "3 DE ABRIL DE 2017" → tempo
+- "Deputado Rafael Prudente" → pessoa
+- "Autoria do Projeto" → maybe part of the law's metadata, but since it's not one of the specified types, leave as is.
+- "Fls." → no entity, leave as is.
+
+Wait, the user's example output in the problem statement shows that "Lei n° 5.815/2017" is marked as legislacao. So I need to make sure all instances of legislation are tagged. Also, the date "3 DE ABRIL DE 2017" is a tempo. The person is "Deputado Rafael Prudente".
+
+So the HTML should have those parts wrapped in the respective spans. Let me reconstruct the text with the tags.
+
+Original text: "Para a análise da questão , transcrevo a Lei n° 5.815/2017 , verbis : LEI Nº 5.815 , DE 3 DE ABRIL DE 2017 ( Autoria do Projeto : Deputado Rafael Prudente ) Fls ."
+
+Breaking down:
+
+- "Lei n° 5.815/2017" → <span class="legislacao">Lei n° 5.815/2017</span>
+- "LEI Nº 5.815" → <span class="legislacao">LEI Nº 5.815</span>
+- "3 DE ABRIL DE 2017" → <span class="tempo">3 DE ABRIL DE 2017</span>
+- "Deputado Rafael Prudente" → <span class="pessoa">Deputado Rafael Prudente</span>
+
+The rest of the text doesn't have any entities, so they remain as is. Let me put it all together.
+
+So the final HTML should have those spans in place. Let me check again to make sure I didn't miss any entities. The "Autoria do Projeto" is part of the law's metadata but isn't one of the specified types, so it stays. The "Fls." is just an abbreviation, so no tag. The date is correctly marked as tempo. The law references are legislacao. The person is pessoa. That should cover all the required entities.
+</think>
+
+Para a análise da questão , transcrevo a <span class="legislacao">Lei n° 5.815/2017</span> , verbis : <span class="legislacao">LEI Nº 5.815</span> , <span class="tempo">DE 3 DE ABRIL DE 2017</span> ( <span class="organizacao">Autoria do Projeto</span> : <span class="pessoa">Deputado Rafael Prudente</span> ) Fls .

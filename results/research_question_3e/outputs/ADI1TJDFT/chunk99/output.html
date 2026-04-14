@@ -1,0 +1,55 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. The entities are pessoa, organização, tempo, local, legislação, and jurisprudência. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to go through the input text carefully and identify each entity according to the definitions provided. Let's start by reading the input text:
+
+"§ 2º O cidadão , investido na função de um dos Poderes , não poderá exercer a de outro , salvo as exceções previstas nesta Lei Orgânica . '' Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 39 Ademais , imperioso registrar que referida lei , de certo , impõe reflexos financeiros para a confecção dos pareceres pelo corpotécnico e credenciadosdos Conselhos , criando um impasse legal já que origina despesa não prevista pela Administração Pública , notadamente em época de restrições orçamentárias ."
+
+Now, let's break it down sentence by sentence.
+
+First sentence: "§ 2º O cidadão , investido na função de um dos Poderes , não poderá exercer a de outro , salvo as exceções previstas nesta Lei Orgânica ."
+
+- "cidadão" is a generic term, not a specific person, so no mark.
+- "Poderes" is a generic term referring to the branches of government, not a specific organization. So no mark.
+- "Lei Orgânica" is a legislative entity. According to the guidelines, "Lei" is part of legislation. So "Lei Orgânica" should be marked as legislação.
+
+Second part: "'' Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 39"
+
+- "Ação Direta de Inconstitucionalidade" is a type of legal action, but the example shows that only specific identifiers like "REsp" or "Súmula" are marked as jurisprudência. Here, "Ação Direta de Inconstitucionalidade" is a generic term, not a specific case or number, so no mark.
+- "20170020161362ADI" looks like a case number. According to the jurisprudência definition, identifiers like this should be marked. So this part is jurisprudência.
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the code itself might be a reference, but the example doesn't mention codes like this. The user's examples mention things like "REsp n . 1694984/MS" as jurisprudência. Since this is a code, maybe it's a specific identifier. But the example doesn't have such a case, so perhaps it's not marked. Alternatively, the "2018ACONT..." part might be a code, but without a clear reference to a specific case, maybe not. Need to check guidelines.
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE" is an organization, and "DESEMBARGADOR" is a title, but the full name "SILVANIO BARBOSA DOS SANTOS" is a person. So "GABINETE DO DESEMBARGADOR" is an organization, and the person's name is marked as pessoa.
+
+Next part: "Ademais , imperioso registrar que referida lei , de certo , impõe reflexos financeiros para a confecção dos pareceres pelo corpotécnico e credenciadosdos Conselhos , criando um impasse legal já que origina despesa não prevista pela Administração Pública , notadamente em época de restrições orçamentárias ."
+
+- "referida lei" refers to "Lei Orgânica" mentioned earlier, so "lei" here is part of the legislation. But the full name "Lei Orgânica" is already marked. Here, "lei" is a generic term, so no mark.
+- "Administração Pública" is a generic term, not a specific organization. So no mark.
+- "epoca de restrições orçamentárias" – "epoca" is a time reference, but the example says only explicit dates should be marked. "epoca" is a generic term, so no mark.
+
+Now, let's compile all the entities found:
+
+1. "Lei Orgânica" – legislação.
+2. "20170020161362ADI" – jurisprudência (assuming it's a case number).
+3. "SILVANIO BARBOSA DOS SANTOS" – pessoa.
+4. "GABINETE DO DESEMBARGADOR" – organização (since "GABINETE" is an organization, and "DESEMBARGADOR" is a title, but the full name is the person. Wait, the full name is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". The "GABINETE" is the organization, and the person's name is "SILVANIO BARBOSA DOS SANTOS". So "GABINETE" is the organization, and the person's name is marked as pessoa. The "DESEMBARGADOR" is a title, not a name, so not marked. So "GABINETE" is the organization.
+5. "2018ACONT2JYXTK52JCSL251NVQ" – this is part of the "Código de Verificação" but the example doesn't mention such codes. The user's example has "Código de Verificação" but doesn't mark it. So maybe this part is not marked.
+
+Wait, the example in the user's input includes "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". The example in the guidelines doesn't mention codes like this. The user's example shows that "REsp n . 1694984/MS" is marked as jurisprudência. So maybe the "20170020161362ADI" is a case number, which is a jurisprudência. The "Código de Verificação" part might be a code, but since it's not a specific case or number, maybe it's not marked. However, the user's example includes "Código de Verificação" but doesn't mark it. So perhaps the only marked parts are "Lei Orgânica", "20170020161362ADI", and "SILVANIO BARBOSA DOS SANTOS".
+
+Wait, "GABINETE DO DESEMBARGADOR" – the "GABINETE" is an organization, but the "DESEMBARGADOR" is a title. The full name "SILVANIO BARBOSA DOS SANTOS" is the person. So the "GABINETE" is the organization, and the person is marked. So "GABINETE" is marked as organização.
+
+So putting it all together:
+
+- "Lei Orgânica" → legislação.
+- "20170020161362ADI" → jurisprudência.
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa.
+- "GABINETE" → organização.
+
+The rest of the text doesn't have any other entities. Let me check again.
+
+Wait, "GABINETE DO DESEMBARGADOR" – the full phrase is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". The "GABINETE" is the organization, and "SILVANIO BARBOSA DOS SANTOS" is the person. But the phrase is written as "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". So "GABINETE" is the organization, and the person's name is "SILVANIO BARBOSA DOS SANTOS". The "DO DESEMBARGADOR" is a prepositional phrase, so not an entity. So the "GABINETE" is marked as organização, and the person's name as pessoa.
+
+So the final HTML should have those spans.
+</think>
+
+§ 2º O cidadão , investido na função de um dos Poderes , não poderá exercer a de outro , salvo as exceções previstas nesta <span class="legislacao">Lei Orgânica</span> . '' Fls . _____ <span class="jurisprudencia">20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE</span> DO <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 39 Ademais , imperioso registrar que referida lei , de certo , impõe reflexos financeiros para a confecção dos pareceres pelo corpotécnico e credenciadosdos Conselhos , criando um impasse legal já que origina despesa não prevista pela Administração Pública , notadamente em época de restrições orçamentárias .

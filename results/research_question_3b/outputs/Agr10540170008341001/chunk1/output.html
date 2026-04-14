@@ -1,0 +1,49 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the text again to identify all the entities. The text is about a legal case related to electricity supply, mentioning a resolution from ANEEL, which is a regulatory agency. 
+
+Looking for 'pessoa' – the text mentions "PRODUTOR RURAL" which is a person, but wait, "PRODUTOR RURAL" is a title, not a name. Wait, the definition says pessoa is names of individuals. Since "PRODUTOR RURAL" is a role, not a specific person, maybe it's not a pessoa. But maybe the user considers it as a role. Wait, the guidelines say to mark only names of individuals. So "PRODUTOR RURAL" is a generic term, not a specific person. So no pessoa here.
+
+Next, 'organizacao'. The text mentions "ANEEL" which is an organization. ANEEL is the National Electric Energy Agency in Brazil, so that's an organization. Also, "Resolução da ANEEL" refers to the organization. So I need to mark "ANEEL" as organizacao.
+
+'Tempo' – the text has "09 de setembro de 2012" which is a date, so that's tempo. Also, "PRAZO EM CONSONÂNCIA COM RESOLUÇÃO Nº 414/2012" mentions a date, but the date is already covered in the "09 de setembro de 2012" part. Wait, the resolution number 414/2012 might be part of the legislation, so that's legislacao. The date in the resolution is part of the legislation's reference, so maybe the date is part of the legislacao entity. Wait, the resolution itself is the legislation, and the date is part of its reference. So the date "09 de setembro de 2012" is a tempo entity, but the resolution number is part of the legislacao.
+
+'Local' – the text doesn't mention any specific locations, so no local.
+
+'Legislacao' – the Resolução da ANEEL nº 414/2012 is a legislation. So "Resolução da ANEEL n. 414/2012" should be marked as legislacao. Also, the date "09 de setembro de 2012" is part of the resolution's reference, but the date itself is a tempo entity. Wait, the resolution's number includes the year, but the date is separate. So the resolution is the legislation, and the date is a tempo.
+
+'Jurisprudencia' – the text doesn't mention any court decisions, precedents, or súmulas, so no jurisprudencia.
+
+Now, let's go through the text step by step.
+
+Original text: "EMENTA : AGRAVO DE INSTRUMENTO - FORNECIMENTO DE ENERGIA ELÉTRICA - ANTECIPAÇÃO DE TUTELA - PRODUTOR RURAL - NECESSIDADE DE REALIZAÇÃO DE OBRAS - PRAZO EM CONSONÂNCIA COM RESOLUÇÃO Nº 414/2012 - ILEGALIDADE NÃO COMPROVADA - Apesar de a Resolução da ANEEL n . 414 , de 09 de setembro de 2012 prever o prazo para o cumprimento do fornecimento , fica ressalvada , no mesmo dispositivo legal , a possibilidade da existência de outros prazos específicos para o cumprimento do referido fornecimento , a depender da complexidade de cada caso ."
+
+Breaking it down:
+
+- "ANEEL" is an organization. So mark "ANEEL" as organizacao.
+- "09 de setembro de 2012" is a date, so tempo.
+- "Resolução da ANEEL n. 414/2012" refers to the legislation. The "Resolução" is part of the legislation, so the entire "Resolução da ANEEL n. 414/2012" should be marked as legislacao. Wait, but the date "09 de setembro de 2012" is part of the resolution's reference. However, the resolution's number includes the year 2012, but the date is separate. So the resolution is the legislation, and the date is a tempo. So "Resolução da ANEEL n. 414/2012" is legislacao, and "09 de setembro de 2012" is tempo.
+
+Wait, the resolution's number is 414/2012, which includes the year. So the date "09 de setembro de 2012" is part of the resolution's reference. But the resolution itself is the legislation. So the entire "Resolução da ANEEL n. 414/2012" is the legislation, and the date is part of the resolution's reference. Therefore, the date is a tempo entity, and the resolution is legislacao.
+
+So in the text, "Resolução da ANEEL n. 414/2012" is legislacao, and "09 de setembro de 2012" is tempo.
+
+Now, let's check for other entities. "PRODUTOR RURAL" is a role, not a specific person, so no pessoa. "ANEEL" is organizacao. "09 de setembro de 2012" is tempo. "Resolução da ANEEL n. 414/2012" is legislacao.
+
+So the HTML should have:
+
+- <span class="organizacao">ANEEL</span>
+- <span class="tempo">09 de setembro de 2012</span>
+- <span class="legislacao">Resolução da ANEEL n. 414/2012</span>
+
+Wait, but the resolution's number is 414/2012, which includes the year. The date "09 de setembro de 2012" is separate. So the resolution is the legislation, and the date is a tempo. So the entire "Resolução da ANEEL n. 414/2012" is legislacao, and the date is tempo.
+
+So in the text, the part "Resolução da ANEEL n. 414/2012" is legislacao, and "09 de setembro de 2012" is tempo.
+
+Now, let's structure the HTML accordingly. Also, note that the original text has "n . 414" which should be "n. 414" (with a period). But the user's input has "n . 414" with a space, so maybe it's a typo. But I should follow the input as given.
+
+Putting it all together, the HTML should have the spans for organizacao, tempo, and legislacao.
+</think>
+
+< span class="organizacao">ANEEL</span> - < span class="tempo">09 de setembro de 2012</span> - < span class="legislacao">Resolução da ANEEL n . 414/2012</span>

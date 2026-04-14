@@ -1,0 +1,28 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read the input text carefully. The text starts with "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". The code might be part of a document reference, but none of the entities here are clearly marked. The next part is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". Here, "GABINETE" could be an organization, but maybe it's part of a title. "DESEMBARGADOR" is a judicial title, so maybe "SILVANIO BARBOSA DOS SANTOS" is a person. 
+
+Then the text mentions "Esta Corte já decidiu reiteradamente pela inconstitucionalidade , por vício de iniciativa , de normas propostas por parlamentar distrital que versem sobre organização e funcionamento da Administração Pública , nos termos dos artigos 53 , 71 , § 1º , inc. IV , e 100 , inc .". 
+
+Looking for entities: "Corte" could be a jurisprudencia reference, but maybe it's part of the court's name. "organização" is mentioned, so that's an entity. "Administração Pública" is part of the organization. The articles 53, 71, etc., are part of the legislation. 
+
+Wait, the user's example output shows "Código de Verificação" as is, but maybe the code is part of a reference. The "GABINETE" might be an organization. "DESEMBARGADOR" is a title, so maybe the person's name is "SILVANIO BARBOSA DOS SANTOS" as a pessoa. 
+
+Also, "artigos 53, 71, § 1º, inc. IV, e 100, inc." are parts of the legislation. So I need to mark those. 
+
+Let me go through each part step by step. 
+
+1. "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – no entities here, so leave as is.
+2. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE" could be an organization, but maybe it's part of the title. "SILVANIO BARBOSA DOS SANTOS" is a person. "DESEMBARGADOR" is a title, so maybe not an entity. So mark "SILVANIO BARBOSA DOS SANTOS" as pessoa.
+3. "Esta Corte já decidiu reiteradamente pela inconstitucionalidade , por vício de iniciativa , de normas propostas por parlamentar distrital que versem sobre organização e funcionamento da Administração Pública , nos termos dos artigos 53 , 71 , § 1º , inc. IV , e 100 , inc ."
+   - "Corte" might be a jurisprudencia reference, but not sure. "organização" is an entity. "Administração Pública" is part of the organization. "artigos 53, 71, § 1º, inc. IV, e 100, inc." are legislation. 
+
+So, I'll mark "organização" as organizacao, "Administração Pública" as organizacao? Wait, "Administração Pública" is part of the organization's structure. Maybe "organização" is the entity here. Also, the articles are part of the legislation. 
+
+Putting it all together, the HTML should have the person's name marked, the organization, and the legislation parts. Let me check the example output again to see if they have similar markings. The example output shows "SILVANIO BARBOSA DOS SANTOS" as pessoa, "organização" as organizacao, and the articles as legislacao. 
+
+So, the final HTML should have those tags. I need to make sure that each entity is correctly identified and wrapped in the appropriate span tags.
+</think>
+
+Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> Esta Corte já decidiu reiteradamente pela inconstitucionalidade , por vício de iniciativa , de normas propostas por parlamentar distrital que versem sobre <span class="organizacao">organização</span> e funcionamento da <span class="organizacao">Administração Pública</span> , nos termos dos <span class="legislacao">artigos 53</span> , <span class="legislacao">71</span> , <span class="legislacao">§ 1º</span> , <span class="legislacao">inc. IV</span> , e <span class="legislacao">100</span> , <span class="legislacao">inc</span> .

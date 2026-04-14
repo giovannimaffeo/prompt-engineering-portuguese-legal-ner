@@ -1,0 +1,61 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text line by line.
+
+Starting with "Logo , tenho como irregular a representação processual , o que torna a peça inexistente . '' Dentro deste contexto , entendo que a recorrente não demonstrou que a decisão impugnada contraria a Súmula nº 395 do TST , ao contrário , evidencia-se que o entendimento sumulado invocado foi aplicado ao caso em exame - , fato que inviabiliza o processamento do apelo , inclusive por dissensão jurisprudencial ( Súmula nº 333 desse mesmo Órgão Superior ) . CONCLUSÃO Diante do exposto , DENEGO seguimento ao Recurso de Revista . ( fl . 352 ) . ( Negritamos e sublinhamos ) Cotejando o r. despacho denegatório com as razões de agravo de instrumento , conclui-se que este não merece prosperar . Alega a ré que compete ao Juízo de admissibilidade somente apreciar o preenchimento dos requisitos de admissibilidade do recurso e não denegar seguimento do recurso de revista ."
+
+Looking for entities:
+
+1. "Súmula nº 395 do TST" – this is a jurisprudencia reference. The Súmula is a legal precedent, so it should be marked as jurisprudencia. The "TST" is the Tribunal Superior do Trabalho, which is an organization, but the example shows that "Súmula 331 do TST" is marked as jurisprudencia. Wait, in the example, "Súmula 331 do TST" is marked as jurisprudencia. So here, "Súmula nº 395 do TST" should be jurisprudencia. Also, "Súmula nº 333 desse mesmo Órgão Superior" – the "Órgão Superior" refers to the TST again, but the Súmula is the entity here. So both instances of Súmula should be marked as jurisprudencia.
+
+2. "Recurso de Revista" – this is a legal term, but it's not an entity. The example didn't mark similar terms. So maybe not.
+
+3. "fl . 352" – "fl" is "fls" (fólio) in legal terms, but it's a reference to a page, not an entity. So no tag.
+
+4. "r. despacho denegatório" – "r." is an abbreviation for "recurso", but it's part of a legal term. The example didn't mark such abbreviations. So no tag.
+
+5. "Juízo de admissibilidade" – "Juízo" is a court, which is an organization. But the example didn't mark "Juízo" as an organization. Wait, in the example, "Tribunal de Contas" was marked as organizacao. So "Juízo" might be an organization. However, the example didn't mark "Juízo" as such. Wait, the example had "Tribunal de Contas" as organizacao. So "Juízo" could be an organization. But the user's example didn't mark "Juízo" as such. Hmm, need to check the guidelines again.
+
+Looking back at the guidelines: "Organização é definido como: expressões que identificam entidades coletivas formalmente constituídas, incluindo órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas (ex.: "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", "Câmara Legislativa", "UNIMED RIO COOPERATIVA DE TRABALHO MÉDICO DO RIO DE JANEIRO LTDA")."
+
+So "Juízo" is part of the system of justice, so it's an organization. But in the example, "Juízo" wasn't marked. Wait, the example had "Tribunal de Contas" as organizacao. So "Juízo" would be an organization. However, in the input text, "Juízo de admissibilidade" is mentioned. The "Juízo" here is part of the legal system, so it should be marked as organizacao. But the example didn't mark similar terms. Wait, the example had "Tribunal de Contas" as organizacao. So "Juízo" is an organization. Therefore, "Juízo de admissibilidade" should be marked as organizacao. But the example didn't mark "Juízo" as such. Wait, maybe the example didn't include that. Let me check the example again.
+
+In the example input, there was "REsp n . 1694984/MS" marked as jurisprudencia. The example output had "Súmula 331 do TST" as jurisprudencia. So "TST" is an organization. Wait, "TST" is the Tribunal Superior do Trabalho, which is an organization. So in the input text, "TST" is part of the Súmula reference, so it's part of the jurisprudencia. But "TST" itself is an organization. Wait, but in the example, "Súmula 331 do TST" was marked as jurisprudencia. So the "TST" is part of the jurisprudencia reference. But according to the guidelines, "jurisprudência" includes references to súmulas, so the "TST" is part of the jurisprudencia reference. Therefore, in the input text, "Súmula nº 395 do TST" and "Súmula nº 333 desse mesmo Órgão Superior" – the "TST" and "Órgão Superior" (which is the TST) are part of the jurisprudencia references. So the entire "Súmula nº 395 do TST" is jurisprudencia. Similarly, "Súmula nº 333 desse mesmo Órgão Superior" is also jurisprudencia. The "Órgão Superior" refers to the TST, but the Súmula is the entity here.
+
+So, in the input text, the entities to mark are:
+
+- "Súmula nº 395 do TST" → jurisprudencia
+- "Súmula nº 333 desse mesmo Órgão Superior" → jurisprudencia
+- "TST" is part of the jurisprudencia reference, but according to the example, the entire Súmula reference is marked. So the "TST" is part of the jurisprudencia entity.
+
+Wait, but the example had "Súmula 331 do TST" as jurisprudencia. So the entire phrase is marked. Therefore, in the input text, "Súmula nº 395 do TST" and "Súmula nº 333 desse mesmo Órgão Superior" should be marked as jurisprudencia. The "Órgão Superior" here refers to the TST, but the Súmula is the entity. So the entire phrase is jurisprudencia.
+
+Also, "fl . 352" – "fl" is a reference to a page, not an entity. So no tag.
+
+"r. despacho denegatório" – "r." is an abbreviation for "recurso", but it's part of a legal term. The example didn't mark such abbreviations. So no tag.
+
+"Juízo de admissibilidade" – "Juízo" is an organization. So "Juízo de admissibilidade" should be marked as organizacao. But the example didn't mark "Juízo" as such. Wait, the example had "Tribunal de Contas" as organizacao. So "Juízo" is an organization. Therefore, "Juízo de admissibilidade" should be marked as organizacao.
+
+Wait, but in the input text, "Juízo de admissibilidade" is part of the sentence. So the entire phrase is an organization? Or just "Juízo"? The guidelines say that "organização" includes "órgãos públicos, tribunais, unidades do sistema de justiça". So "Juízo" is an organization. Therefore, "Juízo de admissibilidade" should be marked as organizacao.
+
+But the example didn't mark "Juízo" as such. Wait, the example had "Tribunal de Contas" as organizacao. So "Juízo" is similar. Therefore, "Juízo de admissibilidade" is an organization. So the entire phrase should be marked as organizacao.
+
+Wait, but the example had "Tribunal de Contas" as organizacao. So "Juízo" is an organization. Therefore, "Juízo de admissibilidade" is an organization. So the entire phrase should be marked as organizacao.
+
+But the example didn't mark "Juízo" as such. Maybe the example didn't include that. So I need to follow the guidelines strictly.
+
+Another point: "Órgão Superior" in the input text refers to the TST. But "Órgão Superior" is not an entity itself; it's a reference to the TST. So the "Órgão Superior" is part of the jurisprudencia reference. Therefore, "Súmula nº 333 desse mesmo Órgão Superior" is jurisprudencia.
+
+So, putting it all together:
+
+- "Súmula nº 395 do TST" → jurisprudencia
+- "Súmula nº 333 desse mesmo Órgão Superior" → jurisprudencia
+- "Juízo de admissibilidade" → organizacao
+
+Wait, but "Juízo de admissibilidade" is a legal term, but according to the guidelines, "Juízo" is an organization. So the entire phrase is an organization. Therefore, it should be marked as organizacao.
+
+So the final HTML would have those entities marked accordingly.
+</think>
+
+<span class="jurisprudencia">Súmula nº 395 do TST</span> , <span class="jurisprudencia">Súmula nº 333 desse mesmo Órgão Superior</span> . <span class="organizacao">Juízo de admissibilidade</span> .

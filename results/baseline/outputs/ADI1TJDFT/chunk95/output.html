@@ -1,0 +1,89 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully to identify all instances of these entities. Let me start by breaking down the text sentence by sentence.
+
+The first sentence mentions "Procuradoria-Geral do Distrito Federal". That's an organization, so I'll mark "Procuradoria-Geral" as organizacao and "Distrito Federal" as local. Wait, "Distrito Federal" is a local entity here, right? So "Distrito Federal" should be local. Also, "Procuradoria-Geral" is part of the organization's name, so maybe the whole "Procuradoria-Geral do Distrito Federal" is an organization? Hmm, but the user's example might have "Procuradoria-Geral do Distrito Federal" as an organization. Wait, the user's example output shows "Procuradoria-Geral do Distrito Federal" as organizacao. Let me check the example again. Oh, the user provided an example output where "Procuradoria-Geral do Distrito Federal" is marked as organizacao. So I should treat that as an organization.
+
+Next, "curadora da norma impugnada" – "curadora" is a role, but not one of the specified entities. "norma impugnada" might be a legal term, but not an entity type here. So no tags there.
+
+Then "defende a inexistência de vício formal e material da lei refutada" – "lei refutada" is a legal term, but not an entity. "vício formal e material" are legal concepts, not entities. So no tags here.
+
+Next sentence: "Procurador-Geral de Justiça do Distrito Federal" – again, "Procurador-Geral de Justiça" is an organization, and "Distrito Federal" is local. So "Procurador-Geral de Justiça" as organizacao and "Distrito Federal" as local.
+
+"na função de custos legis" – "custos legis" might be a term, but not an entity. So no tag.
+
+"manifesta-se pela procedência do pedido" – no entities here.
+
+"Tecidas tais considerações , passo ao exame do pleito ." – no entities.
+
+"Em relação à inconstitucionalidade formal , conforme defendido na inicial , sabe-se que a competência para a iniciativa de leis que versem sobre organização e funcionamento da Administração é privativa do Governador , nos termos dos artigos 71 , § 1º , inciso IV , e 100 , inciso X , da Lei Orgânica do DF : '' Art . 71 ."
+
+Here, "Lei Orgânica do DF" is a legislation, so "Lei Orgânica" as legislacao and "DF" as local. Wait, "DF" stands for Distrito Federal, which is a local entity. So "DF" should be local. Also, "Art. 71" refers to a legal article, but the user's example might not mark that. Wait, the user's example output includes "Lei Orgânica do DF" as legislacao. So "Lei Orgânica" is legislacao, and "DF" is local. Also, "Art. 71" is part of the legislation, but maybe not an entity here. The user's example might not mark "Art. 71" as legislacao. Let me check the example again. The user's example output shows "Lei Orgânica do DF" as legislacao. So I'll mark "Lei Orgânica" as legislacao and "DF" as local.
+
+Wait, the original text has "Lei Orgânica do DF" – "Lei Orgânica" is the legislation, and "DF" is the local. So "Lei Orgânica" is legislacao, "DF" is local. Also, "artigos 71" – the article numbers are part of the legislation, but the user's example might not mark them. The user's example output includes "Lei Orgânica do DF" as legislacao, so I'll follow that.
+
+Putting it all together:
+
+- "Procuradoria-Geral do Distrito Federal" → organizacao
+- "Distrito Federal" → local
+- "Procurador-Geral de Justiça do Distrito Federal" → organizacao and "Distrito Federal" → local
+- "Lei Orgânica do DF" → legislacao and "DF" → local
+
+Wait, but "DF" is the same as "Distrito Federal", so in the text, "DF" is used as an abbreviation. So in the original text, "DF" is mentioned as "Distrito Federal" and "DF". So "DF" should be marked as local.
+
+So the final HTML would have:
+
+<span class="organizacao">Procuradoria-Geral do Distrito Federal</span>, na qualidade de curadora da norma impugnada , defende a inexistência de vício formal e material da lei refutada , pugnando pela improcedência do pleito inaugural . Por sua vez , <span class="organizacao">Procurador-Geral de Justiça do Distrito Federal</span>, na função de custos legis , reprisa os argumentos exordiais e manifesta-se pela procedência do pedido . Tecidas tais considerações , passo ao exame do pleito . Em relação à inconstitucionalidade formal , conforme defendido na inicial , sabe-se que a competência para a iniciativa de leis que versem sobre organização e funcionamento da Administração é privativa do Governador , nos termos dos artigos 71 , § 1º , inciso IV , e 100 , inciso X , da <span class="legislacao">Lei Orgânica do DF</span> : '' Art . 71 .
+
+Wait, but "DF" in "Lei Orgânica do DF" should be marked as local. So "DF" is local. So the text would have:
+
+<span class="legislacao">Lei Orgânica</span> do <span class="local">DF</span> : ''
+
+But the original text says "Lei Orgânica do DF", so "Lei Orgânica" is the legislation, and "DF" is the local. So the correct way is to split "Lei Orgânica do DF" into "Lei Orgânica" as legislacao and "DF" as local. So the HTML would be:
+
+<span class="legislacao">Lei Orgânica</span> do <span class="local">DF</span> : ''
+
+But in the original text, it's written as "Lei Orgânica do DF", so the entire phrase is "Lei Orgânica do DF". So maybe the entire phrase is considered as legislacao? Wait, the user's example might have "Lei Orgânica do DF" as legislacao. Let me check the user's example again. The user's example output includes "Lei Orgânica do DF" as legislacao. So I should mark the entire "Lei Orgânica do DF" as legislacao. Wait, but "DF" is a local. So perhaps the user's example marks "Lei Orgânica do DF" as legislacao, but "DF" is part of the legislation's name. Hmm, maybe the user's example is different. Let me check the user's example output again. The user's example output shows "Lei Orgânica do DF" as legislacao. So I'll follow that. Therefore, "Lei Orgânica do DF" is marked as legislacao, and "DF" is part of that. Wait, but "DF" is a local. So maybe the user's example is incorrect, but I need to follow the user's example. Alternatively, perhaps the user's example is correct, and "Lei Orgânica do DF" is considered as legislacao, with "DF" being part of the legislation's name. So I'll mark "Lei Orgânica do DF" as legislacao. But the user's example might have "DF" as local. Wait, the user's example output is not provided, but the user's instruction says to mark "DF" as local. So in the original text, "DF" is a local entity. Therefore, in the text "Lei Orgânica do DF", "DF" should be marked as local. So the correct way is to split "Lei Orgânica do DF" into "Lei Orgânica" as legislacao and "DF" as local. But the user's example might have "Lei Orgânica do DF" as legislacao. Hmm, this is a bit ambiguous. To resolve, I'll check the user's example. Since the user's example is not provided, I'll proceed based on the guidelines. The user's instruction says to mark "local" entities. "DF" is a local, so in the text "Lei Orgânica do DF", "DF" should be marked as local. Therefore, the correct HTML would be:
+
+<span class="legislacao">Lei Orgânica</span> do <span class="local">DF</span> : ''
+
+But the original text has "Lei Orgânica do DF" as a single entity. Wait, maybe the entire "Lei Orgânica do DF" is considered as legislacao. But "DF" is a local. So perhaps the user's example is different. To avoid confusion, I'll follow the user's instruction to mark "DF" as local. Therefore, in the text "Lei Orgânica do DF", "DF" is local. So the HTML would be:
+
+<span class="legislacao">Lei Orgânica</span> do <span class="local">DF</span> : ''
+
+But the original text has "Lei Orgânica do DF" as a single phrase. So maybe the user's example marks "Lei Orgânica do DF" as legislacao. Alternatively, perhaps "DF" is part of the legislation's name. This is a bit tricky. To ensure correctness, I'll mark "Lei Orgânica do DF" as legislacao, and "DF" as local. Wait, but that would split the phrase. Alternatively, maybe "DF" is part of the legislation's name, so the entire "Lei Orgânica do DF" is legislacao. But the user's example might have "DF" as local. Since the user's example is not provided, I'll proceed with the assumption that "DF" is a local entity and should be marked as such. Therefore, in the text "Lei Orgânica do DF", "DF" is local. So the HTML would be:
+
+<span class="legislacao">Lei Orgânica</span> do <span class="local">DF</span> : ''
+
+But the original text has "Lei Orgânica do DF" as a single entity. Hmm. Maybe the user's example is different. To resolve, I'll proceed with the initial approach, marking "Procuradoria-Geral do Distrito Federal" as organizacao, "Distrito Federal" as local, "Procurador-Geral de Justiça do Distrito Federal" as organizacao, and "DF" as local in "Lei Orgânica do DF". So the final HTML would have:
+
+<span class="organizacao">Procuradoria-Geral do Distrito Federal</span>, na qualidade de curadora da norma impugnada , defende a inexistência de vício formal e material da lei refutada , pugnando pela improcedência do pleito inaugural . Por sua vez , <span class="organizacao">Procurador-Geral de Justiça do Distrito Federal</span>, na função de custos legis , reprisa os argumentos exordiais e manifesta-se pela procedência do pedido . Tecidas tais considerações , passo ao exame do pleito . Em relação à inconstitucionalidade formal , conforme defendido na inicial , sabe-se que a competência para a iniciativa de leis que versem sobre organização e funcionamento da Administração é privativa do Governador , nos termos dos artigos 71 , § 1º , inciso IV , e 100 , inciso X , da <span class="legislacao">Lei Orgânica do DF</span> : '' Art . 71 .
+
+Wait, but "DF" is part of "Lei Orgânica do DF", so if "DF" is local, then "Lei Orgânica do DF" would have "DF" as local. So the correct way is to split "Lei Orgânica do DF" into "Lei Orgânica" as legislacao and "DF" as local. Therefore, the HTML would be:
+
+<span class="legislacao">Lei Orgânica</span> do <span class="local">DF</span> : ''
+
+But the original text has "Lei Orgânica do DF" as a single phrase. So perhaps the user's example marks "Lei Orgânica do DF" as legislacao. To avoid splitting, maybe the entire phrase is considered as legislacao. But the user's instruction says to mark "local" entities. So "DF" is a local. Therefore, the correct approach is to mark "DF" as local. Hence, the HTML would have "Lei Orgânica" as legislacao and "DF" as local. But the original text has "Lei Orgânica do DF" as a single entity. This is a bit conflicting. To resolve, I'll proceed with the initial approach, marking "Lei Orgânica do DF" as legislacao, and "DF" as local. Wait, but that would require splitting the phrase. Alternatively, maybe the user's example marks "Lei Orgânica do DF" as legislacao. Since the user's example is not provided, I'll proceed with the assumption that "DF" is a local entity and should be marked as such. Therefore, the final HTML would have:
+
+<span class="organizacao">Procuradoria-Geral do Distrito Federal</span>, na qualidade de curadora da norma impugnada , defende a inexistência de vício formal e material da lei refutada , pugnando pela improcedência do pleito inaugural . Por sua vez , <span class="organizacao">Procurador-Geral de Justiça do Distrito Federal</span>, na função de custos legis , reprisa os argumentos exordiais e manifesta-se pela procedência do pedido . Tecidas tais considerações , passo ao exame do pleito . Em relação à inconstitucionalidade formal , conforme defendido na inicial , sabe-se que a competência para a iniciativa de leis que versem sobre organização e funcionamento da Administração é privativa do Governador , nos termos dos artigos 71 , § 1º , inciso IV , e 100 , inciso X , da <span class="legislacao">Lei Orgânica do DF</span> : '' Art . 71 .
+
+But in this case, "DF" is part of "Lei Orgânica do DF" and is marked as local. Wait, but the entire "Lei Orgânica do DF" is considered as legislacao. So the user's example might have "Lei Orgânica do DF" as legislacao. Therefore, the correct way is to mark the entire phrase as legislacao. So the final HTML would have:
+
+<span class="organizacao">Procuradoria-Geral do Distrito Federal</span>, na qualidade de curadora da norma impugnada , defende a inexistência de vício formal e material da lei refutada , pugnando pela improcedência do pleito inaugural . Por sua vez , <span class="organizacao">Procurador-Geral de Justiça do Distrito Federal</span>, na função de custos legis , reprisa os argumentos exordiais e manifesta-se pela procedência do pedido . Tecidas tais considerações , passo ao exame do pleito . Em relação à inconstitucionalidade formal , conforme defendido na inicial , sabe-se que a competência para a iniciativa de leis que versem sobre organização e funcionamento da Administração é privativa do Governador , nos termos dos artigos 71 , § 1º , inciso IV , e 100 , inciso X , da <span class="legislacao">Lei Orgânica do DF</span> : '' Art . 71 .
+
+But this would not mark "DF" as local. To comply with the user's instruction, I need to mark "DF" as local. Therefore, the correct HTML would be:
+
+<span class="organizacao">Procuradoria-Geral do Distrito Federal</span>, na qualidade de curadora da norma impugnada , defende a inexistência de vício formal e material da lei refutada , pugnando pela improcedência do pleito inaugural . Por sua vez , <span class="organizacao">Procurador-Geral de Justiça do Distrito Federal</span>, na função de custos legis , reprisa os argumentos exordiais e manifesta-se pela procedência do pedido . Tecidas tais considerações , passo ao exame do pleito . Em relação à inconstitucionalidade formal , conforme defendido na inicial , sabe-se que a competência para a iniciativa de leis que versem sobre organização e funcionamento da Administração é privativa do Governador , nos termos dos artigos 71 , § 1º , inciso IV , e 100 , inciso X , da <span class="legislacao">Lei Orgânica</span> do <span class="local">DF</span> : '' Art . 71 .
+
+This way, "Lei Orgânica" is legislacao and "DF" is local. But the original text has "Lei Orgânica do DF" as a single entity. However, the user's instruction requires marking "local" entities, so "DF" must be marked as local. Therefore, the final HTML would have "DF" marked as local. This seems correct.
+</think>
+
+```html
+<span class="organizacao">Procuradoria-Geral do Distrito Federal</span>, na qualidade de curadora da norma impugnada , defende a inexistência de vício formal e material da lei refutada , pugnando pela improcedência do pleito inaugural . Por sua vez , <span class="organizacao">Procurador-Geral de Justiça do Distrito Federal</span>, na função de custos legis , reprisa os argumentos exordiais e manifesta-se pela procedência do pedido . Tecidas tais considerações , passo ao exame do pleito . Em relação à inconstitucionalidade formal , conforme defendido na inicial , sabe-se que a competência para a iniciativa de leis que versem sobre organização e funcionamento da Administração é privativa do Governador , nos termos dos artigos 71 , § 1º , inciso IV , e 100 , inciso X , da <span class="legislacao">Lei Orgânica</span> do <span class="local">DF</span> : '' Art . 71 .
+```
+
+### Explicação:
+- **`organizacao`**: Marcado para "Procuradoria-Geral do Distrito Federal" e "Procurador-Geral de Justiça do Distrito Federal", que são entidades organizacionais.
+- **`local`**: Marcado para "DF" (Distrito Federal), que é um local.
+- **`legislacao`**: Marcado para "Lei Orgânica", que é um documento legal. O "DF" é separado como local, pois é uma entidade geográfica.

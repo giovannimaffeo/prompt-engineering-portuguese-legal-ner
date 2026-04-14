@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to look at the input text: "NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN .". Let me break it down word by word.
+
+"NA" – Could this be an acronym? Maybe "Núcleo de Apoio" or something similar, but without more context, it's hard to tell. Since it's uppercase, maybe it's an abbreviation for an organization. But I'm not sure. Let me check if it's part of a known term. Alternatively, "NA" might stand for "Núcleo de Apoio" or "Núcleo de Atuação", but without more context, it's safer to leave it as is unless it clearly matches an entity type.
+
+"AÇÃO CÍVEL ORIGINÁRIA 2.821" – "Ação Cível" is a legal term, but it's part of the case name. The number 2.821 might be a case number. The term "ORIGINÁRIA" refers to the original action, which is part of the legal process. These might not be entities to mark unless they fit into the categories. Since "ação cível" is a legal term but not an entity like a person or organization, maybe it's not marked.
+
+"MATO GROSSO" – This is a state in Brazil. So "Mato Grosso" is a local entity. So I should mark "MATO GROSSO" as a local.
+
+"RELATOR : MIN ." – "Relator" is the role of a judge in a legal case. "MIN" could be an abbreviation for "Ministro" (Minister) in the context of the Supreme Court. So "MIN" might be a person (the minister) or part of an organization. But since it's an abbreviation, maybe it's a person. However, without more context, it's tricky. Alternatively, "MIN" could be part of an organization's name, but I'm not sure. Let me think again. In Brazilian legal contexts, "MIN" might stand for "Ministro" (Minister), so it could be a person. But if it's part of a title, maybe it's an organization. However, the user's example output might have "MIN" as a person. Let me check the example output provided by the user. Wait, the user didn't provide an example output, but the task says to return the text with the entities marked. 
+
+So, based on the input text:
+
+- "MATO GROSSO" is a local, so mark as <span class="local">MATO GROSSO</span>.
+- "MIN" could be a person (Minister) or part of an organization. Since "Relator" is a role, and "MIN" is likely the name of the person (Ministro), so mark as <span class="pessoa">MIN</span>.
+- The rest of the text doesn't seem to fit any of the entity types. "NA" might be an abbreviation, but without context, it's safer not to mark it. "Ação Cível Originária 2.821" are legal terms but not entities. The number 2.821 is a case number, which might be considered as a "tempo" or "legislacao"? No, case numbers are not entities. So the only entities are "Mato Grosso" as local and "MIN" as pessoa.
+
+Wait, but "Relator" is a role, but the user didn't mention marking roles. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So roles like "Relator" are not entities here. So only "Mato Grosso" and "MIN" are marked. Let me confirm again.
+
+So the final HTML would be:
+
+NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> <span class="pessoa">MIN</span> .
+
+But wait, the original text has "RELATOR : MIN ." So "RELATOR" is part of the text, but since it's not an entity type, it remains as is. The "MIN" is the person. So the correct marking would be:
+
+NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO <span class="local">MATO GROSSO</span> <span class="pessoa">MIN</span> .
+
+Wait, the original text is "NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN .". So "MATO GROSSO" is the local, and "MIN" is the pessoa. The rest are not entities. So the HTML would be:
+
+NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> RELATOR : <span class="pessoa">MIN</span> .
+
+But I need to check if "Mato Grosso" is the entire term. The original text has "MATO GROSSO" as a single term, so that's the local. "MIN" is the pessoa. The rest are not entities. So the final output should have those two spans.
+</think>
+
+NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> RELATOR : <span class="pessoa">MIN</span> .

@@ -1,0 +1,43 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a given legal text, marking specific entities with appropriate tags. First, I need to understand all the entity types and their definitions.
+
+So, the entities are pessoa, organizacao, tempo, local, legislação, and jurisprudencia. Each needs to be wrapped in a <span> with the correct class. Let me go through the input text step by step.
+
+The input text is: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . Supremo Tribunal Federal 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO V O T O O Senhor Ministro Ricardo Lewandowski ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma ."
+
+First, looking for pessoas. The name "Ricardo Lewandowski" is a person, so that should be marked as <span class="pessoa">Ricardo Lewandowski</span>.
+
+Next, organizacao. "Supremo Tribunal Federal" is an organization, so that's <span class="organizacao">Supremo Tribunal Federal</span>.
+
+Tempo: The date "16/03/2018" is a date, so <span class="tempo">16/03/2018</span>.
+
+Local: "MATO GROSSO" is a state, so <span class="local">MATO GROSSO</span>.
+
+Legislação: There's no specific law mentioned here, so nothing for that.
+
+Jurisprudencia: The text mentions "AÇÃO CÍVEL ORIGINÁRIA 2.821" which might be a case number. The format "2.821" could be a case number, so maybe <span class="jurisprudencia">2.821</span>. But I need to check if that's a recognized jurisprudential reference. Also, "A G .REG ." might be part of the case name, but it's unclear. However, the example given in the guidelines includes numbers like "REsp 1694984/MS" as jurisprudencia. Here, "2.821" seems like a case number, so I'll mark it as such.
+
+Other parts: The URL is an electronic address, which according to the guidelines shouldn't be marked as local. The number 14536378 might be a case number, but the example doesn't mention such numbers. However, the guidelines say to mark identifiers like "20140110500434APO" as jurisprudencia. The number here is 14536378, which might be a case number, so perhaps <span class="jurisprudencia">14536378</span>. But the example in the guidelines had "REsp n . 1694984/MS" as jurisprudencia. The number here is just a number, so maybe it's not a specific jurisprudential reference. Wait, the user's example includes "REsp n . 1694984/MS" as jurisprudencia. In this case, "14536378" might be a case number. So I'll include that as jurisprudencia.
+
+Putting it all together:
+
+- "Ricardo Lewandowski" is pessoa.
+- "Supremo Tribunal Federal" is organizacao.
+- "16/03/2018" is tempo.
+- "MATO GROSSO" is local.
+- "2.821" and "14536378" are jurisprudencia.
+
+Wait, but the example in the guidelines had "REsp n . 1694984/MS" as jurisprudencia. The number here is "14536378", which might be a case number. So I should mark that as jurisprudencia. Also, "2.821" is part of "AÇÃO CÍVEL ORIGINÁRIA 2.821", which could be a case number. So both "2.821" and "14536378" are jurisprudencia.
+
+So the final HTML would have those spans. Also, check if "A G .REG ." is part of the organization, but it's unclear. The text might be part of the case name, but since it's not a recognized entity, it's left as is.
+
+So the output should be:
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número <span class="jurisprudencia">14536378</span> . <span class="organizacao">Supremo Tribunal Federal</span> <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA <span class="jurisprudencia">AÇÃO CÍVEL ORIGINÁRIA 2.821</span> <span class="local">MATO GROSSO</span> V O T O O Senhor <span class="pessoa">Ricardo Lewandowski</span> ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma .
+
+Wait, but "AÇÃO CÍVEL ORIGINÁRIA 2.821" is the entire phrase. The example in the guidelines has "REsp n . 1694984/MS" as jurisprudencia. Here, "AÇÃO CÍVEL ORIGINÁRIA 2.821" is a case name, so the entire phrase should be marked as jurisprudencia. However, the "AÇÃO CÍVEL ORIGINÁRIA" is a type of case, not a specific reference. But the number "2.821" might be the case number. However, the example shows that numbers like "REsp 1694984/MS" are marked, so perhaps "2.821" is the case number. Therefore, I should mark "2.821" as jurisprudencia. But the entire phrase might be part of a case name. However, the guidelines say to mark identifiers like "20140110500434APO" as jurisprudencia. So "2.821" is a number, so it's marked. The rest of the phrase might not be. But the example in the guidelines marks the entire "REsp n . 1694984/MS" as jurisprudencia. So maybe the entire phrase "AÇÃO CÍVEL ORIGINÁRIA 2.821" is a case reference. However, the example shows that "REsp n . 1694984/MS" is marked, which includes the case number. So in this case, "2.821" is the case number, so the entire "AÇÃO CÍVEL ORIGINÁRIA 2.821" should be marked as jurisprudencia. But I need to check if "AÇÃO CÍVEL ORIGINÁRIA" is part of the case name. Since it's a type of case, maybe it's not a specific reference. However, the number "2.821" is the identifier. So perhaps only "2.821" is marked. Alternatively, the entire phrase is a case reference. It's a bit ambiguous, but according to the guidelines, identifiers like "20140110500434APO" are marked. So the number "2.821" is the identifier, so mark that as jurisprudencia. The rest of the phrase is part of the case name but not a specific reference. Therefore, only "2.821" is marked. Similarly, "14536378" is a number, so marked as jurisprudencia.
+
+So the final output would have those two numbers marked as jurisprudencia. Also, "Supremo Tribunal Federal" as organizacao, "16/03/2018" as tempo, "MATO GROSSO" as local, and "Ricardo Lewandowski" as pessoa.
+</think>
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número <span class="jurisprudencia">14536378</span> . <span class="organizacao">Supremo Tribunal Federal</span> <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA <span class="jurisprudencia">AÇÃO CÍVEL ORIGINÁRIA 2.821</span> <span class="local">MATO GROSSO</span> V O T O O Senhor <span class="pessoa">Ricardo Lewandowski</span> ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma .

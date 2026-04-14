@@ -1,0 +1,89 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with appropriate tags. The entities to identify are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to carefully read the input text and identify which parts fit each category. Let me start by breaking down the text.
+
+The input text is: "35 : I - 60 ( sessenta ) dias , quando tratar-se exclusivamente de obras na rede de distribuição aérea de tensão secundária , incluindo a instalação ou substituição de posto de transformação ; e ( Incluído pela REN ANEEL 670 de 14.07.2015 ) II - 120 ( cento e vinte ) dias , quando tratar-se de obras com dimensão de até 1 ( um ) quilômetro na rede de distribuição aérea de tensão primária , incluindo nesta distância a complementação de fases na rede existente e , se for o caso , as obras do inciso I . §1º Demais situações não abrangidas nos incisos I e II , bem como as obras de que tratam os artigos 44 , 47 , 48 e 102 , devem ser executadas de acordo com o cronograma da distribuidora , observados , quando houver , prazos específicos estabelecidos na legislação vigente '' Ademais , foi informado ao agravante que sua propriedade rural será atendida até 31/12/2018 , conforme fls ."
+
+Looking for entities:
+
+1. **Legislação**: The text mentions "legislação vigente" and references "artigos 44, 47, 48 e 102". Also, "REN ANEEL 670 de 14.07.2015" seems like a regulation. The phrase "artigos 44, 47, 48 e 102" refers to articles in legislation, so those should be marked. Also, "REN ANEEL 670" is a regulation, so that's part of legislação.
+
+2. **Tempo**: The dates "14.07.2015" and "31/12/2018" are explicit dates. The numbers "60 dias", "120 dias" are time references. Also, "até 31/12/2018" is a time period.
+
+3. **Organização**: "REN ANEEL" is an organization. The term "distribuidora" might refer to a company, but the text doesn't specify a name, so it's not marked. "REN ANEEL" is an acronym for a regulatory agency, so it's an organization.
+
+4. **Local**: The text mentions "propriedade rural", which is a property, but it's a generic term, not a specific location. So no local entity here.
+
+5. **Jurisprudência**: There's no mention of court decisions, precedents, or súmulas, so no jurisprudência entities.
+
+6. **Pessoa**: No names of individuals are present, so no pessoa entities.
+
+Now, applying the tags:
+
+- "REN ANEEL 670 de 14.07.2015" → "REN ANEEL" is an organization, "14.07.2015" is tempo.
+- "artigos 44, 47, 48 e 102" → these are references to legislation, so legislação.
+- "31/12/2018" → tempo.
+- "60 dias", "120 dias" → tempo (since they are time references).
+- "legislação vigente" → legislação.
+
+Wait, "legislação vigente" is a general term, not a specific law. The example in the guidelines says that only references to specific norms should be marked. So "legislação vigente" is a generic term, so it shouldn't be marked. However, the articles 44, 47, 48, 102 are part of legislation, so they should be marked as legislação. Similarly, "REN ANEEL 670" is a regulation, so that's legislação.
+
+Wait, the REN ANEEL 670 is a regulation, so it's part of legislação. The date "14.07.2015" is tempo. The "artigos 44, 47, 48 e 102" are part of legislation, so they should be marked as legislação.
+
+Also, "31/12/2018" is a date, so tempo.
+
+So the HTML would have:
+
+- <span class="organizacao">REN ANEEL</span>
+- <span class="tempo">14.07.2015</span>
+- <span class="legislacao">artigos 44, 47, 48 e 102</span>
+- <span class="tempo">60 dias</span>
+- <span class="tempo">120 dias</span>
+- <span class="tempo">31/12/2018</span>
+
+Wait, but the numbers "60 dias" and "120 dias" are time references. The guidelines say that explicit dates should be marked as tempo. The example in the guidelines mentions "3 de abril de 2017" as a date. So "60 dias" is a time span, so it's tempo. Similarly for "120 dias".
+
+So all these instances should be marked.
+
+Now, putting it all together in the text:
+
+Original text: "35 : I - 60 ( sessenta ) dias , quando tratar-se exclusivamente de obras na rede de distribuição aérea de tensão secundária , incluindo a instalação ou substituição de posto de transformação ; e ( Incluído pela REN ANEEL 670 de 14.07.2015 ) II - 120 ( cento e vinte ) dias , quando tratar-se de obras com dimensão de até 1 ( um ) quilômetro na rede de distribuição aérea de tensão primária , incluindo nesta distância a complementação de fases na rede existente e , se for o caso , as obras do inciso I . §1º Demais situações não abrangidas nos incisos I e II , bem como as obras de que tratam os artigos 44 , 47 , 48 e 102 , devem ser executadas de acordo com o cronograma da distribuidora , observados , quando houver , prazos específicos estabelecidos na legislação vigente '' Ademais , foi informado ao agravante que sua propriedade rural será atendida até 31/12/2018 , conforme fls ."
+
+Processing each part:
+
+- "35 : I - 60 ( sessenta ) dias" → "60 dias" is tempo.
+- "Incluído pela REN ANEEL 670 de 14.07.2015" → "REN ANEEL" is organizacao, "14.07.2015" is tempo.
+- "II - 120 ( cento e vinte ) dias" → "120 dias" is tempo.
+- "artigos 44 , 47 , 48 e 102" → these are references to legislation, so legislação.
+- "até 31/12/2018" → tempo.
+
+So the final HTML would have:
+
+- <span class="tempo">60 dias</span>
+- <span class="organizacao">REN ANEEL</span>
+- <span class="tempo">14.07.2015</span>
+- <span class="tempo">120 dias</span>
+- <span class="legislacao">artigos 44, 47, 48 e 102</span>
+- <span class="tempo">31/12/2018</span>
+
+I need to make sure that the exact phrases are marked. Also, check if "REN ANEEL 670" is part of the legislation. Wait, the example in the guidelines has "Lei nº 8.666/93" as legislação. So "REN ANEEL 670" is a regulation, so it's part of legislação. Wait, but the user's guidelines say that "REN ANEEL" is an organization. Wait, the definition of organizacao includes "organizações coletivas formalmente constituídas, incluindo órgãos públicos, tribunais..." So REN ANEEL is an organization. But the text says "REN ANEEL 670 de 14.07.2015" – the "670" might be a regulation number. So "REN ANEEL 670" is the name of the regulation, which is part of legislação. Wait, but the definition of legislação includes "normas jurídicas, como leis, códigos, constituições, decretos, medidas provisórias..." So "REN ANEEL 670" is a decree or regulation, so it's part of legislação. But the example in the guidelines shows that "REN ANEEL 670" is marked as organization? Wait, in the example given by the user, the input is "REN ANEEL 670 de 14.07.2015" and the output marks "REN ANEEL" as organization. Wait, the example in the user's message shows that in the input "REN ANEEL 670 de 14.07.2015" is part of the text, and in the output, "REN ANEEL" is marked as organization, while "14.07.2015" is tempo. So the "670" is part of the organization's name? Or is it a regulation number? The user's example might have a different context. Let me check the example again.
+
+In the user's example, the input is "REN ANEEL 670 de 14.07.2015" and the output marks "REN ANEEL" as organization and "14.07.2015" as tempo. So the "670" is not marked as legislação. Wait, but in the example, the output shows "REN ANEEL" as organizacao and "14.07.2015" as tempo. The "670" is part of the organization's name? Or is it a regulation number?
+
+Hmm, this is a bit confusing. The user's example might have "REN ANEEL 670" as a regulation, but the output only marks "REN ANEEL" as organizacao. So perhaps the "670" is part of the organization's name, but that doesn't make sense. Alternatively, "REN ANEEL 670" could be a regulation, so it should be marked as legislação. But according to the example, it's marked as organization. Wait, the example's input is "REN ANEEL 670 de 14.07.2015" and the output is "REN ANEEL" as organization, "14.07.2015" as tempo. So the "670" is not marked. Maybe in that context, "REN ANEEL 670" is part of the organization's name, but I'm not sure. However, according to the guidelines, "organizacao" includes "organizações coletivas formalmente constituídas, incluindo órgãos públicos..." So REN ANEEL is an organization, and the "670" might be a regulation number, which would be part of legislação. But in the example, the user's output does not mark "670" as legislação. So maybe the "670" is not considered a legal entity here.
+
+Alternatively, maybe "REN ANEEL 670" is a regulation, which is part of legislação. But the example in the user's message shows that "REN ANEEL" is marked as organizacao and "14.07.2015" as tempo. So in that case, the "670" is not marked. So perhaps in this case, the "REN ANEEL 670" is part of the organization's name, but I'm not certain. Given the example, I think the user's example marks "REN ANEEL" as organizacao and the date as tempo. So in the current text, "REN ANEEL 670 de 14.07.2015" would have "REN ANEEL" as organizacao and "14.07.2015" as tempo. The "670" is not marked as legislação here. So I should follow the example and not mark "670" as legislação.
+
+So the final HTML would have:
+
+- "REN ANEEL" as organizacao
+- "14.07.2015" as tempo
+- "60 dias", "120 dias" as tempo
+- "artigos 44, 47, 48 e 102" as legislação
+- "31/12/2018" as tempo
+
+Now, putting it all together in the text, replacing the relevant parts with the appropriate tags.
+</think>
+
+35 : I - <span class="tempo">60 ( sessenta ) dias</span> , quando tratar-se exclusivamente de obras na rede de distribuição aérea de tensão secundária , incluindo a instalação ou substituição de posto de transformação ; e ( Incluído pela <span class="organizacao">REN ANEEL</span> 670 de <span class="tempo">14.07.2015</span> ) II - <span class="tempo">120 ( cento e vinte ) dias</span> , quando tratar-se de obras com dimensão de até 1 ( um ) quilômetro na rede de distribuição aérea de tensão primária , incluindo nesta distância a complementação de fases na rede existente e , se for o caso , as obras do inciso I . §1º Demais situações não abrangidas nos incisos I e II , bem como as obras de que tratam os <span class="legislacao">artigos 44 , 47 , 48 e 102</span> , devem ser executadas de acordo com o cronograma da distribuidora , observados , quando houver , prazos específicos estabelecidos na legislação vigente '' Ademais , foi informado ao agravante que sua propriedade rural será atendida até <span class="tempo">31/12/2018</span> , conforme fls .

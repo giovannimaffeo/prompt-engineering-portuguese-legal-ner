@@ -1,0 +1,64 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to go through the input text and identify each entity according to the definitions provided. Let me start by reading the input carefully.
+
+The input text is: "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 9 § 1º , inciso III , alínea `` a '' , da Constituição Federal , de um ano de idade para cada ano de contribuição que exceder a condição prevista no inciso I do caput deste artigo . -- Parágrafo único . Aplica-se ao valor dos proventos de aposentadorias concedidas com base neste artigo o disposto no art . 7º da Emenda Constitucional nº 41 , de 2003 , observando-se igual critério de revisão às pensões derivadas dos proventos de servidores falecidos que tenham se aposentado em conformidade com este artigo '' . -- Emenda Constitucional 41/2003 '' Art . 7º Observado o disposto no art ."
+
+Let me break this down sentence by sentence.
+
+1. "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – These look like legal documents. "Apelação / Reexame Necessário" might be a legal term, but the examples didn't mention this. The numbers like "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" are identifiers. According to the guidelines, identifiers like these should be marked as jurisprudencia if they are specific to a decision. The example shows "REsp n . 1694984/MS" as jurisprudencia. So, "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" might be jurisprudencia.
+
+2. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "GABINETE" is part of the organization name. "DESEMBARGADORA" is a title, not a name. "MARIA IVATÔNIA" is a person's name. So "MARIA IVATÔNIA" should be pessoa.
+
+3. "9 § 1º , inciso III , alínea `` a '' , da Constituição Federal , de um ano de idade para cada ano de contribuição que exceder a condição prevista no inciso I do caput deste artigo . -- Parágrafo único . Aplica-se ao valor dos proventos de aposentadorias concedidas com base neste artigo o disposto no art . 7º da Emenda Constitucional nº 41 , de 2003 , observando-se igual critério de revisão às pensões derivadas dos proventos de servidores falecidos que tenham se aposentado em conformidade com este artigo '' . -- Emenda Constitucional 41/2003 '' Art . 7º Observado o disposto no art ."
+
+- "Constituição Federal" is a legislative entity, so legislacao.
+- "Emenda Constitucional nº 41 , de 2003" – "Emenda Constitucional" is part of the legislation, so the whole "Emenda Constitucional nº 41" is legislacao. "41/2003" is part of the legislation too.
+- "Art . 7º" refers to a specific article, so it's part of the legislation. The example shows "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So "Art . 7º" would be part of the legislacao. However, the user example had "art.61 , §1º , da Lei nº 9.430/96" as legislacao, so maybe the article number is part of the legislation. Also, "Art . 7º" is part of the legislation, so it should be marked as legislacao.
+
+Now, checking for other entities:
+
+- "MARIA IVATÔNIA" is a person.
+- "GABINETE DA DESEMBARGADORA" – "GABINETE" is part of the organization, like "GABINETE DA DESEMBARGADORA" as an organization. The example had "MINISTÉRIO PÚBLICO FEDERAL" as organizacao. So "GABINETE DA DESEMBARGADORA" is an organization.
+- "Constituição Federal" is legislacao.
+- "Emenda Constitucional nº 41" is legislacao.
+- "41/2003" is part of the legislation, so the entire "Emenda Constitucional nº 41/2003" is legislacao.
+- "Art . 7º" is part of the legislation.
+- The identifiers like "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" are jurisprudencia.
+
+Wait, the example had "REsp n . 1694984/MS" as jurisprudencia. The identifiers here are similar. So those numbers should be jurisprudencia.
+
+Also, "Código de Verificação" – "Código" is a generic term, not a specific entity. So no marking.
+
+Putting it all together:
+
+- "GABINETE DA DESEMBARGADORA" is organizacao.
+- "MARIA IVATÔNIA" is pessoa.
+- "Constituição Federal" is legislacao.
+- "Emenda Constitucional nº 41" and "41/2003" are part of legislacao.
+- "Art . 7º" is part of legislacao.
+- The identifiers "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" are jurisprudencia.
+
+Now, check if any other entities are present. The other parts like "Reexame Necessário" are legal terms but not specific entities. "Código de Verificação" is not an entity. "Apelação" is a legal term but not an entity.
+
+So the final HTML should have:
+
+- <span class="organizacao">GABINETE DA DESEMBARGADORA</span>
+- <span class="pessoa">MARIA IVATÔNIA</span>
+- <span class="legislacao">Constituição Federal</span>
+- <span class="legislacao">Emenda Constitucional nº 41</span>
+- <span class="jurisprudencia">20140110500434APO</span>
+- <span class="jurisprudencia">2018ACO899XSQTZBL81ZOE6V34P</span>
+- <span class="legislacao">Art . 7º</span>
+
+Wait, "Art . 7º" is part of the legislation. The example had "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So "Art . 7º" should be marked as legislacao. Also, "Emenda Constitucional nº 41/2003" is part of the legislation. Let me check the text again.
+
+The input has "Emenda Constitucional nº 41 , de 2003" and "Emenda Constitucional 41/2003". The latter is "Emenda Constitucional 41/2003", which is a complete reference. So "Emenda Constitucional 41/2003" is legislacao.
+
+Also, "Art . 7º" is part of the legislation, so it should be marked as legislacao.
+
+Putting all these together, the HTML should have those spans. Let me make sure I didn't miss any other entities. The rest of the text doesn't have any other entities. So the final output would be the input text with those spans.
+</think>
+
+Apelação / Reexame Necessário <span class="jurisprudencia">20140110500434APO</span> Código de Verificação :<span class="jurisprudencia">2018ACO899XSQTZBL81ZOE6V34P</span> <span class="organizacao">GABINETE DA DESEMBARGADORA</span> <span class="pessoa">MARIA IVATÔNIA</span> 9 § 1º , inciso III , alínea `` a '' , da <span class="legislacao">Constituição Federal</span> , de um ano de idade para cada ano de contribuição que exceder a condição prevista no inciso I do caput deste artigo . -- Parágrafo único . Aplica-se ao valor dos proventos de aposentadorias concedidas com base neste artigo o disposto no <span class="legislacao">art . 7º</span> da <span class="legislacao">Emenda Constitucional nº 41</span> , de 2003 , observando-se igual critério de revisão às pensões derivadas dos proventos de servidores falecidos que tenham se aposentado em conformidade com este artigo '' . -- <span class="legislacao">Emenda Constitucional 41/2003</span> '' <span class="legislacao">Art . 7º</span> Observado o disposto no art .

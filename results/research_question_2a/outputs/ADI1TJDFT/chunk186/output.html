@@ -1,0 +1,28 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text carefully. The input is: "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 27 Art . 5º Revogam-se as disposições em contrário ."
+
+Let me break it down. The first part is "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ". The code here might be a reference number, so maybe it's a "tempo" entity? Wait, the code starts with "2018", which is a year, so that's a date. But the code itself might not be a time entity. The user's example output shows that "2018" is marked as tempo. So I should mark "2018" as tempo.
+
+Next, "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS". "GABINETE" is likely an organization, so "GABINETE" should be organizacao. "DESEMBARGADOR" is a title, maybe part of a person's name. Wait, "SILVANIO BARBOSA DOS SANTOS" is a person's name, so that's pessoa. The "DESEMBARGADOR" might be part of the title, but the full name is the person. So "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+
+Then "27 Art . 5º". "Art" is short for "Artigo", which is part of legislation. So "Art" might be part of a legislative article. But the user's example output shows "Art" as legislacao. Wait, in the example, "Art" is marked as legislacao. So "Art" here is part of the legislation. Also, "27" could be a reference to an article number, so maybe "27" is part of the legislation. But the example output shows "Art" as legislacao. Let me check the example again. The user's example input has "Art . 5º" and the output marks "Art" as legislacao. So "Art" is legislacao. The "5º" is part of the article, so maybe "5º" is also legislacao. But the example output shows "Art" as legislacao. Wait, the example input is "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 27 Art . 5º Revogam-se as disposições em contrário ." and the output is:
+
+Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE</span> DO <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 27 <span class="legislacao">Art</span> . 5º Revogam-se as disposições em contrário .
+
+So "Art" is marked as legislacao. The "5º" is part of the article, but in the example, it's not marked. So maybe only "Art" is considered part of the legislation. The "27" is part of the article number, but in the example, it's not marked. So perhaps the user's example only marks "Art" as legislacao. So I need to follow that pattern.
+
+Then "Revogam-se as disposições em contrário" is a legal phrase, but it's not an entity. So it remains as is.
+
+Putting it all together:
+
+- "2018" is tempo.
+- "GABINETE" is organizacao.
+- "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+- "Art" is legislacao.
+
+So the HTML should have those spans. The rest of the text remains unchanged. Let me make sure there are no other entities. The code "2018ACONT2JYXTK52JCSL251NVQ" has "2018" as tempo, the rest is probably a code, so not marked. The "27" is a number, but not an entity type here. The "5º" is part of the article, but not marked. The rest is text without entities. So the final HTML should have the spans for tempo, organizacao, pessoa, and legislacao as per the example.
+</think>
+
+Código de Verificação :<span class="tempo">2018</span>ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE</span> DO <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 27 <span class="legislacao">Art</span> . 5º Revogam-se as disposições em contrário .

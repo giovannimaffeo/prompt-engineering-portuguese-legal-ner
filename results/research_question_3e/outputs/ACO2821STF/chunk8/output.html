@@ -1,0 +1,61 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with appropriate tags. The entities are pessoa, organização, tempo, local, legislação, and jurisprudência. I need to use <span> tags with the corresponding class for each entity.
+
+First, I'll read through the input text carefully. Let's start by identifying each entity type.
+
+The text mentions "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO". That seems like an organization. The full name is "PROCURADOR GERAL DO ESTADO DE MATO GROSSO", which is a position, but according to the guidelines, only names of organizations should be marked. However, the example given includes "MINISTÉRIO PÚBLICO FEDERAL" as an organization. Since "PROCURADOR GERAL DO ESTADO DE MATO GROSSO" is a title, maybe it's part of an organization. Wait, the guidelines say that expressions identifying entities coletivas should be marked as organização. But "PROCURADOR GERAL" is a title, not the name of the organization. Wait, the example input had "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" and the output marked it as organização. Wait, in the example, the input was "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" and the output was <span class="organizacao">PROCURADOR -GERAL DO ESTADO DE MATO GROSSO</span>. Wait, but that's a bit confusing. The example input had "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" and the output marked it as organização. Wait, maybe the example is incorrect? Let me check the example again. The example input was "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" and the output was <span class="organizacao">PROCURADOR -GERAL DO ESTADO DE MATO GROSSO</span>. But according to the definitions, an organization is an entity coletiva. However, "PROCURADOR GERAL" is a position, not an organization. Wait, maybe the example is considering the entire phrase as an organization. Maybe the example is wrong, but I need to follow the user's example. Alternatively, perhaps the example is using "PROCURADOR GERAL" as part of an organization. Hmm, this is a bit confusing. Let me check the guidelines again. The definition for organização includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas". So, if "PROCURADOR GERAL DO ESTADO DE MATO GROSSO" is a government office, then it's an organization. So I'll mark that as organização.
+
+Next, "Senhor Ministro Ricardo Lewandowski ( Relator )" – "Senhor Ministro" is a title, but "Ricardo Lewandowski" is a person's name. So "Ricardo Lewandowski" should be a <span class="pessoa">.
+
+Then, "União" – that's a legal entity, so it's an organization. "Estado do Mato Grosso" is a state, which is a local. Wait, the guidelines say local is a place explicitly identified. "Estado do Mato Grosso" is a state, so it's a local. So "Estado do Mato Grosso" should be <span class="local">.
+
+Next, "Certificado de Regularidade Previdenciária do Estado de Mato Grosso" – here, "Estado de Mato Grosso" is a local again, but the entire phrase is a title of a certificate. However, the guidelines say to mark only the specific names. So "Estado de Mato Grosso" is a local, but the rest is part of the certificate name. Wait, the guidelines mention that only names of places should be marked. So "Estado do Mato Grosso" is a local, so I should mark that part. The rest of the certificate name is not an entity, so no tag.
+
+Then, "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" – these are acronyms for systems. According to the guidelines, these are not legislation, but they might be part of the legislation. Wait, the guidelines say that "legislação" is for norms like laws, decrees, etc. These acronyms are systems, not legislation. So they shouldn't be marked as legislação. Unless they are part of a law's name. But the text mentions "CADPREV" as a system, so they are not legislation. So no tag.
+
+Then, "Decreto 3.788/2001" and "Portaria MPS n° 204/2008" – these are decreto and portaria, which are types of legislation. So they should be marked as legislação. The full names would be "Decreto 3.788/2001" and "Portaria MPS n° 204/2008". So these should be <span class="legislacao">.
+
+Also, "REsp n . 1694984/MS" – but wait, in the input text, there's no REsp mentioned. Wait, the input text given by the user is:
+
+"( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO R E L A T Ó R I O O Senhor Ministro Ricardo Lewandowski ( Relator ) : Trata-se de agravo regimental interposto pela União contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo Estado do Mato Grosso , determinando-se à União `` que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS n° 204/2008 e de suas posteriores alterações '' .
+
+So in the input text, the only possible jurisprudência is the "REsp" but it's not present here. Wait, the example in the user's input includes "REsp n . 1694984/MS" in the output. But in this case, the input doesn't have that. So in the current text, there's no jurisprudência mentioned. So no tags for that.
+
+Now, let's go through the text step by step.
+
+1. "( A / S ) ( ES ) : PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" – "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" is an organization. So mark as organização.
+
+2. "O Senhor Ministro Ricardo Lewandowski ( Relator ) : " – "Ricardo Lewandowski" is a person, so <span class="pessoa">.
+
+3. "Trata-se de agravo regimental interposto pela União contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo Estado do Mato Grosso , determinando-se à União `` que renove o Certificado de Regularidade Previdenciária do Estado de Mato Grosso , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do Decreto 3.788/2001 e da Portaria MPS n° 204/2008 e de suas posteriores alterações '' ."
+
+- "União" is an organization, so mark as organização.
+- "Estado do Mato Grosso" is a local, so mark as local.
+- "Decreto 3.788/2001" is legislation, mark as legislação.
+- "Portaria MPS n° 204/2008" is legislation, mark as legislação.
+- "CADPREV", "CADIN", "CA UC", "SIAFI", "SICONV" – these are acronyms for systems, not legislation, so no tag.
+- "incidenter tantum" is a legal term, but not an entity, so no tag.
+
+Now, putting it all together:
+
+- "PROCURADOR -GERAL DO ESTADO DE MATO GROSSO" → organização
+- "Ricardo Lewandowski" → pessoa
+- "União" → organização
+- "Estado do Mato Grosso" → local
+- "Decreto 3.788/2001" → legislação
+- "Portaria MPS n° 204/2008" → legislação
+
+Now, let's structure the HTML with these tags. Also, note that the text has some formatting like "`` que renove..." which might be a typo, but I'll keep the original text as is.
+
+So the output would be:
+
+<span class="organizacao">PROCURADOR -GERAL DO ESTADO DE MATO GROSSO</span> R E L A T Ó R I O O Senhor Ministro <span class="pessoa">Ricardo Lewandowski</span> ( Relator ) : Trata-se de agravo regimental interposto pela <span class="organizacao">União</span> contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo <span class="local">Estado do Mato Grosso</span> , determinando-se à <span class="organizacao">União</span> `` que renove o Certificado de Regularidade Previdenciária do <span class="local">Estado de Mato Grosso</span> , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS n° 204/2008</span> e de suas posteriores alterações '' .
+
+Wait, but "Estado de Mato Grosso" is also a local. In the input text, "Estado do Mato Grosso" is mentioned once, and "Estado de Mato Grosso" another time. Wait, the original text has "Estado do Mato Grosso" and "Estado de Mato Grosso". Are these the same? Maybe a typo. But according to the guidelines, "local" is a place explicitly identified. So both "Estado do Mato Grosso" and "Estado de Mato Grosso" are local. So I need to mark both instances.
+
+Also, in the input text, there's "União" which is an organization, and "Estado do Mato Grosso" is a local. The "União" is the same as "União" in the text.
+
+So, the final HTML should have the appropriate tags for each entity found.
+</think>
+
+<span class="organizacao">PROCURADOR -GERAL DO ESTADO DE MATO GROSSO</span> R E L A T Ó R I O O Senhor Ministro <span class="pessoa">Ricardo Lewandowski</span> ( Relator ) : Trata-se de agravo regimental interposto pela <span class="organizacao">União</span> contra decisão monocrática que julgou procedente Ação Cível Originária ajuizada pelo <span class="local">Estado do Mato Grosso</span> , determinando-se à <span class="organizacao">União</span> `` que renove o Certificado de Regularidade Previdenciária do <span class="local">Estado de Mato Grosso</span> , retirando-o do conceito de irregular do Cadastro de Regime Próprio de Previdência Social-CADPREV ou retirando-o de qualquer outro cadastro de inadimplentes pelo mesmo motivo ( CADIN , CA UC , SIAFI , SICONV ) , declarando-se ainda , incidenter tantum , a inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> e da <span class="legislacao">Portaria MPS n° 204/2008</span> e de suas posteriores alterações '' .

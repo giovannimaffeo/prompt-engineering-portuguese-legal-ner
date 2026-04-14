@@ -1,0 +1,38 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with the appropriate tags. The entities are pessoa, organização, tempo, local, legislação, and jurisprudência. 
+
+First, I need to carefully read the input text and identify each entity according to the definitions provided. Let me go through the text step by step.
+
+The text starts with "Condeno o réu ao pagamento de honorários advocatícios , os quais fixo em R $ 1.000,00 ( mil reais ) , nos termos do art . 20 , § 4º , do CPC . Sentença sujeita a revisão necessária . Transitada em julgado , arquivem-se . P.R.I. ” ( fls . 299-v/300 ) . Irresignado , apela o DISTRITO FEDERAL ( fls . 305/313 ) . No seu apelo , o DF tece considerações sobre a evolução da remuneração dos professores vinculados à SEE/DF e a incorporação de quintos/décimos ."
+
+Looking for pessoas: The text mentions "réu" which is a generic term for the defendant, not a specific name. So no pessoa here.
+
+Organizações: "DISTRITO FEDERAL" is an organization, so that should be marked as organização. Also, "SEE/DF" – SEE is a common abbreviation for Secretaria de Estado da Educação, so that's part of the DF (Distrito Federal) organization. So "SEE/DF" should be organização as well.
+
+Tempo: There's "fls . 299-v/300" and "fls . 305/313" which are page references, not dates or times. The text also mentions "Transitada em julgado" which refers to a legal status, not a time. So no tempo entities.
+
+Local: "DISTRITO FEDERAL" is a local entity. Also, "SEE/DF" is part of the local since it's within the Distrito Federal.
+
+Legislação: The text references "CPC" which stands for Código de Processo Civil. That's a legal code, so it should be marked as legislação. Also, "art . 20 , § 4º , do CPC" refers to a specific article of the CPC, so that's part of the legislação.
+
+Jurisprudência: The text doesn't mention any specific case numbers, precedents, or súmulas, so no jurisprudência here.
+
+Now, let's structure the HTML. Replace "DISTRITO FEDERAL" with <span class="organizacao">DISTRITO FEDERAL</span>. "SEE/DF" is part of the DF, so it should also be <span class="organizacao">SEE/DF</span>. The "CPC" should be <span class="legislacao">CPC</span>, and the article reference "art . 20 , § 4º , do CPC" becomes <span class="legislacao">art . 20 , § 4º , do <span class="legislacao">CPC</span></span> to ensure the code is highlighted.
+
+Wait, the example shows that the entire legislative reference is marked. So "art . 20 , § 4º , do CPC" should be one span with class legislação. But in the example, "art.61 , §1º , da Lei nº 9.430/96" is marked as legislação. So I should wrap the entire "art . 20 , § 4º , do CPC" in a span with class legislação.
+
+Also, "P.R.I." is an abbreviation, but it's not clear if it's a legal entity. The example didn't mark abbreviations unless they were specific. Since the user's example didn't mark "P.R.I.", I'll leave it as is.
+
+So the final HTML would have:
+
+- DISTRITO FEDERAL as organização
+- SEE/DF as organização
+- CPC as legislação
+- "art . 20 , § 4º , do CPC" as legislação
+
+Let me check again. The text says "nos termos do art . 20 , § 4º , do CPC" – so the entire phrase is a reference to legislation, so the span should include "art . 20 , § 4º , do CPC". 
+
+Therefore, the HTML should have those entities marked accordingly.
+</think>
+
+Condeno o réu ao pagamento de honorários advocatícios , os quais fixo em R $ 1.000,00 ( mil reais ) , nos termos do <span class="legislacao">art . 20 , § 4º , do CPC</span> . Sentença sujeita a revisão necessária . Transitada em julgado , arquivem-se . P.R.I. ” ( fls . 299-v/300 ) . Irresignado , apela o <span class="organizacao">DISTRITO FEDERAL</span> ( fls . 305/313 ) . No seu apelo , o <span class="organizacao">DF</span> tece considerações sobre a evolução da remuneração dos professores vinculados à <span class="organizacao">SEE/DF</span> e a incorporação de quintos/décimos .

@@ -1,0 +1,51 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. Let me read through the example input again: "5.815 , DE 3 DE ABRIL DE 2017 , COM EFEITOS `` EX TUNC '' E EFICÁCIA `` ERGA OMNES '' . MAIORIA. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 13 de Março de 2018 ."
+
+Looking for entities:
+
+1. "5.815" – This looks like a legal document number. But the user didn't mention numbers as entities. The entities are specific types like pessoa, organizacao, etc. So maybe this is just a number and not an entity. Wait, the example output might have it as a number, but the user's instructions don't specify numbers as entities. So I should leave it as is unless it's part of a date or something else.
+
+2. "DE 3 DE ABRIL DE 2017" – This is a date. The "tempo" class is for time/data. So "3 DE ABRIL DE 2017" should be marked as tempo. But the format is "DE 3 DE ABRIL DE 2017". The "DE" here is part of the date phrase. Wait, the user's example output might have "3 DE ABRIL DE 2017" as tempo. Let me check the example output provided by the user. Wait, the user didn't provide an example output, but the task says to return the text with entities marked. So I need to identify each part.
+
+3. "COM EFEITOS `` EX TUNC '' E EFICÁCIA `` ERGA OMNES '' " – These are legal terms. "EX TUNC" and "ERGA OMNES" are legal concepts. But the user's entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So these terms might not be any of the specified entities. Unless "ex tunc" is part of a legislation or jurisprudence. But the user's example might not include them. So maybe leave them as is.
+
+4. "MAIORIA." – This refers to a majority decision, which could be part of jurisprudence. But the term "MAIORIA" itself is not an entity. Wait, the user's example might have "MAIORIA" as part of jurisprudencia. But I'm not sure. Maybe it's part of a legal decision, so perhaps it's under jurisprudencia. But the user's example might not mark it. Need to check.
+
+5. "de acordo com a ata do julgamento e notas taquigráficas" – "ata do julgamento" is a court record, which might be part of jurisprudencia. "notas taquigráficas" are stenographic notes, which could be part of a legal process. But the user's entities don't include "ata" or "notas taquigráficas" as specific types. So maybe leave them as is.
+
+6. "Brasilia ( DF )" – "Brasilia" is a local, so mark as local. "DF" is the Distrito Federal, which is a local as well. So "Brasilia ( DF )" should be local.
+
+7. "13 de Março de 2018" – This is a date, so tempo.
+
+Now, applying the classes:
+
+- "3 DE ABRIL DE 2017" is tempo.
+- "Brasilia ( DF )" is local.
+- "13 de Março de 2018" is tempo.
+
+Other parts like "5.815" might be a document number, but since it's not one of the specified entities, leave it. "EX TUNC" and "ERGA OMNES" are legal terms but not in the specified entities. "MAIORIA" might be part of a decision, but again, not sure. The user's example output might not include them. So the final HTML would have the tempo and local marked.
+
+Wait, the user's example output in the problem statement is not provided, but the task says to return the text with entities marked. So I need to make sure that all instances of the specified entities are marked. Let me re-examine the text.
+
+Original text: "5.815 , DE 3 DE ABRIL DE 2017 , COM EFEITOS `` EX TUNC '' E EFICÁCIA `` ERGA OMNES '' . MAIORIA. , de acordo com a ata do julgamento e notas taquigráficas . Brasilia ( DF ) , 13 de Março de 2018 ."
+
+Breaking down:
+
+- "DE 3 DE ABRIL DE 2017" – the date part. So "3 DE ABRIL DE 2017" is tempo. The "DE" is part of the date phrase, so maybe the entire date is marked as tempo. But the user's example might have "3 DE ABRIL DE 2017" as tempo.
+
+- "Brasilia ( DF )" – local.
+
+- "13 de Março de 2018" – tempo.
+
+So the HTML would have:
+
+<span class="tempo">3 DE ABRIL DE 2017</span>, COM EFEITOS `` EX TUNC '' E EFICÁCIA `` ERGA OMNES '' . MAIORIA. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia ( DF )</span> , <span class="tempo">13 de Março de 2018</span> .
+
+Wait, but the original text has "DE 3 DE ABRIL DE 2017" – the "DE" is part of the date. So maybe the entire phrase "DE 3 DE ABRIL DE 2017" is part of the tempo. But the user's example might have only the date part. Alternatively, maybe the entire date phrase is considered as tempo. Let me check the user's example output. Since the user didn't provide one, I need to make a judgment.
+
+In legal texts, dates are usually marked as tempo. So "3 DE ABRIL DE 2017" is tempo. Similarly, "13 de Março de 2018" is tempo. "Brasilia ( DF )" is local. The rest are not entities. So the final HTML would have those parts marked.
+</think>
+
+5.815 , DE 3 DE ABRIL DE 2017 , COM EFEITOS `` EX TUNC '' E EFICÁCIA `` ERGA OMNES '' . MAIORIA. , de acordo com a ata do julgamento e notas taquigráficas . <span class="local">Brasilia ( DF )</span> , <span class="tempo">13 de Março de 2018</span> .

@@ -1,0 +1,45 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with appropriate tags. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to carefully read the input text and identify which parts fit each category. Let's start by breaking down the text sentence by sentence.
+
+The first part is "Procede , pelas razões expostas , o pedido de declaração incidental de inconstitucionalidade do Decreto 3.788/2001 , que institui o certificado impugnado , e da Portaria MPS 204/2008 e suas posteriores alterações , mas não o pedido de declaração incidental da inconstitucionalidade da Lei 9.717/1998 , que , formulado em termos genéricos e sem especificação das razões para a inconstitucionalidade de cada um de seus dispositivos , não pode prevalecer ."
+
+Looking for legal entities here. The key terms are "Decreto 3.788/2001", "Portaria MPS 204/2008", and "Lei 9.717/1998". These are all legal documents, so they fall under "legislacao". 
+
+Next, check if there are any dates. The text mentions "2001" and "1998" in the decreto and lei. According to the guidelines, years like these should be marked as "tempo". However, the user's examples show that full dates in formats like DD/MM/YYYY are marked, but isolated years might be tricky. Wait, the guidelines say "anos isolados" should be marked. So "2001" and "1998" are years, so they should be marked as tempo.
+
+Wait, but in the example provided, the output had "art.61 , §1º , da Lei nº 9.430/96" marked as legislacao. So the full name of the law, including the year, is marked. Similarly, here "Decreto 3.788/2001" and "Portaria MPS 204/2008" are decreto and portaria, which are types of legislation. The years 2001 and 1998 are part of the document's reference, so they should be part of the legislacao entity. Wait, but the guidelines say that "legislação" includes "normas jurídicas" like leis, decretos, etc. So the entire reference, including the year, should be marked as legislacao. However, the user's example had "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So the full reference including the year is considered legislacao. 
+
+In the input text, "Decreto 3.788/2001" is a decreto, so that's legislacao. Similarly, "Portaria MPS 204/2008" is a portaria, also legislacao. The "Lei 9.717/1998" is a law, so that's legislacao. The years 2001 and 1998 are part of the document's reference, so they are included in the legislacao tag. Therefore, the entire "Decreto 3.788/2001", "Portaria MPS 204/2008", and "Lei 9.717/1998" should be marked as legislacao. 
+
+Wait, but the user's example had "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So the entire phrase, including the article and the law, is marked. Similarly, here, the entire "Decreto 3.788/2001" is a decreto, so it's part of legislacao. So in the input text, the three legal documents should be marked as legislacao. 
+
+Now, checking for other entities. Are there any people, organizations, places, time, or jurisprudence? The text mentions "Decreto", "Portaria", and "Lei" which are parts of legislacao. There are no specific names of people, organizations, or places. The years are part of the legislacao. 
+
+So the output should have the three legal documents marked as legislacao, and the years within them as tempo? Wait, the guidelines say that "tempo" is for dates. The example shows that "14/11/2017" is marked as tempo. But in the input, the years are part of the legal documents. So according to the guidelines, the entire document reference (like "Decreto 3.788/2001") is considered legislacao, and the year is part of that. But the user's example had "art.61 , §1º , da Lei nº 9.430/96" as legislacao, which includes the year. So the year is part of the legislacao tag. Therefore, in this case, the years 2001 and 1998 are part of the legislacao entity, not as separate tempo tags. 
+
+Wait, but the guidelines say that "anos isolados" should be marked as tempo. However, in the example, the year is part of the legislacao. So there's a conflict here. Let me check the guidelines again. 
+
+Under "legislacao", it says "expressões que identifiquem normas jurídicas... bem como dispositivos internos claramente associados a essas normas e siglas reconhecidas que representem textos legislativos". So the entire reference to the law, including the year, is part of the legislacao. Therefore, the year is part of the legislacao entity, not as a separate tempo. 
+
+But the guidelines also mention that "Horários isolados (como '17:26:32') não devem ser anotados como tempo; apenas datas explícitas devem ser anotadas." So only explicit dates, not isolated years. However, in the example, the user marked "art.61 , §1º , da Lei nº 9.430/96" as legislacao, which includes the year 1996. So the year is part of the legislacao. 
+
+Therefore, in the input text, the years 2001 and 1998 are part of the legislacao entities. So the entire "Decreto 3.788/2001" is legislacao, including the year 2001. Similarly for the others. 
+
+So the output should have each of these three legal documents marked as legislacao. 
+
+Now, checking for other entities. Are there any other mentions? The text says "Decreto 3.788/2001", "Portaria MPS 204/2008", "Lei 9.717/1998". No other entities. 
+
+So the final HTML should have those three marked as legislacao. 
+
+Wait, but the user's example shows that "art.61 , §1º , da Lei nº 9.430/96" is marked as legislacao. So in this case, the entire reference is considered legislacao, including the year. Therefore, the same applies here. 
+
+So the correct output would be replacing each of those legal documents with <span class="legislacao">... </span>. 
+
+Therefore, the final text should have those three instances marked as legislacao. 
+
+I think that's all. Let me put it all together.
+</think>
+
+Procede , pelas razões expostas , o pedido de declaração incidental de inconstitucionalidade do <span class="legislacao">Decreto 3.788/2001</span> , que institui o certificado impugnado , e da <span class="legislacao">Portaria MPS 204/2008</span> e suas posteriores alterações , mas não o pedido de declaração incidental da inconstitucionalidade da <span class="legislacao">Lei 9.717/1998</span> , que , formulado em termos genéricos e sem especificação das razões para a inconstitucionalidade de cada um de seus dispositivos , não pode prevalecer .

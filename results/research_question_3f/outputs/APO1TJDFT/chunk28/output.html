@@ -1,0 +1,68 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+Starting with the first line: "Apelação / Reexame Necessário 20140110500434APO PEDIDO DE VISTA V O T O S O Senhor Desembargador SEBASTIÃO COELHO - Presidente e Vogal Acompanho a Relatora . O Senhor Desembargador SILVA LEMOS - Vogal Acompanha a Relatora . O Senhor Desembargador JOSAPHÁ FRANCISCO DOS SANTOS - Vogal Com a Relatora . D E C I S Ã O Recursos conhecidos e desprovidos , maioria . Vencido o 1º Vogal . D E C I S Ã O EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR . INSTAURADA A DIVERGÊNCIA PROSSEGUI-SE O JULGAMENTO INTEGRANDO O QUÓRUM O DES . SILVA LEMOS E O DES . JOSAPHÁ Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 13 Fls . _____ Apelação / Reexame Necessário 20140110500434APO FRANCISCO . CONHECER DO RECURSO . RECEBER REMESSA DE OFÍCIO . NEGAR PROVIMENTO A AMBOS . MAIORIA . VENCIDO O 1º VOGAL ."
+
+Looking for entities:
+
+1. "Apelação / Reexame Necessário 20140110500434APO" – The "20140110500434APO" looks like a case number or identifier. According to the guidelines, identifiers like this should be marked as jurisprudencia. So I'll wrap that in <span class="jurisprudencia">.
+
+2. "Senhor Desembargador SEBASTIÃO COELHO" – "SEBASTIÃO COELHO" is a full name, so that's a pessoa. The title "Desembargador" is a title, not a name, so it's not marked.
+
+3. "SILVA LEMOS" – Another full name, so pessoa.
+
+4. "JOSAPHÁ FRANCISCO DOS SANTOS" – Full name, pessoa.
+
+5. "D E C I S Ã O" – This seems like a typo for "Decisão" (Decision), but it's not a specific entity. The word itself isn't an entity unless it's part of a specific reference. Since it's just the word, no tag.
+
+6. "Recursos conhecidos e desprovidos , maioria . Vencido o 1º Vogal ." – These are general terms, not entities.
+
+7. "D E C I S Ã O EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR ." – Again, "Decisão" and "Vogal" are general terms. "VOTO-VISTA" might be a term, but not an entity.
+
+8. "INSTAURADA A DIVERGÊNCIA PROSSEGUI-SE O JULGAMENTO INTEGRANDO O QUÓRUM O DES . SILVA LEMOS E O DES . JOSAPHÁ" – "DES" is an abbreviation for "Desembargador", which is a title, not a name. "SILVA LEMOS" and "JOSAPHÁ" are names, but "JOSAPHÁ" is part of the full name "JOSAPHÁ FRANCISCO DOS SANTOS" already marked. Wait, in the text, "DES . SILVA LEMOS E O DES . JOSAPHÁ" – "SILVA LEMOS" is already a pessoa, and "JOSAPHÁ" is part of the full name "JOSAPHÁ FRANCISCO DOS SANTOS", which was already marked. So "JOSAPHÁ" here is part of the full name, so it's already covered.
+
+9. "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" – The code "2018ACO899XSQTZBL81ZOE6V34P" is an identifier, so jurisprudencia.
+
+10. "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" – "MARIA IVATÔNIA" is a full name, so pessoa. "GABINETE DA DESEMBARGADORA" is a title, not a name.
+
+11. "13 Fls ." – "Fls." is an abbreviation for "Folhas", which is a general term. Not an entity.
+
+12. "Apelação / Reexame Necessário 20140110500434APO FRANCISCO ." – The "20140110500434APO" is already marked as jurisprudencia. "FRANCISCO" is part of the full name "FRANCISCO" in "FRANCISCO . CONHECER DO RECURSO..." but "FRANCISCO" alone is not a full name. Wait, the text has "FRANCISCO . CONHECER DO RECURSO . RECEBER REMESSA DE OFÍCIO . NEGAR PROVIMENTO A AMBOS . MAIORIA . VENCIDO O 1º VOGAL ." – "FRANCISCO" here is a name, but it's not a full name. However, in the initial part, there's "FRANCISCO . CONHECER..." which might be part of a name, but without more context, it's unclear. Since it's just "FRANCISCO", maybe it's not a full name. But the user's examples include "FRANCISCO" as part of a name. Wait, looking at the example input 5: "altera a redação do art . 428 da Consolidação das Leis do Trabalho – CLT, aprovada pelo Decreto-Lei no 5.452, de 1o de maio de 1943" becomes "altera a redação do <span class="legislacao">art . 428 da Consolidação das Leis do Trabalho</span> – <span class="legislacao">CLT</span>, aprovada pelo <span class="legislacao">Decreto-Lei no 5.452</span>, de <span class="tempo">1o de maio de 1943</span>". So "art . 428" is marked as legislacao. Similarly, "FRANCISCO" here might be part of a name, but since it's just "FRANCISCO" without a surname, maybe it's not a full name. However, in the input text, there's "FRANCISCO . CONHECER..." which might be a name, but without more context, it's safer to not mark it unless it's a full name. Wait, the user's example 2: "Superior Tribunal de Justiça RECURSO ESPECIAL Nº 1.583.083 - RS" becomes "<span class="organizacao">Superior Tribunal de Justiça</span> <span class="jurisprudencia">RECURSO ESPECIAL Nº 1.583.083 - RS</span>". So the case number is marked as jurisprudencia. Similarly, "20140110500434APO" is a case number, so jurisprudencia. The "FRANCISCO" here is part of the text "FRANCISCO . CONHECER..." which might be a name, but since it's not a full name, maybe it's not marked. However, in the input text, there's "FRANCISCO" followed by a period, which might be a name. But without a surname, it's unclear. Maybe it's part of a name, but since the user's examples don't have such cases, perhaps it's not marked. Alternatively, maybe "FRANCISCO" is a name, but since it's not a full name, it's not marked. So I'll leave it as is.
+
+Now, compiling all the entities:
+
+- "20140110500434APO" → jurisprudencia
+- "SEBASTIÃO COELHO" → pessoa
+- "SILVA LEMOS" → pessoa
+- "JOSAPHÁ FRANCISCO DOS SANTOS" → pessoa
+- "MARIA IVATÔNIA" → pessoa
+- "2018ACO899XSQTZBL81ZOE6V34P" → jurisprudencia
+
+Wait, the "Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P" has the code "2018ACO899XSQTZBL81ZOE6V34P", which is an identifier, so jurisprudencia.
+
+So the final HTML should have these tags. Let me check again for any missed entities.
+
+Also, "V O T O S O" – these are abbreviations for "Voto(s)" and "O" (the), but not entities.
+
+"Desembargador" is a title, not a name. "Vogal" is a term, not an entity.
+
+"Relatora" is a term, not an entity.
+
+"Decisão" is a term, not an entity.
+
+"Vencido o 1º Vogal" – "Vogal" is a term, not an entity.
+
+"VOTO-VISTA" – a term, not an entity.
+
+"QUÓRUM" – a term, not an entity.
+
+"DES" is an abbreviation for "Desembargador", not a name.
+
+"Fls." is an abbreviation, not an entity.
+
+So the only entities are the names and the case numbers. Let me structure the HTML accordingly.
+</think>
+
+<span class="jurisprudencia">Apelação / Reexame Necessário 20140110500434APO</span> PEDIDO DE VISTA V O T O S O Senhor <span class="pessoa">Desembargador SEBASTIÃO COELHO</span> - Presidente e Vogal Acompanho a Relatora . O Senhor <span class="pessoa">Desembargador SILVA LEMOS</span> - Vogal Acompanha a Relatora . O Senhor <span class="pessoa">Desembargador JOSAPHÁ FRANCISCO DOS SANTOS</span> - Vogal Com a Relatora . D E C I S Ã O Recursos conhecidos e desprovidos , maioria . Vencido o 1º Vogal . D E C I S Ã O EM VOTO-VISTA O 2º VOGAL ACOMPANHOU O RELATOR . INSTAURADA A DIVERGÊNCIA PROSSEGUI-SE O JULGAMENTO INTEGRANDO O QUÓRUM O DES . SILVA LEMOS E O DES . JOSAPHÁ <span class="jurisprudencia">Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P</span> GABINETE DA <span class="pessoa">Desembargadora MARIA IVATÔNIA</span> 13 Fls . _____ <span class="jurisprudencia">Apelação / Reexame Necessário 20140110500434APO</span> <span class="pessoa">FRANCISCO</span> . CONHECER DO RECURSO . RECEBER REMESSA DE OFÍCIO . NEGAR PROVIMENTO A AMBOS . MAIORIA . VENCIDO O 1º VOGAL .

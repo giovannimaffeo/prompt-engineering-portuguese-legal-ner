@@ -1,0 +1,110 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute.
+
+First, I need to parse the input text carefully. Let me read through the example input and output to understand the pattern. The example input had "MINISTÉRIO PÚBLICO FEDERAL" marked as organizacao and "CARLOS HENRIQUE ALVES" as pessoa. The output used <span> tags with the respective classes.
+
+Now, looking at the user's input text: "Supremo Tribunal Federal ACO 2821 A GR / MT que o Projeto de Lei Complementar 1/2016 encontra-se sob apreciação da Assembleia Legislativa do Estado . Salientou que sem o Certificado de Regularidade Previdenciária , o Estado de Mato Grosso está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais ."
+
+Let me break this down sentence by sentence.
+
+First sentence: "Supremo Tribunal Federal ACO 2821 A GR / MT que o Projeto de Lei Complementar 1/2016 encontra-se sob apreciação da Assembleia Legislativa do Estado ."
+
+- "Supremo Tribunal Federal" is likely an organization. The example had "Supremo Tribunal Federal" as a possible organization. But wait, in the example, "Supremo Tribunal Federal" was not marked, but in the example input, the output had "Supremo Tribunal Federal" as an organization? Wait, in the example input given, the first example had "MINISTÉRIO PÚBLICO FEDERAL" marked as organizacao, and the output had that. So in the user's input, "Supremo Tribunal Federal" is an organization. So I should mark that as organizacao.
+
+Next, "ACO 2821 A GR / MT" – this looks like a case number or a legal reference. The ACO might be an acronym for something. The example had "REsp n . 1694984/MS" marked as jurisprudencia. So if "ACO 2821 A GR / MT" is a case number, it should be jurisprudencia. But I need to check if it's a specific case. The example had "REsp n . 1694984/MS" which is a specific case number. So if "ACO 2821 A GR / MT" is similar, it would be jurisprudencia. However, the user's input has "ACO 2821 A GR / MT" – maybe "ACO" is a code, and "2821 A GR / MT" is the case number. But without more context, I have to assume it's a legal reference. So mark as jurisprudencia.
+
+Then "Projeto de Lei Complementar 1/2016" – this is a legislative act. "Projeto de Lei Complementar" is a type of legislation, so the entire phrase should be marked as legislacao. Wait, the example had "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So "Projeto de Lei Complementar 1/2016" is a legislative project, so it's part of the legislacao. So mark that as legislacao.
+
+Next, "Assembleia Legislativa do Estado" – "Assembleia Legislativa" is an organization. The example had "Câmara Legislativa" marked as organizacao. So "Assembleia Legislativa" is an organization. But the phrase is "Assembleia Legislativa do Estado" – the "do Estado" might be a modifier. But according to the guidelines, if it's a full name of an organization, it should be marked. However, the example had "Câmara Legislativa" as a complete name. So here, "Assembleia Legislativa do Estado" is an organization, so mark as organizacao.
+
+Next sentence: "Salientou que sem o Certificado de Regularidade Previdenciária , o Estado de Mato Grosso está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais ."
+
+"Certificado de Regularidade Previdenciária" – this is a document, but not a specific legal entity. It's a type of certificate, not a specific law or regulation, so it's not legislacao. The example had "Certificado de Regularidade Previdenciária" not marked, so I think it's not an entity here.
+
+"Estado de Mato Grosso" – "Mato Grosso" is a state in Brazil, so it's a local. The example had "Rio de Janeiro" as local. So "Mato Grosso" should be marked as local.
+
+"Administração Direta ou Indireta da União" – "União" refers to the federal government, which is an organization. But "Administração Direta ou Indireta da União" is a description, not a specific name. So it's not an entity. Similarly, "instituições financeiras federais" refers to federal financial institutions, but again, not specific names. So these are not entities.
+
+Putting it all together:
+
+- "Supremo Tribunal Federal" → organizacao
+- "ACO 2821 A GR / MT" → jurisprudencia
+- "Projeto de Lei Complementar 1/2016" → legislacao
+- "Assembleia Legislativa do Estado" → organizacao
+- "Mato Grosso" → local
+
+Wait, but "Estado de Mato Grosso" – the entire phrase is "Estado de Mato Grosso", but according to the guidelines, only specific place names should be marked. "Mato Grosso" is the state, so "Mato Grosso" is the local. But in the example, "COMARCA DE BELO HORIZONTE" was marked as local. So "Mato Grosso" is a state, so it's a local. So in the text, "Estado de Mato Grosso" – the "Estado" is a generic term, but "Mato Grosso" is the specific name. So the entire "Estado de Mato Grosso" might be considered as an organization? Wait, no. The example had "Câmara Legislativa" as an organization. So "Assembleia Legislativa" is an organization. Similarly, "Estado de Mato Grosso" is a government entity, but the "Estado" is a generic term. However, "Mato Grosso" is the name of the state. So the "Estado de Mato Grosso" refers to the state government, which is an organization. But according to the guidelines, "organização" includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas". So the "Estado de Mato Grosso" would be an organization. Wait, but the example had "Assembleia Legislativa do Estado" marked as organizacao. So in this case, "Assembleia Legislativa do Estado" is an organization. However, "Estado de Mato Grosso" is the name of the state government, which is an organization. Wait, but "Estado" is a generic term, but "Mato Grosso" is the specific state. So "Estado de Mato Grosso" is the government of the state, which is an organization. So in the text, "Estado de Mato Grosso" should be marked as organizacao. But the user's input has "Estado de Mato Grosso" – the "Estado" is a generic term, but "Mato Grosso" is the specific name. However, the guidelines say that organizations include "órgãos públicos", so the state government (Estado) is an organization. But in the example, "Câmara Legislativa" was marked as organizacao. So "Assembleia Legislativa do Estado" is an organization. Similarly, "Estado de Mato Grosso" is an organization. Wait, but "Estado" is a generic term. However, in the text, it's "Estado de Mato Grosso" – which is the specific state government. So the entire phrase "Estado de Mato Grosso" is an organization. But according to the guidelines, should "Estado de Mato Grosso" be marked as organizacao? Or is "Mato Grosso" the local? Let me check the guidelines again.
+
+Local is defined as "expressões que correspondem a lugares explicitamente identificáveis, como cidades, estados, países, bairros, regiões, comarcas, distritos, áreas geográficas ou logradouros reconhecíveis". So "Mato Grosso" is an estado (state), which is a local. So in the text, "Estado de Mato Grosso" – the "Estado" is a generic term, but "Mato Grosso" is the specific state. So the local entity is "Mato Grosso". But the phrase is "Estado de Mato Grosso", which refers to the government of the state. So "Estado de Mato Grosso" is an organization (government), not a local. Therefore, "Mato Grosso" is the local. Wait, but in the example, "COMARCA DE BELO HORIZONTE" was marked as local. So "COMARCA DE BELO HORIZONTE" is a specific place. So in the user's input, "Estado de Mato Grosso" – the "Estado" is part of the name, but the specific name is "Mato Grosso". Therefore, "Mato Grosso" is the local. However, the phrase is "Estado de Mato Grosso", which is the government of the state. So the organization here is "Estado de Mato Grosso", but according to the guidelines, "organização" includes "órgãos públicos", so "Estado de Mato Grosso" as the government is an organization. However, the example had "Câmara Legislativa" as an organization, which is a legislative body. So "Assembleia Legislativa do Estado" is an organization. Similarly, "Estado de Mato Grosso" is the government, which is an organization. Therefore, in the text, "Estado de Mato Grosso" should be marked as organizacao. But the user's input has "Estado de Mato Grosso" – is that the name of the organization? Or is it the state? The example had "Assembleia Legislativa do Estado" as an organization. So "Estado" in that case is part of the name. Therefore, in this case, "Estado de Mato Grosso" is the name of the organization (the government of Mato Grosso), so it should be marked as organizacao.
+
+But wait, the guidelines say that "organização" includes "órgãos públicos, tribunais, unidades do sistema de justiça, casas legislativas...". So "Estado" is an organo público, so "Estado de Mato Grosso" is an organization. Therefore, in the text, "Estado de Mato Grosso" should be marked as organizacao.
+
+But in the example, "Câmara Legislativa" was marked as organizacao, which is a legislative body. So "Assembleia Legislativa do Estado" is an organization. Similarly, "Estado de Mato Grosso" is an organization.
+
+So, putting all together:
+
+- "Supremo Tribunal Federal" → organizacao
+- "ACO 2821 A GR / MT" → jurisprudencia
+- "Projeto de Lei Complementar 1/2016" → legislacao
+- "Assembleia Legislativa do Estado" → organizacao
+- "Mato Grosso" → local
+- "Estado de Mato Grosso" → organizacao
+
+Wait, but the text says "Estado de Mato Grosso" – but in the text, it's "Estado de Mato Grosso" which is the government. So the entire phrase "Estado de Mato Grosso" is an organization. So the span would be "Estado de Mato Grosso" as organizacao.
+
+But in the example, "Câmara Legislativa" was marked as organizacao. So in the user's input, "Assembleia Legislativa do Estado" is an organization. Similarly, "Estado de Mato Grosso" is an organization. Therefore, the entire phrase "Estado de Mato Grosso" should be marked as organizacao.
+
+But in the text, the phrase is "Estado de Mato Grosso" – but the user's input has "Estado de Mato Grosso" in the sentence. So the correct marking would be:
+
+"Estado de Mato Grosso" → organizacao
+
+But the example had "Câmara Legislativa" as organizacao. So the entire phrase is the organization.
+
+Putting all together, the HTML would be:
+
+< span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa do Estado</span> do <span class="local">Mato Grosso</span> . Salientou que sem o Certificado de Regularidade Previdenciária , o <span class="organizacao">Estado de Mato Grosso</span> está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais .
+
+Wait, but in the text, "Estado de Mato Grosso" is the government, so it's an organization. However, the phrase "do Estado" in "Assembleia Legislativa do Estado" is part of the organization's name. So "Assembleia Legislativa do Estado" is an organization, and "Estado de Mato Grosso" is another organization.
+
+But in the text, the sentence is: "o Estado de Mato Grosso está impossibilitado..." So "Estado de Mato Grosso" is the organization. Therefore, in the text, "Estado de Mato Grosso" should be marked as organizacao.
+
+So the final HTML would have:
+
+- "Supremo Tribunal Federal" as organizacao
+- "ACO 2821 A GR / MT" as jurisprudencia
+- "Projeto de Lei Complementar 1/2016" as legislacao
+- "Assembleia Legislativa do Estado" as organizacao
+- "Mato Grosso" as local
+- "Estado de Mato Grosso" as organizacao
+
+But wait, the user's input has "Estado de Mato Grosso" in the sentence. So the entire phrase is "Estado de Mato Grosso", which is the organization. So that would be marked as organizacao.
+
+But the example had "Câmara Legislativa" as an organization. So "Assembleia Legislativa do Estado" is an organization. Similarly, "Estado de Mato Grosso" is an organization.
+
+So the final HTML would be:
+
+< span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa do Estado</span> do <span class="local">Mato Grosso</span> . Salientou que sem o Certificado de Regularidade Previdenciária , o <span class="organizacao">Estado de Mato Grosso</span> está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais .
+
+Wait, but in the original text, "Estado de Mato Grosso" is part of the sentence: "o Estado de Mato Grosso está impossibilitado..." So the entire phrase "Estado de Mato Grosso" is the organization. So that should be marked as organizacao.
+
+But the example had "Câmara Legislativa" as an organization. So "Assembleia Legislativa do Estado" is an organization. Similarly, "Estado de Mato Grosso" is an organization.
+
+Therefore, the correct HTML would have:
+
+- "Supremo Tribunal Federal" → organizacao
+- "ACO 2821 A GR / MT" → jurisprudencia
+- "Projeto de Lei Complementar 1/2016" → legislacao
+- "Assembleia Legislativa do Estado" → organizacao
+- "Mato Grosso" → local
+- "Estado de Mato Grosso" → organizacao
+
+So the final output would be:
+
+< span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa do Estado</span> do <span class="local">Mato Grosso</span> . Salientou que sem o Certificado de Regularidade Previdenciária , o <span class="organizacao">Estado de Mato Grosso</span> está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais .
+
+But I need to check if "ACO 2821 A GR / MT" is a jurisprudencia. The example had "REsp n . 1694984/MS" as jurisprudencia. So if "ACO 2821 A GR / MT" is a case number, it should be jurisprudencia. However, "ACO" might be an acronym, but the example used "REsp" which is a specific type of case. So assuming that "ACO 2821 A GR / MT" is a legal case reference, it's marked as jurisprudencia.
+
+Therefore, the final HTML should have those tags.
+</think>
+
+< span class="organizacao">Supremo Tribunal Federal</span> ACO 2821 A GR / MT que o <span class="legislacao">Projeto de Lei Complementar 1/2016</span> encontra-se sob apreciação da <span class="organizacao">Assembleia Legislativa do Estado</span> do <span class="local">Mato Grosso</span> . Salientou que sem o Certificado de Regularidade Previdenciária , o <span class="organizacao">Estado de Mato Grosso</span> está impossibilitado de receber transferências voluntárias de recursos federais , celebrar novos acordos , contratos , convênios , ajustes , empréstimos e financiamentos de órgãos ou entidades da Administração Direta ou Indireta da União e de celebrar empréstimos e financiamentos com instituições financeiras federais .

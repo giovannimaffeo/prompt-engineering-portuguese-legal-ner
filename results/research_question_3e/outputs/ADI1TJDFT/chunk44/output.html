@@ -1,0 +1,55 @@
+<think>
+Okay, let's tackle this HTML entity tagging task. The user provided a legal text and wants me to mark specific entities with appropriate HTML spans. First, I need to understand the definitions and guidelines thoroughly.
+
+Starting with the input text: "71 , § 1º , inc. IV , e 100 , inc. X , da Lei Orgânica do Distrito Federal , estão maculadas por vício formal , eis que a competência é exclusiva do Chefe do Poder Executivo , por força da `` reserva de administração '' . 2 . Conquanto as leis impugnadas tenham sido editadas com o salutar objetivo de incrementar o transporte público coletivo , acabou por promover ingerência indevida no funcionamento da Administração , com o inequívoco aumento de despesas . 3 . Ação direta de inconstitucionalidade julgada procedente . ( Acórdão n.1049279 , 20160020153586ADI , Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL , Data de Julgamento : 19/09/2017 , Publicado no DJE : 28/09/2017 . Pág. : 27-29 ) ( grifo nosso ) 5 ."
+
+First, I'll scan for each entity type.
+
+Looking for 'legislacao' (legislation). The phrase "Lei Orgânica do Distrito Federal" is a law, so that's legislation. The numbers 71, §1º, inc. IV, 100, inc. X are parts of the law's articles, so they should be included with the legislation reference. So I'll mark "71 , § 1º , inc. IV , e 100 , inc. X , da <span class='legislacao'>Lei Orgânica do Distrito Federal</span> ,".
+
+Next, 'organizacao' (organization). The text mentions "Chefe do Poder Executivo" which is a title, but according to guidelines, titles like "Chefe" aren't marked. However, "Conselho ESPECIAL" might be an organization, but it's part of the relator's name. Wait, the relator is "MARIOZAM BELMIRO CONSELHO ESPECIAL" – "Conselho ESPECIAL" could be an organization. But the guidelines say to mark full names. However, "Conselho ESPECIAL" might be a title. Hmm, need to check. Also, "Distrito Federal" is a local, but in the legislation, it's part of the law's name, so already marked. 
+
+Then, 'jurisprudencia' (jurisprudence). The text has "Acórdão n.1049279", which is a decision number, so that's jurisprudencia. Also, "20160020153586ADI" is a process number, so that's jurisprudencia. The date "19/09/2017" is a time entity. "28/09/2017" is another time. "Pág. : 27-29" is a page number, not an entity. 
+
+Looking for 'tempo' (time). The dates "19/09/2017" and "28/09/2017" are explicit dates, so they should be marked as time. 
+
+For 'local' (location), "Distrito Federal" is a local, but it's part of the legislation name, so already marked. 
+
+Now, checking for any other entities. The "grifo nosso" is a note, not an entity. The numbers like "n.1049279" and "20160020153586ADI" are part of the jurisprudencia. 
+
+Putting it all together:
+
+- "71 , § 1º , inc. IV , e 100 , inc. X , da <span class='legislacao'>Lei Orgânica do Distrito Federal</span> ,"
+- "Acórdão n.1049279" → <span class='jurisprudencia'>Acórdão n.1049279</span>
+- "20160020153586ADI" → <span class='jurisprudencia'>20160020153586ADI</span>
+- "19/09/2017" → <span class='tempo'>19/09/2017</span>
+- "28/09/2017" → <span class='tempo'>28/09/2017</span>
+
+Wait, the "Conselho ESPECIAL" in the relator's name. Is that an organization? The example given includes "Tribunal de Contas" as an organization. If "Conselho ESPECIAL" is an organization, then it should be marked. But the user's example shows "Tribunal de Contas" as an organization. However, in the input, "Conselho ESPECIAL" is part of the relator's name. The guidelines say to mark full names, but if "Conselho ESPECIAL" is an organization, then it's an organization. However, in the context, it's part of the relator's name, which is a person. Wait, the relator is "MARIOZAM BELMIRO CONSELHO ESPECIAL" – "Conselho ESPECIAL" is part of the name, but it's not clear if it's an organization. Maybe it's a title. The guidelines say to mark only names of people, not titles. So "MARIOZAM BELMIRO" is a person, and "Conselho ESPECIAL" might be an organization. But the example in the guidelines includes "Tribunal de Contas" as an organization. So if "Conselho ESPECIAL" is an organization, it should be marked. However, in the input, it's part of the relator's name. But the example in the user's input shows "Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL" – perhaps "Conselho ESPECIAL" is an organization. So I should mark "Conselho ESPECIAL" as an organization. But the guidelines say to mark full names, and "Conselho ESPECIAL" is a proper noun. So I'll mark it as organization. 
+
+Wait, but the user's example in the guidelines says "MINISTÉRIO PÚBLICO FEDERAL" is an organization. So "Conselho ESPECIAL" would be an organization. So in the text, "Relator : <span class='pessoa'>MARIOZAM BELMIRO</span> <span class='organizacao'>CONSELHO ESPECIAL</span> ,". 
+
+But the original text says "Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL" – maybe "CONSELHO ESPECIAL" is part of the name. But according to the guidelines, only names of people should be marked. However, "CONSELHO ESPECIAL" is a title or an organization. If it's an organization, then it's marked. 
+
+Alternatively, maybe it's part of the person's name. But the user's example shows "MINISTÉRIO PÚBLICO FEDERAL" as an organization. So "CONSELHO ESPECIAL" could be an organization. Therefore, I'll mark "CONSELHO ESPECIAL" as organization. 
+
+So updating the text: 
+
+"Relator : <span class='pessoa'>MARIOZAM BELMIRO</span> <span class='organizacao'>CONSELHO ESPECIAL</span> ,"
+
+Now, putting all together:
+
+The text becomes:
+
+"71 , § 1º , inc. IV , e 100 , inc. X , da <span class='legislacao'>Lei Orgânica do Distrito Federal</span> , estão maculadas por vício formal , eis que a competência é exclusiva do Chefe do Poder Executivo , por força da `` reserva de administração '' . 2 . Conquanto as leis impugnadas tenham sido editadas com o salutar objetivo de incrementar o transporte público coletivo , acabou por promover ingerência indevida no funcionamento da Administração , com o inequívoco aumento de despesas . 3 . Ação direta de inconstitucionalidade julgada procedente . ( <span class='jurisprudencia'>Acórdão n.1049279</span> , <span class='jurisprudencia'>20160020153586ADI</span> , Relator : <span class='pessoa'>MARIOZAM BELMIRO</span> <span class='organizacao'>CONSELHO ESPECIAL</span> , <span class='tempo'>Data de Julgamento : 19/09/2017</span> , <span class='tempo'>Publicado no DJE : 28/09/2017</span> . Pág. : 27-29 ) ( grifo nosso ) 5 ."
+
+Wait, but in the original input, the "Data de Julgamento" is "19/09/2017" and "Publicado no DJE" is "28/09/2017". So those are time entities. Also, the "Acórdão n.1049279" and "20160020153586ADI" are jurisprudencia. 
+
+I need to make sure that all entities are marked correctly. The "Distrito Federal" is part of the legislation, so it's already in the legislation span. The "CONSELHO ESPECIAL" is an organization, so marked. 
+
+I think that's all. Now, check for any other entities. The "grifo nosso" is not an entity. The "Pág. : 27-29" is a page number, not an entity. 
+
+So the final HTML should have all these spans marked accordingly.
+</think>
+
+71 , § 1º , inc. IV , e 100 , inc. X , da <span class="legislacao">Lei Orgânica do Distrito Federal</span> , estão maculadas por vício formal , eis que a competência é exclusiva do Chefe do Poder Executivo , por força da `` reserva de administração '' . 2 . Conquanto as leis impugnadas tenham sido editadas com o salutar objetivo de incrementar o transporte público coletivo , acabou por promover ingerência indevida no funcionamento da Administração , com o inequívoco aumento de despesas . 3 . Ação direta de inconstitucionalidade julgada procedente . ( <span class="jurisprudencia">Acórdão n.1049279</span> , <span class="jurisprudencia">20160020153586ADI</span> , Relator : <span class="pessoa">MARIOZAM BELMIRO</span> <span class="organizacao">CONSELHO ESPECIAL</span> , <span class="tempo">Data de Julgamento : 19/09/2017</span> , <span class="tempo">Publicado no DJE : 28/09/2017</span> . Pág. : 27-29 ) ( grifo nosso ) 5 .

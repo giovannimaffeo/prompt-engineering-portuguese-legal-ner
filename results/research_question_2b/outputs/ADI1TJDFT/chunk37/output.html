@@ -1,0 +1,67 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. The text is about the constitutional norm of the Distrito Federal, mentioning the organization of powers. Let me break it down sentence by sentence.
+
+The first part is "Confira-se a literalidade da norma constitucional distrital , inclusive com vedação expressa à delegação de atribuições entre os Poderes :". Here, "norma constitucional distrital" refers to a legal provision, so that's legislacao. "Poderes" might be a bit tricky. Since it's about the powers (Executivo and Legislativo), maybe "Poderes" is part of the legislation, but I need to check if it's a specific entity. Wait, the user's example output shows "Poderes" as part of the legislacao. Let me see the example output they provided. Oh, in the example, "Poderes" is marked as legislacao. So I should follow that.
+
+Next, "TÍTULO III DA ORGANIZAÇÃO DOS PODERES CAPÍTULO I DAS DISPOSIÇÕES GERAIS Art . 53 . São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes ."
+
+Here, "TÍTULO III DA ORGANIZAÇÃO DOS PODERES" is part of the legislation, so "ORGANIZAÇÃO DOS PODERES" would be legislacao. "Art. 53" is an article, so that's part of the legislation. "Executivo" and "Legislativo" are the branches of government, which are part of the organization, but maybe they are considered as part of the legislation. Wait, the user's example output shows "Executivo" and "Legislativo" as organizacao. Let me check the example again. Oh, in the example, "Executivo" and "Legislativo" are marked as organizacao. So I need to mark those as organizacao.
+
+Also, "Distrito Federal" is a local entity, so that should be local. "§ 1º" is part of the legislation. "vedação expressa" is part of the legislation. 
+
+Wait, the user's example output for the input text is:
+
+Confira-se a literalidade da <span class="legislacao">norma constitucional distrital</span> , inclusive com <span class="legislacao">vedação expressa</span> à delegação de atribuições entre os <span class="organizacao">Poderes</span> : <span class="legislacao">TÍTULO III DA ORGANIZAÇÃO DOS PODERES</span> <span class="legislacao">CAPÍTULO I DAS DISPOSIÇÕES GERAIS</span> <span class="legislacao">Art . 53</span> . <span class="organizacao">São Poderes do Distrito Federal</span> , independentes e harmônicos entre si , <span class="organizacao">o Executivo</span> e <span class="organizacao">o Legislativo</span> . <span class="legislacao">§ 1º</span> É <span class="legislacao">vedada</span> a delegação de atribuições entre os <span class="organizacao">Poderes</span> .
+
+So, in the example, "norma constitucional distrital" is legislacao, "vedação expressa" is legislacao, "Poderes" is organizacao, "TÍTULO III DA ORGANIZAÇÃO DOS PODERES" is legislacao, "CAPÍTULO I DAS DISPOSIÇÕES GERAIS" is legislacao, "Art. 53" is legislacao, "São Poderes do Distrito Federal" is organizacao, "Executivo" and "Legislativo" are organizacao, "§ 1º" is legislacao, "vedada" is legislacao, and "Poderes" again is organizacao.
+
+So following that example, I need to apply the same logic. Let me go through the input text again.
+
+Original text: "Confira-se a literalidade da norma constitucional distrital , inclusive com vedação expressa à delegação de atribuições entre os Poderes : TÍTULO III DA ORGANIZAÇÃO DOS PODERES CAPÍTULO I DAS DISPOSIÇÕES GERAIS Art . 53 . São Poderes do Distrito Federal , independentes e harmônicos entre si , o Executivo e o Legislativo . § 1º É vedada a delegação de atribuições entre os Poderes ."
+
+Breaking it down:
+
+- "norma constitucional distrital" → legislacao
+- "vedação expressa" → legislacao
+- "Poderes" → organizacao
+- "TÍTULO III DA ORGANIZAÇÃO DOS PODERES" → legislacao
+- "CAPÍTULO I DAS DISPOSIÇÕES GERAIS" → legislacao
+- "Art . 53" → legislacao
+- "São Poderes do Distrito Federal" → organizacao (since "Poderes" is part of the organization)
+- "Executivo" → organizacao
+- "Legislativo" → organizacao
+- "§ 1º" → legislacao
+- "vedada" → legislacao
+- "Poderes" → organizacao again
+
+Also, "Distrito Federal" is a local entity, so that should be local. Wait, in the example, "Distrito Federal" is part of "São Poderes do Distrito Federal" and marked as organizacao. Wait, in the example, "São Poderes do Distrito Federal" is marked as organizacao. But "Distrito Federal" is a local entity. Hmm, maybe in the example, "Distrito Federal" is part of the organization. Wait, the example shows "São Poderes do Distrito Federal" as organizacao. So perhaps "Distrito Federal" is considered part of the organization here. But according to the guidelines, "local" is for locations. So maybe "Distrito Federal" is a local entity. Wait, but in the example, it's not marked as local. Let me check the example again.
+
+In the example, the user's output for "São Poderes do Distrito Federal" is marked as organizacao. So "Distrito Federal" is part of the organization. But according to the guidelines, "local" is for locations. So maybe "Distrito Federal" is a local entity. However, in the example, it's not marked as local. Wait, maybe the example is incorrect, or perhaps "Distrito Federal" is considered part of the organization. Alternatively, maybe the user's example is using "organizacao" for the entire phrase "São Poderes do Distrito Federal", including "Distrito Federal" as part of the organization. But that might not be accurate. However, since the example shows that, I should follow that.
+
+So, in the input text, "Distrito Federal" is part of "São Poderes do Distrito Federal" and is marked as organizacao. Therefore, I should mark "Distrito Federal" as organizacao. But according to the guidelines, "local" is for locations. However, the example doesn't mark "Distrito Federal" as local. So perhaps in this context, "Distrito Federal" is considered part of the organization. Therefore, I'll follow the example and mark "Distrito Federal" as organizacao.
+
+So, putting it all together:
+
+- "norma constitucional distrital" → legislacao
+- "vedação expressa" → legislacao
+- "Poderes" → organizacao
+- "TÍTULO III DA ORGANIZAÇÃO DOS PODERES" → legislacao
+- "CAPÍTULO I DAS DISPOSIÇÕES GERAIS" → legislacao
+- "Art . 53" → legislacao
+- "São Poderes do Distrito Federal" → organizacao
+- "Executivo" → organizacao
+- "Legislativo" → organizacao
+- "§ 1º" → legislacao
+- "vedada" → legislacao
+- "Poderes" → organizacao
+
+Also, "Distrito Federal" is part of "São Poderes do Distrito Federal" and marked as organizacao.
+
+So the final HTML would have all these spans with the appropriate classes. I need to make sure that each entity is correctly marked. Let me check again for any other entities. There are no mentions of pessoa, tempo, or local in the text. So those are not marked. The example output also doesn't have any of those, so that's correct.
+
+Therefore, the final HTML should have the spans as per the example, with the classes as specified.
+</think>
+
+Confira-se a literalidade da <span class="legislacao">norma constitucional distrital</span> , inclusive com <span class="legislacao">vedação expressa</span> à delegação de atribuições entre os <span class="organizacao">Poderes</span> : <span class="legislacao">TÍTULO III DA ORGANIZAÇÃO DOS PODERES</span> <span class="legislacao">CAPÍTULO I DAS DISPOSIÇÕES GERAIS</span> <span class="legislacao">Art . 53</span> . <span class="organizacao">São Poderes do Distrito Federal</span> , independentes e harmônicos entre si , <span class="organizacao">o Executivo</span> e <span class="organizacao">o Legislativo</span> . <span class="legislacao">§ 1º</span> É <span class="legislacao">vedada</span> a delegação de atribuições entre os <span class="organizacao">Poderes</span> .

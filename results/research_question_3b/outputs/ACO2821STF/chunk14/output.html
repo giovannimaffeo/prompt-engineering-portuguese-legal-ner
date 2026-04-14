@@ -1,0 +1,47 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . Supremo Tribunal Federal 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO V O T O O Senhor Ministro Ricardo Lewandowski ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma ."
+
+Now, I need to identify each entity according to the definitions. Let's go step by step.
+
+1. "Supremo Tribunal Federal" – This is an organization. It's a formal entity, a court. So, I'll mark it as <span class="organizacao">.
+
+2. "16/03/2018" – This is a date, so it's a tempo entity. Mark as <span class="tempo">.
+
+3. "PLENÁRIO" – This refers to the Plenary of the Supreme Court, which is part of the organization. But since it's part of the name of the organization, maybe it's part of the "Supremo Tribunal Federal" already. Wait, the original text has "Supremo Tribunal Federal 16/03/2018 PLENÁRIO..." So "PLENÁRIO" is part of the organization's name? Or is it a separate entity? Hmm. The PLENÁRIO is part of the organization's structure, so maybe it's part of the organization. But the user's example output shows "Supremo Tribunal Federal" as the organization. So maybe "PLENÁRIO" is not marked here. Wait, the example output in the user's message shows that "Supremo Tribunal Federal" is marked as organizacao. So perhaps "PLENÁRIO" is not marked as a separate entity here. Let me check the example output again. The user's example output shows "Supremo Tribunal Federal" as organizacao. So maybe "PLENÁRIO" is not marked. But maybe "PLENÁRIO" is part of the organization's name. Wait, the original text has "Supremo Tribunal Federal 16/03/2018 PLENÁRIO..." So the PLENÁRIO is part of the same entity? Or is it a separate entity? Maybe not. The PLENÁRIO is part of the organization's structure, so perhaps it's part of the organization's name. But the user's example output only marks "Supremo Tribunal Federal" as organizacao. So I'll follow that.
+
+4. "A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821" – This seems like a case number. The "Ação Cível Originária 2.821" is a legal case, which might be part of the jurisprudencia or legislacao? Wait, the case number is part of a legal proceeding, so maybe it's not an entity. The user's example output doesn't mark these. So perhaps these are not entities. The "Ação Cível" is a type of legal action, but not an entity. The number 2.821 is a case number, which might be part of a jurisprudencia reference, but the example output doesn't mark it. So maybe these are not marked.
+
+5. "MATO GROSSO" – This is a state in Brazil, so it's a local. Mark as <span class="local">.
+
+6. "Senhor Ministro Ricardo Lewandowski ( Relator )" – "Ricardo Lewandowski" is a person, so mark as <span class="pessoa">. The "Senhor Ministro" is a title, not a person, so not marked. The "( Relator )" is a role, not an entity.
+
+7. "14536378" – This is a number, but not a date or time. The example output doesn't mark it, so maybe it's not an entity.
+
+8. "http : //www.stf.jus.br/portal/autenticacao/" – This is a URL, but the user's example output doesn't mark it. The user's example output shows that the URL is left as is. So perhaps URLs are not considered entities here.
+
+Putting it all together:
+
+- "Supremo Tribunal Federal" → organizacao
+- "16/03/2018" → tempo
+- "MATO GROSSO" → local
+- "Ricardo Lewandowski" → pessoa
+
+Other parts like the URL, case numbers, etc., are not marked. The example output from the user shows that the URL is left as is, and the case number 2.821 is not marked. So I'll follow that.
+
+Now, I need to structure the HTML with the appropriate <span> tags. Let me check each part again to ensure I didn't miss any entities.
+
+Wait, the "Ação Cível ORIGINÁRIA 2.821" – the "Ação Cível" is a type of legal action, but not an entity. The number 2.821 is a case number, which might be part of a jurisprudencia reference, but the example output doesn't mark it. So I'll leave it as is.
+
+So the final HTML should have:
+
+- "Supremo Tribunal Federal" as organizacao
+- "16/03/2018" as tempo
+- "MATO GROSSO" as local
+- "Ricardo Lewandowski" as pessoa
+
+Other parts remain unchanged. Let me write the HTML accordingly.
+</think>
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536378 . <span class="organizacao">Supremo Tribunal Federal</span> <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> V O T O O <span class="pessoa">Senhor Ministro Ricardo Lewandowski</span> ( Relator ) : Bem examinados os autos , verifico que a decisão agravada não merece reforma .

@@ -1,0 +1,41 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities to look for are pessoa, organizacao, tempo, local, legislação, and jurisprudência. Each should have a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify which parts fit each category. Let me go through the text step by step.
+
+Starting with the first sentence: "71 , § 1º , inc. IV , e 100 , inc. X , da Lei Orgânica do Distrito Federal , estão maculadas por vício formal , eis que a competência é exclusiva do Chefe do Poder Executivo , por força da `` reserva de administração '' ."
+
+Here, "Lei Orgânica do Distrito Federal" is a law, so that's legislação. The "Distrito Federal" is a local entity. "Chefe do Poder Executivo" is a title, not a specific person, so not pessoa. The "reserva de administração" is a legal term but not an entity, so no tag.
+
+Next part: "Conquanto as leis impugnadas tenham sido editadas com o salutar objetivo de incrementar o transporte público coletivo , acabou por promover ingerência indevida no funcionamento da Administração , com o inequívoco aumento de despesas ."
+
+No specific entities here except "Administração" which is a generic term, not an organization. So nothing here.
+
+Third sentence: "Ação direta de inconstitucionalidade julgada procedente . ( Acórdão n.1049279 , 20160020153586ADI , Relator : MARIOZAM BELMIRO CONSELHO ESPECIAL , Data de Julgamento : 19/09/2017 , Publicado no DJE : 28/09/2017 . Pág. : 27-29 ) ( grifo nosso ) 5 ."
+
+Here, "Acórdão n.1049279" and "20160020153586ADI" are jurisprudência. The "Data de Julgamento" is a date, so tempo. "MARIOZAM BELMIRO CONSELHO ESPECIAL" is a person's name, so pessoa. "Distrito Federal" was already marked as local. "Lei Orgânica do Distrito Federal" is legislação.
+
+Wait, in the first part, "Distrito Federal" is a local, so I need to mark that. Also, "Lei Orgânica do Distrito Federal" is legislação. The "Chefe do Poder Executivo" is a title, not a person. The "reserva de administração" is a legal term but not an entity.
+
+In the jurisprudência part, "Acórdão n.1049279" and "20160020153586ADI" are identifiers for a judicial decision, so they should be marked as jurisprudência. The date "19/09/2017" is tempo. The "Relator" is a person's name, MARIOZAM BELMIRO CONSELHO ESPECIAL. Also, "DJE" is an abbreviation for Diário da Justiça Eletrônico, which is an organization, but the user's guidelines say to mark only specific entities. Wait, "DJE" isn't a named organization here; it's an abbreviation for a publication. The user's definition for organizacao includes "unidades do sistema de justiça", but "DJE" is a publication, so maybe it's not an organization. So perhaps not mark that. The "Distrito Federal" is a local, so that's already covered.
+
+Let me check each part again.
+
+In the first sentence: "Lei Orgânica do Distrito Federal" is legislação. "Distrito Federal" is local. "Chefe do Poder Executivo" is a title, not a person. "reserva de administração" is a legal term, not an entity.
+
+In the third sentence: "Acórdão n.1049279" is jurisprudência. "20160020153586ADI" is also jurisprudência. "Data de Julgamento: 19/09/2017" is tempo. "Relator: MARIOZAM BELMIRO CONSELHO ESPECIAL" is pessoa. The "DJE" is an abbreviation, but the user's guidelines say not to mark organizations unless they are explicitly named. Since "DJE" is an abbreviation for a publication, maybe it's not an organization here. The "Pág.: 27-29" is not a date, so not tempo. The "grifo nosso" is a note, not an entity.
+
+So putting it all together, the HTML should have:
+
+- "Lei Orgânica do Distrito Federal" as legislação.
+- "Distrito Federal" as local.
+- "Acórdão n.1049279" and "20160020153586ADI" as jurisprudência.
+- "19/09/2017" as tempo.
+- "MARIOZAM BELMIRO CONSELHO ESPECIAL" as pessoa.
+
+I need to ensure that all these are properly wrapped in <span> tags with the correct classes. Also, check for any other entities I might have missed. Let me go through the text again to confirm.
+
+Yes, that's all. Now, construct the HTML accordingly.
+</think>
+
+<span class="legislacao">71</span> , § <span class="legislacao">1º</span> , inc. IV , e <span class="legislacao">100</span> , inc. X , da <span class="legislacao">Lei Orgânica do Distrito Federal</span> , estão maculadas por vício formal , eis que a competência é exclusiva do Chefe do Poder Executivo , por força da `` reserva de administração '' . 2 . Conquanto as leis impugnadas tenham sido editadas com o salutar objetivo de incrementar o transporte público coletivo , acabou por promover ingerência indevida no funcionamento da Administração , com o inequívoco aumento de despesas . 3 . Ação direta de inconstitucionalidade julgada procedente . ( <span class="jurisprudencia">Acórdão n.1049279</span> , <span class="jurisprudencia">20160020153586ADI</span> , Relator : <span class="pessoa">MARIOZAM BELMIRO CONSELHO ESPECIAL</span> , Data de Julgamento : <span class="tempo">19/09/2017</span> , Publicado no DJE : <span class="tempo">28/09/2017</span> . Pág. : 27-29 ) ( grifo nosso ) 5 .

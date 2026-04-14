@@ -1,0 +1,37 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text step by step.
+
+The first part is "Em 02/03/2018 17:26:32 .". The date "02/03/2018" is a tempo entity. The time "17:26:32" is mentioned, but according to the guidelines, only explicit dates should be marked as tempo. The example shows that horários isolados like "17:26:32" shouldn't be marked. So I'll mark "02/03/2018" as tempo, but not the time.
+
+Next, "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 decisão da Instância a quo .". The URL isn't a local, so no tag. "Decisão da Instância a quo" might be jurisprudencia, but "Instância a quo" is a legal term referring to the lower court, which is a generic term. The example says that generic terms like "súmula" or "acórdão" without specific references shouldn't be marked. So "decisão da Instância a quo" might not be marked. Wait, but "decisão" is a generic term. The example mentions that only specific decisions like "REsp n. 1694984/MS" should be marked. So maybe "decisão da Instância a quo" isn't marked.
+
+Then, "Irresignada , a Defensoria Pública da União opôs Embargos de Declaração .". "Defensoria Pública da União" is an organization. So that's <span class="organizacao">Defensoria Pública da União</span>.
+
+"Os Embargos foram opostos sob o fundamento de suposta omissão do Acórdão em relação à alegada inconstitucionalidade do Decreto de Indulto , por ofensa a princípios constitucionais .". "Acórdão" is a generic term, but the example says that if it's a specific decision, it should be marked. However, here it's just "Acórdão" without a specific identifier, so it's not marked. "Decreto de Indulto" is a legislative act? Wait, "Decreto" is a type of legislation. The example mentions "Decreto-Lei no 5.452" as legislation. So "Decreto de Indulto" would be a legislation, so <span class="legislacao">Decreto de Indulto</span>.
+
+"Consoante Decisão em 9 de novembro de 2017 , este Ministro Relator , monocraticamente , negou seguimento aos Embargos de Declaração , por serem manifestamente incabíveis , uma vez que os pontos atacados estavam claramente tratados no Acórdão vergastado .". "9 de novembro de 2017" is a tempo entity. "Ministro Relator" is a title, not a person, so not marked. "Acórdão vergastado" is a generic term, so not marked.
+
+"Persistindo em seu desiderato , ao ser intimada , em 20 de novembro de 2017 ( fls .". "20 de novembro de 2017" is another tempo entity.
+
+Now, compiling all the entities:
+
+- "02/03/2018" → tempo
+- "Defensoria Pública da União" → organizacao
+- "Decreto de Indulto" → legislacao
+- "9 de novembro de 2017" → tempo
+- "20 de novembro de 2017" → tempo
+
+Wait, the example in the guidelines shows that "Decreto-Lei no 5.452" is marked as legislacao. So "Decreto de Indulto" would be a legislation, so marked as legislacao.
+
+Also, "Decisão" in "Consoante Decisão em 9..." is a generic term, so not marked. "Acórdão" is a generic term, so not marked.
+
+So the final HTML should have the spans for those entities. Let me check again for any missed entities.
+
+Another part: "Código Verificador 3044c7190e4" – the code is not a known entity type, so no tag. "Instância a quo" is a legal term but not a specific entity, so not marked.
+
+So the output should have the three tempo entities, the organizacao, and the legislacao. Let me structure the HTML accordingly.
+</think>
+
+Em <span class="tempo">02/03/2018</span> . Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 decisão da Instância a quo . Irresignada , a <span class="organizacao">Defensoria Pública da União</span> opôs Embargos de Declaração . Os Embargos foram opostos sob o fundamento de suposta omissão do Acórdão em relação à alegada inconstitucionalidade do <span class="legislacao">Decreto de Indulto</span> , por ofensa a princípios constitucionais . Consoante Decisão em <span class="tempo">9 de novembro de 2017</span> , este Ministro Relator , monocraticamente , negou seguimento aos Embargos de Declaração , por serem manifestamente incabíveis , uma vez que os pontos atacados estavam claramente tratados no Acórdão vergastado . Persistindo em seu desiderato , ao ser intimada , em <span class="tempo">20 de novembro de 2017</span> ( fls .

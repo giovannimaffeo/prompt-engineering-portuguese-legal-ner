@@ -1,0 +1,53 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text and identify which parts correspond to each entity type. Let's look at the text:
+
+"RESERVA DE VAGAS PARA ESTÁGIO E DECORRENTES DE CONTRATOS DE PRESTAÇÃO DE SERVIÇO . INICIATIVA PARLAMENTAR . VÍCIO FORMAL . COMPETÊNCIA PRIVATIVA DO GOVERNADOR . OFENSA AOS ARTIGOS 53 , CAPUT , 71 , § 1º , I , II E IV E 100 , VI E X , DA LEI ORGÂNICA DO DISTRITO FEDERAL . DECLARAÇÃO DE INCONSTITUCIONALIDADE COM EFEITOS EX NUNC . 1 ."
+
+Starting with "LEI ORGÂNICA DO DISTRITO FEDERAL" – that's a law, so "legislacao". The "DISTRITO FEDERAL" is a local entity. Then "ARTIGOS 53, CAPUT, 71, § 1º, I, II E IV E 100, VI E X" refers to articles in the law, so those are part of the legislacao. 
+
+"INICIATIVA PARLAMENTAR" might refer to a legislative initiative, but the user didn't mention 'parlamento' as an entity type. Wait, the entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. So "INICIATIVA PARLAMENTAR" is a legislative action, but not one of the specified types. Maybe "PARLAMENTAR" is a person? But it's part of "INICIATIVA PARLAMENTAR", which is a parliamentary initiative. Since the user didn't specify 'parlamento' as an entity, perhaps it's not marked. 
+
+"GOVERNADOR" is a person, so that's "pessoa". "VÍCIO FORMAL" is a legal term, but not one of the specified entities. "DECLARAÇÃO DE INCONSTITUCIONALIDADE COM EFEITOS EX NUNC" is a legal declaration, but again, not one of the entity types. 
+
+So, the main entities are:
+- "LEI ORGÂNICA DO DISTRITO FEDERAL" → legislacao
+- "DISTRITO FEDERAL" → local
+- "GOVERNADOR" → pessoa
+
+Other parts like "ARTIGOS 53, CAPUT..." are part of the legislacao, so they should be marked as well. Also, "EX NUNC" is a legal term, but not an entity type. 
+
+Wait, the user's example output might have "LEI ORGÂNICA DO DISTRITO FEDERAL" as legislacao, and "DISTRITO FEDERAL" as local. The "GOVERNADOR" is a pessoa. 
+
+So, I'll need to wrap those parts with the appropriate classes. Let me check each part again.
+
+"RESERVA DE VAGAS PARA ESTÁGIO E DECORRENTES DE CONTRATOS DE PRESTAÇÃO DE SERVIÇO" – no entities here. 
+
+"INICIATIVA PARLAMENTAR" – no entity type. 
+
+"VÍCIO FORMAL" – no. 
+
+"COMPETÊNCIA PRIVATIVA DO GOVERNADOR" – "GOVERNADOR" is pessoa. 
+
+"OFENSA AOS ARTIGOS 53 , CAPUT , 71 , § 1º , I , II E IV E 100 , VI E X , DA LEI ORGÂNICA DO DISTRITO FEDERAL" – "LEI ORGÂNICA DO DISTRITO FEDERAL" is legislacao, and "DISTRITO FEDERAL" is local. 
+
+"DECLARAÇÃO DE INCONSTITUCIONALIDADE COM EFEITOS EX NUNC" – no entity. 
+
+"1 ." – no. 
+
+So, the entities are:
+- "GOVERNADOR" → pessoa
+- "LEI ORGÂNICA DO DISTRITO FEDERAL" → legislacao
+- "DISTRITO FEDERAL" → local
+
+Wait, but "LEI ORGÂNICA DO DISTRITO FEDERAL" is a specific law, so it's legislacao. The "DISTRITO FEDERAL" is a local entity. 
+
+So, in the text, I need to wrap "GOVERNADOR" with <span class="pessoa">, "LEI ORGÂNICA DO DISTRITO FEDERAL" with <span class="legislacao">, and "DISTRITO FEDERAL" with <span class="local">. 
+
+Let me check if there are any other entities. "ARTIGOS 53, CAPUT..." are part of the legislacao, so maybe they should be included as part of the legislacao entity. But the user's example might not include them. Wait, the user's example output might have "LEI ORGÂNICA DO DISTRITO FEDERAL" as legislacao, and "DISTRITO FEDERAL" as local. 
+
+So, the final HTML should have those parts marked. Let me structure the text accordingly.
+</think>
+
+RESERVA DE VAGAS PARA ESTÁGIO E DECORRENTES DE CONTRATOS DE PRESTAÇÃO DE SERVIÇO . INICIATIVA PARLAMENTAR . VÍCIO FORMAL . COMPETÊNCIA PRIVATIVA DO <span class="pessoa">GOVERNADOR</span> . OFENSA AOS ARTIGOS 53 , CAPUT , 71 , § 1º , I , II E IV E 100 , VI E X , DA <span class="legislacao">LEI ORGÂNICA DO <span class="local">DISTRITO FEDERAL</span></span> . DECLARAÇÃO DE INCONSTITUCIONALIDADE COM EFEITOS EX NUNC . 1 .

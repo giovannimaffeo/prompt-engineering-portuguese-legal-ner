@@ -1,0 +1,85 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities to identify are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to go through the input text carefully. The text is in Portuguese and discusses legal matters related to public servants' retirement. Let me break it down sentence by sentence.
+
+Starting with the first sentence: "SERVIDOR PÚBLICO APOSENTADO COM FUNDAMENTO NO ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005 . PARIDADE ENTRE SERVIDORES INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO ."
+
+Looking for entities here. "SERVIDOR PÚBLICO" is a generic term, not a specific name, so not pessoa. "ARTIGO 3º" refers to a legislative article. "EMENDA CONSTITUCIONAL 47/2005" is a constitutional amendment, which is legislation. "CAPUT" and "PARÁGRAFO ÚNICO" are parts of legal text, so they should be part of the legislation entity. Wait, the user's guidelines say to mark the entire legislative reference, like "Artigo 3º, caput e parágrafo único da Emenda Constitucional n.º 47/2005". So here, "EMENDA CONSTITUCIONAL 47/2005" is the legislation. The "ARTIGO 3º" is part of that legislation, so it should be included. Also, "CAPUT" and "PARÁGRAFO ÚNICO" are parts of the article, so they might be part of the legislation. But the user's example shows that "art. 71 da Lei 8.666/93" is marked as legislation, so the whole reference is included. Therefore, "ARTIGO 3º, CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" should be marked as legislacao.
+
+Next sentence: "1 . A paridade entre ativos e inativos , atualmente ausente no texto constitucional , deve ser assegurada ao servidor que teve sua aposentadoria concedida com fundamento no artigo 3º , caput e parágrafo único , da Emenda Constitucional n . 47 , de 06/07/2005 ."
+
+Here, "Emenda Constitucional n . 47" is part of the legislation, but the full reference is "Emenda Constitucional n.º 47/2005" from the first sentence. The date "06/07/2005" is a tempo entity. Also, "Distrito Federal" in the next sentence is a local.
+
+Second sentence: "2 . Aos servidores públicos do Distrito Federal , cuja aposentadoria esteja fundamentada nas disposições contidas no artigo 3º , caput e parágrafo único , da Emenda Constitucional n.º 47/2005 , deve ser assegurada a transformação da parcela relativa à complementação salarial temporária prevista no artigo 25 da Lei n.º 4.075/2007 , ante a paridade de vencimentos ."
+
+"Distrito Federal" is a local. "Emenda Constitucional n.º 47/2005" is legislacao. "Lei n.º 4.075/2007" is also legislacao. "artigo 25" is part of that legislation. The date "06/07/2005" is tempo. "temporária" is part of the legislation reference, but the user's guidelines say to mark the entire legislative reference. Wait, in the input text, there's "artigo 25 da Lei n.º 4.075/2007". So "Lei n.º 4.075/2007" is legislacao, and "artigo 25" is part of it. So the full reference would be "artigo 25 da Lei n.º 4.075/2007", which should be marked as legislacao.
+
+Third sentence: "3 ."
+
+No entities here.
+
+Now, I need to apply the tags accordingly. Let me check each part again to ensure I'm not missing any entities.
+
+First sentence: "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" becomes <span class="legislacao">ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005</span>. Wait, but the user's example in the guidelines shows "art. 71 da Lei 8.666/93" as legislacao. So the entire reference is included, including the article and the law. So here, "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" is the full reference, so it should be marked as legislacao.
+
+In the second sentence, "Emenda Constitucional n.º 47/2005" is the same as before, so it's legislacao. "06/07/2005" is tempo. "Distrito Federal" is local. "Lei n.º 4.075/2007" is legislacao, and "artigo 25" is part of that, so the full reference "artigo 25 da Lei n.º 4.075/2007" is legislacao.
+
+Wait, the user's guidelines say that only the full legislative references should be marked. So "artigo 25 da Lei n.º 4.075/2007" is part of the legislation, so the entire phrase should be marked. Similarly, "artigo 3º , caput e parágrafo único , da Emenda Constitucional n . 47 , de 06/07/2005" is a full reference, so it should be legislacao.
+
+Also, the date "06/07/2005" is tempo. The "Distrito Federal" is local.
+
+So putting it all together, the HTML should have the following spans:
+
+- "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" as legislacao.
+- "06/07/2005" as tempo.
+- "Distrito Federal" as local.
+- "Emenda Constitucional n.º 47/2005" as legislacao.
+- "Lei n.º 4.075/2007" as legislacao.
+- "artigo 25 da Lei n.º 4.075/2007" as legislacao.
+
+Wait, but in the second sentence, the reference is "da Emenda Constitucional n.º 47/2005" and "artigo 25 da Lei n.º 4.075/2007". So both of these should be marked as legislacao.
+
+Also, the date "06/07/2005" is in the same sentence as "Emenda Constitucional n.º 47/2005", which is part of the legislation. So the date is a tempo entity.
+
+Now, I need to make sure that all these are correctly marked. Let me check the input text again.
+
+Original text:
+
+"SERVIDOR PÚBLICO APOSENTADO COM FUNDAMENTO NO ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005 . PARIDADE ENTRE SERVIDORES INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 . A paridade entre ativos e inativos , atualmente ausente no texto constitucional , deve ser assegurada ao servidor que teve sua aposentadoria concedida com fundamento no artigo 3º , caput e parágrafo único , da Emenda Constitucional n . 47 , de 06/07/2005 . 2 . Aos servidores públicos do Distrito Federal , cuja aposentadoria esteja fundamentada nas disposições contidas no artigo 3º , caput e parágrafo único , da Emenda Constitucional n.º 47/2005 , deve ser assegurada a transformação da parcela relativa à complementação salarial temporária prevista no artigo 25 da Lei n.º 4.075/2007 , ante a paridade de vencimentos . 3 ."
+
+So in the first sentence, "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" is the legislacao. Then in the second sentence, "Emenda Constitucional n . 47 , de 06/07/2005" is part of the same legislation reference. The date "06/07/2005" is tempo. "Distrito Federal" is local. "artigo 25 da Lei n.º 4.075/2007" is legislacao.
+
+Wait, the user's guidelines say that the entire legislative reference should be marked. So "artigo 3º , caput e parágrafo único , da Emenda Constitucional n . 47 , de 06/07/2005" is a full reference, but the date "06/07/2005" is part of the legislation? No, the date is a tempo entity. The "Emenda Constitucional n.º 47/2005" is the legislation. The date "06/07/2005" is when the amendment was enacted, so it's a tempo entity. So the legislation is "Emenda Constitucional n.º 47/2005", and the date is tempo.
+
+Wait, the user's example in the guidelines shows that "art. 71 da Lei 8.666/93" is marked as legislacao, so the entire reference is included. So in the input text, the first part is "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" which is legislacao. Then in the second sentence, "Emenda Constitucional n . 47 , de 06/07/2005" is the same legislation, but the date is a tempo. So the "Emenda Constitucional n.º 47/2005" is legislacao, and "06/07/2005" is tempo. Also, "artigo 25 da Lei n.º 4.075/2007" is legislacao.
+
+So the HTML should have:
+
+- "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" as legislacao.
+- "06/07/2005" as tempo.
+- "Distrito Federal" as local.
+- "Emenda Constitucional n.º 47/2005" as legislacao.
+- "artigo 25 da Lei n.º 4.075/2007" as legislacao.
+
+Wait, but in the first sentence, the legislation is "Emenda Constitucional 47/2005", and in the second sentence, it's "Emenda Constitucional n.º 47/2005". The user's guidelines say to mark the entire legislative reference, so the full name including the number and the year should be included. So "Emenda Constitucional n.º 47/2005" is the correct full reference, which should be marked as legislacao.
+
+Therefore, the HTML would have:
+
+- "ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005" as legislacao.
+- "06/07/2005" as tempo.
+- "Distrito Federal" as local.
+- "Emenda Constitucional n.º 47/2005" as legislacao.
+- "artigo 25 da Lei n.º 4.075/2007" as legislacao.
+
+Now, I need to make sure that the dates are properly marked. The user's guidelines say that dates in formats like "DD/MM/YYYY" should be marked as tempo. Here, "06/07/2005" is in the format "DD/MM/YYYY", so it's tempo.
+
+Also, the "Lei n.º 4.075/2007" is legislation, and "artigo 25" is part of that, so the full reference "artigo 25 da Lei n.º 4.075/2007" is legislacao.
+
+Putting all together, the final HTML should have the appropriate spans. Let me check if there are any other entities. The text mentions "servidores públicos" which is a generic term, not a specific entity. "Distrito Federal" is local. "Lei n.º 4.075/2007" is legislacao. "Emenda Constitucional n.º 47/2005" is legislacao. The date "06/07/2005" is tempo. The rest of the text doesn't have any other entities.
+
+So the final output should be the input text with these spans applied.
+</think>
+
+<h1>Texto Anotado</h1>
+<p><span class="legislacao">ARTIGO 3º , CAPUT E PARÁGRAFO ÚNICO DA EMENDA CONSTITUCIONAL 47/2005</span> . PARIDADE ENTRE SERVIDORES INATIVOS E ATIVOS . RECONHECIMENTO DO DIREITO . 1 . A paridade entre ativos e inativos , atualmente ausente no texto constitucional , deve ser assegurada ao servidor que teve sua aposentadoria concedida com fundamento no <span class="legislacao">artigo 3º , caput e parágrafo único , da Emenda Constitucional n . 47 , de 06/07/2005</span> . 2 . Aos servidores públicos do <span class="local">Distrito Federal</span> , cuja aposentadoria esteja fundamentada nas disposições contidas no <span class="legislacao">artigo 3º , caput e parágrafo único , da Emenda Constitucional n.º 47/2005</span> , deve ser assegurada a transformação da parcela relativa à complementação salarial temporária prevista no <span class="legislacao">artigo 25 da Lei n.º 4.075/2007</span> , ante a paridade de vencimentos . 3 .</p>

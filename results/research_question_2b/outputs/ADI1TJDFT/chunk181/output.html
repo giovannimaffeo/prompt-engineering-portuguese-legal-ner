@@ -1,0 +1,42 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is about an Action Direta de Inconstitucionalidade (ADI) with a number, a decision, and some legal references. 
+
+Looking for entities:
+
+1. "ADI 20170020161362ADI" – ADI is a legal term, but the user hasn't specified it as an entity type. The number might be a case number, but the types are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So maybe the ADI is part of the jurisprudencia or legislation? Wait, the example output shows "ADI" as part of the text without any tag. Let me check the example output again.
+
+In the sample output provided by the user, the ADI is not tagged. So perhaps ADI is not one of the entities to mark. The user's example output has "ADI" as is. So I need to focus on the other entities.
+
+Next, "Lei Distrital n . 5.815 , de 3 de abril de 2017" – "Lei Distrital" is a law, so that's legislacao. The number 5.815 is the law's number, but the user's example output has "Lei Distrital n . 5.815" as "legislacao". Wait, in the sample output, the user has "Lei Distrital n . 5.815" as "legislacao". So the entire "Lei Distrital n . 5.815" is marked as legislacao. Also, the date "3 de abril de 2017" is a tempo entity. 
+
+Then, "ex tunc" and "erga omnes" are legal terms, but the user hasn't specified them as entities. The example output includes them as is. 
+
+" Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – this seems like a code, but not one of the specified entities. 
+
+"GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – "GABINETE DO DESEMBARGADOR" is an organization, so that's organizacao. The name "SILVANIO BARBOSA DOS SANTOS" is a person, so pessoa. 
+
+"46" – this is a number, but not one of the entities. 
+
+So, breaking down the text:
+
+- "Lei Distrital n . 5.815 , de 3 de abril de 2017" → "Lei Distrital n . 5.815" is legislacao, "3 de abril de 2017" is tempo.
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" → "GABINETE DO DESEMBARGADOR" is organizacao, "SILVANIO BARBOSA DOS SANTOS" is pessoa.
+- "ADI 20170020161362ADI" – no tag.
+- "ex tunc" and "erga omnes" – no tag.
+- "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – no tag.
+- "46" – no tag.
+
+Now, applying the tags accordingly. Let me check the example output again. The user's sample output has:
+
+"Ação Direta de Inconstitucionalidade 20170020161362ADI D E C I S Ã O Julgar procedente o pedido e declarar a inconstitucionalidade formal da <span class="legislacao">Lei Distrital n . 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , com efeitos `` ex tunc '' e eficácia `` erga omnes '' . Maioria . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 46"
+
+So, the "Lei Distrital n . 5.815" is legislacao, "3 de abril de 2017" is tempo, "GABINETE DO DESEMBARGADOR" is organizacao, and "SILVANIO BARBOSA DOS SANTOS" is pessoa. The rest remains as is.
+
+Therefore, I need to apply the same logic. Let me make sure I don't miss any entities. The "ADI" in the beginning is part of the case number, but since it's not one of the specified types, it's left as is. The "ex tunc" and "erga omnes" are legal terms but not entities, so they remain. The "Código de Verificação" is a code, not an entity. The "46" is a number, not an entity.
+
+So, the final HTML should have the spans for legislacao, tempo, organizacao, and pessoa as in the example. The rest of the text remains unchanged.
+</think>
+
+Ação Direta de Inconstitucionalidade 20170020161362ADI D E C I S Ã O Julgar procedente o pedido e declarar a inconstitucionalidade formal da <span class="legislacao">Lei Distrital n . 5.815</span> , de <span class="tempo">3 de abril de 2017</span> , com efeitos `` ex tunc '' e eficácia `` erga omnes '' . Maioria . Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 46

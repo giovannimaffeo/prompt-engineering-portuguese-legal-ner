@@ -1,0 +1,21 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. The input is: "O Senhor Desembargador DIAULAS COSTA RIBEIRO - Vogal Com o relator O Senhor Desembargador EUSTÁQUIO DE CASTRO - Vogal Com o relator D E C I S Ã O Recurso de Apelação conhecido e não provido . Unânime ."
+
+Let me break it down. The first part mentions "Senhor Desembargador DIAULAS COSTA RIBEIRO". "Senhor Desembargador" is a title, so the name "DIAULAS COSTA RIBEIRO" is a person. So I should mark that as a pessoa. Then there's "Vogal Com o relator" which might be part of a title or role, but not an entity. Next, "Senhor Desembargador EUSTÁQUIO DE CASTRO" is another person, so that's another pessoa. 
+
+Then "D E C I S Ã O" – that looks like an acronym for "Decisão", which is a legal term. But according to the guidelines, jurisprudencia refers to decisions, precedents, etc. However, "D E C I S Ã O" is just the acronym, not a specific case or reference. So maybe it's not a jurisprudencia. Wait, the user's example output might have marked it as jurisprudencia. Wait, looking at the example output provided by the user, they have "D E C I S Ã O" as <span class="jurisprudencia">. Hmm, maybe the acronym here refers to a decision, so it's marked as jurisprudencia. But I need to check the definitions again. Jurisprudencia is for decisions, precedents, etc. So if "D E C I S Ã O" is an acronym for a specific decision, then it's jurisprudencia. But if it's just the word "Decisão" in Portuguese, then maybe it's not. Wait, the input has "D E C I S Ã O" which is the acronym for "Decisão", which is a legal term. But according to the guidelines, only specific references to cases, precedents, etc., should be marked. Since "D E C I S Ã O" is an acronym, maybe it's not a specific entity. Wait, the example output from the user shows that "D E C I S Ã O" is marked as jurisprudencia. So perhaps the user considers that as a reference to a decision. But I need to be careful here. Alternatively, maybe "D E C I S Ã O" is part of a case name or a specific decision. However, without more context, it's safer to mark it as jurisprudencia if it's a decision. 
+
+Then "Recurso de Apelação conhecido e não provido" – "Recurso de Apelação" is a legal term, but it's not an entity. "Conhecido e não provido" are verbs, not entities. "Unânime" is an adjective, not an entity. 
+
+So the entities are the two names of the desembargadores (pessoa), and "D E C I S Ã O" as jurisprudencia. Wait, but the example output from the user shows that "D E C I S Ã O" is marked as jurisprudencia. Let me check the example again. The user's example output is: 
+
+<O Senhor Desembargador <span class="pessoa">DIAULAS COSTA RIBEIRO</span> - Vogal Com o relator O Senhor Desembargador <span class="pessoa">EUSTÁQUIO DE CASTRO</span> - Vogal Com o relator <span class="jurisprudencia">D E C I S Ã O</span> Recurso de Apelação conhecido e não provido . Unânime .>
+
+So the user marked "D E C I S Ã O" as jurisprudencia. But why? Because it's an acronym for "Decisão", which is a legal term. However, according to the guidelines, jurisprudencia refers to specific decisions, precedents, etc. If "D E C I S Ã O" is an acronym for a specific decision, then it's marked. But if it's just the word "Decisão", then it's not. Since the input has "D E C I S Ã O" as the acronym, maybe it's considered a reference to a decision. So I'll follow the example and mark it as jurisprudencia.
+
+So the final HTML would have the two names as pessoa, and "D E C I S Ã O" as jurisprudencia. The rest of the text remains as is.
+</think>
+
+<O Senhor Desembargador <span class="pessoa">DIAULAS COSTA RIBEIRO</span> - Vogal Com o relator O Senhor Desembargador <span class="pessoa">EUSTÁQUIO DE CASTRO</span> - Vogal Com o relator <span class="jurisprudencia">D E C I S Ã O</span> Recurso de Apelação conhecido e não provido . Unânime .>

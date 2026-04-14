@@ -1,0 +1,78 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example input again: "HABEAS CORPUS CRIMINAL Nº 1.0000.17.083350-3/000 - COMARCA DE VESPASIANO - PACIENTE ( S ) : MARCIO ADAIR COELHO JUNIOR - AUTORI . COATORA : JUIZ DE DIREITO DA 1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA COMARCA DE VESPASIANO - VÍTIMA : M.P.S . A C Ó R D Ã O Vistos etc."
+
+I need to identify each entity. Let's break it down sentence by sentence.
+
+Starting with "HABEAS CORPUS CRIMINAL Nº 1.0000.17.083350-3/000". The "HABEAS CORPUS CRIMINAL" is a legal term, so that's probably a type of legal proceeding, which might fall under jurisprudencia or legislacao? Wait, the user's entities are specific: 'pessoa', 'organizacao', 'tempo', 'local', 'legislacao', 'jurisprudencia'. Habeas corpus is a legal remedy, so maybe it's part of jurisprudencia? Or maybe it's a type of legal action, so perhaps not an entity here. The number "1.0000.17.083350-3/000" is likely a case number, which might not be an entity unless it's part of a specific organization. But the user hasn't mentioned case numbers as entities, so maybe leave it as is.
+
+Next, "COMARCA DE VESPASIANO" – "COMARCA" is a judicial district, so that's a local entity. "VESPASIANO" is a place name, so that's a local. So I should mark "COMARCA DE VESPASIANO" as local? Wait, "COMARCA" is the administrative division, and "VESPASIANO" is the city. So maybe "COMARCA DE VESPASIANO" as a local entity. But the user's example output might have "COMARCA DE VESPASIANO" as local. Let me check the example output provided by the user. Wait, the user hasn't provided an example output, but the task says to return the text with the entities marked. So I need to decide.
+
+Then "PACIENTE ( S ) : MARCIO ADAIR COELHO JUNIOR" – "PACIENTE" here is likely the defendant, so that's a pessoa. "MARCIO ADAIR COELHO JUNIOR" is a person's name, so that's pessoa.
+
+"AUTORI . COATORA : JUIZ DE DIREITO DA 1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA COMARCA DE VESPASIANO" – "AUTORI" might be a typo for "AUTOR" (author), so the person who filed the case, which is a pessoa. "COATORA" could be "COATORA" (co-author?), but maybe it's a typo for "COATORA" (co-author?), but not sure. Alternatively, "COATORA" might be a typo for "COATORA" (co-author?), but perhaps it's a term in legal context. However, the main part is "JUIZ DE DIREITO DA 1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA COMARCA DE VESPASIANO" – the judge is a pessoa. So "JUIZ DE DIREITO" is a person, so that's pessoa. The "1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE" is a court, which is an organization. So "VARA CRIMINAL" would be an organizacao. Wait, "VARA" is a court, so that's an organization. So "1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE" is an organizacao. Also, "COMARCA DE VESPASIANO" is a local, as before.
+
+Then "VÍTIMA : M.P.S ." – "VÍTIMA" is the victim, so that's a pessoa. "M.P.S." is likely an abbreviation for "Ministro da Pública" or something similar, but maybe it's a person's name. Wait, "M.P.S." could be an acronym for "Ministério Público" (Public Prosecutor's Office), which is an organization. But in the context, "VÍTIMA : M.P.S." might mean the victim is M.P.S., but that's unclear. Alternatively, "M.P.S." could be an abbreviation for a person's name. However, without more context, it's safer to assume that "M.P.S." is an organization, like the Ministério Público. But the user's example might have it as an organization. Alternatively, if it's a person's name, it's pessoa. But since it's an abbreviation, maybe it's an organization. Let me check the example output again. Wait, the user hasn't provided an example, but the task says to return the text with entities marked. So I need to make the best judgment.
+
+Then "A C Ó R D Ã O Vistos etc." – "A CÓRDO" is likely "ACÓRDO" (decision), which is a jurisprudencia or legislacao? "ACÓRDO" is a judicial decision, so that's jurisprudencia. "Vistos etc." is a legal term meaning "considered etc.", which might not be an entity.
+
+Putting it all together:
+
+- "HABEAS CORPUS CRIMINAL Nº 1.0000.17.083350-3/000" – no entity here.
+- "COMARCA DE VESPASIANO" – local.
+- "PACIENTE ( S ) : MARCIO ADAIR COELHO JUNIOR" – pessoa.
+- "AUTORI . COATORA : JUIZ DE DIREITO DA 1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA COMARCA DE VESPASIANO" – "AUTORI" (pessoa), "COATORA" (maybe pessoa or typo), "JUIZ DE DIREITO" (pessoa), "1ª VARA CRIMINAL..." (organizacao), "COMARCA DE VESPASIANO" (local).
+- "VÍTIMA : M.P.S ." – "VÍTIMA" (pessoa), "M.P.S." (organizacao or pessoa).
+- "A C Ó R D Ã O Vistos etc." – "ACÓRDO" (jurisprudencia).
+
+Now, applying the tags:
+
+- "COMARCA DE VESPASIANO" → local.
+- "MARCIO ADAIR COELHO JUNIOR" → pessoa.
+- "JUIZ DE DIREITO" → pessoa.
+- "1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE" → organizacao.
+- "VÍTIMA" → pessoa.
+- "ACÓRDO" → jurisprudencia.
+
+Wait, "VÍTIMA" is the victim, so pessoa. "M.P.S." is unclear, but if it's an abbreviation for an organization like Ministério Público, then it's organizacao. Otherwise, if it's a person's name, it's pessoa. Since the user's example might have it as an organization, I'll go with that.
+
+So the final HTML would have:
+
+- <span class="local">COMARCA DE VESPASIANO</span>
+- <span class="pessoa">MARCIO ADAIR COELHO JUNIOR</span>
+- <span class="pessoa">JUIZ DE DIREITO</span>
+- <1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE</span> (organizacao)
+- <span class="pessoa">VÍTIMA</span>
+- <span class="jurisprudencia">ACÓRDO</span>
+
+But need to check the exact text. Let me re-express the input:
+
+Original text: "HABEAS CORPUS CRIMINAL Nº 1.0000.17.083350-3/000 - COMARCA DE VESPASIANO - PACIENTE ( S ) : MARCIO ADAIR COELHO JUNIOR - AUTORI . COATORA : JUIZ DE DIREITO DA 1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA COMARCA DE VESPASIANO - VÍTIMA : M.P.S . A C Ó R D Ã O Vistos etc."
+
+Breaking down:
+
+- "COMARCA DE VESPASIANO" → local.
+- "MARCIO ADAIR COELHO JUNIOR" → pessoa.
+- "JUIZ DE DIREITO" → pessoa.
+- "1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE" → organizacao.
+- "VÍTIMA" → pessoa.
+- "M.P.S." → possibly organizacao (Ministério Público) or pessoa (abbreviation for a person's name). Since it's an abbreviation, maybe it's an organization.
+- "ACÓRDO" → jurisprudencia.
+
+So the HTML would have:
+
+- <span class="local">COMARCA DE VESPASIANO</span>
+- <span class="pessoa">MARCIO ADAIR COELHO JUNIOR</span>
+- <span class="pessoa">JUIZ DE DIREITO</span>
+- <span class="organizacao">1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE</span>
+- <span class="pessoa">VÍTIMA</span>
+- <span class="organizacao">M.P.S.</span> (assuming it's an organization)
+- <span class="jurisprudencia">ACÓRDO</span>
+
+But need to check if "M.P.S." is an organization. In Brazilian legal terms, "M.P.S." could stand for "Ministério Público" (Public Prosecutor's Office), which is an organization. So that's organizacao.
+
+Putting it all together, the HTML would have those spans. Now, I need to make sure that the rest of the text remains unchanged. Also, the case number and other terms not matching the entities are left as is.
+</think>
+
+HABEAS CORPUS CRIMINAL Nº 1.0000.17.083350-3/000 - <span class="local">COMARCA DE VESPASIANO</span> - <span class="pessoa">PACIENTE ( S ) : MARCIO ADAIR COELHO JUNIOR</span> - <span class="pessoa">AUTORI</span> . <span class="pessoa">COATORA</span> : <span class="pessoa">JUIZ DE DIREITO</span> DA <span class="organizacao">1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE</span> DA <span class="local">COMARCA DE VESPASIANO</span> - <span class="pessoa">VÍTIMA</span> : <span class="organizacao">M.P.S</span> . <span class="jurisprudencia">A C Ó R D Ã O</span> Vistos etc.

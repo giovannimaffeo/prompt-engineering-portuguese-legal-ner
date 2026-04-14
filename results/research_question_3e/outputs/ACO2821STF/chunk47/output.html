@@ -1,0 +1,45 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a legal text, marking specific entities with <span> tags and classes. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. 
+
+First, I need to carefully read the input text and identify which parts fit each entity type. Let me start by going through the text line by line.
+
+The first sentence: "O Estado-autor questiona a constitucionalidade da Lei 9.717/98 , sustentando que as normas trazidas em seus dispositivos excedem a competência concorrente da União para legislar sobre previdência social , bem como que os atos normativos secundários do Ministério da Previdência Social teriam extrapolado a previsão legal , criando novos critérios e impedimentos não constantes da referida lei ."
+
+Looking for entities here. "Lei 9.717/98" is a law, so that's legislacao. "Ministério da Previdência Social" is an organization. "União" is a bit tricky. In Brazil, "União" refers to the federal government, so it's an organization. "Estado-autor" – wait, "Estado" here is a generic term for a state, not a specific entity. The text mentions "Estados" later, but "Estado-autor" might be a specific entity? Wait, no. The user's guidelines say that only proper names should be marked. "Estado-autor" is a title or role, not a proper name. So maybe not. Let me check the examples. In the example, "MINISTÉRIO PÚBLICO FEDERAL" was marked as organizacao. So "Ministério da Previdência Social" is an organization. "Lei 9.717/98" is legislacao. "União" is an organization. 
+
+Next sentence: "A questão guarda complexidade e suscita dúvidas , sobretudo porque , até o advento da Lei 9.717/98 , os Estados exerciam competência legislativa plena em matéria de previdência social ."
+
+"Lei 9.717/98" again is legislacao. "Estados" here refers to states, which is a generic term, not a specific local entity. So no mark. 
+
+Third sentence: "Ao exercer sua competência concorrente , por meio da edição da lei federal em questão , a União estabeleceu normas gerais e definiu prazos para que os Estados-membros adequassem seus regimes à nova legislação ."
+
+"União" again is an organization. "Estados-membros" refers to the states, but again, it's a generic term. "Nova legislação" refers to the law, so "nova legislação" would be part of the legislacao entity? Wait, but the user says to mark only the actual legislation references. "Nova legislação" is a general term, not a specific law. So only "Lei 9.717/98" is marked as legislacao. 
+
+Last part: "A Constituição da República , em seu art ."
+
+"Constituição da República" is a law, so that's legislacao. "art" is part of the legislation reference. Wait, the example had "art.61 , §1º , da Lei nº 9.430/96" marked as legislacao. So here, "art" would be part of that. However, in the input text, the sentence ends with "art .", which is incomplete. So maybe not a full reference. But the user's guidelines say to mark only complete expressions. Since it's cut off, maybe we don't mark it. 
+
+So putting it all together, the entities are:
+
+- "Lei 9.717/98" as legislacao
+- "Ministério da Previdência Social" as organizacao
+- "União" as organizacao
+- "Constituição da República" as legislacao (but wait, the input text says "A Constituição da República , em seu art .", so the full reference would be "Constituição da República" as a law, and "art" is part of the legislation. But since the sentence is incomplete, maybe we don't mark "art" as part of legislacao. So only "Constituição da República" is marked as legislacao. 
+
+Wait, but the example had "Constituição Federal" as legislacao. So "Constituição da República" is also a law, so it's legislacao. 
+
+So in the output, the spans would be:
+
+<span class="legislacao">Lei 9.717/98</span>
+<span class="organizacao">Ministério da Previdência Social</span>
+<span class="organizacao">União</span>
+<span class="legislacao">Constituição da República</span>
+
+Wait, but in the input text, the last sentence is "A Constituição da República , em seu art .". The "art" is part of the legislation reference, but since it's incomplete, maybe it's not marked. So only "Constituição da República" is marked. 
+
+So the final HTML would have those spans. Let me check again. 
+
+Yes, that's the plan. Now, I need to make sure I'm not missing any other entities. The text doesn't mention any people, time, local, or jurisprudencia. So the answer should have the spans for the legislation and organizations identified.
+</think>
+
+O Estado-autor questiona a constitucionalidade da <span class="legislacao">Lei 9.717/98</span> , sustentando que as normas trazidas em seus dispositivos excedem a competência concorrente da <span class="organizacao">União</span> para legislar sobre previdência social , bem como que os atos normativos secundários do <span class="organizacao">Ministério da Previdência Social</span> teriam extrapolado a previsão legal , criando novos critérios e impedimentos não constantes da referida lei . A questão guarda complexidade e suscita dúvidas , sobretudo porque , até o advento da <span class="legislacao">Lei 9.717/98</span> , os Estados exerciam competência legislativa plena em matéria de previdência social . Ao exercer sua competência concorrente , por meio da edição da lei federal em questão , a <span class="organizacao">União</span> estabeleceu normas gerais e definiu prazos para que os Estados-membros adequassem seus regimes à nova legislação . A <span class="legislacao">Constituição da República</span> , em seu art .

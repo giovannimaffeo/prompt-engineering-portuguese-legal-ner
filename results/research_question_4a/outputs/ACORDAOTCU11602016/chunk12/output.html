@@ -1,0 +1,83 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each tag needs a class attribute indicating the type.
+
+First, I need to carefully read the input text and identify all the entities according to the definitions provided. Let me go through the text step by step.
+
+The first sentence starts with "Entretanto , o Tribunal procedera a acompanhamento da obra de construção do prédio da 1ª Circunscrição Judiciária Militar no Rio de Janeiro – 1ª CJM/RJ , determinado pela Decisão n . 633/1999 - Plenário , a qual deliberou sobre levantamento de auditoria realizado no mesmo empreendimento , atendendo aos trabalhos de apoio ao Congresso Nacional na elaboração da Lei Orçamentária para o ano de 2000 , de acordo com dados disponibilizados no Sistema de Fiscalização de Obras ( Fiscobras 1999 ) ."
+
+Looking for entities here:
+
+- "Tribunal" – Hmm, the user's examples mention that organizations like "Tribunal de Contas" are marked. But "Tribunal" alone might be a generic term. Wait, the definition says to mark full names. However, in the example, "Tribunal de Contas" is marked. Here, "Tribunal" is part of "1ª Circunscrição Judiciária Militar" which is an organization. Wait, the text says "1ª Circunscrição Judiciária Militar" which is an organization. So "1ª Circunscrição Judiciária Militar" should be marked as organizacao. Also, "1ª CJM/RJ" is an abbreviation for that, so that should be marked as organizacao. 
+
+- "Rio de Janeiro" is a local, so that's a local. 
+
+- "Decisão n . 633/1999 - Plenário" – "Decisão" is a legal term, but the example shows that "REsp n . 1694984/MS" is marked as jurisprudencia. Here, "Decisão n . 633/1999" is a legal decision, so that's jurisprudencia. The "Plenário" is part of the decision, so maybe it's part of the jurisprudencia entity. 
+
+- "Lei Orçamentária para o ano de 2000" – "Lei" is legislation, so "Lei Orçamentária para o ano de 2000" is legislacao. 
+
+- "Fiscobras 1999" – The example mentions "Sistema de Fiscalização de Obras ( Fiscobras 1999 )" – "Fiscobras" is an acronym for the system, so it's an organization? Wait, the definition says to mark organizations like "Tribunal de Contas". But "Fiscobras" is a system, which might be an organization. However, the example doesn't mention such a case. Wait, the user's example includes "Sistema de Fiscalização de Obras ( Fiscobras 1999 )" – in the output, "Fiscobras 1999" is not marked. Wait, the example input has "Sistema de Fiscalização de Obras ( Fiscobras 1999 )" and the output doesn't mark "Fiscobras 1999". Wait, looking back at the example, the input is "Sistema de Fiscalização de Obras ( Fiscobras 1999 )" and the output doesn't mark "Fiscobras 1999". So maybe "Fiscobras" is not considered an organization here. Wait, the user's example shows that "Sistema de Fiscalização de Obras ( Fiscobras 1999 )" is not marked. So perhaps "Fiscobras" is not an organization. Maybe it's a system name, but according to the guidelines, only specific organizations are marked. Since "Fiscobras" is an acronym, maybe it's not marked. Wait, the example input includes "Sistema de Fiscalização de Obras ( Fiscobras 1999 )" and the output doesn't mark "Fiscobras 1999". So perhaps "Fiscobras" is not considered an organization here. So maybe it's not marked. 
+
+Next part: "2.3 . A Secretaria de Controle Externo no Estado do Rio de Janeiro – Secex/RJ , no bojo do TC 009.153/1999-3 , identificou irregularidades relativas a pagamentos antecipados à contratada para a obra , Grupo OK Construções e Empreendimentos Ltda. , tendo como fundamento questionáveis termos de depósito ."
+
+- "Secretaria de Controle Externo no Estado do Rio de Janeiro – Secex/RJ" – "Secretaria" is an organization. The full name is "Secretaria de Controle Externo no Estado do Rio de Janeiro", which is an organization. Also, "Secex/RJ" is an abbreviation, so that's an organization. 
+
+- "TC 009.153/1999-3" – "TC" is a legal term, but the example shows that "REsp n . 1694984/MS" is marked as jurisprudencia. Here, "TC" is part of a legal decision, so "TC 009.153/1999-3" is jurisprudencia. 
+
+- "Grupo OK Construções e Empreendimentos Ltda." – This is a company name, so it's an organization. 
+
+- "Rio de Janeiro" again is a local. 
+
+Now, checking for other entities:
+
+- "ano de 2000" – "2000" is a tempo. 
+
+- "1999" – Also a tempo. 
+
+- "1ª CJM/RJ" – This is an abbreviation for the Circunscrição Judiciária Militar, so it's an organization. 
+
+- "1ª Circunscrição Judiciária Militar" – Full name of the organization. 
+
+- "Decisão n . 633/1999 - Plenário" – The "Decisão" is a legal decision, so the entire phrase is jurisprudencia. 
+
+- "Lei Orçamentária para o ano de 2000" – "Lei" is legislation, so the entire phrase is legislacao. 
+
+- "Fiscobras 1999" – As discussed earlier, not marked. 
+
+- "Secex/RJ" – Organization. 
+
+- "TC 009.153/1999-3" – Jurisprudencia. 
+
+- "Grupo OK Construções e Empreendimentos Ltda." – Organization. 
+
+- "Rio de Janeiro" – Local. 
+
+- "ano de 2000" – Tempo. 
+
+- "1999" – Tempo. 
+
+Now, I need to make sure that all these are correctly marked. Also, check for any other entities. 
+
+Wait, "1ª CJM/RJ" is an abbreviation for "1ª Circunscrição Judiciária Militar", which is an organization. So both the full name and the abbreviation should be marked as organizacao. 
+
+Similarly, "Secex/RJ" is an abbreviation for "Secretaria de Controle Externo no Estado do Rio de Janeiro", so both should be marked. 
+
+Also, "TC 009.153/1999-3" is a legal decision, so it's jurisprudencia. 
+
+"Decisão n . 633/1999 - Plenário" – The "Decisão" is part of the legal decision, so the entire phrase is jurisprudencia. 
+
+"Lei Orçamentária para o ano de 2000" – The "Lei" is legislation, so the entire phrase is legislacao. 
+
+"ano de 2000" – The year is a tempo. 
+
+"1999" – Also a tempo. 
+
+"Rio de Janeiro" – Local. 
+
+"Grupo OK Construções e Empreendimentos Ltda." – Organization. 
+
+So putting it all together, the HTML should have the appropriate spans. 
+
+Now, I need to structure the text with the correct tags. Let me write it out step by step, making sure each entity is marked correctly.
+</think>
+
+Entretanto , o Tribunal procedera a acompanhamento da obra de construção do prédio da <span class="organizacao">1ª Circunscrição Judiciária Militar</span> no <span class="local">Rio de Janeiro</span> – <span class="organizacao">1ª CJM/RJ</span> , determinado pela <span class="jurisprudencia">Decisão n . 633/1999 - Plenário</span> , a qual deliberou sobre levantamento de auditoria realizado no mesmo empreendimento , atendendo aos trabalhos de apoio ao Congresso Nacional na elaboração da <span class="legislacao">Lei Orçamentária para o ano de 2000</span> , de acordo com dados disponibilizados no Sistema de Fiscalização de Obras ( <span class="organizacao">Fiscobras 1999</span> ) . 2.3 . A <span class="organizacao">Secretaria de Controle Externo no Estado do Rio de Janeiro – Secex/RJ</span> , no bojo do <span class="jurisprudencia">TC 009.153/1999-3</span> , identificou irregularidades relativas a pagamentos antecipados à contratada para a obra , <span class="organizacao">Grupo OK Construções e Empreendimentos Ltda.</span> , tendo como fundamento questionáveis termos de depósito .

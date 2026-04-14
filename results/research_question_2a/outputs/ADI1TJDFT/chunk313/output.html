@@ -1,0 +1,33 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to parse the input text carefully. The input is: "27 da Lei nº 9.868/99 , se conceder efeitos ex nunc à declaração de inconstitucionalidade da norma impugnada . 4 . Ação direta de inconstitucionalidade julgada procedente com efeitos ex nunc e erga omnes ."
+
+Let me break it down. The first part mentions "Lei nº 9.868/99". "Lei" is Portuguese for "Law", so that's legislation. The number and year would be part of the legislation entity. So "Lei nº 9.868/99" should be marked as legislacao.
+
+Next, "efeitos ex nunc" refers to legal terms related to the effect of a judicial decision starting from a certain date. "ex nunc" is a legal term, but does it fall under tempo? Maybe, but the user's guide doesn't specify terms like "ex nunc" as a time entity. Wait, the user's guide says to mark "tempo" for time/data. Since "ex nunc" is a legal term indicating the effect starts from the present, maybe it's part of the jurisprudencia or legislation? Hmm, but the user's example might not include such terms. Let me check the example output.
+
+Looking at the sample output provided by the user, the input text is marked as follows: 
+
+The output is: 
+<span class="legislacao">Lei nº 9.868/99</span> , se conceder efeitos ex nunc à declaração de inconstitucionalidade da norma impugnada . 4 . <span class="jurisprudencia">Ação direta de inconstitucionalidade julgada procedente com efeitos ex nunc e erga omnes</span> .
+
+Wait, in the sample output, "Ação direta de inconstitucionalidade" is marked as jurisprudencia. But "ação direta de inconstitucionalidade" is a type of legal action, which might be part of jurisprudencia (case law) or legislation. However, the user's example shows it as jurisprudencia. So perhaps any legal action or case is considered jurisprudencia.
+
+In the input text, "Ação direta de inconstitucionalidade julgada procedente..." is a case, so it's marked as jurisprudencia. The "efeitos ex nunc" is part of that case's description, so it's included in the jurisprudencia span.
+
+So, the steps are:
+
+1. Identify "Lei nº 9.868/99" as legislacao.
+2. The rest of the text, including "efeitos ex nunc" and the case description, is part of jurisprudencia.
+
+Wait, but the user's example output shows that the entire "Ação direta..." is marked as jurisprudencia. So any mention of a legal case or action is jurisprudencia. The "efeitos ex nunc" is part of that case's description, so it's included in the jurisprudencia span.
+
+Therefore, the correct HTML would be:
+
+<span class="legislacao">Lei nº 9.868/99</span> , se conceder efeitos ex nunc à declaração de inconstitucionalidade da norma impugnada . 4 . <span class="jurisprudencia">Ação direta de inconstitucionalidade julgada procedente com efeitos ex nunc e erga omnes</span> .
+
+I need to make sure that only the specified entities are marked. There are no other entities like pessoa, organizacao, local, etc., in the text. So the rest of the text remains as is.
+</think>
+
+<span class="legislacao">Lei nº 9.868/99</span> , se conceder efeitos ex nunc à declaração de inconstitucionalidade da norma impugnada . 4 . <span class="jurisprudencia">Ação direta de inconstitucionalidade julgada procedente com efeitos ex nunc e erga omnes</span> .

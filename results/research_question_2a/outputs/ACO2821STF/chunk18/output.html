@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is: "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536377 . Supremo Tribunal Federal 16/03/2018 PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV ."
+
+Let me break it down sentence by sentence.
+
+Starting with "O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536377 .". Here, the URL is mentioned. The URL itself is part of the text, but the user hasn't specified that URLs should be marked. The example output doesn't include URLs as entities, so I'll leave them as is. The number 14536377 is a numeric value, but it's not one of the specified entities. So no tags here.
+
+Next, "Supremo Tribunal Federal". That's the name of a court, which is an organization. So I should wrap "Supremo Tribunal Federal" in <span class="organizacao">.
+
+Then "16/03/2018" is a date, so that's a tempo entity. So wrap that in <span class="tempo">.
+
+"PLENÁRIO" refers to the Plenary session of the court, which is part of the organization's structure, but maybe it's considered part of the organization's name. Wait, the example output in the user's example shows "Supremo Tribunal Federal" as organizacao, and "PLENÁRIO" is part of the same sentence. But in the example output, "PLENÁRIO" is not marked. Wait, looking at the user's example output, the output is:
+
+"O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536377 . <span class="organizacao">Supremo Tribunal Federal</span> <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 MATO GROSSO RELATOR : MIN . RICARDO LEWANDOWSKI AGTE . ( S ) : UNIÃO ADV ."
+
+So "PLENÁRIO" is not marked. Maybe because it's part of the court's structure, not an entity on its own. So I'll leave it as is.
+
+Next, "A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821". The "AÇÃO CÍVEL ORIGINÁRIA" is a legal term, but it's part of the case name. The number 2.821 is a case number, which might be considered as a numeric value, not an entity. So no tags here.
+
+"MATO GROSSO" is a state in Brazil, so that's a local entity. So wrap that in <span class="local">.
+
+"RELATOR : MIN . RICARDO LEWANDOWSKI" – "RELATOR" is the relator, which is a person. "RICARDO LEWANDOWSKI" is the name of a judge, so that's a pessoa. So wrap "RICARDO LEWANDOWSKI" in <span class="pessoa">.
+
+"AGTE . ( S ) : UNIÃO ADV ." – "AGTE" is short for "Agente" (party), and "UNIÃO" is the Union, which is an organization. "ADV" is short for "Advogado" (lawyer), but the user hasn't specified that. So "UNIÃO" is an organizacao. So wrap "UNIÃO" in <span class="organizacao">.
+
+Putting it all together, the HTML should have the Supremo Tribunal Federal as organizacao, 16/03/2018 as tempo, MATO GROSSO as local, RICARDO LEWANDOWSKI as pessoa, and UNIÃO as organizacao. The rest remains as is.
+
+I need to make sure that the tags are correctly placed and that the text is not altered otherwise. Also, check for any other possible entities. For example, "http : //www.stf.jus.br/portal/autenticacao/" is a URL, but since it's not one of the specified entities, it's left as is. The number 14536377 is a numeric value, so no tag. The rest of the text like "PLENÁRIO", "A G .REG .", etc., are not entities, so they remain unchanged.
+
+So the final HTML should have the specified tags around the identified entities.
+</think>
+
+O documento pode ser acessado no endereço eletrônico http : //www.stf.jus.br/portal/autenticacao/ sob o número 14536377 . <span class="organizacao">Supremo Tribunal Federal</span> <span class="tempo">16/03/2018</span> PLENÁRIO A G .REG . NA AÇÃO CÍVEL ORIGINÁRIA 2.821 <span class="local">MATO GROSSO</span> RELATOR : MIN . <span class="pessoa">RICARDO LEWANDOWSKI</span> AGTE . ( S ) : <span class="organizacao">UNIÃO</span> ADV .

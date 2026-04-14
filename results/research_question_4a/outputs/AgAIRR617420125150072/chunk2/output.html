@@ -1,0 +1,52 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to carefully read the input text and identify all instances of these entities. Let me go through the text line by line.
+
+Starting with "Vistos , relatados e discutidos estes autos de Agravo em Agravo de Instrumento em Recurso de Revista n° TST-Ag-AIRR-61-74.2012.5.15.0072 , em que é Agravante CENTRO ESTADUAL DE EDUCAÇÃO TECNOLÓGICA PAULA SOUZA - CEETEPS e Agravada MARIA ÂNGELA DA SILVA GOMES RODRIGUES NOGUEIRA ."
+
+Here, "CENTRO ESTADUAL DE EDUCAÇÃO TECNOLÓGICA PAULA SOUZA - CEETEPS" is an organization. The full name is the organization, and CEETEPS is likely an acronym. So I'll mark that as organizacao. Then "MARIA ÂNGELA DA SILVA GOMES RODRIGUES NOGUEIRA" is a person's full name, so that's pessoa.
+
+Next part: "Contra a decisão monocrática ( fls . 580-582 ) que negou seguimento ao agravo de instrumento , o reclamado interpõe o presente agravo ( fls . 584-592 ) . O Ministério Público do Trabalho oficia pelo não provimento do recurso . É o relatório ."
+
+"Ministério Público do Trabalho" is an organization. The "fls." refers to folhas, which is a legal term for pages, but it's not a date or time, so no need to mark. The numbers like "580-582" and "584-592" are page numbers, not dates, so they aren't time entities. 
+
+Moving to "V O T O 1 . CONHECIMENTO Satisfeitos os pressupostos legais de admissibilidade recursal pertinentes à tempestividade ( fls . 583-584 ) e à representação processual ( Súmula nº 436 , I , do TST ) , CONHEÇO do agravo . 2 . MÉRITO Mediante decisão monocrática , foi negado seguimento ao agravo de instrumento do reclamado , com amparo no art ."
+
+Here, "Súmula nº 436 , I , do TST" is a jurisprudencia reference. The "TST" is the Tribunal Superior do Trabalho, which is an organization. The "art." refers to an article in legislation, but the text cuts off, so maybe "art." is part of a legal article. However, since the input ends with "art .", it's incomplete. But the user's example includes "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So if there's a complete reference like "art. X, §Y, da Lei...", it should be marked. But here, it's cut off, so maybe not. Wait, the input ends with "art .", so maybe it's part of a larger reference. But since the text is incomplete, perhaps we shouldn't mark it. However, the user's example includes "art.61 , §1º , da Lei nº 9.430/96" as legislacao. So if the input has "art." followed by something, it's part of a legislation reference. But in this case, the input ends with "art .", so maybe it's not a complete reference. Therefore, maybe we shouldn't mark it. But I need to check the exact text.
+
+Wait, the input text is: "Mediante decisão monocrática , foi negado seguimento ao agravo de instrumento do reclamado , com amparo no art ."
+
+So the text ends with "art .", which is incomplete. Therefore, it's not a complete reference to legislation. So we shouldn't mark it. 
+
+Now, looking for other entities. The "TST" in "Súmula nº 436 , I , do TST" is an organization (Tribunal Superior do Trabalho). So "TST" should be marked as organizacao. 
+
+Also, "Súmula nº 436" is a jurisprudencia reference. So "Súmula nº 436" is jurisprudencia. 
+
+So putting it all together:
+
+- "CENTRO ESTADUAL DE EDUCAÇÃO TECNOLÓGICA PAULA SOUZA - CEETEPS" → organizacao
+- "MARIA ÂNGELA DA SILVA GOMES RODRIGUES NOGUEIRA" → pessoa
+- "Ministério Público do Trabalho" → organizacao
+- "TST" → organizacao
+- "Súmula nº 436" → jurisprudencia
+
+Other parts like "fls." are not entities. The numbers like "580-582" are page numbers, not time. The "n° TST-Ag-AIRR-61-74.2012.5.15.0072" is a jurisprudencia reference. Wait, the example input had "REsp n . 1694984/MS" marked as jurisprudencia. So the number "TST-Ag-AIRR-61-74.2012.5.15.0072" is a jurisprudencia reference. So that should be marked as jurisprudencia.
+
+Wait, the input text has "n° TST-Ag-AIRR-61-74.2012.5.15.0072". The "n°" is "número", so the entire reference is the jurisprudencia. So that should be marked as jurisprudencia.
+
+So the full text would have:
+
+- "n° TST-Ag-AIRR-61-74.2012.5.15.0072" → jurisprudencia
+- "CENTRO ESTADUAL DE EDUCAÇÃO TECNOLÓGICA PAULA SOUZA - CEETEPS" → organizacao
+- "MARIA ÂNGELA DA SILVA GOMES RODRIGUES NOGUEIRA" → pessoa
+- "Ministério Público do Trabalho" → organizacao
+- "TST" → organizacao
+- "Súmula nº 436" → jurisprudencia
+
+Also, "TST" is an organization, so "TST" should be marked as organizacao. 
+
+So the final HTML should have all these entities marked with the appropriate classes.
+</think>
+
+Vistos , relatados e discutidos estes autos de Agravo em Agravo de Instrumento em Recurso de Revista <span class="jurisprudencia">n° TST-Ag-AIRR-61-74.2012.5.15.0072</span> , em que é Agravante <span class="organizacao">CENTRO ESTADUAL DE EDUCAÇÃO TECNOLÓGICA PAULA SOUZA - CEETEPS</span> e Agravada <span class="pessoa">MARIA ÂNGELA DA SILVA GOMES RODRIGUES NOGUEIRA</span> . Contra a decisão monocrática ( fls . 580-582 ) que negou seguimento ao agravo de instrumento , o reclamado interpõe o presente agravo ( fls . 584-592 ) . <span class="organizacao">Ministério Público do Trabalho</span> oficia pelo não provimento do recurso . É o relatório . V O T O 1 . CONHECIMENTO Satisfeitos os pressupostos legais de admissibilidade recursal pertinentes à tempestividade ( fls . 583-584 ) e à representação processual ( <span class="jurisprudencia">Súmula nº 436</span> , I , do <span class="organizacao">TST</span> ) , CONHEÇO do agravo . 2 . MÉRITO Mediante decisão monocrática , foi negado seguimento ao agravo de instrumento do reclamado , com amparo no <span class="legislacao">art</span> .

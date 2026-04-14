@@ -1,0 +1,57 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to parse the input text carefully. Let me read through the example provided. The input text is a legal document snippet. Let me go through each part step by step.
+
+Starting with "Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P". Here, "20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" look like codes, maybe related to case numbers or verification codes. Since they are codes, not specific entities, I shouldn't mark them. The "Código de Verificação" is a term, but it's a generic term, not a specific entity. So no tags here.
+
+Next, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". "GABINETE" is an organization, but it's part of the title. "DESEMBARGADORA MARIA IVATÔNIA" – "MARIA IVATÔNIA" is a person's name. So "MARIA IVATÔNIA" should be a <span class="pessoa">. The "GABINETE DA DESEMBARGADORA" is part of the organization's name, but "GABINETE" here refers to the office, so maybe the entire "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organization? Wait, the definition says "organizacao" includes formal entities like courts, public organs, etc. "GABINETE DA DESEMBARGADORA" might be part of the organization's name. But "DESEMBARGADORA" is a title, not a name. So maybe "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is an organization. Wait, but "MARIA IVATÔNIA" is a person. So perhaps "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. But the way it's written, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" might be the name of the organization. Hmm, this is a bit ambiguous. Let me check the definitions again. The organization includes formal entities like courts, public organs, etc. "GABINETE DA DESEMBARGADORA" could be part of the organization's name. But "MARIA IVATÔNIA" is a person. So maybe "MARIA IVATÔNIA" is a person, and the rest is part of the organization. Wait, the structure is "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA". Maybe "GABINETE DA DESEMBARGADORA" is the organization, and "MARIA IVATÔNIA" is the person. But the way it's written, it's possible that "MARIA IVATÔNIA" is part of the organization's name. Alternatively, maybe "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is the organization. But I'm not sure. Let me think again. The user's example output might have "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as an organization. Wait, in the example output provided by the user, the output is:
+
+"<span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> 6 Distribuído o feito para esta relatoria , o Distrito Federal junta documento novo às fls . 330/354 . Instada a se manifestar ( fl . 356 ) , o SINPRO/DF defende que os documentos juntados não são documentos novos , motivo pelo qual requer o reconhecimento da preclusão consumativa ( fls . 361/362 ) . À fl . 370 o SINPRO/DF requer devolução de prazo para se manifestar novamente sobre as fls . 330/354 . Os autos vieram conclusos . É o relatório . Fls ."
+
+Wait, in the example output, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is marked as "organizacao". But "MARIA IVATÔNIA" is a person. So maybe the entire phrase is considered an organization. But that seems incorrect. Alternatively, maybe "MARIA IVATÔNIA" is a person, and the rest is part of the organization. But the way it's written, it's possible that "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is the name of the organization. However, "MARIA IVATÔNIA" is a person's name. So perhaps the correct approach is to mark "MARIA IVATÔNIA" as a pessoa and the rest as an organizacao. Wait, but the example output shows the entire phrase as "organizacao". Maybe the user's example is different. Let me check the original input again.
+
+Original input: "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 6 Distribuído o feito para esta relatoria , o Distrito Federal junta documento novo às fls . 330/354 . Instada a se manifestar ( fl . 356 ) , o SINPRO/DF defende que os documentos juntados não são documentos novos , motivo pelo qual requer o reconhecimento da preclusão consumativa ( fls . 361/362 ) . À fl . 370 o SINPRO/DF requer devolução de prazo para se manifestar novamente sobre as fls . 330/354 . Os autos vieram conclusos . É o relatório . Fls ."
+
+In the example output, the user's assistant marked "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as "organizacao". But according to the definitions, "organizacao" includes formal entities like courts, public organs, etc. "GABINETE DA DESEMBARGADORA" could be part of the organization's name. However, "MARIA IVATÔNIA" is a person. So perhaps the entire phrase is considered an organization. But that might not be accurate. Alternatively, maybe "MARIA IVATÔNIA" is a person, and the rest is part of the organization. But the way it's written, it's possible that "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is the name of the organization. However, "MARIA IVATÔNIA" is a person's name. So maybe the correct approach is to mark "MARIA IVATÔNIA" as a pessoa and the rest as an organizacao. But the example output shows the entire phrase as "organizacao". So perhaps the user's example is different. Let me proceed with the example given by the user. In their example, the output is:
+
+"<span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> 6 Distribuído o feito para esta relatoria , o Distrito Federal junta documento novo às fls . 330/354 . Instada a se manifestar ( fl . 356 ) , o SINPRO/DF defende que os documentos juntados não são documentos novos , motivo pelo qual requer o reconhecimento da preclusão consumativa ( fls . 361/362 ) . À fl . 370 o SINPRO/DF requer devolução de prazo para se manifestar novamente sobre as fls . 330/354 . Os autos vieram conclusos . É o relatório . Fls ."
+
+So according to that, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is marked as "organizacao". But "MARIA IVATÔNIA" is a person. So perhaps the user's example is incorrect, but I need to follow the example. Alternatively, maybe "MARIA IVATÔNIA" is part of the organization's name. For example, maybe it's the name of the organization, like "Gabinete da Desembargadora Maria Ivatônia". In that case, the entire phrase is an organization. So I'll proceed with that.
+
+Next, "Distrito Federal" is a local, so it should be marked as <span class="local">Distrito Federal</span>.
+
+"SINPRO/DF" is an organization. "SINPRO" is an acronym for a union or organization, and "DF" stands for Distrito Federal. So "SINPRO/DF" is an organization. So mark it as <span class="organizacao">SINPRO/DF</span>.
+
+Now, looking for other entities. The text mentions "fls." which is an abbreviation for "fls." (plural of "fl." which is "fl." for "folha" in Portuguese legal documents). But "fls." is not an entity, so no tag.
+
+"20140110500434APO" and "2018ACO899XSQTZBL81ZOE6V34P" are codes, not entities. So no tags.
+
+"Reexame Necessário" is a legal term, but not an entity. "Apelação" is a legal term, but not an entity. "Código de Verificação" is a term, not an entity.
+
+"Relatório" is a term, not an entity.
+
+So the entities to mark are:
+
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" as organizacao
+- "Distrito Federal" as local
+- "SINPRO/DF" as organizacao
+
+Wait, but in the example output provided by the user, "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" is marked as organizacao, and "SINPRO/DF" is marked as organizacao. Also, "Distrito Federal" is marked as local. So I need to follow that.
+
+So the final HTML would have those three entities marked. Let me check again.
+
+Original input:
+
+"Apelação / Reexame Necessário 20140110500434APO Código de Verificação :2018ACO899XSQTZBL81ZOE6V34P GABINETE DA DESEMBARGADORA MARIA IVATÔNIA 6 Distribuído o feito para esta relatoria , o Distrito Federal junta documento novo às fls . 330/354 . Instada a se manifestar ( fl . 356 ) , o SINPRO/DF defende que os documentos juntados não são documentos novos , motivo pelo qual requer o reconhecimento da preclusão consumativa ( fls . 361/362 ) . À fl . 370 o SINPRO/DF requer devolução de prazo para se manifestar novamente sobre as fls . 330/354 . Os autos vieram conclusos . É o relatório . Fls ."
+
+So the entities are:
+
+- "GABINETE DA DESEMBARGADORA MARIA IVATÔNIA" → organizacao
+- "Distrito Federal" → local
+- "SINPRO/DF" → organizacao
+
+Other parts like "fls." are not entities. So the HTML should have those three marked. Let me write that out.
+</think>
+
+<span class="organizacao">GABINETE DA DESEMBARGADORA MARIA IVATÔNIA</span> 6 Distribuído o feito para esta relatoria , o <span class="local">Distrito Federal</span> junta documento novo às fls . 330/354 . Instada a se manifestar ( fl . 356 ) , o <span class="organizacao">SINPRO/DF</span> defende que os documentos juntados não são documentos novos , motivo pelo qual requer o reconhecimento da preclusão consumativa ( fls . 361/362 ) . À fl . 370 o <span class="organizacao">SINPRO/DF</span> requer devolução de prazo para se manifestar novamente sobre as fls . 330/354 . Os autos vieram conclusos . É o relatório . Fls .

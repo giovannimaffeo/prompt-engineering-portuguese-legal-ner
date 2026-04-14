@@ -1,0 +1,100 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type.
+
+First, I need to read through the input text carefully. The text is about a legal case, mentioning things like Habeas Corpus, homicide, legal articles, dates, and court procedures. 
+
+Starting with the first part: "EMENTA : HABEAS CORPUS - HOMICÍDIO QUALIFICADO TENTADO - SENTENÇA DE PRONÚNCIA PROLATADA - EXCESSO DE PRAZO PARA O JULGAMENTO PELO TRIBUNAL DO JÚRI - INOCORRÊNCIA - NULIDADE DA PROVA DOCUMENTAL POR INVIOLABILIDADE DAS COMUNICAÇÕES TELEFÔNICAS - PRECLUSÃO - DECISÃO DENEGATÓRIA DO DIREITO DE RECORRER EM LIBERDADE - JUÍZO DE CAUTELARIDADE DEVIDAMENTE FUNDAMENTADO NA SENTENÇA - PERICULOSIDADE CONCRETA - CONSTRANGIMENTO ILEGAL NÃO EVIDENCIADO . 01 . Transitada em julgado a pronúncia deverá o réu ser julgado , em até seis meses , pelo Tribunal do Júri , nos termos do que dispõe o art . 428 , caput , da lei de ritos , levando-se em consideração a insusceptibilidade de designação do julgamento entre os dias 20 de dezembro de 2017 e 20 de janeiro de 2018 , ante a expressa proibição legal inserta no art . 313 , §8º , da LC 59/2001 , com a redação dada pelo art . 103 da LC 135/2014 . 02 ."
+
+Looking for entities:
+
+1. "HABEAS CORPUS" – This is a legal term, but it's a legal concept, not an entity type. The user's entities are pessoa, organizacao, tempo, local, legislacao, jurisprudencia. So Habeas Corpus might be part of jurisprudencia or legislacao? Wait, the user's example might have "legislacao" for laws. Let me check the example given in the output. Wait, the user didn't provide an example output, but the task says to use the classes as specified.
+
+Wait, the user's instruction says to mark entities like 'pessoa', 'organizacao', 'tempo', 'local', 'legislacao', and 'jurisprudencia'. So "HABEAS CORPUS" is a legal term, but not one of the specified entities. So maybe it's not marked. Similarly, "Tribunal do Júri" is a court, which is an organization? Or maybe "Tribunal do Júri" is a local? Wait, "Tribunal do Júri" is a court, which is an organization. So "Tribunal do Júri" should be marked as organizacao.
+
+Looking for dates: "20 de dezembro de 2017" and "20 de janeiro de 2018" – these are tempo (time) entities. So those dates should be in <span class="tempo">.
+
+Legislacao: The text mentions "art . 428 , caput , da lei de ritos" – "lei de ritos" is a law, so that's legislacao. Also, "LC 59/2001" and "LC 135/2014" are leis complementares (complementary laws), so those are legislacao. The "art . 313 , §8º , da LC 59/2001" – the LC is a law, so that's legislacao.
+
+"jurisprudencia" – the text mentions "jurisprudencia" in the first part? Wait, the first part has "JUÍZO DE CAUTELARIDADE DEVIDAMENTE FUNDAMENTADO NA SENTENÇA - PERICULOSIDADE CONCRETA - CONSTRANGIMENTO ILEGAL NÃO EVIDENCIADO" – maybe "jurisprudencia" is not present here. Wait, the user's example might have "jurisprudencia" as a term. Wait, the first part of the text has "HABEAS CORPUS - HOMICÍDIO QUALIFICADO TENTADO - SENTENÇA DE PRONÚNCIA PROLATADA - EXCESSO DE PRAZO PARA O JULGAMENTO PELO TRIBUNAL DO JÚRI - INOCORRÊNCIA - NULIDADE DA PROVA DOCUMENTAL POR INVIOLABILIDADE DAS COMUNICAÇÕES TELEFÔNICAS - PRECLUSÃO - DECISÃO DENEGATÓRIA DO DIREITO DE RECORRER EM LIBERDADE - JUÍZO DE CAUTELARIDADE DEVIDAMENTE FUNDAMENTADO NA SENTENÇA - PERICOSIDADE CONCRETA - CONSTRANGIMENTO ILEGAL NÃO EVIDENCIADO." So "jurisprudencia" is not explicitly mentioned here. Wait, maybe "jurisprudencia" is part of the legal terms, but the user's entities are specific. So unless there's a term like "jurisprudência" in the text, which there isn't, maybe it's not marked.
+
+So, the main entities to mark are:
+
+- "Tribunal do Júri" as organizacao.
+- Dates like "20 de dezembro de 2017" and "20 de janeiro de 2018" as tempo.
+- "lei de ritos" as legislacao.
+- "LC 59/2001" and "LC 135/2014" as legislacao.
+- "art . 428" and "art . 313 , §8º" as part of legislacao (since they refer to articles of laws).
+
+Wait, the user's instruction says to mark entities like 'legislacao', which includes laws, articles, etc. So any mention of a law, article, or legal code should be marked as legislacao.
+
+So, in the text:
+
+- "art . 428 , caput , da lei de ritos" – "lei de ritos" is a law, so that's legislacao. The "art . 428" is part of that law, so it's also legislacao.
+- "LC 59/2001" and "LC 135/2014" are leis complementares, so legislacao.
+- "art . 313 , §8º , da LC 59/2001" – the LC is a law, so that's legislacao.
+
+Also, "Tribunal do Júri" is an organization (organizacao).
+
+So, the HTML should have:
+
+- "Tribunal do Júri" as <span class="organizacao">Tribunal do Júri</span>
+- Dates as <span class="tempo">20 de dezembro de 2017</span> and <span class="tempo">20 de janeiro de 2018</span>
+- "lei de ritos" as <span class="legislacao">lei de ritos</span>
+- "LC 59/2001" as <span class="legislacao">LC 59/2001</span>
+- "LC 135/2014" as <span class="legislacao">LC 135/2014</span>
+- "art . 428" as part of legislacao (maybe the entire phrase "art . 428 , caput , da lei de ritos" is legislacao, but the user might want each part marked. However, the instruction says to mark the entities, so perhaps each mention of a law or article is marked. For example, "art . 428" is part of the law, so it's legislacao. Similarly, "art . 313 , §8º" is part of the law.
+
+But the user's example might not have all these, so I need to be careful. Let me check the original text again.
+
+Original text:
+
+"Transitada em julgado a pronúncia deverá o réu ser julgado , em até seis meses , pelo Tribunal do Júri , nos termos do que dispõe o art . 428 , caput , da lei de ritos , levando-se em consideração a insusceptibilidade de designação do julgamento entre os dias 20 de dezembro de 2017 e 20 de janeiro de 2018 , ante a expressa proibição legal inserta no art . 313 , §8º , da LC 59/2001 , com a redação dada pelo art . 103 da LC 135/2014 . 02 ."
+
+So, "Tribunal do Júri" is an organization. The dates are tempo. "lei de ritos" is legislacao. "LC 59/2001" and "LC 135/2014" are legislacao. The articles like "art . 428" and "art . 313 , §8º" are part of the legislacao. Also, "art . 103" is part of the legislacao (since it's part of LC 135/2014).
+
+So, the HTML should have:
+
+- "Tribunal do Júri" as organizacao.
+- "20 de dezembro de 2017" and "20 de janeiro de 2018" as tempo.
+- "lei de ritos" as legislacao.
+- "LC 59/2001" and "LC 135/2014" as legislacao.
+- "art . 428" as part of legislacao (maybe the entire phrase "art . 428 , caput , da lei de ritos" is legislacao, but perhaps each article is marked. However, the user might want to mark the entire legal reference as legislacao. For example, "art . 428" is part of the law, so it's legislacao. Similarly, "art . 313 , §8º" is part of the law.
+
+But the user's instruction says to mark the entities, so each occurrence of a law, article, etc., should be marked. So, in the text:
+
+- "art . 428" is part of the law, so it's legislacao.
+- "art . 313 , §8º" is part of the law, so legislacao.
+- "art . 103" is part of the law, so legislacao.
+
+But the user might not want to mark each article separately. Alternatively, the entire phrase "art . 428 , caput , da lei de ritos" is a reference to a law, so the entire phrase is legislacao. Similarly for "art . 313 , §8º , da LC 59/2001".
+
+But the user's example might not have that. Let me check the original text again.
+
+The original text has:
+
+"nos termos do que dispõe o art . 428 , caput , da lei de ritos" – here, "art . 428" is part of the law, so it's legislacao. Similarly, "art . 313 , §8º" is part of the law.
+
+So, in the HTML, each of these should be marked as legislacao.
+
+Putting it all together, the HTML would have:
+
+- "Tribunal do Júri" as organizacao.
+- Dates as tempo.
+- "lei de ritos" as legislacao.
+- "LC 59/2001" and "LC 135/2014" as legislacao.
+- "art . 428" as legislacao.
+- "art . 313 , §8º" as legislacao.
+- "art . 103" as legislacao.
+
+Wait, but "art . 103" is part of the LC 135/2014, so it's part of the legislacao. So, the entire phrase "art . 103 da LC 135/2014" would be legislacao.
+
+But the user's instruction says to mark the entities, so each occurrence of a law, article, etc., should be marked. So, in the text, "art . 428" is part of the law, so it's legislacao. Similarly, "art . 313 , §8º" is part of the law, so legislacao. "art . 103" is part of the law, so legislacao.
+
+So, the final HTML would have all these marked with the appropriate classes.
+
+Now, I need to make sure that the rest of the text is left as is, without any changes. Also, the user said to return only the HTML text, no explanations.
+
+So, the final output would be the original text with the entities marked as per the classes.
+</think>
+
+<SPAN class="organizacao">Tribunal do Júri</SPAN> , nos termos do que dispõe o <SPAN class="legislacao">art . 428</SPAN> , caput , da <SPAN class="legislacao">lei de ritos</SPAN> , levando-se em consideração a insusceptibilidade de designação do julgamento entre os dias <SPAN class="tempo">20 de dezembro de 2017</SPAN> e <SPAN class="tempo">20 de janeiro de 2018</SPAN> , ante a expressa proibição legal inserta no <SPAN class="legislacao">art . 313</SPAN> , §8º , da <SPAN class="legislacao">LC 59/2001</SPAN> , com a redação dada pelo <SPAN class="legislacao">art . 103</SPAN> da <SPAN class="legislacao">LC 135/2014</SPAN> .

@@ -1,0 +1,35 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the given legal text, marking specific entities with <span> tags. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should have a class attribute indicating their type. If none are found, just leave the text as is.
+
+First, I need to read the input text carefully. The text is in Portuguese, so I should be cautious with the terms. Let me parse each sentence.
+
+The first part is "Dessa forma , diante da alteração do CPP , verifica-se que os requisitos da prisão preventiva devem ser utilizados em face da nova previsão legal , autorizando a segregação cautelar do réu quando houver necessidade de tal medida para garantia da ordem pública , da ordem econômica , por conveniência da instrução criminal ou para assegurar a aplicação da lei penal ."
+
+Looking for entities:
+
+- "CPP" stands for Código Penal, which is a legal code. So that's legislation. I should mark "CPP" with <span class="legislacao">.
+
+- "réu" refers to a defendant, which is a person. So "réu" becomes <span class="pessoa">réu</span>.
+
+- "ordem pública" and "ordem econômica" are terms related to legal concepts, but they might not be entities here. The user's guide doesn't mention these as entities, so they stay as is.
+
+- "instrução criminal" is a legal process term, but again, not an entity type specified. So no tag.
+
+- "lei penal" refers to penal law, which is part of legislation. Wait, "lei penal" is the penal law, so "lei penal" should be marked as legislation. But in the original text, it's "aplicação da lei penal". So "lei penal" is part of the legislation. So I need to check if "lei penal" is a legislation entity. The user's guide says to mark legislation, so "lei penal" would be legislation. But wait, "lei penal" is a type of law, so maybe it's part of the legislation. However, in the text, it's "aplicação da lei penal", so "lei penal" is the name of a law. Therefore, "lei penal" should be marked as legislation. But I need to confirm if "lei penal" is considered a legislation entity here. The user's example might have "CPP" as legislation, so "lei penal" would be similar. So I should mark "lei penal" as <span class="legislacao">.
+
+Wait, but in the original text, "CPP" is an acronym for Código Penal, which is a specific legislation. Similarly, "lei penal" is a law, so it's part of legislation. Therefore, both "CPP" and "lei penal" should be marked as legislation.
+
+Let me check the original text again. The text mentions "nova previsão legal" which refers to the new legal provision, so "CPP" is the legislation. Then "aplicação da lei penal" refers to the application of penal law, so "lei penal" is part of legislation. Therefore, both "CPP" and "lei penal" should be marked as legislation.
+
+So the HTML would have:
+
+- "CPP" as <span class="legislacao">CPP</span>
+- "réu" as <span class="pessoa">réu</span>
+- "lei penal" as <span class="legislacao">lei penal</span>
+
+Wait, but in the original text, "lei penal" is part of "aplicação da lei penal". So the entire phrase "lei penal" is the legislation. So I need to check if "lei penal" is a single entity. Since it's a specific law, yes. So "lei penal" should be marked as legislation.
+
+So the final HTML would have those three entities marked. Let me make sure there are no other entities. The rest of the text doesn't have any other entities like organizations, time, location, etc. So the output should have those three spans.
+</think>
+
+Dessa forma , diante da alteração do <span class="legislacao">CPP</span> , verifica-se que os requisitos da prisão preventiva devem ser utilizados em face da nova previsão legal , autorizando a segregação cautelar do <span class="pessoa">réu</span> quando houver necessidade de tal medida para garantia da ordem pública , da ordem econômica , por conveniência da instrução criminal ou para assegurar a aplicação da <span class="legislacao">lei penal</span> .

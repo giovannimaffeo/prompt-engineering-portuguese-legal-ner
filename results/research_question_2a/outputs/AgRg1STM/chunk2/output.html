@@ -1,0 +1,36 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of the input text, marking specific legal entities. The entities are pessoa, organizacao, tempo, local, legislacao, and jurisprudencia. Each should be wrapped in a <span> with the appropriate class.
+
+First, I need to read the input text carefully. Let me go through each part step by step.
+
+The text starts with "Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 AGRAVO INTERNO Nº 7000077-04.2017.7.00.0000 RELATOR : MINISTRO JOSÉ BARROSO FILHO AGRAVE...". 
+
+Looking for entities:
+
+- "MINISTRO JOSÉ BARROSO FILHO" is a person, so that's a pessoa. The name "JOSÉ BARROSO FILHO" should be in <span class="pessoa">.
+
+- "DEFENSORIA PÚBLICA DA UNIÃO" is an organization, so that's organizacao. The entire phrase is the organization's name.
+
+- "MINISTÉRIO PÚBLICO MILITAR" is another organization, so that's organizacao as well.
+
+- The number "7000077-04.2017.7.00.0000" might be a case number, but it's not one of the specified entities. The date "2017" could be tempo, but the format is part of the case number, so maybe not. Wait, the user's example in the output includes "2017" as tempo. Let me check the example again. Oh, in the sample input, the output has "2017" marked as tempo. So I should mark the year 2017 as tempo.
+
+- "AGRAVO INTERNO" is a legal term, but it's not one of the entities. The user's example doesn't mark it, so leave it as is.
+
+- "RELATOR" is a role, but not an entity. So no tag.
+
+Now, checking the rest of the text. The URL "https://eproc2g.stm.jus.br/eproc_2g_prod/" is a local, but the user's example doesn't mark URLs as local. Wait, the user's example in the output includes "2017" as tempo. So maybe the URL is not marked as local. The user's instruction says to mark local, but the example doesn't include URLs. So perhaps URLs are not considered local here. So I'll leave the URL as is.
+
+Putting it all together:
+
+- "MINISTRO JOSÉ BARROSO FILHO" becomes <span class="pessoa">MINISTRO JOSÉ BARROSO FILHO</span>
+- "DEFENSORIA PÚBLICA DA UNIÃO" becomes <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span>
+- "MINISTÉRIO PÚBLICO MILITAR" becomes <span class="organizacao">MINISTÉRIO PÚBLICO MILITAR</span>
+- "2017" becomes <span class="tempo">2017</span>
+
+Wait, the case number "7000077-04.2017.7.00.0000" includes "2017" as part of the date. So the "2017" should be marked as tempo. The rest of the numbers are part of the case number, not entities. So the "2017" is the only part to mark as tempo.
+
+So the final HTML should have those spans. Let me make sure I didn't miss any other entities. The rest of the text doesn't have any other entities. The URL is left as is, and the rest of the terms like "AGRAVO INTERNO" are not marked. The output should be the text with those spans.
+</think>
+
+Para confirmar a validade deste documento , acesse : https : //eproc2g.stm.jus.br/eproc_2g_prod/ e digite o Codigo Verificador 3044c7190e4 AGRAVO INTERNO Nº 7000077-04<span class="tempo">2017</span>.7.00.0000 RELATOR : <span class="pessoa">MINISTRO JOSÉ BARROSO FILHO</span> AGRAVANTE : <span class="organizacao">DEFENSORIA PÚBLICA DA UNIÃO</span> AGRAVADO : <span class="organizacao">MINISTÉRIO PÚBLICO MILITAR</span> EMENTA : AGRAVO INTERNO .

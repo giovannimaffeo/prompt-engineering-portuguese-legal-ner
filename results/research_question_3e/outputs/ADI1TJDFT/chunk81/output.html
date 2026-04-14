@@ -1,0 +1,133 @@
+<think>
+Okay, let's tackle this task. The user wants me to generate an HTML version of a given legal text, marking specific entities with appropriate tags. The entities to identify are pessoa, organização, tempo, local, legislação, and jurisprudência. Each should be wrapped in a <span> with the corresponding class.
+
+First, I need to parse the input text carefully. Let me start by reading through the example provided to understand the expected output. The example input had entities like MINISTÉRIO PÚBLICO FEDERAL (organization), CARLOS HENRIQUE ALVES (person), art.61 , §1º , da Lei nº 9.430/96 (legislation), REsp n . 1694984/MS (jurisprudence), and Súmula 331 do TST (jurisprudence). The output correctly marked each with the right class.
+
+Now, looking at the input text provided:
+
+"71 e 100 da Lei Orgânica do Distrito Federal , verbis : '' Art . 71 . A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos na Lei Orgânica , cabe : Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 32 ( ... ) § 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Estado do Distrito Federal , órgãos e entidades da administração pública ; ( ... ) Art . 100 ."
+
+Let me go through each part step by step.
+
+1. "71 e 100 da Lei Orgânica do Distrito Federal": Here, "Lei Orgânica do Distrito Federal" is a legislation. The numbers 71 and 100 are likely articles, so they should be part of the legislation reference. The "Distrito Federal" is a local entity.
+
+2. "verbis : '' Art . 71 .": "Art. 71" refers to an article in the legislation, so it's part of the legislation.
+
+3. "Fls . _____ Ação Direta de Inconstitucionalidade 20170020161362ADI Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ": "Ação Direta de Inconstitucionalidade" is a legal term but not a specific entity. The number 20170020161362ADI seems to be a case number, which would be jurisprudência. The "Código de Verificação" is a code, not an entity.
+
+4. "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 32": "GABINETE DO DESEMBARGADOR" is part of an organization, but the full name might be "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS", which could be an organization. However, the user's guidelines say to mark full names. The "DESEMBARGADOR" is a title, not a person. "SILVANIO BARBOSA DOS SANTOS" is a person's name. The "32" might be a section or number, not an entity.
+
+5. "§ 1º Compete privativamente ao Governador do Distrito Federal a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das Secretarias de Estado do Distrito Federal , órgãos e entidades da administração pública ; ( ... ) Art . 100 .": "Distrito Federal" again is a local. "Secretarias de Estado do Distrito Federal" is part of an organization. "Art. 100" is part of legislation.
+
+Now, applying the guidelines:
+
+- "Lei Orgânica do Distrito Federal" is legislation. The numbers 71 and 100 are part of the article references, so they should be included in the legislation tag. "Distrito Federal" is local.
+
+- "Art. 71" is part of the legislation.
+
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" – the number at the end is a case number, so jurisprudência.
+
+- "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" – the full name might be an organization. But "DESEMBARGADOR" is a title, not a person. However, "SILVANIO BARBOSA DOS SANTOS" is a person. Wait, but the text says "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 32" – the "GABINETE" is part of an organization, and the name after might be the person. But the user's guidelines say to mark full names of people. If "SILVANIO BARBOSA DOS SANTOS" is a person, then that should be marked as pessoa. The "GABINETE" is part of an organization, so that would be organização. But the full name might be "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS" as an organization. Wait, but "GABINETE" is a part of an organization, and the name after is the person. Hmm, this is a bit tricky. The example in the guidelines mentions "GABINETE DO DESEMBARGADOR" as part of an organization. So maybe "GABINETE DO DESEMBARGADOR" is the organization, and "SILVANIO BARBOSA DOS SANTOS" is the person. But the text here is "GABINETE DO DESEMBARGADOR SILVANIO BARBOSA DOS SANTOS 32" – perhaps the full name is the organization. Alternatively, maybe "SILVANIO BARBOSA DOS SANTOS" is a person, and the rest is part of the organization. But the user's guidelines say to mark full names of people. So if "SILVANIO BARBOSA DOS SANTOS" is a full name, then that's a pessoa. The "GABINETE DO DESEMBARGADOR" is an organization. The "32" is probably a section or number, not an entity.
+
+- "Distrito Federal" is a local entity.
+
+- "Secretarias de Estado do Distrito Federal" – "Secretarias" is part of an organization. "Distrito Federal" is local.
+
+- "Art. 100" is part of legislation.
+
+So putting this all together:
+
+- "Lei Orgânica do Distrito Federal" → legislation. The "Distrito Federal" is local.
+
+- "Art. 71" → legislation.
+
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" → jurisprudência.
+
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa.
+
+- "GABINETE DO DESEMBARGADOR" → organização.
+
+- "Distrito Federal" → local.
+
+- "Secretarias de Estado do Distrito Federal" → "Secretarias" is part of an organization, but the user's guidelines mention that organizations like "Secretarias" are part of the administration, so maybe they should be marked as organização. However, the example in the guidelines includes "Secretarias" as part of an organization. Wait, the example in the guidelines says "Secretarias de Estado do Distrito Federal" is part of an organization. So "Secretarias" would be part of the organization. But according to the guidelines, "organizações" are entities like "MINISTÉRIO PÚBLICO FEDERAL", etc. "Secretarias" is a part of an organization, but maybe the full name would be the organization. However, the text here is "Secretarias de Estado do Distrito Federal", which is part of the administration, so perhaps they should be marked as organização. But the guidelines say to mark full names. Since "Secretarias de Estado do Distrito Federal" is a part of the organization, maybe it's part of the organization. Wait, maybe the user's guidelines say to mark "expressões que identificam entidades coletivas formalmente constituídas" like "Secretarias" as part of an organization. But I'm not sure. Alternatively, since "Secretarias" is part of the administration, maybe they are considered part of the organization. But the example given in the guidelines includes "Secretarias" as part of the organization. For example, in the example input, "Secretarias de Estado do Distrito Federal" would be an organization. So I'll mark "Secretarias de Estado do Distrito Federal" as organização.
+
+Wait, but the user's guidelines say that "organizações" are entities like "MINISTÉRIO PÚBLICO FEDERAL", "Tribunal de Contas", etc. "Secretarias de Estado" are parts of the administration, but the full name would be the organization. However, in this case, the text is "Secretarias de Estado do Distrito Federal", which is a part of the administration, but not a standalone organization. So maybe it's not an organization. The example in the guidelines includes "Secretarias" as part of an organization. Wait, in the example input, the user mentions "Secretarias de Estado do Distrito Federal" as part of the organization. So perhaps they should be marked as organização.
+
+But I need to be careful. Let me check the guidelines again. The definition of organização includes "unidades do sistema de justiça, casas legislativas, empresas, cooperativas ou instituições privadas". "Secretarias de Estado" are part of the public administration, which is an organization. So yes, they should be marked as organização.
+
+So, in the input text, "Secretarias de Estado do Distrito Federal" would be an organization.
+
+Putting all together:
+
+- "Lei Orgânica do Distrito Federal" → legislação (the entire phrase is legislation, including the local "Distrito Federal").
+
+- "Art. 71" → legislação (as part of the legislation).
+
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" → jurisprudência (the case number).
+
+- "SILVANIO BARBOSA DOS SANTOS" → pessoa.
+
+- "GABINETE DO DESEMBARGADOR" → organização (assuming it's the full name of the organization).
+
+- "Distrito Federal" → local (twice, once in the legislation and once in the organization).
+
+- "Secretarias de Estado do Distrito Federal" → organização.
+
+- "Art. 100" → legislação.
+
+Now, checking for any other entities. The "Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ" – the code isn't an entity. The "Fls . _____" is probably a placeholder, not an entity. The "32" is a number, not an entity. The "§ 1º" is a section, not an entity. The "Governador do Distrito Federal" – "Governador" is a title, not a person. "Distrito Federal" is local again.
+
+So the final HTML would have:
+
+- "Lei Orgânica do Distrito Federal" as legislação.
+
+- "Art. 71" as legislação.
+
+- "Ação Direta de Inconstitucionalidade 20170020161362ADI" as jurisprudência.
+
+- "SILVANIO BARBOSA DOS SANTOS" as pessoa.
+
+- "GABINETE DO DESEMBARGADOR" as organização.
+
+- "Distrito Federal" as local.
+
+- "Secretarias de Estado do Distrito Federal" as organização.
+
+- "Art. 100" as legislação.
+
+Now, I need to structure the HTML with these tags. Let me make sure that each entity is correctly marked. Also, the numbers like 71 and 100 are part of the legislation references, so they should be included in the legislação tag. The "Distrito Federal" is part of the legislation and also a local. So in the text "Lei Orgânica do Distrito Federal", the entire phrase is legislation, and "Distrito Federal" is a local. Wait, but according to the guidelines, "legislação" should include references to laws, like "Lei nº 8.666/93", and the local is "Distrito Federal". So in "Lei Orgânica do Distrito Federal", the entire phrase is legislation, and "Distrito Federal" is a local. However, the user's guidelines say that "legislação" is defined as expressions that identify norms, so "Lei Orgânica" is part of that. The "Distrito Federal" is a local, so it should be marked as local. Therefore, in the phrase "Lei Orgânica do Distrito Federal", "Lei Orgânica" is legislation and "Distrito Federal" is local. But the example in the guidelines includes "Lei nº 9.430/96" as legislation. So in this case, "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is local. Wait, but the entire phrase is the name of the legislation. For example, "Lei Orgânica do Distrito Federal" is the name of the law, so it's legislation. Therefore, the entire phrase is legislation. However, the "Distrito Federal" is a local. But according to the guidelines, "legislação" should be marked as the full expression. So "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is a local. But since the entire phrase is a legislation reference, perhaps the "Distrito Federal" is part of that. Hmm, this is a bit confusing. Let me check the example again. In the example input, "Lei nº 9.430/96" is marked as legislação, and "Distrito Federal" is local. So in this case, "Lei Orgânica do Distrito Federal" would be legislation, and "Distrito Federal" is local. Wait, but the example input includes "Lei Orgânica do Distrito Federal" as part of the legislation. However, in the example input, the user has "Lei nº 9.430/96" as legislation, so the entire name of the law is marked as legislação. Similarly, "Lei Orgânica do Distrito Federal" would be legislation. Therefore, the entire phrase "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is part of that legislation. But according to the guidelines, "legislação" includes references to laws, so "Lei Orgânica do Distrito Federal" is legislation. However, "Distrito Federal" is a local. Wait, but the local is part of the legislation's name. For example, "Lei Orgânica do Distrito Federal" is the name of the law, which is legislation, and "Distrito Federal" is a local. Therefore, in the text, "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is local. But since they are part of the same phrase, maybe they should both be marked. However, the user's guidelines say that "legislação" should be marked as the full expression. So the entire "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is a local. Therefore, in the HTML, the entire phrase "Lei Orgânica do Distrito Federal" is marked as legislação, and "Distrito Federal" is marked as local. Wait, but that's conflicting. If the entire phrase is legislation, then "Distrito Federal" is part of that legislation. But according to the guidelines, "local" is a separate entity. So, the correct approach would be to mark "Lei Orgânica do Distrito Federal" as legislação and "Distrito Federal" as local. But that would require splitting the phrase, which might not be correct. Alternatively, perhaps the entire phrase is legislation, and "Distrito Federal" is part of that legislation's name, so it's not a separate local. This is a bit ambiguous. However, the example given in the guidelines includes "Lei nº 9.430/96" as legislation, and "Distrito Federal" as local. So in this case, "Lei Orgânica do Distrito Federal" would be legislation, and "Distrito Federal" is a local. Therefore, the correct way is to mark the entire "Lei Orgânica do Distrito Federal" as legislação, and "Distrito Federal" as local. But how can that be done? If the text is "Lei Orgânica do Distrito Federal", then the entire phrase is legislation, and the "Distrito Federal" is part of it. So perhaps the "Distrito Federal" is not a separate entity. Alternatively, maybe "Distrito Federal" is a local, and the rest is legislation. But this requires careful parsing. 
+
+Given the example in the guidelines, I think the correct approach is to mark the full legislation reference as legislação, and the local as local. So in "Lei Orgânica do Distrito Federal", "Lei Orgânica" is legislation, and "Distrito Federal" is local. But that would split the phrase. Alternatively, the entire phrase is legislation, and "Distrito Federal" is a local. But since they are part of the same phrase, perhaps the entire phrase is legislation. 
+
+This is a bit tricky. To resolve this, perhaps the entire "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is a local. Therefore, in the HTML, the entire phrase is wrapped in <span class="legislacao">, and "Distrito Federal" is marked as local. But that would require splitting the phrase. However, the user's guidelines say that "legislação" should be marked as the full expression. So perhaps the entire phrase is legislation, and "Distrito Federal" is part of it. Therefore, the entire phrase is legislation, and "Distrito Federal" is not marked separately. 
+
+But the example in the guidelines includes "Distrito Federal" as local. For instance, in the example input, "Distrito Federal" is marked as local. So if the input has "Distrito Federal" in the text, it's marked as local. Therefore, in the given input, "Lei Orgânica do Distrito Federal" would have "Lei Orgânica" as legislation and "Distrito Federal" as local. But the entire phrase is part of the legislation reference. So perhaps the correct way is to mark the entire "Lei Orgânica do Distrito Federal" as legislation, and "Distrito Federal" as local. 
+
+This is confusing, but I'll proceed with the example. In the example input, "Distrito Federal" is marked as local. So in this case, the same applies. Therefore, in the input text, "Lei Orgânica do Distrito Federal" would be legislation, and "Distrito Federal" is local. Therefore, the HTML would have:
+
+<span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span>
+
+But that would split the phrase. However, the user's guidelines say to mark full expressions. So perhaps the entire "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is part of it, so it's not a separate entity. Therefore, the entire phrase is legislation. 
+
+This is a bit conflicting. Let me check the example again. In the example input, "MINISTÉRIO PÚBLICO FEDERAL" is marked as organização, and "Distrito Federal" is marked as local in another part. So in the input text provided, "Distrito Federal" is marked as local. Therefore, in the input text, "Lei Orgânica do Distrito Federal" would have "Lei Orgânica" as legislation and "Distrito Federal" as local. But the entire phrase is the name of the legislation. However, according to the guidelines, "legislação" includes the full reference. So perhaps the entire "Lei Orgânica do Distrito Federal" is legislation, and "Distrito Federal" is part of that legislation. Therefore, it's not marked as local. 
+
+This is quite ambiguous. To resolve, perhaps the best approach is to mark "Lei Orgânica do Distrito Federal" as legislação, and "Distrito Federal" as local. Even though they are part of the same phrase. 
+
+So, the HTML would have:
+
+<span class="legislacao">Lei Orgânica do <span class="local">Distrito Federal</span></span>
+
+But that would split the phrase. Alternatively, if the entire phrase is legislation, then:
+
+<span class="legislacao">Lei Orgânica do Distrito Federal</span>
+
+But then "Distrito Federal" is not marked as local. However, the example in the guidelines includes "Distrito Federal" as local. Therefore, perhaps the correct way is to split the phrase. 
+
+This is a bit of a dilemma. Given the example, I think the correct approach is to mark "Lei Orgânica" as legislation and "Distrito Federal" as local. However, in the input text, "Lei Orgânica do Distrito Federal" is a single entity, so it's better to mark the entire phrase as legislação. 
+
+I think I'll proceed with marking the entire "Lei Orgânica do Distrito Federal" as legislation, and the "Distrito Federal" as local. But since they are part of the same phrase, it's better to mark the entire phrase as legislation. 
+
+After considering all this, I'll proceed to write the HTML with the identified entities.
+</think>
+
+<span class="legislacao">71 e 100 da Lei Orgânica do <span class="local">Distrito Federal</span> , verbis : '' <span class="legislacao">Art . 71</span> . A iniciativa das leis complementares e ordinárias , observada a forma e os casos previstos na <span class="legislacao">Lei Orgânica</span> , cabe : Fls . _____ <span class="jurisprudencia">Ação Direta de Inconstitucionalidade 20170020161362ADI</span> Código de Verificação :2018ACONT2JYXTK52JCSL251NVQ <span class="organizacao">GABINETE DO DESEMBARGADOR</span> <span class="pessoa">SILVANIO BARBOSA DOS SANTOS</span> 32 ( ... ) <span class="legislacao">§ 1º</span> Compete privativamente ao Governador do <span class="local">Distrito Federal</span> a iniciativa das leis que disponham sobre : ( ... ) IV - criação , estruturação , reestruturação , desmembramento , extinção , incorporação , fusão e atribuições das <span class="organizacao">Secretarias de Estado do Distrito Federal</span> , órgãos e entidades da administração pública ; ( ... ) <span class="legislacao">Art . 100</span> .</span>
